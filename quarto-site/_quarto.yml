@@ -1,5 +1,5 @@
 var:
-  url-repo:    # to call this value : {{< meta var.url-repo >}}
+  url-repo: https://github.com/ludo2ne/ENSAI-2A-Projet-info   # to call this value : {{< meta var.url-repo >}}
 
 project:
   type: website
