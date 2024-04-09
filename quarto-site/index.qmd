@@ -1,0 +1,31 @@
+---
+title: "Projet informatique 2e année"
+description: "Ressources pour le projet informatique de 2e année de l'ENSAI"
+author: "Ludovic Deneuville"
+format: html
+from: markdown+emoji
+---
+
+## Objectifs
+
+Tous les élèves de deuxième année participent à la réalisation du projet informatique par groupes de 4 ou 5 élèves. 
+
+Ce projet permet d’effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année.
+
+Le travail demandé consiste à [construire une application]{.underline} permettant de répondre à la problématique d'un sujet proposé. Ce travail se décompose en 2 grandes phases : 
+
+1. Étude préalable et Conception générale de l'application
+  - décrire la solution envisagée
+  - planifier les grandes phases de la réalisation
+  - décrire les exigences fonctionnelles par la modélisation
+2. Réalisation
+  - mise en place de la base de données
+  - développements, tests, documentation
+
+
+## Présentations
+
+- [Présentation du projet aux tutrices et tuteurs](doc/presentation-tuteurs.qmd)
+- [Notice élèves](doc/notice-eleves.qmd)
+
+

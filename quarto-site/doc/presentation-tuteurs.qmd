@@ -1,0 +1,237 @@
+---
+title: "Présentation aux tutrices et tuteurs"
+description: "[Slides](stage-slide.html)"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+  revealjs:
+    theme: moon
+    footer: "[Home](../index.html) --- [Présentation aux tutrices et tuteurs](presentation-tuteurs.qmd)"
+    slide-number: c/t                    # collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: stage-slide.html
+from: markdown+emoji
+number-sections: false
+lightbox: true
+---
+
+## Objectifs
+
+- Développer une application en python
+- Découvrir l'architecture logicielle
+- Communiquer avec une base de données PostreSQL
+- Utiliser des webservices
+- Concevoir et Modéliser
+
+
+## Compétences visées
+
+- Travailler en groupe (kanban, git)
+- Modéliser une application complexe (UML)
+- Appliquer les principes de la POO
+- Valoriser son travail à l'écrit et à l'oral
+
+
+## Cours 
+
+Le cours de [compléments d'informatique](https://ludo2ne.github.io/ENSAI-2A-complement-info/){target="_blank"} vise à fournir aux élèves les outils pour mener à bien le projet informatique.
+
+- 6h des cours
+- 4 TP de 3h 
+  - dispensés par les tutrices / tuteurs
+  - le sujet est fourni 
+
+
+### Notions abordées en cours
+
+- Utilisation basique de Git
+- Rappels de POO
+- Décomposer une application en couches
+- Communiquer avec une base de données / une API
+- Tests unitaires
+- Documentation
+
+
+## Cadre général du projet
+
+- 1er semestre de 2A
+- Groupes imposés de 4 ou 5 élèves
+- Les groupes votent pour leurs sujets préférés
+- 4 groupes par tuteur
+
+
+## 2 phases
+
+- Analyse / Conception générale (sept)
+  - 4 séances de 3h de suivi
+  - la séance de mi-octobre permet de faire un retour aux équipes sur le dossier d'analyse
+- Implémentation (oct-nov)
+  - 3 séances de 3h de suivi
+
+
+## Livrables
+
+- 5 octobre : Dossier d'analyse
+- 23 novembre : Rapport final + code
+- 3 décembre : Soutenance
+
+
+### Dossier d'analyse
+
+Document d'une dizaine de pages contenant :
+
+- la compréhension du besoin
+- un planning (diagramme de Gantt)
+- des diagrammes UML (cas d'utilisation, classe...)
+
+
+### Soutenance
+
+Les soutenances ont lieu début décembre.
+
+Les élèves présentent leur projet à un jury composé de 3 personnes :
+
+- un président de jury
+- un enseignant de l'ENSAI
+- la tutrice / le tuteur
+
+
+### Notes{.smaller}
+
+| Livrable          | Correcteur       | Coef projet | Coef cours |
+|-------------------|------------------|:-----------:|:----------:|
+| Dossier d'analyse | Tutrice / Tuteur | 1/3         |            |
+| Code              | Tutrice / Tuteur |             | 1/2        |
+| Rapport final     | Jury             | 1/3         |            |
+| Soutenance        | Jury             | 1/3         |            |
+| Devoir sur table  | Enseignant       |             | 1/2        |
+
+
+Le code du projet comptera pour 50% de la note du cours de Compléments d'informatique.
+
+
+## Planning prévisionnel {background-color="Silver"}
+
+:::white-box
+
+```{mermaid}
+gantt
+    title Planning provisoire 2024
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d %b
+    tickInterval 1week
+    
+    section Cours
+    CM                           :milestone, 2024-09-04,
+    CM                           :milestone, 2024-09-18, 
+    Examen                       :milestone, 2024-10-15,
+    
+    section TP
+    TP1                          :milestone, 2024-09-06,
+    TP2                          :milestone, 2024-09-13,
+    TP3                          :milestone, 2024-09-20,
+    TP4                          :milestone, 2024-09-27,
+    
+    section Projet
+    Suivi 1                      :milestone, 2024-09-06,
+    Suivi 2                      :milestone, 2024-09-13,
+    Suivi 3                      :milestone, 2024-09-27,
+    Suivi 4                      :milestone, 2024-10-11,
+    3j immersion (Suivi 5 et 6)  :active,    2024-10-21, 3d
+    Suivi 7                      :milestone, 2024-11-15,
+    
+    section Échéances
+    WEI                          :crit,      2024-09-20, 3d
+    Dossier Analyse              :milestone, 2024-10-05,
+    Toussaint                    :crit,      2024-10-26, 2024-11-03
+    Rapport final et Code        :milestone, 2024-11-23,
+    Soutenance                   :milestone, 2024-12-03,
+    
+    %%Stats univariées retraités   :done,         2021-11-28, 3d
+```
+
+:::
+
+## Sujet
+
+À vous de jouer pour trouver une bonne idée !
+
+### Éléments requis 
+
+- Utilisation de la POO
+- Stockage en BDD (sans utiliser d'ORM type SQLAlchemy)
+- Utilisation et / ou Création d'un webservice
+- Pas d'interface graphique
+  - pour les sujets n'impliquant pas de création de WS, [InquirerPy](https://inquirerpy.readthedocs.io/en/latest/){target="_blank"} sera utilisé comme IHM en mode console
+
+### Exemples de sujets{.smaller}
+
+- Application utile
+  - données SNCF pour optimiser ses réductions
+  - réduire l'impact carbone de la VOD
+  - recherche de stage, de velib, de carburant moins cher, de bières
+  - recommandation de produits meilleurs pour la santé
+- Autour des jeux ou de la musique
+  - stats de jeux videos
+  - Jeux de mots (Wordle)
+  - convention de JDR
+  - RAP analytics
+
+Il est tout à fait possible de proposer un sujet plus exotique (:warning: à ne pas trop faire peur aux élèves).
+
+
+### Anciens sujets
+
+Liste des [anciens sujets](./anciens-sujets.qmd).
+
+
+### Template{.smaller}
+
+:::white-box
+
+```
+### Titre
+
+Tuteur / Tutrice : 
+
+#### Présentation
+
+contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interactif ?
+
+#### Fonctionnalités de base
+
+- F1 : 
+- F2 : 
+
+#### Fonctionnalités optionnelles
+
+- FO1 : 
+- FO2 : 
+
+#### Conseils / Outils ...
+```
+
+:::
+
+
+## Résumé du travail de tutrice / tuteur {.smaller}
+
+- 4 x 3h de TP de compléments d'informatique
+- 7 x 3h de suivi de projet
+- Lire et noter les 4 dossiers d'analyse
+- Noter le code
+- Lire du rapport final, participer à la notation
+- Participer aux 4 soutenances
+
+
+## Points à préciser
+
+- [ ] Idée pour suivre le projet
+  - point hebdo : tout le monde doit envoyer son point hebdo chaque vendredi soir
+  - Kanban (GitHub project)
+- [ ] CI/CD basique (TU, cov, pylint)
+- [ ] inclure l'utilisation de logs

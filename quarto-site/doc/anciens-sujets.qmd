@@ -1,0 +1,858 @@
+---
+title: "Anciens sujets"
+description: "Sujets des années précédentes"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+from: markdown+emoji
+number-sections: false
+lightbox: true
+---
+
+
+## 2023-2024
+
+### Réseau basé sur les goûts musicaux :musical_note: 
+
+Tuteur : Cyriel Mallart
+
+#### Présentation
+
+Tu veux parler musique avec des gens qui comprennent tes goûts ? Avec (NomDeVotreWebService), c'est facile ! Enregistre-toi, dis-nous ce que tu écoutes, et on t'envoie des gens qui vibrent au même rythme que toi !
+
+Vous allez créer dans ce projet une API qui met en relation des gens, basée sur leurs goûts musicaux. Un.e utilisateur.ice s'inscrira, sélectionnera et enregistrera ses morceaux, artistes et genres préférés. L'API Deezer vous donnera accès à toutes les caractéristiques de ces morceaux. A partir de cela, vous utiliserez une touche d'IA pour trouver celui ou celle qui a le profil le plus similaire, et lui enverrez une petite notification pour mettre tout le monde en contact. Si ça ne matche pas, ou si l'utilisateur.ice veut découvrir de nouvelles personnes, on trouve le profil similaire le plus proche en excluant les gens déjà en contact ou refusés. 
+
+#### Fonctionnalités de base (attendues) :
+
+- gestion de plusieurs utilisateurs
+- enregistrement des morceaux, artistes, genres, etc. utiles en base de données
+- appels à l'API Deezer pour obtenir les informations sur les morceaux
+- obtention, stockage et mise à jour des profils similaires
+- gestion des notifications de mise en contact : accepté, refusé, notification à tous les utilisateur.ices impliquée.e.s
+
+#### Fonctionnalités avancées (une au choix si les fonctionalités de base sont finies):
+
+- authentification par mot de passe
+- gestion des "contacts" d'un utilisateur : déletion, signalement, création de groupes
+- recommendation de nouveaux morceaux basés sur ceux des contacts
+- playlists crées par fusion des morceaux des utilisateurs, export
+- sélection ergonomique des morceaux (suggestions, autocomplétion, ...)
+- algorithme de recommendation plus élaboré
+- ...
+- tout autre idée qui vous semble logique, intéressante, sous réserve qu'elle soit faisable techniquement dans les temps impartis
+
+#### Stack technique :
+
+- Backend : FastAPI
+- Front end : Jinja2 (templates HTML dans FastAPI). D'autres choix sont possibles (React.js, Vue.js, ...) si vous les maîtrisez, mais attention, votre tuteur ne pourra vous suivre que sur React.js, et la courbe d'apprentissage est raide.
+- BDD : MongoDB (NoSQL) , Neo4j (NoSQL, graphe) ou Postgres (SQL, disponible à l'ENSAI)
+- API Deezer : https://developers.deezer.com/api
+
+#### Fausses bonnes idées
+
+- Créer une appli de messagerie : le but de ce projet est uniquement une mise en contact où l'on partagera une adresse mail par exemple 
+- Se casser la tête sur un algorithme super-classe : les performances de l'algorithme de recommendation ne sont pas le point important ici, ne passez pas tout votre projet dessus. Si vous avez envie d'essayer une idée d'algorithme, allez-y, même si elle ne fonctionne pas bien au final. Sinon, votre tuteur pourra vous aider sur un algorithme de base 
+- Une interface réctive super-évoluée avec des graphiques et des previews de morceaux : on attend une interface basique et simple, c'est-à-dire, des pages HTML statique écrit en noir sur fond blanc avec un ou deux boutons. 
+
+
+
+### Aide à la recherche de stage 📰💰🏷 
+
+Tuteur : Colin Leverger
+Objectif
+
+Vous êtes un groupe d’étudiants de l'ENSAI en deuxième année, et souhaitez développer une application en ligne de commande pour faciliter vos futures recherches de stage. Votre startup s’appelle ......... et votre application .......... .
+
+Votre application permettra à un utilisateur de rechercher des stages de son choix sur un ou plusieurs sites de recherche de stage (Hellowork, welcometothejungle, …). Les stages peuvent être publiés dans différentes spécialités (informatique, data analyse, machine learning, …). S’il est authentifié, l’utilisateur pourra sauvegarder dans l’application les stages qui l’intéressent dans sa « liste d’envies », et pourquoi pas répondre aux offres plus facilement (automatiquement, ou au minimum récupérer les contacts vers les employeurs). La navigation et les recherches de tout utilisateur seront historisées.
+
+Deux types d’utilisateurs authentifiés pourront cohabiter : utilisateur « élève » et utilisateur « professeur ». Un « administrateur » de l’app pourra également gérer l’application et les utilisateurs. Un utilisateur non authentifié sera par défaut dans la catégorie « élève ». On peut imaginer que les besoins des professeurs et des élèves seront différents…
+
+L’application permettra aux utilisateurs authentifiés de gérer leurs comptes, préférences, mots de passe, listes, et à tous les utilisateurs d’exporter/importer leurs recherches courantes (dans le format texte que vous jugerez bon).
+
+Les utilisateurs pourront également géo localiser les stages par rapport à leur position actuelle (temps de trajet,…).
+
+Fonctionnalités requises (numérotées, mais non ordonnées)
+
+- F1 : la recherche de résultats sur un site que vous choisirez (Hellowork, welcometothejungle, …)
+- F2 : authentification et gestion du profil utilisateur/profil administrateur
+- F3 : gestion de l’import/export de données au format choisi
+- F4 : gestion de l’historique des recherches
+- F5 : recherche par catégorie/filtre de recherches
+
+Fonctionnalités optionnelles
+
+- FO1 : lancer des recherches sur plusieurs sites en parallèle
+- FO2 : géo localisation de l’utilisateur et des annonces/distance entre l’utilisateur et l’annonce
+- FO3 : alertes automatiques si de nouvelles annonces de stage remplissant les critères sont publiées
+- FO4 : … à vous de jouer !
+
+    NOTE : ce sujet regorge de « … ». En effet, une participation active est vivement recommandée et vos idées, pour rendre votre projet unique, sont les bienvenues !
+
+Fonctionnalités non notées (et déconseillées)
+
+- les statistiques/modèles complexes que vous pourrez imaginer (une moyenne, OK, mais un modèle expo logarithmique quantique d’ordre 10, non)
+- l’interface graphique type GUI (AUCUN point bonus sur une très jolie interface !)
+
+
+### GreenStream : API d'aide à la réduction de l'impact carbone de la VOD 🌿
+
+Tuteur : Maxence Lagalle
+
+#### Présentation
+
+**GreenStream** est une API REST qui permet de réduire l’impact carbone d’un service de VOD (Netflix, Amazon Prime, Disney+…). Pour le consommateur, elle calcule l’impact carbone d’une vidéo à partir de sa durée et de sa résolution, en utilisant le modèle ["1byte" de The Shift Project](https://theshiftproject.org/article/climat-insoutenable-usage-video/) ou d’autres modèles d’estimation. Pour le fournisseur de VOD, elle aide à choisir des serveurs dans la meilleure zone géographique des fournisseurs Cloud en fonction de l’impact carbone de la production d’électricité. Ces données sur l’impact carbone sont fournies par [l'API ElectricityMaps](https://static.electricitymaps.com/api/docs/index.html). GreenStream est un projet innovant et écologique, qui accompagne dans la transition vers des services de VOD plus vert et plus responsables.
+
+*[ElectricityMaps](https://www.electricitymaps.com) est partenaire de GreenStream et offre un accès à la version payante de son API pour toute la durée du projet.*
+
+#### Fonctionnalités de base
+
+- **Estimation de l’empreinte carbone d’une vidéo** selon le modèle “1byte” de The Shift Project
+    - Prise en compte de la localisation géographique du fournisseur de VOD et de l’utilisateur
+    - Prise en compte de la durée et de la qualité de la vidéo, du type de connexion et du matériel utilisé pour regarder la vidéo
+    - Utilisation des données d’impact carbone en temps réel fournies par l’API ElectricityMaps
+- **Recommandation du meilleur service Cloud** pour diffuser une vidéo à un utilisateur
+    - Choix du service Cloud à l’impact carbone le plus faible en fonction de la zone géographique de l’utilisateur
+    - Détermination des services Cloud éligibles en fonction de la localisation de l’utilisateur (ceux dans le même pays ou un pays limitrophe)
+    - Utilisation des données de prévision de l’impact carbone pour la durée de la vidéo fournies par l’API ElectricityMaps
+- **Gestion de l’offre des fournisseurs Cloud**
+    - Implémentation de la liste des zones géographiques proposées par au moins deux fournisseurs Cloud (AWS, GCP, Azure…)
+    - Utilisation d’une base de données SQL pour stocker les informations sur les services Cloud disponibles
+- **Information sur l’état du service GreenStream**
+    - Fourniture d’un service permettant de s’assurer que GreenStream fonctionne correctement et que son lien avec ElectricityMaps est actif
+
+#### Fonctionnalités avancées
+
+- **Simulation de l’impact carbone d’un changement de comportement**
+    - Création d’un service qui permet à l’utilisateur de simuler l’impact carbone qu’il aurait s’il changeait certains paramètres de sa consommation de vidéos, tels que la qualité, la durée, le type de connexion ou le matériel utilisé
+    - Utilisation du modèle “1byte” ou d’autres modèles d’estimation pour calculer l’empreinte carbone selon les différents scénarios
+- **Utilisation de modèles d’estimation de l’empreinte carbone plus sophistiqués**
+    - Prise en compte d'une consommation électrique variable selon les fournisseurs Cloud
+    - Utilisation d’autres modèles d’estimation publiés, tels que le modèle [“Carbon Footprint of Video Streaming” de Carbon Trust](https://www.carbontrust.com/our-work-and-impact/guides-reports-and-tools/carbon-impact-of-video-streaming) ou d'autres modèles à rechercher
+- **Intégration de critères avancés dans la recommandation du service Cloud**
+    - Prise en compte du coût financier des services Cloud et d’un arbitrage entre le coût et l’empreinte carbone
+    - Utilisation d’un graphe de connexions entre les zones pour déterminer la liste des services Cloud éligibles pour diffuser une vidéo à un utilisateur
+- **Suivi de la consommation totale du service et de son empreinte carbone**
+    - Enregistrement SQL de la consommation de vidéos : durée, zone géographique de l’utilisateur, service Cloud associé, empreinte carbone
+    - Accès aux données brutes ou à une synthèse statistique via l'API
+- **Fonctionnement en mode dégradé**
+    - Utilisation de données historiques d’intensité carbone de la production d’électricité en cas de défaillance de l’API ElectricityMaps
+
+L’initiative est fortement encouragée dans ce projet, et d’autres idées de fonctionnalités avancées ou d’amélioration des fonctionnalités de base peuvent être proposées par les élèves.
+
+### Prix du carburant🛢💰
+
+Tuteur : Thierry Mathé
+
+#### Objectif
+
+Le ministère des Finances met à disposition un fichier des prix des carburants dans les stations françaises. Ce fichier au format XML contient entre autre pour chaque station, ses coordonnées, son adresse, ses heures d’ouvertures, le prix des carburants disponibles (mais l’enseigne de la station n’y figure pas). 
+Le but du projet de créer une API (application programming interface) qui exploite les données contenues dans ce fichier. Cette API devra permettre de :
+
+- Consulter la liste des stations se trouvant à proximité d’un point donné il sera aussi possible de préciser le carburant. 
+- Créer et mettre à jour des listes de stations qu’il sera possible de consulter par exemple pour voir les prix sur les stations se trouvant sur un trajet régulier.
+    
+A chaque requête, l’API doit s’assurer qu’elle utilise bien les dernières données disponibles et au besoin télécharger les nouvelles données disponibles sur le site (mises à jour toutes les 10 minutes) : https://donnees.roulez-eco.fr/opendata/instantane
+
+#### Fonctionnalités de base
+
+##### Stations à proximités
+Les paramètres donnés à cette requête sont les coordonnées (longitude et latitude) d'un point, une distance en km et un type de carburant. L'API va alors extraire l'ensemble des stations se trouvant dans la zone ainsi définie et disponsant du carburant indiqué. 
+
+La réponse sera données au format JSON et contiendra:
+
+- les parmètres de la requête
+- la date et l'heure d'exécution
+- le nombre de stations trouvées
+- la liste des stations : pour chaque station on aura:
+    - l'id, les coordonnées et l'adresse de la station
+    - le prix du carburant 
+
+##### Stations préférées
+
+La gestion des listes de stations doit permettre de:
+- Créer une liste: le paramètre en entrée est un nom donné par l'utilisateur. La requête revoie un identifiant qui devra être passé comme paramètre pour toutes les autres actions,
+- Consulter la liste des listes crées: aucun paramètre, la requête renvoie les couple identifiant-nom des listes défines,
+- Ajouter une une plusieurs stations à un liste: les paramètres en entrée sont l'identifiant de la liste et le ou les identifiants des stations à ajouter,
+- Supprimer une liste: le paramètre à donner est l'identifiant de la liste,
+- Consulter la liste: le paramètre à donner est l'identifiant de la liste. La requête revoie les informations au format JSON qui contiennent:
+    - l'identifiant et le nom de la requête
+    - la date et l'heure d'exécution
+    - le nombre de stations contenues dans la liste
+    - la liste des stations. Pour chaque station on aura:
+        - l'id, les coordonnées et l'adresse de la station
+        - le prix du carburant 
+
+#### Fonctionnalités avancées
+Voici quelques idées de fonctions avancées pour les groupes qui auraient effectué l'ensemble des fonction de bases. Toutes autres idées pourra bien sûr être proposées en cours de projet.
+##### Stations à proximités
+
+- Possibilité de passer comme parmètre une adresse au lieu de coordonnées
+- Possibilité de préciser l'heure de passage et de ne conserver que les stations ouvertes à cette heure.
+
+##### Station préférées
+
+- Possilité de retirer une ou plusieur stations d'une liste
+- Imposer une identification pour consulter les listes. Chaque utilisateurs n'aurait alors accés qu'à ses liste.
+
+
+
+### Outil statistique d’analyse des parties de League of Legends 🎮
+
+Tuteur : Aloïs DE OLIVEIRA
+
+#### Contexte
+League Of Legends (connu sous le sigle LoL) est un jeu video, plus précisément un Multiplayer Online Battle Arena (MOBA), développé par Riot. LoL comptait plus de 100M de joueurs actifs en 2022 et le chiffre n’est pas voué à diminuer dans les prochaines années. 
+Cet engouement force Riot à se renouveler en créant de nouveaux champions, de nouveaux items, des ajustements sur l’équilibrage du jeu (appelés patch). Les joueurs apprécient donc fortement les outils leur permettant d’avoir des analyses simples mais rapides afin de les accompagner et aider dans leurs choix.
+
+**Ce sujet ne nécessite pas de connaître le jeu ou d’y avoir déjà joué. Au contraire, il vous arrivera souvent de devoir dans un premier temps comprendre un nouveau contexte métier et vos données en entrée.**
+
+
+#### Sujet
+
+##### Objectif
+
+Vous êtes mobilisés afin de mettre en place une solution capable de fournir aux joueurs les premières informations essentielles.
+Ces analyses seront simples mais nécessiteront d’analyser tout l’historique des parties que vous aurez à votre disposition, et donc que vous stockerez. 
+Votre solution a pour but d’être pensée dans une logique d’amélioration continue. Ainsi un **code documenté utilisant les principes de la Programmation Orientée Objet (POO)** est attendu.
+
+
+##### Les données
+
+LoL met à disposition une [API](https://developer.riotgames.com/) afin de permettre aux personnes qui le souhaitent de pouvoir utiliser leurs données. Une explication du fonctionnement de l’API de LoL et de l'obtention des données sera effectuée.
+
+
+#### Fonctionnalités
+
+Lors de ce projet, vous aurez des fonctionnalités obligatoires et avancées. **Il est nécessaire de se focaliser sur ces premières et d’entreprendre les secondes que lorsque vous avez une base solide pour répondre à l’ensemble des fonctionnalités obligatoires**. 
+
+
+#### Fonctionnalités obligatoires
+
+**Niveau base de données**
+
+##### FO1 : Création de votre base de données :
+
+- Création d’une base de données de votre choix (SQL/NoSQL) qui vous servira à stocker l’historique des parties. Le modèle de données est important, il doit être adapté afin de faciliter toutes modifications. 
+- Création d’un pipeline de données. L’ensemble des étapes de la collecte au chargement, en passant par la transformation doivent être le plus réutilisable possible. 
+- L’ensemble des tâches doit être effectué en Python (de la création, à l’insertion et aux éventuelles modifications).
+
+
+**Niveau API**
+
+Pour la réalisation de ce projet, vous devrez réaliser une API (à l’aide [FastAPI](https://fastapi.tiangolo.com/) ou [Flask](https://flask.palletsprojects.com/en/2.3.x/)) qui vous permettra de renvoyer les différents résultats souhaités. Ces résultats seront à retourner sous format json.
+Il existera différentes classes, décrites ci-dessous, avec chacune ses méthodes. Toutes les méthodes présentes dans les descriptions des classes sont à titre indicatif. N’hésitez pas à être force de proposition.
+
+
+##### FO2 : Proposer des statistiques de base avec une classe invité :
+
+- Cela ne nécessitera aucune connexion.
+- Cette classe devra comporter certaines méthodes permettant de fournir des statistiques globales sur le jeu, telles que : 
+    - Afficher les statistiques d’un champion : le nombre de games jouées, le winrate, le gold lead à Xmin, etc.
+    - Trier les champions (globalement ou par lane) selon le critère au choix parmi : nombre de games jouées, le winrate, etc.
+
+
+##### FO3 : Proposer des statistiques plus précises avec une classe nécessitant une connexion : 
+
+- Cela nécessitera de se connecter à un compte user.
+- Cette classe héritera de l’ensemble des méthodes propres à la classe invité.
+- Cette classe devra comporter certaines méthodes permettant de fournir des statistiques liées au compte en question, telles que :
+    - Afficher les statistiques globales/par lane/par champion du compte : le nombre de games jouées, le winrate, le kda, etc.
+
+
+##### FO4 : Gestion de l'ensemble des données (user et LoL) à l'aide d'une classe admin : 
+
+- Cela nécessitera de se connecter à un compte admin. 1 seul sera nécessaire.
+- Cette classe héritera de l’ensemble des méthodes précédentes.
+- Cette classe aura pour but de permettre à l’admin de pouvoir gérer les comptes et les données. 
+
+
+#### Fonctionnalités avancées
+
+Les fonctionnalités avancées sont triées selon le niveau de difficulté , cependant vous êtes totalement libres sur les fonctionnalités avancées que vous souhaitez réalisées.
+
+##### FA1 : Ajout de nouvelles données quotidiennes :
+
+Jusqu’ici vous utilisez les données mises à disposition sans enrichissement.  Cette fonctionnalité aura pour but de permettre à l’admin de pouvoir ajouter des nouvelles parties récentes. 
+Les différents points attendus sont :
+- Gestion de la clé (permettant l’accès à l’API de Riot) : au choix entre en brute en paramètre d’entrée ou permettre d’aller la récupérer directement sur le site depuis l’API.
+- Récupération des données depuis l’API de Riot selon certains critères de sélection.
+- Ajout des données dans vos bases de données.
+- Ajout de la fonctionnalité au sein de votre API.
+
+Les critères de sélection seront libres et donc proposés par votre groupe, en fonction de ce que l’API vous permettra de faire.
+
+
+##### FA2 : Mise en place d’un workflow collaboratif : 
+
+Le workflow Gitflow vous permet de faciliter la gestion des branches et la séparation des différentes tâches.
+Utilisez le [framework Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) pour la gestion de votre projet.
+
+
+##### FA3 : Conteneurisation de l’application : 
+
+Conteneuriser votre application aura pour but de faciliter son déploiement et son partage. En effet, cela permettra de réunir le code et ses composants (frameworks, bibliothèques, etc) dans un conteneur. Il sera alors possible d’exécuter le conteneur sans se soucier des différentes dépendances (l’installation des bibliothèques avec la bonne version par exemple). 
+
+Utilisez l’outil [Docker](https://fastapi.tiangolo.com/deployment/docker/) pour conteneuriser votre application.
+
+
+##### FA4 : Mise en place d’un modèle prédictif :
+
+Pour le moment, vous ne faites remonter que des statistiques descriptives. Ici il s’agit de mettre à profit l’ensemble des données disponibles pour permettre à l’utilisateur de prédire l’équipe gagnante en fonction des 5 champions de chaque équipe.
+L’enjeu de cette fonctionnalité n’est pas de vous faire trouver le meilleur modèle de prédiction mais d’ajouter une fonctionnalité à votre API basé sur ce modèle. Vous ne serez donc aucunement noté sur la qualité des prédictions.
+
+Les différents points attendus sont : 
+- Choix d’un modèle de prédiction : vous ne serez certes pas noté sur la qualité des prédictions mais une courte réflexion sur le choix du modèle est attendue. 
+- Entrainement dudit modèle : vous êtes libres sur le choix des librairies.
+- Sérialisation du modèle : vous devez sauvegarder votre modèle.
+- Ajout de la fonctionnalité au sein de votre API.
+
+### Mangez mieux ! :strawberry: :cut_of_meat: :candy: 
+
+Tuteur : Sophie HERBERT, ENSAI 2021
+
+#### Objectif :
+
+Recommander des produits meilleurs pour la santé selon plusieurs critères !
+
+Vous allez explorer la célèbre API Open Food Facts qui regroupe des produits alimentaires divisés en plusieurs catégories (Viandes, Snacks, Aliments d’origine végétale etc.) et pour lesquels nous avons un grand nombre de variables renseignées par la communauté : nutriscore, nova score, ecoscore, taux de protéine, taux de sucre, énergie en kcal…
+L’objectif de l’application est d’utiliser un échantillon de ces données en vous concentrant sur quelques produits de quelques catégories que vous aurez choisis, de les afficher tel un catalogue et de pouvoir les trier selon le critère sélectionné : le moins de sucre possible, le meilleur eco-score, la plus faible valeur énergétique... En allant sur une fiche « Produit », vous afficherez le meilleur produit de la même catégorie selon ce critère.
+Un système d’identification devra être mis en place. Si l’utilisateur est identifié, pourquoi pas sauvegarder ses articles dans un panier virtuel ?
+
+#### Les fonctionnalités requises :
+
+Les fonctionnalités requises :
+
+-	F1 : affichage simple en console d’un catalogue de produits alimentaires par catégorie de produit
+-	F2 : ordonner les produits selon un critère nutritionnel
+-	F3 : sélection d’une fiche « Produit » recommandant un autre produit de la même catégorie avec un critère meilleur que le produit consulté (si meilleur il y a)
+-	F4 : système d’authentification et de gestion du profil (changement de mot de passe…)
+
+#### Et en option :
+
+-	F5 : sauvegarde de produits dans un panier
+-	…
+
+Des fonctionnalités optionnelles pourront être développées à votre guise et selon votre inspiration sur le sujet ! Les données Open Food Facts étant très riches, d’autres axes d’analyses peuvent être creusés…
+Note : l’interface GUI, la mise en place de modèles statistiques, la gestion des valeurs manquantes ne seront pas inclues dans la notation.
+
+
+
+
+### JobHub : Simplifier la Recherche d'Emploi dans le Secteur de la Tech
+
+#### Tuteur : Mansor GUEYE
+
+####  Description du Projet :
+Ce projet a pour objectif de créer une application qui facilite la recherche d'emploi dans le secteur de la technologie en utilisant l'API REST gratuite de [Adzuna](https://developer.adzuna.com/) , qui fournit des informations sur les offres d'emploi dans divers secteurs à travers le monde. L'application permettra aux utilisateurs de rechercher des emplois, de filtrer les résultats, de suivre leur progression dans leurs candidatures et de recevoir des alertes pour les nouvelles offres correspondant à leurs compétences.
+
+#### Objectifs du Projet :
+
+- Intégrer les données de l'API Adzuna dans une application conviviale.
+- Permettre aux utilisateurs de rechercher des offres d'emploi par mots-clés, localisation et catégories.
+- Fournir des fonctionnalités de suivi des candidatures, y compris la gestion de CV et de lettres de motivation.
+- Envoyer des alertes aux utilisateurs pour les nouvelles offres correspondant à leurs critères.
+- Mettre en place un système de profil pour les chercheurs d'emploi.
+
+
+#### Les fonctionnalités requises :
+
+Les fonctionnalités requises :
+
+- F1 : Intégrer les données de l'API Adzuna pour afficher des offres d'emploi dans divers secteurs.
+- F2 : Permettre aux utilisateurs de rechercher des emplois en utilisant divers critères.
+- F3 : Permettre aux utilisateurs de créer des profils de chercheurs d'emploi.
+
+#### Et en option :
+
+- F4 : Fournir des fonctionnalités de suivi des candidatures et de gestion de documents(CVs, lettres de motivation...).
+- F5 : Envoyer des alertes aux utilisateurs pour les nouvelles offres correspondant à leurs compétences.
+- F6:...
+
+:heavy_exclamation_mark: Vous avez la liberté de développer des fonctionnalités optionnelles selon votre inspiration.
+ Aucune interface graphique n'est demandée dans ce sujet, toute interaction avec l'application devra se faire via l'invité commande ( terminal / cmd ). Si vous souhaitez tout de même le faire, cela ne saurait se substituer aux fonctionnalités demandées.
+ 
+ 
+### Velib' Hunter 🚲🔪
+
+#### Tuteur : Samuel GOUTIN
+
+####  Objectif :
+
+Ce projet vous propose d'explorer les données mises à disposition par OpenData Paris. En particulier, vous allez jouer avec les données présentant [la disponibilité des Velib' en temps réel](https://opendata.paris.fr/explore/dataset/velib-disponibilite-en-temps-reel).
+La solution proposera des services pour permettre aux utilisateurs de trouver plus facilement un vélo, ou pour aider la ville de Paris à mieux gérer son parc de vélos.
+Pour cela, vous aurez besoin de capturer et de stocker les données disponibles sur l'API d'OpenData Paris (et leur historique!) dans une base de données, puis de créer à votre tour une API pour y mettre à disposition vos services.
+
+#### Fonctionnalités obligatoires
+
+- **F1** : obtenir le nom de la station la plus proche ayant au moins un vélo disponible à partir de coordonnées géographique. Vous pouvez utiliser l'[API d'Etalab](https://adresse.data.gouv.fr/api-doc/adresse) pour obtenir des coordonnées géographiques à partir de d'une adresse.
+- **F2** : obtenir le nom de la station la moins fréquentée sur une période de temps données.
+- **F3** : obtenir le numéro de l'arrondissement le plus fréquenté sur une période de temps données.
+
+#### Fonctionnalités optionnelles
+- **F01** - *Recherche de vélo en temps réel* : Un utilisateur utilise la F1 pour trouver un vélo proche de lui. En arrivant sur place: mauvaise surprise, le vélo lui ai passé sous le nez. Pour éviter ce genre de désagréaments, le nom de la station la plus proche sera actualisé en temps réel. Pour cela, vous pouvez améliorer la F1 en proposant une connexion basé sur un WebSocket.
+- **FO2** - *Déploiement* : Pour faciliter le déploiement de votre solution, conteneurisez-la en utilisant [Docker Compose](https://wiki-tech.io/Conteneurisation/Docker/Docker-Compose).
+- **FO3** - *[CRUD](https://fr.wikipedia.org/wiki/CRUD)* : Permettez aux utilisateurs de communiquer directement avec votre base de données. Pour cela, complétez votre API en proposant des nouvelles routes permettant de :
+  - récupérer toutes les informations d'une station
+  - supprimer toutes les informations d'une station
+  - mettre à jour le nom d'une station
+  - ajouter une nouvelle station
+
+#### Les outils
+
+Pour répondre aux fonctionnalités demandés, vous aurez certainement besoin de vous armer de:
+
+- une librairie pour construire des APIs (conseillé: FastAPI)
+- une solution de base de données (conseillé: SQLite)
+- un outil de versioning de code en équipe (Gitlab ou Github)
+
+
+
+
+
+---
+
+## 2022-2023
+
+### Gestion de petites annonces 📰💰🏷
+
+Tutuer : Colin Leverger
+
+##### Objectif
+
+Vous êtes un groupe d’amateurs de shopping sur le web, et souhaitez développer une application en ligne de commande pour faciliter les achats sur internet. Votre startup s’appelle __________ et votre application ________.
+
+Votre application permettra à un utilisateur de rechercher des articles de son choix sur un ou plusieurs sites de vente (Leboncoin, Vivastreet, …). Les articles peuvent être présents dans différentes catégories (voitures, consoles,…). S’il est authentifié, l’utilisateur pourra sauvegarder dans l’application les articles/informations/pages web/… qui l’intéressent dans sa « liste d’envies ». La navigation et les recherches de tout utilisateur seront historisées.
+
+Deux types d’utilisateurs authentifiés pourront cohabiter : utilisateur « particulier » et utilisateur « pro ». Un « administrateur » de l’app pourra également gérer l’application et les utilisateurs. Un utilisateur non authentifié sera par défaut dans la catégorie « particulier ». On peut imaginer que les besoins des professionnels et des particuliers seront différents…
+
+L’application permettra aux utilisateurs authentifiés de gérer leurs comptes, préférences, mots de passe, listes, et à tous les utilisateurs d’exporter/importer leurs recherches courantes (dans le format texte que vous jugerez bon).
+
+Les utilisateurs pourront également géo localiser les annonces par rapport à leur position actuelle (temps de trajet,…).
+
+Fonctionnalités requises (numérotées, mais non ordonnées)
+
+- F1 : la recherche de résultats sur un site que vous choisirez (Leboncoin, Vivastreet, …)
+- F2 : authentification et gestion du profil utilisateur/profil administrateur
+- F3 : gestion de l’import/export de données au format choisi
+- F4 : gestion de l’historique des recherches
+- F5 : recherche par catégorie/filtre de recherches
+
+Fonctionnalités optionnelles
+
+- FO1 : lancer des recherches sur plusieurs sites en parallèle
+- FO2 : géo localisation de l’utilisateur et des annonces/distance entre l’utilisateur et l’annonce
+- FO3 : … à vous de jouer !
+
+> NOTE : ce sujet regorge de « … ». En effet, une participation active est vivement recommandée et vos idées, pour rendre votre projet unique, sont les bienvenues !
+
+Fonctionnalités non notées (et déconseillées)
+
+-  les statistiques/modèles complexes que vous pourrez imaginer (une moyenne, OK, mais un modèle expo logarithmique quantique d’ordre 10, non)
+-  l’interface graphique type GUI (AUCUN point bonus sur une très jolie interface !)
+
+
+### Webservice de génération de jeux de données :satellite: :globe_with_meridians: :minidisc:
+
+Tuteur : Antoine Brunetti
+
+#### Contexte
+
+Dans le cadre de la réalisation de tests de programmes, on est souvent amenés a utiliser des jeux de données fictives.  
+Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet de générer des données de tests pour des statisticiens et développeurs en herbe.
+
+Les utilisateurs de cette API pourront renseigner des types de données pour la génération à partir d'un language dédié : 
+Par exemple :
+- définir un type SEXE qui ne prendrait que les valeurs M,F ou A
+
+```json 
+"SEXE":"'M'|'F'|'A'"
+```
+
+
+- ou définir un type composé VOITURE qui prendrait les valeurs composées : 
+```json
+{
+    "VOITURE": {
+	"nb_roues": "INT",
+	"COULEUR": "'rouge'|'vert'|'bleu'"
+    }
+}
+```
+
+Les utilisateurs de l'application définiront ensuite des schémas de données permettant de gérer les métadonnées nécessaires à la génération de données. Ces informations seront stockées en base de données.
+
+Par exemple : 
+```json
+{
+	"sexe": {
+		"type": "SEXE",
+		"remplissage": 100
+	},
+	"age": {
+		"type": "18|19|20",
+		"remplissage": 100
+	},
+	"prenom": {
+		"type": "NAME",
+		"remplissage": 88.4
+	},
+	"nom": {
+		"type": "NAME|'dupont'"
+		"remplissage": 85
+	}
+}
+```
+
+Il faudra également qu'a partir d'un jeu de configuration fourni au format **JSON** au démarrage de l'application, vous définissiez le point d'entrée d'accès aux données générées. Cela permettra une meilleure utilisation de votre API pour permettre aux utilisateurs de tester un endpoint sans modifier leur configuration.
+
+La génération de ces données devra se faire selon différents formats , avec la possibilité de définir des seuils de remplissage en amont de la génération des données.
+
+
+Les différents jeux de données générés seront eux aussi sauvegardés pour permettre d'accéder aux données de manière stable *(par une graine :seedling:)*, cette graine pourra être fournie par un HEADER HTTP propre a votre application.
+
+Le point d'entrée de définition du schéma de données sera accessible en `GET` a un point d'entrée fixe de votre serveur.
+
+#### Fonctionnalités de bases
+
+- Définition des **valeurs** possibles pour un champ
+- Définition d'un **schéma** correspondant a une ligne de données à générer.
+- Définition d'un taux de remplissage pour un champ.
+- Démarrage de l'applicatif à partir d'un fichier de règles de bases
+- La réalisation d'un scénario d'usage de l'API.
+
+#### Fonctionnalités avancées 
+- Génération d'un jeu de règles à partir d'un jeu de données
+- Gestion de l'authentification à l'API
+- Permettre l'export et l'import de schémas sous format JSON
+- Proposer une solution répondant à des enjeux de volumétrie (taille des jeux de données)
+- Réalisation de rapports de statistiques sur les jeux générés.
+
+---
+
+### Jeux de mot :book: :trophy: 
+
+Tuteur : Armelle Koehl
+
+#### Présentation
+Wordle, zutom, le mot et tous ces dérivés d'u célèbre jeu télévisé. C'est dans la ligné de ces jeux que nous souhaitons nous inscrire en faisant notre propre version. Et pourquoi pas, le proposer comme occupation entre 2 amphis aux ensaiens :video_game: 
+Le but du jeu est de deviner un mot spécifique en un minimum de tentatives. Le joueur inscrit sur la première ligne un mot de son choix de même longueur que le mot à deviner et entre sa proposition. Le jeu lui indique alors quelles lettres ne se trouvent pas dans le mots, celles qui y sont mais mal placées et celles qui s'y trouvent et qui sont bien placées.
+En fonction du nombre de tentatives, on peut proposer un score au joueur. :trophy: 
+
+#### Fonctionnalités de base
+- Un historique afin de reprendre sa partie en cours de route
+- Un tableau des scores général s'actualisant en temps réel
+- Des tests unitaires
+- Une interface console simple à destination des clients qui utilisera votre API (cf architecture client serveur)
+
+
+#### Fonctionnalités avancées
+- Proposer le jeu en multilingues
+- Création de listes de mots personnalisées
+- Un client permettant de jouer en multijoueur local et distant
+- Une gestion de l'authentification
+
+
+#### Les outils
+- Utilisation d'une API fournissant des mots au hasard
+- Framework fastApi
+- Base Postgres
+- Git et son univers
+- Vscode
+
+#### Ce qu'on essaiera de voir en plus
+
+---
+
+### Conférence de jeu de rôle :european_castle::dragon:
+
+Tuteur : Cyriel Mallart
+
+#### Présentation
+
+Une nouvelle convention de jeu de rôle arrive à Rennes ! L’activité phare de la convention sera un weekend dédié à la pratique des jeux de rôles. Plusieurs jeux se dérouleront en parallèle, chacun à une table contenant un maître/une maîtresse du jeu (MJ), ainsi que des joueurs et joueuses. Le but de ce weekend est de réunir des gens de tous horizons, de donner une première impression du jeu de rôle aux personnes n’ayant jamais essayé, mais aussi de satisfaire les joueurs plus expérimentés. Le système de jeu utilisé est Dongeons et Dragons 5E.
+
+Les organisateurs vous sollicitent pour créer une application qui permette de gérer les tables de jeu de la conférence. Il faudra créer deux interfaces différentes : une pour les organisateurs et une pour un joueur ou MJ.
+
+Un joueur ou une joueuse s’inscrit à la conférence en renseignant un nouveau profil. Sur ce profil, il ou elle peut déclarer des personnages différents. En utilisant l’API disponible à l’adresse https://www.dnd5eapi.co/, plus d’informations seront colléctées sur chaque personnage, et completeront sa fiche, comme les langues que le personnage parle, ses capacités physiques, etc.  Une joueuse doit aussi pouvoir s’inscrire à une table, et consulter les tables auxquelles elle joue. Les MJs ont accès à un profil similaire, où ils peuvent se porter volontaires pour plusieurs scénarios (et donc plusieurs tables). Le MJ doit aussi avoir accès à une liste des joueurs et des personnages qui seront à sa table, afin de pouvoir se préparer au mieux. 
+
+Les organisateurs se réservent le droit de supprimer des joueurs et des MJ, et de réorganiser les tables. Dans ce cas, un tel évènement sera notifié aux joueurs concernés lorsqu’ils iront consulter les tables auxquelles ils jouent.
+
+#### Fonctionnalités attendues
+
+- Authentification sommaire des profils organisateur/joueur/MJ
+- Inscription pour un nouveau joueur ou MJ
+- Complétion des fiches personnages via l’API
+- Inscription/désistement à une table (avec gestion des contraintes)
+- Vue du programme individuel pour chaque joueur
+- Ajout/suppression des joueurs à une table
+- Création/suppession de tables
+- Vue générale du programme (tables, joueurs, MJs et horaires)
+
+#### Fonctionnalités avancées
+
+ - Recherche du programme d’un joueur particulier par un organisateur
+ - Validation des personnages par le MJ avant inscription définitive à une table
+ - Gestion d’un second système de jeu (Pathfinder, Call of Chtulu ou Monster of the Week, par exemple)
+
+:heavy_exclamation_mark: Aucune interface graphique n'est demandée dans ce sujet. Si vous souhaitez tout de même le faire, cela ne saurait se substituer aux fonctionnalités demandées.
+
+#### Technologies utilisées
+
+- FastApi
+- Base de donnée au choix (SQL comme PostGres ou MySQL, ou NoSQL comme MongoDB)
+- API D&D5e 
+
+### Profite au MAX de ton TGVMAX :train2: : TGVMAXimizer
+
+Tuteur : Mansor Gueye
+
+#### Présentation
+Vous avez un abonnement TGVMAX (Jeune :adult: :woman:  ou Senior :older_adult::older_woman:)et vous avez du mal à trouver des trajets éligibles, TGVMAXimizer est LA solution. 
+TGVMAXimizer est l'application qui facilite la recherche de places disponibles pour les trajets éligibles au TGVMax. 
+L'utilisateur crée un compte avec un profil jeune ou senior.
+Une fois authentifié, l'utilsateur pourra lancer une recherche en specififant la gare de depart, la gare de déstination et éventuellement la date de départ. Le resultat sera la liste des trajets éligibles au TGVMAX junior ou senior selon le profil de l'utilisateur. 
+Les données sur la disponibilité à 30 jours de places MAX JEUNE et MAX SENIOR  sont accessibles via l'api tgvmax disponible sur le site https://data.sncf.com/explore/dataset/tgvmax/api/  
+
+#### Fonctionnalités attendues
+
+- Création de compte 
+- Une gestion de l'authentification
+- Possibilité de déconnexion
+- Recherche de trajets éligibles au MAX JEUNE / MAX SENIOR 
+- Filtre pour ne voir que les places à 0 euro
+
+#### Fonctionnalités avancées
+
+- Recherche de toutes les destinations atteignables avec des places éligibles au MAX JEUNE / MAX SENIOR  (y compris le trajet de retour) durant un weekend
+- Recherche de toutes les destinations atteignables avec des places à 0 euros (y compris le trajet de retour) durant un weekend
+- Utilisation d'une architecture serveless avec AWS lambda pour executer du code python en réponse à un événement (event trigger)
+- Créer un systeme d'alerte pour envoyer une notification par email quand une place remplissant les critère de recherche se libère.
+
+:heavy_exclamation_mark: Aucune interface graphique n'est demandée dans ce sujet, toute interaction avec l'application devra se faire via l'invité commande ( terminal / cmd ). Si vous souhaitez tout de même le faire, cela ne saurait se substituer aux fonctionnalités demandées.
+
+#### Les outils
+
+- FastApi
+- Base de donnée au choix (SQL comme PostGres ou MySQL, ou NoSQL comme MongoDB)
+- Versioning avec Git
+- IDE de votre choix
+
+### Rap Analytics 🎶🎤📈
+
+Tuteur : Samuel Goutin
+
+#### Contexte
+
+Rapminerz.io est un Data-Média pour le Rap FR. Notre ambition est d'utiliser les plus récentes innovations technologiques pour offrir à une communauté de passionnés une vision approfondie et inédite du Rap Francophone. Le projet est né de l'idée de parler de rap autrement, en mettant à jour des phénomènes impossibles à percevoir lors d'une simple écoute. Nous exploitons la force de la data science pour traiter du rap dans sa globalité.
+Pour cela, nous avons agrégé une des plus grandes bases de données du Rap Français avec plus de 120k morceaux. Nous vous proposons de participer à l'analyse de cette montagne de données. Prêts ? Codez !
+
+#### Sujet
+
+##### Objectif
+
+Vous êtes chargé de développer une solution capable de fournir à la communauté de Rapminerz des analyses pertinentes sur les featuring des rappeurs Français.
+Les analyses sont des chiffres clés, des indicateurs ou des prédictions qui nécessite d'analyser tout l'historique de données à votre disposition. Votre solution doit donc stocker l'historique des données.
+On souhaite que les analyses soient consultables depuis un navigateur web (via des requêtes HTTP).  La communauté de Rapminerz compte aujourd'hui plus de 50k personnes. Cela fait autant d'utilisateur potentiels de vos analyses. Aussi, la source de données peut être amenée à grossir. Votre solution doit donc supporter une augmentation du nombre d'utilisateurs et de la quantité de données.
+Enfin, votre solution continuera à évoluer. Elle doit être pensée pour faciliter l'ajout de nouvelles fonctionnalités.
+
+Utilisez les principe de la Programmation Orientée Objet et privilégiez un code documenté et testé comme vu en TP.
+
+##### Les données
+
+Vous avez à disposition un flux de données à l’adresse suivante https://apps-dev.rapminerz.io/data-ensai/. Il contient une liste de featuring décrit par les champs : 
+
+- **date** : sous la forme d'un timestamp.
+- **primary_artist_name** : le nom de l'artiste en tête d'affiche de la chanson.
+- **featured_artists_names** : la liste des noms des artistes en featuring sur la chanson.
+
+Les données sont brutes, et nécessitent donc d’être nettoyées et transformées. Chaque semaine, des nouvelles données sont intégrées aux flux, et les plus anciennes sont retirées.
+
+#### Fonctionnalités
+
+Les fonctionnalités décrites dans la suite permettent de répondre au sujet, en tenant compte des contraintes sous jacentes.
+
+Vous devez implémenter toutes les fonctionnalités attendues ainsi qu'**au moins une fonctionnalité avancée** de votre choix.
+
+#### Fonctionnalités attendues
+
+##### FO1 : Mise en place d'une base de données
+
+- Choisissez une base de données de votre choix (SQL/NoSQL) pour y stocker l'historique de vos données, en vous assurant de ne pas introduire de doublons. Vous pouvez par exemple utiliser la librairie [sqlite3](https://docs.python.org/3/library/sqlite3.html).
+- Toutes les opérations liées à votre base de données telle que la création de tables, les insertions et les lectures devront être pilotées en Python.
+- Choissisez un modèle de données qui facilitera les modifications. Par exemple, le changement de nom d’un artiste ne doit nécessiter qu’une seule instruction (type UPDATE TABLE). Inspirez-vous de la [modélisation en étoile](https://fr.wikipedia.org/wiki/%C3%89toile_(mod%C3%A8le_de_donn%C3%A9es)).
+
+##### FO2 : Construction d'un pipeline de données
+> **Def: Pipeline de données** : Un pipeline de données est un concept informatique faisant référence aux étapes de transport des données d’une source vers une cible. Parmi ces étapes, on peut y retrouver la collecte, l'organisation ou encore la transformation des données.
+
+> **Def: Pipeline ETL**: Un pipeline ETL est un pipeline de données spécial comprenant uniquement des étapes de collecte (E), de transformation (T) et de chargement (L) des données vers une cible.
+
+> **Def: Orchestrateur**: Un orchestrateur de pipeline est un outil permettant de chainer les étapes d'une pipeline et de gérer les dépendances entre étapes.
+
+- Votre pipeline sera composée des étapes suivantes :
+    - Collecte de la source de données,
+    - Quelques étapes de transformation (nettoyage, typage, encodage, etc..),
+    - Chargement dans la base de données.
+- Chacune des étapes de votre pipeline devra être générique et réutilisable. Dans l'idéal, chaque étape doit correspondre à une fonction.
+- Le plan d'exécution de la pipeline sera défini dans un fichier de configuration (en json ou yaml). Ce fichier contiendra la liste des étapes à exécuter ainsi que leurs paramètres. Il devra lu et interprété par Python lors d'une exécution de la pipeline. Vous pouvez utiliser les librairies [json](https://docs.python.org/3/library/json.html) ou [PyYAML](https://pyyaml.org/wiki/PyYAMLDocumentation) pour cela.
+- Vous pourrez ainsi créer plusieurs configurations différentes pour votre pipeline.
+- L'exécution de d'une pipeline se fera via l'interface en ligne de commande. Le chemin vers votre fichier de configuration pourra être placée en argument de la commande en utilisant la libraire [argparse](https://docs.python.org/3/library/argparse.html).
+- L'orchestration des étapes de votre pipeline pourra se faire avec des outils dédiés tel que [Pandas pipe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pipe.html) ou [genpipes](https://pypi.org/project/genpipes/).
+
+![](https://i.imgur.com/ELNv3SJ.png)
+
+- Attention à ne pas introduire de doublons dans la base de données! Vous pouvez utilisez le champ `date` comme point de repère.
+
+##### FO3 : Mise en place d'une API et exposition de résultats simples
+
+- Mettez en place une API REST en utilisant [FastAPI](https://fastapi.tiangolo.com/) ou [Flask](https://flask.palletsprojects.com/en/2.2.x/).
+- Ajoutez une route nommée `/count-feat` qui retourne le résultat de la requête suivante :
+    - Le nombre de featuring par artiste et par mois. Un featuring est comptabilisé lorsque l'artiste est `primary_artist` ou `featured_artist`.
+- Ajoutez une route nommée `/mean-feat` qui retourne le résultat de la requête suivante :
+    - La [moyenne mobile](https://fr.wikipedia.org/wiki/Moyenne_mobile) du nombre total de featuring par jour avec une fenêtre de 5.
+- Retournez les résultats au format json.
+
+##### FO4 : Accélération des appels à l'API
+
+Pour permettre à votre API de supporter un grand nombre de requête simultanées, vous devez implémenter au moins l'une des deux solutions suivantes.
+
+**Pré-calcul**
+
+Vous pouvez accélérer le calcul d'une requête en pré-calculant tout ou partie des résultats.
+
+- Calculez tout ou partie de la requête et stockez là dans un fichier `csv` ou `json` que l'on appelle une **vue**.
+- Modifiez votre API afin qu'elle tire profit de ce fichier.
+- Veillez à tenir à jour votre vue en effectuant des synchronisations régulières avec la base de données.
+
+![](https://i.imgur.com/N4nx2xq.png)
+
+**Cache**
+
+Vous pouvez accélérer le calcul d’une requête en cachant ses résultats en mémoire.
+
+> **Def: Cache:** Une mémoire cache une mémoire qui enregistre temporairement des copies de données provenant d'une source, afin de diminuer le temps d'un accès ultérieur (en lecture) à ces données.
+
+- Lors du premier appel la requête n'existe pas dans le cache. Elle est donc calculée à partir des données de la base de données. Le résultat est renvoyé à l'utilisateur et stocké dans le cache pour anticiper les futurs appels.
+- Lors du second appel (et des suivants), le résultat de la requête est déjà présents dans le cache. Le résultat est renvoyé de manière quasi instantanée à l'utilisateur.
+- Vous pouvez utilisez la librairie `cachetools` pour implémenter un cache.
+
+![](https://i.imgur.com/hMKqXe5.png)
+
+
+#### Fonctionnalités avancées
+
+Les fonctionnalités difficiles seront davantage valorisées que les fonctionnalités faciles.
+
+##### FA1 [difficulté : facile] : Implémentation d'un système d'authentification à l'API
+
+Pour sécuriser votre API, implementez un système d'authentification. L'utilisateur devra être muni d'un token pour pouvoir utiliser votre service.
+
+##### FA2 [difficulté : facile] : Utilisation du workflow Gitflow
+
+Lorsque vous travaillez en équipe sur un projet de développement, adoptez le [framework Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) pour une meilleure gestion des branches.
+
+##### FA3 [difficulté : moyen] : Exposez un modèle de Machine Learning
+
+Offrez la possibilité à vos utilisateurs d'obtenir la prédiction du nombre de featuring total pour les prochains mois.
+
+:heavy_exclamation_mark: Vous ne serez pas évalué sur la qualité de votre modèle.
+
+- Entrainez un modèle de prévision de série temporelle basique à prévoir le nombre de featuring total.
+- Vous pouvez utiliser la méthode du [lissage exponentiel](https://fr.wikipedia.org/wiki/Lissage_exponentiel#:~:text=Le%20lissage%20exponentiel%20est%20une,partant%20de%20la%20valeur%20initiale.) pour générer des prévisions en utilisant la librairie [`statsmodels`](https://www.statsmodels.org/dev/examples/notebooks/generated/exponential_smoothing.html).
+- Après l'avoir entrainé, sérialisez le modèle en utilisant la librairie [pickle](https://docs.python.org/3/library/pickle.html) afin de le sauvegarder dans un fichier.
+- Ajoutez une route nommée `/predict-feat` à votre API qui retourne une prédiction du modèle.
+- Ajoutez la possibilité de déclancher un ré-entrainement du modèle avec l'interface en ligne de commande.
+
+##### FA4 [difficulté : moyen] : Mise en place d'une chaine d'intégration continue
+
+> **Def: Intégration Continue:** Consiste à intégrer les changements apportés au code informatique d'un projet logiciel de façon continuelle, afin de détecter et de corriger immédiatement les éventuelles erreurs.
+
+Mettez en place une chaine d'intégration continue basique avec [Gitlab-CI](https://docs.gitlab.com/ee/ci/quick_start/) ou [Github Actions](https://docs.github.com/en/actions/quickstart).
+
+Votre chaine d'intégration continue pourra comporter deux étapes : 
+- une étape d'exécution des tests avec la librairie [`unittest`](https://docs.python.org/3/library/unittest.html) ou [`pytest`](https://docs.pytest.org/en/7.1.x/contents.html)
+- une étape de qualité du code avec la librairie [`flake8`](https://flake8.pycqa.org/en/latest/)
+
+##### FA5 [difficulté : élevée] : Conteneurisez votre application
+
+> **Def: Conteneurisation:** Consiste à rassembler le code du logiciel et tous ses composants (bibliothèques, frameworks et autres dépendances) de manière à les isoler dans leur propre « conteneur ».
+
+Conteuneurisez l'ensemble de votre solution en utilisant [Docker](https://fastapi.tiangolo.com/deployment/docker/).
+
+
+
+### API cadastrale 🗺🏘🏗
+
+Tuteur : Thierry Mathé
+
+#### Le contexte
+
+Le service statistique du ministère de la Transition écologique gère « Sitadel », le répertoire des autorisations d’urbanismes. À partir de ce répertoire le service publie des chiffres sur le nombre de permis de construire (PC) autorisés et le nombre de logements dont la construction est autorisée sur chaque commune.
+Une demande de PC doit se faire sur un terrain s’étendant sur une ou plusieurs parcelles cadastrales contiguës. Il est possible que ces parcelles se trouvent sur des communes différentes voire sur des départements différents. Lorsque c’est le cas, une demande de PC doit être faite sur chaque commune concernée. Cette situation peut donc engendrer des doublons au niveau du décompte des PC et des logements autorisés.
+Ce phénomène existe mais à l’heure actuelle on ignore s’il est fréquent et si les erreurs engendrées ont un poids notable sur les chiffres publiés au niveau communal. Le but de ce projet est d’apporter des outils qui aideront à l’étude de ce phénomène.
+Pour détecter les PC à cheval sur plusieurs communes, il convient de connaître les parcelles cadastrales qui sont en bordure de commune, puis de trouver les PC se trouvant sur ces parcelles et enfin déterminer lesquels de ces PC se trouvent sur des parcelles contiguës afin de voir s’il s’agit de la même construction ou non.
+
+#### Les développements obligatoires 
+
+Le projet a pour but premier de créer une API capable de répondre aux requêtes suivantes :
+
+- quelles sont les communes ayant des parcelles contiguës à une commune donnée ?
+- quelles sont les parcelles en limite d’une commune donnée ?
+- quelles sont les parcelles contiguës à une parcelle donnée ?
+
+Pour cela il faudra exploiter les fichiers geoJSON du site : https://cadastre.data.gouv.fr/datasets/cadastre-etalab.
+
+Ce site contient des fichiers communaux des limites des parcelles adastrales. Chaque parcelle est délimitée par un polygone. Deux parcelles sont contiguës si elles partagent un même segment.
+
+Le premier travail sera donc de créer à partir de ces fichiers une base de données qui stockera les communes et les parcelles contiguës. Pour des raisons de volumétrie des données, ce travail ne sera effectué que sur un département, mais le programme de construction de la base et la base elle-même devront être capables de traiter plusieurs départements. De plus, le programme de construction de la base devra être facilement paramétrable pour changer la zone géographique couverte et l’année de géographie.
+Le second travail sera la construction de l’API qui répondra aux requêtes pré-citées en exploitant la base de données.
+
+#### Développement optionnel
+
+Dans un second temps, les groupes qui en auront la possibilité pourront faire des recherches sur les PC à partir des données Sitadel disponibles au format CSV sur le site du ministère : https://www.statistiques.developpement-durable.gouv.fr/liste-des-permis-de-construire-et-autres-autorisations-durbanisme
+Étant donné une commune de référence, il faudra rechercher les communes qui lui sont contiguës et extraire les PC de toutes ces communes. En suite il faudra dresser la liste des parcelles en limite de la commune de référence et de toutes les parcelles qui leur sont contiguës dans les autres communes et lister les PC présents sur ces parcelles. Enfin il faudra rapprocher les PC contiguës
+
+Ce programme de recherche devra donc fournir en sortie cette liste de PC contiguës qui sera ensuite analysée pour voir s’il s’agit d’un même projet de construction ou pas.
+
+### La pyramide et le philosophe :book: :link: 
+
+Tuteur : Suliac Le Guillou
+
+#### Présentation
+
+Après le succès des Worlde et Sutom cette année, je vous propose de revisiter un autre jeu télévisé: Pyramide.
+Dans ce jeu, le maitre des mots doit faire deviner un mot à son équipier en lui donnant pour indice des synonymes.
+
+Pour renouveler ce concept, je vous propose de coupler ce concept avec un rare jeux de l'internet: le philosophe.
+Ici vous devez choisir un article au hasard sur Wikipedia et naviguer les liens hypertext jusqu'a tomber sur la
+page de [philosophie]([https:/](https://fr.wikipedia.org/wiki/Philosophie)/)
+
+Vous aurez ainsi à construire une version pour un joueur de Pyramide en vous aidant de Wikipedia: votre programme devra
+aller chercher un article au hasard sur la fameuse encyclopédie et distribuer des indices au joueur pour lui faire deviner
+
+#### Fonctionnalités de base
+
+- Construire votre énigme
+- Filtrer les indices
+- Des tests unitaires
+- Une interface console simple à destination
+
+#### Fonctionnalités avancées
+
+- Filtrer les articles injouable
+- Reconnaitre des catégories pour donner plus d'indices (biologie, mathématique, jeux vidéo)
+- Un tableau des scores
+- Des variantes de jeux
+- Une version deux joueurs
+- Selection de language
+
+
+#### Les outils
+
+- Wikipedia
+- Base Postgres
+- Git
+- Vscode
+
