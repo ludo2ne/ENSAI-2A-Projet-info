@@ -53,7 +53,7 @@
     "href": "doc/presentation-tuteurs.html#cadre-général-du-projet",
     "title": "Présentation aux tutrices et tuteurs",
     "section": "Cadre général du projet",
-    "text": "Cadre général du projet\n\n1er semestre de 2A\nGroupes imposés de 4 ou 5 élèves\nLes groupes votent pour leurs sujets préférés\n4 groupes par tuteur"
+    "text": "Cadre général du projet\n\n1er semestre de 2A\nGroupes imposés de 4 ou 5 élèves\nLes groupes votent pour leurs sujets préférés\n4 groupes par tutrice / tuteur"
   },
   {
     "objectID": "doc/presentation-tuteurs.html#phases",
@@ -91,6 +91,20 @@
     "text": "Résumé du travail de tutrice / tuteur\n\n4 x 3h de TP de compléments d’informatique\n7 x 3h de suivi de projet\nLire et noter les 4 dossiers d’analyse\nNoter le code\nLire du rapport final, participer à la notation\nParticiper aux 4 soutenances"
   },
   {
+    "objectID": "doc/presentation-tuteurs.html#votre-rôle",
+    "href": "doc/presentation-tuteurs.html#votre-rôle",
+    "title": "Présentation aux tutrices et tuteurs",
+    "section": "Votre rôle",
+    "text": "Votre rôle\n\nGuider les élèves\nSuivi des équipes (avancement, participation, bonne entente)\nMaîtrise d’Ouvrage\nAide au débogage"
+  },
+  {
+    "objectID": "doc/presentation-tuteurs.html#stack-vm",
+    "href": "doc/presentation-tuteurs.html#stack-vm",
+    "title": "Présentation aux tutrices et tuteurs",
+    "section": "Stack VM",
+    "text": "Stack VM\n\nPython 3.10\nPostgreSQL (chaque élève a une BDD)\nGit Bash\nVisual Studio Code\n\n\nPrincipaux Packages Python\n\n\n\n\n\n\n\nNom du package\nTrès courte description\n\n\n\n\ninquirerPy\nCréer des interfaces en ligne de commande interactives\n\n\nfastapi\nCréer des webservices\n\n\npsycopg2-binary\nCommuniquer avec PostgreSQL\n\n\npytest\nTests unitaires\n\n\npython-dotenv\nVariables d’environnement à partir d’un fichier .env\n\n\nrequests\nRequêtes HTTP\n\n\nuvicorn\nServeur ASGI"
+  },
+  {
     "objectID": "doc/presentation-tuteurs.html#points-à-préciser",
     "href": "doc/presentation-tuteurs.html#points-à-préciser",
     "title": "Présentation aux tutrices et tuteurs",
@@ -123,7 +137,7 @@
     "href": "doc/stage-slide.html#cadre-général-du-projet",
     "title": "Présentation aux tutrices et tuteurs",
     "section": "Cadre général du projet",
-    "text": "Cadre général du projet\n\n1er semestre de 2A\nGroupes imposés de 4 ou 5 élèves\nLes groupes votent pour leurs sujets préférés\n4 groupes par tuteur"
+    "text": "Cadre général du projet\n\n1er semestre de 2A\nGroupes imposés de 4 ou 5 élèves\nLes groupes votent pour leurs sujets préférés\n4 groupes par tutrice / tuteur"
   },
   {
     "objectID": "doc/stage-slide.html#phases",
@@ -159,6 +173,20 @@
     "title": "Présentation aux tutrices et tuteurs",
     "section": "Résumé du travail de tutrice / tuteur",
     "text": "Résumé du travail de tutrice / tuteur\n\n4 x 3h de TP de compléments d’informatique\n7 x 3h de suivi de projet\nLire et noter les 4 dossiers d’analyse\nNoter le code\nLire du rapport final, participer à la notation\nParticiper aux 4 soutenances"
+  },
+  {
+    "objectID": "doc/stage-slide.html#votre-rôle",
+    "href": "doc/stage-slide.html#votre-rôle",
+    "title": "Présentation aux tutrices et tuteurs",
+    "section": "Votre rôle",
+    "text": "Votre rôle\n\nGuider les élèves\nSuivi des équipes (avancement, participation, bonne entente)\nMaîtrise d’Ouvrage\nAide au débogage"
+  },
+  {
+    "objectID": "doc/stage-slide.html#stack-vm",
+    "href": "doc/stage-slide.html#stack-vm",
+    "title": "Présentation aux tutrices et tuteurs",
+    "section": "Stack VM",
+    "text": "Stack VM\n\nPython 3.10\nPostgreSQL (chaque élève a une BDD)\nGit Bash\nVisual Studio Code"
   },
   {
     "objectID": "doc/stage-slide.html#points-à-préciser",
