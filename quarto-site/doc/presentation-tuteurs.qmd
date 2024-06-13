@@ -61,7 +61,7 @@ Le cours de [compléments d'informatique](https://ludo2ne.github.io/ENSAI-2A-com
 - 1er semestre de 2A
 - Groupes imposés de 4 ou 5 élèves
 - Les groupes votent pour leurs sujets préférés
-- 4 groupes par tuteur
+- 4 groupes par tutrice / tuteur
 
 
 ## 2 phases
@@ -240,6 +240,32 @@ contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interact
 - Noter le code
 - Lire du rapport final, participer à la notation
 - Participer aux 4 soutenances
+
+## Votre rôle
+
+- Guider les élèves
+- Suivi des équipes (avancement, participation, bonne entente)
+- Maîtrise d'Ouvrage
+- Aide au débogage
+
+## Stack VM
+
+- Python 3.10
+- PostgreSQL (chaque élève a une BDD)
+- Git Bash
+- Visual Studio Code
+
+### Principaux Packages Python {.smaller}
+
+| Nom du package      | Très courte description                                    |
+|---------------------|------------------------------------------------------------|
+| inquirerPy          | Créer des interfaces en ligne de commande interactives     |
+| fastapi             | Créer des webservices                                      |
+| psycopg2-binary     | Communiquer avec PostgreSQL                                |
+| pytest              | Tests unitaires                                            |
+| python-dotenv       | Variables d'environnement à partir d'un fichier .env       |
+| requests            | Requêtes HTTP                                              |
+| uvicorn             | Serveur ASGI                                               |
 
 
 ## Points à préciser
