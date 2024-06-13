@@ -114,7 +114,7 @@ Les élèves présentent leur projet à un jury composé de 3 personnes :
 Le code du projet comptera pour 50% de la note du cours de Compléments d'informatique.
 
 
-## Planning prévisionnel {background-color="Silver"}
+## Planning {background-color="Silver"}
 
 :::white-box
 
@@ -155,6 +155,20 @@ gantt
 ```
 
 :::
+
+### Dates {.smaller}
+
+| Date                        | Topic                                       |
+|-----------------------------|---------------------------------------------|
+| vendredi 6 septembre        | TP1 et Suivi 1                              |
+| vendredi 13 septembre       | TP2 et Suivi 2                              |
+| vendredi 20 septembre       | TP3                                         |
+| vendredi 27 septembre       | TP4 et Suivi 3                              |
+| vendredi 11 octobre         | Suivi 4 (retour sur les dossiers d'analyse) |
+| lun-mer 21-23 octobre       | 3 jours d'immersion (Suivi 5 et 6)          |
+| vendredi 15 novembre        | Suivi 7                                     |
+| jeudi 12 décembre           | Soutenance                                  |
+
 
 ## Sujet
 
