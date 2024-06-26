@@ -1,6 +1,6 @@
 ---
 title: "Présentation du projet info 2A"
-description: "[Slides](presentation-eleves-slide.html)"
+description: "[Slides](presentation-eleves-slides.html)"
 author: "Ludovic Deneuville"
 format:
   html:
@@ -13,7 +13,7 @@ format:
     slide-number: c/t                    # collapsed/total
     slide-level: 3
     controls: true
-    output-file: presentation-eleves-slide.html
+    output-file: presentation-eleves-slides.html
 from: markdown+emoji
 number-sections: false
 lightbox: true
@@ -87,6 +87,14 @@ gantt
 | vendredi 15 novembre        | Suivi 7                                     |
 | jeudi 12 décembre           | Soutenance                                  |
 
+#### Livrables
+
+
+| Date                        | Topic                                       |
+|-----------------------------|---------------------------------------------|
+| Samedi 5 octobre 12h00      | Dossier d'Analyse                           |
+| Samedi 23 novembre 20h00    | Rapport final et Code                       |
+
 ::::::
 
 :::{.notes}
@@ -137,8 +145,11 @@ Pas la peine de dire une fois que le projet est fini :
   - au plus tard le vendredi à 18h
 
 :::{.notes}
+:construction: modèle
+
 - Comme dans la vie pro
 - Obligatoire sinon malus
+- ras : si vous n'avez rien fait
 :::
 
 ## Environnement de travail

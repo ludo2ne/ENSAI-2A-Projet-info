@@ -1,0 +1,160 @@
+---
+title: "Lancement du projet info 2024-2025
+description: "[Slides](reunion-lancement-slides.html)"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+  revealjs:
+    theme: solarized
+    footer: "[Home](../index.html) --- [Lancement du projet info](reunion-lancement.qmd)"
+    slide-number: c/t                    # collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: reunion-lancement-slides.html
+from: markdown+emoji
+number-sections: false
+lightbox: true
+---
+
+## Merci & Bienvenue
+
+Rapide tour de table
+
+:::{.notes}
+- 1 min chacun
+- Ensuite parlons rapidement Administratif et Logistique
+:::
+
+## Administratif {.smaller}
+
+- Dossier administratif à bien remplir pour être rémunéré
+  - Fiche de renseignement
+  - RIB
+  - Décision d'engagement
+  - Attestation sécu
+  - Fiche de paie + attestation employeur (sauf INSEE)
+  - Autorisation de cumul (fonctionnaires)
+
+À envoyer à `vacatairesensai@ensai.fr`
+
+:::{.notes}
+Vous recevrez un mail avec toutes les infos
+
+Paie et Frais :
+
+- TP complément info :arrow_right: décembre
+- Projet info :arrow_right: mars
+
+Vacataires -> ENSAI-gestion/frais-vacataires.html
+:::
+
+### Repas Midi
+
+Entre 12h45 et 14h00, plusieurs possibilités :
+
+- MSA ~ 12-15€
+- Restaurant du Forum : Menu du jour à 15€
+- Popotte personnelle
+
+:::{.notes}
+- 1h15 : Assez speed, ne pas trop trainer
+- Restaurant du Forum : réserver
+- Sympa de manger ensemble, après si vous mangez ailleurs n'hésitez pas à prévenir qu'on ne vous attende pas
+:::
+
+## Les TP
+
+- [Page cours et TP](https://ludo2ne.github.io/ENSAI-2A-complements-info/){target="_blank"} :construction:
+- Infos sur Moodle 
+  - qui vont être transférés vers cette page 
+
+:::{.notes}
+Appli Pokemon créée par Rémi comme un projet
+
+Quand vous avez TP + projet, l'ordre importe peu (sauf ATPA)
+:::
+
+### Accès VM
+
+- <http://view.ensai.fr/>{target="_blank"}
+  - via navigateur
+  - ou installer VMWare Horizon Client
+- id et mots de passe envoyés par mail
+
+:::{.notes}
+VMWare Horizon Client : Désactiver la vérification de Certificat
+
+CTRL + ALT + F12
+
+Les élèves sont incités fortement à faire TP et projet sur la VM car ils ne savent pas faire sur leur machine.
+:::
+
+### Contenu
+
+- TP1 : Git, rappels POO, TU
+- TP2 : Webservices
+- TP3 : DAO
+- TP4 : Session, Création d'une IHM
+
+:::{.notes}
+- Git 
+  - passe au 1er TP cette année
+  - config ssh à faire
+- Logs : new
+:::
+
+## Le projet
+
+### Rappels des attendus
+
+- Développer une application en python
+- Découvrir l'architecture logicielle
+- Communiquer avec une base de données PostreSQL
+- Utiliser des webservices
+- Concevoir et Modéliser
+
+### Sujets
+
+- 15 août au plus tard dernier délai
+- [Lien vers la liste](https://hackmd.io/qpcWPXGiSpi2kXOEJY41SQ){target="_blank"}
+
+:::{.notes}
+- Contraintes EDT
+- Sinon : sujet mystère
+:::
+
+### 1ère séance
+
+- Présenter le sujet
+- Répondre aux questions
+- Conseils des anciens ?
+
+### Suivi
+
+- Point hebdo vendredi soir
+  - jeudi soir quand il y a suivi le vendredi
+- Gantt
+- Projet GitHub ? un peu lourd ?
+- Bien sonder le groupe si tout va bien
+
+:::{.notes}
+- Inclure une backlog 
+- En cas de soucis avec un élève ou un groupe :arrow_right: me prévenir
+:::
+
+
+
+## Communiquer
+
+- Mailing list
+- [Serveur Discord](https://discord.gg/dWg4mwEK){target="_blank"}
+  - l'invitation expire le 2 juillet
+- Ludo : 06.45.45.40.82 ou 02.99.05.33.19
+  - bureau 161 (1er étage, au fond côté DSI)
+
+:::{.notes}
+N'hésitez pas à passer à mon bureau
+:::
