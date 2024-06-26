@@ -1,0 +1,160 @@
+---
+title: "Présentation du projet info 2A"
+description: "[Slides](presentation-eleves-slide.html)"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+  revealjs:
+    theme: solarized
+    footer: "[Home](../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
+    slide-number: c/t                    # collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: presentation-eleves-slide.html
+from: markdown+emoji
+number-sections: false
+lightbox: true
+---
+
+
+## Objectifs
+
+- Développer une application en python
+- Découvrir l'architecture logicielle
+- Communiquer avec une base de données PostreSQL
+- Utiliser des webservices
+- Concevoir et Modéliser
+
+## Planning {.smaller}
+
+::::::{.panel-tabset .nav-pills}
+
+#### Planning
+
+:::{.white-box}
+
+```{mermaid}
+gantt
+    title Planning provisoire 2024
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d %b
+    tickInterval 1week
+    
+    section Cours
+    CM                           :milestone, 2024-09-02,
+    CM                           :milestone, 2024-09-09, 
+    Examen                       :milestone, 2024-10-07,
+    
+    section TP
+    TP1                          :milestone, 2024-09-06,
+    TP2                          :milestone, 2024-09-13,
+    TP3                          :milestone, 2024-09-20,
+    TP4                          :milestone, 2024-09-27,
+    
+    section Projet
+    Suivi 1                      :milestone, 2024-09-06,
+    Suivi 2                      :milestone, 2024-09-13,
+    Suivi 3                      :milestone, 2024-09-27,
+    Suivi 4                      :milestone, 2024-10-11,
+    3j immersion (Suivi 5 et 6)  :active,    2024-10-21, 3d
+    Suivi 7                      :milestone, 2024-11-15,
+    
+    section Échéances
+    WEI                          :crit,      2024-09-20, 3d
+    Dossier Analyse              :milestone, 2024-10-05,
+    Toussaint                    :crit,      2024-10-26, 2024-11-03
+    Rapport final et Code        :milestone, 2024-11-23,
+    Soutenance                   :milestone, 2024-12-12,
+    
+    %%Stats univariées retraités   :done,         2021-11-28, 3d
+```
+
+:::
+
+#### Dates
+
+| Date                        | Topic                                       |
+|-----------------------------|---------------------------------------------|
+| vendredi 6 septembre        | TP1 et Suivi 1                              |
+| vendredi 13 septembre       | TP2 et Suivi 2                              |
+| vendredi 20 septembre       | TP3                                         |
+| vendredi 27 septembre       | TP4 et Suivi 3                              |
+| vendredi 11 octobre         | Suivi 4 (retour sur les dossiers d'analyse) |
+| lun-mer 21-23 octobre       | 3 jours d'immersion (Suivi 5 et 6)          |
+| vendredi 15 novembre        | Suivi 7                                     |
+| jeudi 12 décembre           | Soutenance                                  |
+
+::::::
+
+:::{.notes}
+- 3j d'immersion
+  - capital pour bien avancer le projet
+  - si bien utilisé -> 90 % du travail fait
+- Prendre de l'avance en septembre
+:::
+
+## 2 phases
+
+- Analyse / Conception générale (sept)
+  - 4 séances de 3h de suivi
+  - mi-octobre : retours sur le dossier d'analyse
+- Implémentation (oct-nov)
+  - 3 séances de 3h de suivi
+
+:::{.notes}
+Conseil :
+
+- l'élève le plus à l'aise fait un POC vers le 20 septembre
+- puis présente l'appli v0 aux autres
+
+Relisez vos rapports !
+:::
+
+## Travail en groupe
+
+- Éviter de cumuler les rôles de Chef de projet et Tech Lead
+- Esprit d'équipe
+- Prévenir dès que possible si ça va pas
+
+:::{.notes}
+- Avoir un bon comportement
+- Si vous êtes fort -> ne pas tout faire
+- Prévenir tuteur puis Ludo en cas de souci
+
+Pas la peine de dire une fois que le projet est fini : 
+
+- c'est moi qui ait tout fait
+- un autre membre n'a rien fait
+:::
+
+## Suivi 
+
+- Point hebdo
+- À remplir chaque semaine
+  - au plus tard le vendredi à 18h
+
+:::{.notes}
+- Comme dans la vie pro
+- Obligatoire sinon malus
+:::
+
+## Environnement de travail
+
+::: {.callout-important}
+Vous avez tous les outils nécessaires pour coder sur la VM.
+
+Si vous n'êtes pas à très l'aise en info, il vous sera quasi impossible de coder hors VM. 
+
+**Aucune aide ne vous sera apportée pour installer les outils nécessaires si vous êtes hors VM.**
+:::
+
+- Nous attendons du code de **[qualité]{.underline}**
+- Documentation obligatoire pour chaque classe, chaque méthode
+
+## Testez votre code
+
+- Tests Unitaires obligatoires
+- Codez par petits bouts

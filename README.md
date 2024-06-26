@@ -10,3 +10,7 @@ Projet informatique de 2e année
   - pylint et/ou sonarqube
 - [ ] Outil de suivi (Point hebdo, GitHub Projet)
 - [ ] Topo élèves (reprendre notice)
+
+## Quarto
+
+- `quarto render quarto-site`

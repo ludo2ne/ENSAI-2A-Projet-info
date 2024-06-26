@@ -1,6 +1,6 @@
 ---
 title: "Présentation aux tutrices et tuteurs"
-description: "[Slides](stage-slide.html)"
+description: "[Slides](presentation-tuteurs-slide.html)"
 author: "Ludovic Deneuville"
 format:
   html:
@@ -13,7 +13,7 @@ format:
     slide-number: c/t                    # collapsed/total
     slide-level: 3
     controls: true
-    output-file: stage-slide.html
+    output-file: presentation-tuteurs-slide.html
 from: markdown+emoji
 number-sections: false
 lightbox: true

@@ -19,6 +19,8 @@ website:
         menu:
           - href: doc/presentation-tuteurs.qmd
             text: "Présentation pour les tuteurs"
+          - href: doc/presentation-eleves.qmd
+            text: "Présentation aux élèves"
           - href: doc/notice-eleves.qmd
             text: "Notice élèves"
     right:
