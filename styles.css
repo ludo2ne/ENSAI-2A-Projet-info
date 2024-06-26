@@ -25,26 +25,6 @@ h4::before {
 
 .header-section-number:after { /*add a dot after the section number (1 title -> 1. title)*/
   content: ".";
-} 
-
-/************************************************************/
-/* Others                                                   */
-/************************************************************/
-
-.column{
-  width: 50%;
-  padding: 5px;
-}
-  
-img{                       /*center figures */
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-p{
-  text-align: justify;
 }
 
 
@@ -82,4 +62,34 @@ p{
 .white-box {
   background-color: white;
   border: solid 2px black;
+}
+
+/************************************************************/
+/* Render                                                   */
+/************************************************************/
+
+/* Hide revealJS speaker notes in the html*/
+.notes,
+.hide-html-render{
+  display: none;
+}
+
+/************************************************************/
+/* Others                                                   */
+/************************************************************/
+
+.column{
+  width: 50%;
+  padding: 5px;
+}
+  
+img{                       /*center figures */
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p{
+  text-align: justify;
 }
