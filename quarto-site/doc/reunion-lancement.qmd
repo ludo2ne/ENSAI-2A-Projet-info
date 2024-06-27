@@ -26,6 +26,7 @@ Rapide tour de table
 :::{.notes}
 - 1 min chacun
 - Ensuite parlons rapidement Administratif et Logistique
+- N'hésitez pas à m'interrompre si questions
 :::
 
 ## Administratif {.smaller}
@@ -100,6 +101,8 @@ Les élèves sont incités fortement à faire TP et projet sur la VM car ils ne 
 - TP3 : DAO
 - TP4 : Session, Création d'une IHM
 
+à inclure : logs, CI, couverture de tests
+
 :::{.notes}
 - Git 
   - passe au 1er TP cette année
@@ -131,7 +134,18 @@ Les élèves sont incités fortement à faire TP et projet sur la VM car ils ne 
 
 - Présenter le sujet
 - Répondre aux questions
-- Conseils des anciens ?
+- Présenter votre mode de fonctionnement
+
+:::{.notes}
+Conseils des anciens ?
+
+Les étapes :
+
+- lister les fonctionnalités
+- modéliser (diag classe)
+- créer la base de données
+- coder
+:::
 
 ### Suivi
 
@@ -145,6 +159,20 @@ Les élèves sont incités fortement à faire TP et projet sur la VM car ils ne 
 - Inclure une backlog 
 - En cas de soucis avec un élève ou un groupe :arrow_right: me prévenir
 :::
+
+### Évaluations
+
+- Dossier d'analyse
+- Code
+- Esprit d'équipe
+
+:::{.notes}
+- Dossier d'analyse
+  - reçu samedi -> retour vendredi suivant
+- Code -> grille notation
+- Rapport -> grille, commun avec jury
+:::
+
 
 ### Template
 
