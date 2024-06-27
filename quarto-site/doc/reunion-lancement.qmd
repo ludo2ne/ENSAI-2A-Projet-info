@@ -8,12 +8,13 @@ format:
     toc-location: left
     toc-expand: 3
   revealjs:
-    theme: solarized
+    theme: default
     footer: "[Home](../index.html) --- [Lancement du projet info](reunion-lancement.qmd)"
     slide-number: c/t                    # collapsed/total
     slide-level: 3
     controls: true
     output-file: reunion-lancement-slides.html
+    embed-resources: true
 from: markdown+emoji
 number-sections: false
 lightbox: true
