@@ -25,14 +25,14 @@
     "href": "doc/reunion-lancement.html",
     "title": "Lancement du projet info 2024-2025",
     "section": "",
-    "text": "Rapide tour de table\n\n\n1 min chacun\nEnsuite parlons rapidement Administratif et Logistique"
+    "text": "Rapide tour de table\n\n\n1 min chacun\nEnsuite parlons rapidement Administratif et Logistique\nN’hésitez pas à m’interrompre si questions"
   },
   {
     "objectID": "doc/reunion-lancement.html#merci-bienvenue",
     "href": "doc/reunion-lancement.html#merci-bienvenue",
     "title": "Lancement du projet info 2024-2025",
     "section": "",
-    "text": "Rapide tour de table\n\n\n1 min chacun\nEnsuite parlons rapidement Administratif et Logistique"
+    "text": "Rapide tour de table\n\n\n1 min chacun\nEnsuite parlons rapidement Administratif et Logistique\nN’hésitez pas à m’interrompre si questions"
   },
   {
     "objectID": "doc/reunion-lancement.html#administratif",
@@ -46,14 +46,14 @@
     "href": "doc/reunion-lancement.html#les-tp",
     "title": "Lancement du projet info 2024-2025",
     "section": "Les TP",
-    "text": "Les TP\n\nPage cours et TP 🚧\n\nCours 2023-2024\n\nInfos sur Moodle\n\nqui vont être transférés vers cette page\n\n\n\nAppli Pokemon créée par Rémi comme un projet\nQuand vous avez TP + projet, l’ordre importe peu (sauf ATPA)\n\n\nAccès VM\n\nhttp://view.ensai.fr/\n\nvia navigateur\nou installer VMWare Horizon Client\n\nid et mots de passe envoyés par mail\n\n\nVMWare Horizon Client : Désactiver la vérification de Certificat\nCTRL + ALT + F12\nLes élèves sont incités fortement à faire TP et projet sur la VM car ils ne savent pas faire sur leur machine.\n\n\n\nContenu\n\nTP1 : Git, rappels POO, TU\nTP2 : Webservices\nTP3 : DAO\nTP4 : Session, Création d’une IHM\n\n\n\nGit\n\npasse au 1er TP cette année\nconfig ssh à faire\n\nLogs : new"
+    "text": "Les TP\n\nPage cours et TP 🚧\n\nCours 2023-2024\n\nInfos sur Moodle\n\nqui vont être transférés vers cette page\n\n\n\nAppli Pokemon créée par Rémi comme un projet\nQuand vous avez TP + projet, l’ordre importe peu (sauf ATPA)\n\n\nAccès VM\n\nhttp://view.ensai.fr/\n\nvia navigateur\nou installer VMWare Horizon Client\n\nid et mots de passe envoyés par mail\n\n\nVMWare Horizon Client : Désactiver la vérification de Certificat\nCTRL + ALT + F12\nLes élèves sont incités fortement à faire TP et projet sur la VM car ils ne savent pas faire sur leur machine.\n\n\n\nContenu\n\nTP1 : Git, rappels POO, TU\nTP2 : Webservices\nTP3 : DAO\nTP4 : Session, Création d’une IHM\n\nà inclure : logs, CI, couverture de tests\n\n\nGit\n\npasse au 1er TP cette année\nconfig ssh à faire\n\nLogs : new"
   },
   {
     "objectID": "doc/reunion-lancement.html#le-projet",
     "href": "doc/reunion-lancement.html#le-projet",
     "title": "Lancement du projet info 2024-2025",
     "section": "Le projet",
-    "text": "Le projet\n\nRappels des attendus\n\nDévelopper une application en python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données PostreSQL\nUtiliser des webservices\nConcevoir et Modéliser\n\n\n\nSujets\n\n15 août au plus tard dernier délai\nLien vers la liste\n\n\n\nContraintes EDT\nSinon : sujet mystère\n\n\n\n\n1ère séance\n\nPrésenter le sujet\nRépondre aux questions\nConseils des anciens ?\n\n\n\nSuivi\n\nPoint hebdo vendredi soir\n\njeudi soir quand il y a suivi le vendredi\n\nGantt\nProjet GitHub ? un peu lourd ?\nBien sonder le groupe si tout va bien\n\n\n\nInclure une backlog\nEn cas de soucis avec un élève ou un groupe ➡️ me prévenir\n\n\n\n\nTemplate\nModèle qui peut servir de base 🚧\n\nDatalab ?"
+    "text": "Le projet\n\nRappels des attendus\n\nDévelopper une application en python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données PostreSQL\nUtiliser des webservices\nConcevoir et Modéliser\n\n\n\nSujets\n\n15 août au plus tard dernier délai\nLien vers la liste\n\n\n\nContraintes EDT\nSinon : sujet mystère\n\n\n\n\n1ère séance\n\nPrésenter le sujet\nRépondre aux questions\nPrésenter votre mode de fonctionnement\n\n\nConseils des anciens ?\nLes étapes :\n\nlister les fonctionnalités\nmodéliser (diag classe)\ncréer la base de données\ncoder\n\n\n\n\nSuivi\n\nPoint hebdo vendredi soir\n\njeudi soir quand il y a suivi le vendredi\n\nGantt\nProjet GitHub ? un peu lourd ?\nBien sonder le groupe si tout va bien\n\n\n\nInclure une backlog\nEn cas de soucis avec un élève ou un groupe ➡️ me prévenir\n\n\n\n\nÉvaluations\n\nDossier d’analyse\nCode\nEsprit d’équipe\n\n\n\nDossier d’analyse\n\nreçu samedi -&gt; retour vendredi suivant\n\nCode -&gt; grille notation\nRapport -&gt; grille, commun avec jury\n\n\n\n\nTemplate\nModèle qui peut servir de base 🚧\n\nDatalab ?"
   },
   {
     "objectID": "doc/reunion-lancement.html#communiquer",
@@ -67,7 +67,7 @@
     "href": "doc/reunion-lancement-slides.html#merci-bienvenue",
     "title": "Lancement du projet info 2024-2025",
     "section": "Merci & Bienvenue",
-    "text": "Merci & Bienvenue\nRapide tour de table\n\n\n1 min chacun\nEnsuite parlons rapidement Administratif et Logistique"
+    "text": "Merci & Bienvenue\nRapide tour de table\n\n\n1 min chacun\nEnsuite parlons rapidement Administratif et Logistique\nN’hésitez pas à m’interrompre si questions"
   },
   {
     "objectID": "doc/reunion-lancement-slides.html#administratif",
