@@ -49,7 +49,7 @@ Vous allez créer dans ce projet une API qui met en relation des gens, basée su
 - Backend : FastAPI
 - Front end : Jinja2 (templates HTML dans FastAPI). D'autres choix sont possibles (React.js, Vue.js, ...) si vous les maîtrisez, mais attention, votre tuteur ne pourra vous suivre que sur React.js, et la courbe d'apprentissage est raide.
 - BDD : MongoDB (NoSQL) , Neo4j (NoSQL, graphe) ou Postgres (SQL, disponible à l'ENSAI)
-- API Deezer : https://developers.deezer.com/api
+- API Deezer : <https://developers.deezer.com/api>
 
 #### Fausses bonnes idées
 
@@ -154,7 +154,7 @@ Le but du projet de créer une API (application programming interface) qui explo
 - Consulter la liste des stations se trouvant à proximité d’un point donné il sera aussi possible de préciser le carburant. 
 - Créer et mettre à jour des listes de stations qu’il sera possible de consulter par exemple pour voir les prix sur les stations se trouvant sur un trajet régulier.
     
-A chaque requête, l’API doit s’assurer qu’elle utilise bien les dernières données disponibles et au besoin télécharger les nouvelles données disponibles sur le site (mises à jour toutes les 10 minutes) : https://donnees.roulez-eco.fr/opendata/instantane
+A chaque requête, l’API doit s’assurer qu’elle utilise bien les dernières données disponibles et au besoin télécharger les nouvelles données disponibles sur le site (mises à jour toutes les 10 minutes) : <https://donnees.roulez-eco.fr/opendata/instantane>
 
 #### Fonctionnalités de base
 
@@ -172,7 +172,8 @@ La réponse sera données au format JSON et contiendra:
 
 ##### Stations préférées
 
-La gestion des listes de stations doit permettre de:
+La gestion des listes de stations doit permettre de :
+
 - Créer une liste: le paramètre en entrée est un nom donné par l'utilisateur. La requête revoie un identifiant qui devra être passé comme paramètre pour toutes les autres actions,
 - Consulter la liste des listes crées: aucun paramètre, la requête renvoie les couple identifiant-nom des listes défines,
 - Ajouter une une plusieurs stations à un liste: les paramètres en entrée sont l'identifiant de la liste et le ou les identifiants des stations à ajouter,
@@ -187,6 +188,7 @@ La gestion des listes de stations doit permettre de:
 
 #### Fonctionnalités avancées
 Voici quelques idées de fonctions avancées pour les groupes qui auraient effectué l'ensemble des fonction de bases. Toutes autres idées pourra bien sûr être proposées en cours de projet.
+
 ##### Stations à proximités
 
 - Possibilité de passer comme parmètre une adresse au lieu de coordonnées
@@ -275,8 +277,10 @@ Les fonctionnalités avancées sont triées selon le niveau de difficulté , cep
 
 ##### FA1 : Ajout de nouvelles données quotidiennes :
 
-Jusqu’ici vous utilisez les données mises à disposition sans enrichissement.  Cette fonctionnalité aura pour but de permettre à l’admin de pouvoir ajouter des nouvelles parties récentes. 
+Jusqu’ici vous utilisez les données mises à disposition sans enrichissement.  Cette fonctionnalité aura pour but de permettre à l’admin de pouvoir ajouter des nouvelles parties récentes.
+
 Les différents points attendus sont :
+
 - Gestion de la clé (permettant l’accès à l’API de Riot) : au choix entre en brute en paramètre d’entrée ou permettre d’aller la récupérer directement sur le site depuis l’API.
 - Récupération des données depuis l’API de Riot selon certains critères de sélection.
 - Ajout des données dans vos bases de données.
@@ -288,6 +292,7 @@ Les critères de sélection seront libres et donc proposés par votre groupe, en
 ##### FA2 : Mise en place d’un workflow collaboratif : 
 
 Le workflow Gitflow vous permet de faciliter la gestion des branches et la séparation des différentes tâches.
+
 Utilisez le [framework Gitflow](https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow) pour la gestion de votre projet.
 
 
@@ -295,7 +300,7 @@ Utilisez le [framework Gitflow](https://www.atlassian.com/fr/git/tutorials/compa
 
 Conteneuriser votre application aura pour but de faciliter son déploiement et son partage. En effet, cela permettra de réunir le code et ses composants (frameworks, bibliothèques, etc) dans un conteneur. Il sera alors possible d’exécuter le conteneur sans se soucier des différentes dépendances (l’installation des bibliothèques avec la bonne version par exemple). 
 
-Utilisez l’outil [Docker](https://fastapi.tiangolo.com/deployment/docker/) pour conteneuriser votre application.
+Utilisez l'outil [Docker](https://fastapi.tiangolo.com/deployment/docker/) pour conteneuriser votre application.
 
 
 ##### FA4 : Mise en place d’un modèle prédictif :
@@ -303,7 +308,8 @@ Utilisez l’outil [Docker](https://fastapi.tiangolo.com/deployment/docker/) pou
 Pour le moment, vous ne faites remonter que des statistiques descriptives. Ici il s’agit de mettre à profit l’ensemble des données disponibles pour permettre à l’utilisateur de prédire l’équipe gagnante en fonction des 5 champions de chaque équipe.
 L’enjeu de cette fonctionnalité n’est pas de vous faire trouver le meilleur modèle de prédiction mais d’ajouter une fonctionnalité à votre API basé sur ce modèle. Vous ne serez donc aucunement noté sur la qualité des prédictions.
 
-Les différents points attendus sont : 
+Les différents points attendus sont :
+
 - Choix d’un modèle de prédiction : vous ne serez certes pas noté sur la qualité des prédictions mais une courte réflexion sur le choix du modèle est attendue. 
 - Entrainement dudit modèle : vous êtes libres sur le choix des librairies.
 - Sérialisation du modèle : vous devez sauvegarder votre modèle.
@@ -465,27 +471,25 @@ Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet 
 
 Les utilisateurs de cette API pourront renseigner des types de données pour la génération à partir d'un language dédié : 
 Par exemple :
+
 - définir un type SEXE qui ne prendrait que les valeurs M,F ou A
-
-```json 
-"SEXE":"'M'|'F'|'A'"
-```
-
-
+  ```{.json} 
+  "SEXE":"'M'|'F'|'A'"
+  ```
 - ou définir un type composé VOITURE qui prendrait les valeurs composées : 
-```json
-{
-    "VOITURE": {
-	"nb_roues": "INT",
-	"COULEUR": "'rouge'|'vert'|'bleu'"
-    }
-}
-```
+  ```{.json} 
+  {
+      "VOITURE": {
+  	"nb_roues": "INT",
+  	"COULEUR": "'rouge'|'vert'|'bleu'"
+      }
+  }
+  ```
 
 Les utilisateurs de l'application définiront ensuite des schémas de données permettant de gérer les métadonnées nécessaires à la génération de données. Ces informations seront stockées en base de données.
 
 Par exemple : 
-```json
+```{.json} 
 {
 	"sexe": {
 		"type": "SEXE",
@@ -523,7 +527,8 @@ Le point d'entrée de définition du schéma de données sera accessible en `GET
 - Démarrage de l'applicatif à partir d'un fichier de règles de bases
 - La réalisation d'un scénario d'usage de l'API.
 
-#### Fonctionnalités avancées 
+#### Fonctionnalités avancées
+
 - Génération d'un jeu de règles à partir d'un jeu de données
 - Gestion de l'authentification à l'API
 - Permettre l'export et l'import de schémas sous format JSON
@@ -542,6 +547,7 @@ Le but du jeu est de deviner un mot spécifique en un minimum de tentatives. Le 
 En fonction du nombre de tentatives, on peut proposer un score au joueur. :trophy: 
 
 #### Fonctionnalités de base
+
 - Un historique afin de reprendre sa partie en cours de route
 - Un tableau des scores général s'actualisant en temps réel
 - Des tests unitaires
@@ -549,6 +555,7 @@ En fonction du nombre de tentatives, on peut proposer un score au joueur. :troph
 
 
 #### Fonctionnalités avancées
+
 - Proposer le jeu en multilingues
 - Création de listes de mots personnalisées
 - Un client permettant de jouer en multijoueur local et distant
@@ -556,6 +563,7 @@ En fonction du nombre de tentatives, on peut proposer un score au joueur. :troph
 
 
 #### Les outils
+
 - Utilisation d'une API fournissant des mots au hasard
 - Framework fastApi
 - Base Postgres
@@ -576,7 +584,7 @@ Une nouvelle convention de jeu de rôle arrive à Rennes ! L’activité phare d
 
 Les organisateurs vous sollicitent pour créer une application qui permette de gérer les tables de jeu de la conférence. Il faudra créer deux interfaces différentes : une pour les organisateurs et une pour un joueur ou MJ.
 
-Un joueur ou une joueuse s’inscrit à la conférence en renseignant un nouveau profil. Sur ce profil, il ou elle peut déclarer des personnages différents. En utilisant l’API disponible à l’adresse https://www.dnd5eapi.co/, plus d’informations seront colléctées sur chaque personnage, et completeront sa fiche, comme les langues que le personnage parle, ses capacités physiques, etc.  Une joueuse doit aussi pouvoir s’inscrire à une table, et consulter les tables auxquelles elle joue. Les MJs ont accès à un profil similaire, où ils peuvent se porter volontaires pour plusieurs scénarios (et donc plusieurs tables). Le MJ doit aussi avoir accès à une liste des joueurs et des personnages qui seront à sa table, afin de pouvoir se préparer au mieux. 
+Un joueur ou une joueuse s’inscrit à la conférence en renseignant un nouveau profil. Sur ce profil, il ou elle peut déclarer des personnages différents. En utilisant l’API disponible à l’adresse <https://www.dnd5eapi.co/>, plus d’informations seront colléctées sur chaque personnage, et completeront sa fiche, comme les langues que le personnage parle, ses capacités physiques, etc.  Une joueuse doit aussi pouvoir s’inscrire à une table, et consulter les tables auxquelles elle joue. Les MJs ont accès à un profil similaire, où ils peuvent se porter volontaires pour plusieurs scénarios (et donc plusieurs tables). Le MJ doit aussi avoir accès à une liste des joueurs et des personnages qui seront à sa table, afin de pouvoir se préparer au mieux. 
 
 Les organisateurs se réservent le droit de supprimer des joueurs et des MJ, et de réorganiser les tables. Dans ce cas, un tel évènement sera notifié aux joueurs concernés lorsqu’ils iront consulter les tables auxquelles ils jouent.
 
@@ -614,7 +622,7 @@ Vous avez un abonnement TGVMAX (Jeune :adult: :woman:  ou Senior :older_adult::o
 TGVMAXimizer est l'application qui facilite la recherche de places disponibles pour les trajets éligibles au TGVMax. 
 L'utilisateur crée un compte avec un profil jeune ou senior.
 Une fois authentifié, l'utilsateur pourra lancer une recherche en specififant la gare de depart, la gare de déstination et éventuellement la date de départ. Le resultat sera la liste des trajets éligibles au TGVMAX junior ou senior selon le profil de l'utilisateur. 
-Les données sur la disponibilité à 30 jours de places MAX JEUNE et MAX SENIOR  sont accessibles via l'api tgvmax disponible sur le site https://data.sncf.com/explore/dataset/tgvmax/api/  
+Les données sur la disponibilité à 30 jours de places MAX JEUNE et MAX SENIOR  sont accessibles via l'api tgvmax disponible sur le site <https://data.sncf.com/explore/dataset/tgvmax/api/>
 
 #### Fonctionnalités attendues
 
@@ -662,7 +670,7 @@ Utilisez les principe de la Programmation Orientée Objet et privilégiez un cod
 
 ##### Les données
 
-Vous avez à disposition un flux de données à l’adresse suivante https://apps-dev.rapminerz.io/data-ensai/. Il contient une liste de featuring décrit par les champs : 
+Vous avez à disposition un flux de données à l’adresse suivante <https://apps-dev.rapminerz.io/data-ensai/>. Il contient une liste de featuring décrit par les champs : 
 
 - **date** : sous la forme d'un timestamp.
 - **primary_artist_name** : le nom de l'artiste en tête d'affiche de la chanson.
@@ -802,7 +810,7 @@ Le projet a pour but premier de créer une API capable de répondre aux requête
 - quelles sont les parcelles en limite d’une commune donnée ?
 - quelles sont les parcelles contiguës à une parcelle donnée ?
 
-Pour cela il faudra exploiter les fichiers geoJSON du site : https://cadastre.data.gouv.fr/datasets/cadastre-etalab.
+Pour cela il faudra exploiter les fichiers geoJSON du site : <https://cadastre.data.gouv.fr/datasets/cadastre-etalab>
 
 Ce site contient des fichiers communaux des limites des parcelles adastrales. Chaque parcelle est délimitée par un polygone. Deux parcelles sont contiguës si elles partagent un même segment.
 
@@ -811,7 +819,7 @@ Le second travail sera la construction de l’API qui répondra aux requêtes pr
 
 #### Développement optionnel
 
-Dans un second temps, les groupes qui en auront la possibilité pourront faire des recherches sur les PC à partir des données Sitadel disponibles au format CSV sur le site du ministère : https://www.statistiques.developpement-durable.gouv.fr/liste-des-permis-de-construire-et-autres-autorisations-durbanisme
+Dans un second temps, les groupes qui en auront la possibilité pourront faire des recherches sur les PC à partir des données Sitadel disponibles au format CSV sur le site du ministère : <https://www.statistiques.developpement-durable.gouv.fr/liste-des-permis-de-construire-et-autres-autorisations-durbanisme>
 Étant donné une commune de référence, il faudra rechercher les communes qui lui sont contiguës et extraire les PC de toutes ces communes. En suite il faudra dresser la liste des parcelles en limite de la commune de référence et de toutes les parcelles qui leur sont contiguës dans les autres communes et lister les PC présents sur ces parcelles. Enfin il faudra rapprocher les PC contiguës
 
 Ce programme de recherche devra donc fournir en sortie cette liste de PC contiguës qui sera ensuite analysée pour voir s’il s’agit d’un même projet de construction ou pas.
