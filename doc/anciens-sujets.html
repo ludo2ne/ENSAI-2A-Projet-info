@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.556">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
 <meta name="description" content="Sujets des années précédentes">
 
-<title>Projet info 2A - Anciens sujets</title>
+<title>Anciens sujets – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-présentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-présentation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Présentation</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-présentation">    
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -282,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Backend : FastAPI</li>
 <li>Front end : Jinja2 (templates HTML dans FastAPI). D’autres choix sont possibles (React.js, Vue.js, …) si vous les maîtrisez, mais attention, votre tuteur ne pourra vous suivre que sur React.js, et la courbe d’apprentissage est raide.</li>
 <li>BDD : MongoDB (NoSQL) , Neo4j (NoSQL, graphe) ou Postgres (SQL, disponible à l’ENSAI)</li>
-<li>API Deezer : https://developers.deezer.com/api</li>
+<li>API Deezer : <a href="https://developers.deezer.com/api" class="uri">https://developers.deezer.com/api</a></li>
 </ul>
 </section>
 <section id="fausses-bonnes-idées" class="level4">
@@ -399,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Consulter la liste des stations se trouvant à proximité d’un point donné il sera aussi possible de préciser le carburant.</li>
 <li>Créer et mettre à jour des listes de stations qu’il sera possible de consulter par exemple pour voir les prix sur les stations se trouvant sur un trajet régulier.</li>
 </ul>
-<p>A chaque requête, l’API doit s’assurer qu’elle utilise bien les dernières données disponibles et au besoin télécharger les nouvelles données disponibles sur le site (mises à jour toutes les 10 minutes)&nbsp;: https://donnees.roulez-eco.fr/opendata/instantane</p>
+<p>A chaque requête, l’API doit s’assurer qu’elle utilise bien les dernières données disponibles et au besoin télécharger les nouvelles données disponibles sur le site (mises à jour toutes les 10 minutes)&nbsp;: <a href="https://donnees.roulez-eco.fr/opendata/instantane" class="uri">https://donnees.roulez-eco.fr/opendata/instantane</a></p>
 </section>
 <section id="fonctionnalités-de-base-1" class="level4">
 <h4 class="anchored" data-anchor-id="fonctionnalités-de-base-1">Fonctionnalités de base</h4>
@@ -420,16 +420,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="stations-préférées" class="level5">
 <h5 class="anchored" data-anchor-id="stations-préférées">Stations préférées</h5>
-<p>La gestion des listes de stations doit permettre de: - Créer une liste: le paramètre en entrée est un nom donné par l’utilisateur. La requête revoie un identifiant qui devra être passé comme paramètre pour toutes les autres actions, - Consulter la liste des listes crées: aucun paramètre, la requête renvoie les couple identifiant-nom des listes défines, - Ajouter une une plusieurs stations à un liste: les paramètres en entrée sont l’identifiant de la liste et le ou les identifiants des stations à ajouter, - Supprimer une liste: le paramètre à donner est l’identifiant de la liste, - Consulter la liste: le paramètre à donner est l’identifiant de la liste. La requête revoie les informations au format JSON qui contiennent: - l’identifiant et le nom de la requête - la date et l’heure d’exécution - le nombre de stations contenues dans la liste - la liste des stations. Pour chaque station on aura: - l’id, les coordonnées et l’adresse de la station - le prix du carburant</p>
+<p>La gestion des listes de stations doit permettre de :</p>
+<ul>
+<li>Créer une liste: le paramètre en entrée est un nom donné par l’utilisateur. La requête revoie un identifiant qui devra être passé comme paramètre pour toutes les autres actions,</li>
+<li>Consulter la liste des listes crées: aucun paramètre, la requête renvoie les couple identifiant-nom des listes défines,</li>
+<li>Ajouter une une plusieurs stations à un liste: les paramètres en entrée sont l’identifiant de la liste et le ou les identifiants des stations à ajouter,</li>
+<li>Supprimer une liste: le paramètre à donner est l’identifiant de la liste,</li>
+<li>Consulter la liste: le paramètre à donner est l’identifiant de la liste. La requête revoie les informations au format JSON qui contiennent:
+<ul>
+<li>l’identifiant et le nom de la requête</li>
+<li>la date et l’heure d’exécution</li>
+<li>le nombre de stations contenues dans la liste</li>
+<li>la liste des stations. Pour chaque station on aura:
+<ul>
+<li>l’id, les coordonnées et l’adresse de la station</li>
+<li>le prix du carburant</li>
+</ul></li>
+</ul></li>
+</ul>
 </section>
 </section>
 <section id="fonctionnalités-avancées-1" class="level4">
 <h4 class="anchored" data-anchor-id="fonctionnalités-avancées-1">Fonctionnalités avancées</h4>
-<p>Voici quelques idées de fonctions avancées pour les groupes qui auraient effectué l’ensemble des fonction de bases. Toutes autres idées pourra bien sûr être proposées en cours de projet. ##### Stations à proximités</p>
+<p>Voici quelques idées de fonctions avancées pour les groupes qui auraient effectué l’ensemble des fonction de bases. Toutes autres idées pourra bien sûr être proposées en cours de projet.</p>
+<section id="stations-à-proximités-1" class="level5">
+<h5 class="anchored" data-anchor-id="stations-à-proximités-1">Stations à proximités</h5>
 <ul>
 <li>Possibilité de passer comme parmètre une adresse au lieu de coordonnées</li>
 <li>Possibilité de préciser l’heure de passage et de ne conserver que les stations ouvertes à cette heure.</li>
 </ul>
+</section>
 <section id="station-préférées" class="level5">
 <h5 class="anchored" data-anchor-id="station-préférées">Station préférées</h5>
 <ul>
@@ -511,12 +531,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Les fonctionnalités avancées sont triées selon le niveau de difficulté , cependant vous êtes totalement libres sur les fonctionnalités avancées que vous souhaitez réalisées.</p>
 <section id="fa1-ajout-de-nouvelles-données-quotidiennes" class="level5">
 <h5 class="anchored" data-anchor-id="fa1-ajout-de-nouvelles-données-quotidiennes">FA1 : Ajout de nouvelles données quotidiennes :</h5>
-<p>Jusqu’ici vous utilisez les données mises à disposition sans enrichissement. Cette fonctionnalité aura pour but de permettre à l’admin de pouvoir ajouter des nouvelles parties récentes. Les différents points attendus sont : - Gestion de la clé (permettant l’accès à l’API de Riot) : au choix entre en brute en paramètre d’entrée ou permettre d’aller la récupérer directement sur le site depuis l’API. - Récupération des données depuis l’API de Riot selon certains critères de sélection. - Ajout des données dans vos bases de données. - Ajout de la fonctionnalité au sein de votre API.</p>
+<p>Jusqu’ici vous utilisez les données mises à disposition sans enrichissement. Cette fonctionnalité aura pour but de permettre à l’admin de pouvoir ajouter des nouvelles parties récentes.</p>
+<p>Les différents points attendus sont :</p>
+<ul>
+<li>Gestion de la clé (permettant l’accès à l’API de Riot) : au choix entre en brute en paramètre d’entrée ou permettre d’aller la récupérer directement sur le site depuis l’API.</li>
+<li>Récupération des données depuis l’API de Riot selon certains critères de sélection.</li>
+<li>Ajout des données dans vos bases de données.</li>
+<li>Ajout de la fonctionnalité au sein de votre API.</li>
+</ul>
 <p>Les critères de sélection seront libres et donc proposés par votre groupe, en fonction de ce que l’API vous permettra de faire.</p>
 </section>
 <section id="fa2-mise-en-place-dun-workflow-collaboratif" class="level5">
 <h5 class="anchored" data-anchor-id="fa2-mise-en-place-dun-workflow-collaboratif">FA2 : Mise en place d’un workflow collaboratif :</h5>
-<p>Le workflow Gitflow vous permet de faciliter la gestion des branches et la séparation des différentes tâches. Utilisez le <a href="https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow">framework Gitflow</a> pour la gestion de votre projet.</p>
+<p>Le workflow Gitflow vous permet de faciliter la gestion des branches et la séparation des différentes tâches.</p>
+<p>Utilisez le <a href="https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow">framework Gitflow</a> pour la gestion de votre projet.</p>
 </section>
 <section id="fa3-conteneurisation-de-lapplication" class="level5">
 <h5 class="anchored" data-anchor-id="fa3-conteneurisation-de-lapplication">FA3 : Conteneurisation de l’application :</h5>
@@ -526,7 +554,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="fa4-mise-en-place-dun-modèle-prédictif" class="level5">
 <h5 class="anchored" data-anchor-id="fa4-mise-en-place-dun-modèle-prédictif">FA4 : Mise en place d’un modèle prédictif :</h5>
 <p>Pour le moment, vous ne faites remonter que des statistiques descriptives. Ici il s’agit de mettre à profit l’ensemble des données disponibles pour permettre à l’utilisateur de prédire l’équipe gagnante en fonction des 5 champions de chaque équipe. L’enjeu de cette fonctionnalité n’est pas de vous faire trouver le meilleur modèle de prédiction mais d’ajouter une fonctionnalité à votre API basé sur ce modèle. Vous ne serez donc aucunement noté sur la qualité des prédictions.</p>
-<p>Les différents points attendus sont : - Choix d’un modèle de prédiction : vous ne serez certes pas noté sur la qualité des prédictions mais une courte réflexion sur le choix du modèle est attendue. - Entrainement dudit modèle : vous êtes libres sur le choix des librairies. - Sérialisation du modèle : vous devez sauvegarder votre modèle. - Ajout de la fonctionnalité au sein de votre API.</p>
+<p>Les différents points attendus sont :</p>
+<ul>
+<li>Choix d’un modèle de prédiction : vous ne serez certes pas noté sur la qualité des prédictions mais une courte réflexion sur le choix du modèle est attendue.</li>
+<li>Entrainement dudit modèle : vous êtes libres sur le choix des librairies.</li>
+<li>Sérialisation du modèle : vous devez sauvegarder votre modèle.</li>
+<li>Ajout de la fonctionnalité au sein de votre API.</li>
+</ul>
 </section>
 </section>
 </section>
@@ -681,17 +715,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="contexte-1">Contexte</h4>
 <p>Dans le cadre de la réalisation de tests de programmes, on est souvent amenés a utiliser des jeux de données fictives.<br>
 Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet de générer des données de tests pour des statisticiens et développeurs en herbe.</p>
-<p>Les utilisateurs de cette API pourront renseigner des types de données pour la génération à partir d’un language dédié : Par exemple : - définir un type SEXE qui ne prendrait que les valeurs M,F ou A</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">"SEXE":"'M'|'F'|'A'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Les utilisateurs de cette API pourront renseigner des types de données pour la génération à partir d’un language dédié : Par exemple :</p>
 <ul>
-<li>ou définir un type composé VOITURE qui prendrait les valeurs composées :</li>
-</ul>
+<li><p>définir un type SEXE qui ne prendrait que les valeurs M,F ou A</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">"SEXE":"'M'|'F'|'A'"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>ou définir un type composé VOITURE qui prendrait les valeurs composées :</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"VOITURE"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"nb_roues"</span><span class="fu">:</span> <span class="st">"INT"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"COULEUR"</span><span class="fu">:</span> <span class="st">"'rouge'|'vert'|'bleu'"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nb_roues"</span><span class="fu">:</span> <span class="st">"INT"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"COULEUR"</span><span class="fu">:</span> <span class="st">"'rouge'|'vert'|'bleu'"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
 <p>Les utilisateurs de l’application définiront ensuite des schémas de données permettant de gérer les métadonnées nécessaires à la génération de données. Ces informations seront stockées en base de données.</p>
 <p>Par exemple :</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -786,7 +821,7 @@ Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet 
 <h4 class="anchored" data-anchor-id="présentation-3">Présentation</h4>
 <p>Une nouvelle convention de jeu de rôle arrive à Rennes ! L’activité phare de la convention sera un weekend dédié à la pratique des jeux de rôles. Plusieurs jeux se dérouleront en parallèle, chacun à une table contenant un maître/une maîtresse du jeu (MJ), ainsi que des joueurs et joueuses. Le but de ce weekend est de réunir des gens de tous horizons, de donner une première impression du jeu de rôle aux personnes n’ayant jamais essayé, mais aussi de satisfaire les joueurs plus expérimentés. Le système de jeu utilisé est Dongeons et Dragons 5E.</p>
 <p>Les organisateurs vous sollicitent pour créer une application qui permette de gérer les tables de jeu de la conférence. Il faudra créer deux interfaces différentes : une pour les organisateurs et une pour un joueur ou MJ.</p>
-<p>Un joueur ou une joueuse s’inscrit à la conférence en renseignant un nouveau profil. Sur ce profil, il ou elle peut déclarer des personnages différents. En utilisant l’API disponible à l’adresse https://www.dnd5eapi.co/, plus d’informations seront colléctées sur chaque personnage, et completeront sa fiche, comme les langues que le personnage parle, ses capacités physiques, etc. Une joueuse doit aussi pouvoir s’inscrire à une table, et consulter les tables auxquelles elle joue. Les MJs ont accès à un profil similaire, où ils peuvent se porter volontaires pour plusieurs scénarios (et donc plusieurs tables). Le MJ doit aussi avoir accès à une liste des joueurs et des personnages qui seront à sa table, afin de pouvoir se préparer au mieux.</p>
+<p>Un joueur ou une joueuse s’inscrit à la conférence en renseignant un nouveau profil. Sur ce profil, il ou elle peut déclarer des personnages différents. En utilisant l’API disponible à l’adresse <a href="https://www.dnd5eapi.co/" class="uri">https://www.dnd5eapi.co/</a>, plus d’informations seront colléctées sur chaque personnage, et completeront sa fiche, comme les langues que le personnage parle, ses capacités physiques, etc. Une joueuse doit aussi pouvoir s’inscrire à une table, et consulter les tables auxquelles elle joue. Les MJs ont accès à un profil similaire, où ils peuvent se porter volontaires pour plusieurs scénarios (et donc plusieurs tables). Le MJ doit aussi avoir accès à une liste des joueurs et des personnages qui seront à sa table, afin de pouvoir se préparer au mieux.</p>
 <p>Les organisateurs se réservent le droit de supprimer des joueurs et des MJ, et de réorganiser les tables. Dans ce cas, un tel évènement sera notifié aux joueurs concernés lorsqu’ils iront consulter les tables auxquelles ils jouent.</p>
 </section>
 <section id="fonctionnalités-attendues" class="level4">
@@ -825,7 +860,7 @@ Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet 
 <p>Tuteur : Mansor Gueye</p>
 <section id="présentation-4" class="level4">
 <h4 class="anchored" data-anchor-id="présentation-4">Présentation</h4>
-<p>Vous avez un abonnement TGVMAX (Jeune <span class="emoji" data-emoji="adult">🧑</span> <span class="emoji" data-emoji="woman">👩</span> ou Senior <span class="emoji" data-emoji="older_adult">🧓</span><span class="emoji" data-emoji="older_woman">👵</span>)et vous avez du mal à trouver des trajets éligibles, TGVMAXimizer est LA solution. TGVMAXimizer est l’application qui facilite la recherche de places disponibles pour les trajets éligibles au TGVMax. L’utilisateur crée un compte avec un profil jeune ou senior. Une fois authentifié, l’utilsateur pourra lancer une recherche en specififant la gare de depart, la gare de déstination et éventuellement la date de départ. Le resultat sera la liste des trajets éligibles au TGVMAX junior ou senior selon le profil de l’utilisateur. Les données sur la disponibilité à 30 jours de places MAX JEUNE et MAX SENIOR sont accessibles via l’api tgvmax disponible sur le site https://data.sncf.com/explore/dataset/tgvmax/api/</p>
+<p>Vous avez un abonnement TGVMAX (Jeune <span class="emoji" data-emoji="adult">🧑</span> <span class="emoji" data-emoji="woman">👩</span> ou Senior <span class="emoji" data-emoji="older_adult">🧓</span><span class="emoji" data-emoji="older_woman">👵</span>)et vous avez du mal à trouver des trajets éligibles, TGVMAXimizer est LA solution. TGVMAXimizer est l’application qui facilite la recherche de places disponibles pour les trajets éligibles au TGVMax. L’utilisateur crée un compte avec un profil jeune ou senior. Une fois authentifié, l’utilsateur pourra lancer une recherche en specififant la gare de depart, la gare de déstination et éventuellement la date de départ. Le resultat sera la liste des trajets éligibles au TGVMAX junior ou senior selon le profil de l’utilisateur. Les données sur la disponibilité à 30 jours de places MAX JEUNE et MAX SENIOR sont accessibles via l’api tgvmax disponible sur le site <a href="https://data.sncf.com/explore/dataset/tgvmax/api/" class="uri">https://data.sncf.com/explore/dataset/tgvmax/api/</a></p>
 </section>
 <section id="fonctionnalités-attendues-1" class="level4">
 <h4 class="anchored" data-anchor-id="fonctionnalités-attendues-1">Fonctionnalités attendues</h4>
@@ -873,7 +908,7 @@ Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet 
 </section>
 <section id="les-données-1" class="level5">
 <h5 class="anchored" data-anchor-id="les-données-1">Les données</h5>
-<p>Vous avez à disposition un flux de données à l’adresse suivante https://apps-dev.rapminerz.io/data-ensai/. Il contient une liste de featuring décrit par les champs :</p>
+<p>Vous avez à disposition un flux de données à l’adresse suivante <a href="https://apps-dev.rapminerz.io/data-ensai/" class="uri">https://apps-dev.rapminerz.io/data-ensai/</a>. Il contient une liste de featuring décrit par les champs :</p>
 <ul>
 <li><strong>date</strong> : sous la forme d’un timestamp.</li>
 <li><strong>primary_artist_name</strong> : le nom de l’artiste en tête d’affiche de la chanson.</li>
@@ -1020,13 +1055,13 @@ Pour répondre à ce besoin, vous envisagez de constituer un produit qui permet 
 <li>quelles sont les parcelles en limite d’une commune donnée ?</li>
 <li>quelles sont les parcelles contiguës à une parcelle donnée ?</li>
 </ul>
-<p>Pour cela il faudra exploiter les fichiers geoJSON du site : https://cadastre.data.gouv.fr/datasets/cadastre-etalab.</p>
+<p>Pour cela il faudra exploiter les fichiers geoJSON du site : <a href="https://cadastre.data.gouv.fr/datasets/cadastre-etalab" class="uri">https://cadastre.data.gouv.fr/datasets/cadastre-etalab</a></p>
 <p>Ce site contient des fichiers communaux des limites des parcelles adastrales. Chaque parcelle est délimitée par un polygone. Deux parcelles sont contiguës si elles partagent un même segment.</p>
 <p>Le premier travail sera donc de créer à partir de ces fichiers une base de données qui stockera les communes et les parcelles contiguës. Pour des raisons de volumétrie des données, ce travail ne sera effectué que sur un département, mais le programme de construction de la base et la base elle-même devront être capables de traiter plusieurs départements. De plus, le programme de construction de la base devra être facilement paramétrable pour changer la zone géographique couverte et l’année de géographie. Le second travail sera la construction de l’API qui répondra aux requêtes pré-citées en exploitant la base de données.</p>
 </section>
 <section id="développement-optionnel" class="level4">
 <h4 class="anchored" data-anchor-id="développement-optionnel">Développement optionnel</h4>
-<p>Dans un second temps, les groupes qui en auront la possibilité pourront faire des recherches sur les PC à partir des données Sitadel disponibles au format CSV sur le site du ministère : https://www.statistiques.developpement-durable.gouv.fr/liste-des-permis-de-construire-et-autres-autorisations-durbanisme Étant donné une commune de référence, il faudra rechercher les communes qui lui sont contiguës et extraire les PC de toutes ces communes. En suite il faudra dresser la liste des parcelles en limite de la commune de référence et de toutes les parcelles qui leur sont contiguës dans les autres communes et lister les PC présents sur ces parcelles. Enfin il faudra rapprocher les PC contiguës</p>
+<p>Dans un second temps, les groupes qui en auront la possibilité pourront faire des recherches sur les PC à partir des données Sitadel disponibles au format CSV sur le site du ministère : <a href="https://www.statistiques.developpement-durable.gouv.fr/liste-des-permis-de-construire-et-autres-autorisations-durbanisme" class="uri">https://www.statistiques.developpement-durable.gouv.fr/liste-des-permis-de-construire-et-autres-autorisations-durbanisme</a> Étant donné une commune de référence, il faudra rechercher les communes qui lui sont contiguës et extraire les PC de toutes ces communes. En suite il faudra dresser la liste des parcelles en limite de la commune de référence et de toutes les parcelles qui leur sont contiguës dans les autres communes et lister les PC présents sur ces parcelles. Enfin il faudra rapprocher les PC contiguës</p>
 <p>Ce programme de recherche devra donc fournir en sortie cette liste de PC contiguës qui sera ensuite analysée pour voir s’il s’agit d’un même projet de construction ou pas.</p>
 </section>
 </section>
@@ -1253,18 +1288,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1296,7 +1320,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/ludo2ne\.github\.io\/ENSAI-2A-Projet-info\/");
@@ -1304,7 +1350,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1641,30 +1687,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 
