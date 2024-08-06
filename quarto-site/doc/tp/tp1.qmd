@@ -1,5 +1,5 @@
 ---
-title: "Retour sur la POO, objets métier et patron de conception *strategy*"
+title: "POO, Git et Tests Unitaires"
 description: "TP 1"
 author: "Rémi Pépin, Ludovic Deneuville"
 format:
@@ -11,16 +11,176 @@ from: markdown+emoji
 number-sections: true
 ---
 
+::: {.callout-important}
+Les TP sont prévus pour être réalisés en étant connecté à votre [**VM ENSAI**]{.underline}, soit depuis les clients légers des salles info, soit via <https://view.ensai.fr/>{target="_blank"}. Vous y disposez de tous les outils nécessaires :
 
-## Avant de commencer {.unnumbered}
+- `Python 3.10` : la version de Python installée à l'ENSAI
+  - ainsi que les packages nécessaires
+- `Visual Studio Code` : votre éditeur de code
+- `Git` : pour gérer vos dépôts
+- `PostgreSQL` : une base de données
+  - `DBeaver` : pour consulter, modifier cette base de données
+
+À moins que vous ne maîtrisiez des outils tels [Docker](https://www.docker.com/){target="_blank"} pour créer votre base de données, il est fortement déconseillé de coder sur votre propre machine que ce soit en TP ou en projet. Vous allez perdre un temps considérable en installation et configuration. Et même si vous êtes très très doués certaines parties ne pourront de toute manière pas fonctionner.
+:::
+
+
+
+## À faire à la maison {.unnumbered}
+
+Un prérequis de ce TP est que votre configuration `Git` soit opérationnelle.
+
+::: {.callout-tip}
+Si vous avez besoin de vous rafrîchir la mémoire sur Git, suivez ce [lien](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html){target="_blank"}.
+:::
+
+#### Compte GitHub {.unnumbered}
+
+- [ ] Créez un compte [GitHub](https://github.com/){target="_blank"}, si vous n'en avez pas déjà un
+
+#### Config Git {.unnumbered}
+
+- [ ] Ouvrez Git Bash
+- [ ] Exécutez cette commande : `git config -l`
+
+Si les valeurs *user.name* et *user.email* sont bien renseignées, tout est ok.
+
+Si ce n'est pas le cas, exécutez les [5 commandes git config](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration){target="_blank"}.
+
+#### Clé SSH {.unnumbered}
+
+- [ ] Exécutez cette commande : `cat ~/.ssh/id_rsa.pub` (toujours dans Git Bash)
+
+Si le fichier existe et que cela renvoie un réultat commençant par *ssh-rsa*, cela signifie que vous avez bien défini une clé SSH sur votre machine.
+
+Dans le cas contraire, [créez une clé SSH](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#cr%C3%A9ation-dune-cl%C3%A9-ssh){target="_blank"}
+
+Nous allons maintenant vérifier si vous avez bien déclaré cette clé publique sur GitHub, ou sinon l'ajouter
+
+- [ ] Copiez la clé publique : `cat ~/.ssh/id_rsa.pub | clip`
+- [ ] Allez sur la [page pour déclarer une nouvelle clé SSH](https://github.com/settings/ssh/new) (Settings > SSH and GPG keys > New)
+  - Title : VM ENSAI
+  - Key : Collez votre clé
+  - [Add SSH key]{.green-button}
+
+Soit votre clé publique est maintenant déclarée à GitHub, ou au pire, GitHub vous dira qu'il connait déjà cette clé.  
+
+
+## Objectifs {.unnumbered}
+
+Les objectifs de ce premier TP sont les suivants :
+
+- Utilisation de *Git*
+- Remise en jambe *Python* et *POO*
+- Écriture de *Tests Unitaires* avec *pytest*
 
 Ce TP mêle explications et phases de code.  
 
 Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.
 
+
+## Ce que vous allez coder {.unnumbered}
+
+Notre jeu s'inspirera de *Pokémon Unite* (aucune connaissance du jeu, ni de *Pokémon* n'est nécessaire).
+
+Pour résumer en quelques mots, il y aura des *Pokemons* qui s'affronteront lors de *Battles* en lançant des *Attacks*. Voici les principaux objets que vous allez manipuler :
+
+- `Pokemon` : qui ont diverses caractéristiques et statistiques
+  - un nom
+  - un niveau
+  - [un type](https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon){target="_blank"}
+    - ici les types sont : Attaquant, Défenseur, Polyvalant, Soutient et Rapide (et non pas : Feu, Eau, Plante...)
+  - des statistiques contenues dans un objet *Statistic* défini ci-dessous
+- `Statistic` : pour éviter de surcharger la classe `Pokemon`, leurs stats sont stockées dans un objet de la classe `Statistic`
+  - hp : health points
+  - attack, defense, speed... : qui serviront déterminer la force de ses attaques
+- `Attack` : différents types d'attaques dont disposeront les Pokémons (partie 3)
+- `Battle` : servira à faire s'affronter 2 Pokémons pour déterminer l'issue du combat (partie 4)
+
+Et voici un diagramme de classe très simplifié des classes principales à coder lors de ces quatres TP.
+
+```{mermaid}
+classDiagram
+  class Pokemon {
+    # _name : str
+    # _level : int
+    # _type : str
+    # _current_stat : Statistic
+    + get_pokemon_attack_coef() float
+  }
+ 
+  class Statistic {
+    - __hp : int
+    - __attack : int
+    - __defense : int
+    - __sp_atk : int
+    - __sp_def : int
+    - __speed : int
+  }
+
+  class Attack{
+    # _name : str
+    # _power : int
+    # _description : str
+    + compute_damage(Pokemon, Pokemon) int
+  }
+
+  class Battle{
+    - first_monstie : Pokemon
+    - second_monstie : Pokemon
+    - winner : Pokemon
+  }
+
+  Pokemon --> Statistic : possesses
+  Pokemon --> Attack : uses
+  Battle ..>"2" Pokemon : call
+```
+
+
+## Mise en place
+
+::: {.callout-note}
+Pour ce premier TP, vous allez [**travailler avec votre équipe projet**]{.underline} sur un seul et même dépôt distant.
+:::
+
+### Création du dépôt distant
+
+::: {.callout-important}
+Un seul membre de l'équipe crée ce dépôt distant.
+:::
+
+- [ ] Connectez-vous sur [GitHub](https://github.com/){target="_blank"}
+- [ ] Créez un *fork* du dépôt [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
+  - Un fork est une copie d'un dépôt, permettant à un utilisateur de développer indépendamment sans affecter l'original
+- [ ] Ajoutez les membres de votre équipe
+  - Sur la page du dépôt > :gear: Settings > Collaborators > [Add people]{.green-button}
+- [ ] Envoyez à vos camarades, l'adresse du dépôt distant
+
+
+### Création des dépôts locaux
+
+Maintenant, chaque membre de l'équipe va créer sur sa propre machine, son clone du dépôt.
+
+Commençons par créer un dossier pour ranger votre dépôt local :
+
+- [ ] Ouvrez *Git Bash*
+- [ ] Exécutez cette commande : `mkdir -p /p/Cours2A/UE3_Complements_info/TP1 && cd $_`
+  - elle crée l'arborescence demandée (*mkdir*)
+  - puis elle vous positionne dans ce dossier (*cd*)
+- [ ] Clonez le dépôt distant avec SSH
+  - lorsque vous êtes sur la page GitHub du dépôt, cliquez sur [Code]{.green-button}, puis sur l'onglet SSH
+  - Copiez l'url qui commence par `git@github.com...`
+  - Dans Git Bash : `git clone <url>` (en remplaçant \<url\>)
+
+
+
+
+---
+:construction:
 ---
 
-## Introduction et mise en place
+
+
 
 Vous allez créer les **objets métier** pour un jeu *Pokémon*.  
 Un objet métier représente dans votre code quelque chose de concret, qui modèlise la réalité.
@@ -65,22 +225,6 @@ git checkout <nouvelle_branche>      # dans le terminal, la branche courante est
 git checkout -                       # pour retourner à la branche précédente
 ```
 
----
-
-### Ce que vous allez coder
-
-Notre jeu s'inspirera de *Pokémon Unite* (aucune connaissance du jeu, ni de *Pokémon* n'est nécessaire).  
-Pour résumer en quelques mots, voici les objets que nous allons manipuler :
-
-* `Pokemon` : qui ont diverses caractéristiques et statistiques
-  * hp : health points
-  * attack, defense, speed... : qui serviront déterminer la force de ses attaques
-  * un type : [Attacker, Defender, All Rounder, Speedster, Supporter](https://www.ationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon)
-* `Statistic` : pour éviter de surcharger la classe `Pokemon`, de nombreuses stats sont stockées dans un objet de la classe `Statistic`
-* `Attack` : différents types d'attaques dont disposeront les Pokémons (partie 3)
-* `BattleService` : servira à faire s'affronter 2 Pokémons pour déterminer l'issue du combat (partie 4)
-
----
 
 ## Modélisation et implémentation
 
