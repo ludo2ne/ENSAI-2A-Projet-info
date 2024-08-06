@@ -9,7 +9,7 @@
 <meta name="author" content="Rémi Pépin, Ludovic Deneuville">
 <meta name="description" content="TP 1">
 
-<title>Retour sur la POO, objets métier et patron de conception strategy – Projet info 2A</title>
+<title>POO, Git et Tests Unitaires – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -252,24 +252,41 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
-  <li><a href="#introduction-et-mise-en-place" id="toc-introduction-et-mise-en-place" class="nav-link" data-scroll-target="#introduction-et-mise-en-place"><span class="header-section-number">1</span> Introduction et mise en place</a>
+  <li><a href="#à-faire-à-la-maison" id="toc-à-faire-à-la-maison" class="nav-link active" data-scroll-target="#à-faire-à-la-maison">À faire à la maison</a></li>
+  <li><a href="#objectifs" id="toc-objectifs" class="nav-link" data-scroll-target="#objectifs">Objectifs</a></li>
+  <li><a href="#création-des-dépôts" id="toc-création-des-dépôts" class="nav-link" data-scroll-target="#création-des-dépôts"><span class="header-section-number">1</span> Création des dépôts</a>
   <ul class="collapse">
-  <li><a href="#importez-le-code-du-tp" id="toc-importez-le-code-du-tp" class="nav-link" data-scroll-target="#importez-le-code-du-tp"><span class="header-section-number">1.1</span> Importez le code du TP</a></li>
-  <li><a href="#ce-que-vous-allez-coder" id="toc-ce-que-vous-allez-coder" class="nav-link" data-scroll-target="#ce-que-vous-allez-coder"><span class="header-section-number">1.2</span> Ce que vous allez coder</a></li>
+  <li><a href="#le-dépôt-distant" id="toc-le-dépôt-distant" class="nav-link" data-scroll-target="#le-dépôt-distant"><span class="header-section-number">1.1</span> Le dépôt distant</a></li>
+  <li><a href="#les-dépôts-locaux" id="toc-les-dépôts-locaux" class="nav-link" data-scroll-target="#les-dépôts-locaux"><span class="header-section-number">1.2</span> Les dépôts locaux</a></li>
   </ul></li>
-  <li><a href="#modélisation-et-implémentation" id="toc-modélisation-et-implémentation" class="nav-link" data-scroll-target="#modélisation-et-implémentation"><span class="header-section-number">2</span> Modélisation et implémentation</a>
+  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code"><span class="header-section-number">2</span> Visual Studio Code</a>
   <ul class="collapse">
-  <li><a href="#première-approche-le-ifelifelse" id="toc-première-approche-le-ifelifelse" class="nav-link" data-scroll-target="#première-approche-le-ifelifelse"><span class="header-section-number">2.1</span> Première approche : le « <code>if/elif/else</code> » <span class="emoji" data-emoji="skull">💀</span></a></li>
-  <li><a href="#la-puissance-de-la-poo" id="toc-la-puissance-de-la-poo" class="nav-link" data-scroll-target="#la-puissance-de-la-poo"><span class="header-section-number">2.2</span> La puissance de la POO</a></li>
-  <li><a href="#testez-votre-code" id="toc-testez-votre-code" class="nav-link" data-scroll-target="#testez-votre-code"><span class="header-section-number">2.3</span> Testez votre code</a></li>
+  <li><a href="#ouvrir-le-dépôt" id="toc-ouvrir-le-dépôt" class="nav-link" data-scroll-target="#ouvrir-le-dépôt"><span class="header-section-number">2.1</span> Ouvrir le dépôt</a></li>
+  <li><a href="#contenu-du-dépôt" id="toc-contenu-du-dépôt" class="nav-link" data-scroll-target="#contenu-du-dépôt"><span class="header-section-number">2.2</span> Contenu du dépôt</a></li>
+  <li><a href="#la-config-vs-code" id="toc-la-config-vs-code" class="nav-link" data-scroll-target="#la-config-vs-code"><span class="header-section-number">2.3</span> La config VS Code</a></li>
   </ul></li>
-  <li><a href="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" id="toc-lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="nav-link" data-scroll-target="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">3</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</a>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">3</span> Git</a>
   <ul class="collapse">
-  <li><a href="#attaques-à-dégâts-fixes" id="toc-attaques-à-dégâts-fixes" class="nav-link" data-scroll-target="#attaques-à-dégâts-fixes"><span class="header-section-number">3.1</span> Attaques à dégâts fixes</a></li>
-  <li><a href="#attaques-à-dégâts-variables" id="toc-attaques-à-dégâts-variables" class="nav-link" data-scroll-target="#attaques-à-dégâts-variables"><span class="header-section-number">3.2</span> Attaques à dégâts variables</a></li>
+  <li><a href="#routine-git" id="toc-routine-git" class="nav-link" data-scroll-target="#routine-git"><span class="header-section-number">3.1</span> Routine Git</a></li>
+  <li><a href="#résoudre-un-conflit" id="toc-résoudre-un-conflit" class="nav-link" data-scroll-target="#résoudre-un-conflit"><span class="header-section-number">3.2</span> Résoudre un conflit</a></li>
   </ul></li>
-  <li><a href="#architecture-finale-bonus-si-vous-avez-le-temps" id="toc-architecture-finale-bonus-si-vous-avez-le-temps" class="nav-link" data-scroll-target="#architecture-finale-bonus-si-vous-avez-le-temps"><span class="header-section-number">4</span> Architecture finale (bonus, si vous avez le temps)</a></li>
+  <li><a href="#python-et-poo" id="toc-python-et-poo" class="nav-link" data-scroll-target="#python-et-poo"><span class="header-section-number">4</span> Python et POO</a>
+  <ul class="collapse">
+  <li><a href="#ce-que-vous-allez-coder" id="toc-ce-que-vous-allez-coder" class="nav-link" data-scroll-target="#ce-que-vous-allez-coder"><span class="header-section-number">4.1</span> Ce que vous allez coder</a></li>
+  <li><a href="#importez-le-code-du-tp" id="toc-importez-le-code-du-tp" class="nav-link" data-scroll-target="#importez-le-code-du-tp"><span class="header-section-number">4.2</span> Importez le code du TP</a></li>
+  </ul></li>
+  <li><a href="#modélisation-et-implémentation" id="toc-modélisation-et-implémentation" class="nav-link" data-scroll-target="#modélisation-et-implémentation"><span class="header-section-number">5</span> Modélisation et implémentation</a>
+  <ul class="collapse">
+  <li><a href="#première-approche-le-ifelifelse" id="toc-première-approche-le-ifelifelse" class="nav-link" data-scroll-target="#première-approche-le-ifelifelse"><span class="header-section-number">5.1</span> Première approche : le « <code>if/elif/else</code> » <span class="emoji" data-emoji="skull">💀</span></a></li>
+  <li><a href="#la-puissance-de-la-poo" id="toc-la-puissance-de-la-poo" class="nav-link" data-scroll-target="#la-puissance-de-la-poo"><span class="header-section-number">5.2</span> La puissance de la POO</a></li>
+  <li><a href="#testez-votre-code" id="toc-testez-votre-code" class="nav-link" data-scroll-target="#testez-votre-code"><span class="header-section-number">5.3</span> Testez votre code</a></li>
+  </ul></li>
+  <li><a href="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" id="toc-lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="nav-link" data-scroll-target="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">6</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</a>
+  <ul class="collapse">
+  <li><a href="#attaques-à-dégâts-fixes" id="toc-attaques-à-dégâts-fixes" class="nav-link" data-scroll-target="#attaques-à-dégâts-fixes"><span class="header-section-number">6.1</span> Attaques à dégâts fixes</a></li>
+  <li><a href="#attaques-à-dégâts-variables" id="toc-attaques-à-dégâts-variables" class="nav-link" data-scroll-target="#attaques-à-dégâts-variables"><span class="header-section-number">6.2</span> Attaques à dégâts variables</a></li>
+  </ul></li>
+  <li><a href="#architecture-finale-bonus-si-vous-avez-le-temps" id="toc-architecture-finale-bonus-si-vous-avez-le-temps" class="nav-link" data-scroll-target="#architecture-finale-bonus-si-vous-avez-le-temps"><span class="header-section-number">7</span> Architecture finale (bonus, si vous avez le temps)</a></li>
   </ul>
 </nav>
 </nav>
@@ -282,7 +299,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Retour sur la POO, objets métier et patron de conception <em>strategy</em></h1>
+<h1 class="title">POO, Git et Tests Unitaires</h1>
 </div>
 
 <div>
@@ -310,14 +327,511 @@ window.Quarto = {
 </header>
 
 
-<section id="avant-de-commencer" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les TP sont prévus pour être réalisés en étant connecté à votre <u><strong>VM ENSAI</strong></u>, soit depuis les clients légers des salles info, soit via <a href="https://view.ensai.fr/" target="_blank">https://view.ensai.fr/</a>. Vous y disposez de tous les outils nécessaires :</p>
+<ul>
+<li><code>Python 3.10</code> : la version de Python installée à l’ENSAI
+<ul>
+<li>ainsi que les packages nécessaires</li>
+</ul></li>
+<li><code>Visual Studio Code</code> : votre éditeur de code</li>
+<li><code>Git</code> : pour gérer vos dépôts</li>
+<li><code>PostgreSQL</code> : une base de données
+<ul>
+<li><code>DBeaver</code> : pour consulter, modifier cette base de données</li>
+</ul></li>
+</ul>
+<p>À moins que vous ne maîtrisiez des outils tels <a href="https://www.docker.com/" target="_blank">Docker</a> pour créer votre base de données, il est fortement déconseillé de coder sur votre propre machine que ce soit en TP ou en projet. Vous allez perdre un temps considérable en installation et configuration. Et même si vous êtes très très doués certaines parties ne pourront de toute manière pas fonctionner.</p>
+</div>
+</div>
+<section id="à-faire-à-la-maison" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="à-faire-à-la-maison">À faire à la maison</h2>
+<p>Un prérequis de ce TP est que votre configuration <code>Git</code> soit opérationnelle.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous avez besoin de vous rafrîchir la mémoire sur Git, suivez ce <a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html" target="_blank">lien</a>.</p>
+</div>
+</div>
+<section id="compte-github" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="compte-github">Compte GitHub</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Créez un compte <a href="https://github.com/" target="_blank">GitHub</a>, si vous n’en avez pas déjà un</label></li>
+</ul>
+</section>
+<section id="config-git" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="config-git">Config Git</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez Git Bash</label></li>
+<li><label><input type="checkbox">Exécutez cette commande : <code>git config -l</code></label></li>
+</ul>
+<p>Si les valeurs <em>user.name</em> et <em>user.email</em> sont bien renseignées, tout est ok.</p>
+<p>Si ce n’est pas le cas, exécutez les <a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration" target="_blank">5 commandes git config</a>.</p>
+</section>
+<section id="clé-ssh" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="clé-ssh">Clé SSH</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Exécutez cette commande : <code>cat ~/.ssh/id_rsa.pub</code> (toujours dans Git Bash)</label></li>
+</ul>
+<p>Si le fichier existe et que cela renvoie un réultat commençant par <em>ssh-rsa</em>, cela signifie que vous avez bien défini une clé SSH sur votre machine.</p>
+<p>Dans le cas contraire, <a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#cr%C3%A9ation-dune-cl%C3%A9-ssh" target="_blank">créez une clé SSH</a></p>
+<p>Nous allons maintenant vérifier si vous avez bien déclaré cette clé publique sur GitHub, ou sinon l’ajouter</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Copiez la clé publique : <code>cat ~/.ssh/id_rsa.pub | clip</code></label></li>
+<li><label><input type="checkbox">Allez sur la <a href="https://github.com/settings/ssh/new">page pour déclarer une nouvelle clé SSH</a> (Settings &gt; SSH and GPG keys &gt; New)</label>
+<ul>
+<li>Title : VM ENSAI</li>
+<li>Key : Collez votre clé</li>
+<li><span class="green-button">Add SSH key</span></li>
+</ul></li>
+</ul>
+<p>Soit votre clé publique est maintenant déclarée à GitHub, ou au pire, GitHub vous dira qu’il connait déjà cette clé.</p>
+</section>
+</section>
+<section id="objectifs" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objectifs">Objectifs</h2>
+<p>Les objectifs de ce premier TP sont les suivants :</p>
+<ul>
+<li>Utilisation de <em>Git</em></li>
+<li>Remise en jambe <em>Python</em> et <em>POO</em></li>
+<li>Écriture de <em>Tests Unitaires</em> avec <em>pytest</em></li>
+</ul>
 <p>Ce TP mêle explications et phases de code.</p>
 <p>Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.</p>
-<hr>
 </section>
-<section id="introduction-et-mise-en-place" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction-et-mise-en-place"><span class="header-section-number">1</span> Introduction et mise en place</h2>
+<section id="création-des-dépôts" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="création-des-dépôts"><span class="header-section-number">1</span> Création des dépôts</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour ce premier TP, vous allez <u><strong>travailler avec votre équipe projet</strong></u> sur un seul et même dépôt distant.</p>
+<p>Un membre de l’équipe va créer un dépôt sur GitHub et ensuite tous les membres (le créateur du dépôt GitHub inclus) vont créer leurs dépôt locaux en clonant ce dépôt distant.</p>
+</div>
+</div>
+<section id="le-dépôt-distant" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="le-dépôt-distant"><span class="header-section-number">1.1</span> Le dépôt distant</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un seul membre de l’équipe crée ce dépôt distant.</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Connectez-vous sur <a href="https://github.com/" target="_blank">GitHub</a></label></li>
+<li><label><input type="checkbox">Créez un <em>fork</em> du dépôt <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP" target="_blank">ENSAI-2A-complement-info-TP</a></label>
+<ul>
+<li>Un fork est une copie d’un dépôt, permettant à un utilisateur de développer indépendamment sans affecter l’original</li>
+</ul></li>
+<li><label><input type="checkbox">Ajoutez les membres de votre équipe</label>
+<ul>
+<li>Sur la page du dépôt &gt; <span class="emoji" data-emoji="gear">⚙️</span> Settings &gt; Collaborators &gt; <span class="green-button">Add people</span></li>
+</ul></li>
+<li><label><input type="checkbox">Envoyez à vos camarades, l’adresse du dépôt distant</label></li>
+</ul>
+</section>
+<section id="les-dépôts-locaux" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="les-dépôts-locaux"><span class="header-section-number">1.2</span> Les dépôts locaux</h3>
+<p>Maintenant, chaque membre de l’équipe va créer sur sa propre machine, son clone du dépôt.</p>
+<p>Commençons par créer un dossier pour ranger votre dépôt local :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez <em>Git Bash</em></label></li>
+<li><label><input type="checkbox">Exécutez cette commande : <code>mkdir -p /p/Cours2A/UE3_Complements_info/TP1 &amp;&amp; cd $_</code></label>
+<ul>
+<li>elle crée l’arborescence demandée (<em>mkdir</em>)</li>
+<li>puis elle vous positionne dans ce dossier (<em>cd</em>)</li>
+</ul></li>
+<li><label><input type="checkbox">Clonez le dépôt distant avec SSH</label>
+<ul>
+<li>Lorsque vous êtes sur la page GitHub du dépôt, cliquez sur <span class="green-button">Code</span>, puis sur l’onglet SSH</li>
+<li>Copiez l’url qui commence par <code>git@github.com...</code></li>
+<li>Dans Git Bash : <code>git clone &lt;url&gt;</code> (en remplaçant &lt;url&gt;)</li>
+</ul></li>
+</ul>
+<p>Votre clone est prêt, vous pouvez vérifier sa présence via l’explorateur Windows (WIN + E, puis allez dans le dossier <code>P:\Cours2A\UE3_Complements_info\TP1</code>).</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Fermez <em>Git Bash</em></label>
+<ul>
+<li>Si tout s’est bien passé</li>
+<li>Vous allez retrouver ensuite le même Git Bash, qui est intégré dans VS Code</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="visual-studio-code" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="visual-studio-code"><span class="header-section-number">2</span> Visual Studio Code</h2>
+<section id="ouvrir-le-dépôt" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="ouvrir-le-dépôt"><span class="header-section-number">2.1</span> Ouvrir le dépôt</h3>
+<p>Un dépôt est un ensemble de dossiers et de fichiers. Pour consulter et éditer ces fichiers, vous allez utiliser <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/VSCode.html" target="_blank">Visual Studio Code</a>, un éditeur très populaire.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Au lieu de VS Code, vous pouvez tout à fait ouvrir vos fichiers avec le <em>bloc-notes</em>, mais vous vous rendrez rapidement compte que c’est beaucoup moins pratique.</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez Visual Studio Code</label></li>
+<li><label><input type="checkbox">Ouvrez votre dépôt local</label>
+<ul>
+<li>File &gt; Open Folder</li>
+<li>Allez dans le dossier <code>P:\Cours2A\UE3_Complements_info\TP1</code></li>
+<li>Cliquez une seule fois sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP, puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Vérifiez que le dossier parent dans l’Explorer VS Code est <em>ENSAI-2A-complement-info-TP</em></label>
+<ul>
+<li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
+<li><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="contenu-du-dépôt" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="contenu-du-dépôt"><span class="header-section-number">2.2</span> Contenu du dépôt</h3>
+<p>Ce dépôt contient les éléments suivants :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Élément</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.vscode</code></td>
+<td>Contient les paramètres VS Code pour ce projet</td>
+</tr>
+<tr class="even">
+<td><code>src</code></td>
+<td>Dossier contenant les fichiers Python rangés dans une arborescence respectant la programmation en couches</td>
+</tr>
+<tr class="odd">
+<td><code>.gitignore</code></td>
+<td>Liste des fichiers à ne pas versionner avec git</td>
+</tr>
+<tr class="even">
+<td><code>LICENSE</code></td>
+<td>Définit les droits d’utilisation du dépôt</td>
+</tr>
+<tr class="odd">
+<td><code>README.md</code></td>
+<td>Contient des informations utiles pour présenter, installer et utiliser l’application</td>
+</tr>
+<tr class="even">
+<td><code>requirements.txt</code></td>
+<td>Liste les packages Python nécessaires</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="la-config-vs-code" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="la-config-vs-code"><span class="header-section-number">2.3</span> La config VS Code</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>VS Code est hautement paramétrable, aussi bien au niveau User qu’au niveau Workspace (i.e.&nbsp;considérons que Workspace = dépôt).</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez le fichier <code>.vscode/settings.json</code></label></li>
+</ul>
+<p>Ce fichier contient du paramétrage pour le dépôt, par exemple :</p>
+<ul>
+<li>Le formattage automatique lorsque vous sauvegardez un fichier Python
+<ul>
+<li>Le formateur utilisé est <a href="https://black.readthedocs.io/" target="_blank">Black</a></li>
+<li>La taille des lignes est limitée à 100 caractères</li>
+<li>Les tabulations sont remplacées par 4 espaces</li>
+</ul></li>
+<li>Le dossier source se nomme <code>src</code>
+<ul>
+<li>Pour importer des modules, ce dossier <em>src</em> sera la racine</li>
+</ul></li>
+<li>le terminal par défaut est <em>Git Bash</em></li>
+</ul>
+</section>
+</section>
+<section id="git" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="git"><span class="header-section-number">3</span> Git</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vous allez maintenant faire quelques manipulations basiques avec Git :</p>
+<ul>
+<li>Ajouter des fichiers au dépôts</li>
+<li>Créer des points de sauvegarde</li>
+<li>Envoyer vos modifications locales vers les dépôts distant</li>
+<li>Mettre à jour votre dépôt local</li>
+</ul>
+</div>
+</div>
+<section id="routine-git" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="routine-git"><span class="header-section-number">3.1</span> Routine Git</h3>
+<ul class="task-list">
+<li><p><label><input type="checkbox">Ouvrez le <em>Git Bash</em> intégré dans VS Code</label></p>
+<ul>
+<li>Terminal &gt; New Terminal (ou CTRL + ù)</li>
+</ul></li>
+<li><p><label><input type="checkbox">Lancez le programme principal pour vérifier que tout fonctionne bien</label></p>
+<ul>
+<li><code>python src/__main__.py</code></li>
+</ul></li>
+<li><p><label><input type="checkbox">Créez un nouveau fichier dans le dossier <em>src</em> en complétant avec votre propre prénom et collez ce code</label></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>&lt;prenom&gt;.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="<prenom>.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> <span class="dv">0</span>, <span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(b):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">" "</span> <span class="op">*</span> a, end<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    a <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Bonjour &lt;prenom&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><label><input type="checkbox">Dans Git Bash, utilisez les commandes <em>status</em>, <em>add</em>, <em>commit</em>, <em>push</em> et <em>pull</em> pour envoyer vos modifications vers le dépôt distant</label></p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Aide">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aide
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push" target="_blank">L’enchainement des commandes Git</a> devra devenir un automatisme.</p>
+<p>Si lors du <em>push</em>, vous avez ce message, c’est qu’il faut commencer par <em>pull</em>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>To https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Merge branch 'main' of https://github.com/ludo2ne/ENSAI-2A-complement-info-TP</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> ! [rejected]        main -&gt; main (fetch first)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>error: failed to push some refs to 'https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git'</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>hint: Updates were rejected because the remote contains work that you do</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>hint: not have locally. This is usually caused by another repository pushing</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>hint: to the same ref. You may want to first merge the remote changes (e.g.,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>hint: 'git pull') before pushing again.</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>hint: See the 'Note about fast-forwards' in 'git push --help' for details.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="résoudre-un-conflit" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="résoudre-un-conflit"><span class="header-section-number">3.2</span> Résoudre un conflit</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Pour tous les fichier <code>&lt;prenom.py&gt;</code>, <u>un seul membre</u> de l’équipe commence par modifier le prenom dans le code</label>
+<ul>
+<li>ne pas modifier les noms des fichiers, uniquement le code à l’intérieur
+<ul>
+<li><code>print("Bonjour &lt;prenom&gt;")</code> <span class="emoji" data-emoji="arrow_right">➡️</span> <code>print("Bonjour Marie-&lt;prenom&gt;")</code></li>
+</ul></li>
+<li>Et il <em>add</em>, <em>commit</em> et <em>push</em></li>
+</ul></li>
+<li><label><input type="checkbox">Ensuite les autres membres modifient chacun leur propre fichier</label>
+<ul>
+<li><code>print("Bonjour &lt;prenom&gt;")</code> <span class="emoji" data-emoji="arrow_right">➡️</span> <code>print("Bonjour Anne-&lt;prenom&gt;")</code></li>
+<li>Et ils <em>add</em>, <em>commit</em> <em>pull</em> et <em>push</em></li>
+</ul></li>
+</ul>
+<p>Normalement un conflit survient lors du <em>pull</em>. En effet il y a un conflit de version</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Version</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Version originale</td>
+<td><code>print("Bonjour &lt;prenom&gt;")</code></td>
+</tr>
+<tr class="even">
+<td>Votre modification</td>
+<td><code>print("Bonjour Anne-&lt;prenom&gt;")</code></td>
+</tr>
+<tr class="odd">
+<td>Version sur le dépôt distant</td>
+<td><code>print("Bonjour Marie-&lt;prenom&gt;")</code></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour Anne-&lt;prenom&gt;"</span>)          <span class="co"># Votre modification - current change</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">=======</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour Marie-&lt;prenom&gt;"</span>)         <span class="co"># La modification du dépôt distant - incoming change</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul class="task-list">
+<li><label><input type="checkbox">Vous choisissez d’imposer votre version</label>
+<ul>
+<li>Soit en cliquant sur *Accept Current Change</li>
+<li>Soit en supprimant <code>print("Bonjour Marie-&lt;prenom&gt;")</code>, ainsi que les <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> et <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></li>
+</ul></li>
+<li><label><input type="checkbox"><em>add</em>, <em>commit</em> <em>pull</em> et <em>push</em></label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Avoir un conflit, ce n’est pas grave ! Avoir un conflit, ce n’est pas grave ! Avoir un conflit, ce n’est pas grave !</p>
+<p>Conflit ≠ Erreur</p>
+<p>Cela arrive simplement quand Git rencontre 2 versions et il n’a pas de <span class="emoji" data-emoji="crystal_ball">🔮</span>, ni de <span class="emoji" data-emoji="game_die">🎲</span> pour choisir laquelle est la bonne.</p>
+<p>Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant que possible de travailler sur les mêmes fichiers en même temps.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="python-et-poo" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="python-et-poo"><span class="header-section-number">4</span> Python et POO</h2>
+<section id="ce-que-vous-allez-coder" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="ce-que-vous-allez-coder"><span class="header-section-number">4.1</span> Ce que vous allez coder</h3>
+<p>Notre jeu s’inspirera de <em>Pokémon Unite</em> (aucune connaissance du jeu, ni de <em>Pokémon</em> n’est nécessaire).</p>
+<p>Pour résumer en quelques mots, il y aura des <em>Pokemons</em> qui s’affronteront lors de <em>Battles</em> en lançant des <em>Attacks</em>. Voici les principaux objets que vous allez manipuler :</p>
+<ul>
+<li><code>Pokemon</code> : qui ont diverses caractéristiques et statistiques
+<ul>
+<li>un nom</li>
+<li>un niveau</li>
+<li><a href="https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon" target="_blank">un type</a>
+<ul>
+<li>ici les types sont : Attaquant, Défenseur, Polyvalant, Soutient et Rapide (et non pas : Feu, Eau, Plante…)</li>
+</ul></li>
+<li>des statistiques contenues dans un objet <em>Statistic</em> défini ci-dessous</li>
+</ul></li>
+<li><code>Statistic</code> : pour éviter de surcharger la classe <code>Pokemon</code>, leurs stats sont stockées dans un objet de la classe <code>Statistic</code>
+<ul>
+<li>hp : health points</li>
+<li>attack, defense, speed… : qui serviront déterminer la force de ses attaques</li>
+</ul></li>
+<li><code>Attack</code> : différents types d’attaques dont disposeront les Pokémons (partie 3)</li>
+<li><code>Battle</code> : servira à faire s’affronter 2 Pokémons pour déterminer l’issue du combat (partie 4)</li>
+</ul>
+<p>Et voici un diagramme de classe très simplifié des classes principales à coder lors de ces quatres TP.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+  class Pokemon {
+    # _name : str
+    # _level : int
+    # _type : str
+    # _current_stat : Statistic
+    + get_pokemon_attack_coef() float
+  }
+ 
+  class Statistic {
+    - __hp : int
+    - __attack : int
+    - __defense : int
+    - __sp_atk : int
+    - __sp_def : int
+    - __speed : int
+  }
+
+  class Attack{
+    # _name : str
+    # _power : int
+    # _description : str
+    + compute_damage(Pokemon, Pokemon) int
+  }
+
+  class Battle{
+    - first_monstie : Pokemon
+    - second_monstie : Pokemon
+    - winner : Pokemon
+  }
+
+  Pokemon --&gt; Statistic : possesses
+  Pokemon --&gt; Attack : uses
+  Battle ..&gt;"2" Pokemon : call
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<hr>
 <p>Vous allez créer les <strong>objets métier</strong> pour un jeu <em>Pokémon</em>.<br>
 Un objet métier représente dans votre code quelque chose de concret, qui modèlise la réalité.</p>
 <blockquote class="blockquote">
@@ -325,8 +839,9 @@ Un objet métier représente dans votre code quelque chose de concret, qui modè
 Dans une application de e-commerce par exemple, les articles et comptes sont des objets métier. Ils permettent de séparer les données de l’application et les traitements. Cela conduit à avoir des objets contenant essentiellement des attributs et très peu de méthodes autre que des <em>getter</em> et <em>setter</em>.</p>
 </blockquote>
 <p>Ce TP sera réalisé avec l’IDE (<strong>I</strong>ntegred <strong>D</strong>evelopment <strong>E</strong>nvironment) <code>Visual Studio Code</code>.</p>
-<section id="importez-le-code-du-tp" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="importez-le-code-du-tp"><span class="header-section-number">1.1</span> Importez le code du TP</h3>
+</section>
+<section id="importez-le-code-du-tp" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="importez-le-code-du-tp"><span class="header-section-number">4.2</span> Importez le code du TP</h3>
 <ul>
 <li>Ouvrez <strong>Git Bash</strong></li>
 <li>Créez un dossier pour stocker le code du TP
@@ -366,28 +881,10 @@ git commit -am "&lt;message&gt;"
 # changer de branche
 git checkout &lt;nouvelle_branche&gt;      # dans le terminal, la branche courante est indiquéée entre ()
 git checkout -                       # pour retourner à la branche précédente</code></pre>
-<hr>
-</section>
-<section id="ce-que-vous-allez-coder" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="ce-que-vous-allez-coder"><span class="header-section-number">1.2</span> Ce que vous allez coder</h3>
-<p>Notre jeu s’inspirera de <em>Pokémon Unite</em> (aucune connaissance du jeu, ni de <em>Pokémon</em> n’est nécessaire).<br>
-Pour résumer en quelques mots, voici les objets que nous allons manipuler :</p>
-<ul>
-<li><code>Pokemon</code> : qui ont diverses caractéristiques et statistiques
-<ul>
-<li>hp : health points</li>
-<li>attack, defense, speed… : qui serviront déterminer la force de ses attaques</li>
-<li>un type : <a href="https://www.ationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon">Attacker, Defender, All Rounder, Speedster, Supporter</a></li>
-</ul></li>
-<li><code>Statistic</code> : pour éviter de surcharger la classe <code>Pokemon</code>, de nombreuses stats sont stockées dans un objet de la classe <code>Statistic</code></li>
-<li><code>Attack</code> : différents types d’attaques dont disposeront les Pokémons (partie 3)</li>
-<li><code>BattleService</code> : servira à faire s’affronter 2 Pokémons pour déterminer l’issue du combat (partie 4)</li>
-</ul>
-<hr>
 </section>
 </section>
-<section id="modélisation-et-implémentation" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="modélisation-et-implémentation"><span class="header-section-number">2</span> Modélisation et implémentation</h2>
+<section id="modélisation-et-implémentation" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="modélisation-et-implémentation"><span class="header-section-number">5</span> Modélisation et implémentation</h2>
 <blockquote class="blockquote">
 <p>Dans un premier temps, nous allons coder uniquement les <code>Pokemons</code> (la classe <code>Statistic</code> est déjà codée). En fonction de son type, son coefficient d’attaque dépendra de diverses statistiques.</p>
 </blockquote>
@@ -424,8 +921,8 @@ Pour résumer en quelques mots, voici les objets que nous allons manipuler :</p>
 <li>des classes <strong>les plus disjointes possible</strong> (<em>faible couplage</em>) pour qu’une modification dans une classe ne nous demande pas de modifier les autres</li>
 <li>tout en essayant d’avoir <strong>les tâches réalisées par une seule classe les plus liées possible</strong> (<em>forte cohésion</em>).</li>
 </ul>
-<section id="première-approche-le-ifelifelse" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="première-approche-le-ifelifelse"><span class="header-section-number">2.1</span> Première approche : le « <code>if/elif/else</code> » <span class="emoji" data-emoji="skull">💀</span></h3>
+<section id="première-approche-le-ifelifelse" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="première-approche-le-ifelifelse"><span class="header-section-number">5.1</span> Première approche : le « <code>if/elif/else</code> » <span class="emoji" data-emoji="skull">💀</span></h3>
 <p>Ouvrez le code, et observez la classe <code>Pokemon</code>. Nous nous interessons à la méthode <code>get_pokemon_attack_coef()</code> qui va servir à déterminer la puissance de l’attaque en fonction du type de <em>Pokémon</em>.</p>
 <blockquote class="blockquote">
 <ul class="task-list">
@@ -434,8 +931,8 @@ Pour résumer en quelques mots, voici les objets que nous allons manipuler :</p>
 </blockquote>
 <hr>
 </section>
-<section id="la-puissance-de-la-poo" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="la-puissance-de-la-poo"><span class="header-section-number">2.2</span> La puissance de la POO</h3>
+<section id="la-puissance-de-la-poo" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="la-puissance-de-la-poo"><span class="header-section-number">5.2</span> La puissance de la POO</h3>
 <p>Au lieu d’externaliser les comportements de nos <em>Pokémons</em>, nous allons mettre tous leurs comportements spécifiques dans des classes filles d’une super classe <code>Pokemon</code>. Ceci est rendu possible grâce à deux propriétés des objets en POO :</p>
 <ul>
 <li><strong>héritage</strong> : il est possible de spécialiser une classe existante en modifiant son comportement, ou en ajoutant de nouveaux</li>
@@ -519,30 +1016,30 @@ Pour résumer en quelques mots, voici les objets que nous allons manipuler :</p>
    ┗ 📜battle_service.py</code></pre>
 <p>Pour faire une classe abstraite, utilisez le package <code>abc</code>.<br>
 Voici, pour vous inspirer, un exemple de ce qui est attendu :</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fichier abstract_personnage.py</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractPersonnage(ABC):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, phrase_attaque:<span class="bu">str</span>, phrase_defense:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span> <span class="co"># décorateur qui définit une méthode comme abstraite</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="cf">pass</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fichier magicien.py</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abstract_personnage <span class="im">import</span> AbstractPersonnage</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Lance une boule de feu"</span>,<span class="st">"Utilise une barrière magique"</span> )</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># code pour calculer les dégâts</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fichier abstract_personnage.py</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractPersonnage(ABC):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, phrase_attaque:<span class="bu">str</span>, phrase_defense:<span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span> <span class="co"># décorateur qui définit une méthode comme abstraite</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>     <span class="cf">pass</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fichier magicien.py</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abstract_personnage <span class="im">import</span> AbstractPersonnage</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Lance une boule de feu"</span>,<span class="st">"Utilise une barrière magique"</span> )</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># code pour calculer les dégâts</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="testez-votre-code" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="testez-votre-code"><span class="header-section-number">2.3</span> Testez votre code</h3>
+<section id="testez-votre-code" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="testez-votre-code"><span class="header-section-number">5.3</span> Testez votre code</h3>
 <blockquote class="blockquote">
 <ul class="task-list">
 <li><label><input type="checkbox"><strong>Question 3</strong> : Testez la méthode <code>get_pokemon_attack_coef()</code> pour les classes <code>AttackerPokemon</code> et <code>AllRounderPokemon</code>.<br>
@@ -609,8 +1106,8 @@ Pour lancer tous les tests du projet, exécutez dans le terminal : <code>python 
 <hr>
 </section>
 </section>
-<section id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">3</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</h2>
+<section id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">6</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</h2>
 <p>Maintenant que nos Pokémons sont faits, nous allons y ajouter les attaques.</p>
 <p>Notre système va devoir respecter certaines contraintes :</p>
 <ul>
@@ -626,8 +1123,8 @@ Pour lancer tous les tests du projet, exécutez dans le terminal : <code>python 
 <li>Un pokémon peut avoir plusieurs attaques et le type de l’attaque doit être transparent pour le pokémon.</li>
 </ul>
 <hr>
-<section id="attaques-à-dégâts-fixes" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="attaques-à-dégâts-fixes"><span class="header-section-number">3.1</span> Attaques à dégâts fixes</h3>
+<section id="attaques-à-dégâts-fixes" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="attaques-à-dégâts-fixes"><span class="header-section-number">6.1</span> Attaques à dégâts fixes</h3>
 <p>Nous allons commencer par les attaques à dégâts fixes. Comme il y aura un autre type d’attaques, toutes les attaques hériterons de la classe abstraite <code>AbstractAttack</code> déjà créée. Cette classe possède la méthode abstraite <code>compute_damage()</code> qui devra être implémentée dans les classes filles.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -663,8 +1160,8 @@ Créez des tests pour vérifier que tout fonctionne correctement.</label></li>
 </blockquote>
 <hr>
 </section>
-<section id="attaques-à-dégâts-variables" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="attaques-à-dégâts-variables"><span class="header-section-number">3.2</span> Attaques à dégâts variables</h3>
+<section id="attaques-à-dégâts-variables" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="attaques-à-dégâts-variables"><span class="header-section-number">6.2</span> Attaques à dégâts variables</h3>
 <p>Nous allons ensuite coder les attaques à dégâts variables. Elles utilisent la formule suivante :</p>
 <pre class="math"><code>Damage = \big ( \frac{(\frac{2*Level}{5}+2)* Power *Att}{Def*50} +2\big) *random* other\_multipliers</code></pre>
 <p>avec :</p>
@@ -735,8 +1232,8 @@ Créez des tests pour vérifier que tout fonctionne correctement.</label></li>
 <hr>
 </section>
 </section>
-<section id="architecture-finale-bonus-si-vous-avez-le-temps" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="architecture-finale-bonus-si-vous-avez-le-temps"><span class="header-section-number">4</span> Architecture finale (bonus, si vous avez le temps)</h2>
+<section id="architecture-finale-bonus-si-vous-avez-le-temps" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="architecture-finale-bonus-si-vous-avez-le-temps"><span class="header-section-number">7</span> Architecture finale (bonus, si vous avez le temps)</h2>
 <p>Nous allons maintenant rattacher les bouts pour créer notre architecture finale :</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
