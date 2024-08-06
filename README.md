@@ -45,5 +45,8 @@ Pour générer les pages :
 
 ## TP
 
-- [ ] Commencer par Git
+- [ ] TP1 : Git, VSCode, Logs et Template
+- [ ] TP2 : Refresh Python, POO, TU et Doc
+- [ ] TP2 : WS
+- [ ] TP3 : DAO
 - [ ] Refaire les branches
