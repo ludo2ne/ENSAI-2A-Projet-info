@@ -239,7 +239,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#résoudre-un-conflit" id="toc-résoudre-un-conflit" class="nav-link" data-scroll-target="#résoudre-un-conflit"><span class="header-section-number">3.2</span> Résoudre un conflit</a></li>
   <li><a href="#créez-votre-répo-projet" id="toc-créez-votre-répo-projet" class="nav-link" data-scroll-target="#créez-votre-répo-projet"><span class="header-section-number">3.3</span> Créez votre répo projet</a></li>
   </ul></li>
-  <li><a href="#un-exemple-dapplication" id="toc-un-exemple-dapplication" class="nav-link" data-scroll-target="#un-exemple-dapplication"><span class="header-section-number">4</span> Un exemple d’application</a></li>
+  <li><a href="#un-exemple-dapplication" id="toc-un-exemple-dapplication" class="nav-link" data-scroll-target="#un-exemple-dapplication"><span class="header-section-number">4</span> Un exemple d’application</a>
+  <ul class="collapse">
+  <li><a href="#une-application-de-menu" id="toc-une-application-de-menu" class="nav-link" data-scroll-target="#une-application-de-menu"><span class="header-section-number">4.1</span> Une application de Menu</a></li>
+  <li><a href="#un-webservice" id="toc-un-webservice" class="nav-link" data-scroll-target="#un-webservice"><span class="header-section-number">4.2</span> Un webservice</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -717,14 +721,72 @@ Important
 </section>
 <section id="un-exemple-dapplication" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="un-exemple-dapplication"><span class="header-section-number">4</span> Un exemple d’application</h2>
+<p>Pour comprendre comment est construit une application, vous allez étudier un exemple simple</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Cloner le dépôt ci-dessous</label>
 <ul>
-<li>Template</li>
-<li>Vues</li>
-<li>CICD</li>
-<li>Logs</li>
+<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-projet-info-template</code></li>
+</ul></li>
+<li><label><input type="checkbox">Suivez les instructions du README pour installer et lancer l’application</label>
+<ul>
+<li>Packages à installer</li>
+<li>Variables d’environnement</li>
+</ul></li>
 </ul>
+<p>2 types d’applications peuvent vous être demander en projet :</p>
+<ul>
+<li>une application de Menu
+<ul>
+<li>l’utilisateur navigue dans des menus</li>
+</ul></li>
+<li>un webservice
+<ul>
+<li>l’application expose des endpoints</li>
+<li>l’utilisateur peut interroger ces endpoints</li>
+</ul></li>
+</ul>
+<section id="une-application-de-menu" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="une-application-de-menu"><span class="header-section-number">4.1</span> Une application de Menu</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">lancez le <em><strong>main</strong></em></label></li>
+</ul>
+<p>Vous arrivez sur le menu d’accueil. Le principe d’une application est de vous faire naviguer d’un menu à l’autre tout en effectuant des opérations en arrière plan.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Rechercher le code du menu d’accueil dans la couche <em>view</em></label>
+<ul>
+<li>Si vous observez le code, cette classe ne fait qu’une seule chose : vous rediriger vers une nouvelle vue</li>
+</ul></li>
+<li><label><input type="checkbox">Sélectionnez le choix <code>Ré-initialiser la base de données</code></label>
+<ul>
+<li>Cela permet de créer les tables dans la base de données</li>
+<li>Et d’insérer des données</li>
+<li>Si vous explorez le code, vous verrez que cela exécute les scripts sql du dossier <code>data</code></li>
+</ul></li>
+<li><label><input type="checkbox">Sélectionnez <code>Créer un compte</code> et saisissez les éléments demandés</label>
+<ul>
+<li>Observez le code <em>inscription_vue.py</em> pour voir comment sont vérifiées les saisies</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il existe de nombreuses possibilités pour restreindre l’utilisateur dans ses saisies.</p>
+<p>Il est également possible de créer des règles personnalisées.</p>
+</div>
+</div>
+</section>
+<section id="un-webservice" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="un-webservice"><span class="header-section-number">4.2</span> Un webservice</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
