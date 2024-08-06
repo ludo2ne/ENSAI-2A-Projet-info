@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
+<meta name="description" content="TP 2">
+
+<title>Webservices et formats de données – Projet info 2A</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Projet info 2A</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projet</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projet">    
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
+ <span class="dropdown-text">Présentation pour les tuteurs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation aux élèves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Notice élèves</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cours" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cours</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cours">    
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
+ <span class="dropdown-text">Tests unitaires</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">TP</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp1.html">
+ <span class="dropdown-text">TP 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp2.html">
+ <span class="dropdown-text">TP 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp3.html">
+ <span class="dropdown-text">TP 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp4.html">
+ <span class="dropdown-text">TP 4</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
+  <li><a href="#appeler-un-webservice-à-la-main" id="toc-appeler-un-webservice-à-la-main" class="nav-link" data-scroll-target="#appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</a>
+  <ul class="collapse">
+  <li><a href="#webservices" id="toc-webservices" class="nav-link" data-scroll-target="#webservices"><span class="header-section-number">1.1</span> Webservices</a></li>
+  <li><a href="#découverte-dinsomnia-et-premières-requêtes-get" id="toc-découverte-dinsomnia-et-premières-requêtes-get" class="nav-link" data-scroll-target="#découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes <code>GET</code></a></li>
+  <li><a href="#requêtes-avancées" id="toc-requêtes-avancées" class="nav-link" data-scroll-target="#requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</a></li>
+  <li><a href="#swagger" id="toc-swagger" class="nav-link" data-scroll-target="#swagger"><span class="header-section-number">1.4</span> Swagger</a></li>
+  </ul></li>
+  <li><a href="#appeler-un-webservice-en-python" id="toc-appeler-un-webservice-en-python" class="nav-link" data-scroll-target="#appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en python</a>
+  <ul class="collapse">
+  <li><a href="#la-bibliothèque-requests---comment-ça-fonctionne" id="toc-la-bibliothèque-requests---comment-ça-fonctionne" class="nav-link" data-scroll-target="#la-bibliothèque-requests---comment-ça-fonctionne"><span class="header-section-number">2.1</span> La bibliothèque <code>requests</code> - Comment ça fonctionne</a></li>
+  <li><a href="#mise-à-jour-de-votre-dépôt-git" id="toc-mise-à-jour-de-votre-dépôt-git" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</a></li>
+  <li><a href="#mes-premières-requêtes-en-python" id="toc-mes-premières-requêtes-en-python" class="nav-link" data-scroll-target="#mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</a></li>
+  <li><a href="#les-requêtes-plus-complexes" id="toc-les-requêtes-plus-complexes" class="nav-link" data-scroll-target="#les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</a></li>
+  <li><a href="#requêtes-avancées-en-python" id="toc-requêtes-avancées-en-python" class="nav-link" data-scroll-target="#requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</a></li>
+  </ul></li>
+  <li><a href="#coder-un-webservice-en-python" id="toc-coder-un-webservice-en-python" class="nav-link" data-scroll-target="#coder-un-webservice-en-python"><span class="header-section-number">3</span> Coder un webservice en python</a>
+  <ul class="collapse">
+  <li><a href="#mon-premier-webservice" id="toc-mon-premier-webservice" class="nav-link" data-scroll-target="#mon-premier-webservice"><span class="header-section-number">3.1</span> Mon premier webservice</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Webservices et formats de données</h1>
+</div>
+
+<div>
+  <div class="description">
+    TP 2
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rémi Pépin, Ludovic Deneuville </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="avant-de-commencer" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater, le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. <strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
+<p><span class="emoji" data-emoji="exclamation">❗</span> Il est possible que les copier-coller fonctionnent étrangement (caractère de fin de ligne qui disparaissent, indentation qui change). Faites-y attention !</p>
+<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code. Ces phases sont appelées “<strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on</strong>”. C’est à ce moment là que vous devez faire ce qui est écrit dans le TP. Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales, surtout pour poser des questions.</p>
+</blockquote>
+<p>Dans ce TP vous allez :</p>
+<ul>
+<li>Faire des appels à un webservice à la main avec Insomnia</li>
+<li>Faire des appels à un webservice avec la bibliothèque python <strong>requests</strong></li>
+<li>Découvrir la page swagger d’un webservice</li>
+<li>Manipuler différents formats de données</li>
+<li>Créer un webservice avec le framework python <strong>fastAPI</strong></li>
+</ul>
+</section>
+<section id="appeler-un-webservice-à-la-main" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</h2>
+<p>La première partie de ce TP ne nécessite pas d’écrire du code, mais seulement de faire des requêtes à un webservice en utilisant <strong>Insomnia</strong>.</p>
+<section id="webservices" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="webservices"><span class="header-section-number">1.1</span> Webservices</h3>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="book">📖</span> <strong>Webservice</strong> : le terme webservice est un terme vaste et il serait compliqué d’en donner une définition courte (<a href="https://en.wikipedia.org/wiki/Web_service">article wikipedia</a>). Dans le cadre du projet un webservice désigne une application accessible via le protocole HTTP (<strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol) qui respecte généralement l’architecture REST (* <strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer). Mais il en existe d’autre comme SOAP (<strong>S</strong>imple <strong>O</strong>bjet* <strong>A</strong>ccess <strong>P</strong>rotocol) ou RPC (<strong>R</strong>emote <strong>P</strong>rocedure <strong>C</strong>all)</p>
+</blockquote>
+<p>En d’autres termes, un webservice est une application accessible via le web que l’on va pouvoir <strong>requêter</strong> soit pour obtenir des <strong>ressources</strong>, soit pour <strong>modifier</strong> les ressources accessibles. Un webservice peut seulement avoir pour but d’être une <strong>point d’accès unique et normalisé</strong> à des données (comme une interface à une base de données), mais il peut également être une <strong>manière de contrôler un système d’information</strong> (lancer des travaux, les mettre en attente, récupérer des résultats, etc)</p>
+<p>Les webservices utilisent le protocole HTTP qui est le protocole du web (et pas d’internet). C’est celui que vous utilisez sans le savoir avec votre navigateur web. Requêter un webservice se fait presque comme requêter une page web. Pour cela il vous faut l’adresse de la ressource, son <em>Uniforme Resource Identifier</em>, ou URI (c’est une notion plus générale que les <em>Uniforme Resource Locator</em>, ou URL), une méthode (GET, POST, PUT, DELETE, <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">liste des méthodes</a>), et potentiellement des données.</p>
+</section>
+<section id="découverte-dinsomnia-et-premières-requêtes-get" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes <code>GET</code></h3>
+<p><strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on 1</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Lancez le programme <strong>Insomnia</strong> (recherchez dans le menu démarrer)</label></li>
+<li><label><input type="checkbox">Créez une collection de requête</label>
+<ul>
+<li>bouton <strong>Create</strong> à droite</li>
+<li>puis cliquez sur votre collection</li>
+</ul></li>
+<li><label><input type="checkbox">Créez une nouvelle requête</label>
+<ul>
+<li>en appuyant sur <strong>CTRL+N</strong></li>
+<li>donnez lui un nom</li>
+<li>vérifiez que c’est bien une requête de type <strong>GET</strong></li>
+</ul></li>
+<li><label><input type="checkbox">Dans la barre d’adresse, testez les requêtes ci-dessous</label>
+<ul>
+<li>Regardez la réponse dans la partie droite de votre écran.</li>
+<li>Quelles sont les similarités entre les réponses ?</li>
+</ul></li>
+</ul>
+<p>Requêtes à tester :</p>
+<ul>
+<li><a href="https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0">Webservice</a> sur les émissions carbone du Royaume-Uni :
+<ul>
+<li><code>api.carbonintensity.org.uk/intensity</code></li>
+<li><code>api.carbonintensity.org.uk/intensity/date/{date}</code>
+<ul>
+<li>en remplaçant {date} par la date de votre choix au format YYYY-MM-DD</li>
+</ul></li>
+</ul></li>
+<li><a href="https://data.rennesmetropole.fr/explore/?sort=modified">Webservice</a> pour obtenir différents jeux de données ouverts de la ville de Rennes
+<ul>
+<li><code>data.rennesmetropole.fr/api/records/1.0/search?dataset=menus-cantines</code></li>
+<li>Testez différentes valeurs pour dataset :<code>eco-counter-data</code>, <code>rva-bal</code>, <code>resultats-des-elections-municipales-2020-a-acigne</code></li>
+<li>Ajouter à la fin de l’URI le paramètre <code>rows</code>
+<ul>
+<li>pour faire varier le nombre de lignes que vous recevez</li>
+<li>ajouter simplement <code>&amp;rows=X</code> avec X le nombre de lignes</li>
+</ul></li>
+</ul></li>
+<li>Quelques méthodes du webservice utiles pour votre projet informatique (voyez cela avec votre tuteur)</li>
+</ul>
+<hr>
+</section>
+<section id="requêtes-avancées" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</h3>
+<p><strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on 2</strong> (toujours avec <strong>Insomnia</strong>)</p>
+<ul>
+<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?
+<ul>
+<li><code>web-services.domensai.ecole/attack</code></li>
+</ul></li>
+<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?
+<ul>
+<li><code>web-services.domensai.ecole/attack/{identifier}</code></li>
+<li>en remplaçant <code>{identifier}</code> par le nom ou l’id d’une attaque que vous venez de récupérer</li>
+</ul></li>
+<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?
+<ul>
+<li><code>web-services.domensai.ecole/attack?type_attack_id={id_type}</code></li>
+<li>en remplaçant <code>{id_type}</code> par un entier entre 1 et 4.</li>
+</ul></li>
+<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante
+<ul>
+<li><code>web-services.domensai.ecole/attack?type_attack_name={type attack}</code></li>
+<li>en remplaçant <code>{type attack}</code> par <code>special attack</code> ou <code>physical attack</code> ou <code>fixed damage</code> ou <code>status attack</code></li>
+</ul></li>
+<li>Faites une requête de type <code>POST</code> sur la ressource suivante
+<ul>
+<li><code>web-services.domensai.ecole/attack</code></li>
+<li>Cliquer sur <strong>Body</strong>, puis <strong>JSON</strong>, coller le texte ci-dessous, puis remplacez les valeurs des attributs pour créer votre propre attaque</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"An awesome name"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"attack_type"</span><span class="fu">:</span> <span class="st">"physical attack"</span><span class="er">/</span><span class="st">"physical attack"</span><span class="er">/</span><span class="st">"fixed damage"</span><span class="er">/</span><span class="st">"status attack"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"power"</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accuracy"</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"element"</span><span class="fu">:</span> <span class="st">"An awesome element"</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"An awesome description"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante
+<ul>
+<li><code>web-services.domensai.ecole/attack/{identifier}</code></li>
+<li>en remplaçant <code>{identifier}</code> par le nom ou l’id de l’attaque que vous venez de créer</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="swagger" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="swagger"><span class="header-section-number">1.4</span> Swagger</h3>
+<p>Dans votre navigateur web allez sur la page http://web-services.domensai.ecole/docs. Cela vous amène sur la page swagger du webservice. Cette page recense tous les endpoints du webservice, et comment les utiliser. Essayez via l’interface de :</p>
+<ul>
+<li>modifier une attaque</li>
+<li>supprimer une attaque</li>
+<li>afficher une liste de pokémon</li>
+<li>ajouter un pokémon</li>
+</ul>
+</section>
+</section>
+<section id="appeler-un-webservice-en-python" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en python</h2>
+<p>Aujourd’hui, les plus grands consommateurs de webservices sont les machines. Et donc maintenant nous allons voir comment automatiser des appels à un webservice en python.</p>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="mag">🔍</span> Aujourd’hui beaucoup d’applications web (par exemple Facebook, Netflix, Dailymotion, Uber) utilisent ce que l’on appelle des architectures “micro services”.</p>
+<p>Les échanges entre leurs composants applicatifs (par exemple entre leurs interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d’avoir des modules découplés les uns des autres car ils communiquent uniquement via requête HTTP, ou avec des systèmes de gestion d’évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules.</p>
+<p>Le côté négatif c’est que cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d’applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.</p>
+</blockquote>
+<hr>
+<section id="la-bibliothèque-requests---comment-ça-fonctionne" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="la-bibliothèque-requests---comment-ça-fonctionne"><span class="header-section-number">2.1</span> La bibliothèque <code>requests</code> - Comment ça fonctionne</h3>
+<p>Le principe va rester le même que faire une requête à la main, et on va utiliser la bibliothèque <a href="https://requests.readthedocs.io/en/master/"><strong>requests</strong></a> pour avoir seulement à remplir les parties intéressantes de nos requêtes.</p>
+<p>Pour faire une requête <code>GET</code> vous allez seulement devoir faire :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://mon-webservice.com"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Exécuter cette ligne de code va :</p>
+<ol type="1">
+<li>Envoyer la requête au serveur que vous contactez</li>
+<li>Stockez le résultat dans la variable <code>response</code></li>
+</ol>
+<p>Cette variable <code>response</code> est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple :</p>
+<ul>
+<li><code>response.text</code> : le corps du résultat sous forme de string en laissant <code>requests</code> inférer l’encodage (cela fonctionne souvent). Problème vous avez seulement un string, et ce n’est pas le meilleur format de données à manipuler</li>
+<li><strong><code>response.json()</code></strong> : le corps du résultat comme un <code>dict</code>. C’est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler</li>
+<li><code>response.encoding</code> : l’encoding de votre requête (utile en cas de problème d’encoding)</li>
+<li><strong><code>response.status_code</code></strong> : le statut de la requête. les principaux sont :
+<ul>
+<li>200 : retour général pour dire que tout c’est bien passé</li>
+<li>201 : ressource créée avec succès</li>
+<li>202 : requête acceptée, sans garantie du résultat (par exemple dans un système asynchrone)</li>
+<li>400 : erreur de syntaxe dans la requête</li>
+<li>401 : erreur, une authentification est nécessaire</li>
+<li>403 : la ressource est interdite (droits insuffisants)</li>
+<li>404 : ressource non trouvée</li>
+<li>405 : une mauvaise méthode http a été utilisée</li>
+<li>500 : erreur côté serveur</li>
+<li>503 : service temporairement indisponible</li>
+</ul></li>
+</ul>
+<p>Pour résumer, les résultats 2xx indiquent un succès, un résultat 4xx ou 5xx un problème.</p>
+<p>Exemple simple d’utilisation :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://mon-webservice.com"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Cannot reach (HTTP </span><span class="sc">{}</span><span class="st">): </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(response.status_code, response.text)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:    </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(response.json(), indent<span class="op">=</span><span class="dv">2</span>))       <span class="co"># JSON Pretty print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="mise-à-jour-de-votre-dépôt-git" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</h3>
+<p>2 possibilités <strong>au choix</strong></p>
+<section id="si-vous-voulez-repartir-du-code-du-tp1" class="level4" data-number="2.2.1">
+<h4 data-number="2.2.1" class="anchored" data-anchor-id="si-vous-voulez-repartir-du-code-du-tp1"><span class="header-section-number">2.2.1</span> Si vous voulez repartir du code du TP1</h4>
+<ul>
+<li>Ouvrez <strong>Visual Studio Code</strong>
+<ul>
+<li>File &gt; Open Folder
+<ul>
+<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP1</code></li>
+<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
+<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
+</ul></li>
+<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
+<li>Créez un point de sauvegarde de vos travaux de la semaine dernière
+<ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m "Mon super code du TP1"</code></li>
+</ul></li>
+<li>Mettez à jour votre dépôt local
+<ul>
+<li><code>git pull</code></li>
+</ul></li>
+<li>Passez sur la branche du TP2
+<ul>
+<li><code>git checkout tp2_base</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="si-vous-navez-pas-le-code-du-tp1-sur-votre-machine" class="level4" data-number="2.2.2">
+<h4 data-number="2.2.2" class="anchored" data-anchor-id="si-vous-navez-pas-le-code-du-tp1-sur-votre-machine"><span class="header-section-number">2.2.2</span> Si vous n’avez pas le code du TP1 sur votre machine</h4>
+<ul>
+<li>Ouvrez le logiciel <strong>Git Bash</strong>
+<ul>
+<li>Créez un dossier pour stocker le code du TP
+<ul>
+<li>par exemple, copiez la ligne ci-dessous, et collez là dans Git Bash (clic droit &gt; Paste)</li>
+<li><code>mkdir -p /p/Cours2A/UE3_Complements_informatique/TP/TP2 &amp;&amp; cd $_</code></li>
+</ul></li>
+<li>Clonez le dépôt
+<ul>
+<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></li>
+</ul></li>
+<li>Fermez <strong>Git Bash</strong></li>
+</ul></li>
+<li>Ouvrez <strong>Visual Studio Code</strong>
+<ul>
+<li>File &gt; Open Folder
+<ul>
+<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP2</code></li>
+<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
+<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
+</ul></li>
+<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
+<li>Passez sur la branche du TP2
+<ul>
+<li><code>git checkout tp2_base</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="attention-quand-vous-faites-open-folder-dans-vscode" class="level4" data-number="2.2.3">
+<h4 data-number="2.2.3" class="anchored" data-anchor-id="attention-quand-vous-faites-open-folder-dans-vscode"><span class="header-section-number">2.2.3</span> <span class="emoji" data-emoji="warning">⚠️</span> Attention quand vous faites Open Folder dans VSCode</h4>
+<p>Le dossier parent de l’explorer de VSCode (à gauche) doit être : <strong>ENSAI-2A-complement-info-TP</strong>. Si c’est TP1, TP2, TP ou autre chose ce n’est pas bon ! Vous allez avoir des soucis d’imports par la suite.</p>
+<hr>
+<p>Pour pour vérifier que tout fonctionne : * lancez le fichier <code>__main__.py</code> * lancez les tests unitaires du package business_object * dans terminal : <code>python -m unittest -k test_business_object</code></p>
+<hr>
+</section>
+</section>
+<section id="mes-premières-requêtes-en-python" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</h3>
+<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 3</strong></p>
+<ul>
+<li>Si ce n’est pas déjà fait (voir README.md), installez <strong>dotenv</strong>
+<ul>
+<li><code>pip install python-dotenv</code></li>
+</ul></li>
+<li>Ouvrez le fichier <code>/src/client/attack_client.py</code></li>
+<li><label><input type="checkbox">Complétez la méthode <code>get_attack(int)</code></label>
+<ul>
+<li>prend en paramètre un id d’attaque</li>
+<li>va chercher toutes les informations disponibles sur cette attaque</li>
+<li>retourne un objet de type <code>AbstractAttack</code>
+<ul>
+<li>Pour vous aider, observez la méthode <code>instantiate_attack()</code> de la classe <code>AttackFactory</code></li>
+<li>Regardez le fonctionnement de cette méthode et utilisez la</li>
+</ul></li>
+</ul></li>
+<li><label><input type="checkbox">créez la méthode <code>get_all_attacks()</code></label>
+<ul>
+<li>retourne la liste de tous les attaques disponibles sous la forme d’une liste d’objets <code>AbstractAttack</code></li>
+</ul></li>
+<li><label><input type="checkbox">Vérifiez que vos 2 méthodes fonctionnent</label>
+<ul>
+<li>Lancez les tests unitaitres du package test_client</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="les-requêtes-plus-complexes" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</h3>
+<p>Pour le moment nous nous sommes concentrés sur les requêtes <code>GET</code> mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <code>POST</code>, <code>PUT</code>ou <code>DELETE</code> voici la syntaxe :</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>put <span class="op">=</span> requests.put(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>delete <span class="op">=</span> requests.delete(<span class="st">"http://example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Comme vous le voyez, les syntaxes sont très proches de la syntaxe de la méthode <code>GET</code>. On a seulement ajouté pour certaines requêtes des données. C’est ce que vous avez fait plus tôt avec Insomnia. Pour passer des paramètres à votre requête je vous conseille néanmoins de préférer ce genre de syntaxe :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://example.org"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>}</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(url, json <span class="op">=</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>C’est la même chose fonctionnellement, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.</p>
+<p>Il est également possible de passer des entêtes http en ajoutant l’attribut <code>headers</code> à la fonction utilisée.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'accept'</span>: <span class="st">'application/xml'</span>}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>requests.get(<span class="st">'http://example.org'</span>, headers<span class="op">=</span>headers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="requêtes-avancées-en-python" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</h3>
+<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 4</strong></p>
+<ul>
+<li>Dans le module <code>attack_client.py</code> implémentez les méthodes suivantes :
+<ul class="task-list">
+<li><label><input type="checkbox"><code>create_attack(AbstractAttack)</code></label>
+<ul>
+<li>prend une <code>AbstractAttack</code> en paramètre</li>
+<li>crée une nouvelle ressource dans notre webservice</li>
+</ul></li>
+<li><label><input type="checkbox"><code>update_attack(AbstractAttack)</code></label>
+<ul>
+<li>prend une <code>AbstractAttack</code> en paramètre</li>
+<li>modifie la ressource associée dans notre webservice</li>
+</ul></li>
+<li><label><input type="checkbox"><code>delete_attack(AbstractAttack)</code></label>
+<ul>
+<li>prend une <code>AbstractAttack</code> en paramètre</li>
+<li>supprime la ressource associée dans notre webservice</li>
+</ul></li>
+</ul></li>
+<li><label><input type="checkbox">Testez vos méthodes</label></li>
+</ul>
+</section>
+</section>
+<section id="coder-un-webservice-en-python" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="coder-un-webservice-en-python"><span class="header-section-number">3</span> Coder un webservice en python</h2>
+<p>Avec les outils à disposition aujourd’hui il est facile de faire un webservice soit même.</p>
+<p>Il y a trois leaders sur le marché actuellement pour faire un webservice REST en python: * <a href="https://www.django-rest-framework.org/">Django REST</a>, * <a href="https://flask-restful.readthedocs.io/en/latest/">FlaskRESTful</a> * <a href="https://fastapi.tiangolo.com/">FastAPI</a></p>
+<p>Chacun à ses <a href="https://www.section.io/engineering-education/choosing-between-django-flask-and-fastapi/">avantages et inconvénients</a>. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de <strong>FastApi</strong> est la simplicité pour créer une page swagger de documentation.</p>
+<p>Voici le code minimal d’un webservice REST avec FastAPI (<a href="https://fastapi.tiangolo.com/tutorial/first-steps/">documentation officielle</a>)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># On instancie le webservice</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un enpoint qui répond à la méthode GET à l'adresse "/" qui va retourne le message "Hello World"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de l'application sur le le port 80</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Appeler la ressource “/” du webservice va retourner le json : <code>{"message": "Hello World"}</code></p>
+<p>Voici un exemple plus complet inspiré de la <a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing">documentation officielle</a> (vous voulez créer un webservice pour exposer vos <strong>todos</strong>)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uvicorn</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># On instancie le webservice</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>todos <span class="op">=</span> {<span class="dv">1</span> : Todo(<span class="dv">1</span>,<span class="st">"Step 1 : Learn python"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">2</span> : Todo(<span class="dv">2</span>,<span class="st">"Step 2 : Work on the IT project"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">3</span> : Todo(<span class="dv">3</span>,<span class="st">"Step 3 : ???"</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">4</span> : Todo(<span class="dv">4</span>,<span class="st">"Step 4 : Profit"</span>)}</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint get /todo</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/todo"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_todo():</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> todos.values()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint get /todo/{id_doto}</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/todo/</span><span class="sc">{id_toto}</span><span class="st">"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_todo_by_id(id_toto : <span class="bu">int</span> <span class="op">=</span> Path(..., description <span class="op">=</span> <span class="st">"The `id` of the todo you want to get"</span>)):</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> todos.get[id_toto] :</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> todos.get[id_toto]</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_404_NOT_FOUND)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint post /todo</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/todo"</span>, todo, status_code<span class="op">=</span><span class="dv">201</span>)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> post_todo(todo:Todo):</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> todos.get(todo.<span class="bu">id</span>):</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_409_CONFLICT)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        todos[todo.<span class="bu">id</span>] <span class="op">=</span> todo</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> todo</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de l'application sur le le port 8XXX avec XXX les 3 derniers numéros de votre id</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8</span><span class="er">XXX</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ce code va créer un web service qui va répondre aux requêtes suivantes :</p>
+<ul>
+<li><code>GET host/todo</code> : retourne toutes les tâches à faire</li>
+<li><code>GET host/todo/{todo_id}</code> : retourne la tâche derrière l’id en paramètre</li>
+<li><code>POST host/todo/</code> : ajoute la tâche passée en corps de la rêquete</li>
+</ul>
+<p>FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes <code>BaseModel</code>. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôle sur les types des variables et renvoyer une erreur au client si sa requête n’est pas bien formatée.</p>
+<p>Fondamentalement un webservice est une application comme les autres, mais au lieu d’avoir une interface graphique comme on en a l’habitude en tant qu’humain, l’interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête <code>GET</code> pour récupérer une ressource va ressembler à cela si je reprends le modèle 3 couches vu en cours.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant U as User
+    participant R as Webservice
+    participant S as Service
+    participant D as DAO
+    participant B as Base de données
+    U -&gt;&gt; R : HTTP requête
+    R -&gt;&gt; S : get_by_id()
+    S -&gt;&gt; D : find_by_id()
+    D -&gt;&gt; B : requête SQL (psycopg)
+    B -&gt;&gt; D : curseur SQL (psycopg)
+    D -&gt;&gt; S : instance objet metier
+    S -&gt;&gt; R : instance objet metier
+    Note over S,R: l'objet est potentiellement altéré
+    R -&gt;&gt; U : Réponse HTTP
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="mon-premier-webservice" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="mon-premier-webservice"><span class="header-section-number">3.1</span> Mon premier webservice</h3>
+<ul>
+<li>Vérifiez que le module <code>fastapi</code> est installé (<code>pip list</code>)
+<ul>
+<li>Si ce n’est pas le cas : <code>pip install "fastapi[all]"</code></li>
+</ul></li>
+<li>Ouvrez le fichier <code>app.py</code></li>
+<li>Lancez ce fichier
+<ul>
+<li>testez les requêtes suivantes :
+<ul>
+<li><code>GET http://localhost/hello</code></li>
+<li><code>GET http://localhost/hello/everybody</code></li>
+</ul></li>
+</ul></li>
+<li>Arrétez le webservice
+<ul>
+<li>Cliquez dans le terminal de VSCode puis CTRL + C</li>
+</ul></li>
+</ul>
+<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 5</strong></p>
+<p>En utilsant la liste de personnages définie dans le fichier <code>app.py</code>, ajoutez les endpoints suivants : * [ ] <code>GET localhost:80/character</code> : retournera un json contenant une liste des personnages * [ ] <code>PUT localhost:80/character/{id}</code> qui modifiera le nom du personnage à l’index <code>{id}</code> à partir d’un body * [ ] <code>DELETE localhost:80/character/{id}</code> qui supprimera l’élément à l’index <code>{id}</code></p>
+<p>Pour tester les endpoints nécessitant un body json, vous pouvez utiliser <span class="emoji" data-emoji="-1">👎</span></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nom"</span><span class="fu">:</span><span class="st">"Agneta"</span><span class="fu">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ludo2ne\.github\.io\/ENSAI-2A-Projet-info\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Website built with <a href="https://quarto.org/" class="external" target="_blank">Quarto</a> <br> <a href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" class="external" target="_blank">Code source</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

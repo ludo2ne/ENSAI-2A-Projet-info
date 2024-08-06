@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
+<meta name="description" content="TP 4">
+
+<title>Git et Création d’une IHM – Projet info 2A</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Projet info 2A</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projet</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projet">    
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
+ <span class="dropdown-text">Présentation pour les tuteurs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation aux élèves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Notice élèves</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cours" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cours</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cours">    
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
+ <span class="dropdown-text">Tests unitaires</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">TP</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp1.html">
+ <span class="dropdown-text">TP 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp2.html">
+ <span class="dropdown-text">TP 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp3.html">
+ <span class="dropdown-text">TP 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp4.html">
+ <span class="dropdown-text">TP 4</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#configuration-de-git" id="toc-configuration-de-git" class="nav-link active" data-scroll-target="#configuration-de-git"><span class="header-section-number">1</span> Configuration de Git</a>
+  <ul class="collapse">
+  <li><a href="#configurez-git" id="toc-configurez-git" class="nav-link" data-scroll-target="#configurez-git"><span class="header-section-number">1.1</span> Configurez Git</a></li>
+  <li><a href="#créez-une-clé-ssh" id="toc-créez-une-clé-ssh" class="nav-link" data-scroll-target="#créez-une-clé-ssh"><span class="header-section-number">1.2</span> Créez une clé ssh</a></li>
+  <li><a href="#création-de-compte-sur-github" id="toc-création-de-compte-sur-github" class="nav-link" data-scroll-target="#création-de-compte-sur-github"><span class="header-section-number">1.3</span> Création de compte sur GitHub</a></li>
+  </ul></li>
+  <li><a href="#travail-en-groupe" id="toc-travail-en-groupe" class="nav-link" data-scroll-target="#travail-en-groupe"><span class="header-section-number">2</span> Travail en groupe</a>
+  <ul class="collapse">
+  <li><a href="#création-dun-dépôt-sur-github" id="toc-création-dun-dépôt-sur-github" class="nav-link" data-scroll-target="#création-dun-dépôt-sur-github"><span class="header-section-number">2.1</span> Création d’un dépôt sur GitHub</a></li>
+  <li><a href="#connecter-ce-dépôt-avec-un-dépôt-local" id="toc-connecter-ce-dépôt-avec-un-dépôt-local" class="nav-link" data-scroll-target="#connecter-ce-dépôt-avec-un-dépôt-local"><span class="header-section-number">2.2</span> Connecter ce dépôt avec un dépôt local</a></li>
+  <li><a href="#utilisation-dun-seul-dépôt-par-équipe" id="toc-utilisation-dun-seul-dépôt-par-équipe" class="nav-link" data-scroll-target="#utilisation-dun-seul-dépôt-par-équipe"><span class="header-section-number">2.3</span> Utilisation d’un seul dépôt par équipe</a></li>
+  <li><a href="#import-du-dépôt-commun-pour-les-autres-membres" id="toc-import-du-dépôt-commun-pour-les-autres-membres" class="nav-link" data-scroll-target="#import-du-dépôt-commun-pour-les-autres-membres"><span class="header-section-number">2.4</span> Import du dépôt commun pour les autres membres</a></li>
+  </ul></li>
+  <li><a href="#manipulations-basiques-avec-git" id="toc-manipulations-basiques-avec-git" class="nav-link" data-scroll-target="#manipulations-basiques-avec-git"><span class="header-section-number">3</span> 2. Manipulations basiques avec git</a></li>
+  <li><a href="#gérer-un-conflit-avec-git" id="toc-gérer-un-conflit-avec-git" class="nav-link" data-scroll-target="#gérer-un-conflit-avec-git"><span class="header-section-number">4</span> Gérer un conflit avec git</a>
+  <ul class="collapse">
+  <li><a href="#définition" id="toc-définition" class="nav-link" data-scroll-target="#définition"><span class="header-section-number">4.1</span> Définition</a></li>
+  <li><a href="#résolvez-vos-conflits" id="toc-résolvez-vos-conflits" class="nav-link" data-scroll-target="#résolvez-vos-conflits"><span class="header-section-number">4.2</span> Résolvez vos conflits</a></li>
+  </ul></li>
+  <li><a href="#bilan-des-trois-premiers-tp" id="toc-bilan-des-trois-premiers-tp" class="nav-link" data-scroll-target="#bilan-des-trois-premiers-tp"><span class="header-section-number">5</span> Bilan des trois premiers TP</a>
+  <ul class="collapse">
+  <li><a href="#la-couche-service" id="toc-la-couche-service" class="nav-link" data-scroll-target="#la-couche-service"><span class="header-section-number">5.1</span> La couche service</a></li>
+  <li><a href="#la-couche-contrôleur" id="toc-la-couche-contrôleur" class="nav-link" data-scroll-target="#la-couche-contrôleur"><span class="header-section-number">5.2</span> La couche contrôleur</a></li>
+  <li><a href="#la-couche-view" id="toc-la-couche-view" class="nav-link" data-scroll-target="#la-couche-view"><span class="header-section-number">5.3</span> La couche view</a></li>
+  </ul></li>
+  <li><a href="#une-session-pour-les-gouverner-toutes" id="toc-une-session-pour-les-gouverner-toutes" class="nav-link" data-scroll-target="#une-session-pour-les-gouverner-toutes"><span class="header-section-number">6</span> Une session pour les gouverner toutes</a></li>
+  <li><a href="#inquirerpy" id="toc-inquirerpy" class="nav-link" data-scroll-target="#inquirerpy"><span class="header-section-number">7</span> InquirerPy</a>
+  <ul class="collapse">
+  <li><a href="#mes-premières-view" id="toc-mes-premières-view" class="nav-link" data-scroll-target="#mes-premières-view"><span class="header-section-number">7.1</span> Mes premières <code>View</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Git et Création d’une IHM</h1>
+</div>
+
+<div>
+  <div class="description">
+    TP 4
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rémi Pépin, Ludovic Deneuville </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. <strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
+<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code. Ces phases sont appelées “<strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on</strong>”. C’est à ce moment-là que vous devez faire ce qui est écrit dans le TP. Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.</p>
+</blockquote>
+<p>Dans ce TP vous allez :</p>
+<ul>
+<li>Paramétrer Git</li>
+<li>Manipuler Git (en mode <strong>terminal de commande</strong>)</li>
+<li>Faire vos premières classes qui gèrent l’affichage</li>
+</ul>
+<hr>
+<p>Les instructions de ce TP seront données pour une utilisation de <strong>GitHub</strong> comme dépôt distant. Si vous choisissez GitLab ou un autre hébergeur, à vous de vous adapter (les instructions devraient être assez ressemblantes).</p>
+<section id="configuration-de-git" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="configuration-de-git"><span class="header-section-number">1</span> Configuration de Git</h2>
+<p>Pour faire d’un seul coup la config Git et la création d’un clé ssh, vous pouvez utiliser les scripts présents sur la page Moodle du cours, onglet TP. Sinon cela se fait également très vite avec les commandes ci-dessous.</p>
+<section id="configurez-git" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="configurez-git"><span class="header-section-number">1.1</span> Configurez Git</h3>
+<p>Ouvrez <strong>Git Bash</strong>, puis éxécutez les commandes suivantes en remplaçant les valeurs entre &lt;&gt;</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>git config --global user.name &lt;prenom&gt; &lt;nom&gt;</code></label></li>
+<li><label><input type="checkbox"><code>git config --global user.email &lt;mail_ensai&gt;</code></label></li>
+<li><label><input type="checkbox"><code>git config --global core.mergeoptions --no-edit</code></label></li>
+<li><label><input type="checkbox"><code>git config --global core.editor "code -w"</code></label></li>
+<li><label><input type="checkbox"><code>git config --global credential.helper store</code></label></li>
+<li><label><input type="checkbox">pour vérifier les valeurs saisies : <code>git config -l</code></label></li>
+</ul>
+<hr>
+</section>
+<section id="créez-une-clé-ssh" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="créez-une-clé-ssh"><span class="header-section-number">1.2</span> Créez une clé ssh</h3>
+<p>Elle permettra de vous authentifier auprès de GitHub. Dans <strong>Git Bash</strong> :</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>ssh-keygen -t rsa -b 2048 -N '' -q -f ~/.ssh/id_rsa</code></label></li>
+<li><label><input type="checkbox"><code>mkdir /p/save</code> puis <code>cp -r ~/.ssh /p/save/.ssh</code> pour créer une sauvegarde de votre clé</label>
+<ul>
+<li>Par défaut la clé est générée dans <code>C:/users/idxxxx/.ssh</code></li>
+<li>Si jamais cette clé venait à disparaitre, utilisez la sauvegarde pour la recopier dans <code>C:/users/idxxxx/.ssh</code></li>
+</ul></li>
+<li><label><input type="checkbox"><code>cat ~/.ssh/id_rsa.pub | clip</code></label>
+<ul>
+<li>pour récupérer votre clé publique dans le presse papier</li>
+</ul></li>
+<li><label><input type="checkbox">Ouvrez un éditeur de texte et collez cette clé</label>
+<ul>
+<li>gardez la de coté quelques minutes, vous allez devoir juste après coller cette clé dans GitHub</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="création-de-compte-sur-github" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="création-de-compte-sur-github"><span class="header-section-number">1.3</span> Création de compte sur GitHub</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Créez un compte utilsateur</label>
+<ul>
+<li>https://github.com/join</li>
+</ul></li>
+<li><label><input type="checkbox">Ajouter votre clé publique ssh sur GitHub (<a href="https://github.com/settings/ssh/new">lien direct</a>)</label>
+<ul>
+<li>Cliquez sur votre icone profil en haut à droite</li>
+<li><span class="emoji" data-emoji="gear">⚙️</span> Settings</li>
+<li>SSH and GPG keys</li>
+<li>Cliquer sur le bouton <strong>New SSH key</strong>
+<ul>
+<li>Titre : <code>VM ENSAI</code> par exemple</li>
+<li>Key : <em>Collez la clé publique</em> (contenu du fichier id_rsa.pub qui commence par <strong>ssh-rsa</strong> généré à l’étape précédente )</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="travail-en-groupe" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="travail-en-groupe"><span class="header-section-number">2</span> Travail en groupe</h2>
+<p><span class="emoji" data-emoji="bulb">💡</span> Avec vos camarades de projet, vous devez choisir un site qui va héberger votre code (GitHub, GitLab…). Il vous servira de dépôt commun (ou dépôt distant).</p>
+<section id="création-dun-dépôt-sur-github" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="création-dun-dépôt-sur-github"><span class="header-section-number">2.1</span> Création d’un dépôt sur GitHub</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Repositories &gt; New (ou <a href="https://github.com/new">lien direct</a>)</label></li>
+<li><label><input type="checkbox">Repository name : <strong>ENSAI-2A-cinfo-TP4</strong></label></li>
+<li><label><input type="checkbox">Cliquez sur le bouton <strong>Create new repository</strong></label></li>
+</ul>
+<p>Pour le moment ce dépôt distant est vide</p>
+<hr>
+</section>
+<section id="connecter-ce-dépôt-avec-un-dépôt-local" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="connecter-ce-dépôt-avec-un-dépôt-local"><span class="header-section-number">2.2</span> Connecter ce dépôt avec un dépôt local</h3>
+<p>Dans les autres TP, vous aviez l’habitude de simplement cloner le dépôt distant du prof, faire les exercices et c’est tout.</p>
+<p>Aujourd’hui, vous allez :</p>
+<ul>
+<li>Cloner le dépôt distant
+<ul>
+<li>Pour créer votre dépôt local (jusque là, c’est toujours pareil)</li>
+</ul></li>
+<li>Connecter votre dépôt local à votre propre dépôt distant (celui que vous venez de créer)</li>
+<li>Interagir entre vos 2 dépôts (push, pull…)</li>
+</ul>
+<hr>
+<ul>
+<li>Créez un dossier puis importez le code du TP (branche tp4_base uniquement)
+<ul class="task-list">
+<li><label><input type="checkbox"><code>mkdir -p /p/Cours2A/UE3_Complements_informatique/TP/TP4 &amp;&amp; cd $_</code></label></li>
+<li><label><input type="checkbox"><code>git clone -b tp4_base --single-branch https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></label></li>
+</ul></li>
+<li>Modifiez le dépôt distant en déclarant le dépôt que vous avez créé juste avant
+<ul class="task-list">
+<li><label><input type="checkbox"><code>cd ENSAI-2A-complement-info-TP</code> pour vous positionner dans le dépôt local Git</label></li>
+<li><label><input type="checkbox"><code>git remote set-url origin git@github.com:&lt;username_github&gt;/ENSAI-2A-cinfo-TP4.git</code></label>
+<ul>
+<li>en remplaçant <em><username_github></username_github></em> par votre nom d’utilisateur GitHub</li>
+</ul></li>
+<li><label><input type="checkbox"><code>git remote -v</code> pour vérifier que le dépôt distant a bien changé</label></li>
+</ul></li>
+<li><label><input type="checkbox"><code>git push</code> pour pousser votre code local vers le dépôt GitHub</label>
+<ul>
+<li>Rafraîchissez la page GitHub pour vérifier</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="utilisation-dun-seul-dépôt-par-équipe" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="utilisation-dun-seul-dépôt-par-équipe"><span class="header-section-number">2.3</span> Utilisation d’un seul dépôt par équipe</h3>
+<p>Maintenant vous allez <strong>travailler en tant qu’équipe de projet</strong>. Même si vous avez tous créé un dépôt git, un seul par groupe va être utilisé. Vous allez ainsi au sein d’une même équipe, récupérer le code de ce dépôt.</p>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Choisissez <strong>LE</strong> dépôt que vous allez utiliser (1 seul par équipe projet) et faîtes les actions suivantes uniquement sur ce dépôt.</p>
+<ul>
+<li>Sur la page GitHub du projet
+<ul>
+<li>Aller dans <span class="emoji" data-emoji="gear">⚙️</span> Settings &gt; Collaborators</li>
+<li>Cliquer sur le bouton <strong>Add people</strong>, puis recherchez et ajoutez vos camarades</li>
+</ul></li>
+<li>ou directement avec ce lien en remplaçant <em><username_github></username_github></em>
+<ul>
+<li><code>https://github.com/&lt;username_github&gt;/ENSAI-2A-cinfo-TP4/settings/access</code></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="import-du-dépôt-commun-pour-les-autres-membres" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="import-du-dépôt-commun-pour-les-autres-membres"><span class="header-section-number">2.4</span> Import du dépôt commun pour les autres membres</h3>
+<p>Pour les autres, il vous faut maintenant tous récupérer le contenu du dépôt. Dans les commandes ci-dessous, remplacez <strong><username_github></username_github></strong> par le nom d’utilisateur de celui ou celle qui “possède” le dépôt commun.</p>
+<ul>
+<li><label><input type="checkbox">Allez sur la page GitHub du dépôt commun</label>
+<ul>
+<li>https://github.com/<username_github>/ENSAI-2A-cinfo-TP4</username_github></li>
+</ul></li>
+<li><label><input type="checkbox">Cliquez sur le bouton <strong>Code</strong></label></li>
+<li><label><input type="checkbox">Copiez le lien <strong>Clone with SSH</strong> qui ressemble à ceci : <code>git@github.com:&lt;username_github&gt;/ENSAI-2A-cinfo-TP4.git</code></label></li>
+<li>Dans <strong>Git Bash</strong>, créez un nouveau dossier pour mettre votre dépôt local
+<ul>
+<li><label><input type="checkbox"><code>mkdir -p /p/Cours2A/UE3_Complements_informatique/TP/TP4/depot_commun &amp;&amp; cd $_</code></label></li>
+<li><label><input type="checkbox"><code>git clone git@github.com:&lt;username_github&gt;/ENSAI-2A-cinfo-TP4.git</code></label></li>
+<li>Fermez Git Bash</li>
+</ul></li>
+<li>Ouvrez <strong>Visual Studio Code</strong>, puis ouvrez le dépôt commun
+<ul>
+<li>File &gt; Open Folder
+<ul>
+<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP4/depot_commun</code></li>
+<li>cliquez une fois sur <strong>ENSAI-2A-cinfo-TP4</strong></li>
+<li>puis cliquez sur le bouton <strong>Sélectionner un dossier</strong></li>
+</ul></li>
+<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
+</ul></li>
+</ul>
+<hr>
+<section id="attention-quand-vous-faites-open-folder-dans-vscode" class="level4" data-number="2.4.1">
+<h4 data-number="2.4.1" class="anchored" data-anchor-id="attention-quand-vous-faites-open-folder-dans-vscode"><span class="header-section-number">2.4.1</span> <span class="emoji" data-emoji="warning">⚠️</span> Attention quand vous faites Open Folder dans VSCode</h4>
+<p>Le dossier parent de l’explorer de VSCode (à gauche) doit être : <strong>ENSAI-2A-complement-info-TP</strong>. Si c’est TP1, TP2, TP3, TP ou autre chose ce n’est pas bon ! Vous allez avoir des soucis d’imports par la suite.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="manipulations-basiques-avec-git" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="manipulations-basiques-avec-git"><span class="header-section-number">3</span> 2. Manipulations basiques avec git</h2>
+<p><strong>✍Hand on 1</strong> Cette partie à pour but de vous faire essayer des commandes de bases de git.</p>
+<ul>
+<li><label><input type="checkbox">Créez dans votre dépôt local un fichier <code>hello_&lt;prenom&gt;.txt</code> qui contient par exemple <code>hello &lt;prenom&gt;</code></label></li>
+<li><label><input type="checkbox">Dans le terminal, tapez la commande <code>git status</code> pour voir si votre fichier s’affiche</label></li>
+<li><label><input type="checkbox">Créez un fichier <code>hello_&lt;prenom&gt;.log</code> qui contient par exemple <code>aaaaa</code></label></li>
+<li><label><input type="checkbox">Tapez <code>git status</code> pour voir si votre fichier s’affiche</label>
+<ul>
+<li><span class="emoji" data-emoji="bulb">💡</span> Normalement il ne s’affichera pas car si vous ouvrez le fichier <code>.gitignore</code>, vous remarquerez que tous les fichiers <code>*.log</code> sont ignorés par Git.</li>
+</ul></li>
+<li><label><input type="checkbox">Tapez <code>git add .</code> pour ajouter à la zone de transit (<em>stagging area</em>) tous les fichiers en attente</label></li>
+<li><label><input type="checkbox"><code>git status</code> pour vérifier que votre fichier <code>hello_&lt;prenom&gt;</code> est prêt à être intégré au prochain commit</label></li>
+<li><label><input type="checkbox">Réalisez un commit <code>git commit -m "un super message de commit explicite"</code></label></li>
+<li><label><input type="checkbox">Modifiez votre fichier <code>hello_&lt;prenom&gt;.txt</code> puis faites de nouveau les étapes précédentes (status, add, status, commit)</label></li>
+<li><label><input type="checkbox">Regardez votre historique avec un <code>git log --all --decorate --oneline --graph</code></label></li>
+<li><label><input type="checkbox">Poussez vos modifications vers le dépôt commun avec un <code>git push</code></label>
+<ul>
+<li>Si quelqu’un a déjà poussé avant vous, vous allez obtenir un message proche de celui-ci</li>
+</ul>
+<pre><code>To https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git
+Merge branch 'main' of https://github.com/ludo2ne/ENSAI-2A-complement-info-TP
+ ! [rejected]        main -&gt; main (fetch first)
+error: failed to push some refs to 'https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first merge the remote changes (e.g.,
+hint: 'git pull') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.</code></pre></li>
+<li>Dans ce cas, faites dans l’ordre
+<ul class="task-list">
+<li><label><input type="checkbox"><code>git pull</code> : pour mettre à jour votre dépôt local à partir du dépôt distant</label></li>
+<li><label><input type="checkbox"><code>git push</code> : pour partager vos modifications faites en local vers le dépôt distant</label></li>
+</ul></li>
+<li><label><input type="checkbox">Une fois que tous les membres de l’équipe ont réussi à faire leur <strong>push</strong>, faites tous un <code>git pull</code> pour avoir chacun des dépôts identiques.</label></li>
+</ul>
+</section>
+<section id="gérer-un-conflit-avec-git" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="gérer-un-conflit-avec-git"><span class="header-section-number">4</span> Gérer un conflit avec git</h2>
+<section id="définition" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="définition"><span class="header-section-number">4.1</span> Définition</h3>
+<p>Un conflit apparait lorsque 2 versions s’affrontent et que Git ne peut pas savoir laquelle est la bonne.</p>
+<p>Exemple : Un dépôt commun contient un seul fichier <code>hello.txt</code> qui contient <strong>hello world</strong></p>
+<ul>
+<li>Alice et Bob clonent ce dépôt</li>
+<li>En local Alice modifie le contenu du fichier en <code>hello Alice</code> et fait un <strong>add</strong> puis <strong>commit</strong></li>
+<li>Bob fait de même en saisissant <code>hello Bob</code></li>
+<li>Alice fait un <strong>push</strong> et met à jour le dépôt commun</li>
+<li>Bob fait un <strong>push</strong> et échoue. Git dit que son dépôt local n’est pas à jour</li>
+<li>Bob fait donc un <strong>pull</strong> pour mettre à jour son dépôt local. C’est à ce moment que le conflit apparait.
+<ul>
+<li>Bob voulais modifier le contenu du fichier en <code>Hello Bob</code> alors qu’Alice a déjà modifié en <code>Hello Alice</code></li>
+</ul>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Hello Bob           (Votre modification - current change)
+=======
+Hello Alice         (La modification du dépôt distant - incoming change)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></pre></li>
+<li>Bob doit maintenant décider quelle version il souhaite garder</li>
+<li>Bob choisit <code>Hello Bob</code>, fait un add, commit, push et c’est terminé</li>
+</ul>
+<hr>
+</section>
+<section id="résolvez-vos-conflits" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="résolvez-vos-conflits"><span class="header-section-number">4.2</span> Résolvez vos conflits</h3>
+<p><strong>✍Hand on 2</strong> Maintenant vous allez essayer de créer, puis résoudre un conflit !</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Choisissez un fichier commun dont vous allez tous modifier le contenu</label></li>
+<li><label><input type="checkbox">Modifiez chacun de votre coté (sur vos dépôt locaux) ce fichier</label></li>
+<li><label><input type="checkbox">Poussez votre code</label></li>
+</ul>
+<p>La première personne à pousser ne devrait pas avoir de conflit, les autres oui. Recommencez la procédure ci-dessus avec un autre fichier pour que tout le monde expérimente la résolution de conflits.</p>
+<p>Lorsque vous avez un conflit à gérer :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Corrigez à la main le fichier</label>
+<ul>
+<li>par exemple en imposant votre modification</li>
+<li>et en supprimant les <code>=======</code> et les <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></li>
+</ul></li>
+<li><label><input type="checkbox"><code>git add .</code> puis <code>git commit -m "mon super message" &amp;&amp; git push</code></label></li>
+</ul>
+<p>En conclusion, avoir des conflits n’est pas grave même si c’est un peu pénible à résoudre. Pour essayer d’éviter les conflits :</p>
+<ul>
+<li>faites des <code>pull</code> et <code>push</code> réguliers</li>
+<li>essayez de travailler en équipe mais sur des fichiers différents</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="bilan-des-trois-premiers-tp" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="bilan-des-trois-premiers-tp"><span class="header-section-number">5</span> Bilan des trois premiers TP</h2>
+<p>Si l’on reprend le modèle en couches présenté en cours, voici ce que l’on a fait depuis le début des TP :</p>
+<p><img src="img/TP4_couches.jpg" class="img-fluid"></p>
+<section id="la-couche-service" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="la-couche-service"><span class="header-section-number">5.1</span> La couche service</h3>
+<p>Actuellement notre couche service est bien maigre. En effet notre application n’a aucune logique métier. On a bien des objets métiers que l’on persiste mais aucune réelle application derrière. La raison à ce manque provient du fait que cette couche est la partie la plus longue à développer car elle contient la logique métier de l’application.</p>
+<p>Et le but de ces TP n’est pas de vous montrer comment faire une petit application type jeu Pokémon en console. Ils ont pour vocations à vous montrer une architecture de base en couche et vous présenter comment la réaliser. Dans votre projet, il est possible que ce soit la couche service qui vous demande le plus de travail.</p>
+<hr>
+</section>
+<section id="la-couche-contrôleur" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="la-couche-contrôleur"><span class="header-section-number">5.2</span> La couche contrôleur</h3>
+<p>La notion de contrôleur apparait avec le design pattern <em>MVC</em> (<a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">Model-View-Controler</a>). Mais c’est un patron de conception beaucoup trop complexe pour faire un simple affichage en console.</p>
+<p>À la place vous allez utiliser le patron <em>Model-View-Presenter</em> qui est plus simple car il reprend le principe de couches qui se succèdent.</p>
+<p>Il n’y aura donc pas de couche <strong>Controleur</strong> mais une couche <strong>View</strong> qui fera office d’IHM et appelera directement les services nécessaires.</p>
+<hr>
+</section>
+<section id="la-couche-view" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="la-couche-view"><span class="header-section-number">5.3</span> La couche view</h3>
+<p>Le fonctionnement est le suivant lorsque vous lancez l’application :</p>
+<ul>
+<li>vous arrivez sur une vue d’accueil qui propose différents choix</li>
+<li>selon le choix, zéro, un ou plusieurs services sont appelés</li>
+<li>puis vous arrivez vers une nouvelle vue (ou éventuellement resterez sur la même)</li>
+</ul>
+<p>Exemple :</p>
+<ul>
+<li>Vous êtes sur la <strong>Vue d’accueil</strong> et vous sélectionner <code>se connecter</code></li>
+<li>Vous basculez vers la <strong>Vue de connexion</strong>
+<ul>
+<li>dans cette vue, on vous demande de saisir user et password</li>
+<li>une fois la saisie terminée, le <strong>Service des utilisateur</strong> va être appelé</li>
+<li>ce service a une méthode <code>verification_connexion()</code>
+<ul>
+<li>cette méthode va appeler la <strong>DAO Utilisateur</strong> pour vérifier que l’utilisateur et son mot de passe existent bien en base de données</li>
+</ul></li>
+</ul></li>
+<li>si la vérification est ok, vous basculez vers la <strong>Vue Menu utilisateur</strong> où va par exemple s’afficher la liste des actions autorisées</li>
+<li>…</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="une-session-pour-les-gouverner-toutes" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="une-session-pour-les-gouverner-toutes"><span class="header-section-number">6</span> Une session pour les gouverner toutes</h2>
+<p>Là vous pouvez vous dire :</p>
+<ul>
+<li>ok on va se balader de vues en vues, ça ça va</li>
+<li>mais imaginons l’exemple suivant :
+<ul>
+<li>on passe par la <strong>Vue de connexion</strong> et on se connecte avec l’utilisateur Michel</li>
+<li>on arrive sur la <strong>Vue Menu utilisateur</strong> et on se balade dans les différentes vues</li>
+<li>un peu plus tard, on arrive sur la <strong>Vue d’ajout de Pokemon</strong>, on sélectionne celui qui nous plait et on valide</li>
+<li>cela va aboutir à l’appel d’une méthode <strong>DAO</strong> du type <code>ajouter_pokemon(utilisateur, pokemon)</code></li>
+<li>Cette méthode a 2 arguments
+<ul>
+<li>pokemon : ok facile à récupérer, on vient juste avant de le sélectionner</li>
+<li>utilisateur : là c’est moins facile car la dernière fois qu’on avait l’objet utilisateur à portée c’était dans la Vue de connexion</li>
+</ul></li>
+</ul></li>
+<li>Est-ce que une fois connecté, on doit passer l’utilisateur en paramètre de toutes les méthodes que l’on va appeler ?
+<ul>
+<li>Heureusement NON, ce serait trop compliqué</li>
+<li><span class="emoji" data-emoji="bulb">💡</span> c’est ici que l’objet <strong>Session</strong> va nous être utile</li>
+</ul></li>
+</ul>
+<p>Dans notre <strong>Session</strong>, nous allons pouvoir stocker des objets utiles, par exemple l’utilisateur actif.</p>
+<p>Ainsi, une fois connecté, on stocke l’utilisateur en session et on peut se servir de cet objet à tout moment !</p>
+<p>Voici les liens entre notre <code>Session</code> et nos <code>Views</code> :</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+
+class Session{
+    &lt;&lt;singleton&gt;&gt;
+    user_name : str
+    selected_pokemon : AbstractPokemon
+}
+
+class AbstractView{
+    &lt;&lt;abstract&gt;&gt;
+    +display_info()* None
+    +make_choice()* AbstractView
+}
+
+class StartView{
+    +display_info() None
+    +make_choice() AbstractView
+}
+
+class ListPokemonView{
+    +display_info() None
+    +make_choice() AbstractView
+}
+
+class ListAttackView{
+    +display_info() None
+    +make_choice() AbstractView
+}
+
+Session &lt;..AbstractView: "use"
+
+AbstractView &lt;|-- StartView
+AbstractView &lt;|-- ListPokemonView
+AbstractView &lt;|-- ListAttackView
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Toute nos <code>Views</code> vont hériter de la classe <code>AbstractView</code>. Cette classe va contenir deux méthodes abstraites :</p>
+<ul>
+<li><code>display_info()</code> : qui va juste déterminer l’affichage en console</li>
+<li><code>make_choice()</code> : qui va gérer les choix de l’utilisateur et l’envoyer vers une autre page.</li>
+</ul>
+<p>En plus de cela nous allons gérer tous les attributs utilisés par les <code>View</code> dans un objet <code>Session</code> qui sera un singleton ce qui nous assurera que chaque accès à cet objet retourne la même instance et donc les mêmes valeurs stockées.</p>
+<p>Cette architecture vous permet de séparer vos différents menu en fichiers séparés et d’avoir un fonctionnement simple car chaque menu retourne un autre menu simplement.</p>
+<p><span class="emoji" data-emoji="warning">⚠️</span> La création de vos menus peut générer des problèmes de dépendances circulaires. En effet si la page A envoie sur la page B et la page B envoie sur la page A, en fonction de la façon dont vous gérez vos imports vous allez voir un problème de dépendances circulaires. Quand le problème se présentera voici 2 solutions possibles :</p>
+<ul>
+<li>remplacer <code>from X import Y</code> en <code>import Y as name</code></li>
+<li>déplacer vos imports dans la fonction qui en a besoin</li>
+</ul>
+</section>
+<section id="inquirerpy" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="inquirerpy"><span class="header-section-number">7</span> InquirerPy</h2>
+<p>Pour nous faciliter la gestion de la console nous allons utiliser la bibliothèque python <a href="https://inquirerpy.readthedocs.io/en/latest/">InquirerPy</a>. Elle permet de créer facilement des applications interactives en console. Le projet est bien documenté avec plusieurs <a href="https://github.com/kazhala/InquirerPy/tree/master/examples">exemples</a> de code, faciles à transposer.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Lancez le <code>__main__.py</code> et testez un peu l’application</label></li>
+<li><label><input type="checkbox">Regardez les fichiers du package <strong>view</strong> pour essayer de comprendre comment fonctionnent les vues. Le principe est toujours le même lorsque l’on arrive sur une nouvelle vue :</label>
+<ul>
+<li>on répond aux questions demandées</li>
+<li>un traitement est éventuellement fait (appel à des services)</li>
+<li>on bascule vers une autre vue</li>
+</ul></li>
+</ul>
+<section id="mes-premières-view" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="mes-premières-view"><span class="header-section-number">7.1</span> Mes premières <code>View</code></h3>
+<p><strong>✍Hand on 3</strong></p>
+<p>Répartissez vous le travail entre membre du groupe pour implémenter les <code>Views</code> suivantes :</p>
+<ul>
+<li>Affichage Pokémon:
+<ul class="task-list">
+<li><label><input type="checkbox"><code>PokemonListView</code> : qui permet de visualiser 30 Pokémons sommairement. Il est possible de sélectionner un pokémon pour aller sur <code>PokemonDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code> si vous le souhaitez.</label></li>
+<li><label><input type="checkbox"><code>PokemonDetailsView</code> : qui affiche les détails du Pokémon sélectionné comme ses statistiques et ses attaques. Renvoie sur la <code>StartView</code> ou <code>PokemonListeView</code> en fonction du choix de l’utilisateur.</label></li>
+</ul></li>
+<li>Affichage attaque:
+<ul class="task-list">
+<li><label><input type="checkbox"><code>AttackListView</code> : qui permet de visualiser 50 attaques sommairement et d’en sélectionner une pour aller sur <code>AttackDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code>.</label></li>
+<li><label><input type="checkbox"><code>AttackDetailsView</code> : qui affiche les détails de l’attaque sélectionnée, comme par exemple ses caractéristiques (name, power, description), mais également quels sont les Pokémons qui peuvent l’apprendre. Renvoie sur la <code>StartView</code> ou <code>AttackListView</code> en fonction du choix de l’utilisateur.</label></li>
+</ul></li>
+<li><label><input type="checkbox"><code>CreatePokemonView</code> : qui permet de créer un Pokémon et le mettre en session. Après validation de l’utilisateur on retourne sur <code>StartView</code></label></li>
+</ul>
+<p>Quelques astuces :</p>
+<ul>
+<li><code>PokemonService</code> dispose d’une méthode <code>get_pokemon_from_webservice(limit:int, offset:int)</code> pour récupérer des pokémons de la base</li>
+<li><code>AttackService</code> dispose d’une méthode <code>get_attacks_from_webservice(limit:int, offset:int)</code> pour récupérer des attaques de la base</li>
+<li>de nombreux exemples sont disponibles sur la <a href="https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html">doc InquirerPy</a></li>
+</ul>
+<p>Quand vous avez terminé une classe, faites un commit, puis poussez sur le dépôt distant.</p>
+<hr>
+<p>Merci d’avoir participé et Vive les Pokemons !</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ludo2ne\.github\.io\/ENSAI-2A-Projet-info\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Website built with <a href="https://quarto.org/" class="external" target="_blank">Quarto</a> <br> <a href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" class="external" target="_blank">Code source</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

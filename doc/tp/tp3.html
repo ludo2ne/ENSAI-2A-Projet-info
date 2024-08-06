@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
+<meta name="description" content="TP 3">
+
+<title>Data Access Objet (DAO) – Projet info 2A</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Projet info 2A</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projet</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projet">    
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
+ <span class="dropdown-text">Présentation pour les tuteurs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation aux élèves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Notice élèves</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cours" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cours</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cours">    
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
+ <span class="dropdown-text">Tests unitaires</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">TP</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp1.html">
+ <span class="dropdown-text">TP 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp2.html">
+ <span class="dropdown-text">TP 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp3.html">
+ <span class="dropdown-text">TP 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp4.html">
+ <span class="dropdown-text">TP 4</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
+  <li><a href="#mise-à-jour-de-votre-dépôt-local" id="toc-mise-à-jour-de-votre-dépôt-local" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-local"><span class="header-section-number">1</span> Mise à jour de votre dépôt local</a></li>
+  <li><a href="#data-access-objet-dao" id="toc-data-access-objet-dao" class="nav-link" data-scroll-target="#data-access-objet-dao"><span class="header-section-number">2</span> Data Access Objet (DAO)</a>
+  <ul class="collapse">
+  <li><a href="#modélisation" id="toc-modélisation" class="nav-link" data-scroll-target="#modélisation"><span class="header-section-number">2.1</span> Modélisation</a></li>
+  <li><a href="#gestion-des-connexions-et-patern-singleton" id="toc-gestion-des-connexions-et-patern-singleton" class="nav-link" data-scroll-target="#gestion-des-connexions-et-patern-singleton"><span class="header-section-number">2.2</span> Gestion des connexions et patern singleton</a></li>
+  <li><a href="#dao-et-crud" id="toc-dao-et-crud" class="nav-link" data-scroll-target="#dao-et-crud"><span class="header-section-number">2.3</span> DAO et CRUD</a></li>
+  <li><a href="#dao-avec-des-types-dattaque" id="toc-dao-avec-des-types-dattaque" class="nav-link" data-scroll-target="#dao-avec-des-types-dattaque"><span class="header-section-number">2.4</span> DAO avec des types d’attaque</a></li>
+  <li><a href="#pokémon-dao" id="toc-pokémon-dao" class="nav-link" data-scroll-target="#pokémon-dao"><span class="header-section-number">2.5</span> Pokémon DAO</a></li>
+  <li><a href="#dao-et-webservice" id="toc-dao-et-webservice" class="nav-link" data-scroll-target="#dao-et-webservice"><span class="header-section-number">2.6</span> DAO et webservice</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Access Objet (DAO)</h1>
+</div>
+
+<div>
+  <div class="description">
+    TP 3
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rémi Pépin, Ludovic Deneuville </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="avant-de-commencer" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. <strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
+<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code. Ces phases sont appelées “<strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on</strong>”. C’est à ce moment-là que vous devez faire ce qui est écrit dans le TP. Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.</p>
+</blockquote>
+<p>Dans ce TP vous allez :</p>
+<ul>
+<li>Revoir des notions de base de données relationnelles ;</li>
+<li>Implémenter le patron de conception DAO ;</li>
+<li>Voir si votre programme fonctionne avec des tests unitaires reproductibles.</li>
+</ul>
+</section>
+<section id="mise-à-jour-de-votre-dépôt-local" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-local"><span class="header-section-number">1</span> Mise à jour de votre dépôt local</h2>
+<p>Comme lors du précédent TP, vous avez 2 possibilités pour récupérer le code de base du TP3 :</p>
+<section id="si-vous-voulez-repartir-du-code-du-tp2" class="level4" data-number="1.0.1">
+<h4 data-number="1.0.1" class="anchored" data-anchor-id="si-vous-voulez-repartir-du-code-du-tp2"><span class="header-section-number">1.0.1</span> Si vous voulez repartir du code du TP2</h4>
+<ul>
+<li>Ouvrez <strong>Visual Studio Code</strong>
+<ul>
+<li>File &gt; Open Folder
+<ul>
+<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP2</code></li>
+<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
+<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
+</ul></li>
+<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
+<li>Créez un point de sauvegarde de vos travaux de la semaine dernière
+<ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m "Mon super code du TP2"</code></li>
+</ul></li>
+<li>Mettez à jour votre dépôt local
+<ul>
+<li><code>git pull</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="si-vous-navez-pas-le-code-du-tp2-sur-votre-machine" class="level4" data-number="1.0.2">
+<h4 data-number="1.0.2" class="anchored" data-anchor-id="si-vous-navez-pas-le-code-du-tp2-sur-votre-machine"><span class="header-section-number">1.0.2</span> Si vous n’avez pas le code du TP2 sur votre machine</h4>
+<ul>
+<li>Ouvrez le logiciel <strong>Git Bash</strong>
+<ul>
+<li>Créez un dossier pour stocker le code du TP
+<ul>
+<li>par exemple, copiez la ligne ci-dessous, et collez là dans Git Bash (clic droit &gt; Paste)</li>
+<li><code>mkdir -p /p/Cours2A/UE3_Complements_informatique/TP/TP3 &amp;&amp; cd $_</code></li>
+</ul></li>
+<li>Clonez le dépôt
+<ul>
+<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></li>
+</ul></li>
+<li>Fermez <strong>Git Bash</strong></li>
+</ul></li>
+<li>Ouvrez <strong>Visual Studio Code</strong>
+<ul>
+<li>File &gt; Open Folder
+<ul>
+<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP2</code></li>
+<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
+<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
+</ul></li>
+<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="attention-quand-vous-faites-open-folder-dans-vscode" class="level4" data-number="1.0.3">
+<h4 data-number="1.0.3" class="anchored" data-anchor-id="attention-quand-vous-faites-open-folder-dans-vscode"><span class="header-section-number">1.0.3</span> <span class="emoji" data-emoji="warning">⚠️</span> Attention quand vous faites Open Folder dans VSCode</h4>
+<p>Le dossier parent de l’explorer de VSCode (à gauche) doit être : <strong>ENSAI-2A-complement-info-TP</strong>. Si c’est TP1, TP2, TP3, TP ou autre chose ce n’est pas bon ! Vous allez avoir des soucis d’imports par la suite.</p>
+<hr>
+</section>
+<section id="dans-les-2-cas" class="level4" data-number="1.0.4">
+<h4 data-number="1.0.4" class="anchored" data-anchor-id="dans-les-2-cas"><span class="header-section-number">1.0.4</span> Dans les 2 cas</h4>
+<ul>
+<li>Passez sur la branche du TP3
+<ul>
+<li><code>git checkout tp3_base</code></li>
+</ul></li>
+<li>Si ce n’est pas déjà fait, installez les dépendances nécessaires (voir fichier README)
+<ul>
+<li><code>pip install -r requirements.txt</code></li>
+</ul></li>
+<li>pour pour vérifier que tout fonctionne bien
+<ul>
+<li>lancez le fichier <code>__main__.py</code></li>
+<li>lancez les tests unitaires
+<ul>
+<li>dans terminal : <code>python -m unittest</code></li>
+</ul></li>
+</ul></li>
+<li>Pour pouvoir vous connecter à votre base de données, renseignez les variables du fichier <strong>.env</strong> avec votre id :
+<ul>
+<li><code>DATABASE=id????</code></li>
+<li><code>USER=id????</code></li>
+<li><code>PASSWORD=id????</code></li>
+</ul></li>
+<li>Lancez le script <code>utils/reset_database.py</code>
+<ul>
+<li>cela crée un schéma et des données utiles pour ce TP</li>
+</ul></li>
+<li>Ouvrez <strong>DBeaver</strong> pour une remise en jambes en SQL
+<ul>
+<li>Si vous n’êtes pas familier avec DBeaver, suivez ces <a href="https://github.com/ludo2ne/ENSAI-2A-remise-a-niveau/blob/main/SQL/DBeaver.md">instructions</a></li>
+<li>observez ces tables et leurs liens : <code>tp.pokemon</code>, <code>tp.pokemon_type</code>, <code>tp.attack</code>, <code>tp.attack_type</code>, <code>tp.pokemon_attack</code> (schéma dans TP/img/)</li>
+<li>écrivez des requêtes pour :
+<ul class="task-list">
+<li><label><input type="checkbox">lister toutes les attaques, ainsi que le nom du type d’attaque</label></li>
+<li><label><input type="checkbox">lister tous les pokemon, ainsi que le nom du type de Pokemon</label></li>
+<li><label><input type="checkbox">lister toutes les attaques de Pikachu</label></li>
+</ul></li>
+<li>gardez ces requêtes de coté, elles seront utiles plus loin</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="data-access-objet-dao" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="data-access-objet-dao"><span class="header-section-number">2</span> Data Access Objet (DAO)</h2>
+<section id="modélisation" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="modélisation"><span class="header-section-number">2.1</span> Modélisation</h3>
+<p>Reprenons le diagramme de classe du TP1. Limitons nous à la partie “attaque” et réfléchissons où mettre une méthode qui permet de persister les attaques.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+
+class AbstractAttack{
+    &lt;&lt;abstract&gt;&gt;
+    + DATABASE_TYPE_LABEL : str
+    # _id : int
+    # _power : int
+    # _name : str
+    # _description : str
+    +compute_damage(APkm, APkm)$  int
+    }
+    class FixedDamageAttack{
+        + compute_damage(APkm,APkm )  int
+    }
+    class AbstractFormulaAttack{
+    &lt;&lt;abstract&gt;&gt;
+        -get_attack_stat(APkm)$  float
+        -get_defense_stat(APkm)$  float
+        +compute_damage(APkm,APkm)  int
+    }
+    
+    class PhysicalAttack{
+        -get_attack_stat(APkm)  float
+        -get_defense_stat(APkm)  float
+    }
+    
+    class SpecialAttack{
+        -get_attack_stat(APkm)  float
+        -get_defense_stat(APkm)  float
+    }
+    
+    FixedDamageAttack--|&gt;AbstractAttack
+    AbstractFormulaAttack--|&gt;AbstractAttack
+    SpecialAttack--|&gt;AbstractFormulaAttack
+    PhysicalAttack--|&gt;AbstractFormulaAttack
+
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Vu que les attributs de nos attaques sont similaires, on ne va pas coder ça dans les classes spécifiques des attaques. On pourrait mettre les méthodes dans <code>AbstractAttack</code>. Ça fonctionnerait bien d’ailleurs. On aurait une classe unique avec nos méthodes pour interagir avec la base. Mais on ne va pas faire ça !</p>
+<p>Et là vous vous demandez :</p>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="scream">😱</span> Mais pourquoi ???</p>
+</blockquote>
+<p>Et la réponse est :</p>
+<blockquote class="blockquote">
+<p><span class="emoji" data-emoji="stuck_out_tongue">😛</span> Car ça n’a aucun sens !</p>
+</blockquote>
+<p>Revenons sur la phrase : <strong>faible couplage, forte cohésion</strong>. Si l’on met toutes les méthodes de persistance de nos attaques dans la classe <code>AbstractAttack</code> on va avoir une classe qui :</p>
+<ul>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> Détermine le comportement des attaques. C’est exactement ce que l’on souhaite (<strong>forte cohésion</strong>).</li>
+<li><span class="emoji" data-emoji="x">❌</span> Détermine comment on persiste une attaques.</li>
+</ul>
+<p>Mais ça, <strong>ce n’est pas de la responsabilité d’une attaque, mais du système de persistance choisi,</strong> ou du moins de <strong>l’intermédiaire entre nos objets et le système de persistance</strong> !</p>
+<p>Je n’ai personnellement pas envie d’aller modifier ma classe <code>AbstractAttack</code> uniquement car j’ai décidé de changer de système de gestion de la persistance. Je risque de modifier quelque chose que je ne devrais pas et créer des régressions (faire apparaitre des erreurs sur un code qui n’en avait pas avant) dans mon code. Or j’aimerais bien limiter les sources d’erreurs.</p>
+<p>À la place, nous allons créer une classe qui va s’occuper uniquement de cette tâche. Et on appelle ce type de classe DAO pour <strong>Data Access Object</strong>. C’est une classe technique qui va faire <strong>l’interface entre nos données stockées et notre application</strong>. Voilà ce que cela donne en terme de diagramme de classe</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+
+class AbstractAttack{
+    &lt;&lt;abstract&gt;&gt;
+    + DATABASE_TYPE_LABEL : str
+    # _id : int
+    # _power : int
+    # _name : str
+    # _description : str
+    +compute_damage(APkm, APkm)$  int
+    }
+    class FixedDamageAttack{
+        + compute_damage(APkm,APkm )  int
+    }
+    class AbstractFormulaAttack{
+    &lt;&lt;abstract&gt;&gt;
+        -get_attack_stat(APkm)$  float
+        -get_defense_stat(APkm)$  float
+        +compute_damage(APkm,APkm)  int
+    }
+    
+    class PhysicalAttack{
+        -get_attack_stat(APkm)  float
+        -get_defense_stat(APkm)  float
+    }
+    
+    class SpecialAttack{
+        -get_attack_stat(APkm)  float
+        -get_defense_stat(APkm)  float
+    }
+    
+    FixedDamageAttack--|&gt;AbstractAttack
+    AbstractFormulaAttack--|&gt;AbstractAttack
+    SpecialAttack--|&gt;AbstractFormulaAttack
+    PhysicalAttack--|&gt;AbstractFormulaAttack
+
+
+class AttackDao{
+&lt;&lt;Singleton&gt;&gt;
+ +create(AbstractAttack) AbstractAttack
+ +find_by_id(int) AbstractAttack
+ +find_all() List[AbstractAttack]
+ +update(AbstractAttack) AbstractAttack
+ +delete(AbstractAttack) bool
+}
+
+class DBConnection{
+&lt;&lt;Singleton&gt;&gt;
+-__connection : Connection
+
++connection() Connection
+}
+
+AbstractAttack&lt;.. AttackDao: create
+AttackDao..&gt; DBConnection: use
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="gestion-des-connexions-et-patern-singleton" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="gestion-des-connexions-et-patern-singleton"><span class="header-section-number">2.2</span> Gestion des connexions et patern singleton</h3>
+<p>Pour vous connecter à la base de données nous allons utiliser la bibliothèque python <a href="https://www.psycopg.org/docs/index.html"><strong>psycopg2</strong></a>. C’est elle qui va établir la connexion avec la base, envoyer nos requêtes et nous retourner les résultats.</p>
+<p>Mais il faut faire un peu attention à la gestion des connexions. Car nous pourrions nous retrouver à ouvrir des centaines de connexions rapidement et dégrader les performances de notre application. C’est le travail de la classe <code>DBConnection</code>. Comme c’est un singleton, il y aura une seule instance de cette classe dans toute notre application, et comme c’est elle qui se connecte à la base on s’assure de l’unicité de la connexion.</p>
+<blockquote class="blockquote">
+<p>Cette classe est une solution purement technique alors n’hésitez pas à la réutiliser pour votre projet. Elle introduit un concept avancé de POO, à savoir les méta classes. Une méta classe permet de modifier le comportement d’une classe à un niveau poussé (par exemple modifier comment les objets sont construits par python). À moins que vous ayez une appétence tout particulière pour l’informatique, ne passez pas de temps sur ce sujet.</p>
+</blockquote>
+</section>
+<section id="dao-et-crud" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="dao-et-crud"><span class="header-section-number">2.3</span> DAO et CRUD</h3>
+<p>Si vous faites attention, les méthodes de notre DAO ressemblent à celles du CRUD. C’est normal car c’est dans ces méthodes que le code SQL va être stocké, donc il nous faut les méthodes de base, généralement :</p>
+<ul>
+<li><code>find_all()</code> : qui va retourner toute la table.</li>
+<li><code>find_by_id()</code> : qui retourne un enregistrement à partir de son id</li>
+<li><code>create()</code> : qui crée un nouvel enregistrement</li>
+<li><code>delete()</code> : qui supprime un enregistrement</li>
+<li><code>update()</code> : qui met à jour un enregistrement</li>
+</ul>
+<p>Ces 5 méthodes suffisent pour communiquer avec votre base de données. Vous pouvez effectuer le reste des traitements dans vos classes <strong>Service</strong>. Néanmoins pour gagner du temps rien n’empêche de créer des méthodes plus complexes (ex : <code>find_by_type_and_level_order_by_name_desc()</code>)</p>
+<p>Voici la fonctionnement général d’une des méthodes de la DAO :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Etape 1 : On récupère une connexion en utilisant la classe DBConnection.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection :</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Etape 2 : à partir de la connexion on fait un curseur pour la requête </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor : </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Etape 3 : on exécute notre requête SQL.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            cursor.execute(requete_sql)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Etape 4 : on stocke le résultat de la requête</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> res:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Etape 5 : on agence les résultats selon la forme souhaitée (liste...)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> something</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>L’objet <code>cursor</code> contient un pointeur vers les résultats de votre requête. Ce résultat n’est pas encore rapatrié sur votre machine, mais est stocké par la base de données. Vous avez 3 méthodes pour récupérer le résultat :</p>
+<ul>
+<li><code>curseur.fetchone()</code> : retourne uniquement un enregistrement sous forme de dictionnaire. Si vous appelez de nouveau <code>fetchone()</code> sur le même curseur vous obtiendrez la ligne suivante</li>
+<li><code>cursor.fetchall()</code> : retourne l’intégralité des résultats sous forme d’une liste de dictionnaires.
+<ul>
+<li>Les dictionnaires sont les lignes de la table récupérée.</li>
+<li>Les clés du dictionnaire sont les colonnes récupérées.</li>
+<li>Cette méthode fonctionne très bien quand on veut tous les résultats en une fois et qu’il y en a peu. Quand on a des millions d’enregistrements cela va poser problème car :
+<ul>
+<li>Le transfert de données sur internet va prendre du temps et bloquer notre application</li>
+<li>Notre application va devoir gérer une grande quantité de données, et elle en est peut-être incapable</li>
+</ul></li>
+</ul></li>
+<li><code>curseur.fetchmany(size)</code>: retourne autant d’enregistrements que demandé sous forme d’une liste de dictionnaires. Cela permet de contrôler le volume de données que l’on traite. Si vous appelez de nouveau <code>fetchmany(size)</code> sur votre curseur, vous allez récupérer les lignes suivantes (système de pagination)</li>
+</ul>
+<p>Pour plus d’information : <a href="https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/">article de pynative</a></p>
+<hr>
+</section>
+<section id="dao-avec-des-types-dattaque" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="dao-avec-des-types-dattaque"><span class="header-section-number">2.4</span> DAO avec des types d’attaque</h3>
+<p><strong>✍Hand on 1</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Observez le fonctionnement de la classe AttaqueTypeDAO</label>
+<ul>
+<li>cela va vous être utile pour la suite</li>
+</ul></li>
+<li><label><input type="checkbox">Dans DBeaver, créez une requête qui retourne le contenu de la table <code>tp.attack</code>, ainsi que le champ <code>attack_type_name</code> de la table <code>tp.attack_type</code></label>
+<ul>
+<li>Cette requête servira pour les 2 méthodes <code>find</code> ci-après, car</li>
+</ul></li>
+<li><label><input type="checkbox">Dans la classe <code>AttaqueDao</code>, créez les méthodes suivantes :</label>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>update_attack(attack : AbstractAttack) -&gt; bool</code> : met à jour les données de l’attaque passée en paramètre et retourne si la modification s’est bien passée</label></li>
+<li><label><input type="checkbox"><code>find_attack_by_id(id:int) -&gt; Optional[AbsractAttack]</code> : retourne l’attaque avec l’id en paramètre ou retourne None si l’attaque n’est pas trouvée.</label></li>
+<li><label><input type="checkbox"><code>find_all_attacks() -&gt; List[AbsractAttack]</code> : qui retourne la liste de toutes les attaques</label>
+<ul class="task-list">
+<li><label><input type="checkbox">Bonus : ajoutez à cette méthode les paramètres <code>limit</code> et <code>offset</code></label></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Voici quelques conseils :</p>
+<ul>
+<li>Vous pouvez utiliser l’attribut <code>type</code> de chaque attaque pour avoir son label en base</li>
+<li>Utilisez la classe <code>AttackFactory</code> pour instancier facilement des attaques</li>
+<li>Pensez à faire des tests pour voir si votre code fonctionne</li>
+<li>Dans les 2 méthodes <code>find</code>, pour créer nos objets métier <strong>Attack</strong>
+<ul>
+<li>nous avons besoin de connaitre le nom du type d’attaque</li>
+<li>or il n’y a pas cette colonne dans la table <code>attaque</code></li>
+<li>mais peut-être avez-vous déjà une requête qui fait le job ?</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="pokémon-dao" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="pokémon-dao"><span class="header-section-number">2.5</span> Pokémon DAO</h3>
+<p><strong>✍Hand on 2</strong></p>
+<p>Créez la classe <strong>PokémonDAO</strong> avec les méthodes suivantes :</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>find_all_pokemon()-&gt;List[AbstractPokemon]</code> : retourne tous les pokémons dans la base</label></li>
+<li><label><input type="checkbox"><code>find_pokemon_by_name(name:str)-&gt;AbstractPokemon</code> : retourne un pokémon avec le nom donné.</label></li>
+<li><label><input type="checkbox">Complétez la méthode ci-dessus en incorporant la liste des attaques du Pokemon :</label>
+<ul class="task-list">
+<li><label><input type="checkbox">Faites une requête en joignant les tables <code>attack</code> et <code>pokemon_attack</code> en filtrant avec l’id du pokémon</label></li>
+<li><label><input type="checkbox">Générez les attaques à partir de là</label></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="dao-et-webservice" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="dao-et-webservice"><span class="header-section-number">2.6</span> DAO et webservice</h3>
+<p><strong>✍Hand on 3</strong></p>
+<p>Vous allez maintenant rendre accessible les données de votre base à d’autres utilisateurs en réalisant un webservice REST.</p>
+<p>Ajoutez dans le fichier <code>app.py</code> les endpoints suivants :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Défintion du endpoint get /attack?limit=100</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/attack/"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_attacks(limit:<span class="bu">int</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Vous devez récupérer les attaques en base en utilisant votre DAO</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> attacks</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Défintion du endpoint get /pokemon?limit=100</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_pokemons(limit:<span class="bu">int</span>):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Vous devez récupérer les pokemons en base en utilisant votre DAO</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemons</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Défintion du endpoint get /pokemon`/{name}</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_pokemon_by_name(name:<span class="bu">str</span>):</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Vous devez récupérer le pokemon en base en utilisant votre DAO</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>GET localhost:80/attack?limit=100</code> renverra une liste de 100 attaques par défaut. Il est possible de moduler cette valeur via le paramètre de requête <code>limit</code></li>
+<li><code>GET localhost:80/pokemon?limit=100</code>. Il renverra une liste de 100 <em>pokémons</em> par défaut, mais peut être modulé avec le paramètre de requête <code>limit</code>.</li>
+<li><code>GET localhost:80/pokemon/{nom}</code>. Il renverra un json représentant un <em>pokémon</em>.</li>
+</ul>
+<p>Pour retourner des objets, vous allez devoir définir des classes héritant de <code>BaseModel</code>. Vous trouverez toutes les infos dans la documentation de FastAPI.</p>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Dans ce TP vous avez implémenté votre première DAO.</p>
+<p>C’est une classe technique qui sert à communiquer avec votre système de persistance de données. L’avantage premier de faire une classe à part est de découpler au maximum la gestion du système de persistance et le code métier de votre application.</p>
+<p>Si vous décidez d’arrêter d’utiliser une base de données relationnelle et préférez désormais une base de données <em>no SQL</em> vous allez devoir changer uniquement les classes DAO tout en exposant toujours les mêmes méthodes.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ludo2ne\.github\.io\/ENSAI-2A-Projet-info\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Website built with <a href="https://quarto.org/" class="external" target="_blank">Quarto</a> <br> <a href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" class="external" target="_blank">Code source</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

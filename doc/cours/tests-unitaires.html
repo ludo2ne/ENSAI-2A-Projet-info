@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="description" content="Ressources pour le projet informatique de 2e année de l’ENSAI">
+<meta name="description" content="Slides">
 
-<title>Projet informatique 2e année – Projet info 2A</title>
+<title>Les tests unitaires – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,17 +106,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Projet info 2A</span>
     </a>
   </div>
@@ -93,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -103,15 +137,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projet">    
         <li>
-    <a class="dropdown-item" href="./doc/projet/presentation-tuteurs.html">
+    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
   </li>  
     </ul>
@@ -122,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-cours">    
         <li>
-    <a class="dropdown-item" href="./doc/cours/intro.html">
+    <a class="dropdown-item" href="../../doc/cours/intro.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
@@ -130,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/cours/tests-unitaires.html">
+    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
  <span class="dropdown-text">Tests unitaires</span></a>
   </li>  
     </ul>
@@ -141,19 +175,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
         <li>
-    <a class="dropdown-item" href="./doc/tp/tp1.html">
+    <a class="dropdown-item" href="../../doc/tp/tp1.html">
  <span class="dropdown-text">TP 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/tp/tp2.html">
+    <a class="dropdown-item" href="../../doc/tp/tp2.html">
  <span class="dropdown-text">TP 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/tp/tp3.html">
+    <a class="dropdown-item" href="../../doc/tp/tp3.html">
  <span class="dropdown-text">TP 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./doc/tp/tp4.html">
+    <a class="dropdown-item" href="../../doc/tp/tp4.html">
  <span class="dropdown-text">TP 4</span></a>
   </li>  
     </ul>
@@ -181,19 +215,32 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#les-tests" id="toc-les-tests" class="nav-link active" data-scroll-target="#les-tests">Les Tests</a></li>
+  <li><a href="#les-tests-unitaires" id="toc-les-tests-unitaires" class="nav-link" data-scroll-target="#les-tests-unitaires">Les tests unitaires</a></li>
+  <li><a href="#les-test-driven-development-tdd" id="toc-les-test-driven-development-tdd" class="nav-link" data-scroll-target="#les-test-driven-development-tdd">Les Test Driven Development (TDD)</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projet informatique 2e année</h1>
+<h1 class="title">Les tests unitaires</h1>
 </div>
 
 <div>
   <div class="description">
-    Ressources pour le projet informatique de 2e année de l’ENSAI
+    <a href="tests-unitaires-slides.html" style="text-align: right">Slides</a>
   </div>
 </div>
 
@@ -216,73 +263,130 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="le-projet-info-2a" class="level2">
-<h2 class="anchored" data-anchor-id="le-projet-info-2a">Le projet info 2A</h2>
-<ul>
-<li><a href="./doc/projet/presentation-tuteurs.html">Présentation du projet aux tutrices et tuteurs</a></li>
-<li><a href="./doc/projet/presentation-eleves.html">Présentation du projet aux élèves</a></li>
-<li><a href="./doc/projet/notice-eleves.html">Notice élèves</a></li>
-</ul>
-<section id="objectifs" class="level3">
-<h3 class="anchored" data-anchor-id="objectifs">Objectifs</h3>
-<p>Les élèves de deuxième année de l’ENSAI participent à la réalisation du projet informatique par groupes de 4 ou 5 élèves.</p>
-<p>Ce projet permet d’effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année.</p>
-<p>Le travail demandé consiste à <u>construire une application</u> permettant de répondre à la problématique d’un sujet proposé. Ce travail se décompose en 2 grandes phases :</p>
-<ol type="1">
-<li>Étude préalable et Conception générale de l’application</li>
-</ol>
-<ul>
-<li>décrire la solution envisagée</li>
-<li>planifier les grandes phases de la réalisation</li>
-<li>décrire les exigences fonctionnelles par la modélisation</li>
-</ul>
-<ol start="2" type="1">
-<li>Réalisation</li>
-</ol>
-<ul>
-<li>mise en place de la base de données</li>
-<li>développements, tests, documentation</li>
-</ul>
-</section>
-</section>
-<section id="le-cours-de-compléments-dinformatique" class="level2">
-<h2 class="anchored" data-anchor-id="le-cours-de-compléments-dinformatique">Le cours de Compléments d’informatique</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Le but de ce cours est de vous aider à mener à bien le projet informatique en vous apportant les compétences et les outils nécessaires.</p>
-</div>
-</div>
-<p><a href="https://ludo2ne.github.io/ENSAI-2A-complement-info/" target="_blank">Cours 2023-2024</a></p>
-<section id="notions-évoquées" class="level3">
-<h3 class="anchored" data-anchor-id="notions-évoquées">Notions évoquées</h3>
-<ul>
-<li>Git</li>
-<li>Rappels POO</li>
-<li>Tests unitaires</li>
-<li>Webservices</li>
-<li>Communiquer avec une base de données</li>
-<li>Utiliser les logs</li>
-</ul>
-</section>
-<section id="les-tp" class="level3">
-<h3 class="anchored" data-anchor-id="les-tp">Les TP</h3>
-<p>4 TP de 3h permettent de mettre en applications les notions vues en cours. il y a également dans ces TP de nombreux éléments réutilisables en projet.</p>
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
-</section>
-</section>
-<section id="bibliographie" class="level2">
-<h2 class="anchored" data-anchor-id="bibliographie">Bibliographie</h2>
+<section id="les-tests" class="level2">
+<h2 class="anchored" data-anchor-id="les-tests">Les Tests</h2>
+<section id="pourquoi-tester" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-tester">Pourquoi tester ?</h3>
 <ul>
-<li><a href="https://ensae-reproductibilite.github.io/website/">Mise en production des projets de data science</a>, Romain Avouac &amp; Lino Galiana (ENSAE)</li>
+<li>Pour vérifier que votre programme fonctionne</li>
+<li>Pour détecter des erreurs</li>
+<li>Pour éviter les régressions (quand vous modifiez du code)</li>
 </ul>
+<p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
+<p>Des logiciels permettent de calculer <strong>la couverture de tests</strong> d’une application, c’est-à-dire approximativement le nombre de fonctions testées sur le nombre total de fonctions.<br>
+Cette couverture de tests est un indicateur de qualité. Cependant, elle donne une tendance, plutôt qu’une valeur fiable. En effet, il est facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
+<p>Préférez faire peu de tests, mais des tests utiles !</p>
+</section>
+<section id="les-types-de-tests" class="level3">
+<h3 class="anchored" data-anchor-id="les-types-de-tests">Les types de tests</h3>
+<p>Il existe de très nombreux tests différents, voici les principaux :</p>
+<ul>
+<li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
+<li>Test fonctionnel : teste les cas d’utilisation du logiciel</li>
+<li>Test de charge : évaluent la capacité d’un système à gérer un volume élevé de données ou de transactions</li>
+<li>Test d’intégration : vérifie que différents composants ou modules d’un système interagissent correctement ensemble</li>
+<li>Test d’intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles</li>
+<li>…</li>
+</ul>
+</section>
+</section>
+<section id="les-tests-unitaires" class="level2">
+<h2 class="anchored" data-anchor-id="les-tests-unitaires">Les tests unitaires</h2>
+<p>Nous allons utiliser le framework <code>unittest</code> pour réaliser nos tests en Python.</p>
+<p>Commençons par un exemple : vous souhaitez tester la méthode suivante :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationMathematiques:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pour cela, vous allez créer une classe de test.</p>
+<p>Le premier test auquel on pense est le cas nominal : on choisit un nombre en entrée, par exemple 2, puis on vérifie que diviser_cinq_par(2) retourne bien la valeur attendue : 2.5</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest <span class="im">import</span> TestCase, TextTestRunner, TestLoader</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operation_mathematique <span class="im">import</span> OperationMathematiques</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationMathematiques(TestCase):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">## THEN</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(resultat, <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Mais ce n’est pas suffisant !</p>
+<p>La méthode a également un autre retour possible : <code>None</code> <span class="emoji" data-emoji="arrow_right">➡️</span> il faut aussi tester que la méthode renvoie bien None si le paramètre en entrée est 0</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest <span class="im">import</span> TestCase, TextTestRunner, TestLoader</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operation_mathematique <span class="im">import</span> OperationMathematiques</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationMathematiques(TestCase):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">## THEN</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(resultat, <span class="fl">2.5</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">## THEN</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertIsNone(resultat)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Run the tests</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> TextTestRunner(verbosity<span class="op">=</span><span class="dv">2</span>).run(</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        TestLoader().loadTestsFromTestCase(TestOperationMathematiques)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Voici le test complet avec à la fin un <strong>main</strong> optionnel qui permet de lancer la classe de test comme n’importe quel programme Python avec le bouton <span class="emoji" data-emoji="arrow_forward">▶️</span></p>
+<p>Et si… on appelle la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
+<p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN / THEN</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.assertRaises(<span class="pp">TypeError</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            OperationMathematiques().diviser_cinq_par(nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
+<p><span class="emoji" data-emoji="bulb">💡</span> Ce qu’il faut retenir sur le test unitaire :</p>
+<ul>
+<li>vérifie qu’une méthode fait ce qu’elle doit faire</li>
+<li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
+<li>un test unitaire teste UNE et UNE seule chose
+<ul>
+<li>il faut autant de tests unitaires que de retours possibles</li>
+</ul></li>
+<li>il doit être le plus isolé possible <em>(pas de question sur ce point à l’examen)</em>
+<ul>
+<li>c’est-à-dire que si vous voulez tester une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
+<li>le test ne doit se faire que sur la méthode A</li>
+<li>Pour cela, il faut <code>mocker</code> le comportement des autres méthodes</li>
+</ul></li>
+</ul>
+</section>
+<section id="les-test-driven-development-tdd" class="level2">
+<h2 class="anchored" data-anchor-id="les-test-driven-development-tdd">Les Test Driven Development (TDD)</h2>
+<p>Quand tester ?</p>
+<p>…</p>
+<p>La meilleure pratique lorsque l’on veut créer une fonction est de d’abord créer les tests qui permettront de vérifier que la fonction fait ce qu’elle doit faire.</p>
+<p>Cela peut paraître un peu étrange, mais en fait pas tant que ça. Lorsque vous codez une fonction, vous savez avant de commencer :</p>
+<ul>
+<li>quels seront les paramètres en entrée</li>
+<li>quels résultats vous attendez en sortie</li>
+<li>donc vous avez déjà quoi tester !</li>
+</ul>
+<p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
+<p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
 
 
 </section>
