@@ -1,0 +1,90 @@
+---
+title: "Introduction"
+description: "[Slides](intro-slides.html)"
+author: "Ludovic Deneuville"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+  revealjs:
+    theme: moon
+    footer: "[Home](../index.html) --- [Introduction](intro.html)"
+    slide-number: c/t                    ## collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: intro-slides.html
+from: markdown+emoji
+lightbox: true
+---
+
+## Cours de Compléments d'info
+
+- 6h CM
+- 12h TP
+- `ludovic.deneuville@ensai.fr`
+- bureau 161
+- sur la base des cours de [Rémi Pépin](https://github.com/HealerMikado){target="_blank"}
+
+:::{.notes}
+Présentation :
+
+- INSEE, informatique, Orléans GEOLOC, Lille enquêtes, Nautile
+- Rémi Pépin, assistant d'enseignement entre 2018 et 2023
+  - Cours de Cloud Computing
+:::
+
+### Le cours
+
+::: {.callout-tip title="But du cours"}
+Vous apporter les connaissances nécessaires pour mener à bien un projet informatique.
+:::
+
+- Conduire un projet
+- Dépasser les 50 lignes de code
+- Vivre la vie de développeur
+- Travailler en équipe
+
+:::{.notes}
+- organiser votre code
+:::
+
+### Notions abordées
+
+- Versionnage avec git
+- Analyse fonctionnelle, génie logiciel
+- Programmation orientée objet avancée
+- Communication avec une base de données en python
+- Sécurité informatique
+- Communication client-serveur
+
+### Les TP
+
+- Settings VScode
+- Formateur, Linter
+- Open Folder
+
+
+:::{.notes}
+- TP : truc à récup pour le projet
+- Révisez les Pokemon
+- Sujets très longs
+:::
+
+### Évaluation
+
+- :construction: date
+- 2h
+- sur papier
+- 1 feuille A4 recto / verso **[manuscrite]{.underline}**
+
+:::{.notes}
+- But : voir si vous avez retenu le principal
+- pas de piège
+- sur papier car TP trop compliqué à organiser, chatGPT
+- MANUSCRITE : pas de photocopie
+:::
+
+### Le projet info
+
+[Présentation du projet](https://ludo2ne.github.io/ENSAI-2A-Projet-info/doc/presentation-eleves.html){target="_blank"}

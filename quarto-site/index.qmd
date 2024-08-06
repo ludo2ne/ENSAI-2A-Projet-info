@@ -6,9 +6,15 @@ format: html
 from: markdown+emoji
 ---
 
-## Objectifs
+## Le projet info 2A
 
-Tous les élèves de deuxième année participent à la réalisation du projet informatique par groupes de 4 ou 5 élèves. 
+- [Présentation du projet aux tutrices et tuteurs](doc/projet/presentation-tuteurs.qmd)
+- [Présentation du projet aux élèves](doc/projet/presentation-eleves.qmd)
+- [Notice élèves](doc/projet/notice-eleves.qmd)
+
+### Objectifs
+
+Les élèves de deuxième année de l'ENSAI participent à la réalisation du projet informatique par groupes de 4 ou 5 élèves. 
 
 Ce projet permet d’effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année.
 
@@ -23,8 +29,29 @@ Le travail demandé consiste à [construire une application]{.underline} permett
   - développements, tests, documentation
 
 
-## Présentations
+## Le cours de Compléments d'informatique
 
-- [Présentation du projet aux tutrices et tuteurs](doc/presentation-tuteurs.qmd)
-- [Présentation du projet aux élèves](doc/presentation-eleves.qmd)
-- [Notice élèves](doc/notice-eleves.qmd)
+::: {.callout-note}
+Le but de ce cours est de vous aider à mener à bien le projet informatique en vous apportant les compétences et les outils nécessaires.
+:::
+
+[Cours 2023-2024](https://ludo2ne.github.io/ENSAI-2A-complement-info/){target="_blank"}
+
+### Notions évoquées
+
+- Git
+- Rappels POO
+- Tests unitaires
+- Webservices
+- Communiquer avec une base de données
+- Utiliser les logs
+
+### Les TP
+
+4 TP de 3h permettent de mettre en applications les notions vues en cours. il y a également dans ces TP de nombreux éléments réutilisables en projet.
+
+:construction:
+
+## Bibliographie
+
+- [Mise en production des projets de data science](https://ensae-reproductibilite.github.io/website/), Romain Avouac & Lino Galiana (ENSAE)

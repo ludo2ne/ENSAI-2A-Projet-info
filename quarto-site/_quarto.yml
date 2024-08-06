@@ -15,14 +15,33 @@ website:
       - icon: house
         href: index.qmd
         text: Home
-      - text: Présentation
+      - text: Projet
         menu:
-          - href: doc/presentation-tuteurs.qmd
+          - href: doc/projet/presentation-tuteurs.qmd
             text: "Présentation pour les tuteurs"
-          - href: doc/presentation-eleves.qmd
+          - href: doc/projet/presentation-eleves.qmd
             text: "Présentation aux élèves"
-          - href: doc/notice-eleves.qmd
+          - href: doc/projet/notice-eleves.qmd
             text: "Notice élèves"
+      - text: Cours
+        menu:
+          - href: doc/cours/intro.qmd
+            text: Introduction
+          - href: https://ludo2ne.github.io/Git-tuto/doc/presentation.html
+            text: Git
+            target: "_blank"
+          - href: doc/cours/tests-unitaires.qmd
+            text: Tests unitaires
+      - text: TP
+        menu:
+          - href: doc/tp/tp1.qmd
+            text: TP 1
+          - href: doc/tp/tp2.qmd
+            text: TP 2
+          - href: doc/tp/tp3.qmd
+            text: TP 3
+          - href: doc/tp/tp4.qmd
+            text: TP 4
     right:
       - icon: github
         href: "{{< meta var.url-repo >}}"
