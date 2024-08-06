@@ -79,7 +79,198 @@ Ce TP mêle explications et phases de code.
 Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.
 
 
-## Ce que vous allez coder {.unnumbered}
+## Création des dépôts
+
+::: {.callout-note}
+Pour ce premier TP, vous allez [**travailler avec votre équipe projet**]{.underline} sur un seul et même dépôt distant.
+
+Un membre de l'équipe va créer un dépôt sur GitHub et ensuite tous les membres (le créateur du dépôt GitHub inclus) vont créer leurs dépôt locaux en clonant ce dépôt distant.
+:::
+
+### Le dépôt distant
+
+::: {.callout-important}
+Un seul membre de l'équipe crée ce dépôt distant.
+:::
+
+- [ ] Connectez-vous sur [GitHub](https://github.com/){target="_blank"}
+- [ ] Créez un *fork* du dépôt [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
+  - Un fork est une copie d'un dépôt, permettant à un utilisateur de développer indépendamment sans affecter l'original
+- [ ] Ajoutez les membres de votre équipe
+  - Sur la page du dépôt > :gear: Settings > Collaborators > [Add people]{.green-button}
+- [ ] Envoyez à vos camarades, l'adresse du dépôt distant
+
+
+### Les dépôts locaux
+
+Maintenant, chaque membre de l'équipe va créer sur sa propre machine, son clone du dépôt.
+
+Commençons par créer un dossier pour ranger votre dépôt local :
+
+- [ ] Ouvrez *Git Bash*
+- [ ] Exécutez cette commande : `mkdir -p /p/Cours2A/UE3_Complements_info/TP1 && cd $_`
+  - elle crée l'arborescence demandée (*mkdir*)
+  - puis elle vous positionne dans ce dossier (*cd*)
+- [ ] Clonez le dépôt distant avec SSH
+  - Lorsque vous êtes sur la page GitHub du dépôt, cliquez sur [Code]{.green-button}, puis sur l'onglet SSH
+  - Copiez l'url qui commence par `git@github.com...`
+  - Dans Git Bash : `git clone <url>` (en remplaçant \<url\>)
+
+Votre clone est prêt, vous pouvez vérifier sa présence via l'explorateur Windows (WIN + E, puis allez dans le dossier `P:\Cours2A\UE3_Complements_info\TP1`).
+
+- [ ] Fermez *Git Bash*
+  - Si tout s'est bien passé
+  - Vous allez retrouver ensuite le même Git Bash, qui est intégré dans VS Code 
+
+
+## Visual Studio Code
+
+### Ouvrir le dépôt
+
+Un dépôt est un ensemble de dossiers et de fichiers. Pour consulter et éditer ces fichiers, vous allez utiliser [Visual Studio Code](https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/VSCode.html){target="_blank"}, un éditeur très populaire.
+
+::: {.callout-note}
+Au lieu de VS Code, vous pouvez tout à fait ouvrir vos fichiers avec le *bloc-notes*, mais vous vous rendrez rapidement compte que c'est beaucoup moins pratique.
+:::
+
+- [ ] Ouvrez Visual Studio Code
+- [ ] Ouvrez votre dépôt local
+  - File > Open Folder
+  - Allez dans le dossier `P:\Cours2A\UE3_Complements_info\TP1`
+  - Cliquez une seule fois sur :file_folder: ENSAI-2A-complement-info-TP, puis sur le bouton [Sélectionner un dossier]{.grey-button}
+
+::: {.callout-important}
+- [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
+  - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
+  - :warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
+:::
+
+### Contenu du dépôt
+
+Ce dépôt contient les éléments suivants :
+
+
+| Élément             | Description                                                                                   |
+|---------------------|-----------------------------------------------------------------------------------------------|
+| `.vscode`           | Contient les paramètres VS Code pour ce projet                                                |
+| `src`               | Dossier contenant les fichiers Python rangés dans une arborescence respectant la programmation en couches           |
+| `.gitignore`        | Liste des fichiers à ne pas versionner avec git                                               |
+| `LICENSE`           | Définit les droits d’utilisation du dépôt                                                     |
+| `README.md`         | Contient des informations utiles pour présenter, installer et utiliser l’application          |
+| `requirements.txt`  | Liste les packages Python nécessaires                                                         |
+
+
+### La config VS Code
+
+::: {.callout-tip}
+VS Code est hautement paramétrable, aussi bien au niveau User qu'au niveau Workspace (i.e. considérons que Workspace = dépôt).
+:::
+
+- [ ] Ouvrez le fichier `.vscode/settings.json`
+
+Ce fichier contient du paramétrage pour le dépôt, par exemple :
+
+- Le formattage automatique lorsque vous sauvegardez un fichier Python
+  - Le formateur utilisé est [Black](https://black.readthedocs.io/){target="_blank"}
+  - La taille des lignes est limitée à 100 caractères
+  - Les tabulations sont remplacées par 4 espaces
+- Le dossier source se nomme `src`
+  - Pour importer des modules, ce dossier *src* sera la racine
+- le terminal par défaut est *Git Bash*
+
+
+## Git
+
+::: {.callout-note}
+Vous allez maintenant faire quelques manipulations basiques avec Git :
+
+- Ajouter des fichiers au dépôts
+- Créer des points de sauvegarde
+- Envoyer vos modifications locales vers les dépôts distant
+- Mettre à jour votre dépôt local
+:::
+
+### Routine Git
+
+- [ ] Ouvrez le *Git Bash* intégré dans VS Code
+  - Terminal > New Terminal (ou CTRL + ù)
+- [ ] Lancez le programme principal pour vérifier que tout fonctionne bien
+  - `python src/__main__.py`
+- [ ] Créez un nouveau fichier dans le dossier *src* en complétant avec votre propre prénom et collez ce code
+  ```{.python filename="<prenom>.py"}
+  a, b = 0, 5
+
+  for i in range(b):
+      print(" " * a, end="")
+      a += 1
+      print("Bonjour <prenom>")
+  ```
+- [ ] Dans Git Bash, utilisez les commandes *status*, *add*, *commit*, *push* et *pull* pour envoyer vos modifications vers le dépôt distant
+
+::: {.callout-tip collapse="true" title="Aide"}
+[L'enchainement des commandes Git](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target="_blank"} devra devenir un automatisme.
+
+Si lors du *push*, vous avez ce message, c'est qu'il faut commencer par *pull*.
+```{.txt}
+To https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git
+Merge branch 'main' of https://github.com/ludo2ne/ENSAI-2A-complement-info-TP
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first merge the remote changes (e.g.,
+hint: 'git pull') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+:::
+
+### Résoudre un conflit
+
+- [ ] Pour tous les fichier `<prenom.py>`, [un seul membre]{.underline} de l'équipe commence par modifier le prenom dans le code
+  - ne pas modifier les noms des fichiers, uniquement le code à l'intérieur
+    - `print("Bonjour <prenom>")` :arrow_right: `print("Bonjour Marie-<prenom>")`
+  - Et il *add*, *commit* et *push*
+- [ ] Ensuite les autres membres modifient chacun leur propre fichier
+  - `print("Bonjour <prenom>")` :arrow_right: `print("Bonjour Anne-<prenom>")`
+  - Et ils *add*, *commit* *pull* et *push*
+
+Normalement un conflit survient lors du *pull*. En effet il y a un conflit de version
+
+| Version                      | Code                                      |
+|------------------------------|-------------------------------------------|
+| Version originale            | `print("Bonjour <prenom>")`               |
+| Votre modification           | `print("Bonjour Anne-<prenom>")`          |
+| Version sur le dépôt distant | `print("Bonjour Marie-<prenom>")`         |
+
+```{.python}
+<<<<<<< HEAD
+print("Bonjour Anne-<prenom>")          # Votre modification - current change
+=======
+print("Bonjour Marie-<prenom>")         # La modification du dépôt distant - incoming change
+>>>>>>>
+```
+
+- [ ] Vous choisissez d'imposer votre version
+  - Soit en cliquant sur *Accept Current Change
+  - Soit en supprimant `print("Bonjour Marie-<prenom>")`, ainsi que les `<<<<<<<`, `=======` et `>>>>>>>`
+- [ ] *add*, *commit* *pull* et *push*
+
+::: {.callout-important}
+Avoir un conflit, ce n’est pas grave !
+Avoir un conflit, ce n’est pas grave !
+Avoir un conflit, ce n’est pas grave !
+
+Conflit ≠ Erreur
+
+Cela arrive simplement quand Git rencontre 2 versions et il n’a pas de :crystal_ball:, ni de :game_die: pour choisir laquelle est la bonne.
+
+Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant que possible de travailler sur les mêmes fichiers en même temps.
+:::
+
+
+## Python et POO
+
+### Ce que vous allez coder
 
 Notre jeu s'inspirera de *Pokémon Unite* (aucune connaissance du jeu, ni de *Pokémon* n'est nécessaire).
 
@@ -137,46 +328,23 @@ classDiagram
 ```
 
 
-## Mise en place
-
-::: {.callout-note}
-Pour ce premier TP, vous allez [**travailler avec votre équipe projet**]{.underline} sur un seul et même dépôt distant.
-:::
-
-### Création du dépôt distant
-
-::: {.callout-important}
-Un seul membre de l'équipe crée ce dépôt distant.
-:::
-
-- [ ] Connectez-vous sur [GitHub](https://github.com/){target="_blank"}
-- [ ] Créez un *fork* du dépôt [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
-  - Un fork est une copie d'un dépôt, permettant à un utilisateur de développer indépendamment sans affecter l'original
-- [ ] Ajoutez les membres de votre équipe
-  - Sur la page du dépôt > :gear: Settings > Collaborators > [Add people]{.green-button}
-- [ ] Envoyez à vos camarades, l'adresse du dépôt distant
 
 
-### Création des dépôts locaux
 
-Maintenant, chaque membre de l'équipe va créer sur sa propre machine, son clone du dépôt.
 
-Commençons par créer un dossier pour ranger votre dépôt local :
 
-- [ ] Ouvrez *Git Bash*
-- [ ] Exécutez cette commande : `mkdir -p /p/Cours2A/UE3_Complements_info/TP1 && cd $_`
-  - elle crée l'arborescence demandée (*mkdir*)
-  - puis elle vous positionne dans ce dossier (*cd*)
-- [ ] Clonez le dépôt distant avec SSH
-  - lorsque vous êtes sur la page GitHub du dépôt, cliquez sur [Code]{.green-button}, puis sur l'onglet SSH
-  - Copiez l'url qui commence par `git@github.com...`
-  - Dans Git Bash : `git clone <url>` (en remplaçant \<url\>)
+
+
+
+
 
 
 
 
 ---
+
 :construction:
+
 ---
 
 
