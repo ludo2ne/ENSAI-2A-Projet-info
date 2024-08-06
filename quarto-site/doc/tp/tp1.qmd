@@ -274,7 +274,43 @@ Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant
 
 ## Un exemple d'application
 
-- Template
-- Vues
-- CICD
-- Logs
+
+Pour comprendre comment est construit une application, vous allez étudier un exemple simple
+
+- [ ] Cloner le dépôt ci-dessous
+  - `git clone https://github.com/ludo2ne/ENSAI-2A-projet-info-template`
+- [ ] Suivez les instructions du README pour installer et lancer l'application
+  - Packages à installer
+  - Variables d'environnement
+
+2 types d'applications peuvent vous être demander en projet :
+
+- une application de Menu
+  - l'utilisateur navigue dans des menus
+- un webservice
+  - l'application expose des endpoints
+  - l'utilisateur peut interroger ces endpoints
+
+### Une application de Menu
+
+- [ ] lancez le *__main__*
+
+Vous arrivez sur le menu d'accueil. Le principe d'une application est de vous faire naviguer d'un menu à l'autre tout en effectuant des opérations en arrière plan.
+
+- [ ] Rechercher le code du menu d'accueil dans la couche *view*
+  - Si vous observez le code, cette classe ne fait qu'une seule chose : vous rediriger vers une nouvelle vue
+- [ ] Sélectionnez le choix `Ré-initialiser la base de données`
+  - Cela permet de créer les tables dans la base de données
+  - Et d'insérer des données
+  - Si vous explorez le code, vous verrez que cela exécute les scripts sql du dossier `data`
+- [ ] Sélectionnez `Créer un compte` et saisissez les éléments demandés
+  - Observez le code *inscription_vue.py* pour voir comment sont vérifiées les saisies
+
+::: {.callout-tip}
+Il existe de nombreuses possibilités pour restreindre l'utilisateur dans ses saisies.
+
+Il est également possible de créer des règles personnalisées.
+:::
+
+
+### Un webservice
