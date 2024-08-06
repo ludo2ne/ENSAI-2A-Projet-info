@@ -9,7 +9,7 @@
 <meta name="author" content="Rémi Pépin, Ludovic Deneuville">
 <meta name="description" content="TP 2">
 
-<title>Webservices et formats de données – Projet info 2A</title>
+<title>Python, POO, Tests Unitaires et Documentation – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -223,26 +252,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
-  <li><a href="#appeler-un-webservice-à-la-main" id="toc-appeler-un-webservice-à-la-main" class="nav-link" data-scroll-target="#appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</a>
+  <li><a href="#python-et-poo" id="toc-python-et-poo" class="nav-link active" data-scroll-target="#python-et-poo"><span class="header-section-number">1</span> Python et POO</a>
   <ul class="collapse">
-  <li><a href="#webservices" id="toc-webservices" class="nav-link" data-scroll-target="#webservices"><span class="header-section-number">1.1</span> Webservices</a></li>
-  <li><a href="#découverte-dinsomnia-et-premières-requêtes-get" id="toc-découverte-dinsomnia-et-premières-requêtes-get" class="nav-link" data-scroll-target="#découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes <code>GET</code></a></li>
-  <li><a href="#requêtes-avancées" id="toc-requêtes-avancées" class="nav-link" data-scroll-target="#requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</a></li>
-  <li><a href="#swagger" id="toc-swagger" class="nav-link" data-scroll-target="#swagger"><span class="header-section-number">1.4</span> Swagger</a></li>
+  <li><a href="#ce-que-vous-allez-coder" id="toc-ce-que-vous-allez-coder" class="nav-link" data-scroll-target="#ce-que-vous-allez-coder"><span class="header-section-number">1.1</span> Ce que vous allez coder</a></li>
+  <li><a href="#objets-métier" id="toc-objets-métier" class="nav-link" data-scroll-target="#objets-métier"><span class="header-section-number">1.2</span> Objets métier</a></li>
   </ul></li>
-  <li><a href="#appeler-un-webservice-en-python" id="toc-appeler-un-webservice-en-python" class="nav-link" data-scroll-target="#appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en python</a>
+  <li><a href="#modélisation-et-implémentation" id="toc-modélisation-et-implémentation" class="nav-link" data-scroll-target="#modélisation-et-implémentation"><span class="header-section-number">2</span> Modélisation et implémentation</a>
   <ul class="collapse">
-  <li><a href="#la-bibliothèque-requests---comment-ça-fonctionne" id="toc-la-bibliothèque-requests---comment-ça-fonctionne" class="nav-link" data-scroll-target="#la-bibliothèque-requests---comment-ça-fonctionne"><span class="header-section-number">2.1</span> La bibliothèque <code>requests</code> - Comment ça fonctionne</a></li>
-  <li><a href="#mise-à-jour-de-votre-dépôt-git" id="toc-mise-à-jour-de-votre-dépôt-git" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</a></li>
-  <li><a href="#mes-premières-requêtes-en-python" id="toc-mes-premières-requêtes-en-python" class="nav-link" data-scroll-target="#mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</a></li>
-  <li><a href="#les-requêtes-plus-complexes" id="toc-les-requêtes-plus-complexes" class="nav-link" data-scroll-target="#les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</a></li>
-  <li><a href="#requêtes-avancées-en-python" id="toc-requêtes-avancées-en-python" class="nav-link" data-scroll-target="#requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</a></li>
+  <li><a href="#première-approche-le-ifelifelse" id="toc-première-approche-le-ifelifelse" class="nav-link" data-scroll-target="#première-approche-le-ifelifelse"><span class="header-section-number">2.1</span> Première approche : le « if/elif/else »</a></li>
+  <li><a href="#la-puissance-de-la-poo" id="toc-la-puissance-de-la-poo" class="nav-link" data-scroll-target="#la-puissance-de-la-poo"><span class="header-section-number">2.2</span> La puissance de la POO</a></li>
+  <li><a href="#testez-votre-code" id="toc-testez-votre-code" class="nav-link" data-scroll-target="#testez-votre-code"><span class="header-section-number">2.3</span> Testez votre code</a></li>
   </ul></li>
-  <li><a href="#coder-un-webservice-en-python" id="toc-coder-un-webservice-en-python" class="nav-link" data-scroll-target="#coder-un-webservice-en-python"><span class="header-section-number">3</span> Coder un webservice en python</a>
+  <li><a href="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" id="toc-lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="nav-link" data-scroll-target="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">3</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</a>
   <ul class="collapse">
-  <li><a href="#mon-premier-webservice" id="toc-mon-premier-webservice" class="nav-link" data-scroll-target="#mon-premier-webservice"><span class="header-section-number">3.1</span> Mon premier webservice</a></li>
+  <li><a href="#attaques-à-dégâts-fixes" id="toc-attaques-à-dégâts-fixes" class="nav-link" data-scroll-target="#attaques-à-dégâts-fixes"><span class="header-section-number">3.1</span> Attaques à dégâts fixes</a></li>
+  <li><a href="#attaques-à-dégâts-variables" id="toc-attaques-à-dégâts-variables" class="nav-link" data-scroll-target="#attaques-à-dégâts-variables"><span class="header-section-number">3.2</span> Attaques à dégâts variables</a></li>
   </ul></li>
+  <li><a href="#architecture-finale-bonus-si-vous-avez-le-temps" id="toc-architecture-finale-bonus-si-vous-avez-le-temps" class="nav-link" data-scroll-target="#architecture-finale-bonus-si-vous-avez-le-temps"><span class="header-section-number">4</span> Architecture finale (bonus, si vous avez le temps)</a></li>
   </ul>
 </nav>
 </nav>
@@ -255,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Webservices et formats de données</h1>
+<h1 class="title">Python, POO, Tests Unitaires et Documentation</h1>
 </div>
 
 <div>
@@ -283,462 +309,526 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="avant-de-commencer" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
-<blockquote class="blockquote">
-<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater, le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. <strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
-<p><span class="emoji" data-emoji="exclamation">❗</span> Il est possible que les copier-coller fonctionnent étrangement (caractère de fin de ligne qui disparaissent, indentation qui change). Faites-y attention !</p>
-<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code. Ces phases sont appelées “<strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on</strong>”. C’est à ce moment là que vous devez faire ce qui est écrit dans le TP. Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales, surtout pour poser des questions.</p>
-</blockquote>
-<p>Dans ce TP vous allez :</p>
+<section id="python-et-poo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="python-et-poo"><span class="header-section-number">1</span> Python et POO</h2>
+<section id="ce-que-vous-allez-coder" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="ce-que-vous-allez-coder"><span class="header-section-number">1.1</span> Ce que vous allez coder</h3>
+<p>Notre jeu s’inspirera de <em>Pokémon Unite</em> (aucune connaissance du jeu, ni de <em>Pokémon</em> n’est nécessaire).</p>
+<p>Pour résumer en quelques mots, il y aura des <em>Pokemons</em> qui s’affronteront lors de <em>Battles</em> en lançant des <em>Attacks</em>. Voici les principaux objets que vous allez manipuler :</p>
 <ul>
-<li>Faire des appels à un webservice à la main avec Insomnia</li>
-<li>Faire des appels à un webservice avec la bibliothèque python <strong>requests</strong></li>
-<li>Découvrir la page swagger d’un webservice</li>
-<li>Manipuler différents formats de données</li>
-<li>Créer un webservice avec le framework python <strong>fastAPI</strong></li>
+<li><code>Pokemon</code> : qui ont diverses caractéristiques et statistiques
+<ul>
+<li>un nom</li>
+<li>un niveau</li>
+<li><a href="https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon" target="_blank">un type</a>
+<ul>
+<li>ici les types sont : Attaquant, Défenseur, Polyvalant, Soutient et Rapide (et non pas : Feu, Eau, Plante…)</li>
+</ul></li>
+<li>des statistiques contenues dans un objet <em>Statistic</em> défini ci-dessous</li>
+</ul></li>
+<li><code>Statistic</code> : pour éviter de surcharger la classe <code>Pokemon</code>, leurs stats sont stockées dans un objet de la classe <code>Statistic</code>
+<ul>
+<li>hp : health points</li>
+<li>attack, defense, speed… : qui serviront déterminer la force de ses attaques</li>
+</ul></li>
+<li><code>Attack</code> : différents types d’attaques dont disposeront les Pokémons (partie 3)</li>
+<li><code>Battle</code> : servira à faire s’affronter 2 Pokémons pour déterminer l’issue du combat (partie 4)</li>
 </ul>
-</section>
-<section id="appeler-un-webservice-à-la-main" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</h2>
-<p>La première partie de ce TP ne nécessite pas d’écrire du code, mais seulement de faire des requêtes à un webservice en utilisant <strong>Insomnia</strong>.</p>
-<section id="webservices" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="webservices"><span class="header-section-number">1.1</span> Webservices</h3>
-<blockquote class="blockquote">
-<p><span class="emoji" data-emoji="book">📖</span> <strong>Webservice</strong> : le terme webservice est un terme vaste et il serait compliqué d’en donner une définition courte (<a href="https://en.wikipedia.org/wiki/Web_service">article wikipedia</a>). Dans le cadre du projet un webservice désigne une application accessible via le protocole HTTP (<strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol) qui respecte généralement l’architecture REST (* <strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer). Mais il en existe d’autre comme SOAP (<strong>S</strong>imple <strong>O</strong>bjet* <strong>A</strong>ccess <strong>P</strong>rotocol) ou RPC (<strong>R</strong>emote <strong>P</strong>rocedure <strong>C</strong>all)</p>
-</blockquote>
-<p>En d’autres termes, un webservice est une application accessible via le web que l’on va pouvoir <strong>requêter</strong> soit pour obtenir des <strong>ressources</strong>, soit pour <strong>modifier</strong> les ressources accessibles. Un webservice peut seulement avoir pour but d’être une <strong>point d’accès unique et normalisé</strong> à des données (comme une interface à une base de données), mais il peut également être une <strong>manière de contrôler un système d’information</strong> (lancer des travaux, les mettre en attente, récupérer des résultats, etc)</p>
-<p>Les webservices utilisent le protocole HTTP qui est le protocole du web (et pas d’internet). C’est celui que vous utilisez sans le savoir avec votre navigateur web. Requêter un webservice se fait presque comme requêter une page web. Pour cela il vous faut l’adresse de la ressource, son <em>Uniforme Resource Identifier</em>, ou URI (c’est une notion plus générale que les <em>Uniforme Resource Locator</em>, ou URL), une méthode (GET, POST, PUT, DELETE, <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">liste des méthodes</a>), et potentiellement des données.</p>
-</section>
-<section id="découverte-dinsomnia-et-premières-requêtes-get" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes <code>GET</code></h3>
-<p><strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on 1</strong></p>
-<ul class="task-list">
-<li><label><input type="checkbox">Lancez le programme <strong>Insomnia</strong> (recherchez dans le menu démarrer)</label></li>
-<li><label><input type="checkbox">Créez une collection de requête</label>
-<ul>
-<li>bouton <strong>Create</strong> à droite</li>
-<li>puis cliquez sur votre collection</li>
-</ul></li>
-<li><label><input type="checkbox">Créez une nouvelle requête</label>
-<ul>
-<li>en appuyant sur <strong>CTRL+N</strong></li>
-<li>donnez lui un nom</li>
-<li>vérifiez que c’est bien une requête de type <strong>GET</strong></li>
-</ul></li>
-<li><label><input type="checkbox">Dans la barre d’adresse, testez les requêtes ci-dessous</label>
-<ul>
-<li>Regardez la réponse dans la partie droite de votre écran.</li>
-<li>Quelles sont les similarités entre les réponses ?</li>
-</ul></li>
-</ul>
-<p>Requêtes à tester :</p>
-<ul>
-<li><a href="https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0">Webservice</a> sur les émissions carbone du Royaume-Uni :
-<ul>
-<li><code>api.carbonintensity.org.uk/intensity</code></li>
-<li><code>api.carbonintensity.org.uk/intensity/date/{date}</code>
-<ul>
-<li>en remplaçant {date} par la date de votre choix au format YYYY-MM-DD</li>
-</ul></li>
-</ul></li>
-<li><a href="https://data.rennesmetropole.fr/explore/?sort=modified">Webservice</a> pour obtenir différents jeux de données ouverts de la ville de Rennes
-<ul>
-<li><code>data.rennesmetropole.fr/api/records/1.0/search?dataset=menus-cantines</code></li>
-<li>Testez différentes valeurs pour dataset :<code>eco-counter-data</code>, <code>rva-bal</code>, <code>resultats-des-elections-municipales-2020-a-acigne</code></li>
-<li>Ajouter à la fin de l’URI le paramètre <code>rows</code>
-<ul>
-<li>pour faire varier le nombre de lignes que vous recevez</li>
-<li>ajouter simplement <code>&amp;rows=X</code> avec X le nombre de lignes</li>
-</ul></li>
-</ul></li>
-<li>Quelques méthodes du webservice utiles pour votre projet informatique (voyez cela avec votre tuteur)</li>
-</ul>
-<hr>
-</section>
-<section id="requêtes-avancées" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</h3>
-<p><strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on 2</strong> (toujours avec <strong>Insomnia</strong>)</p>
-<ul>
-<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?
-<ul>
-<li><code>web-services.domensai.ecole/attack</code></li>
-</ul></li>
-<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?
-<ul>
-<li><code>web-services.domensai.ecole/attack/{identifier}</code></li>
-<li>en remplaçant <code>{identifier}</code> par le nom ou l’id d’une attaque que vous venez de récupérer</li>
-</ul></li>
-<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?
-<ul>
-<li><code>web-services.domensai.ecole/attack?type_attack_id={id_type}</code></li>
-<li>en remplaçant <code>{id_type}</code> par un entier entre 1 et 4.</li>
-</ul></li>
-<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante
-<ul>
-<li><code>web-services.domensai.ecole/attack?type_attack_name={type attack}</code></li>
-<li>en remplaçant <code>{type attack}</code> par <code>special attack</code> ou <code>physical attack</code> ou <code>fixed damage</code> ou <code>status attack</code></li>
-</ul></li>
-<li>Faites une requête de type <code>POST</code> sur la ressource suivante
-<ul>
-<li><code>web-services.domensai.ecole/attack</code></li>
-<li>Cliquer sur <strong>Body</strong>, puis <strong>JSON</strong>, coller le texte ci-dessous, puis remplacez les valeurs des attributs pour créer votre propre attaque</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"An awesome name"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"attack_type"</span><span class="fu">:</span> <span class="st">"physical attack"</span><span class="er">/</span><span class="st">"physical attack"</span><span class="er">/</span><span class="st">"fixed damage"</span><span class="er">/</span><span class="st">"status attack"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"power"</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accuracy"</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"element"</span><span class="fu">:</span> <span class="st">"An awesome element"</span><span class="fu">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"An awesome description"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li>Faites une requête avec la méthode <code>GET</code> sur la ressource suivante
-<ul>
-<li><code>web-services.domensai.ecole/attack/{identifier}</code></li>
-<li>en remplaçant <code>{identifier}</code> par le nom ou l’id de l’attaque que vous venez de créer</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="swagger" class="level3" data-number="1.4">
-<h3 data-number="1.4" class="anchored" data-anchor-id="swagger"><span class="header-section-number">1.4</span> Swagger</h3>
-<p>Dans votre navigateur web allez sur la page http://web-services.domensai.ecole/docs. Cela vous amène sur la page swagger du webservice. Cette page recense tous les endpoints du webservice, et comment les utiliser. Essayez via l’interface de :</p>
-<ul>
-<li>modifier une attaque</li>
-<li>supprimer une attaque</li>
-<li>afficher une liste de pokémon</li>
-<li>ajouter un pokémon</li>
-</ul>
-</section>
-</section>
-<section id="appeler-un-webservice-en-python" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en python</h2>
-<p>Aujourd’hui, les plus grands consommateurs de webservices sont les machines. Et donc maintenant nous allons voir comment automatiser des appels à un webservice en python.</p>
-<blockquote class="blockquote">
-<p><span class="emoji" data-emoji="mag">🔍</span> Aujourd’hui beaucoup d’applications web (par exemple Facebook, Netflix, Dailymotion, Uber) utilisent ce que l’on appelle des architectures “micro services”.</p>
-<p>Les échanges entre leurs composants applicatifs (par exemple entre leurs interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d’avoir des modules découplés les uns des autres car ils communiquent uniquement via requête HTTP, ou avec des systèmes de gestion d’évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules.</p>
-<p>Le côté négatif c’est que cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d’applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.</p>
-</blockquote>
-<hr>
-<section id="la-bibliothèque-requests---comment-ça-fonctionne" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="la-bibliothèque-requests---comment-ça-fonctionne"><span class="header-section-number">2.1</span> La bibliothèque <code>requests</code> - Comment ça fonctionne</h3>
-<p>Le principe va rester le même que faire une requête à la main, et on va utiliser la bibliothèque <a href="https://requests.readthedocs.io/en/master/"><strong>requests</strong></a> pour avoir seulement à remplir les parties intéressantes de nos requêtes.</p>
-<p>Pour faire une requête <code>GET</code> vous allez seulement devoir faire :</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://mon-webservice.com"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exécuter cette ligne de code va :</p>
-<ol type="1">
-<li>Envoyer la requête au serveur que vous contactez</li>
-<li>Stockez le résultat dans la variable <code>response</code></li>
-</ol>
-<p>Cette variable <code>response</code> est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple :</p>
-<ul>
-<li><code>response.text</code> : le corps du résultat sous forme de string en laissant <code>requests</code> inférer l’encodage (cela fonctionne souvent). Problème vous avez seulement un string, et ce n’est pas le meilleur format de données à manipuler</li>
-<li><strong><code>response.json()</code></strong> : le corps du résultat comme un <code>dict</code>. C’est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler</li>
-<li><code>response.encoding</code> : l’encoding de votre requête (utile en cas de problème d’encoding)</li>
-<li><strong><code>response.status_code</code></strong> : le statut de la requête. les principaux sont :
-<ul>
-<li>200 : retour général pour dire que tout c’est bien passé</li>
-<li>201 : ressource créée avec succès</li>
-<li>202 : requête acceptée, sans garantie du résultat (par exemple dans un système asynchrone)</li>
-<li>400 : erreur de syntaxe dans la requête</li>
-<li>401 : erreur, une authentification est nécessaire</li>
-<li>403 : la ressource est interdite (droits insuffisants)</li>
-<li>404 : ressource non trouvée</li>
-<li>405 : une mauvaise méthode http a été utilisée</li>
-<li>500 : erreur côté serveur</li>
-<li>503 : service temporairement indisponible</li>
-</ul></li>
-</ul>
-<p>Pour résumer, les résultats 2xx indiquent un succès, un résultat 4xx ou 5xx un problème.</p>
-<p>Exemple simple d’utilisation :</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://mon-webservice.com"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Cannot reach (HTTP </span><span class="sc">{}</span><span class="st">): </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(response.status_code, response.text)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:    </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(response.json(), indent<span class="op">=</span><span class="dv">2</span>))       <span class="co"># JSON Pretty print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="mise-à-jour-de-votre-dépôt-git" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</h3>
-<p>2 possibilités <strong>au choix</strong></p>
-<section id="si-vous-voulez-repartir-du-code-du-tp1" class="level4" data-number="2.2.1">
-<h4 data-number="2.2.1" class="anchored" data-anchor-id="si-vous-voulez-repartir-du-code-du-tp1"><span class="header-section-number">2.2.1</span> Si vous voulez repartir du code du TP1</h4>
-<ul>
-<li>Ouvrez <strong>Visual Studio Code</strong>
-<ul>
-<li>File &gt; Open Folder
-<ul>
-<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP1</code></li>
-<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
-<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
-</ul></li>
-<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
-<li>Créez un point de sauvegarde de vos travaux de la semaine dernière
-<ul>
-<li><code>git add .</code></li>
-<li><code>git commit -m "Mon super code du TP1"</code></li>
-</ul></li>
-<li>Mettez à jour votre dépôt local
-<ul>
-<li><code>git pull</code></li>
-</ul></li>
-<li>Passez sur la branche du TP2
-<ul>
-<li><code>git checkout tp2_base</code></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="si-vous-navez-pas-le-code-du-tp1-sur-votre-machine" class="level4" data-number="2.2.2">
-<h4 data-number="2.2.2" class="anchored" data-anchor-id="si-vous-navez-pas-le-code-du-tp1-sur-votre-machine"><span class="header-section-number">2.2.2</span> Si vous n’avez pas le code du TP1 sur votre machine</h4>
-<ul>
-<li>Ouvrez le logiciel <strong>Git Bash</strong>
-<ul>
-<li>Créez un dossier pour stocker le code du TP
-<ul>
-<li>par exemple, copiez la ligne ci-dessous, et collez là dans Git Bash (clic droit &gt; Paste)</li>
-<li><code>mkdir -p /p/Cours2A/UE3_Complements_informatique/TP/TP2 &amp;&amp; cd $_</code></li>
-</ul></li>
-<li>Clonez le dépôt
-<ul>
-<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></li>
-</ul></li>
-<li>Fermez <strong>Git Bash</strong></li>
-</ul></li>
-<li>Ouvrez <strong>Visual Studio Code</strong>
-<ul>
-<li>File &gt; Open Folder
-<ul>
-<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP2</code></li>
-<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
-<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
-</ul></li>
-<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
-<li>Passez sur la branche du TP2
-<ul>
-<li><code>git checkout tp2_base</code></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="attention-quand-vous-faites-open-folder-dans-vscode" class="level4" data-number="2.2.3">
-<h4 data-number="2.2.3" class="anchored" data-anchor-id="attention-quand-vous-faites-open-folder-dans-vscode"><span class="header-section-number">2.2.3</span> <span class="emoji" data-emoji="warning">⚠️</span> Attention quand vous faites Open Folder dans VSCode</h4>
-<p>Le dossier parent de l’explorer de VSCode (à gauche) doit être : <strong>ENSAI-2A-complement-info-TP</strong>. Si c’est TP1, TP2, TP ou autre chose ce n’est pas bon ! Vous allez avoir des soucis d’imports par la suite.</p>
-<hr>
-<p>Pour pour vérifier que tout fonctionne : * lancez le fichier <code>__main__.py</code> * lancez les tests unitaires du package business_object * dans terminal : <code>python -m unittest -k test_business_object</code></p>
-<hr>
-</section>
-</section>
-<section id="mes-premières-requêtes-en-python" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</h3>
-<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 3</strong></p>
-<ul>
-<li>Si ce n’est pas déjà fait (voir README.md), installez <strong>dotenv</strong>
-<ul>
-<li><code>pip install python-dotenv</code></li>
-</ul></li>
-<li>Ouvrez le fichier <code>/src/client/attack_client.py</code></li>
-<li><label><input type="checkbox">Complétez la méthode <code>get_attack(int)</code></label>
-<ul>
-<li>prend en paramètre un id d’attaque</li>
-<li>va chercher toutes les informations disponibles sur cette attaque</li>
-<li>retourne un objet de type <code>AbstractAttack</code>
-<ul>
-<li>Pour vous aider, observez la méthode <code>instantiate_attack()</code> de la classe <code>AttackFactory</code></li>
-<li>Regardez le fonctionnement de cette méthode et utilisez la</li>
-</ul></li>
-</ul></li>
-<li><label><input type="checkbox">créez la méthode <code>get_all_attacks()</code></label>
-<ul>
-<li>retourne la liste de tous les attaques disponibles sous la forme d’une liste d’objets <code>AbstractAttack</code></li>
-</ul></li>
-<li><label><input type="checkbox">Vérifiez que vos 2 méthodes fonctionnent</label>
-<ul>
-<li>Lancez les tests unitaitres du package test_client</li>
-</ul></li>
-</ul>
-<hr>
-</section>
-<section id="les-requêtes-plus-complexes" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</h3>
-<p>Pour le moment nous nous sommes concentrés sur les requêtes <code>GET</code> mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <code>POST</code>, <code>PUT</code>ou <code>DELETE</code> voici la syntaxe :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>put <span class="op">=</span> requests.put(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>delete <span class="op">=</span> requests.delete(<span class="st">"http://example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Comme vous le voyez, les syntaxes sont très proches de la syntaxe de la méthode <code>GET</code>. On a seulement ajouté pour certaines requêtes des données. C’est ce que vous avez fait plus tôt avec Insomnia. Pour passer des paramètres à votre requête je vous conseille néanmoins de préférer ce genre de syntaxe :</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://example.org"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>}</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(url, json <span class="op">=</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>C’est la même chose fonctionnellement, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.</p>
-<p>Il est également possible de passer des entêtes http en ajoutant l’attribut <code>headers</code> à la fonction utilisée.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'accept'</span>: <span class="st">'application/xml'</span>}</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>requests.get(<span class="st">'http://example.org'</span>, headers<span class="op">=</span>headers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="requêtes-avancées-en-python" class="level3" data-number="2.5">
-<h3 data-number="2.5" class="anchored" data-anchor-id="requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</h3>
-<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 4</strong></p>
-<ul>
-<li>Dans le module <code>attack_client.py</code> implémentez les méthodes suivantes :
-<ul class="task-list">
-<li><label><input type="checkbox"><code>create_attack(AbstractAttack)</code></label>
-<ul>
-<li>prend une <code>AbstractAttack</code> en paramètre</li>
-<li>crée une nouvelle ressource dans notre webservice</li>
-</ul></li>
-<li><label><input type="checkbox"><code>update_attack(AbstractAttack)</code></label>
-<ul>
-<li>prend une <code>AbstractAttack</code> en paramètre</li>
-<li>modifie la ressource associée dans notre webservice</li>
-</ul></li>
-<li><label><input type="checkbox"><code>delete_attack(AbstractAttack)</code></label>
-<ul>
-<li>prend une <code>AbstractAttack</code> en paramètre</li>
-<li>supprime la ressource associée dans notre webservice</li>
-</ul></li>
-</ul></li>
-<li><label><input type="checkbox">Testez vos méthodes</label></li>
-</ul>
-</section>
-</section>
-<section id="coder-un-webservice-en-python" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="coder-un-webservice-en-python"><span class="header-section-number">3</span> Coder un webservice en python</h2>
-<p>Avec les outils à disposition aujourd’hui il est facile de faire un webservice soit même.</p>
-<p>Il y a trois leaders sur le marché actuellement pour faire un webservice REST en python: * <a href="https://www.django-rest-framework.org/">Django REST</a>, * <a href="https://flask-restful.readthedocs.io/en/latest/">FlaskRESTful</a> * <a href="https://fastapi.tiangolo.com/">FastAPI</a></p>
-<p>Chacun à ses <a href="https://www.section.io/engineering-education/choosing-between-django-flask-and-fastapi/">avantages et inconvénients</a>. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de <strong>FastApi</strong> est la simplicité pour créer une page swagger de documentation.</p>
-<p>Voici le code minimal d’un webservice REST avec FastAPI (<a href="https://fastapi.tiangolo.com/tutorial/first-steps/">documentation officielle</a>)</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># On instancie le webservice</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Création d'un enpoint qui répond à la méthode GET à l'adresse "/" qui va retourne le message "Hello World"</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de l'application sur le le port 80</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Appeler la ressource “/” du webservice va retourner le json : <code>{"message": "Hello World"}</code></p>
-<p>Voici un exemple plus complet inspiré de la <a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing">documentation officielle</a> (vous voulez créer un webservice pour exposer vos <strong>todos</strong>)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uvicorn</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># On instancie le webservice</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>todos <span class="op">=</span> {<span class="dv">1</span> : Todo(<span class="dv">1</span>,<span class="st">"Step 1 : Learn python"</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">2</span> : Todo(<span class="dv">2</span>,<span class="st">"Step 2 : Work on the IT project"</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">3</span> : Todo(<span class="dv">3</span>,<span class="st">"Step 3 : ???"</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">4</span> : Todo(<span class="dv">4</span>,<span class="st">"Step 4 : Profit"</span>)}</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint get /todo</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/todo"</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_todo():</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> todos.values()</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint get /todo/{id_doto}</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/todo/</span><span class="sc">{id_toto}</span><span class="st">"</span>)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_todo_by_id(id_toto : <span class="bu">int</span> <span class="op">=</span> Path(..., description <span class="op">=</span> <span class="st">"The `id` of the todo you want to get"</span>)):</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> todos.get[id_toto] :</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> todos.get[id_toto]</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_404_NOT_FOUND)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint post /todo</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/todo"</span>, todo, status_code<span class="op">=</span><span class="dv">201</span>)</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> post_todo(todo:Todo):</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> todos.get(todo.<span class="bu">id</span>):</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_409_CONFLICT)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        todos[todo.<span class="bu">id</span>] <span class="op">=</span> todo</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> todo</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de l'application sur le le port 8XXX avec XXX les 3 derniers numéros de votre id</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8</span><span class="er">XXX</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ce code va créer un web service qui va répondre aux requêtes suivantes :</p>
-<ul>
-<li><code>GET host/todo</code> : retourne toutes les tâches à faire</li>
-<li><code>GET host/todo/{todo_id}</code> : retourne la tâche derrière l’id en paramètre</li>
-<li><code>POST host/todo/</code> : ajoute la tâche passée en corps de la rêquete</li>
-</ul>
-<p>FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes <code>BaseModel</code>. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôle sur les types des variables et renvoyer une erreur au client si sa requête n’est pas bien formatée.</p>
-<p>Fondamentalement un webservice est une application comme les autres, mais au lieu d’avoir une interface graphique comme on en a l’habitude en tant qu’humain, l’interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête <code>GET</code> pour récupérer une ressource va ressembler à cela si je reprends le modèle 3 couches vu en cours.</p>
+<p>Et voici un diagramme de classe très simplifié des classes principales à coder lors de ces quatres TP.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">sequenceDiagram
-    participant U as User
-    participant R as Webservice
-    participant S as Service
-    participant D as DAO
-    participant B as Base de données
-    U -&gt;&gt; R : HTTP requête
-    R -&gt;&gt; S : get_by_id()
-    S -&gt;&gt; D : find_by_id()
-    D -&gt;&gt; B : requête SQL (psycopg)
-    B -&gt;&gt; D : curseur SQL (psycopg)
-    D -&gt;&gt; S : instance objet metier
-    S -&gt;&gt; R : instance objet metier
-    Note over S,R: l'objet est potentiellement altéré
-    R -&gt;&gt; U : Réponse HTTP
+<pre class="mermaid mermaid-js">classDiagram
+  class Pokemon {
+    # _name : str
+    # _level : int
+    # _type : str
+    # _current_stat : Statistic
+    + get_pokemon_attack_coef() float
+  }
+ 
+  class Statistic {
+    - __hp : int
+    - __attack : int
+    - __defense : int
+    - __sp_atk : int
+    - __sp_def : int
+    - __speed : int
+  }
+
+  class Attack{
+    # _name : str
+    # _power : int
+    # _description : str
+    + compute_damage(Pokemon, Pokemon) int
+  }
+
+  class Battle{
+    - first_monstie : Pokemon
+    - second_monstie : Pokemon
+    - winner : Pokemon
+  }
+
+  Pokemon o-- Statistic : possesses
+  Pokemon o-- Attack : uses
+  Battle o.."2" Pokemon : call
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<section id="mon-premier-webservice" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="mon-premier-webservice"><span class="header-section-number">3.1</span> Mon premier webservice</h3>
+</section>
+<section id="objets-métier" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="objets-métier"><span class="header-section-number">1.2</span> Objets métier</h3>
+<p>Vous allez créer les <strong>objets métier</strong> pour un jeu <em>Pokémon</em>.</p>
+<p>Un objet métier représente dans votre code quelque chose de concret, qui modèlise la réalité.</p>
+<blockquote class="blockquote">
+<p><strong>Objet métier (business object)</strong> : représentation informatique d’un objet “réel” que notre programme va manipuler pour répondre à un besoin. Dans le cas de notre application cela sera des <em>Pokémons</em>, des attaques ou des objets.<br>
+Dans une application de e-commerce par exemple, les articles et comptes sont des objets métier. Ils permettent de séparer les données de l’application et les traitements. Cela conduit à avoir des objets contenant essentiellement des attributs et très peu de méthodes autre que des <em>getter</em> et <em>setter</em>.</p>
+</blockquote>
+<div class="{callout-tip}">
+<p>Vous avez la possibilité de consulter la correction en changeant de branche si et seulement si vous êtes bloqué trop longtemps.<br>
+Voici quelques commandes git utiles :</p>
+<pre class="git"><code># Avant de changer de branches, créez un point de sauvegarde de votre travail
+git add .
+git commit -am "&lt;message&gt;"
+
+# changer de branche
+git checkout &lt;nouvelle_branche&gt;      # dans le terminal, la branche courante est indiquéée entre ()
+git checkout -                       # pour retourner à la branche précédente</code></pre>
+</div>
+</section>
+</section>
+<section id="modélisation-et-implémentation" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="modélisation-et-implémentation"><span class="header-section-number">2</span> Modélisation et implémentation</h2>
+<p>Dans un premier temps, nous allons travailler uniquement sur les <code>Pokemons</code> (la classe <code>Statistic</code> est déjà codée).</p>
+<p>Avant d’écrire du code, nous allons réfléchir à la meilleure conception possible pour réaliser nos Pokémons. Notre conception essaiera au maximum de respecter la règle suivante : <strong>faible couplage, forte cohésion</strong>.</p>
+<p>En d’autre termes nous allons essayer de faire :</p>
 <ul>
-<li>Vérifiez que le module <code>fastapi</code> est installé (<code>pip list</code>)
+<li>des classes <strong>les plus disjointes possibles</strong> (<em>faible couplage</em>) pour qu’une modification dans une classe ne nous demande pas de modifier les autres</li>
+<li>tout en essayant d’avoir <strong>les tâches réalisées par une seule classe les plus liées possible</strong> (<em>forte cohésion</em>).</li>
+</ul>
+<section id="première-approche-le-ifelifelse" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="première-approche-le-ifelifelse"><span class="header-section-number">2.1</span> Première approche : le « if/elif/else »</h3>
+<p>Ouvrez le code, et observez la classe <code>Pokemon</code>. Nous nous interessons à la méthode <code>get_pokemon_attack_coef()</code> qui va servir à déterminer la puissance de l’attaque en fonction du type de <em>Pokémon</em>.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Expliquez pourquoi une implémentation à base de <code>if/elif/else</code> pour les types est une mauvaise idée ?</label>
 <ul>
-<li>Si ce n’est pas le cas : <code>pip install "fastapi[all]"</code></li>
-</ul></li>
-<li>Ouvrez le fichier <code>app.py</code></li>
-<li>Lancez ce fichier
-<ul>
-<li>testez les requêtes suivantes :
-<ul>
-<li><code>GET http://localhost/hello</code></li>
-<li><code>GET http://localhost/hello/everybody</code></li>
-</ul></li>
-</ul></li>
-<li>Arrétez le webservice
-<ul>
-<li>Cliquez dans le terminal de VSCode puis CTRL + C</li>
+<li>Imaginez s’il y avait plusieurs blocs de code similaires dans notre application, et que nous devions ajouter un nouveau type</li>
 </ul></li>
 </ul>
-<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 5</strong></p>
-<p>En utilsant la liste de personnages définie dans le fichier <code>app.py</code>, ajoutez les endpoints suivants : * [ ] <code>GET localhost:80/character</code> : retournera un json contenant une liste des personnages * [ ] <code>PUT localhost:80/character/{id}</code> qui modifiera le nom du personnage à l’index <code>{id}</code> à partir d’un body * [ ] <code>DELETE localhost:80/character/{id}</code> qui supprimera l’élément à l’index <code>{id}</code></p>
-<p>Pour tester les endpoints nécessitant un body json, vous pouvez utiliser <span class="emoji" data-emoji="-1">👎</span></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nom"</span><span class="fu">:</span><span class="st">"Agneta"</span><span class="fu">,</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+<section id="la-puissance-de-la-poo" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="la-puissance-de-la-poo"><span class="header-section-number">2.2</span> La puissance de la POO</h3>
+<p>Au lieu d’externaliser les comportements de nos <em>Pokemons</em>, nous allons mettre tous leurs comportements spécifiques dans des classes filles d’une super classe <code>Pokemon</code>. Ceci est rendu possible grâce à deux propriétés des objets en POO :</p>
+<ul>
+<li><strong>héritage</strong> : il est possible de spécialiser une classe existante en modifiant son comportement, ou en ajoutant de nouveaux</li>
+<li><strong>polymorphisme</strong> : deux fonctions peuvent avoir le même nom mais avoir des comportements différents</li>
+</ul>
+<p>En plus, comme chacun de nos <em>Pokemons</em> va forcement être d’un type, aucun ne sera simplement de la classe <code>Pokemon</code>, cela nous permet de rendre cette classe <em>abstraite</em>. En définissant clairement notre classe abstraite nous allons avoir :</p>
+<ul>
+<li>Un plan pour toutes les classes qui en héritent. Cela à pour avantages de :
+<ul>
+<li>Donner des informations sur la structuration du code<br>
+</li>
+<li>Permettre de générer automatiquement les méthodes à définir</li>
+<li>Limiter les bug. Si on oublie une méthode, le code plante au démarrage, ce qui évite des comportements non prévus difficiles à détecter</li>
+</ul></li>
+<li>Une <strong>interface</strong> unique pour tous les types de <em>Pokémons</em>. Quelque soit le type du <em>Pokémon</em>, il sera considéré comme un <code>AbstractPokemon</code> partout dans le code.</li>
+</ul>
+<hr>
+<ul class="task-list">
+<li><label><input type="checkbox">Transformez la classe <code>Pokemon</code> en classe abstraite <code>AbstractPokemon</code></label>
+<ul>
+<li>renommez également le fichier en <code>abstract_pokemon.py</code></li>
+</ul></li>
+<li><label><input type="checkbox">Transformez la méthode <code>get_pokemon_attack_coef()</code> en méthode abstraite</label></li>
+<li><label><input type="checkbox">Créez les classes <code>Attacker</code>, <code>Defender</code> et <code>AllRounder</code> qui héritent de <code>AbstractPokemon</code></label></li>
+<li><label><input type="checkbox">Dans ces 3 classes, implémentez la méthode <code>get_pokemon_attack_coef()</code></label></li>
+</ul>
+<p>Pour vous aider, voici le diagramme de classe :</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+  class AbstractPokemon {
+    &lt;&lt;abstract&gt;&gt;
+    # _name : str
+    # _level : int
+    # _type : str
+    # _current_stat : Statistic
+    + get_pokemon_attack_coef() float
+  }
+ 
+  class Statistic {
+    - __hp : int
+    - __attack : int
+    - __defense : int
+    - __sp_atk : int
+    - __sp_def : int
+    - __speed : int
+  }
+ 
+  AbstractPokemon &lt;|-- Attacker
+  AbstractPokemon &lt;|-- Defender
+  AbstractPokemon &lt;|-- AllRounder
+  AbstractPokemon o-- Statistic
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Vous devriez arriver à une arborescence proche de celle-ci :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        └── business_object</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            ├── pokemon</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            │   ├── abstract_pokemon.py</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            │   ├── attacker.py</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            │   ├── defender.py</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            │   └── all_rounder.py</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            └── statistic.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pour faire une classe abstraite, utilisez le package <code>abc</code>.</p>
+<p>Voici, pour vous inspirer, un exemple de ce qui est attendu :</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>abstract_personnage.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="abstract_personnage.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractPersonnage(ABC):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, phrase_attaque:<span class="bu">str</span>, phrase_defense:<span class="bu">str</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span>  <span class="co"># décorateur qui définit une méthode comme abstraite</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>magicien.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="magicien.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abstract_personnage <span class="im">import</span> AbstractPersonnage</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Lance une boule de feu"</span>, <span class="st">"Utilise une barrière magique"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="testez-votre-code" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="testez-votre-code"><span class="header-section-number">2.3</span> Testez votre code</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Testez la méthode <code>get_pokemon_attack_coef()</code> pour les classes <code>AttackerPokemon</code> et <code>AllRounderPokemon</code>.</label>
+<ul>
+<li><code>python -m unittest</code></li>
+</ul></li>
+</ul>
+<p>Pour cela vous allez utiliser le package <code>unittest</code> de python.</p>
+<p>Ce package permet de réaliser des tests unitaires dans des classes séparées. L’avantage par rapport à <code>doctest</code>, c’est que les tests ne “polluent” pas vos classes, et qu’il est possible de <em>patcher</em> certains comportements des classes.</p>
+<p>Un exemple de test est donné dans la classe <code>testDefenderPokemon</code>. Pour rappel, un test se décompose en 3 parties :</p>
+<ul>
+<li><strong>GIVEN</strong> : création des objets nécessaires à la réalisation du test</li>
+<li><strong>WHEN</strong> : appel de la méthode à tester</li>
+<li><strong>THEN</strong> : vérification du résultat</li>
+</ul>
+<p>Les classes de test seront organisées de la manière suivante, en reproduisant l’architecture de votre application :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        ├── business_object</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        │   ├── pokemon</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        │   │   ├── abstract_pokemon.py</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        │   │   ├── attacker.py</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        │   │   ├── defender.py</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        │   │   └── all_rounder.py</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        │   └── statistic.py</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        └── test</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            └── test_business_object</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                └── test_pokemon</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    ├── test_attacker.py</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                    ├── test_defender.py</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                    └── test_all_rounder.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Si vous rencontrez des problèmes d'imports">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Si vous rencontrez des problèmes d’imports
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Vérifiez que le dossier parent dans l’explorer de VSCode est : <strong>ENSAI-2A-complement-info-TP</strong></li>
+<li>Utilisez des chemins complets d’import plutôt que des chemins relatifs
+<ul>
+<li>la racine des chemins est paramétrée au niveau du dossier <code>src</code></li>
+<li>exemple : <code>from business_object.pokemon.abstract_pokemon import AbstractPokemon</code></li>
+</ul></li>
+<li>Créez des fichiers <code>__init__.py</code> (vide)
+<ul>
+<li>dans TOUS les dossiers que vous créez</li>
+<li>c’est un peu pénible mais ça peut débloquer la situation</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Pouvez-vous tester la méthode <code>level_up()</code> directement sur un <code>AbstractPokemon</code> ?</label></li>
+</ul>
+<hr>
+<p><span class="emoji" data-emoji="construction">🚧</span> Déplacer dans un autre TP</p>
+<hr>
+</section>
+</section>
+<section id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">3</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</h2>
+<p>Maintenant que nos Pokémons sont faits, nous allons y ajouter les attaques.</p>
+<p>Notre système va devoir respecter certaines contraintes :</p>
+<ul>
+<li>Plusieurs types d’attaques vont coexister, chacune avec un mode de calcul de dégâts différent :
+<ul>
+<li>Des attaques à dégâts variables séparées en 2 types :
+<ul>
+<li>attaques “physiques” qui utilisent l’attaque et la défense des Pokémons</li>
+<li>attaques “spéciales” qui utilisent l’attaque spé et la défense spé des Pokémons</li>
+</ul></li>
+<li>Des attaques à dégâts fixes qui font un nombre fixe de dégâts.</li>
+</ul></li>
+<li>Un pokémon peut avoir plusieurs attaques et le type de l’attaque doit être transparent pour le pokémon.</li>
+</ul>
+<hr>
+<section id="attaques-à-dégâts-fixes" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="attaques-à-dégâts-fixes"><span class="header-section-number">3.1</span> Attaques à dégâts fixes</h3>
+<p>Nous allons commencer par les attaques à dégâts fixes. Comme il y aura un autre type d’attaques, toutes les attaques hériterons de la classe abstraite <code>AbstractAttack</code> déjà créée. Cette classe possède la méthode abstraite <code>compute_damage()</code> qui devra être implémentée dans les classes filles.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+
+  class AbstractAttack{
+    &lt;&lt;abstract&gt;&gt;
+    # _power : int
+    # _name : str
+    # _description : str
+    + compute_damage(APkm, APkm)$  int
+  }
+
+   class FixedDamageAttack{
+    + compute_damage(APkm,APkm )  int
+   }
+ 
+   AbstractAttack &lt;|-- FixedDamageAttack
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Question 5</strong> Implémentez la classe <code>FixedDamageAttack</code>, ainsi que sa méthode <code>compute_damage()</code> qui retournera simplement la puissance (<em>power</em>) de l’attaque.<br>
+Créez des tests pour vérifier que tout fonctionne correctement.</label></li>
+</ul>
+</blockquote>
+<hr>
+</section>
+<section id="attaques-à-dégâts-variables" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="attaques-à-dégâts-variables"><span class="header-section-number">3.2</span> Attaques à dégâts variables</h3>
+<p>Nous allons ensuite coder les attaques à dégâts variables. Elles utilisent la formule suivante :</p>
+<pre class="math"><code>Damage = \big ( \frac{(\frac{2*Level}{5}+2)* Power *Att}{Def*50} +2\big) *random* other\_multipliers</code></pre>
+<p>avec :</p>
+<ul>
+<li><span class="math inline">\(Att\)</span>​ : égal soit à l’attaque ou l’attaque spé du Pokemon attaquant</li>
+<li><span class="math inline">\(Def\)</span>​​ : égal soit à la défense ou défense spé du Pokemon défenseur</li>
+<li><span class="math inline">\(Power\)</span>​ : la valeur de puissance de l’attaque</li>
+<li><span class="math inline">\(random\)</span>​​ :une valeur comprise dans l’intervalle [0.85; 1]</li>
+<li><span class="math inline">\(other\_ multipliers\)</span> : les autres multiplicateurs possibles, comme le coefficient d’attaque des pokémons.</li>
+</ul>
+<p>La seule différence entre attaque physique et spéciale vient des coefficients <span class="math inline">\(Att\)</span> et <span class="math inline">\(Def\)</span>, le reste de la formule des dégâts est identique. Nous allons donc utiliser le patron de conception <em>template method</em>, dont voici la modélisation UML dans notre cas :</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+
+  class AbstractAttack{
+    &lt;&lt;abstract&gt;&gt;
+    # _power : int
+    # _name : str
+    # _description : str
+    + compute_damage(APkm, APkm)$  int
+  }
+
+   class FixedDamageAttack{
+    + compute_damage(APkm,APkm )  int
+   }
+
+  class AbstractFormulaAttack{
+    &lt;&lt;abstract&gt;&gt;
+    -get_attack_stat(APkm)$  float
+    -get_defense_stat(APkm)$  float
+    +compute_damage(APkm,APkm)  int
+  }
+ 
+  class PhysicalFormulaAttack{
+    -get_attack_stat(APkm)  float
+    -get_defense_stat(APkm)  float
+  }
+ 
+  class SpecialFormulaAttack{
+    -get_attack_stat(APkm)  float
+    -get_defense_stat(APkm)  float
+  }
+ 
+   AbstractAttack &lt;|-- FixedDamageAttack
+   AbstractAttack &lt;|-- AbstractFormulaAttack
+   AbstractFormulaAttack &lt;|-- SpecialFormulaAttack
+   AbstractFormulaAttack &lt;|-- PhysicalFormulaAttack
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>La classe <code>AbstractFormulaAttack</code> va contenir :</p>
+<ul>
+<li>la méthode <code>compute_damage(pkmon_attacker: AbstratPokemon, pkmon_targeted: AbstractPokemon)</code>. Cette méthode va contenir la formule de calcul des dégâts, mais en appelant les méthodes <code>get_attaque_stat(AbstractPokemon)</code> et <code>get_defense_stat(AbstractPokemon)</code> pour savoir quelle statistique utiliser</li>
+<li>les méthodes abstraites <code>get_attack_stat(AbstractPokemon)</code> et <code>get_defense_stat(AbstractPokemon)</code>. Ces méthodes devront être implémentées dans les classes filles pour déterminer quelles statistiques utiliser.</li>
+</ul>
+<blockquote class="blockquote">
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Question 6</strong> : Implémentez les 3 nouvelles classes et créez des tests pour vérifier que tout fonctionne correctement</label></li>
+</ul>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="architecture-finale-bonus-si-vous-avez-le-temps" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="architecture-finale-bonus-si-vous-avez-le-temps"><span class="header-section-number">4</span> Architecture finale (bonus, si vous avez le temps)</h2>
+<p>Nous allons maintenant rattacher les bouts pour créer notre architecture finale :</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+  class AbstractPokemon {
+    &lt;&lt;abstract&gt;&gt;
+    # _current_stat : Statistique
+    # _level : int
+    # _name : str
+    # _attack_list : List~AbstractAttack~
+    +get_pokemon_attack_coef()$  float
+    +level_up() None
+  }
+ 
+  class Statistique {
+    - hp : int
+    - attaque : int
+    - defense : int
+    - spe_atk : int
+    - spe_def : int
+    - vitesse : int
+  }
+   
+  class BattleService {
+    + resolve_battle(APkm, APkm) : Battle
+    + get_order(APkm, APkm)
+    + choose_attack(APkm) : AAttack
+  }  
+  
+  class Battle{
+    - first_monstie : APkm
+    - second_monstie : APkm
+    - winner : APkm
+    - rounds : List&lt;Round&gt;
+  }
+
+  class Round{
+    attacker: APkm
+    defender: APkm
+    dealt_damage: int
+    attack_description: str
+  }
+  BattleService ..&gt;"2" AbstractPokemon : use
+  AbstractPokemon &lt;|-- Attacker
+  AbstractPokemon &lt;|-- Defender
+  AbstractPokemon &lt;|-- AllRounder
+  Statistique *-- AbstractPokemon
+
+  Battle .. BattleService
+  Battle .. Round
+ 
+  class AbstractAttack{
+    &lt;&lt;abstract&gt;&gt;
+    # _power : int
+    # _name : str
+    # _description : str
+    +compute_damage(APkm, APkm)$ int
+  }
+
+  class FixedDamageAttack{
+    + compute_damage(APkm,APkm )  int
+  }
+
+  class AbstractFormulaAttack{
+    &lt;&lt;abstract&gt;&gt;
+    -get_attack_stat(APkm)$  float
+    -get_defense_stat(APkm)$  float
+    + compute_damage(APkm,APkm ) int
+  }
+ 
+  class PhysicalFormulaAttack{
+   -get_attack_stat(APkm)$  float
+   -get_defense_stat(APkm)$  float
+  }
+ 
+  class SpecialFormulaAttack{
+    -get_attack_stat(APkm)  float
+    -get_defense_stat(APkm)  float
+  }
+ 
+  AbstractAttack &lt;|-- FixedDamageAttack
+  AbstractAttack &lt;|-- AbstractFormulaAttack
+  AbstractFormulaAttack &lt;|-- SpecialFormulaAttack
+  AbstractFormulaAttack &lt;|-- PhysicalFormulaAttack
+  BattleService &gt;.. AbstractAttack  : use
+  AbstractPokemon o--&gt;"0..*" AbstractAttack
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Question 7</strong> : Implémentez le diagramme de classe ci-dessus et testez votre code en écrivant de nouveaux tests unitaires.</label></li>
+</ul>
+</blockquote>
+<p>Cette architecture permet de décorréler les attaques des pokémons et de spécifier le comportement des attaques au fur et à mesure des héritages. Les avantages sont :</p>
+<ul>
+<li>Pour la classe <code>AbstractPokemon</code>, toutes les attaques sont des <code>AbstractAttack</code>. Tant qu’elles exposent la méthode <code>compute_damage</code> notre programme va fonctionner. On peut ainsi facilement ajouter de nouveaux types d’attaques sans problème.</li>
+<li>Un <em>Pokémon</em> peut avoir des attaques de tous les types</li>
+<li>Nous pouvons ajouter un système d’état comme la paralysie ou le poison assez facilement. Il faut pour cela modifier la classe <code>AbstractAttack</code> et les classes qui en héritent. Cela sera potentiellement long, mais ne demande pas de toucher à la partie “<em>Pokémon</em>” de notre architecture.</li>
+<li>Une personne pourrait se concentrer sur la création des <em>Pokémons</em> alors qu’une autre pourrait se concentrer sur celles des attaques sans difficulté. Les deux parties du code sont relativement indépendantes, la seule zone de couplage sont les classes <code>AbstractPokemon</code> et <code>AbstractAttack</code>, qui servent avant tout à définir ce qui doit être fait par les classes filles et ce qui est accessible à l’extérieur.</li>
+</ul>
+<p>Le fait d’externaliser le comportement des attaques dans des classes spécifiques puis de les lier aux Pokémons via une relation d’agrégation assez souple qui permet de changer dynamiquement les attaques d’un Pokémon est le patron de conception <em>strategy</em>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
