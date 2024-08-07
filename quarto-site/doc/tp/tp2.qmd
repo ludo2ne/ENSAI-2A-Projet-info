@@ -39,8 +39,6 @@ Vous allez créer les **objets métier** pour un jeu *Pokémon*.
 Un objet métier est une représentation d'une entité spécifique dans le contexte d'une application métier. Il encapsule les données et les comportements associés à cette entité et est souvent utilisé pour modéliser des concepts du monde réel dans le domaine de l'application.
 
 Cela conduit à avoir des objets contenant essentiellement des attributs et très peu de méthodes autre que des *getter* et *setter*.
-
-Dans le cas de notre application cela sera des *Pokémons*, des attaques ou des objets.
 :::
 
 Pour prendre un autre exemple, voici des objets métier pour une application simple qui gère la location de vélos :
@@ -115,26 +113,10 @@ Le code du TP se trouve sur [GitHub](https://github.com/ludo2ne/ENSAI-2A-complem
   - À la main ou avec cette commande : `mkdir -p /p/Cours2A/UE3-Complements-info/TP2 && cd $_`
     - Elle crée l'arborescence demandée (*mkdir*)
     - Puis elle vous positionne dans ce dossier (*cd*)
-- [ ] Clonez le dépôt distant avec SSH
+- [ ] Clonez le dépôt distant
   - `git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
 - [ ] Fermez Git Bash si tout s'est bien passé
 
-::: {.callout-tip}
-Vous avez la possibilité de consulter la correction en changeant de branche si et seulement si vous êtes bloqué trop longtemps.
-
-Voici quelques commandes git utiles :
-
-```{.txt}
-# Avant de changer de branches, créez un point de sauvegarde de votre travail
-git add .
-git commit -m "<message>"
-
-# changer de branche
-git checkout <nouvelle_branche>   # dans le terminal, la branche courante est indiquée entre ()
-git checkout -                    # pour retourner à la branche précédente
-```
-
-:::
 
 ### Ouverture dans VSCode
 
@@ -142,12 +124,18 @@ git checkout -                    # pour retourner à la branche précédente
 - [ ] Ouvrez votre dépôt local
   - File > Open Folder
   - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP1`
-  - Cliquez une seule fois sur :file_folder: ENSAI-2A-complement-info-TP
+  - Cliquez [une seule fois]{.underline} sur :file_folder: ENSAI-2A-complement-info-TP
   - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
+
+::: {.callout-important}
+- [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
+  - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
+
+:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
+:::
+
 - [ ] Ouvrez le *Git Bash* intégré dans VS Code
   - Terminal > New Terminal (ou CTRL + ù)
-- [ ] Positionnez-vous sur la branche du TP2
-  - `git checkout tp2_base`
 
 
 ## Modélisation et implémentation
@@ -530,3 +518,27 @@ Cette architecture permet de décorréler les attaques des pokémons et de spéc
 * Une personne pourrait se concentrer sur la création des *Pokémons* alors qu'une autre pourrait se concentrer sur celles des attaques sans difficulté. Les deux parties du code sont relativement indépendantes, la seule zone de couplage sont les classes `AbstractPokemon` et `AbstractAttack`, qui servent avant tout à définir ce qui doit être fait par les classes filles et ce qui est accessible à l'extérieur.
 
 Le fait d'externaliser le comportement des attaques dans des classes spécifiques puis de les lier aux Pokémons via une relation d'agrégation assez souple qui permet de changer dynamiquement les attaques d'un Pokémon est le patron de conception *strategy*.
+
+---
+
+::: {.callout-tip title="Correction"}
+Vous avez la possibilité de consulter la correction soit :
+
+- en changeant votre dépôt local de branche
+- en consultant la branche adéquat sur le dépôt distant
+
+Voici quelques commandes git utiles pour changer de branche :
+
+```{.txt}
+# Lister toutes les branches
+git branch -a
+
+# Avant de changer de branche, créez un point de sauvegarde de votre travail
+git add .
+git commit -m "<message>"
+
+# changer de branche
+git checkout <nouvelle_branche>   # dans le terminal, la branche courante est indiquée entre ()
+git checkout -                    # pour retourner à la branche précédente
+```
+:::

@@ -45,8 +45,8 @@ Pour générer les pages :
 
 ## TP
 
-- [ ] TP1 : Git, VSCode, Logs et Template
-- [ ] TP2 : Refresh Python, POO, TU et Doc
-- [ ] TP2 : WS
-- [ ] TP3 : DAO
-- [ ] Refaire les branches
+- [x] TP1 : Git, VSCode, Logs et Template
+- [x] TP2 : Refresh Python, POO, TU
+- [x] TP3 : WS
+- [x] TP4 : DAO
+- [x] Refaire les branches
