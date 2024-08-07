@@ -223,23 +223,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectifs" id="toc-objectifs" class="nav-link active" data-scroll-target="#objectifs">Objectifs</a></li>
+  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
   <li><a href="#appeler-un-webservice-à-la-main" id="toc-appeler-un-webservice-à-la-main" class="nav-link" data-scroll-target="#appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</a>
   <ul class="collapse">
   <li><a href="#webservices" id="toc-webservices" class="nav-link" data-scroll-target="#webservices"><span class="header-section-number">1.1</span> Webservices</a></li>
-  <li><a href="#découverte-dinsomnia-et-premières-requêtes-get" id="toc-découverte-dinsomnia-et-premières-requêtes-get" class="nav-link" data-scroll-target="#découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes <code>GET</code></a></li>
+  <li><a href="#découverte-dinsomnia-et-premières-requêtes-get" id="toc-découverte-dinsomnia-et-premières-requêtes-get" class="nav-link" data-scroll-target="#découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes GET</a></li>
   <li><a href="#requêtes-avancées" id="toc-requêtes-avancées" class="nav-link" data-scroll-target="#requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</a></li>
   <li><a href="#swagger" id="toc-swagger" class="nav-link" data-scroll-target="#swagger"><span class="header-section-number">1.4</span> Swagger</a></li>
   </ul></li>
-  <li><a href="#appeler-un-webservice-en-python" id="toc-appeler-un-webservice-en-python" class="nav-link" data-scroll-target="#appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en python</a>
+  <li><a href="#appeler-un-webservice-en-python" id="toc-appeler-un-webservice-en-python" class="nav-link" data-scroll-target="#appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en Python</a>
   <ul class="collapse">
-  <li><a href="#la-bibliothèque-requests" id="toc-la-bibliothèque-requests" class="nav-link" data-scroll-target="#la-bibliothèque-requests"><span class="header-section-number">2.1</span> La bibliothèque <code>requests</code></a></li>
+  <li><a href="#la-bibliothèque-requests" id="toc-la-bibliothèque-requests" class="nav-link" data-scroll-target="#la-bibliothèque-requests"><span class="header-section-number">2.1</span> La bibliothèque requests</a></li>
   <li><a href="#mise-à-jour-de-votre-dépôt-git" id="toc-mise-à-jour-de-votre-dépôt-git" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</a></li>
   <li><a href="#mes-premières-requêtes-en-python" id="toc-mes-premières-requêtes-en-python" class="nav-link" data-scroll-target="#mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</a></li>
   <li><a href="#les-requêtes-plus-complexes" id="toc-les-requêtes-plus-complexes" class="nav-link" data-scroll-target="#les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</a></li>
   <li><a href="#requêtes-avancées-en-python" id="toc-requêtes-avancées-en-python" class="nav-link" data-scroll-target="#requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</a></li>
   </ul></li>
-  <li><a href="#coder-un-webservice-en-python" id="toc-coder-un-webservice-en-python" class="nav-link" data-scroll-target="#coder-un-webservice-en-python"><span class="header-section-number">3</span> Coder un webservice en python</a>
+  <li><a href="#codez-un-webservice-en-python" id="toc-codez-un-webservice-en-python" class="nav-link" data-scroll-target="#codez-un-webservice-en-python"><span class="header-section-number">3</span> Codez un webservice en Python</a>
   <ul class="collapse">
   <li><a href="#mon-premier-webservice" id="toc-mon-premier-webservice" class="nav-link" data-scroll-target="#mon-premier-webservice"><span class="header-section-number">3.1</span> Mon premier webservice</a></li>
   </ul></li>
@@ -283,23 +283,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled" title="Avant de commencer">
+<section id="avant-de-commencer" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
+<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater, le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer.</p>
+<p>Il mélange explications complètes et manipulations pour être au maximum autosuffisant.</p>
+<p><strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Objectifs">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Avant de commencer
+Objectifs
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater, le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer.</p>
-<p>Il mélange explications complètes et manipulations pour être au maximum autosuffisant.</p>
-<p><strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
-</div>
-</div>
-<section id="objectifs" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="objectifs">Objectifs</h2>
 <p>Dans ce TP vous allez :</p>
 <ul>
 <li>Faire des appels à un webservice à la main avec Insomnia</li>
@@ -308,6 +306,8 @@ Avant de commencer
 <li>Manipuler différents formats de données</li>
 <li>Créer un webservice avec le framework python <strong>fastAPI</strong></li>
 </ul>
+</div>
+</div>
 </section>
 <section id="appeler-un-webservice-à-la-main" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</h2>
@@ -324,16 +324,16 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Webservice</strong> : le terme webservice est un terme vaste et il serait compliqué d’en donner une définition courte (<a href="https://en.wikipedia.org/wiki/Web_service">article wikipedia</a>).</p>
+<p><strong>Webservice</strong> : le terme webservice est un terme vaste et il serait compliqué d’en donner une définition courte (<a href="https://en.wikipedia.org/wiki/Web_service" target="_blank">article wikipedia</a>).</p>
 <p>Dans le cadre du projet un webservice désigne une application accessible via le protocole HTTP (<strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol) qui respecte généralement l’architecture REST (- <strong>RE</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer).</p>
 <p>Mais il en existe d’autre comme SOAP (<strong>S</strong>imple <strong>O</strong>bjet- <strong>A</strong>ccess <strong>P</strong>rotocol) ou RPC (<strong>R</strong>emote <strong>P</strong>rocedure <strong>C</strong>all)</p>
 </div>
 </div>
 <p>En d’autres termes, un webservice est une application accessible via le web que l’on va pouvoir <strong>requêter</strong> soit pour obtenir des <strong>ressources</strong>, soit pour <strong>modifier</strong> les ressources accessibles. Un webservice peut seulement avoir pour but d’être une <strong>point d’accès unique et normalisé</strong> à des données (comme une interface à une base de données), mais il peut également être une <strong>manière de contrôler un système d’information</strong> (lancer des travaux, les mettre en attente, récupérer des résultats, etc)</p>
-<p>Les webservices utilisent le protocole HTTP qui est le protocole du web (et pas d’internet). C’est celui que vous utilisez sans le savoir avec votre navigateur web. Requêter un webservice se fait presque comme requêter une page web. Pour cela il vous faut l’adresse de la ressource, son <em>Uniforme Resource Identifier</em>, ou URI (c’est une notion plus générale que les <em>Uniforme Resource Locator</em>, ou URL), une méthode (GET, POST, PUT, DELETE, <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">liste des méthodes</a>), et potentiellement des données.</p>
+<p>Les webservices utilisent le protocole HTTP qui est le protocole du web (et pas d’internet). C’est celui que vous utilisez sans le savoir avec votre navigateur web. Requêter un webservice se fait presque comme requêter une page web. Pour cela il vous faut l’adresse de la ressource, son <em>Uniforme Resource Identifier</em>, ou URI (c’est une notion plus générale que les <em>Uniforme Resource Locator</em>, ou URL), une méthode (GET, POST, PUT, DELETE, <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods" target="_blank">liste des méthodes</a>), et potentiellement des données.</p>
 </section>
 <section id="découverte-dinsomnia-et-premières-requêtes-get" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes <code>GET</code></h3>
+<h3 data-number="1.2" class="anchored" data-anchor-id="découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes GET</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Lancez le programme <strong>Insomnia</strong> (recherchez dans le menu démarrer)</label></li>
 <li><label><input type="checkbox">Créez une collection de requête</label>
@@ -349,13 +349,13 @@ Note
 </ul></li>
 <li><label><input type="checkbox">Dans la barre d’adresse, testez les requêtes ci-dessous</label>
 <ul>
-<li>Regardez la réponse dans la partie droite de votre écran.</li>
+<li>Regardez la réponse dans la partie droite de votre écran</li>
 <li>Quelles sont les similarités entre les réponses ?</li>
 </ul></li>
 </ul>
 <p>Requêtes à tester :</p>
 <ul>
-<li><a href="https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0">Webservice</a> sur les émissions carbone du Royaume-Uni :
+<li>Webservice sur les <a href="https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0" target="_blank">émissions carbone du Royaume-Uni</a> :
 <ul>
 <li><code>api.carbonintensity.org.uk/intensity</code></li>
 <li><code>api.carbonintensity.org.uk/intensity/date/{date}</code>
@@ -363,47 +363,52 @@ Note
 <li>en remplaçant {date} par la date de votre choix au format YYYY-MM-DD</li>
 </ul></li>
 </ul></li>
-<li><a href="https://data.rennesmetropole.fr/explore/?sort=modified">Webservice</a> pour obtenir différents jeux de données ouverts de la ville de Rennes
+<li>Webservice <a href="https://data.rennesmetropole.fr/explore/" target="_blank">Rennes Métropole en accès libre</a>
 <ul>
 <li><code>data.rennesmetropole.fr/api/records/1.0/search?dataset=menus-cantines</code></li>
-<li>Testez différentes valeurs pour dataset :<code>eco-counter-data</code>, <code>rva-bal</code>, <code>resultats-des-elections-municipales-2020-a-acigne</code></li>
-<li>Ajouter à la fin de l’URI le paramètre <code>rows</code>
+<li>Testez différentes valeurs pour dataset :
+<ul>
+<li><em>eco-counter-data</em></li>
+<li><em>rva-bal</em></li>
+<li><em>resultats-des-elections-municipales-2020-a-acigne</em></li>
+</ul></li>
+<li>Ajouter à la fin de l’URI le paramètre <em>rows</em>
 <ul>
 <li>pour faire varier le nombre de lignes que vous recevez</li>
 <li>ajouter simplement <code>&amp;rows=X</code> avec X le nombre de lignes</li>
 </ul></li>
 </ul></li>
-<li>Quelques méthodes du webservice utiles pour votre projet informatique (voyez cela avec votre tuteur)</li>
+<li>Quelques méthodes utiles du webservice de votre projet informatique (voyez cela avec votre tuteur)</li>
 </ul>
-<hr>
 </section>
 <section id="requêtes-avancées" class="level3" data-number="1.3">
 <h3 data-number="1.3" class="anchored" data-anchor-id="requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</h3>
-<p>Toujours avec <strong>Insomnia</strong></p>
+<p>Après avoir exploré quelques webservices externes, vous allez travaillez avec un webservice hébergé à l’ENSAI et spécialement créé pour ces TP.</p>
+<p>Toujours avec <strong>Insomnia</strong> :</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?</label>
+<li><label><input type="checkbox">Faites une requête avec la méthode <strong>GET</strong> sur la ressource suivante. Qu’obtenez-vous ?</label>
 <ul>
 <li><code>web-services.domensai.ecole/attack</code></li>
 </ul></li>
-<li><label><input type="checkbox">Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?</label>
+<li><label><input type="checkbox">Faites une requête avec la méthode <strong>GET</strong> sur la ressource suivante. Qu’obtenez-vous ?</label>
 <ul>
 <li><code>web-services.domensai.ecole/attack/{identifier}</code></li>
-<li>en remplaçant <code>{identifier}</code> par le nom ou l’id d’une attaque que vous venez de récupérer</li>
+<li>en remplaçant <em>{identifier}</em> par le nom ou l’id d’une attaque que vous venez de récupérer</li>
 </ul></li>
-<li><label><input type="checkbox">Faites une requête avec la méthode <code>GET</code> sur la ressource suivante. Qu’obtenez-vous ?</label>
+<li><label><input type="checkbox">Faites une requête avec la méthode <strong>GET</strong> sur la ressource suivante. Qu’obtenez-vous ?</label>
 <ul>
 <li><code>web-services.domensai.ecole/attack?type_attack_id={id_type}</code></li>
-<li>en remplaçant <code>{id_type}</code> par un entier entre 1 et 4.</li>
+<li>en remplaçant <em>{id_type}</em> par un entier entre 1 et 4.</li>
 </ul></li>
-<li><label><input type="checkbox">Faites une requête avec la méthode <code>GET</code> sur la ressource suivante</label>
+<li><label><input type="checkbox">Faites une requête avec la méthode <strong>GET</strong> sur la ressource suivante</label>
 <ul>
 <li><code>web-services.domensai.ecole/attack?type_attack_name={type attack}</code></li>
-<li>en remplaçant <code>{type attack}</code> par <code>special attack</code> ou <code>physical attack</code> ou <code>fixed damage</code> ou <code>status attack</code></li>
+<li>en remplaçant <em>{type attack}</em> par <em>special attack</em> ou <em>physical attack</em> ou <em>fixed damage</em> ou <em>status attack</em></li>
 </ul></li>
-<li><label><input type="checkbox">Faites une requête de type <code>POST</code> sur la ressource suivante</label>
+<li><label><input type="checkbox">Faites une requête de type <strong>POST</strong> sur la ressource suivante</label>
 <ul>
 <li><code>web-services.domensai.ecole/attack</code></li>
-<li>Cliquer sur <strong>Body</strong>, puis <strong>JSON</strong>, coller le texte ci-dessous, puis remplacez les valeurs des attributs pour créer votre propre attaque</li>
+<li>Cliquez sur <strong>Body</strong>, puis <strong>JSON</strong>, coller le texte ci-dessous, puis remplacez les valeurs des attributs pour créer votre propre attaque</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"An awesome name"</span><span class="fu">,</span></span>
@@ -413,17 +418,16 @@ Note
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"element"</span><span class="fu">:</span> <span class="st">"An awesome element"</span><span class="fu">,</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"An awesome description"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><label><input type="checkbox">Faites une requête avec la méthode <code>GET</code> sur la ressource suivante</label>
+<li><label><input type="checkbox">Faites une requête avec la méthode <strong>GET</strong> sur la ressource suivante</label>
 <ul>
 <li><code>web-services.domensai.ecole/attack/{identifier}</code></li>
-<li>en remplaçant <code>{identifier}</code> par le nom ou l’id de l’attaque que vous venez de créer</li>
+<li>en remplaçant <em>{identifier}</em> par le nom ou l’id de l’attaque que vous venez de créer</li>
 </ul></li>
 </ul>
-<hr>
 </section>
 <section id="swagger" class="level3" data-number="1.4">
 <h3 data-number="1.4" class="anchored" data-anchor-id="swagger"><span class="header-section-number">1.4</span> Swagger</h3>
-<p>Dans votre navigateur web allez sur la page http://web-services.domensai.ecole/docs.</p>
+<p>Dans votre navigateur web allez sur la page <a href="http://web-services.domensai.ecole/docs" target="_blank">http://web-services.domensai.ecole/docs</a>.</p>
 <p>Cela vous amène sur la page swagger du webservice. Cette page recense tous les endpoints du webservice, et comment les utiliser. Essayez via l’interface de :</p>
 <ul>
 <li>modifier une attaque</li>
@@ -434,8 +438,8 @@ Note
 </section>
 </section>
 <section id="appeler-un-webservice-en-python" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en python</h2>
-<p>Aujourd’hui, les plus grands consommateurs de webservices sont les machines. Et donc maintenant nous allons voir comment automatiser des appels à un webservice en python.</p>
+<h2 data-number="2" class="anchored" data-anchor-id="appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en Python</h2>
+<p>Aujourd’hui, les plus grands consommateurs de webservices sont les machines. Et donc maintenant nous allons voir comment automatiser des appels à un webservice en Python.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -452,18 +456,18 @@ Note
 </div>
 </div>
 <section id="la-bibliothèque-requests" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="la-bibliothèque-requests"><span class="header-section-number">2.1</span> La bibliothèque <code>requests</code></h3>
-<p>Le principe va rester le même que faire une requête à la main, et on va utiliser la bibliothèque <a href="https://requests.readthedocs.io/en/master/"><strong>requests</strong></a> pour avoir seulement à remplir les parties intéressantes de nos requêtes.</p>
-<p>Pour faire une requête <code>GET</code> vous allez seulement devoir faire :</p>
+<h3 data-number="2.1" class="anchored" data-anchor-id="la-bibliothèque-requests"><span class="header-section-number">2.1</span> La bibliothèque requests</h3>
+<p>Le principe va rester le même que faire une requête à la main. Vous allez utiliser la bibliothèque <a href="https://requests.readthedocs.io/en/master/" target="_blank"><strong>requests</strong></a> pour avoir seulement à remplir les parties intéressantes de vos requêtes.</p>
+<p>Pour faire une requête <strong>GET</strong> vous allez seulement devoir faire :</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://mon-webservice.com"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Exécuter cette ligne de code va :</p>
 <ol type="1">
 <li>Envoyer la requête au serveur que vous contactez</li>
-<li>Stockez le résultat dans la variable <code>response</code></li>
+<li>Stockez le résultat dans la variable <em>response</em></li>
 </ol>
-<p>Cette variable <code>response</code> est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple :</p>
+<p>Cette variable <em>response</em> est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple :</p>
 <ul>
 <li><code>response.text</code> : le corps du résultat sous forme de string en laissant <code>requests</code> inférer l’encodage (cela fonctionne souvent). Problème vous avez seulement un string, et ce n’est pas le meilleur format de données à manipuler</li>
 <li><strong><code>response.json()</code></strong> : le corps du résultat comme un <code>dict</code>. C’est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler</li>
@@ -498,84 +502,86 @@ Note
 </section>
 <section id="mise-à-jour-de-votre-dépôt-git" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</h3>
-<p>2 possibilités <strong>au choix</strong></p>
-<section id="si-vous-voulez-repartir-du-code-du-tp1" class="level4" data-number="2.2.1">
-<h4 data-number="2.2.1" class="anchored" data-anchor-id="si-vous-voulez-repartir-du-code-du-tp1"><span class="header-section-number">2.2.1</span> Si vous voulez repartir du code du TP1</h4>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous n’avez pas le dépôt sur votre machine, créez un clone en suivant la section <em>Clone du dépôt</em> du TP2.</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez <strong>Visual Studio Code</strong></label></li>
+<li><label><input type="checkbox">Ouvrez votre dépôt local</label>
 <ul>
-<li>Ouvrez <strong>Visual Studio Code</strong>
-<ul>
-<li>File &gt; Open Folder
-<ul>
-<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP1</code></li>
-<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
-<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
+<li>File &gt; Open Folder</li>
+<li>Allez dans le dossier <code>P:\Cours2A\UE3-Complements-info\TP2</code></li>
+<li>Cliquez <u>une seule fois</u> sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP</li>
+<li>Puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
 </ul></li>
-<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
-<li>Créez un point de sauvegarde de vos travaux de la semaine dernière
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Vérifiez que le dossier parent dans l’Explorer VS Code est <em>ENSAI-2A-complement-info-TP</em></label>
 <ul>
-<li><code>git add .</code></li>
-<li><code>git commit -m "Mon super code du TP1"</code></li>
+<li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
 </ul></li>
-<li>Mettez à jour votre dépôt local
+</ul>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez le <em>Git Bash</em> intégré dans VS Code</label>
 <ul>
+<li>Terminal &gt; New Terminal (ou CTRL + ù)</li>
+<li>Passez sur la branche du TP3 et mettez-là à jour
+<ul>
+<li>si vous ne l’avez pas fait à la fin du dernier TP, commencer par un <em>add</em> et un <em>commit</em></li>
+<li><code>git checkout tp3-base</code></li>
 <li><code>git pull</code></li>
 </ul></li>
-<li>Passez sur la branche du TP2
-<ul>
-<li><code>git checkout tp2_base</code></li>
-</ul></li>
 </ul></li>
 </ul>
-</section>
-<section id="si-vous-navez-pas-le-code-du-tp1-sur-votre-machine" class="level4" data-number="2.2.2">
-<h4 data-number="2.2.2" class="anchored" data-anchor-id="si-vous-navez-pas-le-code-du-tp1-sur-votre-machine"><span class="header-section-number">2.2.2</span> Si vous n’avez pas le code du TP1 sur votre machine</h4>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour pour vérifier que tout fonctionne :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">lancez les tests unitaires du package business_object</label>
 <ul>
-<li>Ouvrez le logiciel <strong>Git Bash</strong>
-<ul>
-<li>Créez un dossier pour stocker le code du TP
-<ul>
-<li>par exemple, copiez la ligne ci-dessous, et collez là dans Git Bash (clic droit &gt; Paste)</li>
-<li><code>mkdir -p /p/Cours2A/UE3_Complements_informatique/TP/TP2 &amp;&amp; cd $_</code></li>
+<li>dans le terminal : <code>python -m pytest -v src/tests/test_business_object/</code></li>
 </ul></li>
-<li>Clonez le dépôt
-<ul>
-<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></li>
-</ul></li>
-<li>Fermez <strong>Git Bash</strong></li>
-</ul></li>
-<li>Ouvrez <strong>Visual Studio Code</strong>
-<ul>
-<li>File &gt; Open Folder
-<ul>
-<li>Allez dans <code>/p/Cours2A/UE3_Complements_informatique/TP/TP2</code></li>
-<li>cliquez une fois sur <strong>ENSAI-2A-complement-info-TP</strong></li>
-<li>puis sur le bouton <strong>Sélectionner un dossier</strong></li>
-</ul></li>
-<li>Ouvrez un Terminal Git Bash dans VSCode (Terminal &gt; New terminal)</li>
-<li>Passez sur la branche du TP2
-<ul>
-<li><code>git checkout tp2_base</code></li>
-</ul></li>
-</ul></li>
+<li><label><input type="checkbox">lancez le main : <code>python src/__main__.py</code></label></li>
 </ul>
-</section>
-<section id="attention-quand-vous-faites-open-folder-dans-vscode" class="level4" data-number="2.2.3">
-<h4 data-number="2.2.3" class="anchored" data-anchor-id="attention-quand-vous-faites-open-folder-dans-vscode"><span class="header-section-number">2.2.3</span> <span class="emoji" data-emoji="warning">⚠️</span> Attention quand vous faites Open Folder dans VSCode</h4>
-<p>Le dossier parent de l’explorer de VSCode (à gauche) doit être : <strong>ENSAI-2A-complement-info-TP</strong>. Si c’est TP1, TP2, TP ou autre chose ce n’est pas bon ! Vous allez avoir des soucis d’imports par la suite.</p>
-<hr>
-<p>Pour pour vérifier que tout fonctionne : - lancez le fichier <code>__main__.py</code> - lancez les tests unitaires du package business_object - dans terminal : <code>python -m unittest -k test_business_object</code></p>
-<hr>
-</section>
+<p>S’il vous manque des packages, suivez les instructions du README.</p>
+</div>
+</div>
 </section>
 <section id="mes-premières-requêtes-en-python" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</h3>
-<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 3</strong></p>
-<ul>
-<li>Si ce n’est pas déjà fait (voir README.md), installez <strong>dotenv</strong>
-<ul>
-<li><code>pip install python-dotenv</code></li>
-</ul></li>
-<li>Ouvrez le fichier <code>/src/client/attack_client.py</code></li>
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez le fichier <code>/src/client/attack_client.py</code></label></li>
 <li><label><input type="checkbox">Complétez la méthode <code>get_attack(int)</code></label>
 <ul>
 <li>prend en paramètre un id d’attaque</li>
@@ -595,15 +601,14 @@ Note
 <li>Lancez les tests unitaitres du package test_client</li>
 </ul></li>
 </ul>
-<hr>
 </section>
 <section id="les-requêtes-plus-complexes" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</h3>
-<p>Pour le moment nous nous sommes concentrés sur les requêtes <code>GET</code> mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <code>POST</code>, <code>PUT</code>ou <code>DELETE</code> voici la syntaxe :</p>
+<p>Pour le moment nous nous sommes concentrés sur les requêtes <strong>GET</strong> mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <strong>POST</strong>, <strong>PUT</strong> ou <strong>DELETE</strong>. Voici la syntaxe :</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>put <span class="op">=</span> requests.put(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>delete <span class="op">=</span> requests.delete(<span class="st">"http://example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Comme vous le voyez, les syntaxes sont très proches de la syntaxe de la méthode <code>GET</code>. On a seulement ajouté pour certaines requêtes des données. C’est ce que vous avez fait plus tôt avec Insomnia. Pour passer des paramètres à votre requête je vous conseille néanmoins de préférer ce genre de syntaxe :</p>
+<p>Comme vous le voyez, les syntaxes sont très proches de la syntaxe de la méthode <strong>GET</strong>. Nous avons seulement ajouté pour certaines requêtes des données. C’est ce que vous avez fait plus tôt avec Insomnia. Pour passer des paramètres à votre requête je vous conseille néanmoins de préférer ce genre de syntaxe :</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://example.org"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>}</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(url, json <span class="op">=</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -614,9 +619,7 @@ Note
 </section>
 <section id="requêtes-avancées-en-python" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</h3>
-<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 4</strong></p>
-<ul>
-<li>Dans le module <code>attack_client.py</code> implémentez les méthodes suivantes :
+<p>Dans le module <code>attack_client.py</code> implémentez les méthodes suivantes :</p>
 <ul class="task-list">
 <li><label><input type="checkbox"><code>create_attack(AbstractAttack)</code></label>
 <ul>
@@ -633,17 +636,21 @@ Note
 <li>prend une <code>AbstractAttack</code> en paramètre</li>
 <li>supprime la ressource associée dans notre webservice</li>
 </ul></li>
-</ul></li>
 <li><label><input type="checkbox">Testez vos méthodes</label></li>
 </ul>
 </section>
 </section>
-<section id="coder-un-webservice-en-python" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="coder-un-webservice-en-python"><span class="header-section-number">3</span> Coder un webservice en python</h2>
-<p>Avec les outils à disposition aujourd’hui il est facile de faire un webservice soit même.</p>
-<p>Il y a trois leaders sur le marché actuellement pour faire un webservice REST en python: - <a href="https://www.django-rest-framework.org/">Django REST</a>, - <a href="https://flask-restful.readthedocs.io/en/latest/">FlaskRESTful</a> - <a href="https://fastapi.tiangolo.com/">FastAPI</a></p>
-<p>Chacun à ses <a href="https://www.section.io/engineering-education/choosing-between-django-flask-and-fastapi/">avantages et inconvénients</a>. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de <strong>FastApi</strong> est la simplicité pour créer une page swagger de documentation.</p>
-<p>Voici le code minimal d’un webservice REST avec FastAPI (<a href="https://fastapi.tiangolo.com/tutorial/first-steps/">documentation officielle</a>)</p>
+<section id="codez-un-webservice-en-python" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="codez-un-webservice-en-python"><span class="header-section-number">3</span> Codez un webservice en Python</h2>
+<p>Avec les outils à disposition aujourd’hui, il est facile de faire un webservice soit même.</p>
+<p>Il y a trois leaders sur le marché actuellement pour faire un webservice REST en Python :</p>
+<ul>
+<li><a href="https://www.django-rest-framework.org/">Django REST</a>,</li>
+<li><a href="https://flask-restful.readthedocs.io/en/latest/">FlaskRESTful</a></li>
+<li><a href="https://fastapi.tiangolo.com/">FastAPI</a></li>
+</ul>
+<p>Chacun à ses <a href="https://www.section.io/engineering-education/choosing-between-django-flask-and-fastapi/" target="_blank">avantages et inconvénients</a>. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de <strong>FastApi</strong> est la simplicité pour créer une page swagger de documentation.</p>
+<p>Voici le code minimal d’un webservice REST avec FastAPI (<a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank">documentation officielle</a>)</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># On instancie le webservice</span></span>
@@ -658,7 +665,7 @@ Note
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Appeler la ressource “/” du webservice va retourner le json : <code>{"message": "Hello World"}</code></p>
-<p>Voici un exemple plus complet inspiré de la <a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing">documentation officielle</a> (vous voulez créer un webservice pour exposer vos <strong>todos</strong>)</p>
+<p>Voici un exemple plus complet inspiré de la <a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing" target="_blank">documentation officielle</a> (vous voulez créer un webservice pour exposer vos <strong>todos</strong>)</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
@@ -741,33 +748,26 @@ Note
 </div>
 <section id="mon-premier-webservice" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="mon-premier-webservice"><span class="header-section-number">3.1</span> Mon premier webservice</h3>
-<ul>
-<li>Vérifiez que le module <code>fastapi</code> est installé (<code>pip list</code>)
-<ul>
-<li>Si ce n’est pas le cas : <code>pip install "fastapi[all]"</code></li>
-</ul></li>
-<li>Ouvrez le fichier <code>app.py</code></li>
-<li>Lancez ce fichier
-<ul>
-<li>testez les requêtes suivantes :
+<ul class="task-list">
+<li><label><input type="checkbox">Ouvrez le fichier <code>app.py</code></label></li>
+<li><label><input type="checkbox">Lancez ce fichier</label></li>
+<li><label><input type="checkbox">Testez les requêtes suivantes :</label>
 <ul>
 <li><code>GET http://localhost/hello</code></li>
 <li><code>GET http://localhost/hello/everybody</code></li>
 </ul></li>
-</ul></li>
-<li>Arrétez le webservice
+<li><label><input type="checkbox">Arrétez le webservice</label>
 <ul>
 <li>Cliquez dans le terminal de VSCode puis CTRL + C</li>
 </ul></li>
 </ul>
-<p><span class="emoji" data-emoji="writing_hand">✍️</span> <strong>Hands on 5</strong></p>
-<p>En utilsant la liste de personnages définie dans le fichier <code>app.py</code>, ajoutez les endpoints suivants :</p>
+<p>En utilisant la liste de personnages définie dans le fichier <em>app.py</em>, ajoutez les endpoints suivants :</p>
 <ul class="task-list">
 <li><label><input type="checkbox"><code>GET localhost:80/character</code> : retournera un json contenant une liste des personnages</label></li>
 <li><label><input type="checkbox"><code>PUT localhost:80/character/{id}</code> qui modifiera le nom du personnage à l’index <code>{id}</code> à partir d’un body</label></li>
 <li><label><input type="checkbox"><code>DELETE localhost:80/character/{id}</code> qui supprimera l’élément à l’index <code>{id}</code></label></li>
 </ul>
-<p>Pour tester les endpoints nécessitant un body json, vous pouvez utiliser <span class="emoji" data-emoji="-1">👎</span></p>
+<p>Pour tester les endpoints nécessitant un body json, vous pouvez utiliser :</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nom"</span><span class="fu">:</span><span class="st">"Agneta"</span><span class="fu">,</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span></span>

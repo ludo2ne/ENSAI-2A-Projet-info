@@ -357,7 +357,6 @@ Objet métier (business object)
 <div class="callout-body-container callout-body">
 <p>Un objet métier est une représentation d’une entité spécifique dans le contexte d’une application métier. Il encapsule les données et les comportements associés à cette entité et est souvent utilisé pour modéliser des concepts du monde réel dans le domaine de l’application.</p>
 <p>Cela conduit à avoir des objets contenant essentiellement des attributs et très peu de méthodes autre que des <em>getter</em> et <em>setter</em>.</p>
-<p>Dans le cas de notre application cela sera des <em>Pokémons</em>, des attaques ou des objets.</p>
 </div>
 </div>
 <p>Pour prendre un autre exemple, voici des objets métier pour une application simple qui gère la location de vélos :</p>
@@ -452,33 +451,12 @@ Objet métier (business object)
 <li>Puis elle vous positionne dans ce dossier (<em>cd</em>)</li>
 </ul></li>
 </ul></li>
-<li><label><input type="checkbox">Clonez le dépôt distant avec SSH</label>
+<li><label><input type="checkbox">Clonez le dépôt distant</label>
 <ul>
 <li><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></li>
 </ul></li>
 <li><label><input type="checkbox">Fermez Git Bash si tout s’est bien passé</label></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Vous avez la possibilité de consulter la correction en changeant de branche si et seulement si vous êtes bloqué trop longtemps.</p>
-<p>Voici quelques commandes git utiles :</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a># Avant de changer de branches, créez un point de sauvegarde de votre travail</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>git add .</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>git commit -m "&lt;message&gt;"</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a># changer de branche</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>git checkout &lt;nouvelle_branche&gt;   # dans le terminal, la branche courante est indiquée entre ()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>git checkout -                    # pour retourner à la branche précédente</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
 <section id="ouverture-dans-vscode" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="ouverture-dans-vscode"><span class="header-section-number">2.1</span> Ouverture dans VSCode</h3>
 <ul class="task-list">
@@ -487,16 +465,33 @@ Tip
 <ul>
 <li>File &gt; Open Folder</li>
 <li>Allez dans le dossier <code>P:\Cours2A\UE3-Complements-info\TP1</code></li>
-<li>Cliquez une seule fois sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP</li>
+<li>Cliquez <u>une seule fois</u> sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP</li>
 <li>Puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
 </ul></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Vérifiez que le dossier parent dans l’Explorer VS Code est <em>ENSAI-2A-complement-info-TP</em></label>
+<ul>
+<li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
+</ul></li>
+</ul>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</p>
+</div>
+</div>
+<ul class="task-list">
 <li><label><input type="checkbox">Ouvrez le <em>Git Bash</em> intégré dans VS Code</label>
 <ul>
 <li>Terminal &gt; New Terminal (ou CTRL + ù)</li>
-</ul></li>
-<li><label><input type="checkbox">Positionnez-vous sur la branche du TP2</label>
-<ul>
-<li><code>git checkout tp2_base</code></li>
 </ul></li>
 </ul>
 </section>
@@ -552,15 +547,15 @@ Tip
 <li><label><input type="checkbox">Dans ces 3 classes, implémentez la méthode <code>get_pokemon_attack_coef()</code></label></li>
 </ul>
 <p>Vous devriez arriver à la fin à une arborescence proche de celle-ci :</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        └── business_object</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            ├── pokemon</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            │   ├── abstract_pokemon.py</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            │   ├── attacker.py</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            │   ├── defender.py</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            │   └── all_rounder.py</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            └── statistic.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        └── business_object</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            ├── pokemon</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            │   ├── abstract_pokemon.py</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            │   ├── attacker.py</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            │   ├── defender.py</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            │   └── all_rounder.py</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            └── statistic.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Aide">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -579,29 +574,29 @@ Aide
 <div class="code-with-filename-file">
 <pre><strong>abstract_personnage.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="abstract_personnage.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractPersonnage(ABC):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, phrase_attaque:<span class="bu">str</span>, phrase_defense:<span class="bu">str</span>):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span>  <span class="co"># décorateur qui définit une méthode comme abstraite</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-filename="abstract_personnage.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractPersonnage(ABC):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, phrase_attaque:<span class="bu">str</span>, phrase_defense:<span class="bu">str</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span>  <span class="co"># décorateur qui définit une méthode comme abstraite</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>magicien.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="magicien.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abstract_personnage <span class="im">import</span> AbstractPersonnage</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Lance une boule de feu"</span>, <span class="st">"Utilise une barrière magique"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-filename="magicien.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abstract_personnage <span class="im">import</span> AbstractPersonnage</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Lance une boule de feu"</span>, <span class="st">"Utilise une barrière magique"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -659,21 +654,21 @@ Aide
 <li><strong>THEN</strong> : vérification du résultat</li>
 </ul>
 <p>Les classes de test seront organisées de la manière suivante, en reproduisant l’architecture de votre application :</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        ├── business_object</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        │   ├── pokemon</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        │   │   ├── abstract_pokemon.py</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        │   │   ├── attacker.py</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        │   │   ├── defender.py</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        │   │   └── all_rounder.py</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        │   └── statistic.py</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        └── test</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            └── test_business_object</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                └── test_pokemon</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    ├── test_attacker.py</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                    ├── test_defender.py</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                    └── test_all_rounder.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        ├── business_object</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        │   ├── pokemon</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        │   │   ├── abstract_pokemon.py</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        │   │   ├── attacker.py</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        │   │   ├── defender.py</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        │   │   └── all_rounder.py</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        │   └── statistic.py</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        └── test</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            └── test_business_object</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                └── test_pokemon</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                    ├── test_attacker.py</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                    ├── test_defender.py</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    └── test_all_rounder.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-caution callout-titled" title="Si vous rencontrez des problèmes d'imports">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -954,6 +949,35 @@ Bonus
 <li>Une personne pourrait se concentrer sur la création des <em>Pokémons</em> alors qu’une autre pourrait se concentrer sur celles des attaques sans difficulté. Les deux parties du code sont relativement indépendantes, la seule zone de couplage sont les classes <code>AbstractPokemon</code> et <code>AbstractAttack</code>, qui servent avant tout à définir ce qui doit être fait par les classes filles et ce qui est accessible à l’extérieur.</li>
 </ul>
 <p>Le fait d’externaliser le comportement des attaques dans des classes spécifiques puis de les lier aux Pokémons via une relation d’agrégation assez souple qui permet de changer dynamiquement les attaques d’un Pokémon est le patron de conception <em>strategy</em>.</p>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled" title="Correction">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correction
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vous avez la possibilité de consulter la correction soit :</p>
+<ul>
+<li>en changeant votre dépôt local de branche</li>
+<li>en consultant la branche adéquat sur le dépôt distant</li>
+</ul>
+<p>Voici quelques commandes git utiles pour changer de branche :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a># Lister toutes les branches</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>git branch -a</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a># Avant de changer de branche, créez un point de sauvegarde de votre travail</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>git add .</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>git commit -m "&lt;message&gt;"</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a># changer de branche</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>git checkout &lt;nouvelle_branche&gt;   # dans le terminal, la branche courante est indiquée entre ()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>git checkout -                    # pour retourner à la branche précédente</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>
