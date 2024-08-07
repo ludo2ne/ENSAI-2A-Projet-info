@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
+<meta name="author" content="Ludovic Deneuville">
 <meta name="description" content="TP 1">
 
-<title>POO, Git et Tests Unitaires – Projet info 2A</title>
+<title>Git, Exemple d’Application – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -231,19 +231,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ouvrir-le-dépôt" id="toc-ouvrir-le-dépôt" class="nav-link" data-scroll-target="#ouvrir-le-dépôt"><span class="header-section-number">2.1</span> Ouvrir le dépôt</a></li>
   <li><a href="#contenu-du-dépôt" id="toc-contenu-du-dépôt" class="nav-link" data-scroll-target="#contenu-du-dépôt"><span class="header-section-number">2.2</span> Contenu du dépôt</a></li>
-  <li><a href="#la-config-vs-code" id="toc-la-config-vs-code" class="nav-link" data-scroll-target="#la-config-vs-code"><span class="header-section-number">2.3</span> La config VS Code</a></li>
+  <li><a href="#la-config-vscode" id="toc-la-config-vscode" class="nav-link" data-scroll-target="#la-config-vscode"><span class="header-section-number">2.3</span> La config VSCode</a></li>
   </ul></li>
   <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">3</span> Git</a>
   <ul class="collapse">
   <li><a href="#routine-git" id="toc-routine-git" class="nav-link" data-scroll-target="#routine-git"><span class="header-section-number">3.1</span> Routine Git</a></li>
   <li><a href="#résoudre-un-conflit" id="toc-résoudre-un-conflit" class="nav-link" data-scroll-target="#résoudre-un-conflit"><span class="header-section-number">3.2</span> Résoudre un conflit</a></li>
-  <li><a href="#créez-votre-répo-projet" id="toc-créez-votre-répo-projet" class="nav-link" data-scroll-target="#créez-votre-répo-projet"><span class="header-section-number">3.3</span> Créez votre répo projet</a></li>
   </ul></li>
   <li><a href="#un-exemple-dapplication" id="toc-un-exemple-dapplication" class="nav-link" data-scroll-target="#un-exemple-dapplication"><span class="header-section-number">4</span> Un exemple d’application</a>
   <ul class="collapse">
   <li><a href="#une-application-de-menu" id="toc-une-application-de-menu" class="nav-link" data-scroll-target="#une-application-de-menu"><span class="header-section-number">4.1</span> Une application de Menu</a></li>
   <li><a href="#un-webservice" id="toc-un-webservice" class="nav-link" data-scroll-target="#un-webservice"><span class="header-section-number">4.2</span> Un webservice</a></li>
   </ul></li>
+  <li><a href="#créez-votre-répo-projet" id="toc-créez-votre-répo-projet" class="nav-link" data-scroll-target="#créez-votre-répo-projet"><span class="header-section-number">5</span> Créez votre répo projet</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
 </nav>
@@ -256,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">POO, Git et Tests Unitaires</h1>
+<h1 class="title">Git, Exemple d’Application</h1>
 </div>
 
 <div>
@@ -271,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Rémi Pépin, Ludovic Deneuville </p>
+             <p>Ludovic Deneuville </p>
           </div>
   </div>
     
@@ -339,7 +340,7 @@ Tip
 <li><label><input type="checkbox">Exécutez cette commande : <code>git config -l</code></label></li>
 </ul>
 <p>Si les valeurs <em>user.name</em> et <em>user.email</em> sont bien renseignées, tout est ok.</p>
-<p>Si ce n’est pas le cas, exécutez les <a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration" target="_blank">5 commandes git config</a>.</p>
+<p>Si ce n’est pas le cas, exécutez <u>une à une</u> les <a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration" target="_blank">5 commandes git config</a>.</p>
 </section>
 <section id="clé-ssh" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="clé-ssh">Clé SSH</h4>
@@ -366,8 +367,8 @@ Tip
 <p>Les objectifs de ce premier TP sont les suivants :</p>
 <ul>
 <li>Utilisation de <em>Git</em></li>
-<li>Remise en jambe <em>Python</em> et <em>POO</em></li>
-<li>Écriture de <em>Tests Unitaires</em> avec <em>pytest</em></li>
+<li>Prise en main de <em>VS Code</em></li>
+<li>Comprendre comment fonctionne une application</li>
 </ul>
 <p>Ce TP mêle explications et phases de code.</p>
 <p>Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.</p>
@@ -421,11 +422,11 @@ Important
 <p>Maintenant, chaque membre de l’équipe va créer sur sa propre machine, son clone du dépôt.</p>
 <p>Commençons par créer un dossier pour ranger votre dépôt local :</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez <em>Git Bash</em></label></li>
-<li><label><input type="checkbox">Exécutez cette commande : <code>mkdir -p /p/Cours2A/UE3_Complements_info/TP1 &amp;&amp; cd $_</code></label>
+<li><label><input type="checkbox">Ouvrez <strong>Git Bash</strong></label></li>
+<li><label><input type="checkbox">Exécutez cette commande : <code>mkdir -p /p/Cours2A/UE3-Complements-info/TP1 &amp;&amp; cd $_</code></label>
 <ul>
-<li>elle crée l’arborescence demandée (<em>mkdir</em>)</li>
-<li>puis elle vous positionne dans ce dossier (<em>cd</em>)</li>
+<li>Elle crée l’arborescence demandée (<em>mkdir</em>)</li>
+<li>Puis elle vous positionne dans ce dossier (<em>cd</em>)</li>
 </ul></li>
 <li><label><input type="checkbox">Clonez le dépôt distant avec SSH</label>
 <ul>
@@ -434,7 +435,7 @@ Important
 <li>Dans Git Bash : <code>git clone &lt;url&gt;</code> (en remplaçant &lt;url&gt;)</li>
 </ul></li>
 </ul>
-<p>Votre clone est prêt, vous pouvez vérifier sa présence via l’explorateur Windows (WIN + E, puis allez dans le dossier <code>P:\Cours2A\UE3_Complements_info\TP1</code>).</p>
+<p>Votre clone est prêt, vous pouvez vérifier sa présence via l’explorateur Windows (WIN + E, puis allez dans le dossier <code>P:\Cours2A\UE3-Complements-info\TP1</code>).</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Fermez <em>Git Bash</em></label>
 <ul>
@@ -463,12 +464,13 @@ Note
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez Visual Studio Code</label></li>
+<li><label><input type="checkbox">Ouvrez <strong>Visual Studio Code</strong></label></li>
 <li><label><input type="checkbox">Ouvrez votre dépôt local</label>
 <ul>
 <li>File &gt; Open Folder</li>
-<li>Allez dans le dossier <code>P:\Cours2A\UE3_Complements_info\TP1</code></li>
-<li>Cliquez une seule fois sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP, puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
+<li>Allez dans le dossier <code>P:\Cours2A\UE3-Complements-info\TP1</code></li>
+<li>Cliquez une seule fois sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP</li>
+<li>Puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -485,9 +487,9 @@ Important
 <li><label><input type="checkbox">Vérifiez que le dossier parent dans l’Explorer VS Code est <em>ENSAI-2A-complement-info-TP</em></label>
 <ul>
 <li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
-<li><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</li>
 </ul></li>
 </ul>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</p>
 </div>
 </div>
 </section>
@@ -533,8 +535,8 @@ Important
 </tbody>
 </table>
 </section>
-<section id="la-config-vs-code" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="la-config-vs-code"><span class="header-section-number">2.3</span> La config VS Code</h3>
+<section id="la-config-vscode" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="la-config-vscode"><span class="header-section-number">2.3</span> La config VSCode</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -714,43 +716,88 @@ Important
 </div>
 </div>
 </section>
-<section id="créez-votre-répo-projet" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="créez-votre-répo-projet"><span class="header-section-number">3.3</span> Créez votre répo projet</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-</section>
 </section>
 <section id="un-exemple-dapplication" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="un-exemple-dapplication"><span class="header-section-number">4</span> Un exemple d’application</h2>
-<p>Pour comprendre comment est construit une application, vous allez étudier un exemple simple</p>
+<p>Pour comprendre comment est construit une application, vous allez étudier un exemple simple.</p>
+<p>Suivez les instructions du README pour :</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Cloner le dépôt ci-dessous</label>
-<ul>
-<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-projet-info-template</code></li>
-</ul></li>
-<li><label><input type="checkbox">Suivez les instructions du README pour installer et lancer l’application</label>
-<ul>
-<li>Packages à installer</li>
-<li>Variables d’environnement</li>
-</ul></li>
+<li><label><input type="checkbox">Cloner le dépôt</label></li>
+<li><label><input type="checkbox">Ouvrir le dépôt avec VS Code</label></li>
+<li><label><input type="checkbox">Installer les packages</label></li>
+<li><label><input type="checkbox">Saisie de vos Variables d’environnement</label></li>
 </ul>
-<p>2 types d’applications peuvent vous être demander en projet :</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Le fichier README">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Le fichier README
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le README est disponible :</p>
 <ul>
-<li>une application de Menu
+<li>en bas de la <a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">page GitHub du dépôt distant</a> (mis en forme)</li>
+<li>sur votre dépôt local, fichier README.md (version brute)</li>
+</ul>
+</div>
+</div>
+<p>2 types d’applications peuvent vous être demandés en projet :</p>
+<ul>
+<li>Une application de Menu
 <ul>
 <li>l’utilisateur navigue dans des menus</li>
 </ul></li>
-<li>un webservice
+<li>Un webservice
 <ul>
 <li>l’application expose des endpoints</li>
-<li>l’utilisateur peut interroger ces endpoints</li>
+<li>l’utilisateur peut interroger ces endpoints et récupérer les résultats</li>
 </ul></li>
 </ul>
 <section id="une-application-de-menu" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="une-application-de-menu"><span class="header-section-number">4.1</span> Une application de Menu</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">lancez le <em><strong>main</strong></em></label></li>
+<li><label><input type="checkbox">Toujours en suivant les instructions du README, lancez le <em><strong>main</strong></em></label></li>
 </ul>
-<p>Vous arrivez sur le menu d’accueil. Le principe d’une application est de vous faire naviguer d’un menu à l’autre tout en effectuant des opérations en arrière plan.</p>
+<p>Vous arrivez sur le menu d’accueil. Le principe de ce type d’application est de vous faire naviguer d’une vue à l’autre. Si nécessaire, la vue appelera en arrière plan des <em>services</em>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quelques exemples plus concrets :</p>
+<section id="vue-de-connexion" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="vue-de-connexion">Vue de Connexion</h5>
+<ul>
+<li>Vous rentrez votre nom d’utilisateur et votre mot de passe et validez</li>
+<li>La vue appelle alors un service qui va vérifier les informations saisies
+<ul>
+<li>Si valide, vous êtes connecté et redirigé vers la vue du joueur connecté</li>
+<li>Sinon, vous êtes redirigé vers l’accueil</li>
+</ul></li>
+</ul>
+</section>
+<section id="vue-liste-des-joueurs" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="vue-liste-des-joueurs">Vue liste des joueurs</h5>
+<ul>
+<li>Les joueurs sont stockés en base de données</li>
+<li>Lorsqu’elle est chargée la vue n’a pas accès à la liste des joueurs</li>
+<li>La vue appelle un service qui fournit cette liste
+<ul>
+<li>Ce service va lui même appeler une méthode DAO pour interroger la base de données (TP4)</li>
+</ul></li>
+<li>La liste remonte jusque la vue qui affiche la liste des joueurs</li>
+</ul>
+</section>
+</div>
+</div>
 <ul class="task-list">
 <li><label><input type="checkbox">Rechercher le code du menu d’accueil dans la couche <em>view</em></label>
 <ul>
@@ -781,12 +828,114 @@ Tip
 <p>Il est également possible de créer des règles personnalisées.</p>
 </div>
 </div>
+<ul class="task-list">
+<li><label><input type="checkbox">Après être revenu à l’accueil, choisissez <code>Se connecter</code></label>
+<ul>
+<li>Vous arrivez sur une nouvelle <em>vue</em> avec un nouveau <em>menu</em></li>
+<li><span class="emoji" data-emoji="bulb">💡</span> pour aller plus vite, vous pouvez utiliser l’utilsateur « a », mot de passe « a »</li>
+</ul></li>
+<li><label><input type="checkbox">Affichez les joueurs</label></li>
+<li><label><input type="checkbox">Ouvrez le fichier de log dans le dossier <code>logs</code></label></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dans les logs, vous pouvez observer le cheminement des opérations :</p>
+<ul>
+<li>Vous naviguez de vues en vues</li>
+<li>Certaines vues appellent de <em>services</em> qui eux mêmes appellent des <em>DAO</em>.</li>
+</ul>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Déconnectez-vous et arrêtez l’application</label></li>
+</ul>
 </section>
 <section id="un-webservice" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="un-webservice"><span class="header-section-number">4.2</span> Un webservice</h3>
-
-
+<p>Nous reviendrons plus en détail sur les webservices lors du TP3.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">En suivant les instructions du README, lancez le webservice</label></li>
+<li><label><input type="checkbox">Dans votre navigateur, testez les requêtes <em>GET</em> (lecture)</label></li>
+<li><label><input type="checkbox">Consultez les logs pour voir les méthodes appelées</label></li>
+<li><label><input type="checkbox">Arrêtez le webservice</label></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour les autres types de requêtes http (PUT, POST, DELETE), le navigateur ne suffit pas.</p>
+<p>Vous verrez comment réaliser ces requêtes dans un prochain TP.</p>
+</div>
+</div>
 </section>
+</section>
+<section id="créez-votre-répo-projet" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="créez-votre-répo-projet"><span class="header-section-number">5</span> Créez votre répo projet</h2>
+<p>Un membre de l’équipe :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Crée un dépôt distant sur GitHub (<a href="https://github.com/new" target="_blank">new Repository</a>)</label>
+<ul>
+<li>Repository name : par exemple <em>ENSAI-Projet-info-2A</em></li>
+<li>Public ou Privé, comme vous voulez</li>
+<li>Cochez <em>Add a README file</em></li>
+<li>.gitignore : <em>Python</em></li>
+<li>Choose a license : au choix Apache, GNU ou MIT</li>
+</ul></li>
+<li><label><input type="checkbox">Invite ses camarades</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Obligatoire">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Obligatoire
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Invitez également votre tutrice ou tuteur, ainsi que l’enseignant (pseudo : <em>ludo2ne</em>)</label></li>
+</ul>
+</div>
+</div>
+<p>Ensuite, chaque membre de l’équipe :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Crée un clone local du dépôt dans <code>P:/Cours2A/UE3-Projet-info</code></label></li>
+<li><label><input type="checkbox">Fait un test pour vérifier qu’il peut pousser du code</label></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de la même manière que celui vu dans la partie précédente.</p>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Le but de ce TP était de vous remettre en jambe concernant l’utilisation de Git, ainsi que de vous faire découvrir et comprendre comment fonctionne une application découpée en couche.</p>
+
+
 </section>
 
 </main> <!-- /main -->
