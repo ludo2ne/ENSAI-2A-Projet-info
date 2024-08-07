@@ -169,3 +169,11 @@ Si vous n'êtes pas à très l'aise en info, il vous sera quasi impossible de co
 
 - Tests Unitaires obligatoires
 - Codez par petits bouts
+
+:::{.notes}
+- Methodes qui ne fontionnent pas car elles appellent des méthodes qui ne fontionnent pas
+:::
+
+## Template
+
+- [Exemple de projet simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}

@@ -1,7 +1,7 @@
 ---
-title: "POO, Git et Tests Unitaires"
+title: "Git, Exemple d'Application"
 description: "TP 1"
-author: "Rémi Pépin, Ludovic Deneuville"
+author: "Ludovic Deneuville"
 format:
   html:
     toc: true
@@ -45,7 +45,7 @@ Si vous avez besoin de vous rafrîchir la mémoire sur Git, suivez ce [lien](htt
 
 Si les valeurs *user.name* et *user.email* sont bien renseignées, tout est ok.
 
-Si ce n'est pas le cas, exécutez les [5 commandes git config](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration){target="_blank"}.
+Si ce n'est pas le cas, exécutez [une à une]{.underline} les [5 commandes git config](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration){target="_blank"}.
 
 #### Clé SSH {.unnumbered}
 
@@ -71,8 +71,8 @@ Soit votre clé publique est maintenant déclarée à GitHub, ou au pire, GitHub
 Les objectifs de ce premier TP sont les suivants :
 
 - Utilisation de *Git*
-- Remise en jambe *Python* et *POO*
-- Écriture de *Tests Unitaires* avec *pytest*
+- Prise en main de *VS Code*
+- Comprendre comment fonctionne une application
 
 Ce TP mêle explications et phases de code.  
 
@@ -107,16 +107,16 @@ Maintenant, chaque membre de l'équipe va créer sur sa propre machine, son clon
 
 Commençons par créer un dossier pour ranger votre dépôt local :
 
-- [ ] Ouvrez *Git Bash*
-- [ ] Exécutez cette commande : `mkdir -p /p/Cours2A/UE3_Complements_info/TP1 && cd $_`
-  - elle crée l'arborescence demandée (*mkdir*)
-  - puis elle vous positionne dans ce dossier (*cd*)
+- [ ] Ouvrez **Git Bash**
+- [ ] Exécutez cette commande : `mkdir -p /p/Cours2A/UE3-Complements-info/TP1 && cd $_`
+  - Elle crée l'arborescence demandée (*mkdir*)
+  - Puis elle vous positionne dans ce dossier (*cd*)
 - [ ] Clonez le dépôt distant avec SSH
   - Lorsque vous êtes sur la page GitHub du dépôt, cliquez sur [Code]{.green-button}, puis sur l'onglet SSH
   - Copiez l'url qui commence par `git@github.com...`
   - Dans Git Bash : `git clone <url>` (en remplaçant \<url\>)
 
-Votre clone est prêt, vous pouvez vérifier sa présence via l'explorateur Windows (WIN + E, puis allez dans le dossier `P:\Cours2A\UE3_Complements_info\TP1`).
+Votre clone est prêt, vous pouvez vérifier sa présence via l'explorateur Windows (WIN + E, puis allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP1`).
 
 - [ ] Fermez *Git Bash*
   - Si tout s'est bien passé
@@ -133,16 +133,18 @@ Un dépôt est un ensemble de dossiers et de fichiers. Pour consulter et éditer
 Au lieu de VS Code, vous pouvez tout à fait ouvrir vos fichiers avec le *bloc-notes*, mais vous vous rendrez rapidement compte que c'est beaucoup moins pratique.
 :::
 
-- [ ] Ouvrez Visual Studio Code
+- [ ] Ouvrez **Visual Studio Code**
 - [ ] Ouvrez votre dépôt local
   - File > Open Folder
-  - Allez dans le dossier `P:\Cours2A\UE3_Complements_info\TP1`
-  - Cliquez une seule fois sur :file_folder: ENSAI-2A-complement-info-TP, puis sur le bouton [Sélectionner un dossier]{.grey-button}
+  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP1`
+  - Cliquez une seule fois sur :file_folder: ENSAI-2A-complement-info-TP
+  - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
 
 ::: {.callout-important}
 - [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
   - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
-  - :warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
+
+:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
 :::
 
 ### Contenu du dépôt
@@ -160,7 +162,7 @@ Ce dépôt contient les éléments suivants :
 | `requirements.txt`  | Liste les packages Python nécessaires                                                         |
 
 
-### La config VS Code
+### La config VSCode
 
 ::: {.callout-tip}
 VS Code est hautement paramétrable, aussi bien au niveau User qu'au niveau Workspace (i.e. considérons que Workspace = dépôt).
@@ -267,35 +269,58 @@ Cela arrive simplement quand Git rencontre 2 versions et il n’a pas de :crysta
 Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant que possible de travailler sur les mêmes fichiers en même temps.
 :::
 
-### Créez votre répo projet
-
-
-:construction:
 
 ## Un exemple d'application
 
+Pour comprendre comment est construit une application, vous allez étudier un exemple simple.
 
-Pour comprendre comment est construit une application, vous allez étudier un exemple simple
+Suivez les instructions du README pour :
 
-- [ ] Cloner le dépôt ci-dessous
-  - `git clone https://github.com/ludo2ne/ENSAI-2A-projet-info-template`
-- [ ] Suivez les instructions du README pour installer et lancer l'application
-  - Packages à installer
-  - Variables d'environnement
+- [ ] Cloner le dépôt
+- [ ] Ouvrir le dépôt avec VS Code
+- [ ] Installer les packages
+- [ ] Saisie de vos Variables d'environnement
 
-2 types d'applications peuvent vous être demander en projet :
+::: {.callout-tip title="Le fichier README"}
+Le README est disponible :
 
-- une application de Menu
+- en bas de la [page GitHub du dépôt distant](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"} (mis en forme)
+- sur votre dépôt local, fichier README.md (version brute)
+:::
+
+2 types d'applications peuvent vous être demandés en projet :
+
+- Une application de Menu
   - l'utilisateur navigue dans des menus
-- un webservice
+- Un webservice
   - l'application expose des endpoints
-  - l'utilisateur peut interroger ces endpoints
+  - l'utilisateur peut interroger ces endpoints et récupérer les résultats
 
 ### Une application de Menu
 
-- [ ] lancez le *__main__*
+- [ ] Toujours en suivant les instructions du README, lancez le *__main__*
 
-Vous arrivez sur le menu d'accueil. Le principe d'une application est de vous faire naviguer d'un menu à l'autre tout en effectuant des opérations en arrière plan.
+Vous arrivez sur le menu d'accueil. Le principe de ce type d'application est de vous faire naviguer d'une vue à l'autre. Si nécessaire, la vue appelera en arrière plan des *services*.
+
+::: {.callout-note}
+Quelques exemples plus concrets :
+
+##### Vue de Connexion {.unnumbered}
+
+- Vous rentrez votre nom d'utilisateur et votre mot de passe et validez
+- La vue appelle alors un service qui va vérifier les informations saisies
+  - Si valide, vous êtes connecté et redirigé vers la vue du joueur connecté
+  - Sinon, vous êtes redirigé vers l'accueil
+
+##### Vue liste des joueurs {.unnumbered}
+
+- Les joueurs sont stockés en base de données
+- Lorsqu'elle est chargée la vue n'a pas accès à la liste des joueurs
+- La vue appelle un service qui fournit cette liste
+  - Ce service va lui même appeler une méthode DAO pour interroger la base de données (TP4)
+- La liste remonte jusque la vue qui affiche la liste des joueurs
+
+:::
 
 - [ ] Rechercher le code du menu d'accueil dans la couche *view*
   - Si vous observez le code, cette classe ne fait qu'une seule chose : vous rediriger vers une nouvelle vue
@@ -313,4 +338,63 @@ Il est également possible de créer des règles personnalisées.
 :::
 
 
+- [ ] Après être revenu à l'accueil, choisissez `Se connecter`
+  - Vous arrivez sur une nouvelle *vue* avec un nouveau *menu*
+  - :bulb: pour aller plus vite, vous pouvez utiliser l'utilsateur « a », mot de passe « a »
+- [ ] Affichez les joueurs
+- [ ] Ouvrez le fichier de log dans le dossier `logs`
+
+::: {.callout-note}
+Dans les logs, vous pouvez observer le cheminement des opérations :
+
+- Vous naviguez de vues en vues
+- Certaines vues appellent de *services* qui eux mêmes appellent des *DAO*.
+:::
+
+- [ ] Déconnectez-vous et arrêtez l'application
+
+
 ### Un webservice
+
+Nous reviendrons plus en détail sur les webservices lors du TP3.
+
+- [ ] En suivant les instructions du README, lancez le webservice
+- [ ] Dans votre navigateur, testez les requêtes *GET* (lecture)
+- [ ] Consultez les logs pour voir les méthodes appelées
+- [ ] Arrêtez le webservice
+
+::: {.callout-note}
+Pour les autres types de requêtes http (PUT, POST, DELETE), le navigateur ne suffit pas.
+
+Vous verrez comment réaliser ces requêtes dans un prochain TP.
+:::
+
+
+## Créez votre répo projet
+
+Un membre de l'équipe :
+
+- [ ] Crée un dépôt distant sur GitHub ([new Repository](https://github.com/new){target="_blank"})
+  - Repository name : par exemple *ENSAI-Projet-info-2A*
+  - Public ou Privé, comme vous voulez
+  - Cochez *Add a README file*
+  - .gitignore : *Python*
+  - Choose a license : au choix Apache, GNU ou MIT
+- [ ] Invite ses camarades
+
+::: {.callout-important title="Obligatoire"}
+- [ ] Invitez également votre tutrice ou tuteur, ainsi que l'enseignant (pseudo : *ludo2ne*)
+:::
+
+Ensuite, chaque membre de l'équipe :
+
+- [ ] Crée un clone local du dépôt dans `P:/Cours2A/UE3-Projet-info`
+- [ ] Fait un test pour vérifier qu'il peut pousser du code
+
+::: {.callout-caution}
+Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de la même manière que celui vu dans la partie précédente.
+:::
+
+## Conclusion {.unnumbered}
+
+Le but de ce TP était de vous remettre en jambe concernant l'utilisation de Git, ainsi que de vous faire découvrir et comprendre comment fonctionne une application découpée en couche.

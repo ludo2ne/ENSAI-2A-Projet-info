@@ -11,6 +11,11 @@ from: markdown+emoji
 number-sections: true
 ---
 
+::: callout-note
+Ancien TP4 dont une partie du contenu a été déplacé au TP1.
+:::
+
+
 ## Bilan des trois premiers TP 
 
 Si l'on reprend le modèle en couches présenté en cours, voici ce que l'on a fait depuis le début des TP :
