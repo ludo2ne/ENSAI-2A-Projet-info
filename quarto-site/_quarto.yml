@@ -30,6 +30,10 @@ website:
           - href: https://ludo2ne.github.io/Git-tuto/doc/presentation.html
             text: Git
             target: "_blank"
+          - href: doc/cours/analyse-fonctionnelle.qmd
+            text: Analyse fonctionnelle
+          - href: doc/cours/poo-avancee.qmd
+            text: POO Avancée
           - href: doc/cours/tests-unitaires.qmd
             text: Tests unitaires
       - text: TP

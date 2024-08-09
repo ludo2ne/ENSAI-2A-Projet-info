@@ -16,7 +16,9 @@ number-sections: true
 
 :scream: Comme vous pouvez le constater le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. **Vous n'allez surement pas terminer le sujet, ce n'est pas grave. Il est là pour vous aider lors du projet informatique.**
 
-Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code. Ces phases sont appelées "**:writing_hand:Hands on**". C'est à ce moment-là que vous devez faire ce qui est écrit dans le TP. Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.
+Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code.
+
+Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.
 
 ::: {.callout-important title="Objectifs"}
 Dans ce TP vous allez :
@@ -30,7 +32,7 @@ Dans ce TP vous allez :
 ## Mise à jour de votre dépôt local
 
 ::: {.callout-caution}
-Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la section *Clone du dépôt- du TP2.
+Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la section *Clone du dépôt* du TP2.
 :::
 
 - [ ] Ouvrez **Visual Studio Code**
@@ -44,13 +46,13 @@ Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la s
 - [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
   - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
 
-:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder- où vous aurez de gros soucis par la suite !!! 
+:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
 :::
 
-- [ ] Ouvrez le *Git Bash- intégré dans VS Code
+- [ ] Ouvrez le *Git Bash* intégré dans VS Code
   - Terminal > New Terminal (ou CTRL + ù)
   - Passez sur la branche du TP3 et mettez-là à jour
-    - si vous ne l'avez pas fait à la fin du dernier TP, commencer par un *add- et un *commit*
+    - si vous ne l'avez pas fait à la fin du dernier TP, commencer par un *add* et un *commit*
     - `git checkout tp4-base`
     - `git pull`
 
@@ -153,8 +155,8 @@ Et la réponse est :
 
 Revenons sur la phrase : **faible couplage, forte cohésion**. Si nous mettons toutes les méthodes de persistance de nos attaques dans la classe **AbstractAttack**, nous allons avoir une classe qui :
 
- - :heavy_check_mark: Détermine le comportement des attaques. C'est exactement ce que l'on souhaite (**forte cohésion**).
- - :x: Détermine comment on persiste une attaques.
+- :heavy_check_mark: Détermine le comportement des attaques. C'est exactement ce que l'on souhaite (**forte cohésion**).
+- :x: Détermine comment on persiste une attaques.
 
 ::: {.callout-important}
 Mais ça, ce n'est pas de la responsabilité d'une attaque, mais du système de persistance choisi, ou du moins de l'intermédiaire entre nos objets et le système de persistance ! 
@@ -277,11 +279,11 @@ L'objet *cursor* contient un pointeur vers les résultats de votre requête. Ce 
 - `cursor.fetchone()` : retourne uniquement un enregistrement sous forme de dictionnaire
   - Si vous appelez de nouveau *fetchone()* sur le même curseur vous obtiendrez la ligne suivante
 - `cursor.fetchall()` : retourne l'intégralité des résultats sous forme d'une liste de dictionnaires
-    - Les dictionnaires sont les lignes de la table récupérée. 
-    - Les clés du dictionnaire sont les colonnes récupérées. 
-    - Cette méthode fonctionne très bien pour avoir tous les résultats en une fois et qu'il y en a peu. Quand on a des millions d'enregistrements cela va poser problème car :
-        - Le transfert de données sur internet va prendre du temps et bloquer notre application
-        - Notre application va devoir gérer une grande quantité de données, et elle en est peut-être incapable
+  - Les dictionnaires sont les lignes de la table récupérée. 
+  - Les clés du dictionnaire sont les colonnes récupérées. 
+  - Cette méthode fonctionne très bien pour avoir tous les résultats en une fois et qu'il y en a peu. Quand on a des millions d'enregistrements cela va poser problème car :
+    - Le transfert de données sur internet va prendre du temps et bloquer notre application
+    - Notre application va devoir gérer une grande quantité de données, et elle en est peut-être incapable
 - `cursor.fetchmany(size)`: retourne autant d'enregistrements que demandé sous forme d'une liste de dictionnaires. Cela permet de contrôler le volume de données que l'on traite. Si vous appelez de nouveau *fetchmany(size)* sur votre curseur, vous allez récupérer les lignes suivantes (système de pagination)
 
 Pour plus d'information : [article de pynative](https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/){target="_blank"}
@@ -291,7 +293,7 @@ Pour plus d'information : [article de pynative](https://pynative.com/python-curs
 ### DAO avec des types d'attaques
 
 - [ ] Observez le fonctionnement de la classe **AttaqueTypeDAO**
-    - cela va vous être utile pour la suite
+  - cela va vous être utile pour la suite
 
 Dans la classe **AttaqueDao**, créez les méthodes suivantes :
 
@@ -350,7 +352,7 @@ async def get_pokemon_by_name(name:str):
 ```
 
 - `GET localhost:80/attack?limit=100` renverra une liste de 100 attaques par défaut. Il est possible de moduler cette valeur via le paramètre de requête `limit`
-- `GET localhost:80/pokemon?limit=100`. Il renverra une liste de 100 *pokémons- par défaut, mais peut être modulé avec le paramètre de requête `limit`. 
+- `GET localhost:80/pokemon?limit=100`. Il renverra une liste de 100 *Pokemon* par défaut, mais peut être modulé avec le paramètre de requête `limit`. 
 - `GET localhost:80/pokemon/{nom}`. Il renverra un json représentant un *Pokemon*.
 
 Pour retourner des objets, vous allez devoir définir des classes héritant de `BaseModel`. Vous trouverez toutes les infos dans la documentation de FastAPI.

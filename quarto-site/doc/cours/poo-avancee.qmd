@@ -1,0 +1,338 @@
+---
+title: "Programation orientée Objet - Avancée"
+description: "[Slides](poo-avancee-slides.html)"
+author: "Ludovic Deneuville, Rémi Pépin"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+  revealjs:
+    theme: moon
+    footer: "[Home](../index.html) --- [POO Avancée](poo-avancee.html)"
+    slide-number: c/t                    ## collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: poo-avancee-slides.html
+from: markdown+emoji
+lightbox: true
+---
+
+## Plan
+
+1. Notions avancées de POO
+  - Rappels
+  - Classes abstraites
+  - Bridge pattern
+2. Génie logiciel
+  - Définition
+  - Single responsibility principle
+  - Design patterns
+
+## Quelques rappels
+
+Les trois principes de l'objet :
+
+- **Encapsulation :** un objet va contenir des **attributs** et des **méthodes**.
+- **Héritage :** un objet peut **hériter** des attributs et méthodes d'une autre classe pour les **redéfinir**. Il peut également ajouter d'autres attributs/méthodes.
+- **Polymorphisme :** une méthode peut être associée à un **code différent** en fonction des paramètres passés ou de l'objet auquel elle appartient.
+
+::: {.notes}
+Ce sont les trois principes qu'apporte la programmation orientée objet. Ils sont présentés par ordre de "simplicité". La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps (il m'a fallu environ 2 ans en tant que développeur pour bien les comprendre).
+
+- Attribut : ce qu'il est
+- Méthode : ce qu'il peut faire
+- Héritage : Nouvelles capacités (ex : Médecin -> Chirurgien)
+- Polymorphisme : 2 types (liste d'Animal.parler(malade=True))
+:::
+
+### Un exemple pour illustrer tout ça
+
+Application de traitements automatiques des données :
+
+- Plusieurs sources de données : enquêtes, webscraping, fichiers administratifs, ...
+- Plusieurs formats de données : csv, xml, json, ... (*on en reparlera*)
+- Plusieurs algorithmes de traitement : statistique exploratoire, régression, "machine learning", ...
+
+::: {.notes}
+Fondamentalement, c'est une application assez simple.
+:::
+
+### Exemple de diagramme de classe
+
+:construction:
+
+![](img/uml/class_diagram_no_poo.png)
+
+::: {.notes}
+Voyez-vous des choses à corriger ?  
+Est-ce que la méthode `process` sera la même pour un csv, un json ?
+:::
+
+### Un exemple avec de l'héritage
+
+:construction:
+![](img/uml/class_diagram_poo1.png)
+
+::: {.notes}
+La classe `Source` permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.  
+Grâce au polymorphisme, j'ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.
+
+Code dans le dossier exemple POO.
+:::
+
+### Les classes abstraites
+
+> **Classe Abstraite :** classe dont l'implémentation n'est **pas complète** et qui n'est **pas instantiable**. Permet de passer un **contrat**. Les classes filles vont devoir implémenter ce qui manque.
+
+**Avantages :**
+
+- On sait ce que toutes les classes filles doivent faire 👍
+- On peut générer du code 🙏
+- Limite le risque d'erreur !! 👌
+
+::: {.notes}
+Certains objets n'ont pas besoin d'être implémentés complètement ni de pouvoir être instantiés. Souvent, c'est pour des notions abstraites.  
+Une bonne pratique est d'associer à chaque concept concret un concept abstrait.  
+Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On va faire des concepts abstraits qui ont du sens.
+:::
+
+### Par exemple
+
+:construction:
+![](img/uml/class_diagram_poo_abstract_class.png)
+
+::: {.notes}
+Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l'abstraction au lieu des implémentations et d'avoir un code propre (vous ferez ça en TP).
+:::
+
+### Et en Python ?
+
+- Pas de gestion native des classes abstraites 😱
+- Module Abstract Base Classes (abc) pour résoudre le problème 🦾
+- Déjà inclus dans votre distribution Python 😌
+  - **Step 1 :** Importer le module 🧳
+  - **Step 2 :** Hériter de `ABC` 👨‍👩‍👧‍👦
+  - **Step 3 :** Définir les méthodes abstraites 📝
+  - **Step 4 :** ???
+  - **Step 5 :** Profit 💰💰
+
+::: {.notes}
+L'autre gros défaut de Python est son typage dynamique. Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d'avoir autant d'outils que dans d'autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.
+:::
+
+### Et si on ajoutait les formats de données ?
+
+Actuellement, 3 formats de données dans notre application :
+
+- **CSV :** Comma Separated Values (tabulaire)
+- **XML :** eXtended Markup Language (format à balise)
+- **JSON :** JavaScript Object Notation (format clef-valeur)
+
+::: {.notes}
+On reviendra plus en détail sur les différents formats.
+:::
+
+
+### Par exemple
+
+:construction:
+![](img/uml/class_diagram_poo_file_format.png)
+
+Voyez-vous un problème ?
+
+::: {.notes}
+C'est gros !
+:::
+
+
+### La puissance de la POO
+
+- Actuellement 4 * 3 classes "concrètes" à définir 😱
+- La lecture du format est dépendante de la source 😵
+
+**MAIS 🌽**
+
+- On peut externaliser ce traitement ! 😌
+- Relation d'agrégation 🤯
+
+::: {.notes}
+Il faut bien comprendre
+:::
+
+### Le bridge pattern
+
+:construction:
+![](img/uml/class_diagram_poo_bridge_pattern.png)
+
+::: {.notes}
+:::
+
+### Work smart, not hard
+
+- **Composition + héritage :** 9 classes 😎
+- **Héritage :** 17 classes 😫
+- On peut facilement ajouter des types et des formats 🥳
+
+::: {.callout-important title="Pattern Bridge"}
+Découpage d'une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu'il faut ensuite assembler.
+:::
+
+### Pour résumer
+
+- Utiliser la puissance de la POO 💣
+- Préférer les objets spécifiques (héritage) au `if/elif/else` 🐱‍🏍
+- Les classes abstraites sont des plans pour les futures classes 👷‍♀️👷‍♂️
+- La POO permet de créer des codes plus lisibles, évolutifs et maintenables 👑
+
+## Le génie logiciel
+
+![Génie logiciel](https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4){width=600}
+
+::: {.notes}
+On va aller un cran au-dessus.
+:::
+
+### C'est quoi le génie logiciel ?
+
+- Un constat : coder bêtement ne permet pas de faire une application de qualité.
+- Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.
+- Besoin de planifier, de documenter, de tester, etc.
+
+::: {.notes}
+Et cette partie sera la seconde du rapport intermédiaire.
+:::
+
+### Pourquoi c'est important : parallèle avec la construction d'une maison
+
+![](https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif)
+
+### Pourquoi c'est important : parallèle avec la construction d'une maison
+
+- Vous avez le plan de construction d'une maison (fourni par l'architecte)
+- Mais implémenter ce plan demande des connaissances techniques
+- Besoin de refaire des schémas pour des zones précises (arches, escaliers, ...)
+- **Ce n'est pas du temps perdu !**
+
+**Faire du code de qualité c'est comme faire de l'artisanat de précision, cela demande outils, expérience et méthodes.**
+
+::: {.notes}
+Certains disent même qu'on devrait passer plus de temps à analyser qu'à coder. Sujet à débat, mais cela montre bien que la phase d'analyse (comment je code les fonctions) est super importante !
+:::
+
+
+### Quelques principes de base
+
+- Décomposition d'un programme en modules simples **cohérents**
+- Les modules **exposent** des méthodes utilisables/surchageables par d'autres modules mais restent protégés aux modifications non prévues
+- Chaque module doit être une **boîte noire** pour les autres
+- Si on garde les mêmes **entrées/sorties**, on peut changer un module sans risque
+- Privilégier abstractions + héritage plutôt que `if/elif/else`
+
+::: {.notes}
+Module architecture != module Python.
+Couche, c'est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d'un coup). 
+
+Faire un dessin avec et sans. Expliquer que c'est le boulot d'un objet métier de dire comment il s'affiche et comment on le stocke. Pareil, ce n'est
+:::
+
+### Un mantra
+
+::: {.callout-important}
+**Faible couplage, forte cohérence**
+:::
+
+
+- **Faible couplage inter-classes :** modifier une classe doit impacter les autres le moins possible.
+- **Forte cohérence intra-classe :** chaque classe doit être un ensemble cohérent d'attributs et de méthodes.
+
+::: {.notes}
+Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n'est pas facile au début, mais il faut y penser.
+:::
+
+### Faible couplage, forte cohérence : pourquoi le respecter ?
+
+- Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+- Lisibilité du code 📖
+- Débogages 🐞
+
+**Limiter les risques d'erreur quand on modifie le code (éviter l'assiette de spaghetti) 🍝**
+
+::: {.notes}
+"Spaghetti" : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en "tirant" dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).
+:::
+
+
+### Retour sur le bridge pattern
+
+:construction:
+![](img/uml/class_diagram_poo_bridge_pattern.png)
+
+::: {.notes}
+Je remontre le schéma quelques secondes
+:::
+
+### Retour sur le bridge pattern
+
+- La partie "Source" gère les traitements liés à la source.
+- La partie "Fichier" gère la lecture de fichier.
+- Seules les entrées/sorties comptent.
+- On peut ajouter une partie "Traitement" pour des traitements supplémentaires.
+- Pas de `if/elif/else` inutiles.
+
+**Chaque partie de notre code s'occupe d'une seule chose**
+
+::: {.notes}
+Avantages :
+- Lecture du code facilitée.
+- En cas de bug, facile de trouver le coupable.
+- On peut répartir le travail facilement.
+:::
+
+### Les design patterns : définition
+
+> “En informatique, et plus particulièrement en développement logiciel, un patron de conception (souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d'un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.”  
+> — [Source](https://fr.wikipedia.org/wiki/Patron_de_conception)
+
+
+### Les design patterns : in a nutshell
+
+- Bonnes pratiques
+- Solutions standards à des problèmes de conception
+- Solutions robustes
+- Indépendants de la technologie
+- Indépendants du métier
+
+> **Est un outil qui est là pour vous aider**
+
+::: {.notes}
+En plus ils apportent un vocabulaire commun.  
+Il est plus rapide de répondre "tu devrais utiliser un bridge" que "tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies"
+:::
+
+### Les design patterns : exemple
+
+**Problème récurent :**
+
+- Créer des objets complexes qui sont une composition de caractéristiques indépendantes
+- Dit autrement : découpler l'abstraction de son implémentation pour qu'elles puissent varier indépendamment
+
+
+### Les design patterns : exemple
+
+:construction:
+
+### Les design patterns : exemple
+
+:construction:
+
+### Pour résumer
+
+- Faire une application complexe demande un code complexe 🧩
+- Sans phase de conception on va dans le mur 🧱
+- Il existe des solutions prêtes à l'emploi à des problèmes courants 🧰
+
+::: {.callout-important}
+Faible couplage, forte cohérence
+:::
+
