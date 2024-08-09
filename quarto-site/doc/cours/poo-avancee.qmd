@@ -9,7 +9,7 @@ format:
     toc-depth: 2
   revealjs:
     theme: moon
-    footer: "[Home](../index.html) --- [POO Avancée](poo-avancee.html)"
+    footer: "[Home](../../index.html) --- [POO Avancée](poo-avancee.html)"
     slide-number: c/t                    ## collapsed/total
     slide-level: 3
     controls: true

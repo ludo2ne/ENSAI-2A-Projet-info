@@ -9,7 +9,7 @@ format:
     toc-depth: 2
   revealjs:
     theme: moon
-    footer: "[Home](../index.html) --- [Analyse fonctionnelle](analyse-fonctionnelle.html)"
+    footer: "[Home](../../index.html) --- [Analyse fonctionnelle](analyse-fonctionnelle.html)"
     slide-number: c/t                    ## collapsed/total
     slide-level: 3
     controls: true
@@ -20,10 +20,10 @@ lightbox: true
 
 ## Plan
 
-1. L'analyse fonctionnelle
+- L'analyse fonctionnelle
   - Définition
   - Diagrammes UML
-2. L'architecture logicielle
+- L'architecture logicielle
   - Définition
   - Séparation des responsabilités
 
@@ -44,22 +44,22 @@ Les questions qu'il faut se poser avant de commencer :
 - Bien gérer les priorités
 - Répartition des rôles dans l'équipe
 
-Phases d'un projet : Analyse besoin, Cahier charges, Analyse fonctionnelle, dev, tests, livraison
 :::
 
 ::::::
 
-### C'est quoi l'analyse fonctionnelle ?
+### Phases d'un projet
 
-- Première étape de tous les projets
-- Détermine les fonctions, acteurs du produit pour répondre aux besoins du client
-- Diagrammes pour échanger avec le client
-- Priorise les travaux
+- Analyse des besoins
+- Planification
+- Conception
+- Développements
+- Recette
+- Déploiement
+- Maintenance
 
 ::: {.notes}
-- Permet de s'approprier le sujet
-- Ce n'est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué
-- Cette phase sera la première partie du rapport intermédiaire
+Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
 :::
 
 ---
@@ -74,6 +74,20 @@ Phases d'un projet : Analyse besoin, Cahier charges, Analyse fonctionnelle, dev,
 - Imaginez que vous expliquez le projet à vos grands parents
 - parler doc, arrivée sur poste, initiatives
 :::
+
+### C'est quoi l'analyse fonctionnelle ?
+
+- Première étape de tous les projets
+- Détermine les fonctions, acteurs du produit pour répondre aux besoins du client
+- Diagrammes pour échanger avec le client
+- Priorise les travaux
+
+::: {.notes}
+- Permet de s'approprier le sujet
+- Ce n'est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué
+- Cette phase sera la première partie du rapport intermédiaire
+:::
+
 
 ### Les questions à se poser
 

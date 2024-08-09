@@ -36,6 +36,10 @@ website:
             text: POO Avancée
           - href: doc/cours/tests-unitaires.qmd
             text: Tests unitaires
+          - href: doc/cours/webservices.qmd
+            text: Webservices
+          - href: doc/cours/dao-securite.qmd
+            text: DAO et Sécurité
       - text: TP
         menu:
           - href: doc/tp/tp1.qmd

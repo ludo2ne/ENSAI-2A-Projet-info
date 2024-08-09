@@ -1,0 +1,21 @@
+---
+title: "DAO et Sécurité"
+description: "[Slides](dao-securite-slides.html)"
+author: "Ludovic Deneuville, Rémi Pépin"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+  revealjs:
+    theme: moon
+    footer: "[Home](../../index.html) --- [DAO et Sécurité](dao-securite.html)"
+    slide-number: c/t                    ## collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: dao-securite-slides.html
+from: markdown+emoji
+lightbox: true
+---
+
+:construction:

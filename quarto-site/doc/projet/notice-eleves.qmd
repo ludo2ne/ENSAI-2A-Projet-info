@@ -77,6 +77,113 @@ Une fois attribués, les sujets ne peuvent pas être modifiés.
 
 ### Encadrement et suivi d'avancement
 
+#### Point hebdo :construction:
+
+Chaque semaine (jusqu'au rendu du rapport final et sauf pendant les vacances), vous deverez remplir votre point hebdomadaire de suivi de projet avant le **Jeudi à 22h**.
+
+:warning: Le point hebdomadaire est **obligatoire** pour tous les membres de l'équipes. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.
+
+Il permettra à votre tutrice ou votre tuteur de suivre l'évolution de votre travail. 
+
+
+
+:::{.panel-tabset .nav-pills}
+
+##### Modèle
+
+```
+# Point Hebdomadaire - Projet
+
+Date : Jeudi ...
+Semaine n° ...
+
+## Tâches réalisées cette semaine
+
+> Exemples : `- [x] Tâche 1` ou - `ras`
+
+### Nom Prénom élève 1
+
+
+### Nom Prénom élève 2
+
+
+### Nom Prénom élève 3
+
+
+### Nom Prénom élève 4
+
+
+### Nom Prénom élève 5
+
+
+---
+
+## Backlog
+
+> Liste des tâches en attente de prise en charge.
+
+### Prioritaires
+
+### Secondaires
+```
+
+##### Exemple 
+
+:::::: {.callout-note collapse="true"}
+# Point Hebdomadaire - Projet Ninja
+
+Date : Jeudi 12 septembre 2024
+
+Semaine n° 2
+
+## Tâches réalisées cette semaine
+
+### Nom Prénom élève 1
+
+- [x] Création de la classe JoueurDAO et des méthodes
+- [x] Tests unitaires JoueurDAO
+- [x] JoueurService : ajout méthode pour supprimer un joueur
+
+### Nom Prénom élève 2
+
+- [x] Mise en forme du diagramme de classe avec PlantUML
+- [x] Rapport : présentation des classes WIP
+
+
+### Nom Prénom élève 3
+
+- ras
+
+### Nom Prénom élève 4
+
+- [x] Modification de la base de données : modification de la table *joueur*, création table *arbitre*
+- [x] Refactor : utilisation du package *tabulate* pour avoir de jolis tableaux
+
+
+### Nom Prénom élève 5
+
+- [x] Codage de la fonctionnalité *Créer un tournoi* (Vue + Services + Dao)
+- [x] Relecture dossier analyse
+
+
+## Backlog
+
+> Liste des tâches en attente de prise en charge.
+
+### Prioritaires
+
+- [ ] Corriger Bug de modification de joueur
+- [ ] Fonctionnalité *Arbitrer un tournoi*
+- [ ] Menu administrateur
+
+### Secondaires
+
+- [ ] Ecrire README
+::::::
+
+:::
+
+
 L'encadrement de l'avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque groupe fera le bilan avec son intervenant du travail qui a été réalisé au cours de la semaine, des difficultés rencontrées et de ce qui doit encore être fait. Afin de formaliser ces échanges, vous pourrez vous appuyez sur une fiche de suivi de séance (voir fiche sur Moodle) ou montrer un kanban correctement rempli.
 
 **Avant cet échange**, les élèves doivent s'organiser pour :
