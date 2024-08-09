@@ -61,7 +61,7 @@ Pour cela il vous faut :
 - une méthode (GET, POST, PUT, DELETE, [liste des méthodes](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods){target="_blank"})
 - et potentiellement des données
 
-### Découverte d'Insomnia et premières requêtes GET
+### Premières requêtes GET
 
 - [ ] Lancez le programme **Insomnia** (recherchez dans le menu démarrer)
 - [ ] Créez une collection de requête 
@@ -158,24 +158,24 @@ Cela vous amène sur la page swagger du webservice. Cette page recense tous les 
 - afficher une liste de pokémon
 - ajouter un pokémon
 
-## Appeler un webservice en Python
+## Webservice en Python
 
-Aujourd'hui, les plus grands consommateurs de webservices sont les machines. Et donc maintenant nous allons voir comment automatiser des appels à un webservice en Python.
+Aujourd'hui, les plus grands consommateurs de webservices sont les machines. Nous allons voir comment automatiser des appels à un webservice en Python.
 
 ::: {.callout-note}
 
 Aujourd'hui beaucoup d'applications web (par exemple Facebook, Netflix, Dailymotion, Uber) utilisent ce que l'on appelle des architectures "micro services". 
 
-Les échanges entre leurs composants applicatifs (par exemple entre leurs interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d'avoir des modules découplés les uns des autres car ils communiquent uniquement via requête HTTP, ou avec des systèmes de gestion d'évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules. 
+Les échanges entre leurs composants applicatifs (par exemple entre leur interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d'avoir des modules découplés les uns des autres car ils communiquent uniquement via des requêtes HTTP, ou avec des systèmes de gestion d'évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules. 
 
-Le côté négatif c'est que cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d'applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.
+Cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d'applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.
 :::
 
 ### La bibliothèque requests
 
-Le principe va rester le même que faire une requête à la main. Vous allez utiliser la bibliothèque [**requests**](https://requests.readthedocs.io/en/master/){target="_blank"} pour avoir seulement à remplir les parties intéressantes de vos requêtes.
+Le principe va rester le même que faire une requête à la main avec *Insomnia*. Vous allez utiliser la bibliothèque [**requests**](https://requests.readthedocs.io/en/master/){target="_blank"} pour avoir seulement à remplir les parties intéressantes de vos requêtes.
 
-Pour faire une requête **GET** vous allez seulement devoir faire : 
+Pour faire une requête **GET** vous allez simplement faire : 
 
 ```{.python}
 import requests
@@ -185,13 +185,15 @@ response = requests.get("http://mon-webservice.com")
 
 Exécuter cette ligne de code va :
 
-1. Envoyer la requête au serveur que vous contactez
+1. Envoyer la requête *GET* au serveur que vous contactez
 2. Stockez le résultat dans la variable *response*
 
 Cette variable *response* est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple : 
 
-- `response.text` : le corps du résultat sous forme de string en laissant `requests` inférer l'encodage (cela fonctionne souvent). Problème vous avez seulement un string, et ce n'est pas le meilleur format de données à manipuler
-- **`response.json()`** : le corps du résultat comme un `dict`. C'est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler
+- `response.text` : le corps du résultat sous forme de string en laissant *requests* inférer l'encodage (cela fonctionne souvent) 
+  - Problème : vous avez un string, et ce n'est pas le meilleur format de données à manipuler
+- **`response.json()`** : le corps du résultat comme un dictionnaire. 
+  - C'est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler
 - `response.encoding` : l'encoding de votre requête (utile en cas de problème d'encoding)
 - **`response.status_code`** : le statut de la requête. les principaux sont :
   - 200 : retour général pour dire que tout c'est bien passé
@@ -205,9 +207,22 @@ Cette variable *response* est un objet, et comme tout objet elle a des attributs
   - 500 : erreur côté serveur
   - 503 : service temporairement indisponible
 
-Pour résumer, les résultats 2xx indiquent un succès, un résultat 4xx ou 5xx un problème. 
+Pour résumer, les résultats :
 
-Exemple simple d'utilisation :
+- *2xx* indiquent un succès
+- un résultat *4xx* ou *5xx* un problème
+
+### Exemples d'utilisation
+
+Le principe sera toujours le même :
+
+1. Vous lancez la requête
+2. Vous vérifiez si le statut est OK
+3. Vous récupérez le json et traitez le résultat (affichage, convertion en dataframe...)
+
+:::{.panel-tabset .nav-pills}
+
+#### Modèle
 
 ```{.python}
 import requests
@@ -223,7 +238,7 @@ else:
     print(json.dumps(response.json(), indent=2))       # JSON Pretty print
 ```
 
-Exemple avec un webservice vu précédemment :
+#### Menus-cantines
 
 ```{.python}
 import requests
@@ -244,6 +259,8 @@ if req.status_code == 200:
 else:
     print(f"Failed to retrieve data. Status code: {req.status_code}")
 ```
+
+:::
 
 ### Mise à jour de votre dépôt git
 
@@ -287,21 +304,28 @@ S'il vous manque des packages, suivez les instructions du README.
 ### Mes premières requêtes en Python
 
 - [ ] Ouvrez le fichier `/src/client/attack_client.py` 
-- [ ] Complétez la méthode `get_attack(int)`
+- [ ] Complétez la méthode *get_attack(int)* qui :
   - prend en paramètre un id d'attaque 
   - va chercher toutes les informations disponibles sur cette attaque
-  - retourne un objet de type `AbstractAttack`
-    - Pour vous aider, observez la méthode `instantiate_attack()` de la classe `AttackFactory`
-    - Regardez le fonctionnement de cette méthode et utilisez la
-- [ ] créez la méthode `get_all_attacks()` 
-  - retourne la liste de tous les attaques disponibles sous la forme d'une liste d'objets `AbstractAttack`
+  - retourne un objet de type **AbstractAttack**
+
+::: {.callout-tip}
+Pour vous aider, observez la méthode *instantiate_attack()* de la classe **AttackFactory** (business_object).
+
+Regardez le fonctionnement de cette méthode et utilisez la.
+:::
+
+- [ ] Créez la méthode *get_all_attacks()* 
+  - retourne la liste de tous les attaques disponibles sous la forme d'une liste d'objets **AbstractAttack**
 - [ ] Vérifiez que vos 2 méthodes fonctionnent
-    - Lancez les tests unitaitres du package test_client
+    - Lancez les tests unitaitres du package *test_client*
 
 
 ### Les requêtes plus complexes
 
-Pour le moment nous nous sommes concentrés sur les requêtes **GET** mais il est bien sûr possible d'en faire d'autre. Par exemple pour les requêtes **POST**, **PUT** ou **DELETE**.
+Pour le moment nous nous sommes concentrés sur les requêtes **GET** (simple lecture des données). 
+
+Mais il est bien sûr possible d'en faire d'autre. Par exemple pour les requêtes **POST**, **PUT** ou **DELETE**.
 Voici la syntaxe :
 
 ```{.python}
@@ -318,7 +342,7 @@ data = {'key':'value'}
 post = requests.post(url, json = data)
 ```
 
-C'est la même chose fonctionnellement, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.
+Fonctionnellement, c'est la même chose, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.
 
 Il est également possible de passer des entêtes http en ajoutant l'attribut `headers` à la fonction utilisée.
 
@@ -329,21 +353,24 @@ requests.get('http://example.org', headers=headers)
 
 ### Requêtes avancées en python
 
-
 Dans le module `attack_client.py` implémentez les méthodes suivantes : 
 
-- [ ] `create_attack(AbstractAttack)` 
-  - prend une `AbstractAttack` en paramètre
+- [ ] *create_attack(AbstractAttack)*
+  - prend une **AbstractAttack** en paramètre
   - crée une nouvelle ressource dans notre webservice
-- [ ] `update_attack(AbstractAttack)` 
-  - prend une `AbstractAttack` en paramètre
+- [ ] *update_attack(AbstractAttack)*
+  - prend une **AbstractAttack** en paramètre
   - modifie la ressource associée dans notre webservice
-- [ ] `delete_attack(AbstractAttack)` 
-  - prend une `AbstractAttack` en paramètre
+- [ ] *delete_attack(AbstractAttack)*
+  - prend une **AbstractAttack** en paramètre
   - supprime la ressource associée dans notre webservice
 - [ ] Testez vos méthodes
 
 ## Codez un webservice en Python
+
+::: {.callout-note}
+Jusqu'à maintenant vous avez utilisé des webservices existants. Maintenant vous allez créer votre propre webservice.
+:::
 
 Avec les outils à disposition aujourd'hui, il est facile de faire un webservice soit même. 
 
@@ -377,7 +404,7 @@ Appeler la ressource "/" du webservice va retourner le json : `{"message": "Hell
 
 Voici un exemple plus complet inspiré de la [documentation officielle](https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing){target="_blank"} (vous voulez créer un webservice pour exposer vos **todos**)
 
-```{.python}
+```{.python code-line-numbers="true"}
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette import status
@@ -428,7 +455,7 @@ Ce code va créer un web service qui va répondre aux requêtes suivantes :
 - `GET host/todo/{todo_id}` : retourne la tâche derrière l'id en paramètre
 - `POST host/todo/` : ajoute la tâche passée en corps de la rêquete
 
-FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes `BaseModel`. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur:
+FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes `BaseModel`. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur :
 
 ```{.python}
 class Todo(BaseModel):
@@ -438,7 +465,7 @@ class Todo(BaseModel):
 
 Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôle sur les types des variables et renvoyer une erreur au client si sa requête n'est pas bien formatée.
 
-Fondamentalement un webservice est une application comme les autres, mais au lieu d'avoir une interface graphique comme on en a l'habitude en tant qu'humain, l'interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête `GET` pour récupérer une ressource va ressembler à cela si je reprends le modèle 3 couches vu en cours.
+Fondamentalement un webservice est une application comme les autres, mais au lieu d'avoir une interface graphique comme on en a l'habitude en tant qu'humain, l'interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête **GET** pour récupérer une ressource va ressembler à cela nous reprenons le modèle 3 couches vu en cours.
 
 ```{mermaid}
 sequenceDiagram
