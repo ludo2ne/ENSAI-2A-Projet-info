@@ -227,17 +227,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#appeler-un-webservice-à-la-main" id="toc-appeler-un-webservice-à-la-main" class="nav-link" data-scroll-target="#appeler-un-webservice-à-la-main"><span class="header-section-number">1</span> Appeler un webservice à la main</a>
   <ul class="collapse">
   <li><a href="#webservices" id="toc-webservices" class="nav-link" data-scroll-target="#webservices"><span class="header-section-number">1.1</span> Webservices</a></li>
-  <li><a href="#découverte-dinsomnia-et-premières-requêtes-get" id="toc-découverte-dinsomnia-et-premières-requêtes-get" class="nav-link" data-scroll-target="#découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes GET</a></li>
+  <li><a href="#premières-requêtes-get" id="toc-premières-requêtes-get" class="nav-link" data-scroll-target="#premières-requêtes-get"><span class="header-section-number">1.2</span> Premières requêtes GET</a></li>
   <li><a href="#requêtes-avancées" id="toc-requêtes-avancées" class="nav-link" data-scroll-target="#requêtes-avancées"><span class="header-section-number">1.3</span> Requêtes avancées</a></li>
   <li><a href="#swagger" id="toc-swagger" class="nav-link" data-scroll-target="#swagger"><span class="header-section-number">1.4</span> Swagger</a></li>
   </ul></li>
-  <li><a href="#appeler-un-webservice-en-python" id="toc-appeler-un-webservice-en-python" class="nav-link" data-scroll-target="#appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en Python</a>
+  <li><a href="#webservice-en-python" id="toc-webservice-en-python" class="nav-link" data-scroll-target="#webservice-en-python"><span class="header-section-number">2</span> Webservice en Python</a>
   <ul class="collapse">
   <li><a href="#la-bibliothèque-requests" id="toc-la-bibliothèque-requests" class="nav-link" data-scroll-target="#la-bibliothèque-requests"><span class="header-section-number">2.1</span> La bibliothèque requests</a></li>
-  <li><a href="#mise-à-jour-de-votre-dépôt-git" id="toc-mise-à-jour-de-votre-dépôt-git" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</a></li>
-  <li><a href="#mes-premières-requêtes-en-python" id="toc-mes-premières-requêtes-en-python" class="nav-link" data-scroll-target="#mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</a></li>
-  <li><a href="#les-requêtes-plus-complexes" id="toc-les-requêtes-plus-complexes" class="nav-link" data-scroll-target="#les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</a></li>
-  <li><a href="#requêtes-avancées-en-python" id="toc-requêtes-avancées-en-python" class="nav-link" data-scroll-target="#requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</a></li>
+  <li><a href="#exemples-dutilisation" id="toc-exemples-dutilisation" class="nav-link" data-scroll-target="#exemples-dutilisation"><span class="header-section-number">2.2</span> Exemples d’utilisation</a></li>
+  <li><a href="#mise-à-jour-de-votre-dépôt-git" id="toc-mise-à-jour-de-votre-dépôt-git" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.3</span> Mise à jour de votre dépôt git</a></li>
+  <li><a href="#mes-premières-requêtes-en-python" id="toc-mes-premières-requêtes-en-python" class="nav-link" data-scroll-target="#mes-premières-requêtes-en-python"><span class="header-section-number">2.4</span> Mes premières requêtes en Python</a></li>
+  <li><a href="#les-requêtes-plus-complexes" id="toc-les-requêtes-plus-complexes" class="nav-link" data-scroll-target="#les-requêtes-plus-complexes"><span class="header-section-number">2.5</span> Les requêtes plus complexes</a></li>
+  <li><a href="#requêtes-avancées-en-python" id="toc-requêtes-avancées-en-python" class="nav-link" data-scroll-target="#requêtes-avancées-en-python"><span class="header-section-number">2.6</span> Requêtes avancées en python</a></li>
   </ul></li>
   <li><a href="#codez-un-webservice-en-python" id="toc-codez-un-webservice-en-python" class="nav-link" data-scroll-target="#codez-un-webservice-en-python"><span class="header-section-number">3</span> Codez un webservice en Python</a>
   <ul class="collapse">
@@ -346,8 +347,8 @@ Note
 <li>et potentiellement des données</li>
 </ul>
 </section>
-<section id="découverte-dinsomnia-et-premières-requêtes-get" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="découverte-dinsomnia-et-premières-requêtes-get"><span class="header-section-number">1.2</span> Découverte d’Insomnia et premières requêtes GET</h3>
+<section id="premières-requêtes-get" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="premières-requêtes-get"><span class="header-section-number">1.2</span> Premières requêtes GET</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Lancez le programme <strong>Insomnia</strong> (recherchez dans le menu démarrer)</label></li>
 <li><label><input type="checkbox">Créez une collection de requête</label>
@@ -468,9 +469,9 @@ Note
 </ul>
 </section>
 </section>
-<section id="appeler-un-webservice-en-python" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="appeler-un-webservice-en-python"><span class="header-section-number">2</span> Appeler un webservice en Python</h2>
-<p>Aujourd’hui, les plus grands consommateurs de webservices sont les machines. Et donc maintenant nous allons voir comment automatiser des appels à un webservice en Python.</p>
+<section id="webservice-en-python" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="webservice-en-python"><span class="header-section-number">2</span> Webservice en Python</h2>
+<p>Aujourd’hui, les plus grands consommateurs de webservices sont les machines. Nous allons voir comment automatiser des appels à un webservice en Python.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -482,26 +483,32 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Aujourd’hui beaucoup d’applications web (par exemple Facebook, Netflix, Dailymotion, Uber) utilisent ce que l’on appelle des architectures “micro services”.</p>
-<p>Les échanges entre leurs composants applicatifs (par exemple entre leurs interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d’avoir des modules découplés les uns des autres car ils communiquent uniquement via requête HTTP, ou avec des systèmes de gestion d’évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules.</p>
-<p>Le côté négatif c’est que cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d’applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.</p>
+<p>Les échanges entre leurs composants applicatifs (par exemple entre leur interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d’avoir des modules découplés les uns des autres car ils communiquent uniquement via des requêtes HTTP, ou avec des systèmes de gestion d’évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules.</p>
+<p>Cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d’applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.</p>
 </div>
 </div>
 <section id="la-bibliothèque-requests" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="la-bibliothèque-requests"><span class="header-section-number">2.1</span> La bibliothèque requests</h3>
-<p>Le principe va rester le même que faire une requête à la main. Vous allez utiliser la bibliothèque <a href="https://requests.readthedocs.io/en/master/" target="_blank"><strong>requests</strong></a> pour avoir seulement à remplir les parties intéressantes de vos requêtes.</p>
-<p>Pour faire une requête <strong>GET</strong> vous allez seulement devoir faire :</p>
+<p>Le principe va rester le même que faire une requête à la main avec <em>Insomnia</em>. Vous allez utiliser la bibliothèque <a href="https://requests.readthedocs.io/en/master/" target="_blank"><strong>requests</strong></a> pour avoir seulement à remplir les parties intéressantes de vos requêtes.</p>
+<p>Pour faire une requête <strong>GET</strong> vous allez simplement faire :</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">"http://mon-webservice.com"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Exécuter cette ligne de code va :</p>
 <ol type="1">
-<li>Envoyer la requête au serveur que vous contactez</li>
+<li>Envoyer la requête <em>GET</em> au serveur que vous contactez</li>
 <li>Stockez le résultat dans la variable <em>response</em></li>
 </ol>
 <p>Cette variable <em>response</em> est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple :</p>
 <ul>
-<li><code>response.text</code> : le corps du résultat sous forme de string en laissant <code>requests</code> inférer l’encodage (cela fonctionne souvent). Problème vous avez seulement un string, et ce n’est pas le meilleur format de données à manipuler</li>
-<li><strong><code>response.json()</code></strong> : le corps du résultat comme un <code>dict</code>. C’est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler</li>
+<li><code>response.text</code> : le corps du résultat sous forme de string en laissant <em>requests</em> inférer l’encodage (cela fonctionne souvent)
+<ul>
+<li>Problème : vous avez un string, et ce n’est pas le meilleur format de données à manipuler</li>
+</ul></li>
+<li><strong><code>response.json()</code></strong> : le corps du résultat comme un dictionnaire.
+<ul>
+<li>C’est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler</li>
+</ul></li>
 <li><code>response.encoding</code> : l’encoding de votre requête (utile en cas de problème d’encoding)</li>
 <li><strong><code>response.status_code</code></strong> : le statut de la requête. les principaux sont :
 <ul>
@@ -517,8 +524,24 @@ Note
 <li>503 : service temporairement indisponible</li>
 </ul></li>
 </ul>
-<p>Pour résumer, les résultats 2xx indiquent un succès, un résultat 4xx ou 5xx un problème.</p>
-<p>Exemple simple d’utilisation :</p>
+<p>Pour résumer, les résultats :</p>
+<ul>
+<li><em>2xx</em> indiquent un succès</li>
+<li>un résultat <em>4xx</em> ou <em>5xx</em> un problème</li>
+</ul>
+</section>
+<section id="exemples-dutilisation" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="exemples-dutilisation"><span class="header-section-number">2.2</span> Exemples d’utilisation</h3>
+<p>Le principe sera toujours le même :</p>
+<ol type="1">
+<li>Vous lancez la requête</li>
+<li>Vous vérifiez si le statut est OK</li>
+<li>Vous récupérez le json et traitez le résultat (affichage, convertion en dataframe…)</li>
+</ol>
+<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Modèle</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Menus-cantines</a></li></ul>
+<div class="tab-content nav-pills">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -530,7 +553,8 @@ Note
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:    </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(response.json(), indent<span class="op">=</span><span class="dv">2</span>))       <span class="co"># JSON Pretty print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Exemple avec un webservice vu précédemment :</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -548,9 +572,12 @@ Note
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"No records found."</span>)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to retrieve data. Status code: </span><span class="sc">{</span>req<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="mise-à-jour-de-votre-dépôt-git" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.2</span> Mise à jour de votre dépôt git</h3>
+<section id="mise-à-jour-de-votre-dépôt-git" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-git"><span class="header-section-number">2.3</span> Mise à jour de votre dépôt git</h3>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -627,33 +654,46 @@ Important
 </div>
 </div>
 </section>
-<section id="mes-premières-requêtes-en-python" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="mes-premières-requêtes-en-python"><span class="header-section-number">2.3</span> Mes premières requêtes en Python</h3>
+<section id="mes-premières-requêtes-en-python" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="mes-premières-requêtes-en-python"><span class="header-section-number">2.4</span> Mes premières requêtes en Python</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Ouvrez le fichier <code>/src/client/attack_client.py</code></label></li>
-<li><label><input type="checkbox">Complétez la méthode <code>get_attack(int)</code></label>
+<li><label><input type="checkbox">Complétez la méthode <em>get_attack(int)</em> qui :</label>
 <ul>
 <li>prend en paramètre un id d’attaque</li>
 <li>va chercher toutes les informations disponibles sur cette attaque</li>
-<li>retourne un objet de type <code>AbstractAttack</code>
-<ul>
-<li>Pour vous aider, observez la méthode <code>instantiate_attack()</code> de la classe <code>AttackFactory</code></li>
-<li>Regardez le fonctionnement de cette méthode et utilisez la</li>
+<li>retourne un objet de type <strong>AbstractAttack</strong></li>
 </ul></li>
-</ul></li>
-<li><label><input type="checkbox">créez la méthode <code>get_all_attacks()</code></label>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour vous aider, observez la méthode <em>instantiate_attack()</em> de la classe <strong>AttackFactory</strong> (business_object).</p>
+<p>Regardez le fonctionnement de cette méthode et utilisez la.</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Créez la méthode <em>get_all_attacks()</em></label>
 <ul>
-<li>retourne la liste de tous les attaques disponibles sous la forme d’une liste d’objets <code>AbstractAttack</code></li>
+<li>retourne la liste de tous les attaques disponibles sous la forme d’une liste d’objets <strong>AbstractAttack</strong></li>
 </ul></li>
 <li><label><input type="checkbox">Vérifiez que vos 2 méthodes fonctionnent</label>
 <ul>
-<li>Lancez les tests unitaitres du package test_client</li>
+<li>Lancez les tests unitaitres du package <em>test_client</em></li>
 </ul></li>
 </ul>
 </section>
-<section id="les-requêtes-plus-complexes" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="les-requêtes-plus-complexes"><span class="header-section-number">2.4</span> Les requêtes plus complexes</h3>
-<p>Pour le moment nous nous sommes concentrés sur les requêtes <strong>GET</strong> mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <strong>POST</strong>, <strong>PUT</strong> ou <strong>DELETE</strong>. Voici la syntaxe :</p>
+<section id="les-requêtes-plus-complexes" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="les-requêtes-plus-complexes"><span class="header-section-number">2.5</span> Les requêtes plus complexes</h3>
+<p>Pour le moment nous nous sommes concentrés sur les requêtes <strong>GET</strong> (simple lecture des données).</p>
+<p>Mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <strong>POST</strong>, <strong>PUT</strong> ou <strong>DELETE</strong>. Voici la syntaxe :</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>put <span class="op">=</span> requests.put(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>delete <span class="op">=</span> requests.delete(<span class="st">"http://example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -661,28 +701,28 @@ Important
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://example.org"</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>}</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(url, json <span class="op">=</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>C’est la même chose fonctionnellement, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.</p>
+<p>Fonctionnellement, c’est la même chose, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.</p>
 <p>Il est également possible de passer des entêtes http en ajoutant l’attribut <code>headers</code> à la fonction utilisée.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'accept'</span>: <span class="st">'application/xml'</span>}</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>requests.get(<span class="st">'http://example.org'</span>, headers<span class="op">=</span>headers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="requêtes-avancées-en-python" class="level3" data-number="2.5">
-<h3 data-number="2.5" class="anchored" data-anchor-id="requêtes-avancées-en-python"><span class="header-section-number">2.5</span> Requêtes avancées en python</h3>
+<section id="requêtes-avancées-en-python" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="requêtes-avancées-en-python"><span class="header-section-number">2.6</span> Requêtes avancées en python</h3>
 <p>Dans le module <code>attack_client.py</code> implémentez les méthodes suivantes :</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>create_attack(AbstractAttack)</code></label>
+<li><label><input type="checkbox"><em>create_attack(AbstractAttack)</em></label>
 <ul>
-<li>prend une <code>AbstractAttack</code> en paramètre</li>
+<li>prend une <strong>AbstractAttack</strong> en paramètre</li>
 <li>crée une nouvelle ressource dans notre webservice</li>
 </ul></li>
-<li><label><input type="checkbox"><code>update_attack(AbstractAttack)</code></label>
+<li><label><input type="checkbox"><em>update_attack(AbstractAttack)</em></label>
 <ul>
-<li>prend une <code>AbstractAttack</code> en paramètre</li>
+<li>prend une <strong>AbstractAttack</strong> en paramètre</li>
 <li>modifie la ressource associée dans notre webservice</li>
 </ul></li>
-<li><label><input type="checkbox"><code>delete_attack(AbstractAttack)</code></label>
+<li><label><input type="checkbox"><em>delete_attack(AbstractAttack)</em></label>
 <ul>
-<li>prend une <code>AbstractAttack</code> en paramètre</li>
+<li>prend une <strong>AbstractAttack</strong> en paramètre</li>
 <li>supprime la ressource associée dans notre webservice</li>
 </ul></li>
 <li><label><input type="checkbox">Testez vos méthodes</label></li>
@@ -691,6 +731,19 @@ Important
 </section>
 <section id="codez-un-webservice-en-python" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="codez-un-webservice-en-python"><span class="header-section-number">3</span> Codez un webservice en Python</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jusqu’à maintenant vous avez utilisé des webservices existants. Maintenant vous allez créer votre propre webservice.</p>
+</div>
+</div>
 <p>Avec les outils à disposition aujourd’hui, il est facile de faire un webservice soit même.</p>
 <p>Il y a trois leaders sur le marché actuellement pour faire un webservice REST en Python :</p>
 <ul>
@@ -715,60 +768,60 @@ Important
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Appeler la ressource “/” du webservice va retourner le json : <code>{"message": "Hello World"}</code></p>
 <p>Voici un exemple plus complet inspiré de la <a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing" target="_blank">documentation officielle</a> (vous voulez créer un webservice pour exposer vos <strong>todos</strong>)</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> uvicorn</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># On instancie le webservice</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>todos <span class="op">=</span> {<span class="dv">1</span> : Todo(<span class="dv">1</span>,<span class="st">"Step 1 : Learn python"</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">2</span> : Todo(<span class="dv">2</span>,<span class="st">"Step 2 : Work on the IT project"</span>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">3</span> : Todo(<span class="dv">3</span>,<span class="st">"Step 3 : ???"</span>)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        , <span class="dv">4</span> : Todo(<span class="dv">4</span>,<span class="st">"Step 4 : Profit"</span>)}</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint get /todo</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/todo"</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_todo():</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> todos.values()</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint get /todo/{id_doto}</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/todo/</span><span class="sc">{id_toto}</span><span class="st">"</span>)</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_todo_by_id(id_toto : <span class="bu">int</span> <span class="op">=</span> Path(..., description <span class="op">=</span> <span class="st">"The `id` of the todo you want to get"</span>)):</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> todos.get[id_toto] :</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> todos.get[id_toto]</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_404_NOT_FOUND)</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Définition du endpoint post /todo</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/todo"</span>, todo, status_code<span class="op">=</span><span class="dv">201</span>)</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> post_todo(todo:Todo):</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> todos.get(todo.<span class="bu">id</span>):</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_409_CONFLICT)</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        todos[todo.<span class="bu">id</span>] <span class="op">=</span> todo</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> todo</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de l'application sur le le port 8XXX avec XXX les 3 derniers numéros de votre id</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8</span><span class="er">XXX</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="im">import</span> uvicorn</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># On instancie le webservice</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="kw">class</span> Todo(BaseModel):</span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>    content : <span class="bu">str</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a>todos <span class="op">=</span> {<span class="dv">1</span> : Todo(<span class="dv">1</span>,<span class="st">"Step 1 : Learn python"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14"></a>        , <span class="dv">2</span> : Todo(<span class="dv">2</span>,<span class="st">"Step 2 : Work on the IT project"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15"></a>        , <span class="dv">3</span> : Todo(<span class="dv">3</span>,<span class="st">"Step 3 : ???"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>        , <span class="dv">4</span> : Todo(<span class="dv">4</span>,<span class="st">"Step 4 : Profit"</span>)}</span>
+<span id="cb9-17"><a href="#cb9-17"></a></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co"># Définition du endpoint get /todo</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="at">@app.get</span>(<span class="st">"/todo"</span>)</span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="cf">async</span> <span class="kw">def</span> get_all_todo():</span>
+<span id="cb9-21"><a href="#cb9-21"></a>    <span class="cf">return</span> todos.values()</span>
+<span id="cb9-22"><a href="#cb9-22"></a></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="co"># Définition du endpoint get /todo/{id_doto}</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a><span class="at">@app.get</span>(<span class="st">"/todo/</span><span class="sc">{id_toto}</span><span class="st">"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="cf">async</span> <span class="kw">def</span> get_todo_by_id(id_toto : <span class="bu">int</span> <span class="op">=</span> Path(..., description <span class="op">=</span> <span class="st">"The `id` of the todo you want to get"</span>)):</span>
+<span id="cb9-26"><a href="#cb9-26"></a>    <span class="cf">if</span> todos.get[id_toto] :</span>
+<span id="cb9-27"><a href="#cb9-27"></a>        <span class="cf">return</span> todos.get[id_toto]</span>
+<span id="cb9-28"><a href="#cb9-28"></a>    <span class="cf">else</span> :</span>
+<span id="cb9-29"><a href="#cb9-29"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_404_NOT_FOUND)</span>
+<span id="cb9-30"><a href="#cb9-30"></a></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co"># Définition du endpoint post /todo</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="at">@app.post</span>(<span class="st">"/todo"</span>, todo, status_code<span class="op">=</span><span class="dv">201</span>)</span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="cf">async</span> <span class="kw">def</span> post_todo(todo:Todo):</span>
+<span id="cb9-34"><a href="#cb9-34"></a>    <span class="cf">if</span> <span class="kw">not</span> todos.get(todo.<span class="bu">id</span>):</span>
+<span id="cb9-35"><a href="#cb9-35"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_409_CONFLICT)</span>
+<span id="cb9-36"><a href="#cb9-36"></a>    <span class="cf">else</span> :</span>
+<span id="cb9-37"><a href="#cb9-37"></a>        todos[todo.<span class="bu">id</span>] <span class="op">=</span> todo</span>
+<span id="cb9-38"><a href="#cb9-38"></a>        <span class="cf">return</span> todo</span>
+<span id="cb9-39"><a href="#cb9-39"></a></span>
+<span id="cb9-40"><a href="#cb9-40"></a><span class="co"># Lancement de l'application sur le le port 8XXX avec XXX les 3 derniers numéros de votre id</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb9-42"><a href="#cb9-42"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8</span><span class="er">XXX</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ce code va créer un web service qui va répondre aux requêtes suivantes :</p>
 <ul>
 <li><code>GET host/todo</code> : retourne toutes les tâches à faire</li>
 <li><code>GET host/todo/{todo_id}</code> : retourne la tâche derrière l’id en paramètre</li>
 <li><code>POST host/todo/</code> : ajoute la tâche passée en corps de la rêquete</li>
 </ul>
-<p>FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes <code>BaseModel</code>. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur:</p>
+<p>FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes <code>BaseModel</code>. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur :</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôle sur les types des variables et renvoyer une erreur au client si sa requête n’est pas bien formatée.</p>
-<p>Fondamentalement un webservice est une application comme les autres, mais au lieu d’avoir une interface graphique comme on en a l’habitude en tant qu’humain, l’interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête <code>GET</code> pour récupérer une ressource va ressembler à cela si je reprends le modèle 3 couches vu en cours.</p>
+<p>Fondamentalement un webservice est une application comme les autres, mais au lieu d’avoir une interface graphique comme on en a l’habitude en tant qu’humain, l’interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête <strong>GET</strong> pour récupérer une ressource va ressembler à cela nous reprenons le modèle 3 couches vu en cours.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
