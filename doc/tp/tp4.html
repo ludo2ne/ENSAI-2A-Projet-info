@@ -167,8 +167,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../doc/cours/analyse-fonctionnelle.html">
+ <span class="dropdown-text">Analyse fonctionnelle</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
+ <span class="dropdown-text">POO Avancée</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
  <span class="dropdown-text">Tests unitaires</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/webservices.html">
+ <span class="dropdown-text">Webservices</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/dao-securite.html">
+ <span class="dropdown-text">DAO et Sécurité</span></a>
   </li>  
     </ul>
   </li>
@@ -285,7 +301,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="avant-de-commencer" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
 <p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. <strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
-<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code. Ces phases sont appelées “<strong><span class="emoji" data-emoji="writing_hand">✍️</span>Hands on</strong>”. C’est à ce moment-là que vous devez faire ce qui est écrit dans le TP. Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.</p>
+<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code.</p>
+<p>Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Objectifs">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -317,7 +334,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si vous n’avez pas le dépôt sur votre machine, créez un clone en suivant la section *Clone du dépôt- du TP2.</p>
+<p>Si vous n’avez pas le dépôt sur votre machine, créez un clone en suivant la section <em>Clone du dépôt</em> du TP2.</p>
 </div>
 </div>
 <ul class="task-list">
@@ -346,16 +363,16 @@ Important
 <li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
 </ul></li>
 </ul>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’*Open Folder- où vous aurez de gros soucis par la suite !!!</p>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</p>
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez le *Git Bash- intégré dans VS Code</label>
+<li><label><input type="checkbox">Ouvrez le <em>Git Bash</em> intégré dans VS Code</label>
 <ul>
 <li>Terminal &gt; New Terminal (ou CTRL + ù)</li>
 <li>Passez sur la branche du TP3 et mettez-là à jour
 <ul>
-<li>si vous ne l’avez pas fait à la fin du dernier TP, commencer par un <em>add- et un </em>commit*</li>
+<li>si vous ne l’avez pas fait à la fin du dernier TP, commencer par un <em>add</em> et un <em>commit</em></li>
 <li><code>git checkout tp4-base</code></li>
 <li><code>git pull</code></li>
 </ul></li>
@@ -711,7 +728,7 @@ Quelques conseils
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>GET localhost:80/attack?limit=100</code> renverra une liste de 100 attaques par défaut. Il est possible de moduler cette valeur via le paramètre de requête <code>limit</code></li>
-<li><code>GET localhost:80/pokemon?limit=100</code>. Il renverra une liste de 100 *pokémons- par défaut, mais peut être modulé avec le paramètre de requête <code>limit</code>.</li>
+<li><code>GET localhost:80/pokemon?limit=100</code>. Il renverra une liste de 100 <em>Pokemon</em> par défaut, mais peut être modulé avec le paramètre de requête <code>limit</code>.</li>
 <li><code>GET localhost:80/pokemon/{nom}</code>. Il renverra un json représentant un <em>Pokemon</em>.</li>
 </ul>
 <p>Pour retourner des objets, vous allez devoir définir des classes héritant de <code>BaseModel</code>. Vous trouverez toutes les infos dans la documentation de FastAPI.</p>

@@ -7,11 +7,14 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
-  <meta name="author" content="Ludovic Deneuville">
-  <title>Projet info 2A – Introduction</title>
+  <meta name="author" content="Ludovic Deneuville, Rémi Pépin">
+  <title>Projet info 2A – Analyse fonctionnelle</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -327,36 +330,46 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction</h1>
+  <h1 class="title">Analyse fonctionnelle</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ludovic Deneuville 
+Ludovic Deneuville, Rémi Pépin 
 </div>
 </div>
 </div>
 
 </section>
-<section>
-<section id="cours-de-compléments-dinfo" class="title-slide slide level2 center">
-<h2>Cours de Compléments d’info</h2>
+<section id="plan" class="title-slide slide level2 center">
+<h2>Plan</h2>
 <ul>
-<li>6h CM</li>
-<li>12h TP</li>
-<li><code>ludovic.deneuville@ensai.fr</code></li>
-<li>bureau 161</li>
-<li>sur la base des cours de <a href="https://github.com/HealerMikado" target="_blank">Rémi Pépin</a></li>
-</ul>
-<aside class="notes">
-<p>Présentation :</p>
+<li>L’analyse fonctionnelle
 <ul>
-<li>INSEE, informatique, Orléans GEOLOC, Lille enquêtes, Nautile</li>
-<li>Rémi Pépin, assistant d’enseignement entre 2018 et 2023
+<li>Définition</li>
+<li>Diagrammes UML</li>
+</ul></li>
+<li>L’architecture logicielle
 <ul>
-<li>Cours de Cloud Computing</li>
+<li>Définition</li>
+<li>Séparation des responsabilités</li>
 </ul></li>
 </ul>
+</section>
+
+<section id="analyse-fonctionnelle" class="title-slide slide level2 hide-html-render center">
+<h2>Analyse fonctionnelle</h2>
+<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+<aside class="notes">
+<p>Les questions qu’il faut se poser avant de commencer :</p>
+<ul>
+<li>Qu’est ce qu’on fait ? Qui le fait</li>
+<li>Besoins du client</li>
+<li>Fonctionnalités requises / optionnelles / bonus</li>
+<li>Bien gérer les priorités</li>
+<li>Répartition des rôles dans l’équipe</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -369,32 +382,68 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="le-cours" class="slide level3">
-<h3>Le cours</h3>
-<div title="But du cours">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>But du cours</strong></p>
-</div>
-<div class="callout-content">
-<p>Vous apporter les connaissances nécessaires pour mener à bien un projet informatique.</p>
-</div>
-</div>
-</div>
-</div>
+
+<section id="phases-dun-projet" class="slide level3">
+<h3>Phases d’un projet</h3>
 <ul>
-<li>Conduire un projet</li>
-<li>Dépasser les 50 lignes de code</li>
-<li>Vivre la vie de développeur</li>
-<li>Travailler en équipe</li>
+<li>Analyse des besoins</li>
+<li>Planification</li>
+<li>Conception</li>
+<li>Développements</li>
+<li>Recette</li>
+<li>Déploiement</li>
+<li>Maintenance</li>
+</ul>
+<aside class="notes">
+<p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level3">
+
+<p><a href="./img/balancoire-agile.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./img/balancoire-agile.PNG"></a></p>
+<aside class="notes">
+<ul>
+<li>Important de discuter</li>
+<li>Reformulez</li>
+<li>Utilisez des mots simples</li>
+<li>Imaginez que vous expliquez le projet à vos grands parents</li>
+<li>parler doc, arrivée sur poste, initiatives</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cest-quoi-lanalyse-fonctionnelle" class="slide level3">
+<h3>C’est quoi l’analyse fonctionnelle ?</h3>
+<ul>
+<li>Première étape de tous les projets</li>
+<li>Détermine les fonctions, acteurs du produit pour répondre aux besoins du client</li>
+<li>Diagrammes pour échanger avec le client</li>
+<li>Priorise les travaux</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>organiser votre code</li>
+<li>Permet de s’approprier le sujet</li>
+<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
+<li>Cette phase sera la première partie du rapport intermédiaire</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -408,29 +457,19 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="notions-abordées" class="slide level3">
-<h3>Notions abordées</h3>
+<section id="les-questions-à-se-poser" class="slide level3">
+<h3>Les questions à se poser</h3>
 <ul>
-<li>Versionnage avec git</li>
-<li>Analyse fonctionnelle, génie logiciel</li>
-<li>Programmation orientée objet avancée</li>
-<li>Communication avec une base de données en python</li>
-<li>Sécurité informatique</li>
-<li>Communication client-serveur</li>
-</ul>
-</section>
-<section id="les-tp" class="slide level3">
-<h3>Les TP</h3>
-<ul>
-<li>Settings VScode</li>
-<li>Formateur, Linter</li>
-<li>Open Folder</li>
+<li>Quels sont les types d’utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client…) ?</li>
+<li>Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?</li>
+<li>Comment fonctionnent les processus de l’application ?</li>
+<li>Quels sont les diagrammes à utiliser ?</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>TP : truc à récup pour le projet</li>
-<li>Révisez les Pokemon</li>
-<li>Sujets très longs</li>
+<li>Pour les premières questions diagramme de cas d’utilisation</li>
+<li>Processus -&gt; diagramme d’activité</li>
+<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -444,20 +483,17 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="évaluation" class="slide level3">
-<h3>Évaluation</h3>
+<section id="les-diagrammes-uml" class="slide level3">
+<h3>Les diagrammes UML</h3>
 <ul>
-<li><span class="emoji" data-emoji="construction">🚧</span> date</li>
-<li>2h</li>
-<li>sur papier</li>
-<li>1 feuille A4 recto / verso <strong><u>manuscrite</u></strong></li>
+<li>Cours de 1A</li>
+<li>UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>But : voir si vous avez retenu le principal</li>
-<li>pas de piège</li>
-<li>sur papier car TP trop compliqué à organiser, chatGPT</li>
-<li>MANUSCRITE : pas de photocopie</li>
+<li>Pas le temps de vous refaire un cours</li>
+<li>Il y a des ressources à la bibliothèque et sur internet</li>
+<li>Demandez à votre tuteur ce qu’il attend</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -471,13 +507,240 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="le-projet-info" class="slide level3">
-<h3>Le projet info</h3>
-<p><a href="../projet/presentation-eleves.html" target="_blank">Présentation du projet</a></p>
+<section id="questions" class="slide level3 hide-html-render">
+<h3>Questions ?</h3>
+<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+</section>
+<section>
+<section id="architecture-logicielle" class="title-slide slide level2 center">
+<h2>Architecture logicielle</h2>
+<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif"></a></p>
+</section>
+<section id="cest-quoi-larchitecture-logicielle" class="slide level3">
+<h3>C’est quoi l’architecture logicielle ?</h3>
+<ul>
+<li>Le pendant technique de l’analyse fonctionnelle</li>
+<li>Maintenant que l’on a le qui et quoi, on détermine le comment</li>
+<li>On dessine le code de notre application</li>
+<li>Vision macro de notre application (agencement des grandes pièces)</li>
+</ul>
+<aside class="notes">
+<p>Pour le moment on ne fait pas encore de code.</p>
+<p>On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).</p>
+<p>Par exemple dans votre cas vous allez sûrement avoir :</p>
+<ul>
+<li>Un code python qui tourne sur votre ordinateur</li>
+<li>Un webservice externe qui vous fournis des données</li>
+<li>Une base de données postgres.</li>
+</ul>
+<p>C’est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-larchitecture" class="slide level3 hide-html-render">
+<h3>Pourquoi c’est important : parallèle avec l’architecture</h3>
+<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif"></a></p>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-larchitecture-1" class="slide level3">
+<h3>Pourquoi c’est important : parallèle avec l’architecture</h3>
+<ul>
+<li>Pièces, l’installation électrique, l’eau, le gaz, contraintes législatives, s’adapter au terrain…</li>
+<li>Besoin de réfléchir comment il faut agencer tout ça dès le début</li>
+<li>Si on construit au fil de l’eau, on risque d’avoir une maison incohérente (au mieux)</li>
+<li><strong>Ce n’est pas du temps perdu !</strong></li>
+</ul>
+<aside class="notes">
+<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !<br>
+ChatGPT peut presque coder à notre place.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-grand-principe-separation-of-concerns" class="slide level3">
+<h3>Un grand principe : separation of concerns</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p><a href="img/couches.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/couches.png"></a></p>
+<aside class="notes">
+<p>Version macro en 3 couches. - Présentation : tout ce qui se charge de l’affichage - Business : c’est le métier de votre application, sa plus-value - Data : gère le stockage. Plus de détails dans quelques minutes</p>
+<p>Chaque couche communique avec celles adjacentes.<br>
+Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
+Pas évident mais très important !!!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-principales-couches-dune-application" class="slide level3">
+<h3>Les principales couches d’une application</h3>
+<ul>
+<li><strong><em>Présentation :</em></strong> tout ce qui se charge de l’affichage (page web, console, fenêtre)</li>
+<li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
+<li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
+</ul>
+</section>
+<section id="pour-votre-projet" class="slide level3">
+<h3>Pour votre projet</h3>
+<ul>
+<li><strong><em>Présentation :</em></strong> terminal</li>
+<li><strong><em>Métier :</em></strong> votre code Python</li>
+<li><strong><em>Persistance :</em></strong> base de données</li>
+</ul>
+<aside class="notes">
+<p>Exemple page web</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="zoom-sur-la-couche-métier" class="slide level3">
+<h3>Zoom sur la couche métier</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p><a href="img/Zoom metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/Zoom metier.png"></a></p>
+<aside class="notes">
+<p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
+<p>Dans les TP : - Couche présentation : View (on navigue entre des vues) - DAO, business_object, service - Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-couches-de-la-couche-métier-12" class="slide level3">
+<h3>Les couches de la couche métier 1/2</h3>
+<ul>
+<li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
+<ul>
+<li>C’est la partie de votre code qui communique avec la base de données (CM3/TP3)</li>
+</ul></li>
+<li><strong><em>Service :</em></strong>
+<ul>
+<li>Code métier</li>
+<li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
+<li>Demande des objets à la couche DAO</li>
+<li>Appelle les webservices externes (TP2-3)</li>
+</ul></li>
+</ul>
+</section>
+<section id="les-couches-de-la-couche-métier-22" class="slide level3">
+<h3>Les couches de la couche métier 2/2</h3>
+<ul>
+<li><strong><em>Objets métiers :</em></strong>
+<ul>
+<li>Couche transversale</li>
+<li>Représentent des concepts métiers que votre code va manipuler</li>
+<li>Objets avec surtout des attributs et peu de méthodes</li>
+</ul></li>
+<li><strong><em>Contrôleur :</em></strong>
+<ul>
+<li>Récupère les inputs des utilisateurs</li>
+<li>Renvoie les données à afficher (TP 4)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>On découpe les objets :<br>
+Attributs -&gt; Objets métiers<br>
+Méthodes -&gt; Services</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pourquoi-séparer-en-couches" class="slide level3">
+<h3>Pourquoi séparer en couches ?</h3>
+<ul>
+<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Lisibilité du code 📖</li>
+<li>Débogages 🐞</li>
+</ul>
+<blockquote>
+<p><strong>Limiter les risques d’erreurs quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
+</blockquote>
+<aside class="notes">
+<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
+Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
+Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
+Et séparer en couches permet de trouver rapidement la source du problème.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="informations-à-retenir" class="slide level3">
+<h3>Informations à retenir</h3>
+<ul>
+<li>Passer du temps à réfléchir aux différents modules d’une application n’est pas une perte de temps 🕵️‍♀️</li>
+<li>Diviser en couches permet de travailler en parallèle 🧪🧫📚</li>
+<li>Mais il faut encore réfléchir à comment bien coder 🤖</li>
+</ul>
+<aside class="notes">
+<p>Possible en projet de se répartir les couches.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="intro.html">Introduction</a></p>
+<p><a href="../../index.html">Home</a> — <a href="analyse-fonctionnelle.html">Analyse fonctionnelle</a></p>
 </div>
 </div>
 </section></section>
@@ -878,6 +1141,38 @@ Ludovic Deneuville
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

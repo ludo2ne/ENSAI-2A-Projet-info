@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Ludovic Deneuville, Rémi Pépin">
 <meta name="description" content="Slides">
 
-<title>Présentation du projet info 2A – Projet info 2A</title>
+<title>Programation orientée Objet - Avancée – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -43,6 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,9 +73,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -201,20 +201,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#objectifs" id="toc-objectifs" class="nav-link active" data-scroll-target="#objectifs">Objectifs</a></li>
-  <li><a href="#planning" id="toc-planning" class="nav-link" data-scroll-target="#planning">Planning</a></li>
-  <li><a href="#phases" id="toc-phases" class="nav-link" data-scroll-target="#phases">2 phases</a></li>
-  <li><a href="#travail-en-groupe" id="toc-travail-en-groupe" class="nav-link" data-scroll-target="#travail-en-groupe">Travail en groupe</a></li>
-  <li><a href="#suivi" id="toc-suivi" class="nav-link" data-scroll-target="#suivi">Suivi</a></li>
-  <li><a href="#environnement-de-travail" id="toc-environnement-de-travail" class="nav-link" data-scroll-target="#environnement-de-travail">Environnement de travail</a></li>
-  <li><a href="#testez-votre-code" id="toc-testez-votre-code" class="nav-link" data-scroll-target="#testez-votre-code">Testez votre code</a></li>
-  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template">Template</a></li>
+  <ul class="collapse">
+  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">Plan</a></li>
+  <li><a href="#quelques-rappels" id="toc-quelques-rappels" class="nav-link" data-scroll-target="#quelques-rappels">Quelques rappels</a></li>
+  <li><a href="#le-génie-logiciel" id="toc-le-génie-logiciel" class="nav-link" data-scroll-target="#le-génie-logiciel">Le génie logiciel</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="presentation-eleves-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="poo-avancee-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -225,12 +220,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Présentation du projet info 2A</h1>
+<h1 class="title">Programation orientée Objet - Avancée</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="presentation-eleves-slides.html">Slides</a>
+    <a href="poo-avancee-slides.html">Slides</a>
   </div>
 </div>
 
@@ -240,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ludovic Deneuville </p>
+             <p>Ludovic Deneuville, Rémi Pépin </p>
           </div>
   </div>
     
@@ -253,216 +248,242 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="objectifs" class="level2">
-<h2 class="anchored" data-anchor-id="objectifs">Objectifs</h2>
+<section id="plan" class="level2">
+<h2 class="anchored" data-anchor-id="plan">Plan</h2>
+<ol type="1">
+<li>Notions avancées de POO</li>
+</ol>
 <ul>
-<li>Développer une application en python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostreSQL</li>
-<li>Utiliser des webservices</li>
-<li>Concevoir et Modéliser</li>
+<li>Rappels</li>
+<li>Classes abstraites</li>
+<li>Bridge pattern</li>
+</ul>
+<ol start="2" type="1">
+<li>Génie logiciel</li>
+</ol>
+<ul>
+<li>Définition</li>
+<li>Single responsibility principle</li>
+<li>Design patterns</li>
 </ul>
 </section>
-<section id="planning" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="planning">Planning</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Planning</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Livrables</a></li></ul>
-<div class="tab-content nav-pills">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="white-box">
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2024-09-02,
-    CM                           :milestone, 2024-09-09, 
-    Examen                       :milestone, 2024-10-07,
-    
-    section TP
-    TP1                          :milestone, 2024-09-06,
-    TP2                          :milestone, 2024-09-13,
-    TP3                          :milestone, 2024-09-20,
-    TP4                          :milestone, 2024-09-27,
-    
-    section Projet
-    Suivi 1                      :milestone, 2024-09-06,
-    Suivi 2                      :milestone, 2024-09-13,
-    Suivi 3                      :milestone, 2024-09-27,
-    Suivi 4                      :milestone, 2024-10-11,
-    3j immersion (Suivi 5 et 6)  :active,    2024-10-21, 3d
-    Suivi 7                      :milestone, 2024-11-15,
-    
-    section Échéances
-    WEI                          :crit,      2024-09-20, 3d
-    Dossier Analyse              :milestone, 2024-10-05,
-    Toussaint                    :crit,      2024-10-26, 2024-11-03
-    Rapport final et Code        :milestone, 2024-11-23,
-    Soutenance                   :milestone, 2024-12-12,
-    
-    %%Stats univariées retraités   :done,         2021-11-28, 3d
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>vendredi 6 septembre</td>
-<td>TP1 et Suivi 1</td>
-</tr>
-<tr class="even">
-<td>vendredi 13 septembre</td>
-<td>TP2 et Suivi 2</td>
-</tr>
-<tr class="odd">
-<td>vendredi 20 septembre</td>
-<td>TP3</td>
-</tr>
-<tr class="even">
-<td>vendredi 27 septembre</td>
-<td>TP4 et Suivi 3</td>
-</tr>
-<tr class="odd">
-<td>vendredi 11 octobre</td>
-<td>Suivi 4 (retour sur les dossiers d’analyse)</td>
-</tr>
-<tr class="even">
-<td>lun-mer 21-23 octobre</td>
-<td>3 jours d’immersion (Suivi 5 et 6)</td>
-</tr>
-<tr class="odd">
-<td>vendredi 15 novembre</td>
-<td>Suivi 7</td>
-</tr>
-<tr class="even">
-<td>jeudi 12 décembre</td>
-<td>Soutenance</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Samedi 5 octobre 12h00</td>
-<td>Dossier d’Analyse</td>
-</tr>
-<tr class="even">
-<td>Samedi 23 novembre 20h00</td>
-<td>Rapport final et Code</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<section id="quelques-rappels" class="level2">
+<h2 class="anchored" data-anchor-id="quelques-rappels">Quelques rappels</h2>
+<p>Les trois principes de l’objet :</p>
+<ul>
+<li><strong>Encapsulation :</strong> un objet va contenir des <strong>attributs</strong> et des <strong>méthodes</strong>.</li>
+<li><strong>Héritage :</strong> un objet peut <strong>hériter</strong> des attributs et méthodes d’une autre classe pour les <strong>redéfinir</strong>. Il peut également ajouter d’autres attributs/méthodes.</li>
+<li><strong>Polymorphisme :</strong> une méthode peut être associée à un <strong>code différent</strong> en fonction des paramètres passés ou de l’objet auquel elle appartient.</li>
+</ul>
 <div class="notes">
+<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps (il m’a fallu environ 2 ans en tant que développeur pour bien les comprendre).</p>
 <ul>
-<li>3j d’immersion
-<ul>
-<li>capital pour bien avancer le projet</li>
-<li>si bien utilisé -&gt; 90 % du travail fait</li>
-</ul></li>
-<li>Prendre de l’avance en septembre</li>
+<li>Attribut : ce qu’il est</li>
+<li>Méthode : ce qu’il peut faire</li>
+<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
+<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
 </ul>
 </div>
+<section id="un-exemple-pour-illustrer-tout-ça" class="level3">
+<h3 class="anchored" data-anchor-id="un-exemple-pour-illustrer-tout-ça">Un exemple pour illustrer tout ça</h3>
+<p>Application de traitements automatiques des données :</p>
+<ul>
+<li>Plusieurs sources de données : enquêtes, webscraping, fichiers administratifs, …</li>
+<li>Plusieurs formats de données : csv, xml, json, … (<em>on en reparlera</em>)</li>
+<li>Plusieurs algorithmes de traitement : statistique exploratoire, régression, “machine learning”, …</li>
+</ul>
+<div class="notes">
+<p>Fondamentalement, c’est une application assez simple.</p>
+</div>
 </section>
-<section id="phases" class="level2">
-<h2 class="anchored" data-anchor-id="phases">2 phases</h2>
+<section id="exemple-de-diagramme-de-classe" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-de-diagramme-de-classe">Exemple de diagramme de classe</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p><a href="img/uml/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/uml/class_diagram_no_poo.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Voyez-vous des choses à corriger ?<br>
+Est-ce que la méthode <code>process</code> sera la même pour un csv, un json ?</p>
+</div>
+</section>
+<section id="un-exemple-avec-de-lhéritage" class="level3">
+<h3 class="anchored" data-anchor-id="un-exemple-avec-de-lhéritage">Un exemple avec de l’héritage</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img src="img/uml/class_diagram_poo1.png" class="img-fluid"></p>
+<div class="notes">
+<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
+Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
+<p>Code dans le dossier exemple POO.</p>
+</div>
+</section>
+<section id="les-classes-abstraites" class="level3">
+<h3 class="anchored" data-anchor-id="les-classes-abstraites">Les classes abstraites</h3>
+<blockquote class="blockquote">
+<p><strong>Classe Abstraite :</strong> classe dont l’implémentation n’est <strong>pas complète</strong> et qui n’est <strong>pas instantiable</strong>. Permet de passer un <strong>contrat</strong>. Les classes filles vont devoir implémenter ce qui manque.</p>
+</blockquote>
+<p><strong>Avantages :</strong></p>
 <ul>
-<li>Analyse / Conception générale (sept)
+<li>On sait ce que toutes les classes filles doivent faire 👍</li>
+<li>On peut générer du code 🙏</li>
+<li>Limite le risque d’erreur !! 👌</li>
+</ul>
+<div class="notes">
+<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.<br>
+Une bonne pratique est d’associer à chaque concept concret un concept abstrait.<br>
+Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On va faire des concepts abstraits qui ont du sens.</p>
+</div>
+</section>
+<section id="par-exemple" class="level3">
+<h3 class="anchored" data-anchor-id="par-exemple">Par exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img src="img/uml/class_diagram_poo_abstract_class.png" class="img-fluid"></p>
+<div class="notes">
+<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
+</div>
+</section>
+<section id="et-en-python" class="level3">
+<h3 class="anchored" data-anchor-id="et-en-python">Et en Python ?</h3>
 <ul>
-<li>4 séances de 3h de suivi</li>
-<li>mi-octobre : retours sur le dossier d’analyse</li>
-</ul></li>
-<li>Implémentation (oct-nov)
+<li>Pas de gestion native des classes abstraites 😱</li>
+<li>Module Abstract Base Classes (abc) pour résoudre le problème 🦾</li>
+<li>Déjà inclus dans votre distribution Python 😌
 <ul>
-<li>3 séances de 3h de suivi</li>
+<li><strong>Step 1 :</strong> Importer le module 🧳</li>
+<li><strong>Step 2 :</strong> Hériter de <code>ABC</code> 👨‍👩‍👧‍👦</li>
+<li><strong>Step 3 :</strong> Définir les méthodes abstraites 📝</li>
+<li><strong>Step 4 :</strong> ???</li>
+<li><strong>Step 5 :</strong> Profit 💰💰</li>
 </ul></li>
 </ul>
 <div class="notes">
-<p>Conseil :</p>
-<ul>
-<li>l’élève le plus à l’aise fait un POC vers le 20 septembre</li>
-<li>puis présente l’appli v0 aux autres</li>
-</ul>
-<p>Relisez vos rapports !</p>
+<p>L’autre gros défaut de Python est son typage dynamique. Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
 </div>
 </section>
-<section id="travail-en-groupe" class="level2">
-<h2 class="anchored" data-anchor-id="travail-en-groupe">Travail en groupe</h2>
+<section id="et-si-on-ajoutait-les-formats-de-données" class="level3">
+<h3 class="anchored" data-anchor-id="et-si-on-ajoutait-les-formats-de-données">Et si on ajoutait les formats de données ?</h3>
+<p>Actuellement, 3 formats de données dans notre application :</p>
 <ul>
-<li>Éviter de cumuler les rôles de Chef de projet et Tech Lead</li>
-<li>Esprit d’équipe</li>
-<li>Prévenir dès que possible si ça va pas</li>
+<li><strong>CSV :</strong> Comma Separated Values (tabulaire)</li>
+<li><strong>XML :</strong> eXtended Markup Language (format à balise)</li>
+<li><strong>JSON :</strong> JavaScript Object Notation (format clef-valeur)</li>
 </ul>
 <div class="notes">
-<ul>
-<li>Avoir un bon comportement</li>
-<li>Si vous êtes fort -&gt; ne pas tout faire</li>
-<li>Prévenir tuteur puis Ludo en cas de souci</li>
-</ul>
-<p>Pas la peine de dire une fois que le projet est fini :</p>
-<ul>
-<li>c’est moi qui ait tout fait</li>
-<li>un autre membre n’a rien fait</li>
-</ul>
+<p>On reviendra plus en détail sur les différents formats.</p>
 </div>
 </section>
-<section id="suivi" class="level2">
-<h2 class="anchored" data-anchor-id="suivi">Suivi</h2>
+<section id="par-exemple-1" class="level3">
+<h3 class="anchored" data-anchor-id="par-exemple-1">Par exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img src="img/uml/class_diagram_poo_file_format.png" class="img-fluid"></p>
+<p>Voyez-vous un problème ?</p>
+<div class="notes">
+<p>C’est gros !</p>
+</div>
+</section>
+<section id="la-puissance-de-la-poo" class="level3">
+<h3 class="anchored" data-anchor-id="la-puissance-de-la-poo">La puissance de la POO</h3>
 <ul>
-<li>Point hebdo</li>
-<li>À remplir chaque semaine
+<li>Actuellement 4 * 3 classes “concrètes” à définir 😱</li>
+<li>La lecture du format est dépendante de la source 😵</li>
+</ul>
+<p><strong>MAIS 🌽</strong></p>
 <ul>
-<li>au plus tard le vendredi à 18h</li>
-</ul></li>
+<li>On peut externaliser ce traitement ! 😌</li>
+<li>Relation d’agrégation 🤯</li>
 </ul>
 <div class="notes">
-<p><span class="emoji" data-emoji="construction">🚧</span> modèle</p>
-<ul>
-<li>Comme dans la vie pro</li>
-<li>Obligatoire sinon malus</li>
-<li>ras : si vous n’avez rien fait</li>
-</ul>
+<p>Il faut bien comprendre</p>
 </div>
 </section>
-<section id="environnement-de-travail" class="level2">
-<h2 class="anchored" data-anchor-id="environnement-de-travail">Environnement de travail</h2>
+<section id="le-bridge-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="le-bridge-pattern">Le bridge pattern</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img src="img/uml/class_diagram_poo_bridge_pattern.png" class="img-fluid"></p>
+<div class="notes">
+
+</div>
+</section>
+<section id="work-smart-not-hard" class="level3">
+<h3 class="anchored" data-anchor-id="work-smart-not-hard">Work smart, not hard</h3>
+<ul>
+<li><strong>Composition + héritage :</strong> 9 classes 😎</li>
+<li><strong>Héritage :</strong> 17 classes 😫</li>
+<li>On peut facilement ajouter des types et des formats 🥳</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Pattern Bridge">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pattern Bridge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
+</div>
+</div>
+</section>
+<section id="pour-résumer" class="level3">
+<h3 class="anchored" data-anchor-id="pour-résumer">Pour résumer</h3>
+<ul>
+<li>Utiliser la puissance de la POO 💣</li>
+<li>Préférer les objets spécifiques (héritage) au <code>if/elif/else</code> 🐱‍🏍</li>
+<li>Les classes abstraites sont des plans pour les futures classes 👷‍♀️👷‍♂️</li>
+<li>La POO permet de créer des codes plus lisibles, évolutifs et maintenables 👑</li>
+</ul>
+</section>
+</section>
+<section id="le-génie-logiciel" class="level2">
+<h2 class="anchored" data-anchor-id="le-génie-logiciel">Le génie logiciel</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Génie logiciel"><video src="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="img-fluid" width="600" controls=""></video></a><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4">Génie logiciel</a></p>
+<figcaption>Génie logiciel</figcaption>
+</figure>
+</div>
+<div class="notes">
+<p>On va aller un cran au-dessus.</p>
+</div>
+<section id="cest-quoi-le-génie-logiciel" class="level3">
+<h3 class="anchored" data-anchor-id="cest-quoi-le-génie-logiciel">C’est quoi le génie logiciel ?</h3>
+<ul>
+<li>Un constat : coder bêtement ne permet pas de faire une application de qualité.</li>
+<li>Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.</li>
+<li>Besoin de planifier, de documenter, de tester, etc.</li>
+</ul>
+<div class="notes">
+<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
+</div>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison">Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="img-fluid"></a></p>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1">Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
+<ul>
+<li>Vous avez le plan de construction d’une maison (fourni par l’architecte)</li>
+<li>Mais implémenter ce plan demande des connaissances techniques</li>
+<li>Besoin de refaire des schémas pour des zones précises (arches, escaliers, …)</li>
+<li><strong>Ce n’est pas du temps perdu !</strong></li>
+</ul>
+<p><strong>Faire du code de qualité c’est comme faire de l’artisanat de précision, cela demande outils, expérience et méthodes.</strong></p>
+<div class="notes">
+<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+</div>
+</section>
+<section id="quelques-principes-de-base" class="level3">
+<h3 class="anchored" data-anchor-id="quelques-principes-de-base">Quelques principes de base</h3>
+<ul>
+<li>Décomposition d’un programme en modules simples <strong>cohérents</strong></li>
+<li>Les modules <strong>exposent</strong> des méthodes utilisables/surchageables par d’autres modules mais restent protégés aux modifications non prévues</li>
+<li>Chaque module doit être une <strong>boîte noire</strong> pour les autres</li>
+<li>Si on garde les mêmes <strong>entrées/sorties</strong>, on peut changer un module sans risque</li>
+<li>Privilégier abstractions + héritage plutôt que <code>if/elif/else</code></li>
+</ul>
+<div class="notes">
+<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
+<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke. Pareil, ce n’est</p>
+</div>
+</section>
+<section id="un-mantra" class="level3">
+<h3 class="anchored" data-anchor-id="un-mantra">Un mantra</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -473,35 +494,113 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vous avez tous les outils nécessaires pour coder sur la VM.</p>
-<p>Si vous n’êtes pas à très l’aise en info, il vous sera quasi impossible de coder hors VM.</p>
-<p><strong>Aucune aide ne vous sera apportée pour installer les outils nécessaires si vous êtes hors VM.</strong></p>
+<p><strong>Faible couplage, forte cohérence</strong></p>
 </div>
 </div>
 <ul>
-<li>Nous attendons du code de <strong><u>qualité</u></strong></li>
-<li>Documentation obligatoire pour chaque classe, chaque méthode</li>
-</ul>
-</section>
-<section id="testez-votre-code" class="level2">
-<h2 class="anchored" data-anchor-id="testez-votre-code">Testez votre code</h2>
-<ul>
-<li>Tests Unitaires obligatoires</li>
-<li>Codez par petits bouts</li>
+<li><strong>Faible couplage inter-classes :</strong> modifier une classe doit impacter les autres le moins possible.</li>
+<li><strong>Forte cohérence intra-classe :</strong> chaque classe doit être un ensemble cohérent d’attributs et de méthodes.</li>
 </ul>
 <div class="notes">
-<ul>
-<li>Methodes qui ne fontionnent pas car elles appellent des méthodes qui ne fontionnent pas</li>
-</ul>
+<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
 </div>
 </section>
-<section id="template" class="level2">
-<h2 class="anchored" data-anchor-id="template">Template</h2>
+<section id="faible-couplage-forte-cohérence-pourquoi-le-respecter" class="level3">
+<h3 class="anchored" data-anchor-id="faible-couplage-forte-cohérence-pourquoi-le-respecter">Faible couplage, forte cohérence : pourquoi le respecter ?</h3>
 <ul>
-<li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
+<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Lisibilité du code 📖</li>
+<li>Débogages 🐞</li>
 </ul>
+<p><strong>Limiter les risques d’erreur quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
+<div class="notes">
+<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
+</div>
+</section>
+<section id="retour-sur-le-bridge-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="retour-sur-le-bridge-pattern">Retour sur le bridge pattern</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img src="img/uml/class_diagram_poo_bridge_pattern.png" class="img-fluid"></p>
+<div class="notes">
+<p>Je remontre le schéma quelques secondes</p>
+</div>
+</section>
+<section id="retour-sur-le-bridge-pattern-1" class="level3">
+<h3 class="anchored" data-anchor-id="retour-sur-le-bridge-pattern-1">Retour sur le bridge pattern</h3>
+<ul>
+<li>La partie “Source” gère les traitements liés à la source.</li>
+<li>La partie “Fichier” gère la lecture de fichier.</li>
+<li>Seules les entrées/sorties comptent.</li>
+<li>On peut ajouter une partie “Traitement” pour des traitements supplémentaires.</li>
+<li>Pas de <code>if/elif/else</code> inutiles.</li>
+</ul>
+<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
+<div class="notes">
+<p>Avantages : - Lecture du code facilitée. - En cas de bug, facile de trouver le coupable. - On peut répartir le travail facilement.</p>
+</div>
+</section>
+<section id="les-design-patterns-définition" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-définition">Les design patterns : définition</h3>
+<blockquote class="blockquote">
+<p>“En informatique, et plus particulièrement en développement logiciel, un patron de conception (souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d’un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.”<br>
+— <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">Source</a></p>
+</blockquote>
+</section>
+<section id="les-design-patterns-in-a-nutshell" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-in-a-nutshell">Les design patterns : in a nutshell</h3>
+<ul>
+<li>Bonnes pratiques</li>
+<li>Solutions standards à des problèmes de conception</li>
+<li>Solutions robustes</li>
+<li>Indépendants de la technologie</li>
+<li>Indépendants du métier</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Est un outil qui est là pour vous aider</strong></p>
+</blockquote>
+<div class="notes">
+<p>En plus ils apportent un vocabulaire commun.<br>
+Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
+</div>
+</section>
+<section id="les-design-patterns-exemple" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-exemple">Les design patterns : exemple</h3>
+<p><strong>Problème récurent :</strong></p>
+<ul>
+<li>Créer des objets complexes qui sont une composition de caractéristiques indépendantes</li>
+<li>Dit autrement : découpler l’abstraction de son implémentation pour qu’elles puissent varier indépendamment</li>
+</ul>
+</section>
+<section id="les-design-patterns-exemple-1" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-exemple-1">Les design patterns : exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+</section>
+<section id="les-design-patterns-exemple-2" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-exemple-2">Les design patterns : exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+</section>
+<section id="pour-résumer-1" class="level3">
+<h3 class="anchored" data-anchor-id="pour-résumer-1">Pour résumer</h3>
+<ul>
+<li>Faire une application complexe demande un code complexe 🧩</li>
+<li>Sans phase de conception on va dans le mur 🧱</li>
+<li>Il existe des solutions prêtes à l’emploi à des problèmes courants 🧰</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Faible couplage, forte cohérence</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1083,6 +1182,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

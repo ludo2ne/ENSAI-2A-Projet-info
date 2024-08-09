@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Ludovic Deneuville, Rémi Pépin">
 <meta name="description" content="Slides">
 
-<title>Présentation du projet info 2A – Projet info 2A</title>
+<title>Les Webservices – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,9 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -201,36 +198,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#objectifs" id="toc-objectifs" class="nav-link active" data-scroll-target="#objectifs">Objectifs</a></li>
-  <li><a href="#planning" id="toc-planning" class="nav-link" data-scroll-target="#planning">Planning</a></li>
-  <li><a href="#phases" id="toc-phases" class="nav-link" data-scroll-target="#phases">2 phases</a></li>
-  <li><a href="#travail-en-groupe" id="toc-travail-en-groupe" class="nav-link" data-scroll-target="#travail-en-groupe">Travail en groupe</a></li>
-  <li><a href="#suivi" id="toc-suivi" class="nav-link" data-scroll-target="#suivi">Suivi</a></li>
-  <li><a href="#environnement-de-travail" id="toc-environnement-de-travail" class="nav-link" data-scroll-target="#environnement-de-travail">Environnement de travail</a></li>
-  <li><a href="#testez-votre-code" id="toc-testez-votre-code" class="nav-link" data-scroll-target="#testez-votre-code">Testez votre code</a></li>
-  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template">Template</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="presentation-eleves-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="webservices-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Présentation du projet info 2A</h1>
+<h1 class="title">Les Webservices</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="presentation-eleves-slides.html">Slides</a>
+    <a href="webservices-slides.html">Slides</a>
   </div>
 </div>
 
@@ -240,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ludovic Deneuville </p>
+             <p>Ludovic Deneuville, Rémi Pépin </p>
           </div>
   </div>
     
@@ -253,256 +237,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="objectifs" class="level2">
-<h2 class="anchored" data-anchor-id="objectifs">Objectifs</h2>
-<ul>
-<li>Développer une application en python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostreSQL</li>
-<li>Utiliser des webservices</li>
-<li>Concevoir et Modéliser</li>
-</ul>
-</section>
-<section id="planning" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="planning">Planning</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Planning</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Livrables</a></li></ul>
-<div class="tab-content nav-pills">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="white-box">
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2024-09-02,
-    CM                           :milestone, 2024-09-09, 
-    Examen                       :milestone, 2024-10-07,
-    
-    section TP
-    TP1                          :milestone, 2024-09-06,
-    TP2                          :milestone, 2024-09-13,
-    TP3                          :milestone, 2024-09-20,
-    TP4                          :milestone, 2024-09-27,
-    
-    section Projet
-    Suivi 1                      :milestone, 2024-09-06,
-    Suivi 2                      :milestone, 2024-09-13,
-    Suivi 3                      :milestone, 2024-09-27,
-    Suivi 4                      :milestone, 2024-10-11,
-    3j immersion (Suivi 5 et 6)  :active,    2024-10-21, 3d
-    Suivi 7                      :milestone, 2024-11-15,
-    
-    section Échéances
-    WEI                          :crit,      2024-09-20, 3d
-    Dossier Analyse              :milestone, 2024-10-05,
-    Toussaint                    :crit,      2024-10-26, 2024-11-03
-    Rapport final et Code        :milestone, 2024-11-23,
-    Soutenance                   :milestone, 2024-12-12,
-    
-    %%Stats univariées retraités   :done,         2021-11-28, 3d
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>vendredi 6 septembre</td>
-<td>TP1 et Suivi 1</td>
-</tr>
-<tr class="even">
-<td>vendredi 13 septembre</td>
-<td>TP2 et Suivi 2</td>
-</tr>
-<tr class="odd">
-<td>vendredi 20 septembre</td>
-<td>TP3</td>
-</tr>
-<tr class="even">
-<td>vendredi 27 septembre</td>
-<td>TP4 et Suivi 3</td>
-</tr>
-<tr class="odd">
-<td>vendredi 11 octobre</td>
-<td>Suivi 4 (retour sur les dossiers d’analyse)</td>
-</tr>
-<tr class="even">
-<td>lun-mer 21-23 octobre</td>
-<td>3 jours d’immersion (Suivi 5 et 6)</td>
-</tr>
-<tr class="odd">
-<td>vendredi 15 novembre</td>
-<td>Suivi 7</td>
-</tr>
-<tr class="even">
-<td>jeudi 12 décembre</td>
-<td>Soutenance</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Samedi 5 octobre 12h00</td>
-<td>Dossier d’Analyse</td>
-</tr>
-<tr class="even">
-<td>Samedi 23 novembre 20h00</td>
-<td>Rapport final et Code</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="notes">
-<ul>
-<li>3j d’immersion
-<ul>
-<li>capital pour bien avancer le projet</li>
-<li>si bien utilisé -&gt; 90 % du travail fait</li>
-</ul></li>
-<li>Prendre de l’avance en septembre</li>
-</ul>
-</div>
-</section>
-<section id="phases" class="level2">
-<h2 class="anchored" data-anchor-id="phases">2 phases</h2>
-<ul>
-<li>Analyse / Conception générale (sept)
-<ul>
-<li>4 séances de 3h de suivi</li>
-<li>mi-octobre : retours sur le dossier d’analyse</li>
-</ul></li>
-<li>Implémentation (oct-nov)
-<ul>
-<li>3 séances de 3h de suivi</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p>Conseil :</p>
-<ul>
-<li>l’élève le plus à l’aise fait un POC vers le 20 septembre</li>
-<li>puis présente l’appli v0 aux autres</li>
-</ul>
-<p>Relisez vos rapports !</p>
-</div>
-</section>
-<section id="travail-en-groupe" class="level2">
-<h2 class="anchored" data-anchor-id="travail-en-groupe">Travail en groupe</h2>
-<ul>
-<li>Éviter de cumuler les rôles de Chef de projet et Tech Lead</li>
-<li>Esprit d’équipe</li>
-<li>Prévenir dès que possible si ça va pas</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Avoir un bon comportement</li>
-<li>Si vous êtes fort -&gt; ne pas tout faire</li>
-<li>Prévenir tuteur puis Ludo en cas de souci</li>
-</ul>
-<p>Pas la peine de dire une fois que le projet est fini :</p>
-<ul>
-<li>c’est moi qui ait tout fait</li>
-<li>un autre membre n’a rien fait</li>
-</ul>
-</div>
-</section>
-<section id="suivi" class="level2">
-<h2 class="anchored" data-anchor-id="suivi">Suivi</h2>
-<ul>
-<li>Point hebdo</li>
-<li>À remplir chaque semaine
-<ul>
-<li>au plus tard le vendredi à 18h</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p><span class="emoji" data-emoji="construction">🚧</span> modèle</p>
-<ul>
-<li>Comme dans la vie pro</li>
-<li>Obligatoire sinon malus</li>
-<li>ras : si vous n’avez rien fait</li>
-</ul>
-</div>
-</section>
-<section id="environnement-de-travail" class="level2">
-<h2 class="anchored" data-anchor-id="environnement-de-travail">Environnement de travail</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Vous avez tous les outils nécessaires pour coder sur la VM.</p>
-<p>Si vous n’êtes pas à très l’aise en info, il vous sera quasi impossible de coder hors VM.</p>
-<p><strong>Aucune aide ne vous sera apportée pour installer les outils nécessaires si vous êtes hors VM.</strong></p>
-</div>
-</div>
-<ul>
-<li>Nous attendons du code de <strong><u>qualité</u></strong></li>
-<li>Documentation obligatoire pour chaque classe, chaque méthode</li>
-</ul>
-</section>
-<section id="testez-votre-code" class="level2">
-<h2 class="anchored" data-anchor-id="testez-votre-code">Testez votre code</h2>
-<ul>
-<li>Tests Unitaires obligatoires</li>
-<li>Codez par petits bouts</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Methodes qui ne fontionnent pas car elles appellent des méthodes qui ne fontionnent pas</li>
-</ul>
-</div>
-</section>
-<section id="template" class="level2">
-<h2 class="anchored" data-anchor-id="template">Template</h2>
-<ul>
-<li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
-</ul>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,11 +7,14 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
-  <meta name="author" content="Ludovic Deneuville">
-  <title>Projet info 2A – Introduction</title>
+  <meta name="author" content="Ludovic Deneuville, Rémi Pépin">
+  <title>Projet info 2A – Programation orientée Objet - Avancée</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -327,35 +330,53 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction</h1>
+  <h1 class="title">Programation orientée Objet - Avancée</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ludovic Deneuville 
+Ludovic Deneuville, Rémi Pépin 
 </div>
 </div>
 </div>
 
 </section>
-<section>
-<section id="cours-de-compléments-dinfo" class="title-slide slide level2 center">
-<h2>Cours de Compléments d’info</h2>
+<section id="plan" class="title-slide slide level2 center">
+<h2>Plan</h2>
+<ol type="1">
+<li>Notions avancées de POO</li>
+</ol>
 <ul>
-<li>6h CM</li>
-<li>12h TP</li>
-<li><code>ludovic.deneuville@ensai.fr</code></li>
-<li>bureau 161</li>
-<li>sur la base des cours de <a href="https://github.com/HealerMikado" target="_blank">Rémi Pépin</a></li>
+<li>Rappels</li>
+<li>Classes abstraites</li>
+<li>Bridge pattern</li>
+</ul>
+<ol start="2" type="1">
+<li>Génie logiciel</li>
+</ol>
+<ul>
+<li>Définition</li>
+<li>Single responsibility principle</li>
+<li>Design patterns</li>
+</ul>
+</section>
+
+<section>
+<section id="quelques-rappels" class="title-slide slide level2 center">
+<h2>Quelques rappels</h2>
+<p>Les trois principes de l’objet :</p>
+<ul>
+<li><strong>Encapsulation :</strong> un objet va contenir des <strong>attributs</strong> et des <strong>méthodes</strong>.</li>
+<li><strong>Héritage :</strong> un objet peut <strong>hériter</strong> des attributs et méthodes d’une autre classe pour les <strong>redéfinir</strong>. Il peut également ajouter d’autres attributs/méthodes.</li>
+<li><strong>Polymorphisme :</strong> une méthode peut être associée à un <strong>code différent</strong> en fonction des paramètres passés ou de l’objet auquel elle appartient.</li>
 </ul>
 <aside class="notes">
-<p>Présentation :</p>
+<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps (il m’a fallu environ 2 ans en tant que développeur pour bien les comprendre).</p>
 <ul>
-<li>INSEE, informatique, Orléans GEOLOC, Lille enquêtes, Nautile</li>
-<li>Rémi Pépin, assistant d’enseignement entre 2018 et 2023
-<ul>
-<li>Cours de Cloud Computing</li>
-</ul></li>
+<li>Attribut : ce qu’il est</li>
+<li>Méthode : ce qu’il peut faire</li>
+<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
+<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -369,33 +390,263 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="le-cours" class="slide level3">
-<h3>Le cours</h3>
-<div title="But du cours">
-<div class="callout callout-tip callout-titled callout-style-default">
+<section id="un-exemple-pour-illustrer-tout-ça" class="slide level3">
+<h3>Un exemple pour illustrer tout ça</h3>
+<p>Application de traitements automatiques des données :</p>
+<ul>
+<li>Plusieurs sources de données : enquêtes, webscraping, fichiers administratifs, …</li>
+<li>Plusieurs formats de données : csv, xml, json, … (<em>on en reparlera</em>)</li>
+<li>Plusieurs algorithmes de traitement : statistique exploratoire, régression, “machine learning”, …</li>
+</ul>
+<aside class="notes">
+<p>Fondamentalement, c’est une application assez simple.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-de-diagramme-de-classe" class="slide level3">
+<h3>Exemple de diagramme de classe</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p><a href="img/uml/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="img/uml/class_diagram_no_poo.png"></a></p>
+<aside class="notes">
+<p>Voyez-vous des choses à corriger ?<br>
+Est-ce que la méthode <code>process</code> sera la même pour un csv, un json ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-exemple-avec-de-lhéritage" class="slide level3">
+<h3>Un exemple avec de l’héritage</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo1.png"></p>
+<aside class="notes">
+<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
+Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
+<p>Code dans le dossier exemple POO.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-classes-abstraites" class="slide level3">
+<h3>Les classes abstraites</h3>
+<blockquote>
+<p><strong>Classe Abstraite :</strong> classe dont l’implémentation n’est <strong>pas complète</strong> et qui n’est <strong>pas instantiable</strong>. Permet de passer un <strong>contrat</strong>. Les classes filles vont devoir implémenter ce qui manque.</p>
+</blockquote>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>On sait ce que toutes les classes filles doivent faire 👍</li>
+<li>On peut générer du code 🙏</li>
+<li>Limite le risque d’erreur !! 👌</li>
+</ul>
+<aside class="notes">
+<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.<br>
+Une bonne pratique est d’associer à chaque concept concret un concept abstrait.<br>
+Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On va faire des concepts abstraits qui ont du sens.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="par-exemple" class="slide level3">
+<h3>Par exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_abstract_class.png"></p>
+<aside class="notes">
+<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="et-en-python" class="slide level3">
+<h3>Et en Python ?</h3>
+<ul>
+<li>Pas de gestion native des classes abstraites 😱</li>
+<li>Module Abstract Base Classes (abc) pour résoudre le problème 🦾</li>
+<li>Déjà inclus dans votre distribution Python 😌
+<ul>
+<li><strong>Step 1 :</strong> Importer le module 🧳</li>
+<li><strong>Step 2 :</strong> Hériter de <code>ABC</code> 👨‍👩‍👧‍👦</li>
+<li><strong>Step 3 :</strong> Définir les méthodes abstraites 📝</li>
+<li><strong>Step 4 :</strong> ???</li>
+<li><strong>Step 5 :</strong> Profit 💰💰</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>L’autre gros défaut de Python est son typage dynamique. Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="et-si-on-ajoutait-les-formats-de-données" class="slide level3">
+<h3>Et si on ajoutait les formats de données ?</h3>
+<p>Actuellement, 3 formats de données dans notre application :</p>
+<ul>
+<li><strong>CSV :</strong> Comma Separated Values (tabulaire)</li>
+<li><strong>XML :</strong> eXtended Markup Language (format à balise)</li>
+<li><strong>JSON :</strong> JavaScript Object Notation (format clef-valeur)</li>
+</ul>
+<aside class="notes">
+<p>On reviendra plus en détail sur les différents formats.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="par-exemple-1" class="slide level3">
+<h3>Par exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_file_format.png"></p>
+<p>Voyez-vous un problème ?</p>
+<aside class="notes">
+<p>C’est gros !</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="la-puissance-de-la-poo" class="slide level3">
+<h3>La puissance de la POO</h3>
+<ul>
+<li>Actuellement 4 * 3 classes “concrètes” à définir 😱</li>
+<li>La lecture du format est dépendante de la source 😵</li>
+</ul>
+<p><strong>MAIS 🌽</strong></p>
+<ul>
+<li>On peut externaliser ce traitement ! 😌</li>
+<li>Relation d’agrégation 🤯</li>
+</ul>
+<aside class="notes">
+<p>Il faut bien comprendre</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-bridge-pattern" class="slide level3">
+<h3>Le bridge pattern</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_bridge_pattern.png"></p>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="work-smart-not-hard" class="slide level3">
+<h3>Work smart, not hard</h3>
+<ul>
+<li><strong>Composition + héritage :</strong> 9 classes 😎</li>
+<li><strong>Héritage :</strong> 17 classes 😫</li>
+<li>On peut facilement ajouter des types et des formats 🥳</li>
+</ul>
+<div title="Pattern Bridge">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>But du cours</strong></p>
+<p><strong>Pattern Bridge</strong></p>
 </div>
 <div class="callout-content">
-<p>Vous apporter les connaissances nécessaires pour mener à bien un projet informatique.</p>
+<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="pour-résumer" class="slide level3">
+<h3>Pour résumer</h3>
 <ul>
-<li>Conduire un projet</li>
-<li>Dépasser les 50 lignes de code</li>
-<li>Vivre la vie de développeur</li>
-<li>Travailler en équipe</li>
+<li>Utiliser la puissance de la POO 💣</li>
+<li>Préférer les objets spécifiques (héritage) au <code>if/elif/else</code> 🐱‍🏍</li>
+<li>Les classes abstraites sont des plans pour les futures classes 👷‍♀️👷‍♂️</li>
+<li>La POO permet de créer des codes plus lisibles, évolutifs et maintenables 👑</li>
 </ul>
+</section></section>
+<section>
+<section id="le-génie-logiciel" class="title-slide slide level2 center">
+<h2>Le génie logiciel</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Génie logiciel"><video data-src="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" width="600" controls=""></video></a><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4">Génie logiciel</a></p>
+<figcaption>Génie logiciel</figcaption>
+</figure>
+</div>
 <aside class="notes">
-<ul>
-<li>organiser votre code</li>
-</ul>
+<p>On va aller un cran au-dessus.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -408,30 +659,15 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="notions-abordées" class="slide level3">
-<h3>Notions abordées</h3>
+<section id="cest-quoi-le-génie-logiciel" class="slide level3">
+<h3>C’est quoi le génie logiciel ?</h3>
 <ul>
-<li>Versionnage avec git</li>
-<li>Analyse fonctionnelle, génie logiciel</li>
-<li>Programmation orientée objet avancée</li>
-<li>Communication avec une base de données en python</li>
-<li>Sécurité informatique</li>
-<li>Communication client-serveur</li>
-</ul>
-</section>
-<section id="les-tp" class="slide level3">
-<h3>Les TP</h3>
-<ul>
-<li>Settings VScode</li>
-<li>Formateur, Linter</li>
-<li>Open Folder</li>
+<li>Un constat : coder bêtement ne permet pas de faire une application de qualité.</li>
+<li>Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.</li>
+<li>Besoin de planifier, de documenter, de tester, etc.</li>
 </ul>
 <aside class="notes">
-<ul>
-<li>TP : truc à récup pour le projet</li>
-<li>Révisez les Pokemon</li>
-<li>Sujets très longs</li>
-</ul>
+<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -444,21 +680,21 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="évaluation" class="slide level3">
-<h3>Évaluation</h3>
+<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison" class="slide level3">
+<h3>Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif"></a></p>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1" class="slide level3">
+<h3>Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
 <ul>
-<li><span class="emoji" data-emoji="construction">🚧</span> date</li>
-<li>2h</li>
-<li>sur papier</li>
-<li>1 feuille A4 recto / verso <strong><u>manuscrite</u></strong></li>
+<li>Vous avez le plan de construction d’une maison (fourni par l’architecte)</li>
+<li>Mais implémenter ce plan demande des connaissances techniques</li>
+<li>Besoin de refaire des schémas pour des zones précises (arches, escaliers, …)</li>
+<li><strong>Ce n’est pas du temps perdu !</strong></li>
 </ul>
+<p><strong>Faire du code de qualité c’est comme faire de l’artisanat de précision, cela demande outils, expérience et méthodes.</strong></p>
 <aside class="notes">
-<ul>
-<li>But : voir si vous avez retenu le principal</li>
-<li>pas de piège</li>
-<li>sur papier car TP trop compliqué à organiser, chatGPT</li>
-<li>MANUSCRITE : pas de photocopie</li>
-</ul>
+<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -471,13 +707,200 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="le-projet-info" class="slide level3">
-<h3>Le projet info</h3>
-<p><a href="../projet/presentation-eleves.html" target="_blank">Présentation du projet</a></p>
+<section id="quelques-principes-de-base" class="slide level3">
+<h3>Quelques principes de base</h3>
+<ul>
+<li>Décomposition d’un programme en modules simples <strong>cohérents</strong></li>
+<li>Les modules <strong>exposent</strong> des méthodes utilisables/surchageables par d’autres modules mais restent protégés aux modifications non prévues</li>
+<li>Chaque module doit être une <strong>boîte noire</strong> pour les autres</li>
+<li>Si on garde les mêmes <strong>entrées/sorties</strong>, on peut changer un module sans risque</li>
+<li>Privilégier abstractions + héritage plutôt que <code>if/elif/else</code></li>
+</ul>
+<aside class="notes">
+<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
+<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke. Pareil, ce n’est</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-mantra" class="slide level3">
+<h3>Un mantra</h3>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Faible couplage, forte cohérence</strong></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Faible couplage inter-classes :</strong> modifier une classe doit impacter les autres le moins possible.</li>
+<li><strong>Forte cohérence intra-classe :</strong> chaque classe doit être un ensemble cohérent d’attributs et de méthodes.</li>
+</ul>
+<aside class="notes">
+<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="faible-couplage-forte-cohérence-pourquoi-le-respecter" class="slide level3">
+<h3>Faible couplage, forte cohérence : pourquoi le respecter ?</h3>
+<ul>
+<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Lisibilité du code 📖</li>
+<li>Débogages 🐞</li>
+</ul>
+<p><strong>Limiter les risques d’erreur quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
+<aside class="notes">
+<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="retour-sur-le-bridge-pattern" class="slide level3">
+<h3>Retour sur le bridge pattern</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_bridge_pattern.png"></p>
+<aside class="notes">
+<p>Je remontre le schéma quelques secondes</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="retour-sur-le-bridge-pattern-1" class="slide level3">
+<h3>Retour sur le bridge pattern</h3>
+<ul>
+<li>La partie “Source” gère les traitements liés à la source.</li>
+<li>La partie “Fichier” gère la lecture de fichier.</li>
+<li>Seules les entrées/sorties comptent.</li>
+<li>On peut ajouter une partie “Traitement” pour des traitements supplémentaires.</li>
+<li>Pas de <code>if/elif/else</code> inutiles.</li>
+</ul>
+<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
+<aside class="notes">
+<p>Avantages : - Lecture du code facilitée. - En cas de bug, facile de trouver le coupable. - On peut répartir le travail facilement.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-design-patterns-définition" class="slide level3">
+<h3>Les design patterns : définition</h3>
+<blockquote>
+<p>“En informatique, et plus particulièrement en développement logiciel, un patron de conception (souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d’un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.”<br>
+— <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">Source</a></p>
+</blockquote>
+</section>
+<section id="les-design-patterns-in-a-nutshell" class="slide level3">
+<h3>Les design patterns : in a nutshell</h3>
+<ul>
+<li>Bonnes pratiques</li>
+<li>Solutions standards à des problèmes de conception</li>
+<li>Solutions robustes</li>
+<li>Indépendants de la technologie</li>
+<li>Indépendants du métier</li>
+</ul>
+<blockquote>
+<p><strong>Est un outil qui est là pour vous aider</strong></p>
+</blockquote>
+<aside class="notes">
+<p>En plus ils apportent un vocabulaire commun.<br>
+Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-design-patterns-exemple" class="slide level3">
+<h3>Les design patterns : exemple</h3>
+<p><strong>Problème récurent :</strong></p>
+<ul>
+<li>Créer des objets complexes qui sont une composition de caractéristiques indépendantes</li>
+<li>Dit autrement : découpler l’abstraction de son implémentation pour qu’elles puissent varier indépendamment</li>
+</ul>
+</section>
+<section id="les-design-patterns-exemple-1" class="slide level3">
+<h3>Les design patterns : exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+</section>
+<section id="les-design-patterns-exemple-2" class="slide level3">
+<h3>Les design patterns : exemple</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+</section>
+<section id="pour-résumer-1" class="slide level3">
+<h3>Pour résumer</h3>
+<ul>
+<li>Faire une application complexe demande un code complexe 🧩</li>
+<li>Sans phase de conception on va dans le mur 🧱</li>
+<li>Il existe des solutions prêtes à l’emploi à des problèmes courants 🧰</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Faible couplage, forte cohérence</p>
+</div>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="intro.html">Introduction</a></p>
+<p><a href="../../index.html">Home</a> — <a href="poo-avancee.html">POO Avancée</a></p>
 </div>
 </div>
 </section></section>
@@ -878,6 +1301,38 @@ Ludovic Deneuville
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>
