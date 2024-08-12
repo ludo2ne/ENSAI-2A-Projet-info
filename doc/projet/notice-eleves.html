@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -203,17 +237,22 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#organisation" id="toc-organisation" class="nav-link" data-scroll-target="#organisation">Organisation</a>
+  <li><a href="#lancement-du-projet" id="toc-lancement-du-projet" class="nav-link" data-scroll-target="#lancement-du-projet">Lancement du projet</a>
   <ul class="collapse">
-  <li><a href="#les-groupes-de-projet" id="toc-les-groupes-de-projet" class="nav-link" data-scroll-target="#les-groupes-de-projet">Les groupes de projet</a></li>
+  <li><a href="#les-équipes-de-projet" id="toc-les-équipes-de-projet" class="nav-link" data-scroll-target="#les-équipes-de-projet">Les équipes de projet</a></li>
   <li><a href="#choix-du-sujet" id="toc-choix-du-sujet" class="nav-link" data-scroll-target="#choix-du-sujet">Choix du sujet</a></li>
-  <li><a href="#encadrement-et-suivi-davancement" id="toc-encadrement-et-suivi-davancement" class="nav-link" data-scroll-target="#encadrement-et-suivi-davancement">Encadrement et suivi d’avancement</a></li>
-  <li><a href="#fiche-de-temps" id="toc-fiche-de-temps" class="nav-link" data-scroll-target="#fiche-de-temps"><span class="emoji" data-emoji="construction">🚧</span> Fiche de temps</a></li>
   <li><a href="#première-séance" id="toc-première-séance" class="nav-link" data-scroll-target="#première-séance">Première séance</a></li>
+  </ul></li>
+  <li><a href="#organisation-et-suivi" id="toc-organisation-et-suivi" class="nav-link" data-scroll-target="#organisation-et-suivi">Organisation et suivi</a>
+  <ul class="collapse">
   <li><a href="#le-chef-de-projet" id="toc-le-chef-de-projet" class="nav-link" data-scroll-target="#le-chef-de-projet">Le chef de projet</a></li>
+  <li><a href="#gestion-de-projet-et-de-communication" id="toc-gestion-de-projet-et-de-communication" class="nav-link" data-scroll-target="#gestion-de-projet-et-de-communication">Gestion de projet et de communication</a></li>
+  <li><a href="#point-hebdo" id="toc-point-hebdo" class="nav-link" data-scroll-target="#point-hebdo">Point hebdo</a></li>
+  </ul></li>
+  <li><a href="#outils-et-cours" id="toc-outils-et-cours" class="nav-link" data-scroll-target="#outils-et-cours">Outils et Cours</a>
+  <ul class="collapse">
   <li><a href="#lien-avec-le-module-de-compléments-dinformatique" id="toc-lien-avec-le-module-de-compléments-dinformatique" class="nav-link" data-scroll-target="#lien-avec-le-module-de-compléments-dinformatique">Lien avec le module de Compléments d’informatique</a></li>
   <li><a href="#outils-de-développement" id="toc-outils-de-développement" class="nav-link" data-scroll-target="#outils-de-développement">Outils de développement</a></li>
-  <li><a href="#outils-de-gestion-de-projet-et-de-communication" id="toc-outils-de-gestion-de-projet-et-de-communication" class="nav-link" data-scroll-target="#outils-de-gestion-de-projet-et-de-communication">Outils de gestion de projet et de communication</a></li>
   </ul></li>
   <li><a href="#travail-attendu" id="toc-travail-attendu" class="nav-link" data-scroll-target="#travail-attendu">Travail attendu</a>
   <ul class="collapse">
@@ -221,8 +260,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#étude-préalable" id="toc-étude-préalable" class="nav-link" data-scroll-target="#étude-préalable">Étude préalable</a></li>
   <li><a href="#conception-générale-du-logiciel" id="toc-conception-générale-du-logiciel" class="nav-link" data-scroll-target="#conception-générale-du-logiciel">Conception générale du logiciel</a></li>
   <li><a href="#réalisation-et-validation-du-logiciel" id="toc-réalisation-et-validation-du-logiciel" class="nav-link" data-scroll-target="#réalisation-et-validation-du-logiciel">Réalisation et Validation du logiciel</a></li>
-  <li><a href="#livraison-finale-collective" id="toc-livraison-finale-collective" class="nav-link" data-scroll-target="#livraison-finale-collective">Livraison finale collective</a></li>
-  <li><a href="#livraison-finale-individuelle" id="toc-livraison-finale-individuelle" class="nav-link" data-scroll-target="#livraison-finale-individuelle">Livraison finale individuelle</a></li>
+  </ul></li>
+  <li><a href="#livraisons" id="toc-livraisons" class="nav-link" data-scroll-target="#livraisons">Livraisons</a>
+  <ul class="collapse">
+  <li><a href="#dossier-danalyse" id="toc-dossier-danalyse" class="nav-link" data-scroll-target="#dossier-danalyse">Dossier d’analyse</a></li>
+  <li><a href="#le-rapport-final" id="toc-le-rapport-final" class="nav-link" data-scroll-target="#le-rapport-final">Le rapport final</a></li>
+  <li><a href="#le-code" id="toc-le-code" class="nav-link" data-scroll-target="#le-code">Le code</a></li>
   <li><a href="#la-soutenance" id="toc-la-soutenance" class="nav-link" data-scroll-target="#la-soutenance">La soutenance</a></li>
   <li><a href="#notation-finale" id="toc-notation-finale" class="nav-link" data-scroll-target="#notation-finale">Notation finale</a></li>
   </ul></li>
@@ -267,7 +310,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span> <span class="emoji" data-emoji="construction">🚧</span> <span class="emoji" data-emoji="construction">🚧</span></p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Tous les élèves de deuxième année (exceptés ceux suivant le parcours recherche ATPA), participent à la réalisation du projet informatique. Ils sont répartis en groupes de 4 à 5 élèves. Ce projet permet d’effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année. La composition des groupes est définie par le département d’enseignement informatique.</p>
@@ -287,46 +329,58 @@ ul.task-list li input[type="checkbox"] {
 <li>planifier la mise en place des fonctionnalités (dépendances, priorités…)</li>
 </ul>
 <ol start="3" type="1">
-<li>Réalisation :
+<li>Réalisation :</li>
+</ol>
 <ul>
 <li>mise en place de la base de données</li>
 <li>développement continu du système en python3 accompagné d’une description graphique du ou des modèles choisis (le modèle d’implémentation)</li>
-</ul></li>
-</ol>
-<p>À mi projet, vous livrerez le dossier d’analyse correspondant au travail réalisé lors des 2 premières phases.</p>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Travaux à rendre">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Travaux à rendre
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>À mi-projet, vous livrerez le dossier d’analyse correspondant au travail réalisé lors des 2 premières phases.</p>
 <p>En fin de projet, vous devrez rendre un dossier complet, ainsi que votre code.</p>
 <p>Vous présenterez vos travaux lors d’une soutenance orale.</p>
+</div>
+</div>
 </section>
-<section id="organisation" class="level2">
-<h2 class="anchored" data-anchor-id="organisation">Organisation</h2>
-<section id="les-groupes-de-projet" class="level3">
-<h3 class="anchored" data-anchor-id="les-groupes-de-projet">Les groupes de projet</h3>
-<p>Les groupes sont composés par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis sur titre. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des groupes.</p>
+<section id="lancement-du-projet" class="level2">
+<h2 class="anchored" data-anchor-id="lancement-du-projet">Lancement du projet</h2>
+<section id="les-équipes-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="les-équipes-de-projet">Les équipes de projet</h3>
+<p>Les équipes sont composées par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis sur titre. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des équipes.</p>
 <ul>
 <li>Une moyenne pondérée est calculée pour chaque élève à partir des notes de 1A dans les matières informatiques
 <ul>
-<li>POO, doc et tests : 0.5 - BDR : 0.2 - Algo et complexité : 0.2 - Projet de traitement de données : 0.1</li>
+<li>POO doc et tests : 0.5, BDR : 0.2, Algo et complexité : 0.2, Projet de traitement de données : 0.1</li>
 </ul></li>
-<li>Suite à ce classement, les élèves sont répartis en 4 groupes</li>
-<li>Chaque équipe est composée à partir d’un élève de chaque groupe</li>
+<li>Suite à ce classement, les élèves sont répartis en 4 poules</li>
+<li>Chaque équipe est composée à partir d’un élève de chaque poule</li>
 </ul>
-<p><strong>La composition des groupes n’est pas modifiable !</strong></p>
+<p><strong>La composition des équipes n’est pas modifiable !</strong></p>
 </section>
 <section id="choix-du-sujet" class="level3">
 <h3 class="anchored" data-anchor-id="choix-du-sujet">Choix du sujet</h3>
-<p>Chaque intervenant de projet a proposé un sujet qui devra permettre l’application de l’ensemble des enseignements informatiques dispensés en 1ère année :</p>
+<p>Chacun des 8 intervenants de projet a proposé un sujet qui devra permettre l’application de l’ensemble des enseignements informatiques dispensés en 1ère année :</p>
 <ul>
-<li>conception d’applications avec UML,</li>
-<li>algorithmique,</li>
-<li>programmation objet avec Python,</li>
-<li>bases de données relationnelles.</li>
+<li>Conception d’applications avec UML</li>
+<li>Algorithmique</li>
+<li>Programmation orientée objet avec Python</li>
+<li>Bases de données relationnelles</li>
 </ul>
-<p>Cet intervenant prendra en charge les groupes d’élèves qui traiteront le sujet qu’il a proposé.</p>
+<p>Chaque intervenant prendra en charge 4 équipes d’élèves qui traiteront le sujet qu’il a proposé.</p>
 <p>Vous devrez choisir votre sujet dans la liste accessible sur la plateforme d’enseignement Moodle, suivant la procédure détaillée ci-dessous&nbsp;:</p>
 <ol type="1">
 <li>Prenez connaissance des sujets présentés sur la plateforme d’enseignement</li>
 <li>Concertez-vous entre membres d’un même groupe</li>
-<li>Ordonnez les sujets par ordre de préférence sur l’application en ligne accessible via un lien sur le cours Moodle du projet</li>
+<li>Ordonnez les sujets par ordre de préférence sur l’application en ligne accessible via un lien sur la page Moodle du projet</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled" title="Remarque">
 <div class="callout-header d-flex align-content-center">
@@ -338,142 +392,160 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’attribution des sujets se fait par une procédure automatique en essayant de respecter au maximum la préférence des groupes.</p>
+<p>L’attribution des sujets se fait par une procédure automatique en essayant de respecter au maximum la préférence des équipes.</p>
 <p>Une fois attribués, les sujets ne peuvent pas être modifiés.</p>
 </div>
 </div>
 </section>
-<section id="encadrement-et-suivi-davancement" class="level3">
-<h3 class="anchored">Encadrement et suivi d’avancement</h3>
-<section id="point-hebdo" class="level4">
-<h4 class="anchored">Point hebdo <span class="emoji" data-emoji="construction">🚧</span></h4>
-<p>Chaque semaine (jusqu’au rendu du rapport final et sauf pendant les vacances), vous deverez remplir votre point hebdomadaire de suivi de projet avant le <strong>Jeudi à 22h</strong>.</p>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Le point hebdomadaire est <strong>obligatoire</strong> pour tous les membres de l’équipes. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.</p>
-<p>Il permettra à votre tutrice ou votre tuteur de suivre l’évolution de votre travail.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Modèle</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Exemple</a></li></ul>
-<div class="tab-content nav-pills">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<pre><code># Point Hebdomadaire - Projet
-
-Date : Jeudi ...
-Semaine n° ...
-
-## Tâches réalisées cette semaine
-
-&gt; Exemples : `- [x] Tâche 1` ou - `ras`
-
-### Nom Prénom élève 1
-
-
-### Nom Prénom élève 2
-
-
-### Nom Prénom élève 3
-
-
-### Nom Prénom élève 4
-
-
-### Nom Prénom élève 5
-
-
----
-
-## Backlog
-
-&gt; Liste des tâches en attente de prise en charge.
-
-### Prioritaires
-
-### Secondaires</code></pre>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<section id="première-séance" class="level3">
+<h3 class="anchored" data-anchor-id="première-séance">Première séance</h3>
+<p>De retour d’étudiants, la première rencontre entre membres d’une même équipe est importante. C’est l’occasion pour vous de faire connaissance et d’échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les équipes qui ont un bon fonctionnement sont celles qui réussissent le mieux. Comme il n’y a pas de recette magique, chaque équipe doit se mettre d’accord sur son fonctionnement.</p>
+</section>
+</section>
+<section id="organisation-et-suivi" class="level2">
+<h2 class="anchored" data-anchor-id="organisation-et-suivi">Organisation et suivi</h2>
+<section id="le-chef-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="le-chef-de-projet">Le chef de projet</h3>
+<p>Au sein de chaque équipe, les élèves devront désigner un chef de projet qui sera responsable de l’animation du groupe et qui organisera les réunions de travail. Il sera également responsable de la répartition et du suivi de l’avancement du travail. Il devra également veiller au respect du planning général. Il est l’interlocuteur privilégié de l’encadrant pour l’équipe qu’il représente. Il doit permettre la discussion et la prise de décision collégiale.</p>
+<p><u>Ce rôle n’a pas être lié aux compétences informatiques</u>, mais à l’appétence pour la gestion d’équipe. Ce rôle pourra être valorisé dans la note individuelle du rapport final.</p>
+</section>
+<section id="gestion-de-projet-et-de-communication" class="level3">
+<h3 class="anchored" data-anchor-id="gestion-de-projet-et-de-communication">Gestion de projet et de communication</h3>
+<p>il est recommandé d’utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d’une conversation pour le groupe semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :</p>
+<ul>
+<li>Trello : pour avoir un kanban collaboratif ;</li>
+<li>Priority Matrix : pour prioriser vos tâches ;</li>
+</ul>
+<p>Vous pouvez également utiliser d’autres logiciels pour communiquer, comme Slack ou Discord (qui sont propriétaires comme Teams). Utiliser Facebook Messenger ou autres applications liées à un réseau social est déconseillé car elles ne sont pas utilisées pour gérer un projet en entreprise. La limite de ces logiciels de messagerie est qu’ils ne proposent pas de salon de discussions thématiques pour segmenter vos échanges. Cela entraine de la perte d’informations quand plusieurs discussions se mélangent.</p>
+<p>Pour les personnes qui ont du mal à s’organiser mais qui sont sensible à la <em>gamification</em> vous pouvez également utiliser Habitica (https://habitica.com/static/home) pour vous aider à travailler régulièrement.</p>
+</section>
+<section id="point-hebdo" class="level3">
+<h3 class="anchored" data-anchor-id="point-hebdo">Point hebdo</h3>
+<p>Chaque semaine (jusqu’au rendu du rapport final et sauf pendant les vacances), vous devrez remplir votre point hebdomadaire de suivi de projet :</p>
+<ul>
+<li><strong>Quand</strong> : le <u>Jeudi soir</u> au plus tard</li>
+<li><strong>Où</strong> : sur votre dépôt Git, dossier <em>doc/suivi</em></li>
+<li><strong>Comment</strong> : créez un fichier nommé <code>YYYY.MM.DD-semaineN.md</code> en utilisant le modèle ci-dessous</li>
+<li><strong>Qui</strong> : tous les membres de l’équipe</li>
+<li><strong>Quoi</strong> : listez les tâches accomplies</li>
+<li><strong>Pourquoi</strong> : il permettra à votre tutrice ou tuteur de suivre l’évolution de votre travail</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Point Hebdomadaire - Projet Ninja
+Important
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Date : Jeudi 12 septembre 2024</p>
-<p>Semaine n° 2</p>
-<section id="tâches-réalisées-cette-semaine" class="level2">
-<h2 class="anchored" data-anchor-id="tâches-réalisées-cette-semaine">Tâches réalisées cette semaine</h2>
-<section id="nom-prénom-élève-1" class="level3">
-<h3 class="anchored" data-anchor-id="nom-prénom-élève-1">Nom Prénom élève 1</h3>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Création de la classe JoueurDAO et des méthodes</label></li>
-<li><label><input type="checkbox" checked="">Tests unitaires JoueurDAO</label></li>
-<li><label><input type="checkbox" checked="">JoueurService : ajout méthode pour supprimer un joueur</label></li>
-</ul>
-</section>
-<section id="nom-prénom-élève-2" class="level3">
-<h3 class="anchored" data-anchor-id="nom-prénom-élève-2">Nom Prénom élève 2</h3>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Mise en forme du diagramme de classe avec PlantUML</label></li>
-<li><label><input type="checkbox" checked="">Rapport : présentation des classes WIP</label></li>
-</ul>
-</section>
-<section id="nom-prénom-élève-3" class="level3">
-<h3 class="anchored" data-anchor-id="nom-prénom-élève-3">Nom Prénom élève 3</h3>
+<p>Le point hebdomadaire est <strong>obligatoire</strong>. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.</p>
 <ul>
-<li>ras</li>
+<li>Si vous n’avez pas travaillé sur le projet depuis une semaine (et vous avez le droit) <span class="emoji" data-emoji="arrow_right">➡️</span> mettez simplement <em>ras</em> (rien à signaler)</li>
+<li>Si une tâche n’est pas terminée, vous pouvez ajouter le suffixe <em>WIP</em> (Work In Progress)</li>
 </ul>
-</section>
-<section id="nom-prénom-élève-4" class="level3">
-<h3 class="anchored" data-anchor-id="nom-prénom-élève-4">Nom Prénom élève 4</h3>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Modification de la base de données : modification de la table <em>joueur</em>, création table <em>arbitre</em></label></li>
-<li><label><input type="checkbox" checked="">Refactor : utilisation du package <em>tabulate</em> pour avoir de jolis tableaux</label></li>
-</ul>
-</section>
-<section id="nom-prénom-élève-5" class="level3">
-<h3 class="anchored" data-anchor-id="nom-prénom-élève-5">Nom Prénom élève 5</h3>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Codage de la fonctionnalité <em>Créer un tournoi</em> (Vue + Services + Dao)</label></li>
-<li><label><input type="checkbox" checked="">Relecture dossier analyse</label></li>
-</ul>
-</section>
-</section>
-<section id="backlog" class="level2">
-<h2 class="anchored" data-anchor-id="backlog">Backlog</h2>
-<blockquote class="blockquote">
-<p>Liste des tâches en attente de prise en charge.</p>
-</blockquote>
-<section id="prioritaires" class="level3">
-<h3 class="anchored" data-anchor-id="prioritaires">Prioritaires</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Corriger Bug de modification de joueur</label></li>
-<li><label><input type="checkbox">Fonctionnalité <em>Arbitrer un tournoi</em></label></li>
-<li><label><input type="checkbox">Menu administrateur</label></li>
-</ul>
-</section>
-<section id="secondaires" class="level3">
-<h3 class="anchored" data-anchor-id="secondaires">Secondaires</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Ecrire README</label></li>
-</ul>
-</section>
-</section>
+<p>Pour information, le projet informatique vous permet d’obtenir 4 ECTS, ce qui représente un investissement d’environ 100h (séances en présentiel comprises) par élève.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>N’attendez pas le jeudi soir pour essayer de vous remémorer tout ce que vous avez fait depuis une semaine.</p>
+<p>Prenez l’habitude de lister vos tâches au fur et à mesure !</p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Modèle</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Exemple</a></li></ul>
+<div class="tab-content nav-pills">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>YYYY.MM.DD-semaineN.md</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="YYYY.MM.DD-semaineN.md"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point Hebdomadaire - Projet</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Date : Jeudi ...</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Semaine n° ...</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tâches réalisées cette semaine</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Exemples : </span><span class="in">`- [x] Tâche 1`</span><span class="at"> ou - </span><span class="in">`ras`</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 2</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 3</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 4</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 5</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backlog</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Liste des tâches en attente de prise en charge.</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prioritaires</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### Secondaires</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>2024.09.12-semaine2.md</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="2024.09.12-semaine2.md"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point Hebdomadaire - Projet Ninja</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Date : Jeudi 12 septembre 2024</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Semaine n° 2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tâches réalisées cette semaine</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">### Maud ZARELLA</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Création de la classe JoueurDAO et des méthodes</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Tests unitaires JoueurDAO</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> JoueurService : ajout méthode pour supprimer un joueur</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tom ATE</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Mise en forme du diagramme de classe avec PlantUML</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Rapport : présentation des classes WIP</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### Anna NACE</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ras</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### Harry COVER</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Modification de la base de données : modification de la table *joueur*, création table *arbitre*</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Refactor : utilisation du package *tabulate* pour avoir de jolis tableaux</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### Éva ZION</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Codage de la fonctionnalité *Créer un tournoi* (Vue + Services + Dao)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Relecture dossier analyse</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backlog</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prioritaires</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Corriger Bug de modification de joueur</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Fonctionnalité *Arbitrer un tournoi*</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Menu administrateur</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Secondaires</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Ecrire README</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<p>L’encadrement de l’avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque groupe fera le bilan avec son intervenant du travail qui a été réalisé au cours de la semaine, des difficultés rencontrées et de ce qui doit encore être fait. Afin de formaliser ces échanges, vous pourrez vous appuyez sur une fiche de suivi de séance (voir fiche sur Moodle) ou montrer un kanban correctement rempli.</p>
-<p><strong>Avant cet échange</strong>, les élèves doivent s’organiser pour :</p>
-<ul>
-<li>Clarifier le bilan des travaux fait dans la semaine (partie « bilan » de la fiche de suivi) ;</li>
-<li>Faire une relecture de code (lors de la phase de développement) ;</li>
-<li>Affecter un numéro de version au code qui servira à l’échange, code qui doit se trouver sur le dépôt git ET être exécutable (lors de la phase de développement).</li>
-</ul>
+<p>L’encadrement de l’avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque groupe fera le bilan avec son intervenant du travail qui a été réalisé au cours de la semaine, des difficultés rencontrées et de ce qui doit encore être fait.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -490,20 +562,8 @@ Caution
 <p><strong>Les séances de suivi sont obligatoires.</strong> L’appel sera effectué en début et en fin de séance. Votre intervenant pourra demander à tout moment à parler avec la totalité des élèves qu’il encadre.</p>
 </section>
 </section>
-<section id="fiche-de-temps" class="level3">
-<h3 class="anchored" data-anchor-id="fiche-de-temps"><span class="emoji" data-emoji="construction">🚧</span> Fiche de temps</h3>
-<p>Une fiche de temps synthétique disponible sur Moodle est à compléter chaque semaine et vous sera demandée après la soutenance. Cette fiche de temps vise principalement à mieux calibrer la charge du projet informatique d’une année sur l’autre. <em>Elle n’impacte pas l’évaluation du groupe</em>. Pour information, le projet informatique vous permet d’obtenir 4 ECTS, ce qui représente un investissement d’environ 100h (séances en présentiel comprises) par élève.</p>
-<p>Elle peut aussi vous aider à objectiver l’investissement de chacun dans le projet, mais il faut garder à l’esprit que cette fiche ne permet de visualiser que des apports quantifiables (heures de travail et ligne de code), alors que les apports de chacun peuvent être bien plus divers : animation du groupe, conseils, expertise…</p>
-</section>
-<section id="première-séance" class="level3">
-<h3 class="anchored" data-anchor-id="première-séance">Première séance</h3>
-<p>De retour d’étudiants, la première rencontre du groupe est importante. C’est l’occasion pour vous de faire connaissance et d’échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les groupes qui ont un bon fonctionnement sont ceux qui réussissent le mieux. Comme il n’y a pas de recette magique, chaque groupe doit se mettre d’accord sur son fonctionnement.</p>
-</section>
-<section id="le-chef-de-projet" class="level3">
-<h3 class="anchored" data-anchor-id="le-chef-de-projet">Le chef de projet</h3>
-<p>Au sein de chaque groupe, les élèves devront désigner un chef de projet qui sera responsable de l’animation du groupe et qui organisera les réunions de travail. Il sera également responsable de la répartition et du suivi de l’avancement du travail. Il pourra, pour l’aider dans cette tâche, utiliser la fiche de suivi (voir Moodle). Il devra également veiller au respect du planning général. Il est l’interlocuteur privilégié de l’encadrant pour le groupe qu’il représente. Il doit permettre la discussion et la prise de décision collégiale.</p>
-<p><u>Ce rôle n’a pas être lié aux compétences informatiques</u>, mais à l’appétence pour la gestion d’équipe. Ce rôle pourra être valorisé dans le rapport individuel.</p>
-</section>
+<section id="outils-et-cours" class="level2">
+<h2 class="anchored" data-anchor-id="outils-et-cours">Outils et Cours</h2>
 <section id="lien-avec-le-module-de-compléments-dinformatique" class="level3">
 <h3 class="anchored" data-anchor-id="lien-avec-le-module-de-compléments-dinformatique">Lien avec le module de Compléments d’informatique</h3>
 <p>Pour vous aider à mener à bien votre projet, un cours de 6h, et quatre TP de 3h sont mis en place dans le module de <strong>Compléments d’informatique</strong>. Lors du cours, vous seront présentés l’organisation générale du projet et quelques concepts nouveaux mis en œuvre lors des TP :</p>
@@ -519,9 +579,9 @@ Caution
 <h3 class="anchored" data-anchor-id="outils-de-développement">Outils de développement</h3>
 <p>Les outils de développement à votre disposition seront :</p>
 <ul>
-<li>L’environnement de développement <code>Visual Studio Code</code> disponible sur votre VM,</li>
-<li>Le logiciel de partage de code et versionnement <code>Git</code>, accessible depuis l’environnement de développement, accompagné d’un dépôt (privé) que vous devrez créer sur un serveur public (GitLab, Github, Bitbucket),</li>
-<li>Une base de données <code>PostgreSQL</code> (hébergée à l’Ensai) comme système de gestion de base de données (SGBD) pour la persistance des données,</li>
+<li>L’environnement de développement <strong>Visual Studio Code</strong> disponible sur votre VM</li>
+<li>Le logiciel de partage de code et versionnement <strong>Git</strong>, accessible depuis l’environnement de développement, accompagné d’un dépôt (privé) que vous devrez créer sur un serveur public (GitLab, Github, Bitbucket),</li>
+<li>Une base de données <strong>PostgreSQL</strong> (hébergée à l’Ensai) comme système de gestion de base de données (SGBD) pour la persistance des données,</li>
 <li>Un certain nombre de librairies et outils pour le lien entre Python et le SGBD, les tests unitaires, la génération automatique de documentations
 <ul>
 <li><a href="https://www.psycopg.org/docs/" target="_blank">psycopg2</a> pour se connecter à la base de données postgreSQL,</li>
@@ -533,7 +593,7 @@ Caution
 </ul></li>
 </ul>
 <p>En plus de cette liste, vous êtes libre d’utiliser les outils de votre choix, <em>à condition d’être capable de les utiliser en toute autonomie</em>.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Remarque">
+<div class="callout callout-style-default callout-caution callout-titled" title="Remarque">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -543,20 +603,10 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>demander de l’aide est normal et fait partie de l’apprentissage. Nous ne notons pas quels sont les groupes qui nous demandent de l’aide. Faire preuve d’autonomie ne veut pas dire travailler sans demander de l’aide. Si vous rencontrez une difficulté, qu’après plusieurs tentatives vous ne trouvez pas de solution et que vous demandez finalement de l’aide pour la résoudre, vous êtes autonome.</p>
+<p>Demander de l’aide est normal et fait partie de l’apprentissage. Nous ne notons pas quels sont les groupes qui nous demandent de l’aide. Faire preuve d’autonomie ne veut pas dire travailler sans demander de l’aide. Si vous rencontrez une difficulté, qu’après plusieurs tentatives vous ne trouvez pas de solution et que vous demandez finalement de l’aide pour la résoudre, vous êtes autonome.</p>
 <p>Si par contre vous attendez que le problème disparaisse ou que l’on vienne vous aider, là vous manquez d’autonomie. Soyez proactif dans votre démarche ! Vous progresserez bien plus vite.</p>
 </div>
 </div>
-</section>
-<section id="outils-de-gestion-de-projet-et-de-communication" class="level3">
-<h3 class="anchored" data-anchor-id="outils-de-gestion-de-projet-et-de-communication">Outils de gestion de projet et de communication</h3>
-<p>Je vous recommande fortement d’utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d’une conversation pour le groupe me semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :</p>
-<ul>
-<li>Trello : pour avoir un kanban collaboratif ;</li>
-<li>Priority Matrix : pour prioriser vos tâches ;</li>
-</ul>
-<p>Vous pouvez également utiliser d’autres logiciels pour communiquer, comme Slack ou Discord (qui sont propriétaires comme Teams). Je vous déconseille d’utiliser Facebook Messenger ou autres applications liées à un réseau social qui ne sont pas utilisées pour gérer un projet en entreprise. La limite de ces logiciels de messagerie est qu’ils ne proposent pas de salon de discussions thématiques pour segmenter vos échanges. Cela entraine de la perte d’informations quand plusieurs discussions se mélangent.</p>
-<p>Pour les personnes qui ont du mal à s’organiser mais qui sont sensible à la <em>gamification</em> vous pouvez également utiliser Habitica (https://habitica.com/static/home) pour vous aider à travailler régulièrement.</p>
 </section>
 </section>
 <section id="travail-attendu" class="level2">
@@ -613,19 +663,23 @@ Tip
 </section>
 <section id="codage-de-lapplication" class="level4">
 <h4 class="anchored" data-anchor-id="codage-de-lapplication">Codage de l’application</h4>
-<p>L’application sera réalisée en <code>Python</code>. Le code sera naturellement cohérent avec les diagrammes du modèle de conception déjà établis. Si nécessaire, ces derniers seront mis à jour afin que cette cohérence soit maintenue.</p>
-<p><strong>Il n’y a pas d’interface graphique à développer</strong>, la communication avec l’application se faisant par l’intermédiaire de la console ou d’un webservice. Toutes les fonctionnalités de votre application doivent pouvoir être testées et démontrées via la console ou des requêtes http.</p>
+<p>L’application sera réalisée en <strong>Python</strong>. Le code sera naturellement cohérent avec les diagrammes du modèle de conception déjà établis. Si nécessaire, ces derniers seront mis à jour afin que cette cohérence soit maintenue.</p>
+<p><u>Il n’y a pas d’interface graphique à développer</u>, la communication avec l’application se faisant par l’intermédiaire de la console ou d’un webservice. Toutes les fonctionnalités de votre application doivent pouvoir être testées et démontrées via la console ou des requêtes http.</p>
 </section>
 <section id="validation-du-logiciel" class="level4">
 <h4 class="anchored" data-anchor-id="validation-du-logiciel">Validation du logiciel</h4>
 <p>Tout au long du développement, vous développerez un ensemble de tests :</p>
 <ul>
-<li>Tests unitaires (pour une classe métier au minimum)</li>
+<li>Tests unitaires</li>
 <li>Tests utilisateurs pour chaque cas d’utilisation important.</li>
 </ul>
 </section>
-<section id="livraison-du-dossier-danalyse" class="level4">
-<h4 class="anchored" data-anchor-id="livraison-du-dossier-danalyse">Livraison du dossier d’analyse</h4>
+</section>
+</section>
+<section id="livraisons" class="level2">
+<h2 class="anchored" data-anchor-id="livraisons">Livraisons</h2>
+<section id="dossier-danalyse" class="level3">
+<h3 class="anchored" data-anchor-id="dossier-danalyse">Dossier d’analyse</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -637,11 +691,11 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>où : sur Moodle, dans la section prévue à cet effet</li>
-<li>quand : début octobre</li>
-<li>comment : en format <code>pdf</code>. Il n’est pas obligatoirement rédigé en LaTeX mais doit-être «&nbsp;propre&nbsp;»</li>
-<li>combien : 10 à 15 pages, annexes comprises est une taille raisonnable</li>
-<li>pourquoi : il sera noté par votre intervenant qui vous en fera un retour</li>
+<li><strong>Où</strong> : sur Moodle, dans la section prévue à cet effet</li>
+<li><strong>Quand</strong> : début octobre</li>
+<li><strong>Comment</strong> : en format <code>pdf</code>. Il n’est pas obligatoirement rédigé en LaTeX mais doit-être «&nbsp;propre&nbsp;»</li>
+<li><strong>Combien</strong> : 10 à 15 pages, annexes comprises est une taille raisonnable</li>
+<li><strong>Pourquoi</strong> : il sera noté par votre intervenant qui vous en fera un retour</li>
 </ul>
 </div>
 </div>
@@ -662,43 +716,39 @@ Important
 </ul></li>
 </ul>
 </section>
-</section>
-<section id="livraison-finale-collective" class="level3">
-<h3 class="anchored" data-anchor-id="livraison-finale-collective">Livraison finale collective</h3>
-<p>La livraison finale du projet est l’aboutissement de 3 mois de travail et doit décrire et valoriser le travail produit.</p>
-<p>Elle contiendra&nbsp;:</p>
-<ul>
-<li>le rapport final</li>
-<li>le code</li>
-</ul>
-<section id="le-rapport-final" class="level4">
-<h4 class="anchored" data-anchor-id="le-rapport-final">Le rapport final</h4>
+<section id="le-rapport-final" class="level3">
+<h3 class="anchored" data-anchor-id="le-rapport-final">Le rapport final</h3>
 <p>Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Voici les éléments qu’il devra contenir&nbsp;:</p>
-<ul>
-<li>Le contexte de votre application. Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de <strong>comprendre l’intérêt de votre travail</strong>. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.
+<section id="le-contexte-de-votre-application" class="level4">
+<h4 class="anchored" data-anchor-id="le-contexte-de-votre-application">Le contexte de votre application</h4>
+<p>Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de <strong>comprendre l’intérêt de votre travail</strong>. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.</p>
 <ul>
 <li>À quels besoins répond-elle&nbsp;? Le diagramme de cas d’utilisation n’est pas nécessaire dans le rapport final&nbsp;;</li>
 <li>Quels sont les utilisateurs&nbsp;de l’application ?</li>
-<li>Quelles sont les <strong>données intéressantes</strong> de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous en produisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple&nbsp;:
+<li>Quelles sont les <strong>données intéressantes</strong> de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous enproduisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple&nbsp;:
 <ul>
 <li>Vous récupérez des annonces immobilières via webscrapping, quel est le site ou quels sont les sites utilisés&nbsp;? Quelles données récupérées vous de la page&nbsp;? Vous pourrez décrire plus tard comment vous les récupérez&nbsp;;</li>
 <li>Vous devez traiter des données géographiques, comment sont stockées vos données dans votre source&nbsp;? Il y-a-t-il des difficultés particulières dans ces données&nbsp;?</li>
 <li>Vous récupérez des données d’un service externe, quel est le schéma de ces données&nbsp;?</li>
 </ul></li>
-<li>L’architecture générale de votre application
+</ul>
+</section>
+<section id="architecture-générale" class="level4">
+<h4 class="anchored" data-anchor-id="architecture-générale">Architecture générale</h4>
 <ul>
 <li>Est-ce un module python&nbsp;? Un script sans interaction avec l’utilisateur&nbsp;? Une application en console&nbsp;? Une application avec un client et un serveur qui communiquent via requête http&nbsp;?</li>
 <li>Les technologies nécessaires à son fonctionnement (python, bibliothèques majeures utilisées, système de persistance, sources de données externes)</li>
 <li>Un schéma d’architecture (pour faire le lien entre les différents composants de votre application comme votre code, système de persistance, etc.)</li>
-</ul></li>
-</ul></li>
-<li>Comment votre application permet de répondre aux besoins que vous avez décrits :
+</ul>
+</section>
+<section id="réponse-aux-besoins" class="level4">
+<h4 class="anchored" data-anchor-id="réponse-aux-besoins">Réponse aux besoins</h4>
+<p>Comment votre application permet de répondre aux besoins que vous avez décrits :</p>
 <ul>
 <li>Le fonctionnement votre application :
 <ul>
 <li>Zoom sur un processus central en le détaillant complètement pour que le jury comprenne la logique que vous avez mis en place. Qu’est-ce que l’utilisateur fait ? Qu’est-ce que votre produit fait&nbsp;? Comment interagit-il avec les autres composants&nbsp;? Quelles sont les classes utilisées&nbsp;? Il n’est pas utile de préciser les méthodes appelées, sauf si vous pensez que cela a un intérêt. Pour aider le lecteur, vous pouvez ajouter des diagrammes de cas d’utilisations, mais aussi des schémas divers&nbsp;;</li>
 <li>Explication <em>rapide</em> pour les autres. Votre rapport ne doit pas être un listing des fonctions pythons de votre application&nbsp;;</li>
-</ul></li>
 </ul></li>
 </ul>
 <p>Privilégiez la qualité des explications à la quantité. Si vous décrivez sérieusement une fonctionnalité centrale intéressante, le jury supposera que vous êtes capable de faire la même chose pour les autres. Vous pouvez illustrer vos propos en utilisant votre diagramme de classe. Cela vous permet&nbsp;:</p>
@@ -720,9 +770,15 @@ Remarque
 <p>Un diagramme de classe n’est pas une finalité en soit, il est initialement produit pour servir de boussole lors de l’implémentation de votre application. De la même manière, dans votre rapport il doit servir à guider vos explications. Ainsi, il n’est pas nécessaire de produire un diagramme de classe unique si celui-ci est illisible. Vous pouvez le décomposer en petits diagrammes qui vont se concentrer sur des fonctionnalités particulières. De même, il est fortement déconseillé de lister et décrire exhaustivement toutes les classes et les méthodes.</p>
 </div>
 </div>
-<ul>
-<li>Présentation du système de stockage, à quels moments il est utilisé dans votre application et pourquoi&nbsp;? Vous pouvez mettre en avant l’utilisation de formes normales. En effet ce projet doit vous permettre de mettre en avant vos acquis de 1A en la matière. Il est inutile de nous présenter l’intégralité de vos DAOs&nbsp;;</li>
-<li>Les outils mis en place pour réaliser le projet&nbsp;:
+</section>
+<section id="système-de-stockage" class="level4">
+<h4 class="anchored" data-anchor-id="système-de-stockage">Système de stockage</h4>
+<p>À quels moments il est utilisé dans votre application et pourquoi&nbsp;? Vous pouvez mettre en avant l’utilisation de formes normales.</p>
+<p>En effet ce projet doit vous permettre de mettre en avant vos acquis de 1A en la matière. Il est inutile de nous présenter l’intégralité de vos DAOs</p>
+</section>
+<section id="outils-mis-en-place" class="level4">
+<h4 class="anchored" data-anchor-id="outils-mis-en-place">Outils mis en place</h4>
+<p>Les outils mis en place pour réaliser le projet&nbsp;:</p>
 <ul>
 <li>L’organisation que vous avez choisie dans votre groupe&nbsp;;</li>
 <li>Les outils mis en place et leur utilisation&nbsp;;</li>
@@ -733,27 +789,34 @@ Remarque
 <li>Si votre source de données venait à disparaitre mais qu’une nouvelle source similaire existait, comment cela impacterait-il votre application&nbsp;?</li>
 <li>Si vous avez mis de côté des fonctionnalités au cours de votre développement, comment peuvent-elles être mis en place dans le futur&nbsp;?</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
-<section id="le-code" class="level4">
-<h4 class="anchored" data-anchor-id="le-code">Le code</h4>
+<section id="note-individuelle" class="level4">
+<h4 class="anchored" data-anchor-id="note-individuelle">Note individuelle</h4>
+<p>Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. <strong>Cette note devra être insérée dans le rapport final en fin de rapport</strong>. Dans cette note d’<u>une page maximum</u>, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés. Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note&nbsp;:</p>
 <ul>
-<li>Les requêtes SQL permettant la création des tables et du jeu de données de test dans un fichier <strong>init_db.sql</strong>. Ces requêtes ne doivent pas figurer dans votre rapport&nbsp;;</li>
-<li>Le code source complet de l’application, dont :
+<li>Votre participation effective au projet (chef de projet, code, animation…)</li>
+<li>Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile&nbsp;? Enrichissant&nbsp;? Éviter les lieux communs, et préférez utilisez des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.</li>
+<li>Les enseignements que vous en tirez, ce que vous referiez, ce que vous changerez. Vous pouvez construire cette partie comme une des conseils que vous donnez à vos successeurs.</li>
+</ul>
+<p>Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre du groupe, ami, famille) pour limiter les fautes et ainsi vous assurer qu’elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, <strong>faites-la sérieusement et honnêtement</strong>.</p>
+</section>
+</section>
+<section id="le-code" class="level3">
+<h3 class="anchored" data-anchor-id="le-code">Le code</h3>
+<p>Le code source complet de l’application contenant à minima :</p>
 <ul>
-<li>Un fichier <strong>main.py</strong> qui permet de lancer votre application&nbsp;;</li>
-<li>Une classe commentée&nbsp;choisie par votre tuteur ;</li>
-<li>Des tests unitaires pour une classe choisie par votre tuteur ;</li>
+<li>Un fichier <strong><strong>main</strong>.py</strong> qui permet de lancer votre application</li>
 <li>Une fichier <strong>README.md</strong> à la racine du projet présentant votre projet. Cette page sera rédigée en anglais et devra&nbsp;:
 <ul>
 <li>Présenter rapidement votre application (but) avec quelques exemples</li>
 <li>Expliquer comment l’installer</li>
 </ul></li>
-<li>Un fichier <strong>requirements.txt</strong> avec tous les modules pythons à installer pour faire fonctionner votre application.</li>
-</ul></li>
+<li>Un fichier <strong>requirements.txt</strong> avec tous les modules pythons à installer pour faire fonctionner votre application</li>
+<li>un fichier <strong>data/init_db.sql</strong> permettant la création des tables et des données</li>
 </ul>
-<p>Bien entendu, <strong>cette liste ne définit que les composantes minimales de votre rendu</strong>. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être&nbsp;: expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou tout autres informations qui vous permet de valoriser votre travail. Vous avez le droit d’illustrer vos propos avec des figures pour aider le lecteur. Les images qui n’apportent rien à votre propos sont à proscrire. L’ordre de présentation des différents points, et de leur classement en annexe est libre. <strong>La taille optimale de ce rapport est de 25 pages hors annexe</strong>. Vous pouvez faire plus long mais dans ce cas posez-vous la question&nbsp;:&nbsp;«&nbsp;Ce que j’ajoute est-il nécessaire&nbsp;?&nbsp;». Il n’est pas obligatoire de le rédiger en LaTeX. Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Un nombre limité de coquilles dans votre production est toléré, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.</p>
+<p>Bien entendu, <strong>cette liste ne définit que les composantes minimales de votre rendu</strong>. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être&nbsp;: expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou toute autre information qui vous permet de valoriser votre travail. Vous avez le droit d’illustrer vos propos avec des figures pour aider le lecteur. Les images qui n’apportent rien à votre propos sont à proscrire.</p>
+<p>L’ordre de présentation des différents points, et de leur classement en annexe est libre. <strong>La taille optimale de ce rapport est de 25 pages hors annexe</strong>. Vous pouvez faire plus long mais dans ce cas posez-vous la question&nbsp;:&nbsp;«&nbsp;Ce que j’ajoute est-il nécessaire&nbsp;?&nbsp;». Il n’est pas obligatoire de le rédiger en LaTeX. Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Un nombre limité de coquilles dans votre production est toléré, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Remarque">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -768,17 +831,6 @@ Remarque
 </div>
 </div>
 <p>Pendant le temps entre ce rendu et la soutenance vous avez le droit de modifier votre code, mais ces modifications ne devront être là uniquement pour améliorer la qualité de la démonstration car ce nouveau code ne sera jamais livré pour notation.</p>
-</section>
-</section>
-<section id="livraison-finale-individuelle" class="level3">
-<h3 class="anchored" data-anchor-id="livraison-finale-individuelle">Livraison finale individuelle</h3>
-<p>Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. <strong>Cette note devra être insérée dans le rapport final en fin de rapport</strong>. Dans cette note d’une page, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés. Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note&nbsp;:</p>
-<ul>
-<li>Votre participation effective au projet (chef de projet, code, animation…)</li>
-<li>Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile&nbsp;? Enrichissant&nbsp;? Éviter les lieux communs, et préférez utilisez des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.</li>
-<li>Les enseignements que vous en tirez, ce que vous referiez, ce que vous changerez. Vous pouvez construire cette partie comme une des conseils que vous donnez à vos successeurs.</li>
-</ul>
-<p>Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre du groupe, ami, famille) pour limiter les fautes et ainsi vous assurer qu’elle est compréhensible. Cette note personnelle est très appréciée par les membres du jury, <strong>faites-la sérieusement et honnêtement</strong>.</p>
 </section>
 <section id="la-soutenance" class="level3">
 <h3 class="anchored" data-anchor-id="la-soutenance">La soutenance</h3>
@@ -818,8 +870,8 @@ Remarque
 <li>Rapport final et investissement dans le projet (1/3)</li>
 <li>Soutenance (1/3)</li>
 </ul>
-<p>Le code est noté à part. Il compte pour 50 % de la note de Compléments d’informatique.</p>
-<p>Si le travail ou l’implication d’un ou plusieurs membres du groupe étaient en deçà des attentes, leurs notes pourraient être dissociées de celle du reste du groupe. <strong>Cela ne sera possible qu’après avoir alerté votre tuteur et le référent de la matière et qu’une discussion avec le groupe n’a eu lieu</strong>. À l’inverse, les membres moteurs du groupe pourront être favorisés.</p>
+<p>Le code est noté à part. Il compte pour un tiers de la note de Compléments d’informatique.</p>
+<p>Si le travail ou l’implication d’un ou plusieurs membres du groupe étaient en deçà des attentes, leurs notes pourraient être dissociées de celle du reste du groupe. <strong>Cela ne sera possible qu’après avoir alerté votre tuteur et le référent de la matière et qu’une discussion avec le groupe ait eu lieu</strong>.</p>
 <p>Vous trouverez sur Moodle les grilles de notation qui sont fournies aux intervenants, pour évaluer votre travail, cette annexe a un rôle de sensibilisation et ne constitue pas un barème définitif.</p>
 </section>
 </section>
