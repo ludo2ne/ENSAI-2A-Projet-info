@@ -9,7 +9,7 @@ format:
     toc-expand: 3
   revealjs:
     theme: solarized
-    footer: "[Home](../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
+    footer: "[Home](../../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
     slide-number: c/t                    # collapsed/total
     slide-level: 3
     controls: true
@@ -92,8 +92,11 @@ gantt
 
 | Date                        | Topic                                       |
 |-----------------------------|---------------------------------------------|
+| TOUS les Jeudis             | Point hebdo                                 |
 | Samedi 5 octobre 12h00      | Dossier d'Analyse                           |
 | Samedi 23 novembre 20h00    | Rapport final et Code                       |
+
+
 
 ::::::
 
@@ -125,7 +128,7 @@ Relisez vos rapports !
 
 - Éviter de cumuler les rôles de Chef de projet et Tech Lead
 - Esprit d'équipe
-- Prévenir dès que possible si ça va pas
+- Prévenir dès que possible si ça ne va pas
 
 :::{.notes}
 - Avoir un bon comportement
@@ -142,13 +145,16 @@ Pas la peine de dire une fois que le projet est fini :
 
 - Point hebdo
 - À remplir chaque semaine
-  - au plus tard le vendredi à 18h
+  - au plus tard le jeudi soir
+
+::: {.callout-note}
+Plus de détails dans la notice élèves.
+:::
 
 :::{.notes}
-:construction: modèle
-
 - Comme dans la vie pro
 - Obligatoire sinon malus
+- Montrer Modèle
 - ras : si vous n'avez rien fait
 :::
 
@@ -164,6 +170,15 @@ Si vous n'êtes pas à très l'aise en info, il vous sera quasi impossible de co
 
 - Nous attendons du code de **[qualité]{.underline}**
 - Documentation obligatoire pour chaque classe, chaque méthode
+
+:::{.notes}
+Respectez les bonnes pratiques de dev Python :
+
+- Noms des classes en CamelCase
+- Fichiers en snake_case
+- noms de variables et de méthodes parlants
+:::
+
 
 ## Testez votre code
 

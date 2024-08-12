@@ -9,7 +9,7 @@ format:
     toc-expand: 3
   revealjs:
     theme: solarized
-    footer: "[Home](../index.html) --- [Lancement du projet info](reunion-lancement.qmd)"
+    footer: "[Home](../../index.html) --- [Lancement du projet info](reunion-lancement.qmd)"
     slide-number: c/t                    # collapsed/total
     slide-level: 3
     controls: true
