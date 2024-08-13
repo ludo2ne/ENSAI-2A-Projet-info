@@ -1,6 +1,6 @@
 ---
 title: "Les tests unitaires"
-description: "[Slides](tests-unitaires-slides.html){style='text-align: right'}"
+description: "[Slides](tests-unitaires-slides.html)"
 author: "Ludovic Deneuville"
 format: 
   html:
@@ -18,24 +18,52 @@ from: markdown+emoji
 lightbox: true
 ---
 
-:construction:
-
 ## Les Tests
 
 ### Pourquoi tester ?
 
+- Crash test de voiture
+- Test de conformité
+- Test qualité en industrie
+- Test statistique
+
+### En informatique
+
 - Pour vérifier que votre programme fonctionne
-- Pour détecter  des erreurs
+- Pour détecter des erreurs
 - Pour éviter les régressions (quand vous modifiez du code)
 
 Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
 
-Des logiciels permettent de calculer **la couverture de tests** d'une application, c'est-à-dire approximativement le nombre de fonctions testées sur le nombre total de fonctions.  
-Cette couverture de tests est un indicateur de qualité. Cependant, elle donne une tendance, plutôt qu'une valeur fiable. En effet, il est facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté  les tests sur les méthodes plus compliquées.
+
+### Définition
+
+Un test ressemble à une expérience scientifique. 
+
+Il examine une hypothèse exprimée en fonction de trois éléments : 
+
+- les données en entrée
+- l'objet à tester
+- les résultats attendus
+
+Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l'idéal, être reproduit.
+
+
+### Couverture de test
+
+- Pourcentage de fonctions testées
+- Indicateur de qualité
+- Tendance, plutôt qu'une valeur fiable
 
 Préférez faire peu de tests, mais des tests utiles !
 
-### Les types de tests
+::: {.notes}
+Nombre de fonctions testées sur le nombre total de fonctions.  
+
+Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.
+:::
+
+### Les types de tests {.smaller}
 
 Il existe de très nombreux tests différents, voici les principaux :
 
@@ -48,117 +76,154 @@ Il existe de très nombreux tests différents, voici les principaux :
 
 ## Les tests unitaires
 
-Nous allons utiliser le framework `unittest` pour réaliser nos tests en Python.
+Nous allons utiliser le package `pytest` pour réaliser nos tests en Python.
 
-Commençons par un exemple : vous souhaitez tester la méthode suivante :
+### Un bon test unitaire
 
-```{.python}
+- Teste une seule fonctionnalité
+- Isolé
+- Reproductible
+- Déterministe
+
+::: {.notes}
+- Isolé : indépendant des autres tests
+  - si vous testez une méthode A, qui elle-même appelle d'autres méthodes B, C, D...
+  - le test ne doit se faire que sur la méthode A
+  - il faut `mocker` le comportement des autres méthodes
+- Déterministe : donne toujours le même résultat
+:::
+
+
+### Méthode à tester
+
+```{.python filename="operation_mathematique.py"}
 class OperationMathematiques:
     def diviser_cinq_par(self, nombre) -> float:
+        """Divise le nombre 5 par un nombre donné.
+        Parameters
+        ----------
+        nombre : float or int
+            Le nombre par lequel 5 sera divisé.
+        Returns
+        -------
+        float or None
+            Le résultat de la division de 5 par le nombre donné.
+            Si le nombre est égal à 0, la méthode retourne None.
+        """
         if nombre != 0:
             return 5 / nombre
         else:
             return None
 ```
 
-Pour cela, vous allez créer une classe de test.
+### Classe de test
 
-Le premier test auquel on pense est le cas nominal : on choisit un nombre en entrée, par exemple 2, puis on vérifie que diviser_cinq_par(2) retourne bien la valeur attendue : 2.5
+Créons une classe de test.
 
-```{.python}
-from unittest import TestCase, TextTestRunner, TestLoader
+Pour tester le cas nominal, nous : 
+
+- choisissons un nombre en entrée
+- appelons la méthode `diviser_cinq_par()`
+- vérifions que la valeur retournée est égale à la valeur attendue
+
+
+### Cas Nominal
+
+```{.python filename="test_operation_mathematique.py"}
+import pytest
 from mathematiques.operation_mathematique import OperationMathematiques
 
-class TestOperationMathematiques(TestCase):
+class TestOperationMathematiques():
     def test_diviser_cinq_par_nombre_non_nul(self):
-        ## GIVEN
+        # GIVEN
         nombre = 2
 
-        ## WHEN
+        # WHEN
         resultat = OperationMathematiques().diviser_cinq_par(nombre)
 
-        ## THEN
-        self.assertEqual(resultat, 2.5)
+        # THEN
+        assert resultat == 2.5
 ```
+
+::: {.notes}
+Est-ce suffisant ?
+:::
+
+### Autres cas
 
 Mais ce n'est pas suffisant !
 
-La méthode a également un autre retour possible : `None` :arrow_right: il faut aussi tester que la méthode renvoie bien None si le paramètre en entrée est 0
+- La méthode a également un autre retour possible : `None`
+- Il faut aussi tester ce cas
 
-```{.python}
-from unittest import TestCase, TextTestRunner, TestLoader
-from mathematiques.operation_mathematique import OperationMathematiques
-
-class TestOperationMathematiques(TestCase):
-    def test_diviser_cinq_par_nombre_non_nul(self):
-        ## GIVEN
-        nombre = 2
-
-        ## WHEN
-        resultat = OperationMathematiques().diviser_cinq_par(nombre)
-
-        ## THEN
-        self.assertEqual(resultat, 2.5)
-
+```{.python filename="test_operation_mathematique.py"}
     def test_diviser_cinq_par_zero(self):
-        ## GIVEN
+        # GIVEN
         nombre = 0
 
-        ## WHEN
+        # WHEN
         resultat = OperationMathematiques().diviser_cinq_par(nombre)
 
-        ## THEN
-        self.assertIsNone(resultat)
-
-if __name__ == "__main__":
-    ## Run the tests
-    result = TextTestRunner(verbosity=2).run(
-        TestLoader().loadTestsFromTestCase(TestOperationMathematiques)
-    )
+        # THEN
+        assert resultat is None
 ```
 
-Voici le test complet avec à la fin un **main** optionnel qui permet de lancer la classe de test comme n'importe quel programme Python avec le bouton :arrow_forward:
+### Et si... 
 
-Et si... on appelle la méthode avec ce paramètre : `diviser_cinq_par("a")` ?
+Nous appelons la méthode avec ce paramètre : `diviser_cinq_par("a")` ?
 
 Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception `TypeError` dans ce cas.
 
-```{.python}
+```{.python filename="test_operation_mathematique.py"}
     def test_diviser_cinq_string(self):
-        ## GIVEN
+        # GIVEN
         nombre = "a"
 
-        ## WHEN / THEN
-        with self.assertRaises(TypeError):
+        # WHEN / THEN
+        with pytest.raises(TypeError):
             OperationMathematiques().diviser_cinq_par(nombre)
 ```
 
 Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n'est pas le cas.
 
-:bulb: Ce qu'il faut retenir sur le test unitaire :
 
-- vérifie qu'une méthode fait ce qu'elle doit faire
+### Ce qu'il faut retenir
+
+Les tests unitaires
+
+- vérifient qu'une méthode fait ce qu'elle doit faire
 - il faut tester les cas nominaux, mais également les cas à la marge et les erreurs
 - un test unitaire teste UNE et UNE seule chose
   - il faut autant de tests unitaires que de retours possibles
-- il doit être le plus isolé possible *(pas de question sur ce point à l'examen)*
-  - c'est-à-dire que si vous voulez tester une méthode A, qui elle-même appelle d'autres méthodes B, C, D...
-  - le test ne doit se faire que sur la méthode A
-  - Pour cela, il faut `mocker` le comportement des autres méthodes
+
+
 
 ## Les Test Driven Development (TDD)
 
-Quand tester ?
+### Quand tester ?
 
-...
+::: {.fragment}
+Au début !
+:::
 
-La meilleure pratique lorsque l'on veut créer une fonction est de d'abord créer les tests qui permettront de vérifier que la fonction fait ce qu'elle doit faire.
+### TDD
 
-Cela peut paraître  un peu étrange, mais en fait pas tant que ça. Lorsque vous codez une fonction, vous savez avant de commencer :
+La meilleure pratique :
+
+1. Créer les tests 
+2. Coder la fonction
+
+### Logique
+
+Cela peut paraître un peu étrange, mais en fait pas tant que ça. 
+
+Lorsque vous codez une fonction, vous savez avant de commencer :
 
 - quels seront les paramètres en entrée
 - quels résultats vous attendez en sortie
 - donc vous avez déjà quoi tester !
+
+### Pratique du TDD
 
 La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.
 
