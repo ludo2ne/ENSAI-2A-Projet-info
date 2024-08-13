@@ -21,13 +21,13 @@ lightbox: true
 ## Plan
 
 1. Notions avancées de POO
-  - Rappels
-  - Classes abstraites
-  - Bridge pattern
+    - Rappels
+    - Classes abstraites
+    - Bridge pattern
 2. Génie logiciel
-  - Définition
-  - Single responsibility principle
-  - Design patterns
+    - Définition
+    - Single responsibility principle
+    - Design patterns
 
 ## Quelques rappels
 
@@ -38,7 +38,7 @@ Les trois principes de l'objet :
 - **Polymorphisme :** une méthode peut être associée à un **code différent** en fonction des paramètres passés ou de l'objet auquel elle appartient.
 
 ::: {.notes}
-Ce sont les trois principes qu'apporte la programmation orientée objet. Ils sont présentés par ordre de "simplicité". La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps (il m'a fallu environ 2 ans en tant que développeur pour bien les comprendre).
+Ce sont les trois principes qu'apporte la programmation orientée objet. Ils sont présentés par ordre de "simplicité". La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.
 
 - Attribut : ce qu'il est
 - Méthode : ce qu'il peut faire
@@ -60,25 +60,33 @@ Fondamentalement, c'est une application assez simple.
 
 ### Exemple de diagramme de classe
 
-:construction:
-
-![](img/uml/class_diagram_no_poo.png)
+![](img/class_diagram_no_poo.png)
 
 ::: {.notes}
 Voyez-vous des choses à corriger ?  
-Est-ce que la méthode `process` sera la même pour un csv, un json ?
+Est-ce que la méthode *process()* sera la même pour survey et census ?
+
+```{.python}
+def process(self):
+  if self.type = "census":
+    ...
+  elif
+    ...
+```
+
 :::
 
 ### Un exemple avec de l'héritage
 
-:construction:
-![](img/uml/class_diagram_poo1.png)
+![](img/class_diagram_poo1.png)
 
 ::: {.notes}
 La classe `Source` permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.  
 Grâce au polymorphisme, j'ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.
 
 Code dans le dossier exemple POO.
+
+Que pensez-vous de la classe Source ?
 :::
 
 ### Les classes abstraites
@@ -87,23 +95,26 @@ Code dans le dossier exemple POO.
 
 **Avantages :**
 
-- On sait ce que toutes les classes filles doivent faire 👍
-- On peut générer du code 🙏
+- Nous savons ce que toutes les classes filles doivent faire 👍
+- Nous pouvons générer du code 🙏
 - Limite le risque d'erreur !! 👌
 
 ::: {.notes}
 Certains objets n'ont pas besoin d'être implémentés complètement ni de pouvoir être instantiés. Souvent, c'est pour des notions abstraites.  
-Une bonne pratique est d'associer à chaque concept concret un concept abstrait.  
-Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On va faire des concepts abstraits qui ont du sens.
+
+Rappels : classe, objet, abstrait (Vehicule)
 :::
 
 ### Par exemple
 
-:construction:
-![](img/uml/class_diagram_poo_abstract_class.png)
+![](img/class_diagram_poo_abstract_class.png)
 
 ::: {.notes}
 Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l'abstraction au lieu des implémentations et d'avoir un code propre (vous ferez ça en TP).
+
+`v = Vehicule("rouge")` -> ça marche plus
+
+Méthode *custom_process* abstraite
 :::
 
 ### Et en Python ?
@@ -118,7 +129,11 @@ Pour vous, cela peut sembler marginal comme changement (surtout à cause de Pyth
   - **Step 5 :** Profit 💰💰
 
 ::: {.notes}
-L'autre gros défaut de Python est son typage dynamique. Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d'avoir autant d'outils que dans d'autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.
+Step 4 : implémenter les méthodes abstraites dans les classes filles
+
+L'autre gros défaut de Python est son typage dynamique.
+
+Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d'avoir autant d'outils que dans d'autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.
 :::
 
 ### Et si on ajoutait les formats de données ?
@@ -131,18 +146,19 @@ Actuellement, 3 formats de données dans notre application :
 
 ::: {.notes}
 On reviendra plus en détail sur les différents formats.
+
+Retour 2 slides avant : si on fait pareil et qu'on utilise l'héritage pour le format
 :::
 
 
 ### Par exemple
 
-:construction:
-![](img/uml/class_diagram_poo_file_format.png)
+![](img/class_diagram_poo_file_format.png)
 
 Voyez-vous un problème ?
 
 ::: {.notes}
-C'est gros !
+Cà grossit de manière exponentielle
 :::
 
 
@@ -151,7 +167,7 @@ C'est gros !
 - Actuellement 4 * 3 classes "concrètes" à définir 😱
 - La lecture du format est dépendante de la source 😵
 
-**MAIS 🌽**
+**MAIS**
 
 - On peut externaliser ce traitement ! 😌
 - Relation d'agrégation 🤯
@@ -162,8 +178,7 @@ Il faut bien comprendre
 
 ### Le bridge pattern
 
-:construction:
-![](img/uml/class_diagram_poo_bridge_pattern.png)
+![](img/class_diagram_poo_bridge_pattern.png)
 
 ::: {.notes}
 :::
@@ -187,7 +202,7 @@ Découpage d'une grosse classe en un groupe de petites classes avec leur propre 
 
 ## Le génie logiciel
 
-![Génie logiciel](https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4){width=600}
+![](https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4){width=600}
 
 ::: {.notes}
 On va aller un cran au-dessus.
@@ -197,7 +212,7 @@ On va aller un cran au-dessus.
 
 - Un constat : coder bêtement ne permet pas de faire une application de qualité.
 - Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.
-- Besoin de planifier, de documenter, de tester, etc.
+- Besoin de planifier, de documenter, de tester...
 
 ::: {.notes}
 Et cette partie sera la seconde du rapport intermédiaire.
@@ -233,7 +248,10 @@ Certains disent même qu'on devrait passer plus de temps à analyser qu'à coder
 Module architecture != module Python.
 Couche, c'est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d'un coup). 
 
-Faire un dessin avec et sans. Expliquer que c'est le boulot d'un objet métier de dire comment il s'affiche et comment on le stocke. Pareil, ce n'est
+Faire un dessin avec et sans. Expliquer que c'est le boulot d'un objet métier de dire comment il s'affiche et comment on le stocke.
+
+Pareil c'est pas le boulot d'une vue de faire un calcul. Par contre une vue peut demander.
+Bien insister sur "l'indépendance des couches". Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d'accord sur comment elles communiquent le travail peut se faire en parallèle.
 :::
 
 ### Un mantra
@@ -265,8 +283,7 @@ Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonc
 
 ### Retour sur le bridge pattern
 
-:construction:
-![](img/uml/class_diagram_poo_bridge_pattern.png)
+![](img/class_diagram_poo_bridge_pattern.png)
 
 ::: {.notes}
 Je remontre le schéma quelques secondes
@@ -284,6 +301,7 @@ Je remontre le schéma quelques secondes
 
 ::: {.notes}
 Avantages :
+
 - Lecture du code facilitée.
 - En cas de bug, facile de trouver le coupable.
 - On peut répartir le travail facilement.
@@ -320,11 +338,12 @@ Il est plus rapide de répondre "tu devrais utiliser un bridge" que "tu devrais 
 
 ### Les design patterns : exemple
 
-:construction:
+![](img/class_diagram_poo_bridge_pattern_advanced.png)
 
-### Les design patterns : exemple
+::: {.notes}
+En ajoutant les méthodes stats
+:::
 
-:construction:
 
 ### Pour résumer
 

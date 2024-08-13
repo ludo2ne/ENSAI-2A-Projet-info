@@ -389,7 +389,10 @@ Un membre de l'équipe :
 Ensuite, chaque membre de l'équipe :
 
 - [ ] Crée un clone local du dépôt dans `P:/Cours2A/UE3-Projet-info`
-- [ ] Fait un test pour vérifier qu'il peut pousser du code
+- [ ] Fait un test pour vérifier qu'il peut pousser du code, par exemple en créant :
+  - *doc/suivi/2024.09.05-semaine1.md* : le premier point hebdo
+  - *src/__main__.py* : le fichier pour lancer votre application
+  - *requirements.txt* : le fichier listant les packages
 
 ::: {.callout-caution}
 Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de la même manière que celui vu dans la partie précédente.

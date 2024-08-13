@@ -20,12 +20,12 @@ lightbox: true
 
 ## Plan
 
-- L'analyse fonctionnelle
-  - Définition
-  - Diagrammes UML
-- L'architecture logicielle
-  - Définition
-  - Séparation des responsabilités
+1. L'analyse fonctionnelle
+    - Définition
+    - Diagrammes UML
+2. L'architecture logicielle
+    - Définition
+    - Séparation des responsabilités
 
 
 :::::: {.hide-html-render}
@@ -64,7 +64,7 @@ Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
 
 ---
 
-![](./img/balancoire-agile.PNG)
+![](./img/balancoire_agile.png)
 
 
 ::: {.notes}
@@ -100,6 +100,7 @@ Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
 - Pour les premières questions diagramme de cas d'utilisation
 - Processus -> diagramme d'activité
 - Pourquoi faire des diagrammes ? D'un coup d'oeil on a toutes les infos
+  - Commentez vos diagrammes
 :::
 
 
@@ -167,15 +168,14 @@ ChatGPT peut presque coder à notre place.
 
 ### Un grand principe : separation of concerns
 
-:construction:
-
 ![](img/couches.png)
 
 ::: {.notes}
 Version macro en 3 couches.
+
 - Présentation : tout ce qui se charge de l'affichage
 - Business : c'est le métier de votre application, sa plus-value
-- Data : gère le stockage. Plus de détails dans quelques minutes
+- Data : stockage des données
 
 Chaque couche communique avec celles adjacentes.  
 Une couche a juste à savoir comment elle doit demander une information et ce qu'on lui retourne.  
@@ -200,9 +200,7 @@ Exemple page web
 
 ### Zoom sur la couche métier
 
-:construction:
-
-![](img/Zoom metier.png)
+![](img/couche_metier.png)
 
 ::: {.notes}
 À l'intérieur de la couche Métier, il y a plusieurs sous-couches.
@@ -221,8 +219,8 @@ Dans les TP :
 - **_Service :_**
   - Code métier
   - Manipule des objets métiers pour créer de l'information ou de la valeur
-  - Demande des objets à la couche DAO
-  - Appelle les webservices externes (TP2-3)
+  - Demande des objets à la couche DAO (TP4)
+  - Appelle les webservices externes (TP3)
 
 ### Les couches de la couche métier 2/2
 
@@ -233,7 +231,7 @@ Dans les TP :
 
 - **_Contrôleur :_**
   - Récupère les inputs des utilisateurs
-  - Renvoie les données à afficher (TP 4)
+  - Renvoie les données à afficher
 
 ::: {.notes}
 On découpe les objets :  
