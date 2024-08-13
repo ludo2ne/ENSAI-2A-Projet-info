@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    <a href="tests-unitaires-slides.html" style="text-align: right">Slides</a>
+    <a href="tests-unitaires-slides.html">Slides</a>
   </div>
 </div>
 
@@ -279,23 +279,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
 <section id="les-tests" class="level2">
 <h2 class="anchored" data-anchor-id="les-tests">Les Tests</h2>
 <section id="pourquoi-tester" class="level3">
 <h3 class="anchored" data-anchor-id="pourquoi-tester">Pourquoi tester ?</h3>
+<ul>
+<li>Crash test de voiture</li>
+<li>Test de conformité</li>
+<li>Test qualité en industrie</li>
+<li>Test statistique</li>
+</ul>
+</section>
+<section id="en-informatique" class="level3">
+<h3 class="anchored" data-anchor-id="en-informatique">En informatique</h3>
 <ul>
 <li>Pour vérifier que votre programme fonctionne</li>
 <li>Pour détecter des erreurs</li>
 <li>Pour éviter les régressions (quand vous modifiez du code)</li>
 </ul>
 <p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
-<p>Des logiciels permettent de calculer <strong>la couverture de tests</strong> d’une application, c’est-à-dire approximativement le nombre de fonctions testées sur le nombre total de fonctions.<br>
-Cette couverture de tests est un indicateur de qualité. Cependant, elle donne une tendance, plutôt qu’une valeur fiable. En effet, il est facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
-<p>Préférez faire peu de tests, mais des tests utiles !</p>
 </section>
-<section id="les-types-de-tests" class="level3">
-<h3 class="anchored" data-anchor-id="les-types-de-tests">Les types de tests</h3>
+<section id="définition" class="level3">
+<h3 class="anchored" data-anchor-id="définition">Définition</h3>
+<p>Un test ressemble à une expérience scientifique.</p>
+<p>Il examine une hypothèse exprimée en fonction de trois éléments :</p>
+<ul>
+<li>les données en entrée</li>
+<li>l’objet à tester</li>
+<li>les résultats attendus</li>
+</ul>
+<p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
+</section>
+<section id="couverture-de-test" class="level3">
+<h3 class="anchored" data-anchor-id="couverture-de-test">Couverture de test</h3>
+<ul>
+<li>Pourcentage de fonctions testées</li>
+<li>Indicateur de qualité</li>
+<li>Tendance, plutôt qu’une valeur fiable</li>
+</ul>
+<p>Préférez faire peu de tests, mais des tests utiles !</p>
+<div class="notes">
+<p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
+<p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
+</div>
+</section>
+<section id="les-types-de-tests" class="level3 smaller">
+<h3 class="smaller anchored" data-anchor-id="les-types-de-tests">Les types de tests</h3>
 <p>Il existe de très nombreux tests différents, voici les principaux :</p>
 <ul>
 <li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
@@ -309,102 +338,172 @@ Cette couverture de tests est un indicateur de qualité. Cependant, elle donne u
 </section>
 <section id="les-tests-unitaires" class="level2">
 <h2 class="anchored" data-anchor-id="les-tests-unitaires">Les tests unitaires</h2>
-<p>Nous allons utiliser le framework <code>unittest</code> pour réaliser nos tests en Python.</p>
-<p>Commençons par un exemple : vous souhaitez tester la méthode suivante :</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationMathematiques:</span>
+<p>Nous allons utiliser le package <code>pytest</code> pour réaliser nos tests en Python.</p>
+<section id="un-bon-test-unitaire" class="level3">
+<h3 class="anchored" data-anchor-id="un-bon-test-unitaire">Un bon test unitaire</h3>
+<ul>
+<li>Teste une seule fonctionnalité</li>
+<li>Isolé</li>
+<li>Reproductible</li>
+<li>Déterministe</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Isolé : indépendant des autres tests
+<ul>
+<li>si vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
+<li>le test ne doit se faire que sur la méthode A</li>
+<li>il faut <code>mocker</code> le comportement des autres méthodes</li>
+</ul></li>
+<li>Déterministe : donne toujours le même résultat</li>
+</ul>
+</div>
+</section>
+<section id="méthode-à-tester" class="level3">
+<h3 class="anchored" data-anchor-id="méthode-à-tester">Méthode à tester</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>operation_mathematique.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="operation_mathematique.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationMathematiques:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Pour cela, vous allez créer une classe de test.</p>
-<p>Le premier test auquel on pense est le cas nominal : on choisit un nombre en entrée, par exemple 2, puis on vérifie que diviser_cinq_par(2) retourne bien la valeur attendue : 2.5</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest <span class="im">import</span> TestCase, TextTestRunner, TestLoader</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">        nombre : float or int</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">        float or None</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="classe-de-test" class="level3">
+<h3 class="anchored" data-anchor-id="classe-de-test">Classe de test</h3>
+<p>Créons une classe de test.</p>
+<p>Pour tester le cas nominal, nous :</p>
+<ul>
+<li>choisissons un nombre en entrée</li>
+<li>appelons la méthode <code>diviser_cinq_par()</code></li>
+<li>vérifions que la valeur retournée est égale à la valeur attendue</li>
+</ul>
+</section>
+<section id="cas-nominal" class="level3">
+<h3 class="anchored" data-anchor-id="cas-nominal">Cas Nominal</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operation_mathematique.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="test_operation_mathematique.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operation_mathematique <span class="im">import</span> OperationMathematiques</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationMathematiques(TestCase):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationMathematiques():</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">## THEN</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(resultat, <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="notes">
+<p>Est-ce suffisant ?</p>
+</div>
+</section>
+<section id="autres-cas" class="level3">
+<h3 class="anchored" data-anchor-id="autres-cas">Autres cas</h3>
 <p>Mais ce n’est pas suffisant !</p>
-<p>La méthode a également un autre retour possible : <code>None</code> <span class="emoji" data-emoji="arrow_right">➡️</span> il faut aussi tester que la méthode renvoie bien None si le paramètre en entrée est 0</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest <span class="im">import</span> TestCase, TextTestRunner, TestLoader</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operation_mathematique <span class="im">import</span> OperationMathematiques</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationMathematiques(TestCase):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">## THEN</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(resultat, <span class="fl">2.5</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">## THEN</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertIsNone(resultat)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">## Run the tests</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> TextTestRunner(verbosity<span class="op">=</span><span class="dv">2</span>).run(</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        TestLoader().loadTestsFromTestCase(TestOperationMathematiques)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Voici le test complet avec à la fin un <strong>main</strong> optionnel qui permet de lancer la classe de test comme n’importe quel programme Python avec le bouton <span class="emoji" data-emoji="arrow_forward">▶️</span></p>
-<p>Et si… on appelle la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
+<ul>
+<li>La méthode a également un autre retour possible : <code>None</code></li>
+<li>Il faut aussi tester ce cas</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operation_mathematique.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="test_operation_mathematique.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="et-si" class="level3">
+<h3 class="anchored" data-anchor-id="et-si">Et si…</h3>
+<p>Nous appelons la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
 <p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">## GIVEN</span></span>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operation_mathematique.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="test_operation_mathematique.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">## WHEN / THEN</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.assertRaises(<span class="pp">TypeError</span>):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN / THEN</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            OperationMathematiques().diviser_cinq_par(nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
-<p><span class="emoji" data-emoji="bulb">💡</span> Ce qu’il faut retenir sur le test unitaire :</p>
+</section>
+<section id="ce-quil-faut-retenir" class="level3">
+<h3 class="anchored" data-anchor-id="ce-quil-faut-retenir">Ce qu’il faut retenir</h3>
+<p>Les tests unitaires</p>
 <ul>
-<li>vérifie qu’une méthode fait ce qu’elle doit faire</li>
+<li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
 <li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
 <li>un test unitaire teste UNE et UNE seule chose
 <ul>
 <li>il faut autant de tests unitaires que de retours possibles</li>
 </ul></li>
-<li>il doit être le plus isolé possible <em>(pas de question sur ce point à l’examen)</em>
-<ul>
-<li>c’est-à-dire que si vous voulez tester une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
-<li>le test ne doit se faire que sur la méthode A</li>
-<li>Pour cela, il faut <code>mocker</code> le comportement des autres méthodes</li>
-</ul></li>
 </ul>
+</section>
 </section>
 <section id="les-test-driven-development-tdd" class="level2">
 <h2 class="anchored" data-anchor-id="les-test-driven-development-tdd">Les Test Driven Development (TDD)</h2>
-<p>Quand tester ?</p>
-<p>…</p>
-<p>La meilleure pratique lorsque l’on veut créer une fonction est de d’abord créer les tests qui permettront de vérifier que la fonction fait ce qu’elle doit faire.</p>
-<p>Cela peut paraître un peu étrange, mais en fait pas tant que ça. Lorsque vous codez une fonction, vous savez avant de commencer :</p>
+<section id="quand-tester" class="level3">
+<h3 class="anchored" data-anchor-id="quand-tester">Quand tester ?</h3>
+<div class="fragment">
+<p>Au début !</p>
+</div>
+</section>
+<section id="tdd" class="level3">
+<h3 class="anchored" data-anchor-id="tdd">TDD</h3>
+<p>La meilleure pratique :</p>
+<ol type="1">
+<li>Créer les tests</li>
+<li>Coder la fonction</li>
+</ol>
+</section>
+<section id="logique" class="level3">
+<h3 class="anchored" data-anchor-id="logique">Logique</h3>
+<p>Cela peut paraître un peu étrange, mais en fait pas tant que ça.</p>
+<p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
 <ul>
 <li>quels seront les paramètres en entrée</li>
 <li>quels résultats vous attendez en sortie</li>
 <li>donc vous avez déjà quoi tester !</li>
 </ul>
+</section>
+<section id="pratique-du-tdd" class="level3">
+<h3 class="anchored" data-anchor-id="pratique-du-tdd">Pratique du TDD</h3>
 <p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
 <p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
