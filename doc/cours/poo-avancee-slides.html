@@ -32,6 +32,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="none">
@@ -344,21 +409,19 @@ Ludovic Deneuville, Rémi Pépin
 <section id="plan" class="title-slide slide level2 center">
 <h2>Plan</h2>
 <ol type="1">
-<li>Notions avancées de POO</li>
-</ol>
+<li>Notions avancées de POO
 <ul>
 <li>Rappels</li>
 <li>Classes abstraites</li>
 <li>Bridge pattern</li>
-</ul>
-<ol start="2" type="1">
-<li>Génie logiciel</li>
-</ol>
+</ul></li>
+<li>Génie logiciel
 <ul>
 <li>Définition</li>
 <li>Single responsibility principle</li>
 <li>Design patterns</li>
-</ul>
+</ul></li>
+</ol>
 </section>
 
 <section>
@@ -371,7 +434,7 @@ Ludovic Deneuville, Rémi Pépin
 <li><strong>Polymorphisme :</strong> une méthode peut être associée à un <strong>code différent</strong> en fonction des paramètres passés ou de l’objet auquel elle appartient.</li>
 </ul>
 <aside class="notes">
-<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps (il m’a fallu environ 2 ans en tant que développeur pour bien les comprendre).</p>
+<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.</p>
 <ul>
 <li>Attribut : ce qu’il est</li>
 <li>Méthode : ce qu’il peut faire</li>
@@ -414,11 +477,15 @@ Ludovic Deneuville, Rémi Pépin
 </section>
 <section id="exemple-de-diagramme-de-classe" class="slide level3">
 <h3>Exemple de diagramme de classe</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p><a href="img/uml/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="img/uml/class_diagram_no_poo.png"></a></p>
+<p><a href="img/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="img/class_diagram_no_poo.png"></a></p>
 <aside class="notes">
 <p>Voyez-vous des choses à corriger ?<br>
-Est-ce que la méthode <code>process</code> sera la même pour un csv, un json ?</p>
+Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
+<span id="cb1-2"><a></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
+<span id="cb1-3"><a></a>    ...</span>
+<span id="cb1-4"><a></a>  <span class="cf">elif</span></span>
+<span id="cb1-5"><a></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -433,11 +500,12 @@ Est-ce que la méthode <code>process</code> sera la même pour un csv, un json ?
 </section>
 <section id="un-exemple-avec-de-lhéritage" class="slide level3">
 <h3>Un exemple avec de l’héritage</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo1.png"></p>
+<p><a href="img/class_diagram_poo1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="img/class_diagram_poo1.png"></a></p>
 <aside class="notes">
 <p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
 Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
 <p>Code dans le dossier exemple POO.</p>
+<p>Que pensez-vous de la classe Source ?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -457,14 +525,13 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
 </blockquote>
 <p><strong>Avantages :</strong></p>
 <ul>
-<li>On sait ce que toutes les classes filles doivent faire 👍</li>
-<li>On peut générer du code 🙏</li>
+<li>Nous savons ce que toutes les classes filles doivent faire 👍</li>
+<li>Nous pouvons générer du code 🙏</li>
 <li>Limite le risque d’erreur !! 👌</li>
 </ul>
 <aside class="notes">
-<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.<br>
-Une bonne pratique est d’associer à chaque concept concret un concept abstrait.<br>
-Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On va faire des concepts abstraits qui ont du sens.</p>
+<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.</p>
+<p>Rappels : classe, objet, abstrait (Vehicule)</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -479,9 +546,11 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </section>
 <section id="par-exemple" class="slide level3">
 <h3>Par exemple</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_abstract_class.png"></p>
+<p><a href="img/class_diagram_poo_abstract_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="img/class_diagram_poo_abstract_class.png"></a></p>
 <aside class="notes">
 <p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
+<p><code>v = Vehicule("rouge")</code> -&gt; ça marche plus</p>
+<p>Méthode <em>custom_process</em> abstraite</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -509,7 +578,9 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </ul></li>
 </ul>
 <aside class="notes">
-<p>L’autre gros défaut de Python est son typage dynamique. Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
+<p>Step 4 : implémenter les méthodes abstraites dans les classes filles</p>
+<p>L’autre gros défaut de Python est son typage dynamique.</p>
+<p>Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -532,6 +603,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </ul>
 <aside class="notes">
 <p>On reviendra plus en détail sur les différents formats.</p>
+<p>Retour 2 slides avant : si on fait pareil et qu’on utilise l’héritage pour le format</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -546,10 +618,10 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </section>
 <section id="par-exemple-1" class="slide level3">
 <h3>Par exemple</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_file_format.png"></p>
+<p><a href="img/class_diagram_poo_file_format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/class_diagram_poo_file_format.png"></a></p>
 <p>Voyez-vous un problème ?</p>
 <aside class="notes">
-<p>C’est gros !</p>
+<p>Cà grossit de manière exponentielle</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -568,7 +640,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 <li>Actuellement 4 * 3 classes “concrètes” à définir 😱</li>
 <li>La lecture du format est dépendante de la source 😵</li>
 </ul>
-<p><strong>MAIS 🌽</strong></p>
+<p><strong>MAIS</strong></p>
 <ul>
 <li>On peut externaliser ce traitement ! 😌</li>
 <li>Relation d’agrégation 🤯</li>
@@ -589,7 +661,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </section>
 <section id="le-bridge-pattern" class="slide level3">
 <h3>Le bridge pattern</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_bridge_pattern.png"></p>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/class_diagram_poo_bridge_pattern.png"></a></p>
 <aside class="notes">
 
 <style type="text/css">
@@ -639,12 +711,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 <section>
 <section id="le-génie-logiciel" class="title-slide slide level2 center">
 <h2>Le génie logiciel</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Génie logiciel"><video data-src="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" width="600" controls=""></video></a><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4">Génie logiciel</a></p>
-<figcaption>Génie logiciel</figcaption>
-</figure>
-</div>
+<p><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><video data-src="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" width="600" controls=""></video></a><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4">Video</a></p>
 <aside class="notes">
 <p>On va aller un cran au-dessus.</p>
 <style type="text/css">
@@ -664,7 +731,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 <ul>
 <li>Un constat : coder bêtement ne permet pas de faire une application de qualité.</li>
 <li>Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.</li>
-<li>Besoin de planifier, de documenter, de tester, etc.</li>
+<li>Besoin de planifier, de documenter, de tester…</li>
 </ul>
 <aside class="notes">
 <p>Et cette partie sera la seconde du rapport intermédiaire.</p>
@@ -682,7 +749,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </section>
 <section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison" class="slide level3">
 <h3>Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
-<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif"></a></p>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif"></a></p>
 </section>
 <section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1" class="slide level3">
 <h3>Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
@@ -718,7 +785,8 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </ul>
 <aside class="notes">
 <p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
-<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke. Pareil, ce n’est</p>
+<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke.</p>
+<p>Pareil c’est pas le boulot d’une vue de faire un calcul. Par contre une vue peut demander. Bien insister sur “l’indépendance des couches”. Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d’accord sur comment elles communiquent le travail peut se faire en parallèle.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -788,7 +856,7 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </section>
 <section id="retour-sur-le-bridge-pattern" class="slide level3">
 <h3>Retour sur le bridge pattern</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> <img data-src="img/uml/class_diagram_poo_bridge_pattern.png"></p>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="img/class_diagram_poo_bridge_pattern.png"></a></p>
 <aside class="notes">
 <p>Je remontre le schéma quelques secondes</p>
 <style type="text/css">
@@ -814,7 +882,12 @@ Mais cela alourdit le code, alors on ne va pas faire ça systématiquement. On v
 </ul>
 <p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
 <aside class="notes">
-<p>Avantages : - Lecture du code facilitée. - En cas de bug, facile de trouver le coupable. - On peut répartir le travail facilement.</p>
+<p>Avantages :</p>
+<ul>
+<li>Lecture du code facilitée.</li>
+<li>En cas de bug, facile de trouver le coupable.</li>
+<li>On peut répartir le travail facilement.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -871,11 +944,20 @@ Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu de
 </section>
 <section id="les-design-patterns-exemple-1" class="slide level3">
 <h3>Les design patterns : exemple</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-</section>
-<section id="les-design-patterns-exemple-2" class="slide level3">
-<h3>Les design patterns : exemple</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="img/class_diagram_poo_bridge_pattern_advanced.png"></a></p>
+<aside class="notes">
+<p>En ajoutant les méthodes stats</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="pour-résumer-1" class="slide level3">
 <h3>Pour résumer</h3>
@@ -1301,7 +1383,7 @@ Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu de
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

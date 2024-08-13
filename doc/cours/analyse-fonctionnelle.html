@@ -250,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="plan" class="level2">
 <h2 class="anchored" data-anchor-id="plan">Plan</h2>
-<ul>
+<ol type="1">
 <li>L’analyse fonctionnelle
 <ul>
 <li>Définition</li>
@@ -261,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Définition</li>
 <li>Séparation des responsabilités</li>
 </ul></li>
-</ul>
+</ol>
 </section>
 <section id="analyse-fonctionnelle" class="level2 hide-html-render">
 <h2 class="anchored" data-anchor-id="analyse-fonctionnelle">Analyse fonctionnelle</h2>
@@ -293,7 +293,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
 </div>
 <hr>
-<p><a href="./img/balancoire-agile.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/balancoire-agile.PNG" class="img-fluid"></a></p>
+<p><a href="./img/balancoire_agile.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/balancoire_agile.png" class="img-fluid"></a></p>
 <div class="notes">
 <ul>
 <li>Important de discuter</li>
@@ -332,7 +332,10 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Pour les premières questions diagramme de cas d’utilisation</li>
 <li>Processus -&gt; diagramme d’activité</li>
-<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos</li>
+<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
+<ul>
+<li>Commentez vos diagrammes</li>
+</ul></li>
 </ul>
 </div>
 </section>
@@ -397,10 +400,14 @@ ChatGPT peut presque coder à notre place.</p>
 </section>
 <section id="un-grand-principe-separation-of-concerns" class="level3">
 <h3 class="anchored" data-anchor-id="un-grand-principe-separation-of-concerns">Un grand principe : separation of concerns</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
 <p><a href="img/couches.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/couches.png" class="img-fluid"></a></p>
 <div class="notes">
-<p>Version macro en 3 couches. - Présentation : tout ce qui se charge de l’affichage - Business : c’est le métier de votre application, sa plus-value - Data : gère le stockage. Plus de détails dans quelques minutes</p>
+<p>Version macro en 3 couches.</p>
+<ul>
+<li>Présentation : tout ce qui se charge de l’affichage</li>
+<li>Business : c’est le métier de votre application, sa plus-value</li>
+<li>Data : stockage des données</li>
+</ul>
 <p>Chaque couche communique avec celles adjacentes.<br>
 Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
 Pas évident mais très important !!!</p>
@@ -427,8 +434,7 @@ Pas évident mais très important !!!</p>
 </section>
 <section id="zoom-sur-la-couche-métier" class="level3">
 <h3 class="anchored" data-anchor-id="zoom-sur-la-couche-métier">Zoom sur la couche métier</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p><a href="img/Zoom metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/Zoom metier.png" class="img-fluid"></a></p>
+<p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/couche_metier.png" class="img-fluid"></a></p>
 <div class="notes">
 <p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
 <p>Dans les TP : - Couche présentation : View (on navigue entre des vues) - DAO, business_object, service - Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</p>
@@ -445,8 +451,8 @@ Pas évident mais très important !!!</p>
 <ul>
 <li>Code métier</li>
 <li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
-<li>Demande des objets à la couche DAO</li>
-<li>Appelle les webservices externes (TP2-3)</li>
+<li>Demande des objets à la couche DAO (TP4)</li>
+<li>Appelle les webservices externes (TP3)</li>
 </ul></li>
 </ul>
 </section>
@@ -462,7 +468,7 @@ Pas évident mais très important !!!</p>
 <li><strong><em>Contrôleur :</em></strong>
 <ul>
 <li>Récupère les inputs des utilisateurs</li>
-<li>Renvoie les données à afficher (TP 4)</li>
+<li>Renvoie les données à afficher</li>
 </ul></li>
 </ul>
 <div class="notes">
@@ -1082,7 +1088,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

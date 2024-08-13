@@ -343,7 +343,7 @@ Ludovic Deneuville, Rémi Pépin
 </section>
 <section id="plan" class="title-slide slide level2 center">
 <h2>Plan</h2>
-<ul>
+<ol type="1">
 <li>L’analyse fonctionnelle
 <ul>
 <li>Définition</li>
@@ -354,7 +354,7 @@ Ludovic Deneuville, Rémi Pépin
 <li>Définition</li>
 <li>Séparation des responsabilités</li>
 </ul></li>
-</ul>
+</ol>
 </section>
 
 <section id="analyse-fonctionnelle" class="title-slide slide level2 hide-html-render center">
@@ -410,7 +410,7 @@ Ludovic Deneuville, Rémi Pépin
 </section>
 <section class="slide level3">
 
-<p><a href="./img/balancoire-agile.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./img/balancoire-agile.PNG"></a></p>
+<p><a href="./img/balancoire_agile.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./img/balancoire_agile.png"></a></p>
 <aside class="notes">
 <ul>
 <li>Important de discuter</li>
@@ -469,7 +469,10 @@ Ludovic Deneuville, Rémi Pépin
 <ul>
 <li>Pour les premières questions diagramme de cas d’utilisation</li>
 <li>Processus -&gt; diagramme d’activité</li>
-<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos</li>
+<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
+<ul>
+<li>Commentez vos diagrammes</li>
+</ul></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -576,10 +579,14 @@ ChatGPT peut presque coder à notre place.</p>
 </section>
 <section id="un-grand-principe-separation-of-concerns" class="slide level3">
 <h3>Un grand principe : separation of concerns</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
 <p><a href="img/couches.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/couches.png"></a></p>
 <aside class="notes">
-<p>Version macro en 3 couches. - Présentation : tout ce qui se charge de l’affichage - Business : c’est le métier de votre application, sa plus-value - Data : gère le stockage. Plus de détails dans quelques minutes</p>
+<p>Version macro en 3 couches.</p>
+<ul>
+<li>Présentation : tout ce qui se charge de l’affichage</li>
+<li>Business : c’est le métier de votre application, sa plus-value</li>
+<li>Data : stockage des données</li>
+</ul>
 <p>Chaque couche communique avec celles adjacentes.<br>
 Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
 Pas évident mais très important !!!</p>
@@ -626,8 +633,7 @@ Pas évident mais très important !!!</p>
 </section>
 <section id="zoom-sur-la-couche-métier" class="slide level3">
 <h3>Zoom sur la couche métier</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p><a href="img/Zoom metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/Zoom metier.png"></a></p>
+<p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/couche_metier.png"></a></p>
 <aside class="notes">
 <p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
 <p>Dans les TP : - Couche présentation : View (on navigue entre des vues) - DAO, business_object, service - Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</p>
@@ -654,8 +660,8 @@ Pas évident mais très important !!!</p>
 <ul>
 <li>Code métier</li>
 <li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
-<li>Demande des objets à la couche DAO</li>
-<li>Appelle les webservices externes (TP2-3)</li>
+<li>Demande des objets à la couche DAO (TP4)</li>
+<li>Appelle les webservices externes (TP3)</li>
 </ul></li>
 </ul>
 </section>
@@ -671,7 +677,7 @@ Pas évident mais très important !!!</p>
 <li><strong><em>Contrôleur :</em></strong>
 <ul>
 <li>Récupère les inputs des utilisateurs</li>
-<li>Renvoie les données à afficher (TP 4)</li>
+<li>Renvoie les données à afficher</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -1141,7 +1147,7 @@ Et séparer en couches permet de trouver rapidement la source du problème.</p>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
