@@ -1,0 +1,122 @@
+---
+title: "Outils de développement"
+description: "[Slides](outils-dev-slides.html)"
+author: "Ludovic Deneuville"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+  revealjs:
+    theme: moon
+    footer: "[Home](../../index.html) --- [Outils de développement](outils-dev.html)"
+    slide-number: c/t                    ## collapsed/total
+    slide-level: 3
+    controls: true
+    output-file: outils-dev-slides.html
+from: markdown+emoji
+lightbox: true
+---
+
+## Stack VM
+
+- `Python 3.10` : la version de Python installée à l'ENSAI
+- `Visual Studio Code` : votre éditeur de code
+- `Git` : pour gérer vos dépôts
+- `PostgreSQL` : une base de données
+  - `DBeaver` : pour consulter, modifier cette base de données
+
+## Visual Studio Code
+
+- Éditeur de code source populaire 
+- Intégre un explorer et un terminal
+- Nombreuses extensions
+- Personnalisation avancée
+
+### Zoom sur les Settings
+
+- fichier *.vscode/settings.json*
+- Formater : Black
+- Linter : Flake8
+
+::: {.notes}
+- Montrer le fichier settings.json
+- icone :gear: niveau workspace ou user
+- à priori vous n'avez rien à modifier
+- vous pouvez intégrer ce fichier dans votre dépôt projet
+:::
+
+## Logs
+
+### Qu'est-ce que les logs
+
+Un log capture des informations sur ce qui s'est passé à un moment donné.
+
+- Surveillance
+- Débogage 
+
+::: {.notes}
+- Ils permettent de surveiller l'état d'un système
+- Ils aident à identifier et résoudre les problèmes
+:::
+
+### Level 1 - Débutant
+
+- Vous avez une erreur dans votre code
+- Mais vous ne savez pas exactement où ?
+- Que faites-vous ?
+
+::: {.notes}
+Vous mettez des "prints" partout
+:::
+
+### Level 2 - Mode Debug
+
+- Vous ajoutez un point d'arrêt
+- Vous lancez en mode debug
+- Vous avancez jusqu'à l'erreur
+
+::: {.notes}
+Demo
+:::
+
+### Level 3 - Logs
+
+- [ ] Importez le module *logging* et configurez
+
+```{.python}
+import logging
+
+logging.basicConfig(
+    filename='logs/example.log',  
+    level=logging.INFO,     
+    format="%(asctime)s - %(levelname)-8s - %(message)s",
+    datefmt="%d/%m/%Y %H:%M:%S")
+```
+
+### Level 3 - Logs
+
+- [ ] Postionnez vos logs
+
+```{.python}
+logger.debug("Ceci est un message de débogage")
+logger.info("Ceci est un message d'information")
+logger.warning("Ceci est un message d'avertissement")
+logger.error("Ceci est un message d'erreur")
+```
+
+### Les niveaux de logs
+
+- **DEBUG** : utile pour le débogage lors du développement
+- **INFO** : suivi du code exécuté
+- **WARNING** : situation inhabituelle mais non bloquante
+- **ERROR** : affecte la logique du programme mais ne l'arrête pas complètement
+- **CRITICAL** : nécessite une intervention urgente
+
+### Fichier de config
+
+- Possible d'externaliser la config dans un fichier `logging_config.yml`
+
+::: {.notes}
+Démo log_decorator
+:::

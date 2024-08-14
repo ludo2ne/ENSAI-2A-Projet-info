@@ -34,6 +34,8 @@ website:
             text: Analyse fonctionnelle
           - href: doc/cours/poo-avancee.qmd
             text: POO Avancée
+          - href: doc/cours/outils-dev.qmd
+            text: Outils de développement
           - href: doc/cours/tests-unitaires.qmd
             text: Tests unitaires
           - href: doc/cours/webservices.qmd

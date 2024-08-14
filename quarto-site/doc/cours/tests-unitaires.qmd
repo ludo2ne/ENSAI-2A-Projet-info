@@ -20,6 +20,9 @@ lightbox: true
 
 ## Les Tests
 
+![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](img/commitStrip_tester_ou_non.jpg){.r-stretch}
+
+
 ### Pourquoi tester ?
 
 - Crash test de voiture
@@ -34,6 +37,10 @@ lightbox: true
 - Pour éviter les régressions (quand vous modifiez du code)
 
 Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
+
+::: {.notes}
+Déjà tester une fonctionnalité d'un dev dont le cas nominal plante.
+:::
 
 
 ### Définition
@@ -204,6 +211,11 @@ Les tests unitaires
 
 ::: {.fragment}
 Au début !
+
+::: {.callout-tip}
+Plus on teste tôt :arrow_right: plus les tests sont efficaces et peu coûteux !
+:::
+
 :::
 
 ### TDD
@@ -215,16 +227,28 @@ La meilleure pratique :
 
 ### Logique
 
-Cela peut paraître un peu étrange, mais en fait pas tant que ça. 
+Cela paraît un peu étrange, mais en fait pas tant que ça. 
 
 Lorsque vous codez une fonction, vous savez avant de commencer :
 
 - quels seront les paramètres en entrée
 - quels résultats vous attendez en sortie
-- donc vous avez déjà quoi tester !
+- donc vous savez déjà quoi tester !
 
 ### Pratique du TDD
 
+- ✅ Amélioration de la qualité du code
+- ✅ Réduction des bugs
+- ❌ puis ✅ Temps
+- ❌ Maintenance des tests
+
+::: {.callout-important}
+Avantages >>> Incovénients
+:::
+
+
+::: {.notes}
 La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.
 
 Sinon, si l'on écrit la fonction en premier, une fois que l'on a terminé, il y a 9 chances sur 10 que l'on se dise : "c'est bon ça marche, pas la peine de tester...". Et ça c'est pas bien !!!
+:::

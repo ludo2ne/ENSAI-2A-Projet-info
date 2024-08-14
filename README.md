@@ -31,16 +31,17 @@ Pour générer les pages :
 - [x] Projet
 - [x] Git
 - [ ] VScode : settings, linter, formater
-- [ ] qualité, pylint
 - [ ] Logs
 - [x] Analyse fonctionnelle
-- [x] WS
+- [x] POO Avancée
 
 ## CM 2
 
+- [ ] WS
 - [ ] DAO
 - [ ] CI
-- [ ] TU pytest, coverage
+- [x] TU pytest, coverage
+- [ ] qualité, pylint
 - [ ] doc
 
 ## TP
