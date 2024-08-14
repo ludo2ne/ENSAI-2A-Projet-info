@@ -46,7 +46,7 @@
     "href": "doc/cours/tests-unitaires.html#les-tests-unitaires",
     "title": "Les tests unitaires",
     "section": "Les tests unitaires",
-    "text": "Les tests unitaires\nNous allons utiliser le package pytest pour réaliser nos tests en Python.\n\nUn bon test unitaire\n\nTeste une seule fonctionnalité\nIsolé\nReproductible\nDéterministe\n\n\n\nIsolé : indépendant des autres tests\n\nsi vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…\nle test ne doit se faire que sur la méthode A\nil faut mocker le comportement des autres méthodes\n\nDéterministe : donne toujours le même résultat\n\n\n\n\nMéthode à tester\n\n\noperation_mathematique.py\n\nclass OperationMathematiques:\n    def diviser_cinq_par(self, nombre) -&gt; float:\n        \"\"\"Divise le nombre 5 par un nombre donné.\n        Parameters\n        ----------\n        nombre : float or int\n            Le nombre par lequel 5 sera divisé.\n        Returns\n        -------\n        float or None\n            Le résultat de la division de 5 par le nombre donné.\n            Si le nombre est égal à 0, la méthode retourne None.\n        \"\"\"\n        if nombre != 0:\n            return 5 / nombre\n        else:\n            return None\n\n\n\nClasse de test\nCréons une classe de test.\nPour tester le cas nominal, nous :\n\nchoisissons un nombre en entrée\nappelons la méthode diviser_cinq_par()\nvérifions que la valeur retournée est égale à la valeur attendue\n\n\n\nCas Nominal\n\n\ntest_operation_mathematique.py\n\nimport pytest\nfrom mathematiques.operation_mathematique import OperationMathematiques\n\nclass TestOperationMathematiques():\n    def test_diviser_cinq_par_nombre_non_nul(self):\n        # GIVEN\n        nombre = 2\n\n        # WHEN\n        resultat = OperationMathematiques().diviser_cinq_par(nombre)\n\n        # THEN\n        assert resultat == 2.5\n\n\nEst-ce suffisant ?\n\n\n\nAutres cas\nMais ce n’est pas suffisant !\n\nLa méthode a également un autre retour possible : None\nIl faut aussi tester ce cas\n\n\n\ntest_operation_mathematique.py\n\n    def test_diviser_cinq_par_zero(self):\n        # GIVEN\n        nombre = 0\n\n        # WHEN\n        resultat = OperationMathematiques().diviser_cinq_par(nombre)\n\n        # THEN\n        assert resultat is None\n\n\n\nEt si…\nNous appelons la méthode avec ce paramètre : diviser_cinq_par(\"a\") ?\nVous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception TypeError dans ce cas.\n\n\ntest_operation_mathematique.py\n\n    def test_diviser_cinq_string(self):\n        # GIVEN\n        nombre = \"a\"\n\n        # WHEN / THEN\n        with pytest.raises(TypeError):\n            OperationMathematiques().diviser_cinq_par(nombre)\n\nMais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.\n\n\nCe qu’il faut retenir\nLes tests unitaires\n\nvérifient qu’une méthode fait ce qu’elle doit faire\nil faut tester les cas nominaux, mais également les cas à la marge et les erreurs\nun test unitaire teste UNE et UNE seule chose\n\nil faut autant de tests unitaires que de retours possibles"
+    "text": "Les tests unitaires\nNous allons utiliser le package pytest pour réaliser nos tests en Python.\n\nUn bon test unitaire\n\nTeste une seule fonctionnalité\nIsolé\nReproductible\nDéterministe\n\n\n\nIsolé : indépendant des autres tests\n\nsi vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…\nle test ne doit se faire que sur la méthode A\nil faut mocker le comportement des autres méthodes\n\nDéterministe : donne toujours le même résultat\n\n\n\n\nMéthode à tester\n\n\noperations_mathematiques.py\n\nclass OperationsMathematiques:\n    \"\"\"Opérations Mathématiques\"\"\"\n    def diviser_cinq_par(self, nombre) -&gt; float:\n        \"\"\"Divise le nombre 5 par un nombre donné.\n        Parameters\n        ----------\n        nombre : float or int\n            Le nombre par lequel 5 sera divisé.\n        Returns\n        -------\n        float or None\n            Le résultat de la division de 5 par le nombre donné.\n            Si le nombre est égal à 0, la méthode retourne None.\n        \"\"\"\n        if nombre != 0:\n            return 5 / nombre\n        else:\n            return None\n\n\n\nClasse de test\nCréons une classe de test.\nPour tester le cas nominal, nous :\n\nchoisissons un nombre en entrée\nappelons la méthode diviser_cinq_par()\nvérifions que la valeur retournée est égale à la valeur attendue\n\n\n\nCas Nominal\n\n\ntest_operations_mathematiques.py\n\nimport pytest\nfrom mathematiques.operations_mathematiques import OperationsMathematiques\n\nclass TestOperationsMathematiques():\n    def test_diviser_cinq_par_nombre_non_nul(self):\n        # GIVEN\n        nombre = 2\n\n        # WHEN\n        resultat = OperationsMathematiques().diviser_cinq_par(nombre)\n\n        # THEN\n        assert resultat == 2.5\n\n\nEst-ce suffisant ?\n\n\n\nAutres cas\nMais ce n’est pas suffisant !\n\nLa méthode a également un autre retour possible : None\nIl faut aussi tester ce cas\n\n\n\ntest_operations_mathematiques.py\n\n    def test_diviser_cinq_par_zero(self):\n        # GIVEN\n        nombre = 0\n\n        # WHEN\n        resultat = OperationsMathematiques().diviser_cinq_par(nombre)\n\n        # THEN\n        assert resultat is None\n\n\n\nEt si…\nNous appelons la méthode avec ce paramètre : diviser_cinq_par(\"a\") ?\nVous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception TypeError dans ce cas.\n\n\ntest_operations_mathematiques.py\n\n    def test_diviser_cinq_string(self):\n        # GIVEN\n        nombre = \"a\"\n\n        # WHEN / THEN\n        with pytest.raises(TypeError):\n            OperationsMathematiques().diviser_cinq_par(nombre)\n\nMais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.\n\n\nCe qu’il faut retenir\nLes tests unitaires\n\nvérifient qu’une méthode fait ce qu’elle doit faire\nil faut tester les cas nominaux, mais également les cas à la marge et les erreurs\nun test unitaire teste UNE et UNE seule chose\n\nil faut autant de tests unitaires que de retours possibles"
   },
   {
     "objectID": "doc/cours/tests-unitaires.html#les-test-driven-development-tdd",
@@ -410,7 +410,7 @@
     "href": "doc/projet/presentation-tuteurs-slides.html#cours",
     "title": "Présentation aux tutrices et tuteurs",
     "section": "Cours",
-    "text": "Cours\nLe cours de compléments d’informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.\n\n6h des cours\n4 TP de 3h\n\ndispensés par les tutrices / tuteurs\nle sujet est fourni"
+    "text": "Cours\nLes cours de Compléments d’informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.\n\n6h des cours\n4 TP de 3h\n\ndispensés par les tutrices / tuteurs\nle sujet est fourni"
   },
   {
     "objectID": "doc/projet/presentation-tuteurs-slides.html#cadre-général-du-projet",
@@ -469,13 +469,6 @@
     "text": "Stack VM\n\nPython 3.10\nPostgreSQL (chaque élève a une BDD)\nGit Bash\nVisual Studio Code"
   },
   {
-    "objectID": "doc/projet/presentation-tuteurs-slides.html#points-à-préciser",
-    "href": "doc/projet/presentation-tuteurs-slides.html#points-à-préciser",
-    "title": "Présentation aux tutrices et tuteurs",
-    "section": "Points à préciser",
-    "text": "Points à préciser\n\nIdée pour suivre le projet\n\npoint hebdo : tout le monde doit envoyer son point hebdo chaque vendredi soir\nKanban (GitHub project)\n\nCI/CD basique (TU, cov, pylint)\ninclure l’utilisation de logs\n\n\n\n\nHome — Présentation aux tutrices et tuteurs"
-  },
-  {
     "objectID": "doc/projet/presentation-tuteurs.html",
     "href": "doc/projet/presentation-tuteurs.html",
     "title": "Présentation aux tutrices et tuteurs",
@@ -501,7 +494,7 @@
     "href": "doc/projet/presentation-tuteurs.html#cours",
     "title": "Présentation aux tutrices et tuteurs",
     "section": "Cours",
-    "text": "Cours\nLe cours de compléments d’informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.\n\n6h des cours\n4 TP de 3h\n\ndispensés par les tutrices / tuteurs\nle sujet est fourni\n\n\n\nNotions abordées en cours\n\nUtilisation basique de Git\nRappels de POO\nDécomposer une application en couches\nCommuniquer avec une base de données / une API\nTests unitaires\nDocumentation"
+    "text": "Cours\nLes cours de Compléments d’informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.\n\n6h des cours\n4 TP de 3h\n\ndispensés par les tutrices / tuteurs\nle sujet est fourni\n\n\n\nNotions abordées en cours\n\nUtilisation basique de Git\nRappels de POO\nDécomposer une application en couches\nCommuniquer avec une base de données / une API\nTests unitaires\nDocumentation"
   },
   {
     "objectID": "doc/projet/presentation-tuteurs.html#cadre-général-du-projet",
@@ -558,13 +551,6 @@
     "title": "Présentation aux tutrices et tuteurs",
     "section": "Stack VM",
     "text": "Stack VM\n\nPython 3.10\nPostgreSQL (chaque élève a une BDD)\nGit Bash\nVisual Studio Code\n\n\nPrincipaux Packages Python\n\n\n\n\n\n\n\nNom du package\nTrès courte description\n\n\n\n\ninquirerPy\nCréer des interfaces en ligne de commande interactives\n\n\nfastapi\nCréer des webservices\n\n\npsycopg2-binary\nCommuniquer avec PostgreSQL\n\n\npytest\nTests unitaires\n\n\npython-dotenv\nVariables d’environnement à partir d’un fichier .env\n\n\nrequests\nRequêtes HTTP\n\n\nuvicorn\nServeur ASGI"
-  },
-  {
-    "objectID": "doc/projet/presentation-tuteurs.html#points-à-préciser",
-    "href": "doc/projet/presentation-tuteurs.html#points-à-préciser",
-    "title": "Présentation aux tutrices et tuteurs",
-    "section": "Points à préciser",
-    "text": "Points à préciser\n\nIdée pour suivre le projet\n\npoint hebdo : tout le monde doit envoyer son point hebdo chaque vendredi soir\nKanban (GitHub project)\n\nCI/CD basique (TU, cov, pylint)\ninclure l’utilisation de logs"
   },
   {
     "objectID": "doc/projet/presentation-eleves-slides.html#objectifs",
@@ -826,6 +812,13 @@
     "text": "Visual Studio Code\n\nÉditeur de code source populaire\nIntégre un explorer et un terminal\nNombreuses extensions\nPersonnalisation avancée"
   },
   {
+    "objectID": "doc/cours/outils-dev-slides.html#qualité-du-code",
+    "href": "doc/cours/outils-dev-slides.html#qualité-du-code",
+    "title": "Outils de développement",
+    "section": "Qualité du Code",
+    "text": "Qualité du Code"
+  },
+  {
     "objectID": "doc/cours/outils-dev-slides.html#logs",
     "href": "doc/cours/outils-dev-slides.html#logs",
     "title": "Outils de développement",
@@ -854,11 +847,18 @@
     "text": "Visual Studio Code\n\nÉditeur de code source populaire\nIntégre un explorer et un terminal\nNombreuses extensions\nPersonnalisation avancée\n\n\nZoom sur les Settings\n\nfichier .vscode/settings.json\nFormater : Black\nLinter : Flake8\n\n\n\nMontrer le fichier settings.json\nicone ⚙️ niveau workspace ou user\nà priori vous n’avez rien à modifier\nvous pouvez intégrer ce fichier dans votre dépôt projet"
   },
   {
+    "objectID": "doc/cours/outils-dev.html#qualité-du-code",
+    "href": "doc/cours/outils-dev.html#qualité-du-code",
+    "title": "Outils de développement",
+    "section": "Qualité du Code",
+    "text": "Qualité du Code\n\nPourquoi la Qualité ?\n\nMaintenabilité : plus facile à comprendre, à maintenir et à modifier\nLisibilité : facilite la collaboration et réduit les erreurs\nPerformance : fonctionne mieux et consomme moins de ressources\nSécurité : moins susceptible de contenir des vulnérabilités\n\n\n\nPylint\nOutil d’analyse statique pour Python qui :\n\nVérifie la conformité du code aux normes de style\nDétecte les erreurs potentielles\nIdentifie les mauvaises pratiques\n\n\n\nCommandes\n\npylint src\npylint --output-format=colorized --disable=C0114,C0411,C0415,W0718 $(git ls-files '*.py') --fail-under=7.5\n\n\n\nVous pouvez disable les règles qui vous ennuies\nÀ faire régulièrement\n\n\n\n\nAborescence du dépôt\nPROJET-INFO-2A\n    ├── .vscode\n    │   └── settings.json\n    ├── data\n    │   └── init_db.sql\n    ├── doc\n    │   └── suivi\n    │       └── YYYY.MM.DD-semaineN.md\n    ├── src\n    │   ├── business_object\n    │   │   └── une_classe.py\n    │   ├── dao\n    │   │   └── une_classe_dao.py\n    │   ├── service\n    │   │   └── une_classe_service.py\n    │   ├── tests\n    │   │   ├── dao\n    │   │   └── service\n    │   ├── utils\n    │   └── view\n    │       └── accueil_view.py\n    ├── .gitignore\n    ├── LICENCE\n    ├── README.md\n    └── requirements.txt\n\n\nDocumentation\n\n\noperations_mathematiques.py\n\nclass OperationsMathematiques:\n    \"\"\"Opérations Mathématiques\"\"\"\n    def diviser_cinq_par(self, nombre) -&gt; float:\n        \"\"\"Divise le nombre 5 par un nombre donné.\n        Parameters\n        ----------\n        nombre : float or int\n            Le nombre par lequel 5 sera divisé.\n        Returns\n        -------\n        float or None\n            Le résultat de la division de 5 par le nombre donné.\n            Si le nombre est égal à 0, la méthode retourne None.\n        \"\"\"\n        if nombre != 0:\n            return 5 / nombre\n        else:\n            return None\n\n\n\nDoc classes\nDoc méthodes\n\nbrève description\nparamètres\nretour"
+  },
+  {
     "objectID": "doc/cours/outils-dev.html#logs",
     "href": "doc/cours/outils-dev.html#logs",
     "title": "Outils de développement",
     "section": "Logs",
-    "text": "Logs\n\nQu’est-ce que les logs\nUn log capture des informations sur ce qui s’est passé à un moment donné.\n\nSurveillance\nDébogage\n\n\n\nIls permettent de surveiller l’état d’un système\nIls aident à identifier et résoudre les problèmes\n\n\n\n\nLevel 1 - Débutant\n\nVous avez une erreur dans votre code\nMais vous ne savez pas exactement où ?\nQue faites-vous ?\n\n\nVous mettez des “prints” partout\n\n\n\nLevel 2 - Mode Debug\n\nVous ajoutez un point d’arrêt\nVous lancez en mode debug\nVous avancez jusqu’à l’erreur\n\n\nDemo\n\n\n\nLevel 3 - Logs\n\nImportez le module logging et configurez\n\nimport logging\n\nlogging.basicConfig(\n    filename='logs/example.log',  \n    level=logging.INFO,     \n    format=\"%(asctime)s - %(levelname)-8s - %(message)s\",\n    datefmt=\"%d/%m/%Y %H:%M:%S\")\n\n\nLevel 3 - Logs\n\nPostionnez vos logs\n\nlogger.debug(\"Ceci est un message de débogage\")\nlogger.info(\"Ceci est un message d'information\")\nlogger.warning(\"Ceci est un message d'avertissement\")\nlogger.error(\"Ceci est un message d'erreur\")\n\n\nLes niveaux de logs\n\nDEBUG : utile pour le débogage lors du développement\nINFO : suivi du code exécuté\nWARNING : situation inhabituelle mais non bloquante\nERROR : affecte la logique du programme mais ne l’arrête pas complètement\nCRITICAL : nécessite une intervention urgente\n\n\n\nFichier de config\n\nPossible d’externaliser la config dans un fichier logging_config.yml\n\n\nDémo log_decorator"
+    "text": "Logs\n\nQu’est-ce que les logs\nLa journalisation (ou logging) est le processus d’enregistrement des événements, des erreurs, et des informations dans une application.\nUn log capture des informations sur ce qui s’est passé à un moment donné :\n\nSurveillance\nDébogage\n\n\n\nIls permettent de surveiller l’état d’un système, des comportements inattendus\nIls aident à identifier et résoudre les problèmes\n\n\n\n\nLevel 1 - Débutant\n\nVous avez une erreur dans votre code\nMais vous ne savez pas exactement où ?\nQue faites-vous ?\n\n\nVous mettez des “prints” partout\n\n\n\nLevel 2 - Mode Debug\n\nVous ajoutez un point d’arrêt\nVous lancez en mode debug\nVous avancez jusqu’à l’erreur\n\n\nDemo\n\n\n\nLevel 3 - Logs\n\nImportez le module logging et configurez\n\nimport logging\n\nlogging.basicConfig(\n    filename='logs/example.log',  \n    level=logging.INFO,     \n    format=\"%(asctime)s - %(levelname)-8s - %(message)s\",\n    datefmt=\"%d/%m/%Y %H:%M:%S\")\nPossible d’externaliser la config dans un fichier logging_config.yml\n\n\nLevel 3 - Logs\n\nPostionnez vos logs\n\nlogger.debug(\"Ceci est un message de débogage\")\nlogger.info(\"Ceci est un message d'information\")\nlogger.warning(\"Ceci est un message d'avertissement\")\nlogger.error(\"Ceci est un message d'erreur\")\n\n\nLes niveaux de logs\n\nDEBUG : utile pour le débogage lors du développement\nINFO : suivi du code exécuté\nWARNING : situation inhabituelle mais non bloquante\nERROR : affecte la logique du programme mais ne l’arrête pas complètement\nCRITICAL : nécessite une intervention urgente\n\n\nDémo log_decorator\n\n\n\nUn bon début\nimport logging\n\ndef ma_methode(a):\n    logging.debug(\"ma_methode - DEBUT\")\n\n    ...\n\n    logging.debug(\"ma_methode - FIN\")"
   },
   {
     "objectID": "doc/cours/intro-slides.html#cours-de-compléments-dinfo",
