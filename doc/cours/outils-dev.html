@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
-<meta name="description" content="TP 4">
+<meta name="author" content="Ludovic Deneuville">
+<meta name="description" content="Slides">
 
-<title>Git et Création d’une IHM – Projet info 2A</title>
+<title>Outils de développement – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,9 +104,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -205,23 +236,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#bilan-des-trois-premiers-tp" id="toc-bilan-des-trois-premiers-tp" class="nav-link active" data-scroll-target="#bilan-des-trois-premiers-tp"><span class="header-section-number">1</span> Bilan des trois premiers TP</a>
   <ul class="collapse">
-  <li><a href="#la-couche-service" id="toc-la-couche-service" class="nav-link" data-scroll-target="#la-couche-service"><span class="header-section-number">1.1</span> La couche service</a></li>
-  <li><a href="#la-couche-contrôleur" id="toc-la-couche-contrôleur" class="nav-link" data-scroll-target="#la-couche-contrôleur"><span class="header-section-number">1.2</span> La couche contrôleur</a></li>
-  <li><a href="#la-couche-view" id="toc-la-couche-view" class="nav-link" data-scroll-target="#la-couche-view"><span class="header-section-number">1.3</span> La couche view</a></li>
-  </ul></li>
-  <li><a href="#une-session-pour-les-gouverner-toutes" id="toc-une-session-pour-les-gouverner-toutes" class="nav-link" data-scroll-target="#une-session-pour-les-gouverner-toutes"><span class="header-section-number">2</span> Une session pour les gouverner toutes</a></li>
-  <li><a href="#inquirerpy" id="toc-inquirerpy" class="nav-link" data-scroll-target="#inquirerpy"><span class="header-section-number">3</span> InquirerPy</a>
-  <ul class="collapse">
-  <li><a href="#mes-premières-view" id="toc-mes-premières-view" class="nav-link" data-scroll-target="#mes-premières-view"><span class="header-section-number">3.1</span> Mes premières <code>View</code></a></li>
-  </ul></li>
+  <li><a href="#stack-vm" id="toc-stack-vm" class="nav-link active" data-scroll-target="#stack-vm">Stack VM</a></li>
+  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code">Visual Studio Code</a></li>
+  <li><a href="#logs" id="toc-logs" class="nav-link" data-scroll-target="#logs">Logs</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="outils-dev-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -232,12 +255,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Git et Création d’une IHM</h1>
+<h1 class="title">Outils de développement</h1>
 </div>
 
 <div>
   <div class="description">
-    TP 4
+    <a href="outils-dev-slides.html">Slides</a>
   </div>
 </div>
 
@@ -247,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Rémi Pépin, Ludovic Deneuville </p>
+             <p>Ludovic Deneuville </p>
           </div>
   </div>
     
@@ -260,184 +283,122 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ancien TP4 dont une partie du contenu a été déplacé au TP1.</p>
-</div>
-</div>
-<section id="bilan-des-trois-premiers-tp" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="bilan-des-trois-premiers-tp"><span class="header-section-number">1</span> Bilan des trois premiers TP</h2>
-<p>Si l’on reprend le modèle en couches présenté en cours, voici ce que l’on a fait depuis le début des TP :</p>
-<p><img src="img/TP4_couches.jpg" class="img-fluid"></p>
-<section id="la-couche-service" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="la-couche-service"><span class="header-section-number">1.1</span> La couche service</h3>
-<p>Actuellement notre couche service est bien maigre. En effet notre application n’a aucune logique métier. On a bien des objets métiers que l’on persiste mais aucune réelle application derrière. La raison à ce manque provient du fait que cette couche est la partie la plus longue à développer car elle contient la logique métier de l’application.</p>
-<p>Et le but de ces TP n’est pas de vous montrer comment faire une petit application type jeu Pokémon en console. Ils ont pour vocations à vous montrer une architecture de base en couche et vous présenter comment la réaliser. Dans votre projet, il est possible que ce soit la couche service qui vous demande le plus de travail.</p>
-<hr>
-</section>
-<section id="la-couche-contrôleur" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="la-couche-contrôleur"><span class="header-section-number">1.2</span> La couche contrôleur</h3>
-<p>La notion de contrôleur apparait avec le design pattern <em>MVC</em> (<a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">Model-View-Controler</a>). Mais c’est un patron de conception beaucoup trop complexe pour faire un simple affichage en console.</p>
-<p>À la place vous allez utiliser le patron <em>Model-View-Presenter</em> qui est plus simple car il reprend le principe de couches qui se succèdent.</p>
-<p>Il n’y aura donc pas de couche <strong>Controleur</strong> mais une couche <strong>View</strong> qui fera office d’IHM et appelera directement les services nécessaires.</p>
-<hr>
-</section>
-<section id="la-couche-view" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="la-couche-view"><span class="header-section-number">1.3</span> La couche view</h3>
-<p>Le fonctionnement est le suivant lorsque vous lancez l’application :</p>
+<section id="stack-vm" class="level2">
+<h2 class="anchored" data-anchor-id="stack-vm">Stack VM</h2>
 <ul>
-<li>vous arrivez sur une vue d’accueil qui propose différents choix</li>
-<li>selon le choix, zéro, un ou plusieurs services sont appelés</li>
-<li>puis vous arrivez vers une nouvelle vue (ou éventuellement resterez sur la même)</li>
-</ul>
-<p>Exemple :</p>
+<li><code>Python 3.10</code> : la version de Python installée à l’ENSAI</li>
+<li><code>Visual Studio Code</code> : votre éditeur de code</li>
+<li><code>Git</code> : pour gérer vos dépôts</li>
+<li><code>PostgreSQL</code> : une base de données
 <ul>
-<li>Vous êtes sur la <strong>Vue d’accueil</strong> et vous sélectionner <code>se connecter</code></li>
-<li>Vous basculez vers la <strong>Vue de connexion</strong>
-<ul>
-<li>dans cette vue, on vous demande de saisir user et password</li>
-<li>une fois la saisie terminée, le <strong>Service des utilisateur</strong> va être appelé</li>
-<li>ce service a une méthode <code>verification_connexion()</code>
-<ul>
-<li>cette méthode va appeler la <strong>DAO Utilisateur</strong> pour vérifier que l’utilisateur et son mot de passe existent bien en base de données</li>
-</ul></li>
-</ul></li>
-<li>si la vérification est ok, vous basculez vers la <strong>Vue Menu utilisateur</strong> où va par exemple s’afficher la liste des actions autorisées</li>
-<li>…</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="une-session-pour-les-gouverner-toutes" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="une-session-pour-les-gouverner-toutes"><span class="header-section-number">2</span> Une session pour les gouverner toutes</h2>
-<p>Là vous pouvez vous dire :</p>
-<ul>
-<li>ok on va se balader de vues en vues, ça ça va</li>
-<li>mais imaginons l’exemple suivant :
-<ul>
-<li>on passe par la <strong>Vue de connexion</strong> et on se connecte avec l’utilisateur Michel</li>
-<li>on arrive sur la <strong>Vue Menu utilisateur</strong> et on se balade dans les différentes vues</li>
-<li>un peu plus tard, on arrive sur la <strong>Vue d’ajout de Pokemon</strong>, on sélectionne celui qui nous plait et on valide</li>
-<li>cela va aboutir à l’appel d’une méthode <strong>DAO</strong> du type <code>ajouter_pokemon(utilisateur, pokemon)</code></li>
-<li>Cette méthode a 2 arguments
-<ul>
-<li>pokemon : ok facile à récupérer, on vient juste avant de le sélectionner</li>
-<li>utilisateur : là c’est moins facile car la dernière fois qu’on avait l’objet utilisateur à portée c’était dans la Vue de connexion</li>
-</ul></li>
-</ul></li>
-<li>Est-ce que une fois connecté, on doit passer l’utilisateur en paramètre de toutes les méthodes que l’on va appeler ?
-<ul>
-<li>Heureusement NON, ce serait trop compliqué</li>
-<li><span class="emoji" data-emoji="bulb">💡</span> c’est ici que l’objet <strong>Session</strong> va nous être utile</li>
+<li><code>DBeaver</code> : pour consulter, modifier cette base de données</li>
 </ul></li>
 </ul>
-<p>Dans notre <strong>Session</strong>, nous allons pouvoir stocker des objets utiles, par exemple l’utilisateur actif.</p>
-<p>Ainsi, une fois connecté, on stocke l’utilisateur en session et on peut se servir de cet objet à tout moment !</p>
-<p>Voici les liens entre notre <code>Session</code> et nos <code>Views</code> :</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-
-class Session{
-    &lt;&lt;singleton&gt;&gt;
-    user_name : str
-    selected_pokemon : AbstractPokemon
-}
-
-class AbstractView{
-    &lt;&lt;abstract&gt;&gt;
-    +display_info()* None
-    +make_choice()* AbstractView
-}
-
-class StartView{
-    +display_info() None
-    +make_choice() AbstractView
-}
-
-class ListPokemonView{
-    +display_info() None
-    +make_choice() AbstractView
-}
-
-class ListAttackView{
-    +display_info() None
-    +make_choice() AbstractView
-}
-
-Session &lt;..AbstractView: "use"
-
-AbstractView &lt;|-- StartView
-AbstractView &lt;|-- ListPokemonView
-AbstractView &lt;|-- ListAttackView
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Toute nos <code>Views</code> vont hériter de la classe <code>AbstractView</code>. Cette classe va contenir deux méthodes abstraites :</p>
-<ul>
-<li><code>display_info()</code> : qui va juste déterminer l’affichage en console</li>
-<li><code>make_choice()</code> : qui va gérer les choix de l’utilisateur et l’envoyer vers une autre page.</li>
-</ul>
-<p>En plus de cela nous allons gérer tous les attributs utilisés par les <code>View</code> dans un objet <code>Session</code> qui sera un singleton ce qui nous assurera que chaque accès à cet objet retourne la même instance et donc les mêmes valeurs stockées.</p>
-<p>Cette architecture vous permet de séparer vos différents menu en fichiers séparés et d’avoir un fonctionnement simple car chaque menu retourne un autre menu simplement.</p>
-<p><span class="emoji" data-emoji="warning">⚠️</span> La création de vos menus peut générer des problèmes de dépendances circulaires. En effet si la page A envoie sur la page B et la page B envoie sur la page A, en fonction de la façon dont vous gérez vos imports vous allez voir un problème de dépendances circulaires. Quand le problème se présentera voici 2 solutions possibles :</p>
-<ul>
-<li>remplacer <code>from X import Y</code> en <code>import Y as name</code></li>
-<li>déplacer vos imports dans la fonction qui en a besoin</li>
-</ul>
 </section>
-<section id="inquirerpy" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="inquirerpy"><span class="header-section-number">3</span> InquirerPy</h2>
-<p>Pour nous faciliter la gestion de la console nous allons utiliser la bibliothèque python <a href="https://inquirerpy.readthedocs.io/en/latest/">InquirerPy</a>. Elle permet de créer facilement des applications interactives en console. Le projet est bien documenté avec plusieurs <a href="https://github.com/kazhala/InquirerPy/tree/master/examples">exemples</a> de code, faciles à transposer.</p>
+<section id="visual-studio-code" class="level2">
+<h2 class="anchored" data-anchor-id="visual-studio-code">Visual Studio Code</h2>
+<ul>
+<li>Éditeur de code source populaire</li>
+<li>Intégre un explorer et un terminal</li>
+<li>Nombreuses extensions</li>
+<li>Personnalisation avancée</li>
+</ul>
+<section id="zoom-sur-les-settings" class="level3">
+<h3 class="anchored" data-anchor-id="zoom-sur-les-settings">Zoom sur les Settings</h3>
+<ul>
+<li>fichier <em>.vscode/settings.json</em></li>
+<li>Formater : Black</li>
+<li>Linter : Flake8</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Montrer le fichier settings.json</li>
+<li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
+<li>à priori vous n’avez rien à modifier</li>
+<li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="logs" class="level2">
+<h2 class="anchored" data-anchor-id="logs">Logs</h2>
+<section id="quest-ce-que-les-logs" class="level3">
+<h3 class="anchored" data-anchor-id="quest-ce-que-les-logs">Qu’est-ce que les logs</h3>
+<p>Un log capture des informations sur ce qui s’est passé à un moment donné.</p>
+<ul>
+<li>Surveillance</li>
+<li>Débogage</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Ils permettent de surveiller l’état d’un système</li>
+<li>Ils aident à identifier et résoudre les problèmes</li>
+</ul>
+</div>
+</section>
+<section id="level-1---débutant" class="level3">
+<h3 class="anchored" data-anchor-id="level-1---débutant">Level 1 - Débutant</h3>
+<ul>
+<li>Vous avez une erreur dans votre code</li>
+<li>Mais vous ne savez pas exactement où ?</li>
+<li>Que faites-vous ?</li>
+</ul>
+<div class="notes">
+<p>Vous mettez des “prints” partout</p>
+</div>
+</section>
+<section id="level-2---mode-debug" class="level3">
+<h3 class="anchored" data-anchor-id="level-2---mode-debug">Level 2 - Mode Debug</h3>
+<ul>
+<li>Vous ajoutez un point d’arrêt</li>
+<li>Vous lancez en mode debug</li>
+<li>Vous avancez jusqu’à l’erreur</li>
+</ul>
+<div class="notes">
+<p>Demo</p>
+</div>
+</section>
+<section id="level-3---logs" class="level3">
+<h3 class="anchored" data-anchor-id="level-3---logs">Level 3 - Logs</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Lancez le <code>__main__.py</code> et testez un peu l’application</label></li>
-<li><label><input type="checkbox">Regardez les fichiers du package <strong>view</strong> pour essayer de comprendre comment fonctionnent les vues. Le principe est toujours le même lorsque l’on arrive sur une nouvelle vue :</label>
-<ul>
-<li>on répond aux questions demandées</li>
-<li>un traitement est éventuellement fait (appel à des services)</li>
-<li>on bascule vers une autre vue</li>
-</ul></li>
+<li><label><input type="checkbox">Importez le module <em>logging</em> et configurez</label></li>
 </ul>
-<section id="mes-premières-view" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="mes-premières-view"><span class="header-section-number">3.1</span> Mes premières <code>View</code></h3>
-<p><strong>✍Hand on 3</strong></p>
-<p>Répartissez vous le travail entre membre du groupe pour implémenter les <code>Views</code> suivantes :</p>
-<ul>
-<li>Affichage Pokémon:
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    filename<span class="op">=</span><span class="st">'logs/example.log'</span>,  </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    level<span class="op">=</span>logging.INFO,     </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)-8s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    datefmt<span class="op">=</span><span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y %H:%M:%S"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-3---logs-1" class="level3">
+<h3 class="anchored" data-anchor-id="level-3---logs-1">Level 3 - Logs</h3>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>PokemonListView</code> : qui permet de visualiser 30 Pokémons sommairement. Il est possible de sélectionner un pokémon pour aller sur <code>PokemonDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code> si vous le souhaitez.</label></li>
-<li><label><input type="checkbox"><code>PokemonDetailsView</code> : qui affiche les détails du Pokémon sélectionné comme ses statistiques et ses attaques. Renvoie sur la <code>StartView</code> ou <code>PokemonListeView</code> en fonction du choix de l’utilisateur.</label></li>
-</ul></li>
-<li>Affichage attaque:
-<ul class="task-list">
-<li><label><input type="checkbox"><code>AttackListView</code> : qui permet de visualiser 50 attaques sommairement et d’en sélectionner une pour aller sur <code>AttackDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code>.</label></li>
-<li><label><input type="checkbox"><code>AttackDetailsView</code> : qui affiche les détails de l’attaque sélectionnée, comme par exemple ses caractéristiques (name, power, description), mais également quels sont les Pokémons qui peuvent l’apprendre. Renvoie sur la <code>StartView</code> ou <code>AttackListView</code> en fonction du choix de l’utilisateur.</label></li>
-</ul></li>
-<li><label><input type="checkbox"><code>CreatePokemonView</code> : qui permet de créer un Pokémon et le mettre en session. Après validation de l’utilisateur on retourne sur <code>StartView</code></label></li>
+<li><label><input type="checkbox">Postionnez vos logs</label></li>
 </ul>
-<p>Quelques astuces :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>logger.debug(<span class="st">"Ceci est un message de débogage"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">"Ceci est un message d'information"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">"Ceci est un message d'avertissement"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>logger.error(<span class="st">"Ceci est un message d'erreur"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="les-niveaux-de-logs" class="level3">
+<h3 class="anchored" data-anchor-id="les-niveaux-de-logs">Les niveaux de logs</h3>
 <ul>
-<li><code>PokemonService</code> dispose d’une méthode <code>get_pokemon_from_webservice(limit:int, offset:int)</code> pour récupérer des pokémons de la base</li>
-<li><code>AttackService</code> dispose d’une méthode <code>get_attacks_from_webservice(limit:int, offset:int)</code> pour récupérer des attaques de la base</li>
-<li>de nombreux exemples sont disponibles sur la <a href="https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html">doc InquirerPy</a></li>
+<li><strong>DEBUG</strong> : utile pour le débogage lors du développement</li>
+<li><strong>INFO</strong> : suivi du code exécuté</li>
+<li><strong>WARNING</strong> : situation inhabituelle mais non bloquante</li>
+<li><strong>ERROR</strong> : affecte la logique du programme mais ne l’arrête pas complètement</li>
+<li><strong>CRITICAL</strong> : nécessite une intervention urgente</li>
 </ul>
-<p>Quand vous avez terminé une classe, faites un commit, puis poussez sur le dépôt distant.</p>
-<hr>
-<p>Merci d’avoir participé et Vive les Pokemons !</p>
+</section>
+<section id="fichier-de-config" class="level3">
+<h3 class="anchored" data-anchor-id="fichier-de-config">Fichier de config</h3>
+<ul>
+<li>Possible d’externaliser la config dans un fichier <code>logging_config.yml</code></li>
+</ul>
+<div class="notes">
+<p>Démo log_decorator</p>
+</div>
 
 
 </section>

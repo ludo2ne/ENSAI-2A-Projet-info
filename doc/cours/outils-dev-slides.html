@@ -7,14 +7,11 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Ludovic Deneuville">
-  <title>Projet info 2A – Les tests unitaires</title>
+  <title>Projet info 2A – Outils de développement</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -395,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Les tests unitaires</h1>
+  <h1 class="title">Outils de développement</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -406,310 +403,166 @@ Ludovic Deneuville
 </div>
 
 </section>
-<section>
-<section id="les-tests" class="title-slide slide level2 center">
-<h2>Les Tests</h2>
-
-<img data-src="img/commitStrip_tester_ou_non.jpg" class="r-stretch quarto-figure-center" alt="Source : CommitStrip"><p class="caption">Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></p></section>
-<section id="pourquoi-tester" class="slide level3">
-<h3>Pourquoi tester ?</h3>
+<section id="stack-vm" class="title-slide slide level2 center">
+<h2>Stack VM</h2>
 <ul>
-<li>Crash test de voiture</li>
-<li>Test de conformité</li>
-<li>Test qualité en industrie</li>
-<li>Test statistique</li>
-</ul>
-</section>
-<section id="en-informatique" class="slide level3">
-<h3>En informatique</h3>
+<li><code>Python 3.10</code> : la version de Python installée à l’ENSAI</li>
+<li><code>Visual Studio Code</code> : votre éditeur de code</li>
+<li><code>Git</code> : pour gérer vos dépôts</li>
+<li><code>PostgreSQL</code> : une base de données
 <ul>
-<li>Pour vérifier que votre programme fonctionne</li>
-<li>Pour détecter des erreurs</li>
-<li>Pour éviter les régressions (quand vous modifiez du code)</li>
-</ul>
-<p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
-<aside class="notes">
-<p>Déjà tester une fonctionnalité d’un dev dont le cas nominal plante.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="définition" class="slide level3">
-<h3>Définition</h3>
-<p>Un test ressemble à une expérience scientifique.</p>
-<p>Il examine une hypothèse exprimée en fonction de trois éléments :</p>
-<ul>
-<li>les données en entrée</li>
-<li>l’objet à tester</li>
-<li>les résultats attendus</li>
-</ul>
-<p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
-</section>
-<section id="couverture-de-test" class="slide level3">
-<h3>Couverture de test</h3>
-<ul>
-<li>Pourcentage de fonctions testées</li>
-<li>Indicateur de qualité</li>
-<li>Tendance, plutôt qu’une valeur fiable</li>
-</ul>
-<p>Préférez faire peu de tests, mais des tests utiles !</p>
-<aside class="notes">
-<p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
-<p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-types-de-tests" class="slide level3 smaller">
-<h3>Les types de tests</h3>
-<p>Il existe de très nombreux tests différents, voici les principaux :</p>
-<ul>
-<li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
-<li>Test fonctionnel : teste les cas d’utilisation du logiciel</li>
-<li>Test de charge : évaluent la capacité d’un système à gérer un volume élevé de données ou de transactions</li>
-<li>Test d’intégration : vérifie que différents composants ou modules d’un système interagissent correctement ensemble</li>
-<li>Test d’intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles</li>
-<li>…</li>
-</ul>
-</section></section>
-<section>
-<section id="les-tests-unitaires" class="title-slide slide level2 center">
-<h2>Les tests unitaires</h2>
-<p>Nous allons utiliser le package <code>pytest</code> pour réaliser nos tests en Python.</p>
-</section>
-<section id="un-bon-test-unitaire" class="slide level3">
-<h3>Un bon test unitaire</h3>
-<ul>
-<li>Teste une seule fonctionnalité</li>
-<li>Isolé</li>
-<li>Reproductible</li>
-<li>Déterministe</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Isolé : indépendant des autres tests
-<ul>
-<li>si vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
-<li>le test ne doit se faire que sur la méthode A</li>
-<li>il faut <code>mocker</code> le comportement des autres méthodes</li>
-</ul></li>
-<li>Déterministe : donne toujours le même résultat</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="méthode-à-tester" class="slide level3">
-<h3>Méthode à tester</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>operation_mathematique.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb1" data-filename="operation_mathematique.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">class</span> OperationMathematiques:</span>
-<span id="cb1-2"><a></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb1-3"><a></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
-<span id="cb1-4"><a></a><span class="co">        Parameters</span></span>
-<span id="cb1-5"><a></a><span class="co">        ----------</span></span>
-<span id="cb1-6"><a></a><span class="co">        nombre : float or int</span></span>
-<span id="cb1-7"><a></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
-<span id="cb1-8"><a></a><span class="co">        Returns</span></span>
-<span id="cb1-9"><a></a><span class="co">        -------</span></span>
-<span id="cb1-10"><a></a><span class="co">        float or None</span></span>
-<span id="cb1-11"><a></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
-<span id="cb1-12"><a></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
-<span id="cb1-13"><a></a><span class="co">        """</span></span>
-<span id="cb1-14"><a></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb1-15"><a></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
-<span id="cb1-16"><a></a>        <span class="cf">else</span>:</span>
-<span id="cb1-17"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="classe-de-test" class="slide level3">
-<h3>Classe de test</h3>
-<p>Créons une classe de test.</p>
-<p>Pour tester le cas nominal, nous :</p>
-<ul>
-<li>choisissons un nombre en entrée</li>
-<li>appelons la méthode <code>diviser_cinq_par()</code></li>
-<li>vérifions que la valeur retournée est égale à la valeur attendue</li>
-</ul>
-</section>
-<section id="cas-nominal" class="slide level3">
-<h3>Cas Nominal</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_operation_mathematique.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb2" data-filename="test_operation_mathematique.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> pytest</span>
-<span id="cb2-2"><a></a><span class="im">from</span> mathematiques.operation_mathematique <span class="im">import</span> OperationMathematiques</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a><span class="kw">class</span> TestOperationMathematiques():</span>
-<span id="cb2-5"><a></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
-<span id="cb2-6"><a></a>        <span class="co"># GIVEN</span></span>
-<span id="cb2-7"><a></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a>        <span class="co"># WHEN</span></span>
-<span id="cb2-10"><a></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb2-11"><a></a></span>
-<span id="cb2-12"><a></a>        <span class="co"># THEN</span></span>
-<span id="cb2-13"><a></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<aside class="notes">
-<p>Est-ce suffisant ?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="autres-cas" class="slide level3">
-<h3>Autres cas</h3>
-<p>Mais ce n’est pas suffisant !</p>
-<ul>
-<li>La méthode a également un autre retour possible : <code>None</code></li>
-<li>Il faut aussi tester ce cas</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_operation_mathematique.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb3" data-filename="test_operation_mathematique.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
-<span id="cb3-2"><a></a>        <span class="co"># GIVEN</span></span>
-<span id="cb3-3"><a></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a>        <span class="co"># WHEN</span></span>
-<span id="cb3-6"><a></a>        resultat <span class="op">=</span> OperationMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a>        <span class="co"># THEN</span></span>
-<span id="cb3-9"><a></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="et-si" class="slide level3">
-<h3>Et si…</h3>
-<p>Nous appelons la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
-<p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_operation_mathematique.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb4" data-filename="test_operation_mathematique.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
-<span id="cb4-2"><a></a>        <span class="co"># GIVEN</span></span>
-<span id="cb4-3"><a></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
-<span id="cb4-4"><a></a></span>
-<span id="cb4-5"><a></a>        <span class="co"># WHEN / THEN</span></span>
-<span id="cb4-6"><a></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
-<span id="cb4-7"><a></a>            OperationMathematiques().diviser_cinq_par(nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
-</section>
-<section id="ce-quil-faut-retenir" class="slide level3">
-<h3>Ce qu’il faut retenir</h3>
-<p>Les tests unitaires</p>
-<ul>
-<li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
-<li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
-<li>un test unitaire teste UNE et UNE seule chose
-<ul>
-<li>il faut autant de tests unitaires que de retours possibles</li>
+<li><code>DBeaver</code> : pour consulter, modifier cette base de données</li>
 </ul></li>
 </ul>
+</section>
+
+<section>
+<section id="visual-studio-code" class="title-slide slide level2 center">
+<h2>Visual Studio Code</h2>
+<ul>
+<li>Éditeur de code source populaire</li>
+<li>Intégre un explorer et un terminal</li>
+<li>Nombreuses extensions</li>
+<li>Personnalisation avancée</li>
+</ul>
+</section>
+<section id="zoom-sur-les-settings" class="slide level3">
+<h3>Zoom sur les Settings</h3>
+<ul>
+<li>fichier <em>.vscode/settings.json</em></li>
+<li>Formater : Black</li>
+<li>Linter : Flake8</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Montrer le fichier settings.json</li>
+<li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
+<li>à priori vous n’avez rien à modifier</li>
+<li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
-<section id="les-test-driven-development-tdd" class="title-slide slide level2 center">
-<h2>Les Test Driven Development (TDD)</h2>
+<section id="logs" class="title-slide slide level2 center">
+<h2>Logs</h2>
 
 </section>
-<section id="quand-tester" class="slide level3">
-<h3>Quand tester ?</h3>
-<div class="fragment">
-<p>Au début !</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Plus on teste tôt <span class="emoji" data-emoji="arrow_right">➡️</span> plus les tests sont efficaces et peu coûteux !</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="tdd" class="slide level3">
-<h3>TDD</h3>
-<p>La meilleure pratique :</p>
-<ol type="1">
-<li>Créer les tests</li>
-<li>Coder la fonction</li>
-</ol>
-</section>
-<section id="logique" class="slide level3">
-<h3>Logique</h3>
-<p>Cela paraît un peu étrange, mais en fait pas tant que ça.</p>
-<p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
+<section id="quest-ce-que-les-logs" class="slide level3">
+<h3>Qu’est-ce que les logs</h3>
+<p>Un log capture des informations sur ce qui s’est passé à un moment donné.</p>
 <ul>
-<li>quels seront les paramètres en entrée</li>
-<li>quels résultats vous attendez en sortie</li>
-<li>donc vous savez déjà quoi tester !</li>
+<li>Surveillance</li>
+<li>Débogage</li>
 </ul>
-</section>
-<section id="pratique-du-tdd" class="slide level3">
-<h3>Pratique du TDD</h3>
-<ul>
-<li>✅ Amélioration de la qualité du code</li>
-<li>✅ Réduction des bugs</li>
-<li>❌ puis ✅ Temps</li>
-<li>❌ Maintenance des tests</li>
-</ul>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Avantages &gt;&gt;&gt; Incovénients</p>
-</div>
-</div>
-</div>
 <aside class="notes">
-<p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
-<p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
+<ul>
+<li>Ils permettent de surveiller l’état d’un système</li>
+<li>Ils aident à identifier et résoudre les problèmes</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="level-1---débutant" class="slide level3">
+<h3>Level 1 - Débutant</h3>
+<ul>
+<li>Vous avez une erreur dans votre code</li>
+<li>Mais vous ne savez pas exactement où ?</li>
+<li>Que faites-vous ?</li>
+</ul>
+<aside class="notes">
+<p>Vous mettez des “prints” partout</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="level-2---mode-debug" class="slide level3">
+<h3>Level 2 - Mode Debug</h3>
+<ul>
+<li>Vous ajoutez un point d’arrêt</li>
+<li>Vous lancez en mode debug</li>
+<li>Vous avancez jusqu’à l’erreur</li>
+</ul>
+<aside class="notes">
+<p>Demo</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="level-3---logs" class="slide level3">
+<h3>Level 3 - Logs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Importez le module <em>logging</em> et configurez</label></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> logging</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>logging.basicConfig(</span>
+<span id="cb1-4"><a></a>    filename<span class="op">=</span><span class="st">'logs/example.log'</span>,  </span>
+<span id="cb1-5"><a></a>    level<span class="op">=</span>logging.INFO,     </span>
+<span id="cb1-6"><a></a>    <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)-8s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">"</span>,</span>
+<span id="cb1-7"><a></a>    datefmt<span class="op">=</span><span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y %H:%M:%S"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="level-3---logs-1" class="slide level3">
+<h3>Level 3 - Logs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Postionnez vos logs</label></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>logger.debug(<span class="st">"Ceci est un message de débogage"</span>)</span>
+<span id="cb2-2"><a></a>logger.info(<span class="st">"Ceci est un message d'information"</span>)</span>
+<span id="cb2-3"><a></a>logger.warning(<span class="st">"Ceci est un message d'avertissement"</span>)</span>
+<span id="cb2-4"><a></a>logger.error(<span class="st">"Ceci est un message d'erreur"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="les-niveaux-de-logs" class="slide level3">
+<h3>Les niveaux de logs</h3>
+<ul>
+<li><strong>DEBUG</strong> : utile pour le débogage lors du développement</li>
+<li><strong>INFO</strong> : suivi du code exécuté</li>
+<li><strong>WARNING</strong> : situation inhabituelle mais non bloquante</li>
+<li><strong>ERROR</strong> : affecte la logique du programme mais ne l’arrête pas complètement</li>
+<li><strong>CRITICAL</strong> : nécessite une intervention urgente</li>
+</ul>
+</section>
+<section id="fichier-de-config" class="slide level3">
+<h3>Fichier de config</h3>
+<ul>
+<li>Possible d’externaliser la config dans un fichier <code>logging_config.yml</code></li>
+</ul>
+<aside class="notes">
+<p>Démo log_decorator</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -724,7 +577,7 @@ Ludovic Deneuville
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="tests-unitaires.html">Tests unitaires</a></p>
+<p><a href="../../index.html">Home</a> — <a href="outils-dev.html">Outils de développement</a></p>
 </div>
 </div>
 </section></section>
@@ -1125,38 +978,6 @@ Ludovic Deneuville
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
-    (function() {
-      let previousOnload = window.onload;
-      window.onload = () => {
-        if (previousOnload) {
-          previousOnload();
-        }
-        lightboxQuarto.on('slide_before_load', (data) => {
-          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-          const href = trigger.getAttribute('href');
-          if (href !== null) {
-            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-            if (imgEl !== null) {
-              const srcAttr = imgEl.getAttribute("src");
-              if (srcAttr && srcAttr.startsWith("data:")) {
-                slideConfig.href = srcAttr;
-              }
-            }
-          } 
-        });
-      
-        lightboxQuarto.on('slide_after_load', (data) => {
-          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(slideNode);
-          }
-        });
-      
-      };
-      
-    })();
-              </script>
     
 
 </body></html>

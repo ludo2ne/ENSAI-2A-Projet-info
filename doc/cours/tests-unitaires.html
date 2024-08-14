@@ -77,6 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -170,6 +173,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
  <span class="dropdown-text">POO Avancée</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
+ <span class="dropdown-text">Outils de développement</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
@@ -281,6 +288,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="les-tests" class="level2">
 <h2 class="anchored" data-anchor-id="les-tests">Les Tests</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/commitStrip_tester_ou_non.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Source : CommitStrip"><img src="img/commitStrip_tester_ou_non.jpg" class="r-stretch img-fluid figure-img" alt="Source : CommitStrip"></a></p>
+<figcaption>Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></figcaption>
+</figure>
+</div>
 <section id="pourquoi-tester" class="level3">
 <h3 class="anchored" data-anchor-id="pourquoi-tester">Pourquoi tester ?</h3>
 <ul>
@@ -298,6 +311,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Pour éviter les régressions (quand vous modifiez du code)</li>
 </ul>
 <p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
+<div class="notes">
+<p>Déjà tester une fonctionnalité d’un dev dont le cas nominal plante.</p>
+</div>
 </section>
 <section id="définition" class="level3">
 <h3 class="anchored" data-anchor-id="définition">Définition</h3>
@@ -477,6 +493,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="quand-tester">Quand tester ?</h3>
 <div class="fragment">
 <p>Au début !</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Plus on teste tôt <span class="emoji" data-emoji="arrow_right">➡️</span> plus les tests sont efficaces et peu coûteux !</p>
+</div>
+</div>
 </div>
 </section>
 <section id="tdd" class="level3">
@@ -489,18 +518,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="logique" class="level3">
 <h3 class="anchored" data-anchor-id="logique">Logique</h3>
-<p>Cela peut paraître un peu étrange, mais en fait pas tant que ça.</p>
+<p>Cela paraît un peu étrange, mais en fait pas tant que ça.</p>
 <p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
 <ul>
 <li>quels seront les paramètres en entrée</li>
 <li>quels résultats vous attendez en sortie</li>
-<li>donc vous avez déjà quoi tester !</li>
+<li>donc vous savez déjà quoi tester !</li>
 </ul>
 </section>
 <section id="pratique-du-tdd" class="level3">
 <h3 class="anchored" data-anchor-id="pratique-du-tdd">Pratique du TDD</h3>
+<ul>
+<li>✅ Amélioration de la qualité du code</li>
+<li>✅ Réduction des bugs</li>
+<li>❌ puis ✅ Temps</li>
+<li>❌ Maintenance des tests</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Avantages &gt;&gt;&gt; Incovénients</p>
+</div>
+</div>
+<div class="notes">
 <p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
 <p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
+</div>
 
 
 </section>
@@ -1085,6 +1135,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
