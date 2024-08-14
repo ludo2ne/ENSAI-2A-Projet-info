@@ -103,8 +103,9 @@ Nous allons utiliser le package `pytest` pour réaliser nos tests en Python.
 
 ### Méthode à tester
 
-```{.python filename="operation_mathematique.py"}
-class OperationMathematiques:
+```{.python filename="operations_mathematiques.py"}
+class OperationsMathematiques:
+    """Opérations Mathématiques"""
     def diviser_cinq_par(self, nombre) -> float:
         """Divise le nombre 5 par un nombre donné.
         Parameters
@@ -136,17 +137,17 @@ Pour tester le cas nominal, nous :
 
 ### Cas Nominal
 
-```{.python filename="test_operation_mathematique.py"}
+```{.python filename="test_operations_mathematiques.py"}
 import pytest
-from mathematiques.operation_mathematique import OperationMathematiques
+from mathematiques.operations_mathematiques import OperationsMathematiques
 
-class TestOperationMathematiques():
+class TestOperationsMathematiques():
     def test_diviser_cinq_par_nombre_non_nul(self):
         # GIVEN
         nombre = 2
 
         # WHEN
-        resultat = OperationMathematiques().diviser_cinq_par(nombre)
+        resultat = OperationsMathematiques().diviser_cinq_par(nombre)
 
         # THEN
         assert resultat == 2.5
@@ -163,13 +164,13 @@ Mais ce n'est pas suffisant !
 - La méthode a également un autre retour possible : `None`
 - Il faut aussi tester ce cas
 
-```{.python filename="test_operation_mathematique.py"}
+```{.python filename="test_operations_mathematiques.py"}
     def test_diviser_cinq_par_zero(self):
         # GIVEN
         nombre = 0
 
         # WHEN
-        resultat = OperationMathematiques().diviser_cinq_par(nombre)
+        resultat = OperationsMathematiques().diviser_cinq_par(nombre)
 
         # THEN
         assert resultat is None
@@ -181,14 +182,14 @@ Nous appelons la méthode avec ce paramètre : `diviser_cinq_par("a")` ?
 
 Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception `TypeError` dans ce cas.
 
-```{.python filename="test_operation_mathematique.py"}
+```{.python filename="test_operations_mathematiques.py"}
     def test_diviser_cinq_string(self):
         # GIVEN
         nombre = "a"
 
         # WHEN / THEN
         with pytest.raises(TypeError):
-            OperationMathematiques().diviser_cinq_par(nombre)
+            OperationsMathematiques().diviser_cinq_par(nombre)
 ```
 
 Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n'est pas le cas.

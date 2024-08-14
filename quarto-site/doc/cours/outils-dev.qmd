@@ -46,17 +46,108 @@ lightbox: true
 - vous pouvez intégrer ce fichier dans votre dépôt projet
 :::
 
+## Qualité du Code
+
+### Pourquoi la Qualité ?
+
+- **Maintenabilité** : plus facile à comprendre, à maintenir et à modifier
+- **Lisibilité** : facilite la collaboration et réduit les erreurs
+- **Performance** : fonctionne mieux et consomme moins de ressources
+- **Sécurité** : moins susceptible de contenir des vulnérabilités
+
+### Pylint
+
+Outil d'analyse statique pour Python qui :
+
+- Vérifie la conformité du code aux normes de style
+- Détecte les erreurs potentielles
+- Identifie les mauvaises pratiques
+
+```{.bash filename="Commandes"}
+pylint src
+pylint --output-format=colorized --disable=C0114,C0411,C0415,W0718 $(git ls-files '*.py') --fail-under=7.5
+```
+
+::: {.notes}
+- Vous pouvez disable les règles qui vous ennuies
+- À faire régulièrement
+:::
+
+### Aborescence du dépôt {.smaller}
+
+```{.txt code-line-numbers="false"}
+PROJET-INFO-2A
+    ├── .vscode
+    │   └── settings.json
+    ├── data
+    │   └── init_db.sql
+    ├── doc
+    │   └── suivi
+    │       └── YYYY.MM.DD-semaineN.md
+    ├── src
+    │   ├── business_object
+    │   │   └── une_classe.py
+    │   ├── dao
+    │   │   └── une_classe_dao.py
+    │   ├── service
+    │   │   └── une_classe_service.py
+    │   ├── tests
+    │   │   ├── dao
+    │   │   └── service
+    │   ├── utils
+    │   └── view
+    │       └── accueil_view.py
+    ├── .gitignore
+    ├── LICENCE
+    ├── README.md
+    └── requirements.txt
+```
+
+### Documentation
+
+```{.python filename="operations_mathematiques.py"}
+class OperationsMathematiques:
+    """Opérations Mathématiques"""
+    def diviser_cinq_par(self, nombre) -> float:
+        """Divise le nombre 5 par un nombre donné.
+        Parameters
+        ----------
+        nombre : float or int
+            Le nombre par lequel 5 sera divisé.
+        Returns
+        -------
+        float or None
+            Le résultat de la division de 5 par le nombre donné.
+            Si le nombre est égal à 0, la méthode retourne None.
+        """
+        if nombre != 0:
+            return 5 / nombre
+        else:
+            return None
+```
+
+::: {.notes}
+- Doc classes 
+- Doc méthodes
+  - brève description
+  - paramètres
+  - retour
+
+:::
+
 ## Logs
 
 ### Qu'est-ce que les logs
 
-Un log capture des informations sur ce qui s'est passé à un moment donné.
+La journalisation (ou logging) est le processus d'enregistrement des événements, des erreurs, et des informations dans une application.
+
+Un log capture des informations sur ce qui s'est passé à un moment donné :
 
 - Surveillance
 - Débogage 
 
 ::: {.notes}
-- Ils permettent de surveiller l'état d'un système
+- Ils permettent de surveiller l'état d'un système, des comportements inattendus
 - Ils aident à identifier et résoudre les problèmes
 :::
 
@@ -94,6 +185,8 @@ logging.basicConfig(
     datefmt="%d/%m/%Y %H:%M:%S")
 ```
 
+Possible d'externaliser la config dans un fichier `logging_config.yml`
+
 ### Level 3 - Logs
 
 - [ ] Postionnez vos logs
@@ -113,10 +206,19 @@ logger.error("Ceci est un message d'erreur")
 - **ERROR** : affecte la logique du programme mais ne l'arrête pas complètement
 - **CRITICAL** : nécessite une intervention urgente
 
-### Fichier de config
-
-- Possible d'externaliser la config dans un fichier `logging_config.yml`
-
 ::: {.notes}
 Démo log_decorator
 :::
+
+### Un bon début
+
+```{.python}
+import logging
+
+def ma_methode(a):
+    logging.debug("ma_methode - DEBUT")
+
+    ...
+
+    logging.debug("ma_methode - FIN")
+```

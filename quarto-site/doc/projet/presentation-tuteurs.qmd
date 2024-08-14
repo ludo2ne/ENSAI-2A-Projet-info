@@ -38,7 +38,7 @@ lightbox: true
 
 ## Cours 
 
-Le cours de [compléments d'informatique](https://ludo2ne.github.io/ENSAI-2A-complements-info/){target="_blank"} vise à fournir aux élèves les outils pour mener à bien le projet informatique.
+Les cours de Compléments d'informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.
 
 - 6h des cours
 - 4 TP de 3h 
@@ -267,11 +267,3 @@ contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interact
 | requests            | Requêtes HTTP                                              |
 | uvicorn             | Serveur ASGI                                               |
 
-
-## Points à préciser
-
-- [ ] Idée pour suivre le projet
-  - point hebdo : tout le monde doit envoyer son point hebdo chaque vendredi soir
-  - Kanban (GitHub project)
-- [ ] CI/CD basique (TU, cov, pylint)
-- [ ] inclure l'utilisation de logs
