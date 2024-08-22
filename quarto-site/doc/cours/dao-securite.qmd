@@ -19,3 +19,688 @@ lightbox: true
 ---
 
 :construction:
+
+## Le plan {.smaller}
+
+- Data Access Object
+  - Pourquoi persister des données ?
+  - C'est quoi une DAO
+  - Exemple de DAO
+- Sécurité Informatique
+  - Définition
+  - Failles de sécurité
+  - Injection SQL
+- Gestion des mots de passe
+  - Authentification avec cypher
+  - Hashage de mots de passe
+  - Exemple
+
+
+## Data access object (DAO)
+
+:::::: {.hide-html-render}
+<iframe src="https://giphy.com/embed/dIBLtolI6axTGIGopo" width="960" height="540" frameBorder="0" class="giphy-embed no-print" allowFullScreen></iframe>
+::::::
+
+::: {.notes}
+Notre objectif va être de stocker des données, mais avant :
+
+Quels sont les éléments d'un ordinateur ?
+
+- RAM (Random Access Memory)
+- ROM (Read Only Memory)
+:::
+
+### Un ordinateur (en gros)
+
+- Un processeur (CPU) : fait UNIQUEMENT du calcul
+- La mémoire RAM : mémoire volatile rapide
+- Disque dur (HDD, SSD) : mémoire longue durée
+- Carte graphique : unité de calcul spécialisée
+
+::: {.notes}
+Bien insister sur CPU, RAM, disque !
+Rendent 3 services différents
+**Faire un dessin**
+- CPU : processeur
+- DD : disque
+- RAM : barrettes
+:::
+
+### Comment résoudre ce problème ?
+
+:::::: {.hide-html-render}
+![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
+::::::
+
+::: {.notes}
+Quel problème ???
+Conserver les données une fois le programme Python terminé
+:::
+
+### Une question à se poser
+
+C'est quoi une variable Python ?
+
+- Une référence (le nom de la variable)
+- **Un objet associé (sa valeur)**
+
+::: {.notes}
+On zappe la notion d'adressage mémoire.  
+Pas besoin de stocker la référence, car elle est dans le code source  
+`pika = Pokemon(name="Pikachu",...)`
+:::
+
+### Une question qui en découle
+
+C'est quoi un objet Python ?
+
+- **Des attributs (qui peuvent être eux-mêmes des objets)**
+- Des méthodes
+
+::: {.notes}
+Pareil, les méthodes c'est du code, nous on veut juste les attributs
+:::
+
+### Pour résumer
+
+On veut sauvegarder des couples clef-valeur  
+Avec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur
+
+**On veut sauvegarder un arbre 🌳**
+
+::: {.notes}
+Besoin d'un dessin  
+Parallèle avec les dict Python / JSON  
+Arbre car les attributs d'objets sont parfois eux-mêmes des objets  
+Personne :  
+- nom, prénom  
+- Adresse : rue, ville  
+- list[Vehicule]  
+:::
+
+### Comment faire ça ?
+
+- Écrire nos données sur le disque dur dans un fichier (csv, json, xml ...)
+- Utiliser une base de données (SQL tables + relations; No-SQL)
+
+::: {.notes}
+Question : Comment fait une BDD ?  
+- Elle gère dans des fichiers  
+- On peut faire le parallèle avec les couches  
+- La BDD rend un service, j'ignore comment elle fait  
+- Je sais ce qu'elle attend en entrée et ce qu'elle me donne en sortie !  
+:::
+
+### Lien persistance / application
+
+- Python : Variables volatiles en RAM
+- Système de persistance : Données stockées sur disque
+- Data Access Objects (DAO) en guise de lien
+
+::: {.notes}
+Petite pause récap pour essayer de récupérer tout le monde avant la DAO.
+
+Dans la vraie vie, on ne repart pas de 0 quand on relance une appli  
+:::
+
+### C'est quoi une DAO ?
+
+:::::: {.hide-html-render}
+![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
+::::::
+
+### C'est quoi une DAO ?
+
+- Classe technique
+- Une classe DAO / objet métier
+- Expose des méthodes pour communiquer avec la couche de persistance
+
+::: {.notes}
+C'est une API  
+Rend un service à des clients  
+Comment elle fait ? -> Pas le problème du client.  
+Comme vous au restaurant. Vous voulez manger, comment c'est fait vous importe peu tant que le service est rendu (avec un niveau d'exigence)  
+:::
+
+### Quelles méthodes exposer ?
+
+- **C**reate
+- **R**ead
+- **U**pdate
+- **D**elete
+
+::: {.notes}
+Faire participer  
+
+Essayer de montrer que ces 4 là suffisent.  
+Après on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.  
+
+Quid de la copie ?  
+Une copie c'est une lecture + création donc on sait faire  
+
+Exemple dessin : classe Personne - table personne - dao personneDAO
+:::
+
+### L'intérêt d'une classe à part
+
+Séparation des responsabilités
+
+- Classe "jetable" 🚮
+- Modifiable sans risque 🔨
+- Parallélisation du travail 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+
+::: {.notes}
+On remet une couche, ça fait pas de mal  
+Dans la vraie vie, si changement de système, plus facile de migrer  
+
+En projet, la couche DAO peut être très facile à faire
+:::
+
+### Petit recap
+
+![Petit recap](img/Zoom metier.png)
+
+::: {.notes}
+Petit exemple pour illustrer.  
+Exemple : lister toutes les personnes fans de Pokemon
+:::
+
+### Comment se connecter à une DB en python ?
+
+Utilisation d'une bibliothèque dédiée
+
+- **PostgreSQL** : psycopg2
+- MySQL : mysql-connector-python
+- Oracle : cx_Oracle
+- MongoDB : pymongo
+
+::: {.notes}
+Vous lirez en entier la doc : [psycopg2 documentation](https://www.psycopg.org/docs/)
+
+Il y aura des questions à l'exam !
+:::
+
+### psycopg2
+
+- `pip install psycopg2-binary`
+
+- `connection` : permet d'établir la connexion avec la base  
+  Pas super intéressant à faire, le code est donné
+
+- `cursor` : encapsule la requête
+
+    ```python
+    with getConnexion() as conn:
+        with conn.cursor() as curseur:
+    ```
+
+- `cursor.execute()` : permet de faire une requête
+- `cursor.fetchone()/fetchall()/fetchmany()` : Récupération des résultats
+
+::: {.notes}
+Classe Connection:
+
+```{.python}
+def __init__(self):
+    dotenv.load_dotenv(override=True)
+    # Open the connection.
+    self.__connection = psycopg2.connect(
+        host=os.environ["HOST"],
+        port=os.environ["PORT"],
+        database=os.environ["DATABASE"],
+        user=os.environ["USER"],
+        password=os.environ["PASSWORD"],
+        cursor_factory=RealDictCursor
+    )
+```
+::: 
+
+### Forme de base
+
+```{.python}
+def dao_function(self, arg1, arg2...):
+    # Récupération de la connexion à la base
+    with getConnexion() as conn :
+    # Création d'un curseur pour faire une requête
+    # (le curseur stocke les résultats de la requête)
+        with conn.cursor() as curseur :
+            # On envoie au serveur la requête SQL
+            curseur.execute(
+                une_requete_sql_à_trous,
+                remplisage_des_trous)
+
+            # On récupère le résultat de la requête
+            res = curseur.fetchone()  # ou /fetchall()/fetchmany()
+        
+    return something   
+```
+
+::: {.notes}
+res : list[dict]
+:::
+
+### Un petit exemple : LivreDao
+
+![LivreDao](img/uml/class_diagramm_DAO.png)
+
+::: {.notes}
+ISBN : International Standard Book Number
+:::
+
+
+### Créer un livre
+
+```{.python}
+def create(self, livre) -> Livre:
+    """Pour créer un livre en base"""
+    with DBConnection().connection as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO livre (isbm, titre, auteur)         "
+                "     VALUES (%(isbm)s, %(titre)s, %(auteur)s)   "
+                "  RETURNING id_livre;                           ",
+                {"isbm": livre.isbm, 
+                 "titre": livre.titre, 
+                 "auteur": livre.auteur},
+            )
+            livre.id = cursor.fetchone()["id_livre"]
+    return livre
+```
+
+### Lister les livres
+
+```{.python}
+def find_all(self) -> list[Livre]:
+    """Pour récupérer tous les livres en base"""
+    with DBConnection().connection as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT id_livre,                  "
+                "       isbm,                      "
+                "       titre,                     "
+                "       auteur                     "
+                "  FROM livre ;                    "
+            )
+            livre_bdd = cursor.fetchall()
+            
+    liste_livres = []
+
+    if livre_bdd:
+        for livre in livre_bdd:
+            liste_livres.append(
+                Livre(
+                    id=livre["id_livre"],
+                    isbm=livre["isbm"],
+                    titre=livre["titre"],
+                    auteur=livre["auteur"],
+                )
+            )
+            
+    return liste_livres
+```
+
+### Trouver un livre
+
+```{.python}
+def find_by_isbm(self, isbm) -> Livre:
+    """Pour récupérer un livre depuis son isbm"""
+    with DBConnection().connection as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT *                          "
+                "  FROM livre                      "
+                " WHERE isbm = %(isbm)s            ",
+                {"isbm": livre.isbm}
+            livre_bdd = cursor.fetchone()
+            
+    livre = None
+    if livre_bdd:
+        livre = Livre(
+            id=livre_bdd["id_livre"],
+            isbm=livre_bdd["isbm"],
+            titre=livre_bdd["titre"],
+            auteur=livre_bdd["auteur"],
+        )
+    return livre
+```
+
+### Conclusion
+
+- Python travaille en RAM (volatile) ![Flash](https://img.icons8.com/color/48/000000/the-flash-sign--v2.png)
+- Obligation d'avoir un mécanisme de persistance des données ![HDD](https://img.icons8.com/dusk/48/000000/hdd.png)
+- DAO : centralise les méthodes pour lire/écrire nos données ![Edit Property](https://img.icons8.com/color/48/000000/edit-property.png)
+- La couche métier appelle la DAO sans se préoccuper du système de persistance ![Invisible](https://img.icons8.com/color/48/000000/invisible.png)
+- Permet un travail d'équipe efficace 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+
+
+## Sécurité informatique
+
+### Principes CAID
+
+![Principes CAID](https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg)
+
+### 4 piliers de la sécurité info
+
+- **C**onfidentialité
+- **A**uthentification
+- **I**ntégrité
+- **D**isponibilité
+
+::: {.notes}
+On utilise aussi parfois DICP ou DICPA  
+Disponibilité, Intégrité, Confidentialité, Preuve
+:::
+
+### Deux bonus
+
+- Traçabilité
+- Non-répudiation
+
+### Confidentialité
+
+Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées
+(notions de droits ou permissions). Tout accès indésirable doit être empêché.
+
+**Mécanismes associés :** gestion des droits (annuaires, rôles ...), cryptographie
+
+::: {.notes}
+On parle plutôt de chiffrement
+:::
+
+### Authentification
+
+Les utilisateurs doivent prouver leur identité en répondant à un "challenge".
+
+**Mécanismes associés :** authentification faible (identifiant, mot de passe), forte (données biométriques, multi-facteurs)
+
+### Intégrité
+
+Les données doivent être celles que l'on attend, et ne doivent pas être altérées de façons fortuites, illicites ou malveillantes.
+
+**Mécanismes associés :** signature électronique, checksum
+
+
+:::{.notes}
+**Signature électronique :** garantir l'intégrité d'un document, c’est-à-dire s’assurer que le document n'a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c’est-à-dire s’assurer de l’identité de la personne signataire.
+
+**Checksum :** bit de parité.
+:::
+
+
+### Disponibilité
+
+L'accès aux ressources du système d'information doit être permanent et sans faille durant les plages d'utilisation prévues.
+
+**Mécanismes associés :** redondance des serveurs, virtualisation, conteneurisation
+
+:::{.notes}
+Backup
+
+Parler de la mise en production avant.
+:::
+
+### Traçabilité
+
+Garantit que les accès et tentatives d'accès aux éléments considérés sont tracés et que ces traces sont conservées et exploitables.
+
+**Mécanisme associé :** journalisation
+
+:::{.notes}
+Logs (mieux que les prints)
+
+Projet 2024-2025
+:::
+
+### La non-répudiation
+
+Aucun utilisateur ne doit pouvoir contester les opérations qu'il a réalisées dans le cadre de ses actions autorisées et aucun tiers ne doit pouvoir s'attribuer les actions d'un autre utilisateur.
+
+**Mécanismes associés :** traçabilité + authentification + intégrité
+
+:::{.notes}
+C'est pas moi<br>
+Mais c'est votre nom !<br>
+Ne laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)
+:::
+
+
+## Les failles informatiques
+
+### Trop de failles !!!
+
+- Failles physiques "bas niveau"
+- Failles physiques "haut niveau"
+- **Injection SQL**
+- Injection de données
+- **Faille XSS**
+- Exécution de code
+- ...
+
+:::{.notes}
+- Failles physiques "bas niveau" : coupure électrique, inondation salle serveur
+- Failles physiques "haut niveau" : accès physique à une machine
+:::
+
+
+### De quoi faut-il se méfier ?
+
+![Méfiez-vous](https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif)
+
+### De quoi faut-il se méfier ?
+
+**De vos utilisateurs**
+
+## Exemple de failles, les injections SQL
+
+![Injection SQL](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
+
+### Injection SQL
+
+Consiste à saisir du SQL pour exécuter une autre requête que celle prévue.
+
+- Problèmes
+  - Confidentialité
+  - Authentification
+  - Intégrité
+  - Disponibilité
+
+### Exemple : s'authentifier sans mot de passe
+
+Requête d'authentification
+
+```{.sql}
+SELECT * 
+  FROM user 
+ WHERE name = 'input_name' 
+   AND mdp = 'input_mdp';
+```
+
+### Exemple : s'authentifier sans mot de passe
+
+Saisie
+
+- Rémi
+- mon_super_password
+
+```{.sql}
+SELECT * 
+  FROM user 
+ WHERE name = 'Rémi' 
+   AND mdp = 'mon_super_password';
+```
+
+### Exemple : s'authentifier sans mot de passe
+
+Saisie
+
+- Rémi
+- `' OR 1=1; --`
+
+```{.sql}
+SELECT * 
+  FROM user 
+ WHERE name = 'Rémi' 
+   AND mdp = '' OR 1=1; --';
+```
+
+### Exemple : supprimer une table
+
+Saisie
+
+- Rémi
+- `'; DROP TABLE user CASCADE; --`
+
+```{.sql}
+SELECT * 
+  FROM user 
+ WHERE name='Rémi' 
+   AND mdp=''; DROP TABLE user CASCADE; --;
+```
+
+::: {.callout-warning}
+Bye bye la table user
+:::
+
+### Comment se protéger ?
+
+- Échapper les caractères spéciaux
+- Utiliser une requête préparée
+
+**La bibliothèque que vous utiliserez ne fait que de l'échappement de caractères spéciaux 😨**
+
+:::{.notes}
+La seconde solution est mieux que la première mais psycopg2 ne semble pas la proposer simplement.  
+Donc il faut la connaître, mais savoir que c'est la première solution qui va être faite.
+
+Échapper les caractères spéciaux : par exemple, « ' » sera remplacé par « \' »  
+L'apostrophe ne sera donc pas interprétée comme une fin de chaîne par le SGBD
+
+Instruction "prepare" :  
+1. Envoie la requête à trous à la BDD  
+2. Envoie pour remplir les trous
+:::
+
+### Cross Site Scripting
+
+Consiste à injecter du code provoquant des actions sur le navigateur. Cela peut permettre :
+
+- Des redirections de page (phishing)
+- Du vol d'information
+- Des actions sur le site
+- Rendre le site difficile à utiliser
+
+### Comment se protéger ?
+
+- Ne jamais insérer des données brutes
+- Échapper les caractères spéciaux
+- Vérifier vos données
+
+
+::: {.callout-tip}
+Les bibliothèques web le font souvent pour vous !
+:::
+
+
+
+### To sum up : injection
+
+- Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs
+- Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs
+- Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs
+
+
+## Gestion des mots de passe
+
+### Votre application doit-elle stocker des mots de passe en clair?
+
+![Votre application doit-elle stocker des mots de passe en clair?](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif)
+
+### Votre application doit-elle connaître le mot de passe d'un utilisateur pour l'authentifier ?
+
+![Votre application doit-elle connaître le mot de passe d'un utilisateur pour l'authentifier ?](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif)
+
+### ????
+
+![????](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif)
+
+
+### Hasher le mot de passe
+
+- Hashage du mot de passe => cypher
+- Stockage du cypher en base
+- Quand besoin de comparer on hashe le mdp saisi
+- Et on compare les cyphers
+
+**Authentification sans persister les mots de passe !!!!**
+
+:::{.notes}
+C'est tellement simple et sécurisé !  
+Mais pas tous les sites le font ...  
+Un site qui vous renvoie votre mdp le garde en mémoire (ou du moins le moyen de le déchiffrer)  
+
+Dans la vraie vie, on rajoute un "sel" au mdp avant de le hacher.  
+C'est une valeur aléatoire calculée pour chaque utilisateur que l'on va rajouter au mdp avant de le hacher  
+Cela rend une attaque en force brute plus coûteuse.
+:::
+
+![Gif](https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif){.w80 .plain .no-print}
+
+
+### Ajouter du sel pour plus de sécurité
+
+![Gif](https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif){.w50 .plain .no-print}
+
+### Une base sans sel ajouté
+
+- Votre base mail/mdp fuite mais les mdp sont hachés
+- Les attaquants doivent _bruteforce_ les mdp
+- Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants
+- Puis ils comparent avec la base
+- Forte chance d'avoir plusieurs correspondances
+
+:::{.notes}
+bruteforce : tester toutes les combinaisons possibles
+:::
+
+
+### Le sel c'est bon pour la sécurité
+
+Au lieu de hacher et stocker le mdp vous stockez et hachez le mdp 
+ET un élément lié à l'utilisateur de manière déterministe (le sel).
+
+Maintenant même si 2 personnes ont le même mdp, elles auront des hash
+différents.
+
+### Le sel c'est bon pour la sécurité
+
+- Votre base mail/mdp fuite mais les mdp sont hachés et salés
+- Les attaquants doivent *bruteforce* les mdp
+- Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants
+- Puis ils comparent avec la base.
+- Il y a pas de match car vos mdp sont salés
+- Et trouver un mdp ne permet de trouver les autres
+
+---
+
+![made at imgflip.com](https://i.imgflip.com/3acxa9.jpg){.no-print w50}
+
+### Exemple de hashage de mdp
+
+```{.python}
+import hashlib
+ 
+def hash_password(password, idep):
+    salt = idep
+    return hashlib.sha256(salt.encode() + password.encode()).hexdigest()
+    
+print(hash_password("mon_super_password", "remi"))
+```
+
+### To sum up the security part
+
+- Toujours vérifier les inputs
+- Ne jamais faire confiance aux utilisateurs
+- Plusieurs niveaux de sécurité
+- Pas besoin de stocker les mots de passe en clair

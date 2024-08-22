@@ -19,3 +19,366 @@ lightbox: true
 ---
 
 :construction:
+
+## Le plan
+
+- API
+- Webservice
+  - Définition
+  - Exemples
+  - Architecture microservices
+- Hyper Text Transfer Protocol
+  - Définition
+  - Exemples
+
+## API
+
+### Définition
+
+::: {.callout-note}
+Interface entre deux ordinateurs ou deux programmes. 
+
+C'est une application qui offre des services à d'autres applications. 
+
+L'application implémente une API ou expose une API.
+:::
+
+## Définition
+
+Termes assez vaste qui recouvre :
+
+- Les bibliothèques / frameworks :
+  [Pandas](https://pandas.pydata.org/docs/reference/index.html){target="_blank"}
+  [Numpy](https://numpy.org/){target="_blank"}
+- Des webservices
+- Un moyen d'accéder aux ressources d'un hardware
+  - [Nvidia API](https://developer.nvidia.com/nvapi){target="_blank"}
+
+### API in a nutshell
+
+- Expose des méthodes/fonctions aux utilisateurs
+- Réutilisation
+- Contractualisation des inputs/outputs
+- Boîte noire
+
+::: {.notes}
+Pour reprendre l'exemple du dessus, le module d'authentification peut être utilisé aussi bien par les utilisateurs pour la version site marchand, que par les admins pour la partie administration.
+:::
+
+---
+
+::: {.callout-note}
+Une API rend un service aux utilisateurs sans qu'ils aient à savoir comment elle fait. 
+
+Ils connaissent juste ce qu'elle attend en entrée et ce qu'elle produit !
+:::
+
+## Les webservices
+
+Une API particulière
+
+![](https://www.testarchitect.com/images/gallery/cross/web-service.png)
+
+
+### Question
+
+À votre avis, X permet-il à tout le monde d'accéder à leurs bases de données directement ?
+
+::: {.notes}
+Bien sûr non !
+:::
+
+### Wait what ?!
+
+- Pourtant de nombreux sites utilisent les données X !
+- Comment font-ils ?
+
+
+:::::: {.hide-html-render}
+### Des idées ?
+
+<iframe src="https://giphy.com/embed/8acGIeFnqLA7S" width="600" height="600" frameBorder="0" class="no-print giphy-embed" allowFullScreen></iframe>
+
+::::::
+
+### Solution : web scraper
+
+Consiste à écrire une application qui se connecte à un site, et qui va lire la page pour en tirer des informations
+
+**Problèmes**
+
+- Crée du trafic artificiel (côté site)
+- Chaque changement dans le site casse notre application
+- Gérer le JavaScript 😱😱😱😱
+
+::: {.notes}
+Dire que derrière un site il y a du HTML.  
+Montrer un exemple ?
+:::
+
+### Autre solution : créer un point d'entrée pour les machines
+
+- Accessible depuis le web
+- Fait pour les machines
+- **Contrôle ce que l'on rend accessible**
+
+::: {.callout}
+Interface entre l'extérieur et notre système
+:::
+
+### Démo
+
+::: {.notes}
+Exemple : [https://api.gouv.fr/documentation/api_data_gouv](https://api.gouv.fr/documentation/api_data_gouv)  
+[https://anapioficeandfire.com/](https://anapioficeandfire.com/)
+:::
+
+
+### Les webservices
+
+- Application web
+- **Accessible via requête HTTP/HTTPS**
+- Sans interface graphique
+- **Renvoie des données compréhensibles par les machines (JSON, XML...)**
+
+::: {.notes}
+Webservice : une API particulière que nous allons utiliser
+:::
+
+### Plusieurs types
+
+- REST : le plus courant, le type que vous allez manipuler, JSON
+- SOAP : plus complet donc plus lourd que le REST, XML
+- RPC : Remote Procedure Call
+
+::: {.notes}
+REST est un style architectural qui définit un ensemble de contraintes et de principes
+:::
+
+---
+
+Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande
+
+Comme un site web, mais pour les machines
+
+### Exemple
+
+[Le trafic à Rennes en temps réel](https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel)
+
+::: {.notes}
+https://data.rennesmetropole.fr/explore/dataset/export-api-parking-citedia/api/
+:::
+
+### Architecture microservices
+
+Site de e-commerce
+
+- WS authentification
+- WS gestion de compte
+- WS paiement
+- WS de recherche
+- WS analyse des données
+- WS gestion panier
+
+### Architecture microservices
+
+Chaque module est un webservice indépendant, et c'est l'application côté client qui va les contacter
+
+::: {.callout-note}
+Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle
+:::
+
+::: {.notes}
+Un dessin pourrait peut-être aider
+:::
+
+:::::: {.hide-html-render}
+### Comment ça fonctionne ?
+
+<iframe src="https://giphy.com/embed/a5viI92PAF89q"  width="900" height="500" frameBorder="0" class="no-print giphy-embed" allowFullScreen></iframe>
+
+::::::
+
+### La notion de client-serveur
+
+- **LE MODÈLE QUI RÉGIT LE WEB**
+- Des machines qui attendent des demandes : **serveurs**
+- Des machines qui font des demandes : **clients**
+- Le client initie le contact, le serveur répond
+
+
+### Comparaison avec vie réelle
+
+- Vous marchez dans la rue et vous avez envie d'un café frappé Double shot espresso and Cream
+- Vous rentrez dans un Starbucks et **demandez** votre café
+- Le **serveur** traite votre demande et vous donne votre café
+- Vous partez avec votre café
+
+
+## Hyper Text Transfer Protocol (HTTP)
+
+### HTTP
+
+Protocole de communication client-serveur développé pour le World Wide Web
+
+N'est pas le seul : FTP, SMTP, IRC ...
+
+Il existe des protocoles non client-serveur : BitTorrent
+
+::: {.notes}
+Avez vous une idée de requête HTTP ?
+::: 
+
+### Avez-vous une idée de requête HTTP ?
+
+Demander une page web via votre navigateur crée une requête HTTP
+
+::: {.notes}
+Vous faites tout le temps des requêtes HTTP sans le savoir.
+:::
+
+### Les éléments d'une requête
+
+- La localisation de la ressource : URL (nom de domaine + chemin)
+- La méthode employée (GET, POST, UPDATE, DELETE ...)
+- Les paramètres de la requête
+- Le corps de la requête
+
+::: {.notes}
+Les paramètres sont derrière le ?  
+Le corps vous ne le voyez pas, mais il est possible de le voir.
+:::
+
+### Les éléments d'une requête
+
+`GET https://pokeapi.co/api/v2/pokemon?limit=10&offset=200`
+
+- méthode
+- protocole
+- adresse du ws
+- endpoint
+- paramètres
+
+::: {.notes}
+Pour aller plus loin : IP, DNS
+:::
+
+### Les méthodes HTTP
+
+- POST
+- GET
+- UPDATE
+- DELETE
+
+::: {.callout-important}
+C'est le CRUD !
+:::
+
+::: {.notes}
+Comme en SQL
+:::
+
+### Exemple
+
+http://web-services.domensai.ecole/attack
+
+- GET : récupérer toutes les attaques
+- POST : ajouter une attaque
+- UPDATE : modifier une attaque en ajoutant son id en paramètre
+- DELETE : supprimer une attaque en ajoutant son id en paramètre
+
+### Pour résumer
+
+- Le HTTP est le protocole du web
+- Méthode
+- URL
+- Paramètres dans URL ou corps
+
+## Contacter/réaliser un webservice
+
+### Contacter un webservice
+
+Un outil : un client HTTP
+
+- Un navigateur web (assez limité)
+- Insomnia/Postman
+- Vscode avec des plugins
+- Python avec le plugin `requests`
+
+### Contacter un webservice en python
+
+```{.python}
+import requests
+
+# Construction de la requête
+url = "https://data.rennesmetropole.fr/api/records/1.0/search/"
+parametres = {"dataset": "etat-du-trafic-en-temps-reel", "rows": 2}
+
+# Lancement de la requête
+res = requests.get(url=url, params=parametres)
+
+# Affichage du résultat
+print(res.json())
+print("\nNombre de lignes : ", res.json()["parameters"]["rows"])
+```
+
+### Contacter un webservice en python
+
+```{.python}
+import json
+import requests
+
+url = "https://anapioficeandfire.com/api/"
+end_point = "characters"
+parametres = {"gender": "Female", "isAlive": True, "culture": "Braavosi"}
+response = requests.get(url=url + end_point, params=parametres)
+
+# Teste si le serveur a répondu
+if response.status_code != 200:
+    raise Exception(f"Cannot reach (HTTP {response.status_code}): {response.text}")
+print(json.dumps(response.json()))
+```
+
+### Contacter un webservice en python
+
+- Très facile
+- `res.json()` retourne un dictionnaire
+- `get()` peut devenir `post()`, `put()`, etc.
+
+### Réaliser un webservice en python
+
+- Peut sembler complexe 😵
+- Mais il existe des outils pour nous aider 😎
+- Pas besoin d'être un expert de l'informatique ! 🐱‍💻
+
+
+### 3 frameworks
+
+- [FlaskRESTful](https://fastapi.tiangolo.com/){target="_blank"} : mature, léger, flexible
+- [Django](https://www.djangoproject.com/){target="_blank"} : mature, robuste, complet
+- [FastApi](https://fastapi.tiangolo.com/){target="_blank"} : jeune, léger, moderne
+
+::: {.notes}
+FastApi pour le TP2
+:::
+
+### FastApi : les bases
+
+```{.python}
+from fastapi import FastAPI
+
+app = FastAPI()
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+```
+
+### FastApi
+
+- Il est facile de coder vos endpoints
+- La [documentation](https://fastapi.tiangolo.com/tutorial/first-steps/){target="_blank"} est extrêmement bien faite
+- Vous vous concentrez sur l'essentiel
