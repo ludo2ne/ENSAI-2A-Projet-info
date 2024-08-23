@@ -662,8 +662,8 @@ SELECT *
 
 ::::::{.fragment}
 ::: {.callout-note title="Vous saisissez"}
-- Rémi
-- mon_super_password
+- Gennysson
+- awsome_password
 :::
 ::::::
 
@@ -671,8 +671,8 @@ SELECT *
 ```{.sql}
 SELECT * 
   FROM user 
- WHERE name = 'Rémi' 
-   AND mdp = 'mon_super_password';
+ WHERE name = 'Gennysson' 
+   AND mdp = 'awsome_password';
 ```
 :::
 
@@ -691,7 +691,7 @@ SELECT *
 
 ::::::{.fragment}
 ::: {.callout-warning title="Vous saisissez"}
-- Rémi
+- Gennysson
 - `' OR 1=1; --`
 :::
 ::::::
@@ -700,7 +700,7 @@ SELECT *
 ```{.sql}
 SELECT * 
   FROM user 
- WHERE name = 'Rémi' 
+ WHERE name = 'Gennysson' 
    AND mdp = '' OR 1=1; --';
 ```
 :::
@@ -716,7 +716,7 @@ SELECT *
 
 ::::::{.fragment}
 ::: {.callout-warning title="Vous saisissez"}
-- Rémi
+- Gennysson
 - `'; DROP TABLE user CASCADE; --`
 :::
 ::::::
@@ -725,7 +725,7 @@ SELECT *
 ```{.sql}
 SELECT * 
   FROM user 
- WHERE name='Rémi' 
+ WHERE name='Gennysson' 
    AND mdp=''; DROP TABLE user CASCADE; --;
 ```
 :::
@@ -790,28 +790,23 @@ Les bibliothèques web le font souvent pour vous !
 
 ::::::{.fragment}
 ::: {.hide-html-render}
-![](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif)
+![](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif){width=100%}
 :::
-No way
 ::::::
 
 ### Votre application doit-elle connaître le mot de passe d'un utilisateur pour l'authentifier ?
 
 ::::::{.fragment}
 ::: {.hide-html-render}
-![](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif)
+![](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif){width=50%}
 :::
-..... No
 ::::::
 
-### ????
+### Comment on fait ?
 
-::::::{.fragment}
 ::: {.hide-html-render}
-![](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif)
+![](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif){width=100%}
 :::
-How it works ?
-::::::
 
 ### Hasher le mot de passe
 
@@ -887,7 +882,7 @@ def hash_password(password, idep):
     salt = idep
     return hashlib.sha256(salt.encode() + password.encode()).hexdigest()
     
-print(hash_password("mon_super_password", "remi"))
+print(hash_password("awsome_password", "Gennysson"))
 ```
 
 ### To sum up the security part
