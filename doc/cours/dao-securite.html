@@ -151,6 +151,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -959,8 +963,8 @@ Vous saisissez
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Rémi</li>
-<li>mon_super_password</li>
+<li>Gennysson</li>
+<li>awsome_password</li>
 </ul>
 </div>
 </div>
@@ -968,8 +972,8 @@ Vous saisissez
 <div class="fragment">
 <div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Rémi'</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'mon_super_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'awsome_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="notes">
 <p>Si dans votre cursor.execute vous avez ce code</p>
@@ -993,7 +997,7 @@ Vous saisissez
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Rémi</li>
+<li>Gennysson</li>
 <li><code>' OR 1=1; --</code></li>
 </ul>
 </div>
@@ -1002,7 +1006,7 @@ Vous saisissez
 <div class="fragment">
 <div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Rémi'</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1024,7 +1028,7 @@ Vous saisissez
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Rémi</li>
+<li>Gennysson</li>
 <li><code>'; DROP TABLE user CASCADE; --</code></li>
 </ul>
 </div>
@@ -1033,7 +1037,7 @@ Vous saisissez
 <div class="fragment">
 <div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Rémi'</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Gennysson'</span> </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -1104,27 +1108,22 @@ Tip
 <h3 class="anchored" data-anchor-id="votre-application-doit-elle-stocker-des-mots-de-passe-en-clair">Votre application doit-elle stocker des mots de passe en clair?</h3>
 <div class="fragment">
 <div class="hide-html-render">
-<p><a href="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="img-fluid"></a></p>
+<p><a href="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="img-fluid" style="width:100.0%"></a></p>
 </div>
-<p>No way</p>
 </div>
 </section>
 <section id="votre-application-doit-elle-connaître-le-mot-de-passe-dun-utilisateur-pour-lauthentifier" class="level3">
 <h3 class="anchored" data-anchor-id="votre-application-doit-elle-connaître-le-mot-de-passe-dun-utilisateur-pour-lauthentifier">Votre application doit-elle connaître le mot de passe d’un utilisateur pour l’authentifier ?</h3>
 <div class="fragment">
 <div class="hide-html-render">
-<p><a href="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="img-fluid"></a></p>
+<p><a href="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="img-fluid" style="width:50.0%"></a></p>
 </div>
-<p>….. No</p>
 </div>
 </section>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section">????</h3>
-<div class="fragment">
+<section id="comment-on-fait" class="level3">
+<h3 class="anchored" data-anchor-id="comment-on-fait">Comment on fait ?</h3>
 <div class="hide-html-render">
-<p><a href="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="img-fluid"></a></p>
-</div>
-<p>How it works ?</p>
+<p><a href="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="img-fluid" style="width:100.0%"></a></p>
 </div>
 </section>
 <section id="hasher-le-mot-de-passe" class="level3">
@@ -1194,7 +1193,7 @@ Cela rend une attaque en force brute plus coûteuse.</p>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    salt <span class="op">=</span> idep</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hashlib.sha256(salt.encode() <span class="op">+</span> password.encode()).hexdigest()</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hash_password(<span class="st">"mon_super_password"</span>, <span class="st">"remi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hash_password(<span class="st">"awsome_password"</span>, <span class="st">"Gennysson"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="to-sum-up-the-security-part" class="level3">
 <h3 class="anchored" data-anchor-id="to-sum-up-the-security-part">To sum up the security part</h3>
@@ -1788,7 +1787,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
