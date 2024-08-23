@@ -7,7 +7,10 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Ludovic Deneuville, Rémi Pépin">
@@ -29,6 +32,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="none">
@@ -338,16 +406,1249 @@ Ludovic Deneuville, Rémi Pépin
 </div>
 
 </section>
+<section id="le-plan" class="title-slide slide level2 smaller center">
+<h2>Le plan</h2>
+<ul>
+<li>Data Access Object
+<ul>
+<li>Pourquoi persister des données ?</li>
+<li>C’est quoi une DAO</li>
+<li>Exemple de DAO</li>
+</ul></li>
+<li>Sécurité Informatique
+<ul>
+<li>Définition</li>
+<li>Failles de sécurité</li>
+<li>Injection SQL</li>
+</ul></li>
+<li>Gestion des mots de passe
+<ul>
+<li>Authentification avec cypher</li>
+<li>Hashage de mots de passe</li>
+<li>Exemple</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Nous allons commencer par parler Stockage des données</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section>
+<section id="data-access-object-dao" class="title-slide slide level2 center">
+<h2>Data access object (DAO)</h2>
+<div class="hide-html-render">
+<iframe src="https://giphy.com/embed/dIBLtolI6axTGIGopo" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+</div>
+<aside class="notes">
+<p>Notre objectif va être de stocker des données, mais avant :</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-ordinateur" class="slide level3">
+<h3>Un ordinateur</h3>
+<p>Quels sont ses composants (en gros) ?</p>
+<div class="fragment">
+<ul>
+<li>Un processeur (CPU) : fait UNIQUEMENT du calcul</li>
+<li>La mémoire RAM : mémoire volatile rapide</li>
+<li>Disque dur (HDD, SSD) : mémoire longue durée</li>
+<li>Carte graphique : unité de calcul spécialisée</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Bien insister sur CPU, RAM, disque !</p>
+<p>Rendent 3 services différents :</p>
+<ul>
+<li>CPU : processeur</li>
+<li>DD : disque</li>
+<li>RAM : barrettes</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="comment-résoudre-ce-problème" class="slide level3">
+<h3>Comment résoudre ce problème ?</h3>
+<div class="hide-html-render">
+<p><a href="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif"></a></p>
+</div>
+<div class="fragment">
+<p>Quel problème ??</p>
+</div>
+<aside class="notes">
+<p>Réponse : Conserver les données une fois le programme Python terminé</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="une-question-à-se-poser" class="slide level3">
+<h3>Une question à se poser</h3>
+<p>C’est quoi une variable Python ?</p>
+<div class="fragment">
+<ul>
+<li>Une référence (le nom de la variable)</li>
+<li><strong>Un objet associé (sa valeur)</strong></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Personnage(prenom<span class="op">=</span><span class="st">"Leia"</span>, nom<span class="op">=</span><span class="st">"Organa"</span>, age <span class="op">=</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>On zappe la notion d’adressage mémoire.<br>
+Pas besoin de stocker la référence, car elle est dans le code source</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="une-question-qui-en-découle" class="slide level3">
+<h3>Une question qui en découle</h3>
+<p>C’est quoi un objet Python ?</p>
+<div class="fragment">
+<ul>
+<li>Des attributs (qui peuvent être eux-mêmes des objets)</li>
+<li>Des méthodes</li>
+</ul>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>personnage.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="personnage.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">class</span> Personnage:</span>
+<span id="cb2-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, prenom, nom, age):</span>
+<span id="cb2-3"><a></a>        <span class="va">self</span>.prenom <span class="op">=</span> prenom</span>
+<span id="cb2-4"><a></a>        <span class="va">self</span>.nom <span class="op">=</span> nom</span>
+<span id="cb2-5"><a></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb2-6"><a></a>        <span class="va">self</span>.vaisseaux <span class="op">=</span> []</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a>    <span class="kw">def</span> anniversaire(<span class="va">self</span>):</span>
+<span id="cb2-9"><a></a>        <span class="va">self</span>.age <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>Pareil, les méthodes c’est du code, nous on veut juste les attributs</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pour-résumer" class="slide level3">
+<h3>Pour résumer</h3>
+<ul>
+<li>Nous voulons sauvegarder des couples clef-valeur<br>
+</li>
+<li>Avec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur</li>
+</ul>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Nous voulons sauvegarder un arbre 🌳</strong></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Besoin d’un dessin avec Leia et Vaisseaux</p>
+<p>Parallèle avec les dict Python / JSON</p>
+<p>Arbre car les attributs d’objets sont parfois eux-mêmes des objets</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="comment-faire-cela" class="slide level3">
+<h3>Comment faire cela ?</h3>
+<ul>
+<li>Écrire nos données sur le disque dur dans un fichier
+<ul>
+<li>csv, parquet, json, xml</li>
+</ul></li>
+<li>Utiliser une base de données
+<ul>
+<li>SQL tables + relations, NoSQL</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Question : Comment fait une BDD ?</p>
+<ul>
+<li>Elle gère dans des fichiers<br>
+</li>
+<li>On peut faire le parallèle avec les couches<br>
+</li>
+<li>La BDD rend un service, j’ignore comment elle fait<br>
+</li>
+<li>Je sais ce qu’elle attend en entrée et ce qu’elle me donne en sortie !<br>
+</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lien-persistance-application" class="slide level3">
+<h3>Lien persistance / application</h3>
+<ul>
+<li>Python : Variables volatiles en RAM</li>
+<li>Système de persistance : Données stockées sur disque</li>
+<li>Data Access Objects (DAO) en guise de lien</li>
+</ul>
+<aside class="notes">
+<p>Petite pause récap pour essayer de récupérer tout le monde avant la DAO.</p>
+<p>Dans la vraie vie, on ne repart pas de 0 quand on relance une appli.</p>
+<p>Si vous créez un Personnage, la fois suivante il sera toujours là</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cest-quoi-une-dao" class="slide level3">
+<h3>C’est quoi une DAO ?</h3>
+<div class="hide-html-render">
+<p><a href="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif"></a></p>
+</div>
+<aside class="notes">
+<p>On vient de dire que l’on va stocker dans une BDD.</p>
+<p>Comment y accéder ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cest-quoi-une-dao-1" class="slide level3">
+<h3>C’est quoi une DAO ?</h3>
+<ul>
+<li>Classe technique</li>
+<li>Une classe DAO par objet métier</li>
+<li>Expose des méthodes pour communiquer avec la couche de persistance</li>
+</ul>
+<aside class="notes">
+<p>C’est une API</p>
+<p>Rend un service à des clients</p>
+<p>Comment elle fait ? -&gt; osef</p>
+<p>Comme vous au restaurant. Vous voulez manger, comment c’est fait vous importe peu tant que le service est rendu (avec un niveau d’exigence)</p>
+<p>Des ORM tels SQLAlchemy existent pour faire le lien Objet Python - Table BDD -&gt; pas le sujet ici</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="quelles-méthodes-exposer" class="slide level3">
+<h3>Quelles méthodes exposer ?</h3>
+<div class="fragment">
+<ul>
+<li><strong>C</strong>reate</li>
+<li><strong>R</strong>ead</li>
+<li><strong>U</strong>pdate</li>
+<li><strong>D</strong>elete</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Faire participer</p>
+<p>Essayer de montrer que ces 4 là suffisent.</p>
+<p>Après on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.</p>
+<p>Quid de la copie ?</p>
+<p>Une copie c’est une lecture + création donc on sait faire</p>
+<p>Exemple dessin : classe Personne - table personne - dao personneDAO</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lintérêt-dune-classe-à-part" class="slide level3">
+<h3>L’intérêt d’une classe à part</h3>
+<p>Séparation des responsabilités</p>
+<ul>
+<li>Classe “jetable” 🚮</li>
+<li>Modifiable sans risque 🔨</li>
+<li>Parallélisation du travail 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+</ul>
+<aside class="notes">
+<p>On remet une couche, ça fait pas de mal<br>
+Dans la vraie vie, si changement de système, plus facile de migrer</p>
+<p>En projet, la couche DAO peut être très facile à faire</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="petit-recap" class="slide level3">
+<h3>Petit recap</h3>
+<p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="img/couche_metier.png"></a></p>
+<aside class="notes">
+<p>Petit exemple pour illustrer.</p>
+<p>Exemple : lister toutes les personnes fans de Pokemon</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="comment-se-connecter-à-une-db-en-python" class="title-slide slide level2 center">
+<h2>Comment se connecter à une DB en python ?</h2>
+<p>Utilisation d’une bibliothèque dédiée</p>
+<ul>
+<li><strong>PostgreSQL</strong> : <a href="https://www.psycopg.org/docs/" target="_blank">psycopg2</a></li>
+<li>MySQL : mysql-connector-python</li>
+<li>Oracle : cx_Oracle</li>
+<li>MongoDB : pymongo</li>
+</ul>
+<aside class="notes">
+<p>Vous lirez en entier la doc : psycopg2.</p>
+<p>Il y aura des questions à l’exam !</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="psycopg2" class="slide level3">
+<h3>psycopg2</h3>
+<ul>
+<li><p><code>pip install psycopg2-binary</code></p></li>
+<li><p><code>connection</code> : permet d’établir la connexion avec la base<br>
+Pas super intéressant à faire, le code est donné</p></li>
+</ul>
+</section>
+<section id="psycopg2---connection" class="slide level3">
+<h3>psycopg2 - connection</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>db_connection.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="db_connection.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a></a><span class="im">import</span> dotenv</span>
+<span id="cb3-3"><a></a><span class="im">import</span> psycopg2</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a><span class="im">from</span> psycopg2.extras <span class="im">import</span> RealDictCursor</span>
+<span id="cb3-6"><a></a><span class="im">from</span> utils.singleton <span class="im">import</span> Singleton</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a><span class="kw">class</span> DBConnection(metaclass<span class="op">=</span>Singleton):</span>
+<span id="cb3-9"><a></a>    <span class="co">"""</span></span>
+<span id="cb3-10"><a></a><span class="co">    Classe de connexion à la base de données</span></span>
+<span id="cb3-11"><a></a><span class="co">    Elle permet de n'ouvrir qu'une seule et unique connexion</span></span>
+<span id="cb3-12"><a></a><span class="co">    """</span></span>
+<span id="cb3-13"><a></a></span>
+<span id="cb3-14"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-15"><a></a>        <span class="co">"""Ouverture de la connexion"""</span></span>
+<span id="cb3-16"><a></a>        dotenv.load_dotenv()</span>
+<span id="cb3-17"><a></a></span>
+<span id="cb3-18"><a></a>        <span class="va">self</span>.__connection <span class="op">=</span> psycopg2.<span class="ex">connect</span>(</span>
+<span id="cb3-19"><a></a>            host<span class="op">=</span>os.environ[<span class="st">"POSTGRES_HOST"</span>],</span>
+<span id="cb3-20"><a></a>            port<span class="op">=</span>os.environ[<span class="st">"POSTGRES_PORT"</span>],</span>
+<span id="cb3-21"><a></a>            database<span class="op">=</span>os.environ[<span class="st">"POSTGRES_DATABASE"</span>],</span>
+<span id="cb3-22"><a></a>            user<span class="op">=</span>os.environ[<span class="st">"POSTGRES_USER"</span>],</span>
+<span id="cb3-23"><a></a>            password<span class="op">=</span>os.environ[<span class="st">"POSTGRES_PASSWORD"</span>],</span>
+<span id="cb3-24"><a></a>            options<span class="op">=</span><span class="ss">f"-c search_path=</span><span class="sc">{</span>os<span class="sc">.</span>environ[<span class="st">'POSTGRES_SCHEMA'</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb3-25"><a></a>            cursor_factory<span class="op">=</span>RealDictCursor,</span>
+<span id="cb3-26"><a></a>        )</span>
+<span id="cb3-27"><a></a></span>
+<span id="cb3-28"><a></a>    <span class="at">@property</span></span>
+<span id="cb3-29"><a></a>    <span class="kw">def</span> connection(<span class="va">self</span>):</span>
+<span id="cb3-30"><a></a>        <span class="cf">return</span> <span class="va">self</span>.__connection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>Singleton</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="psycopg2---cursor" class="slide level3">
+<h3>psycopg2 - cursor</h3>
+<ul>
+<li><p><code>cursor</code> : encapsule la requête ```{.python} from dao.db_connection import DBConnection</p>
+<p>with DBConnection().connection as connection: with connection.cursor() as cursor: ```</p></li>
+<li><p><code>cursor.execute("&lt;une requête SQL&gt;")</code> : permet de faire une requête</p></li>
+<li><p><code>cursor.fetchone()/fetchall()/fetchmany()</code> : Récupération des résultats</p></li>
+</ul>
+</section>
+<section id="forme-de-base" class="slide level3">
+<h3>Forme de base</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">def</span> dao_function(<span class="va">self</span>, arg1, arg2, ...):</span>
+<span id="cb4-2"><a></a>    <span class="co"># Récupération de la connexion à la base</span></span>
+<span id="cb4-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb4-4"><a></a>    <span class="co"># Création d'un curseur pour faire une requête</span></span>
+<span id="cb4-5"><a></a>        <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb4-6"><a></a>            <span class="co"># On envoie au serveur la requête SQL</span></span>
+<span id="cb4-7"><a></a>            cursor.execute(</span>
+<span id="cb4-8"><a></a>                <span class="st">"&lt;une_requete_sql_à_trous&gt;"</span>,</span>
+<span id="cb4-9"><a></a>                remplisage_des_trous)</span>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a>            <span class="co"># On récupère le résultat de la requête</span></span>
+<span id="cb4-12"><a></a>            res <span class="op">=</span> cursor.fetchone()  <span class="co"># ou fetchall()/fetchmany()</span></span>
+<span id="cb4-13"><a></a></span>
+<span id="cb4-14"><a></a>    <span class="co"># Si la requête renvoie quelque chose</span></span>
+<span id="cb4-15"><a></a>    <span class="cf">if</span> res:</span>
+<span id="cb4-16"><a></a>      something <span class="op">=</span> <span class="st">"&lt;res mis en forme&gt;"</span></span>
+<span id="cb4-17"><a></a>        </span>
+<span id="cb4-18"><a></a>    <span class="cf">return</span> something   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Pourquoi on ne retourne pas directement res ?</p>
+<p>res : list[dict]</p>
+<p>On préfère retourner un Objet ou une liste[Objet]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-petit-exemple-livredao" class="slide level3">
+<h3>Un petit exemple : LivreDao</h3>
+<p><a href="img/class_diagram_DAO.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/class_diagram_DAO.png"></a></p>
+<aside class="notes">
+<p>ISBN : International Standard Book Number</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="créer-un-livre" class="slide level3">
+<h3>Créer un livre</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> create(<span class="va">self</span>, livre) <span class="op">-&gt;</span> Livre:</span>
+<span id="cb5-2"><a></a>    <span class="co">"""Pour créer un livre en base"""</span></span>
+<span id="cb5-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb5-4"><a></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb5-5"><a></a>            cursor.execute(</span>
+<span id="cb5-6"><a></a>                <span class="st">"INSERT INTO livre (isbm, titre, auteur)         "</span></span>
+<span id="cb5-7"><a></a>                <span class="st">"     VALUES (</span><span class="sc">%(isbm)s</span><span class="st">, </span><span class="sc">%(titre)s</span><span class="st">, </span><span class="sc">%(auteur)s</span><span class="st">)   "</span></span>
+<span id="cb5-8"><a></a>                <span class="st">"  RETURNING id_livre;                           "</span>,</span>
+<span id="cb5-9"><a></a>                {<span class="st">"isbm"</span>: livre.isbm, </span>
+<span id="cb5-10"><a></a>                 <span class="st">"titre"</span>: livre.titre, </span>
+<span id="cb5-11"><a></a>                 <span class="st">"auteur"</span>: livre.auteur},</span>
+<span id="cb5-12"><a></a>            )</span>
+<span id="cb5-13"><a></a>            livre.<span class="bu">id</span> <span class="op">=</span> cursor.fetchone()[<span class="st">"id_livre"</span>]</span>
+<span id="cb5-14"><a></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>Possible aussi de retourner une booléen :</p>
+<ul>
+<li>true si création réussie</li>
+<li>false sinon</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lister-les-livres" class="slide level3">
+<h3>Lister les livres</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> find_all(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[Livre]:</span>
+<span id="cb6-2"><a></a>    <span class="co">"""Pour récupérer tous les livres en base"""</span></span>
+<span id="cb6-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb6-4"><a></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb6-5"><a></a>            cursor.execute(</span>
+<span id="cb6-6"><a></a>                <span class="st">"SELECT id_livre,                  "</span></span>
+<span id="cb6-7"><a></a>                <span class="st">"       isbm,                      "</span></span>
+<span id="cb6-8"><a></a>                <span class="st">"       titre,                     "</span></span>
+<span id="cb6-9"><a></a>                <span class="st">"       auteur                     "</span></span>
+<span id="cb6-10"><a></a>                <span class="st">"  FROM livre ;                    "</span></span>
+<span id="cb6-11"><a></a>            )</span>
+<span id="cb6-12"><a></a>            livre_bdd <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb6-13"><a></a>            </span>
+<span id="cb6-14"><a></a>    liste_livres <span class="op">=</span> []</span>
+<span id="cb6-15"><a></a></span>
+<span id="cb6-16"><a></a>    <span class="cf">if</span> livre_bdd:</span>
+<span id="cb6-17"><a></a>        <span class="cf">for</span> livre <span class="kw">in</span> livre_bdd:</span>
+<span id="cb6-18"><a></a>            liste_livres.append(</span>
+<span id="cb6-19"><a></a>                Livre(</span>
+<span id="cb6-20"><a></a>                    <span class="bu">id</span><span class="op">=</span>livre[<span class="st">"id_livre"</span>],</span>
+<span id="cb6-21"><a></a>                    isbm<span class="op">=</span>livre[<span class="st">"isbm"</span>],</span>
+<span id="cb6-22"><a></a>                    titre<span class="op">=</span>livre[<span class="st">"titre"</span>],</span>
+<span id="cb6-23"><a></a>                    auteur<span class="op">=</span>livre[<span class="st">"auteur"</span>],</span>
+<span id="cb6-24"><a></a>                )</span>
+<span id="cb6-25"><a></a>            )</span>
+<span id="cb6-26"><a></a>            </span>
+<span id="cb6-27"><a></a>    <span class="cf">return</span> liste_livres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<ul>
+<li>livre_bdd = [{id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}, {…}, …]</li>
+<li>livre = {id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}</li>
+<li>liste_livres = [Livre(1, 123, “Le Schtroumpf hackeur”, “Peyo”), Livre(…), …]</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="trouver-un-livre" class="slide level3">
+<h3>Trouver un livre</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> find_by_isbm(<span class="va">self</span>, isbm) <span class="op">-&gt;</span> Livre:</span>
+<span id="cb7-2"><a></a>    <span class="co">"""Pour récupérer un livre depuis son isbm"""</span></span>
+<span id="cb7-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb7-4"><a></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb7-5"><a></a>            cursor.execute(</span>
+<span id="cb7-6"><a></a>                <span class="st">"SELECT *                          "</span></span>
+<span id="cb7-7"><a></a>                <span class="st">"  FROM livre                      "</span></span>
+<span id="cb7-8"><a></a>                <span class="st">" WHERE isbm = </span><span class="sc">%(isbm)s</span><span class="st">            "</span>,</span>
+<span id="cb7-9"><a></a>                {<span class="st">"isbm"</span>: livre.isbm}</span>
+<span id="cb7-10"><a></a>            livre_bdd <span class="op">=</span> cursor.fetchone()</span>
+<span id="cb7-11"><a></a>            </span>
+<span id="cb7-12"><a></a>    livre <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb7-13"><a></a>    <span class="cf">if</span> livre_bdd:</span>
+<span id="cb7-14"><a></a>        livre <span class="op">=</span> Livre(</span>
+<span id="cb7-15"><a></a>            <span class="bu">id</span><span class="op">=</span>livre_bdd[<span class="st">"id_livre"</span>],</span>
+<span id="cb7-16"><a></a>            isbm<span class="op">=</span>livre_bdd[<span class="st">"isbm"</span>],</span>
+<span id="cb7-17"><a></a>            titre<span class="op">=</span>livre_bdd[<span class="st">"titre"</span>],</span>
+<span id="cb7-18"><a></a>            auteur<span class="op">=</span>livre_bdd[<span class="st">"auteur"</span>],</span>
+<span id="cb7-19"><a></a>        )</span>
+<span id="cb7-20"><a></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>livre_bdd : dict livre : Livre</p>
+<p>Principe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conclusion" class="slide level3">
+<h3>Conclusion</h3>
+<ul>
+<li>Python travaille en RAM (volatile)</li>
+<li>Obligation d’avoir un mécanisme de persistance des données</li>
+<li>DAO : centralise les méthodes pour lire/écrire nos données</li>
+<li>La couche métier appelle la DAO sans se préoccuper du système de persistance</li>
+<li>Permet un travail d’équipe efficace 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+</ul>
+</section></section>
+<section>
+<section id="sécurité-informatique" class="title-slide slide level2 center">
+<h2>Sécurité informatique</h2>
+
+</section>
+<section id="principes-caid" class="slide level3">
+<h3>Principes CAID</h3>
+<div class="hide-html-render">
+<p><a href="https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg"></a></p>
+</div>
+</section>
+<section id="piliers-de-la-sécurité-info" class="slide level3">
+<h3>4 piliers de la sécurité info</h3>
+<ul>
+<li><strong>C</strong>onfidentialité</li>
+<li><strong>A</strong>uthentification</li>
+<li><strong>I</strong>ntégrité</li>
+<li><strong>D</strong>isponibilité</li>
+</ul>
+<aside class="notes">
+<p>On utilise aussi parfois DICP ou DICPA</p>
+<p>Disponibilité, Intégrité, Confidentialité, Preuve</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="deux-bonus" class="slide level3">
+<h3>Deux bonus</h3>
+<ul>
+<li>Traçabilité</li>
+<li>Non-répudiation</li>
+</ul>
+</section>
+<section id="confidentialité" class="slide level3">
+<h3>Confidentialité</h3>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées (notions de droits ou permissions).</p>
+<p>Tout accès indésirable doit être empêché.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>gestion des droits (annuaires, rôles …)</li>
+<li>cryptographie</li>
+</ul>
+<aside class="notes">
+<p>On parle plutôt de chiffrement</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="authentification" class="slide level3">
+<h3>Authentification</h3>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Les utilisateurs doivent prouver leur identité en répondant à un “challenge”.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>authentification faible (identifiant, mot de passe)</li>
+<li>authentification forte (données biométriques, multi-facteurs)</li>
+</ul>
+</section>
+<section id="intégrité" class="slide level3">
+<h3>Intégrité</h3>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Les données doivent être celles que l’on attend, et ne doivent pas être altérées de façons fortuites, illicites ou malveillantes.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>signature électronique</li>
+<li>checksum</li>
+</ul>
+<aside class="notes">
+<p><strong>Signature électronique :</strong> garantir l’intégrité d’un document, c’est-à-dire s’assurer que le document n’a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c’est-à-dire s’assurer de l’identité de la personne signataire.</p>
+<p><strong>Checksum :</strong> bit de parité.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="disponibilité" class="slide level3">
+<h3>Disponibilité</h3>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>L’accès aux ressources du système d’information doit être permanent et sans faille durant les plages d’utilisation prévues.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>redondance des serveurs</li>
+<li>virtualisation</li>
+<li>conteneurisation</li>
+</ul>
+<aside class="notes">
+<p>Backup</p>
+<p>Parler de la mise en production avant.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="traçabilité" class="slide level3">
+<h3>Traçabilité</h3>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Garantit que les accès et tentatives d’accès aux éléments considérés sont tracés et que ces traces sont conservées et exploitables.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanisme associé :</strong></p>
+<ul>
+<li>journalisation</li>
+</ul>
+<aside class="notes">
+<p>Logs (mieux que les prints)</p>
+<p>Projet 2024-2025</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="la-non-répudiation" class="slide level3">
+<h3>La non-répudiation</h3>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Aucun utilisateur ne doit pouvoir contester les opérations qu’il a réalisées dans le cadre de ses actions autorisées et aucun tiers ne doit pouvoir s’attribuer les actions d’un autre utilisateur.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>traçabilité</li>
+<li>authentification</li>
+<li>intégrité</li>
+</ul>
+<aside class="notes">
+<p>C’est pas moi</p>
+<p>Mais c’est votre nom !</p>
+<p>Ne laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="les-failles-informatiques" class="title-slide slide level2 center">
+<h2>Les failles informatiques</h2>
+
+</section>
+<section id="trop-de-failles" class="slide level3">
+<h3>Trop de failles !!!</h3>
+<ul>
+<li>Failles physiques “bas niveau”</li>
+<li>Failles physiques “haut niveau”</li>
+<li><strong>Injection SQL</strong></li>
+<li>Injection de données</li>
+<li><strong>Faille XSS</strong></li>
+<li>Exécution de code</li>
+<li>…</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Failles physiques “bas niveau” : coupure électrique, inondation salle serveur</li>
+<li>Failles physiques “haut niveau” : accès physique à une machine</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="de-quoi-faut-il-se-méfier" class="slide level3">
+<h3>De quoi faut-il se méfier ?</h3>
+<div class="hide-html-render">
+<p><a href="https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif"></a></p>
+</div>
+<div class="fragment">
+<p><strong>De vos utilisateurs</strong></p>
+</div>
+</section></section>
+<section>
+<section id="exemple-de-failles-les-injections-sql" class="title-slide slide level2 center">
+<h2>Exemple de failles, les injections SQL</h2>
+<dl>
+<dt><img data-src="https://imgs.xkcd.com/comics/exploits_of_a_mom.png"></dt>
+<dd>
+<p>Source : <a href="https://xkcd.com/" target="_blank">https://xkcd.com/</a></p>
+</dd>
+</dl>
+</section>
+<section id="injection-sql" class="slide level3">
+<h3>Injection SQL</h3>
+<p>Consiste à saisir du SQL pour exécuter une autre requête que celle prévue.</p>
+<p>Problèmes :</p>
+<ul>
+<li>Confidentialité</li>
+<li>Authentification</li>
+<li>Intégrité</li>
+<li>Disponibilité</li>
+</ul>
+</section>
+<section id="exemple-sauthentifier-sans-mot-de-passe" class="slide level3">
+<h3>Exemple : s’authentifier sans mot de passe</h3>
+<p>Requête d’authentification</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb8-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb8-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb8-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div title="Vous saisissez">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Vous saisissez</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Rémi</li>
+<li>mon_super_password</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb9-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb9-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Rémi'</span> </span>
+<span id="cb9-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'mon_super_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>Si dans votre cursor.execute vous avez ce code</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemple-sauthentifier-sans-mot-de-passe-1" class="slide level3">
+<h3>Exemple : s’authentifier sans mot de passe</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb10-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb10-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb10-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div title="Vous saisissez">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Vous saisissez</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Rémi</li>
+<li><code>' OR 1=1; --</code></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb11-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb11-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Rémi'</span> </span>
+<span id="cb11-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exemple-supprimer-une-table" class="slide level3">
+<h3>Exemple : supprimer une table</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb12-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb12-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb12-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div title="Vous saisissez">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Vous saisissez</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Rémi</li>
+<li><code>'; DROP TABLE user CASCADE; --</code></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb13-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb13-3"><a></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Rémi'</span> </span>
+<span id="cb13-4"><a></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section class="slide level3">
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif" style="width:50.0%"></a></p>
+</div>
+</section>
+<section id="comment-se-protéger" class="slide level3">
+<h3>Comment se protéger ?</h3>
+<ul>
+<li>Échapper les caractères spéciaux</li>
+<li>Utiliser une requête préparée</li>
+</ul>
+<p><strong>La bibliothèque que vous utiliserez ne fait que de l’échappement de caractères spéciaux 😨</strong></p>
+<aside class="notes">
+<p>La seconde solution est mieux que la première mais psycopg2 ne semble pas la proposer simplement.<br>
+Donc il faut la connaître, mais savoir que c’est la première solution qui va être faite.</p>
+<p>Échapper les caractères spéciaux : par exemple, « ’ » sera remplacé par « ' »<br>
+L’apostrophe ne sera donc pas interprétée comme une fin de chaîne par le SGBD</p>
+<p>Instruction “prepare” :<br>
+1. Envoie la requête à trous à la BDD<br>
+2. Envoie pour remplir les trous</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cross-site-scripting" class="slide level3">
+<h3>Cross Site Scripting</h3>
+<p>Consiste à injecter du code provoquant des actions sur le navigateur. Cela peut permettre :</p>
+<ul>
+<li>Des redirections de page (phishing)</li>
+<li>Du vol d’information</li>
+<li>Des actions sur le site</li>
+<li>Rendre le site difficile à utiliser</li>
+</ul>
+</section>
+<section id="comment-se-protéger-1" class="slide level3">
+<h3>Comment se protéger ?</h3>
+<ul>
+<li>Ne jamais insérer des données brutes</li>
+<li>Échapper les caractères spéciaux</li>
+<li>Vérifier vos données</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Les bibliothèques web le font souvent pour vous !</p>
+</div>
+</div>
+</div>
+</section>
+<section id="to-sum-up-injection" class="slide level3">
+<h3>To sum up : injection</h3>
+<ul>
+<li>Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs</li>
+<li>Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs</li>
+<li>Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs</li>
+</ul>
+</section></section>
+<section>
+<section id="gestion-des-mots-de-passe" class="title-slide slide level2 center">
+<h2>Gestion des mots de passe</h2>
+
+</section>
+<section id="votre-application-doit-elle-stocker-des-mots-de-passe-en-clair" class="slide level3">
+<h3>Votre application doit-elle stocker des mots de passe en clair?</h3>
+<div class="fragment">
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif"></a></p>
+</div>
+<p>No way</p>
+</div>
+</section>
+<section id="votre-application-doit-elle-connaître-le-mot-de-passe-dun-utilisateur-pour-lauthentifier" class="slide level3">
+<h3>Votre application doit-elle connaître le mot de passe d’un utilisateur pour l’authentifier ?</h3>
+<div class="fragment">
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif"></a></p>
+</div>
+<p>….. No</p>
+</div>
+</section>
+<section id="section" class="slide level3">
+<h3>????</h3>
+<div class="fragment">
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif"></a></p>
+</div>
+<p>How it works ?</p>
+</div>
+</section>
+<section id="hasher-le-mot-de-passe" class="slide level3">
+<h3>Hasher le mot de passe</h3>
+<ul>
+<li>Hashage du mot de passe =&gt; cypher</li>
+<li>Stockage du cypher en base</li>
+<li>Quand besoin de comparer on hashe le mdp saisi</li>
+<li>Et on compare les cyphers</li>
+</ul>
+<p><strong>Authentification sans persister les mots de passe !!!!</strong></p>
+<aside class="notes">
+<p>C’est tellement simple et sécurisé !<br>
+Mais pas tous les sites le font …<br>
+Un site qui vous renvoie votre mdp le garde en mémoire (ou du moins le moyen de le déchiffrer)</p>
+<p>Dans la vraie vie, on rajoute un “sel” au mdp avant de le hacher.<br>
+C’est une valeur aléatoire calculée pour chaque utilisateur que l’on va rajouter au mdp avant de le hacher<br>
+Cela rend une attaque en force brute plus coûteuse.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level3">
+
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif"></a></p>
+</div>
+</section>
+<section id="ajouter-du-sel-pour-plus-de-sécurité" class="slide level3">
+<h3>Ajouter du sel pour plus de sécurité</h3>
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif"></a></p>
+</div>
+</section>
+<section id="une-base-sans-sel-ajouté" class="slide level3">
+<h3>Une base sans sel ajouté</h3>
+<ul>
+<li>Votre base mail/mdp fuite mais les mdp sont hachés</li>
+<li>Les attaquants doivent <em>bruteforce</em> les mdp</li>
+<li>Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants</li>
+<li>Puis ils comparent avec la base</li>
+<li>Forte chance d’avoir plusieurs correspondances</li>
+</ul>
+<aside class="notes">
+<p>bruteforce : tester toutes les combinaisons possibles</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-sel-cest-bon-pour-la-sécurité" class="slide level3">
+<h3>Le sel c’est bon pour la sécurité</h3>
+<p>Au lieu de hacher et stocker le mdp vous stockez et hachez le mdp ET un élément lié à l’utilisateur de manière déterministe (le sel).</p>
+<p>Maintenant même si 2 personnes ont le même mdp, elles auront des hash différents.</p>
+</section>
+<section id="le-sel-cest-bon-pour-la-sécurité-1" class="slide level3">
+<h3>Le sel c’est bon pour la sécurité</h3>
+<ul>
+<li>Votre base mail/mdp fuite mais les mdp sont hachés et salés</li>
+<li>Les attaquants doivent <em>bruteforce</em> les mdp</li>
+<li>Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants</li>
+<li>Puis ils comparent avec la base.</li>
+<li>Il y a pas de match car vos mdp sont salés</li>
+<li>Et trouver un mdp ne permet de trouver les autres</li>
+</ul>
+</section>
+<section class="slide level3">
+
+<p><a href="https://i.imgflip.com/3acxa9.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="https://i.imgflip.com/3acxa9.jpg"></a></p>
+</section>
+<section id="exemple-de-hashage-de-mdp" class="slide level3">
+<h3>Exemple de hashage de mdp</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> hashlib</span>
+<span id="cb14-2"><a></a> </span>
+<span id="cb14-3"><a></a><span class="kw">def</span> hash_password(password, idep):</span>
+<span id="cb14-4"><a></a>    salt <span class="op">=</span> idep</span>
+<span id="cb14-5"><a></a>    <span class="cf">return</span> hashlib.sha256(salt.encode() <span class="op">+</span> password.encode()).hexdigest()</span>
+<span id="cb14-6"><a></a>    </span>
+<span id="cb14-7"><a></a><span class="bu">print</span>(hash_password(<span class="st">"mon_super_password"</span>, <span class="st">"remi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="to-sum-up-the-security-part" class="slide level3">
+<h3>To sum up the security part</h3>
+<ul>
+<li>Toujours vérifier les inputs</li>
+<li>Ne jamais faire confiance aux utilisateurs</li>
+<li>Plusieurs niveaux de sécurité</li>
+<li>Pas besoin de stocker les mots de passe en clair</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="../../index.html">Home</a> — <a href="dao-securite.html">DAO et Sécurité</a></p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -745,6 +2046,38 @@ Ludovic Deneuville, Rémi Pépin
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

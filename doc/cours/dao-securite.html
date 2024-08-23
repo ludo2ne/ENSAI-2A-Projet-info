@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -43,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -202,12 +239,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#le-plan" id="toc-le-plan" class="nav-link active" data-scroll-target="#le-plan">Le plan</a></li>
+  <li><a href="#data-access-object-dao" id="toc-data-access-object-dao" class="nav-link" data-scroll-target="#data-access-object-dao">Data access object (DAO)</a></li>
+  <li><a href="#comment-se-connecter-à-une-db-en-python" id="toc-comment-se-connecter-à-une-db-en-python" class="nav-link" data-scroll-target="#comment-se-connecter-à-une-db-en-python">Comment se connecter à une DB en python ?</a></li>
+  <li><a href="#sécurité-informatique" id="toc-sécurité-informatique" class="nav-link" data-scroll-target="#sécurité-informatique">Sécurité informatique</a></li>
+  <li><a href="#les-failles-informatiques" id="toc-les-failles-informatiques" class="nav-link" data-scroll-target="#les-failles-informatiques">Les failles informatiques</a></li>
+  <li><a href="#exemple-de-failles-les-injections-sql" id="toc-exemple-de-failles-les-injections-sql" class="nav-link" data-scroll-target="#exemple-de-failles-les-injections-sql">Exemple de failles, les injections SQL</a></li>
+  <li><a href="#gestion-des-mots-de-passe" id="toc-gestion-des-mots-de-passe" class="nav-link" data-scroll-target="#gestion-des-mots-de-passe">Gestion des mots de passe</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="dao-securite-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="dao-securite-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -241,9 +290,924 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<section id="le-plan" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="le-plan">Le plan</h2>
+<ul>
+<li>Data Access Object
+<ul>
+<li>Pourquoi persister des données ?</li>
+<li>C’est quoi une DAO</li>
+<li>Exemple de DAO</li>
+</ul></li>
+<li>Sécurité Informatique
+<ul>
+<li>Définition</li>
+<li>Failles de sécurité</li>
+<li>Injection SQL</li>
+</ul></li>
+<li>Gestion des mots de passe
+<ul>
+<li>Authentification avec cypher</li>
+<li>Hashage de mots de passe</li>
+<li>Exemple</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Nous allons commencer par parler Stockage des données</p>
+</div>
+</section>
+<section id="data-access-object-dao" class="level2">
+<h2 class="anchored" data-anchor-id="data-access-object-dao">Data access object (DAO)</h2>
+<div class="hide-html-render">
+<iframe src="https://giphy.com/embed/dIBLtolI6axTGIGopo" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+</div>
+<div class="notes">
+<p>Notre objectif va être de stocker des données, mais avant :</p>
+</div>
+<section id="un-ordinateur" class="level3">
+<h3 class="anchored" data-anchor-id="un-ordinateur">Un ordinateur</h3>
+<p>Quels sont ses composants (en gros) ?</p>
+<div class="fragment">
+<ul>
+<li>Un processeur (CPU) : fait UNIQUEMENT du calcul</li>
+<li>La mémoire RAM : mémoire volatile rapide</li>
+<li>Disque dur (HDD, SSD) : mémoire longue durée</li>
+<li>Carte graphique : unité de calcul spécialisée</li>
+</ul>
+</div>
+<div class="notes">
+<p>Bien insister sur CPU, RAM, disque !</p>
+<p>Rendent 3 services différents :</p>
+<ul>
+<li>CPU : processeur</li>
+<li>DD : disque</li>
+<li>RAM : barrettes</li>
+</ul>
+</div>
+</section>
+<section id="comment-résoudre-ce-problème" class="level3">
+<h3 class="anchored" data-anchor-id="comment-résoudre-ce-problème">Comment résoudre ce problème ?</h3>
+<div class="hide-html-render">
+<p><a href="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif" class="img-fluid"></a></p>
+</div>
+<div class="fragment">
+<p>Quel problème ??</p>
+</div>
+<div class="notes">
+<p>Réponse : Conserver les données une fois le programme Python terminé</p>
+</div>
+</section>
+<section id="une-question-à-se-poser" class="level3">
+<h3 class="anchored" data-anchor-id="une-question-à-se-poser">Une question à se poser</h3>
+<p>C’est quoi une variable Python ?</p>
+<div class="fragment">
+<ul>
+<li>Une référence (le nom de la variable)</li>
+<li><strong>Un objet associé (sa valeur)</strong></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Personnage(prenom<span class="op">=</span><span class="st">"Leia"</span>, nom<span class="op">=</span><span class="st">"Organa"</span>, age <span class="op">=</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<p>On zappe la notion d’adressage mémoire.<br>
+Pas besoin de stocker la référence, car elle est dans le code source</p>
+</div>
+</section>
+<section id="une-question-qui-en-découle" class="level3">
+<h3 class="anchored" data-anchor-id="une-question-qui-en-découle">Une question qui en découle</h3>
+<p>C’est quoi un objet Python ?</p>
+<div class="fragment">
+<ul>
+<li>Des attributs (qui peuvent être eux-mêmes des objets)</li>
+<li>Des méthodes</li>
+</ul>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>personnage.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="personnage.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Personnage:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, prenom, nom, age):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prenom <span class="op">=</span> prenom</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.nom <span class="op">=</span> nom</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.vaisseaux <span class="op">=</span> []</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> anniversaire(<span class="va">self</span>):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="notes">
+<p>Pareil, les méthodes c’est du code, nous on veut juste les attributs</p>
+</div>
+</section>
+<section id="pour-résumer" class="level3">
+<h3 class="anchored" data-anchor-id="pour-résumer">Pour résumer</h3>
+<ul>
+<li>Nous voulons sauvegarder des couples clef-valeur<br>
+</li>
+<li>Avec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur</li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Nous voulons sauvegarder un arbre 🌳</strong></p>
+</div>
+</div>
+</div>
+<div class="notes">
+<p>Besoin d’un dessin avec Leia et Vaisseaux</p>
+<p>Parallèle avec les dict Python / JSON</p>
+<p>Arbre car les attributs d’objets sont parfois eux-mêmes des objets</p>
+</div>
+</section>
+<section id="comment-faire-cela" class="level3">
+<h3 class="anchored" data-anchor-id="comment-faire-cela">Comment faire cela ?</h3>
+<ul>
+<li>Écrire nos données sur le disque dur dans un fichier
+<ul>
+<li>csv, parquet, json, xml</li>
+</ul></li>
+<li>Utiliser une base de données
+<ul>
+<li>SQL tables + relations, NoSQL</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Question : Comment fait une BDD ?</p>
+<ul>
+<li>Elle gère dans des fichiers<br>
+</li>
+<li>On peut faire le parallèle avec les couches<br>
+</li>
+<li>La BDD rend un service, j’ignore comment elle fait<br>
+</li>
+<li>Je sais ce qu’elle attend en entrée et ce qu’elle me donne en sortie !<br>
+</li>
+</ul>
+</div>
+</section>
+<section id="lien-persistance-application" class="level3">
+<h3 class="anchored" data-anchor-id="lien-persistance-application">Lien persistance / application</h3>
+<ul>
+<li>Python : Variables volatiles en RAM</li>
+<li>Système de persistance : Données stockées sur disque</li>
+<li>Data Access Objects (DAO) en guise de lien</li>
+</ul>
+<div class="notes">
+<p>Petite pause récap pour essayer de récupérer tout le monde avant la DAO.</p>
+<p>Dans la vraie vie, on ne repart pas de 0 quand on relance une appli.</p>
+<p>Si vous créez un Personnage, la fois suivante il sera toujours là</p>
+</div>
+</section>
+<section id="cest-quoi-une-dao" class="level3">
+<h3 class="anchored" data-anchor-id="cest-quoi-une-dao">C’est quoi une DAO ?</h3>
+<div class="hide-html-render">
+<p><a href="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&amp;rid=giphy.gif" class="img-fluid"></a></p>
+</div>
+<div class="notes">
+<p>On vient de dire que l’on va stocker dans une BDD.</p>
+<p>Comment y accéder ?</p>
+</div>
+</section>
+<section id="cest-quoi-une-dao-1" class="level3">
+<h3 class="anchored" data-anchor-id="cest-quoi-une-dao-1">C’est quoi une DAO ?</h3>
+<ul>
+<li>Classe technique</li>
+<li>Une classe DAO par objet métier</li>
+<li>Expose des méthodes pour communiquer avec la couche de persistance</li>
+</ul>
+<div class="notes">
+<p>C’est une API</p>
+<p>Rend un service à des clients</p>
+<p>Comment elle fait ? -&gt; osef</p>
+<p>Comme vous au restaurant. Vous voulez manger, comment c’est fait vous importe peu tant que le service est rendu (avec un niveau d’exigence)</p>
+<p>Des ORM tels SQLAlchemy existent pour faire le lien Objet Python - Table BDD -&gt; pas le sujet ici</p>
+</div>
+</section>
+<section id="quelles-méthodes-exposer" class="level3">
+<h3 class="anchored" data-anchor-id="quelles-méthodes-exposer">Quelles méthodes exposer ?</h3>
+<div class="fragment">
+<ul>
+<li><strong>C</strong>reate</li>
+<li><strong>R</strong>ead</li>
+<li><strong>U</strong>pdate</li>
+<li><strong>D</strong>elete</li>
+</ul>
+</div>
+<div class="notes">
+<p>Faire participer</p>
+<p>Essayer de montrer que ces 4 là suffisent.</p>
+<p>Après on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.</p>
+<p>Quid de la copie ?</p>
+<p>Une copie c’est une lecture + création donc on sait faire</p>
+<p>Exemple dessin : classe Personne - table personne - dao personneDAO</p>
+</div>
+</section>
+<section id="lintérêt-dune-classe-à-part" class="level3">
+<h3 class="anchored" data-anchor-id="lintérêt-dune-classe-à-part">L’intérêt d’une classe à part</h3>
+<p>Séparation des responsabilités</p>
+<ul>
+<li>Classe “jetable” 🚮</li>
+<li>Modifiable sans risque 🔨</li>
+<li>Parallélisation du travail 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+</ul>
+<div class="notes">
+<p>On remet une couche, ça fait pas de mal<br>
+Dans la vraie vie, si changement de système, plus facile de migrer</p>
+<p>En projet, la couche DAO peut être très facile à faire</p>
+</div>
+</section>
+<section id="petit-recap" class="level3">
+<h3 class="anchored" data-anchor-id="petit-recap">Petit recap</h3>
+<p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/couche_metier.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Petit exemple pour illustrer.</p>
+<p>Exemple : lister toutes les personnes fans de Pokemon</p>
+</div>
+</section>
+</section>
+<section id="comment-se-connecter-à-une-db-en-python" class="level2">
+<h2 class="anchored" data-anchor-id="comment-se-connecter-à-une-db-en-python">Comment se connecter à une DB en python ?</h2>
+<p>Utilisation d’une bibliothèque dédiée</p>
+<ul>
+<li><strong>PostgreSQL</strong> : <a href="https://www.psycopg.org/docs/" target="_blank">psycopg2</a></li>
+<li>MySQL : mysql-connector-python</li>
+<li>Oracle : cx_Oracle</li>
+<li>MongoDB : pymongo</li>
+</ul>
+<div class="notes">
+<p>Vous lirez en entier la doc : psycopg2.</p>
+<p>Il y aura des questions à l’exam !</p>
+</div>
+<section id="psycopg2" class="level3">
+<h3 class="anchored" data-anchor-id="psycopg2">psycopg2</h3>
+<ul>
+<li><p><code>pip install psycopg2-binary</code></p></li>
+<li><p><code>connection</code> : permet d’établir la connexion avec la base<br>
+Pas super intéressant à faire, le code est donné</p></li>
+</ul>
+</section>
+<section id="psycopg2---connection" class="level3">
+<h3 class="anchored" data-anchor-id="psycopg2---connection">psycopg2 - connection</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>db_connection.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="db_connection.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dotenv</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> psycopg2</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psycopg2.extras <span class="im">import</span> RealDictCursor</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.singleton <span class="im">import</span> Singleton</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DBConnection(metaclass<span class="op">=</span>Singleton):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Classe de connexion à la base de données</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Elle permet de n'ouvrir qu'une seule et unique connexion</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Ouverture de la connexion"""</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        dotenv.load_dotenv()</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__connection <span class="op">=</span> psycopg2.<span class="ex">connect</span>(</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            host<span class="op">=</span>os.environ[<span class="st">"POSTGRES_HOST"</span>],</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            port<span class="op">=</span>os.environ[<span class="st">"POSTGRES_PORT"</span>],</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            database<span class="op">=</span>os.environ[<span class="st">"POSTGRES_DATABASE"</span>],</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            user<span class="op">=</span>os.environ[<span class="st">"POSTGRES_USER"</span>],</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            password<span class="op">=</span>os.environ[<span class="st">"POSTGRES_PASSWORD"</span>],</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span><span class="ss">f"-c search_path=</span><span class="sc">{</span>os<span class="sc">.</span>environ[<span class="st">'POSTGRES_SCHEMA'</span>]<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            cursor_factory<span class="op">=</span>RealDictCursor,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> connection(<span class="va">self</span>):</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__connection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="notes">
+<p>Singleton</p>
+</div>
+</section>
+<section id="psycopg2---cursor" class="level3">
+<h3 class="anchored" data-anchor-id="psycopg2---cursor">psycopg2 - cursor</h3>
+<ul>
+<li><p><code>cursor</code> : encapsule la requête ```{.python} from dao.db_connection import DBConnection</p>
+<p>with DBConnection().connection as connection: with connection.cursor() as cursor: ```</p></li>
+<li><p><code>cursor.execute("&lt;une requête SQL&gt;")</code> : permet de faire une requête</p></li>
+<li><p><code>cursor.fetchone()/fetchall()/fetchmany()</code> : Récupération des résultats</p></li>
+</ul>
+</section>
+<section id="forme-de-base" class="level3">
+<h3 class="anchored" data-anchor-id="forme-de-base">Forme de base</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dao_function(<span class="va">self</span>, arg1, arg2, ...):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Récupération de la connexion à la base</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Création d'un curseur pour faire une requête</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="co"># On envoie au serveur la requête SQL</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"&lt;une_requete_sql_à_trous&gt;"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                remplisage_des_trous)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="co"># On récupère le résultat de la requête</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> cursor.fetchone()  <span class="co"># ou fetchall()/fetchmany()</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Si la requête renvoie quelque chose</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      something <span class="op">=</span> <span class="st">"&lt;res mis en forme&gt;"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> something   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<p>Pourquoi on ne retourne pas directement res ?</p>
+<p>res : list[dict]</p>
+<p>On préfère retourner un Objet ou une liste[Objet]</p>
+</div>
+</section>
+<section id="un-petit-exemple-livredao" class="level3">
+<h3 class="anchored" data-anchor-id="un-petit-exemple-livredao">Un petit exemple : LivreDao</h3>
+<p><a href="img/class_diagram_DAO.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/class_diagram_DAO.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>ISBN : International Standard Book Number</p>
+</div>
+</section>
+<section id="créer-un-livre" class="level3">
+<h3 class="anchored" data-anchor-id="créer-un-livre">Créer un livre</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create(<span class="va">self</span>, livre) <span class="op">-&gt;</span> Livre:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour créer un livre en base"""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"INSERT INTO livre (isbm, titre, auteur)         "</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"     VALUES (</span><span class="sc">%(isbm)s</span><span class="st">, </span><span class="sc">%(titre)s</span><span class="st">, </span><span class="sc">%(auteur)s</span><span class="st">)   "</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  RETURNING id_livre;                           "</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"isbm"</span>: livre.isbm, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"titre"</span>: livre.titre, </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"auteur"</span>: livre.auteur},</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            livre.<span class="bu">id</span> <span class="op">=</span> cursor.fetchone()[<span class="st">"id_livre"</span>]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<p>Possible aussi de retourner une booléen :</p>
+<ul>
+<li>true si création réussie</li>
+<li>false sinon</li>
+</ul>
+</div>
+</section>
+<section id="lister-les-livres" class="level3">
+<h3 class="anchored" data-anchor-id="lister-les-livres">Lister les livres</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_all(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[Livre]:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour récupérer tous les livres en base"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"SELECT id_livre,                  "</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       isbm,                      "</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       titre,                     "</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       auteur                     "</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  FROM livre ;                    "</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            livre_bdd <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    liste_livres <span class="op">=</span> []</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> livre_bdd:</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> livre <span class="kw">in</span> livre_bdd:</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            liste_livres.append(</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                Livre(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">id</span><span class="op">=</span>livre[<span class="st">"id_livre"</span>],</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                    isbm<span class="op">=</span>livre[<span class="st">"isbm"</span>],</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                    titre<span class="op">=</span>livre[<span class="st">"titre"</span>],</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                    auteur<span class="op">=</span>livre[<span class="st">"auteur"</span>],</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> liste_livres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>livre_bdd = [{id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}, {…}, …]</li>
+<li>livre = {id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}</li>
+<li>liste_livres = [Livre(1, 123, “Le Schtroumpf hackeur”, “Peyo”), Livre(…), …]</li>
+</ul>
+</div>
+</section>
+<section id="trouver-un-livre" class="level3">
+<h3 class="anchored" data-anchor-id="trouver-un-livre">Trouver un livre</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_by_isbm(<span class="va">self</span>, isbm) <span class="op">-&gt;</span> Livre:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour récupérer un livre depuis son isbm"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"SELECT *                          "</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  FROM livre                      "</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">" WHERE isbm = </span><span class="sc">%(isbm)s</span><span class="st">            "</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"isbm"</span>: livre.isbm}</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            livre_bdd <span class="op">=</span> cursor.fetchone()</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    livre <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> livre_bdd:</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        livre <span class="op">=</span> Livre(</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span>livre_bdd[<span class="st">"id_livre"</span>],</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            isbm<span class="op">=</span>livre_bdd[<span class="st">"isbm"</span>],</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            titre<span class="op">=</span>livre_bdd[<span class="st">"titre"</span>],</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            auteur<span class="op">=</span>livre_bdd[<span class="st">"auteur"</span>],</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<p>livre_bdd : dict livre : Livre</p>
+<p>Principe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets</p>
+</div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<ul>
+<li>Python travaille en RAM (volatile)</li>
+<li>Obligation d’avoir un mécanisme de persistance des données</li>
+<li>DAO : centralise les méthodes pour lire/écrire nos données</li>
+<li>La couche métier appelle la DAO sans se préoccuper du système de persistance</li>
+<li>Permet un travail d’équipe efficace 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+</ul>
+</section>
+</section>
+<section id="sécurité-informatique" class="level2">
+<h2 class="anchored" data-anchor-id="sécurité-informatique">Sécurité informatique</h2>
+<section id="principes-caid" class="level3">
+<h3 class="anchored" data-anchor-id="principes-caid">Principes CAID</h3>
+<div class="hide-html-render">
+<p><a href="https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg" class="img-fluid"></a></p>
+</div>
+</section>
+<section id="piliers-de-la-sécurité-info" class="level3">
+<h3 class="anchored" data-anchor-id="piliers-de-la-sécurité-info">4 piliers de la sécurité info</h3>
+<ul>
+<li><strong>C</strong>onfidentialité</li>
+<li><strong>A</strong>uthentification</li>
+<li><strong>I</strong>ntégrité</li>
+<li><strong>D</strong>isponibilité</li>
+</ul>
+<div class="notes">
+<p>On utilise aussi parfois DICP ou DICPA</p>
+<p>Disponibilité, Intégrité, Confidentialité, Preuve</p>
+</div>
+</section>
+<section id="deux-bonus" class="level3">
+<h3 class="anchored" data-anchor-id="deux-bonus">Deux bonus</h3>
+<ul>
+<li>Traçabilité</li>
+<li>Non-répudiation</li>
+</ul>
+</section>
+<section id="confidentialité" class="level3">
+<h3 class="anchored" data-anchor-id="confidentialité">Confidentialité</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées (notions de droits ou permissions).</p>
+<p>Tout accès indésirable doit être empêché.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>gestion des droits (annuaires, rôles …)</li>
+<li>cryptographie</li>
+</ul>
+<div class="notes">
+<p>On parle plutôt de chiffrement</p>
+</div>
+</section>
+<section id="authentification" class="level3">
+<h3 class="anchored" data-anchor-id="authentification">Authentification</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Les utilisateurs doivent prouver leur identité en répondant à un “challenge”.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>authentification faible (identifiant, mot de passe)</li>
+<li>authentification forte (données biométriques, multi-facteurs)</li>
+</ul>
+</section>
+<section id="intégrité" class="level3">
+<h3 class="anchored" data-anchor-id="intégrité">Intégrité</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Les données doivent être celles que l’on attend, et ne doivent pas être altérées de façons fortuites, illicites ou malveillantes.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>signature électronique</li>
+<li>checksum</li>
+</ul>
+<div class="notes">
+<p><strong>Signature électronique :</strong> garantir l’intégrité d’un document, c’est-à-dire s’assurer que le document n’a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c’est-à-dire s’assurer de l’identité de la personne signataire.</p>
+<p><strong>Checksum :</strong> bit de parité.</p>
+</div>
+</section>
+<section id="disponibilité" class="level3">
+<h3 class="anchored" data-anchor-id="disponibilité">Disponibilité</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>L’accès aux ressources du système d’information doit être permanent et sans faille durant les plages d’utilisation prévues.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>redondance des serveurs</li>
+<li>virtualisation</li>
+<li>conteneurisation</li>
+</ul>
+<div class="notes">
+<p>Backup</p>
+<p>Parler de la mise en production avant.</p>
+</div>
+</section>
+<section id="traçabilité" class="level3">
+<h3 class="anchored" data-anchor-id="traçabilité">Traçabilité</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Garantit que les accès et tentatives d’accès aux éléments considérés sont tracés et que ces traces sont conservées et exploitables.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanisme associé :</strong></p>
+<ul>
+<li>journalisation</li>
+</ul>
+<div class="notes">
+<p>Logs (mieux que les prints)</p>
+<p>Projet 2024-2025</p>
+</div>
+</section>
+<section id="la-non-répudiation" class="level3">
+<h3 class="anchored" data-anchor-id="la-non-répudiation">La non-répudiation</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Aucun utilisateur ne doit pouvoir contester les opérations qu’il a réalisées dans le cadre de ses actions autorisées et aucun tiers ne doit pouvoir s’attribuer les actions d’un autre utilisateur.</p>
+</div>
+</div>
+</div>
+<p><strong>Mécanismes associés :</strong></p>
+<ul>
+<li>traçabilité</li>
+<li>authentification</li>
+<li>intégrité</li>
+</ul>
+<div class="notes">
+<p>C’est pas moi</p>
+<p>Mais c’est votre nom !</p>
+<p>Ne laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)</p>
+</div>
+</section>
+</section>
+<section id="les-failles-informatiques" class="level2">
+<h2 class="anchored" data-anchor-id="les-failles-informatiques">Les failles informatiques</h2>
+<section id="trop-de-failles" class="level3">
+<h3 class="anchored" data-anchor-id="trop-de-failles">Trop de failles !!!</h3>
+<ul>
+<li>Failles physiques “bas niveau”</li>
+<li>Failles physiques “haut niveau”</li>
+<li><strong>Injection SQL</strong></li>
+<li>Injection de données</li>
+<li><strong>Faille XSS</strong></li>
+<li>Exécution de code</li>
+<li>…</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Failles physiques “bas niveau” : coupure électrique, inondation salle serveur</li>
+<li>Failles physiques “haut niveau” : accès physique à une machine</li>
+</ul>
+</div>
+</section>
+<section id="de-quoi-faut-il-se-méfier" class="level3">
+<h3 class="anchored" data-anchor-id="de-quoi-faut-il-se-méfier">De quoi faut-il se méfier ?</h3>
+<div class="hide-html-render">
+<p><a href="https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif" class="img-fluid"></a></p>
+</div>
+<div class="fragment">
+<p><strong>De vos utilisateurs</strong></p>
+</div>
+</section>
+</section>
+<section id="exemple-de-failles-les-injections-sql" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-de-failles-les-injections-sql">Exemple de failles, les injections SQL</h2>
+<dl>
+<dt><img src="https://imgs.xkcd.com/comics/exploits_of_a_mom.png" class="img-fluid"></dt>
+<dd>
+<p>Source : <a href="https://xkcd.com/" target="_blank">https://xkcd.com/</a></p>
+</dd>
+</dl>
+<section id="injection-sql" class="level3">
+<h3 class="anchored" data-anchor-id="injection-sql">Injection SQL</h3>
+<p>Consiste à saisir du SQL pour exécuter une autre requête que celle prévue.</p>
+<p>Problèmes :</p>
+<ul>
+<li>Confidentialité</li>
+<li>Authentification</li>
+<li>Intégrité</li>
+<li>Disponibilité</li>
+</ul>
+</section>
+<section id="exemple-sauthentifier-sans-mot-de-passe" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-sauthentifier-sans-mot-de-passe">Exemple : s’authentifier sans mot de passe</h3>
+<p>Requête d’authentification</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="callout callout-style-default callout-note callout-titled" title="Vous saisissez">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Vous saisissez
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Rémi</li>
+<li>mon_super_password</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Rémi'</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'mon_super_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="notes">
+<p>Si dans votre cursor.execute vous avez ce code</p>
+</div>
+</section>
+<section id="exemple-sauthentifier-sans-mot-de-passe-1" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-sauthentifier-sans-mot-de-passe-1">Exemple : s’authentifier sans mot de passe</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="callout callout-style-default callout-warning callout-titled" title="Vous saisissez">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Vous saisissez
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Rémi</li>
+<li><code>' OR 1=1; --</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Rémi'</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exemple-supprimer-une-table" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-supprimer-une-table">Exemple : supprimer une table</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="callout callout-style-default callout-warning callout-titled" title="Vous saisissez">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Vous saisissez
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Rémi</li>
+<li><code>'; DROP TABLE user CASCADE; --</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Rémi'</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif" class="img-fluid" style="width:50.0%"></a></p>
+</div>
+</section>
+<section id="comment-se-protéger" class="level3">
+<h3 class="anchored" data-anchor-id="comment-se-protéger">Comment se protéger ?</h3>
+<ul>
+<li>Échapper les caractères spéciaux</li>
+<li>Utiliser une requête préparée</li>
+</ul>
+<p><strong>La bibliothèque que vous utiliserez ne fait que de l’échappement de caractères spéciaux 😨</strong></p>
+<div class="notes">
+<p>La seconde solution est mieux que la première mais psycopg2 ne semble pas la proposer simplement.<br>
+Donc il faut la connaître, mais savoir que c’est la première solution qui va être faite.</p>
+<p>Échapper les caractères spéciaux : par exemple, « ’ » sera remplacé par « ' »<br>
+L’apostrophe ne sera donc pas interprétée comme une fin de chaîne par le SGBD</p>
+<p>Instruction “prepare” :<br>
+1. Envoie la requête à trous à la BDD<br>
+2. Envoie pour remplir les trous</p>
+</div>
+</section>
+<section id="cross-site-scripting" class="level3">
+<h3 class="anchored" data-anchor-id="cross-site-scripting">Cross Site Scripting</h3>
+<p>Consiste à injecter du code provoquant des actions sur le navigateur. Cela peut permettre :</p>
+<ul>
+<li>Des redirections de page (phishing)</li>
+<li>Du vol d’information</li>
+<li>Des actions sur le site</li>
+<li>Rendre le site difficile à utiliser</li>
+</ul>
+</section>
+<section id="comment-se-protéger-1" class="level3">
+<h3 class="anchored" data-anchor-id="comment-se-protéger-1">Comment se protéger ?</h3>
+<ul>
+<li>Ne jamais insérer des données brutes</li>
+<li>Échapper les caractères spéciaux</li>
+<li>Vérifier vos données</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Les bibliothèques web le font souvent pour vous !</p>
+</div>
+</div>
+</section>
+<section id="to-sum-up-injection" class="level3">
+<h3 class="anchored" data-anchor-id="to-sum-up-injection">To sum up : injection</h3>
+<ul>
+<li>Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs</li>
+<li>Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs</li>
+<li>Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs</li>
+</ul>
+</section>
+</section>
+<section id="gestion-des-mots-de-passe" class="level2">
+<h2 class="anchored" data-anchor-id="gestion-des-mots-de-passe">Gestion des mots de passe</h2>
+<section id="votre-application-doit-elle-stocker-des-mots-de-passe-en-clair" class="level3">
+<h3 class="anchored" data-anchor-id="votre-application-doit-elle-stocker-des-mots-de-passe-en-clair">Votre application doit-elle stocker des mots de passe en clair?</h3>
+<div class="fragment">
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif" class="img-fluid"></a></p>
+</div>
+<p>No way</p>
+</div>
+</section>
+<section id="votre-application-doit-elle-connaître-le-mot-de-passe-dun-utilisateur-pour-lauthentifier" class="level3">
+<h3 class="anchored" data-anchor-id="votre-application-doit-elle-connaître-le-mot-de-passe-dun-utilisateur-pour-lauthentifier">Votre application doit-elle connaître le mot de passe d’un utilisateur pour l’authentifier ?</h3>
+<div class="fragment">
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif" class="img-fluid"></a></p>
+</div>
+<p>….. No</p>
+</div>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">????</h3>
+<div class="fragment">
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif" class="img-fluid"></a></p>
+</div>
+<p>How it works ?</p>
+</div>
+</section>
+<section id="hasher-le-mot-de-passe" class="level3">
+<h3 class="anchored" data-anchor-id="hasher-le-mot-de-passe">Hasher le mot de passe</h3>
+<ul>
+<li>Hashage du mot de passe =&gt; cypher</li>
+<li>Stockage du cypher en base</li>
+<li>Quand besoin de comparer on hashe le mdp saisi</li>
+<li>Et on compare les cyphers</li>
+</ul>
+<p><strong>Authentification sans persister les mots de passe !!!!</strong></p>
+<div class="notes">
+<p>C’est tellement simple et sécurisé !<br>
+Mais pas tous les sites le font …<br>
+Un site qui vous renvoie votre mdp le garde en mémoire (ou du moins le moyen de le déchiffrer)</p>
+<p>Dans la vraie vie, on rajoute un “sel” au mdp avant de le hacher.<br>
+C’est une valeur aléatoire calculée pour chaque utilisateur que l’on va rajouter au mdp avant de le hacher<br>
+Cela rend une attaque en force brute plus coûteuse.</p>
+</div>
+<hr>
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif" class="img-fluid"></a></p>
+</div>
+</section>
+<section id="ajouter-du-sel-pour-plus-de-sécurité" class="level3">
+<h3 class="anchored" data-anchor-id="ajouter-du-sel-pour-plus-de-sécurité">Ajouter du sel pour plus de sécurité</h3>
+<div class="hide-html-render">
+<p><a href="https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif" class="img-fluid"></a></p>
+</div>
+</section>
+<section id="une-base-sans-sel-ajouté" class="level3">
+<h3 class="anchored" data-anchor-id="une-base-sans-sel-ajouté">Une base sans sel ajouté</h3>
+<ul>
+<li>Votre base mail/mdp fuite mais les mdp sont hachés</li>
+<li>Les attaquants doivent <em>bruteforce</em> les mdp</li>
+<li>Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants</li>
+<li>Puis ils comparent avec la base</li>
+<li>Forte chance d’avoir plusieurs correspondances</li>
+</ul>
+<div class="notes">
+<p>bruteforce : tester toutes les combinaisons possibles</p>
+</div>
+</section>
+<section id="le-sel-cest-bon-pour-la-sécurité" class="level3">
+<h3 class="anchored" data-anchor-id="le-sel-cest-bon-pour-la-sécurité">Le sel c’est bon pour la sécurité</h3>
+<p>Au lieu de hacher et stocker le mdp vous stockez et hachez le mdp ET un élément lié à l’utilisateur de manière déterministe (le sel).</p>
+<p>Maintenant même si 2 personnes ont le même mdp, elles auront des hash différents.</p>
+</section>
+<section id="le-sel-cest-bon-pour-la-sécurité-1" class="level3">
+<h3 class="anchored" data-anchor-id="le-sel-cest-bon-pour-la-sécurité-1">Le sel c’est bon pour la sécurité</h3>
+<ul>
+<li>Votre base mail/mdp fuite mais les mdp sont hachés et salés</li>
+<li>Les attaquants doivent <em>bruteforce</em> les mdp</li>
+<li>Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants</li>
+<li>Puis ils comparent avec la base.</li>
+<li>Il y a pas de match car vos mdp sont salés</li>
+<li>Et trouver un mdp ne permet de trouver les autres</li>
+</ul>
+<hr>
+<p><a href="https://i.imgflip.com/3acxa9.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="https://i.imgflip.com/3acxa9.jpg" class="img-fluid"></a></p>
+</section>
+<section id="exemple-de-hashage-de-mdp" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-de-hashage-de-mdp">Exemple de hashage de mdp</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_password(password, idep):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    salt <span class="op">=</span> idep</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hashlib.sha256(salt.encode() <span class="op">+</span> password.encode()).hexdigest()</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hash_password(<span class="st">"mon_super_password"</span>, <span class="st">"remi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="to-sum-up-the-security-part" class="level3">
+<h3 class="anchored" data-anchor-id="to-sum-up-the-security-part">To sum up the security part</h3>
+<ul>
+<li>Toujours vérifier les inputs</li>
+<li>Ne jamais faire confiance aux utilisateurs</li>
+<li>Plusieurs niveaux de sécurité</li>
+<li>Pas besoin de stocker les mots de passe en clair</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -824,6 +1788,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

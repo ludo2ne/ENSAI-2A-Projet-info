@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -43,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -202,12 +239,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#le-plan" id="toc-le-plan" class="nav-link active" data-scroll-target="#le-plan">Le plan</a></li>
+  <li><a href="#api" id="toc-api" class="nav-link" data-scroll-target="#api">API</a></li>
+  <li><a href="#définition-1" id="toc-définition-1" class="nav-link" data-scroll-target="#définition-1">Définition</a></li>
+  <li><a href="#les-webservices" id="toc-les-webservices" class="nav-link" data-scroll-target="#les-webservices">Les webservices</a></li>
+  <li><a href="#hyper-text-transfer-protocol-http" id="toc-hyper-text-transfer-protocol-http" class="nav-link" data-scroll-target="#hyper-text-transfer-protocol-http">Hyper Text Transfer Protocol (HTTP)</a></li>
+  <li><a href="#contacterréaliser-un-webservice" id="toc-contacterréaliser-un-webservice" class="nav-link" data-scroll-target="#contacterréaliser-un-webservice">Contacter/réaliser un webservice</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="webservices-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="webservices-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -242,8 +290,419 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
+<section id="le-plan" class="level2">
+<h2 class="anchored" data-anchor-id="le-plan">Le plan</h2>
+<ul>
+<li>API</li>
+<li>Webservice
+<ul>
+<li>Définition</li>
+<li>Exemples</li>
+<li>Architecture microservices</li>
+</ul></li>
+<li>Hyper Text Transfer Protocol
+<ul>
+<li>Définition</li>
+<li>Exemples</li>
+</ul></li>
+</ul>
+</section>
+<section id="api" class="level2">
+<h2 class="anchored" data-anchor-id="api">API</h2>
+<section id="définition" class="level3">
+<h3 class="anchored" data-anchor-id="définition">Définition</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interface entre deux ordinateurs ou deux programmes.</p>
+<p>C’est une application qui offre des services à d’autres applications.</p>
+<p>L’application implémente une API ou expose une API.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="définition-1" class="level2">
+<h2 class="anchored" data-anchor-id="définition-1">Définition</h2>
+<p>Termes assez vaste qui recouvre :</p>
+<ul>
+<li>Les bibliothèques / frameworks : <a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Pandas</a> <a href="https://numpy.org/" target="_blank">Numpy</a></li>
+<li>Des webservices</li>
+<li>Un moyen d’accéder aux ressources d’un hardware
+<ul>
+<li><a href="https://developer.nvidia.com/nvapi" target="_blank">Nvidia API</a></li>
+</ul></li>
+</ul>
+<section id="api-in-a-nutshell" class="level3">
+<h3 class="anchored" data-anchor-id="api-in-a-nutshell">API in a nutshell</h3>
+<ul>
+<li>Expose des méthodes/fonctions aux utilisateurs</li>
+<li>Réutilisation</li>
+<li>Contractualisation des inputs/outputs</li>
+<li>Boîte noire</li>
+</ul>
+<div class="notes">
+<p>Pour reprendre l’exemple du dessus, le module d’authentification peut être utilisé aussi bien par les utilisateurs pour la version site marchand, que par les admins pour la partie administration.</p>
+</div>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Une API rend un service aux utilisateurs sans qu’ils aient à savoir comment elle fait.</p>
+<p>Ils connaissent juste ce qu’elle attend en entrée et ce qu’elle produit !</p>
+</div>
+</div>
+</section>
+</section>
+<section id="les-webservices" class="level2">
+<h2 class="anchored" data-anchor-id="les-webservices">Les webservices</h2>
+<p>Une API particulière</p>
+<div class="white-box">
+<p><a href="https://www.testarchitect.com/images/gallery/cross/web-service.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://www.testarchitect.com/images/gallery/cross/web-service.png" class="img-fluid"></a></p>
+</div>
+<section id="question" class="level3">
+<h3 class="anchored" data-anchor-id="question">Question</h3>
+<p>À votre avis, X permet-il à tout le monde d’accéder à leurs bases de données directement ?</p>
+<div class="notes">
+<p>Bien sûr non !</p>
+</div>
+</section>
+<section id="wait-what" class="level3">
+<h3 class="anchored" data-anchor-id="wait-what">Wait what ?!</h3>
+<ul>
+<li>Pourtant de nombreux sites utilisent les données X !</li>
+<li>Comment font-ils ?</li>
+</ul>
+</section>
+<section id="des-idées" class="level3 hide-html-render">
+<h3 class="anchored" data-anchor-id="des-idées">Des idées ?</h3>
+<iframe src="https://giphy.com/embed/8acGIeFnqLA7S" width="600" height="600" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+</section>
+<section id="solution-web-scraper" class="level3">
+<h3 class="anchored" data-anchor-id="solution-web-scraper">Solution : web scraper</h3>
+<p>Consiste à écrire une application qui se connecte à un site, et qui va lire la page pour en tirer des informations</p>
+<p><strong>Problèmes</strong></p>
+<ul>
+<li>Crée du trafic artificiel (côté site)</li>
+<li>Chaque changement dans le site casse notre application</li>
+<li>Gérer le JavaScript 😱😱😱😱</li>
+</ul>
+<div class="notes">
+<p>Dire que derrière un site il y a du HTML.<br>
+Montrer un exemple ?</p>
+</div>
+</section>
+<section id="autre-solution-créer-un-point-dentrée-pour-les-machines" class="level3">
+<h3 class="anchored" data-anchor-id="autre-solution-créer-un-point-dentrée-pour-les-machines">Autre solution : créer un point d’entrée pour les machines</h3>
+<ul>
+<li>Accessible depuis le web</li>
+<li>Fait pour les machines</li>
+<li><strong>Contrôle ce que l’on rend accessible</strong></li>
+</ul>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Interface entre l’extérieur et notre système</p>
+</div>
+</div>
+</div>
+</section>
+<section id="démo" class="level3">
+<h3 class="anchored" data-anchor-id="démo">Démo</h3>
+<div class="notes">
+<p>Exemple : <a href="https://api.gouv.fr/documentation/api_data_gouv">https://api.gouv.fr/documentation/api_data_gouv</a><br>
+<a href="https://anapioficeandfire.com/">https://anapioficeandfire.com/</a></p>
+</div>
+</section>
+<section id="les-webservices-1" class="level3">
+<h3 class="anchored" data-anchor-id="les-webservices-1">Les webservices</h3>
+<ul>
+<li>Application web</li>
+<li><strong>Accessible via requête HTTP/HTTPS</strong></li>
+<li>Sans interface graphique</li>
+<li><strong>Renvoie des données compréhensibles par les machines (JSON, XML…)</strong></li>
+</ul>
+<div class="notes">
+<p>Webservice : une API particulière que nous allons utiliser</p>
+</div>
+</section>
+<section id="plusieurs-types" class="level3">
+<h3 class="anchored" data-anchor-id="plusieurs-types">Plusieurs types</h3>
+<ul>
+<li>REST : le plus courant, le type que vous allez manipuler, JSON</li>
+<li>SOAP : plus complet donc plus lourd que le REST, XML</li>
+<li>RPC : Remote Procedure Call</li>
+</ul>
+<div class="notes">
+<p>REST est un style architectural qui définit un ensemble de contraintes et de principes</p>
+</div>
+<hr>
+<p>Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande</p>
+<p>Comme un site web, mais pour les machines</p>
+</section>
+<section id="exemple" class="level3">
+<h3 class="anchored" data-anchor-id="exemple">Exemple</h3>
+<p><a href="https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel">Le trafic à Rennes en temps réel</a></p>
+<div class="notes">
+<p>https://data.rennesmetropole.fr/explore/dataset/export-api-parking-citedia/api/</p>
+</div>
+</section>
+<section id="architecture-microservices" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-microservices">Architecture microservices</h3>
+<p>Site de e-commerce</p>
+<ul>
+<li>WS authentification</li>
+<li>WS gestion de compte</li>
+<li>WS paiement</li>
+<li>WS de recherche</li>
+<li>WS analyse des données</li>
+<li>WS gestion panier</li>
+</ul>
+</section>
+<section id="architecture-microservices-1" class="level3">
+<h3 class="anchored" data-anchor-id="architecture-microservices-1">Architecture microservices</h3>
+<p>Chaque module est un webservice indépendant, et c’est l’application côté client qui va les contacter</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle</p>
+</div>
+</div>
+<div class="notes">
+<p>Un dessin pourrait peut-être aider</p>
+</div>
+</section>
+<section id="comment-ça-fonctionne" class="level3 hide-html-render">
+<h3 class="anchored" data-anchor-id="comment-ça-fonctionne">Comment ça fonctionne ?</h3>
+<iframe src="https://giphy.com/embed/a5viI92PAF89q" width="900" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+</section>
+<section id="la-notion-de-client-serveur" class="level3">
+<h3 class="anchored" data-anchor-id="la-notion-de-client-serveur">La notion de client-serveur</h3>
+<ul>
+<li><strong>LE MODÈLE QUI RÉGIT LE WEB</strong></li>
+<li>Des machines qui attendent des demandes : <strong>serveurs</strong></li>
+<li>Des machines qui font des demandes : <strong>clients</strong></li>
+<li>Le client initie le contact, le serveur répond</li>
+</ul>
+</section>
+<section id="comparaison-avec-vie-réelle" class="level3">
+<h3 class="anchored" data-anchor-id="comparaison-avec-vie-réelle">Comparaison avec vie réelle</h3>
+<ul>
+<li>Vous marchez dans la rue et vous avez envie d’un café frappé Double shot espresso and Cream</li>
+<li>Vous rentrez dans un Starbucks et <strong>demandez</strong> votre café</li>
+<li>Le <strong>serveur</strong> traite votre demande et vous donne votre café</li>
+<li>Vous partez avec votre café</li>
+</ul>
+</section>
+</section>
+<section id="hyper-text-transfer-protocol-http" class="level2">
+<h2 class="anchored" data-anchor-id="hyper-text-transfer-protocol-http">Hyper Text Transfer Protocol (HTTP)</h2>
+<section id="http" class="level3">
+<h3 class="anchored" data-anchor-id="http">HTTP</h3>
+<p>Protocole de communication client-serveur développé pour le World Wide Web</p>
+<p>N’est pas le seul : FTP, SMTP, IRC …</p>
+<p>Il existe des protocoles non client-serveur : BitTorrent</p>
+<div class="notes">
+<p>Avez vous une idée de requête HTTP ?</p>
+</div>
+</section>
+<section id="avez-vous-une-idée-de-requête-http" class="level3">
+<h3 class="anchored" data-anchor-id="avez-vous-une-idée-de-requête-http">Avez-vous une idée de requête HTTP ?</h3>
+<p>Demander une page web via votre navigateur crée une requête HTTP</p>
+<div class="notes">
+<p>Vous faites tout le temps des requêtes HTTP sans le savoir.</p>
+</div>
+</section>
+<section id="les-éléments-dune-requête" class="level3">
+<h3 class="anchored" data-anchor-id="les-éléments-dune-requête">Les éléments d’une requête</h3>
+<ul>
+<li>La localisation de la ressource : URL (nom de domaine + chemin)</li>
+<li>La méthode employée (GET, POST, UPDATE, DELETE …)</li>
+<li>Les paramètres de la requête</li>
+<li>Le corps de la requête</li>
+</ul>
+<div class="notes">
+<p>Les paramètres sont derrière le ?<br>
+Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
+</div>
+</section>
+<section id="les-éléments-dune-requête-1" class="level3">
+<h3 class="anchored" data-anchor-id="les-éléments-dune-requête-1">Les éléments d’une requête</h3>
+<p><code>GET https://pokeapi.co/api/v2/pokemon?limit=10&amp;offset=200</code></p>
+<ul>
+<li>méthode</li>
+<li>protocole</li>
+<li>adresse du ws</li>
+<li>endpoint</li>
+<li>paramètres</li>
+</ul>
+<div class="notes">
+<p>Pour aller plus loin : IP, DNS</p>
+</div>
+</section>
+<section id="les-méthodes-http" class="level3">
+<h3 class="anchored" data-anchor-id="les-méthodes-http">Les méthodes HTTP</h3>
+<ul>
+<li>POST</li>
+<li>GET</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>C’est le CRUD !</p>
+</div>
+</div>
+<div class="notes">
+<p>Comme en SQL</p>
+</div>
+</section>
+<section id="exemple-1" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-1">Exemple</h3>
+<p>http://web-services.domensai.ecole/attack</p>
+<ul>
+<li>GET : récupérer toutes les attaques</li>
+<li>POST : ajouter une attaque</li>
+<li>UPDATE : modifier une attaque en ajoutant son id en paramètre</li>
+<li>DELETE : supprimer une attaque en ajoutant son id en paramètre</li>
+</ul>
+</section>
+<section id="pour-résumer" class="level3">
+<h3 class="anchored" data-anchor-id="pour-résumer">Pour résumer</h3>
+<ul>
+<li>Le HTTP est le protocole du web</li>
+<li>Méthode</li>
+<li>URL</li>
+<li>Paramètres dans URL ou corps</li>
+</ul>
+</section>
+</section>
+<section id="contacterréaliser-un-webservice" class="level2">
+<h2 class="anchored" data-anchor-id="contacterréaliser-un-webservice">Contacter/réaliser un webservice</h2>
+<section id="contacter-un-webservice" class="level3">
+<h3 class="anchored" data-anchor-id="contacter-un-webservice">Contacter un webservice</h3>
+<p>Un outil : un client HTTP</p>
+<ul>
+<li>Un navigateur web (assez limité)</li>
+<li>Insomnia/Postman</li>
+<li>Vscode avec des plugins</li>
+<li>Python avec le plugin <code>requests</code></li>
+</ul>
+</section>
+<section id="contacter-un-webservice-en-python" class="level3">
+<h3 class="anchored" data-anchor-id="contacter-un-webservice-en-python">Contacter un webservice en python</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Construction de la requête</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://data.rennesmetropole.fr/api/records/1.0/search/"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>parametres <span class="op">=</span> {<span class="st">"dataset"</span>: <span class="st">"etat-du-trafic-en-temps-reel"</span>, <span class="st">"rows"</span>: <span class="dv">2</span>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de la requête</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> requests.get(url<span class="op">=</span>url, params<span class="op">=</span>parametres)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage du résultat</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(res.json())</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Nombre de lignes : "</span>, res.json()[<span class="st">"parameters"</span>][<span class="st">"rows"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="contacter-un-webservice-en-python-1" class="level3">
+<h3 class="anchored" data-anchor-id="contacter-un-webservice-en-python-1">Contacter un webservice en python</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://anapioficeandfire.com/api/"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>end_point <span class="op">=</span> <span class="st">"characters"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>parametres <span class="op">=</span> {<span class="st">"gender"</span>: <span class="st">"Female"</span>, <span class="st">"isAlive"</span>: <span class="va">True</span>, <span class="st">"culture"</span>: <span class="st">"Braavosi"</span>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>url <span class="op">+</span> end_point, params<span class="op">=</span>parametres)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste si le serveur a répondu</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response.json()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="contacter-un-webservice-en-python-2" class="level3">
+<h3 class="anchored" data-anchor-id="contacter-un-webservice-en-python-2">Contacter un webservice en python</h3>
+<ul>
+<li>Très facile</li>
+<li><code>res.json()</code> retourne un dictionnaire</li>
+<li><code>get()</code> peut devenir <code>post()</code>, <code>put()</code>, etc.</li>
+</ul>
+</section>
+<section id="réaliser-un-webservice-en-python" class="level3">
+<h3 class="anchored" data-anchor-id="réaliser-un-webservice-en-python">Réaliser un webservice en python</h3>
+<ul>
+<li>Peut sembler complexe 😵</li>
+<li>Mais il existe des outils pour nous aider 😎</li>
+<li>Pas besoin d’être un expert de l’informatique ! 🐱‍💻</li>
+</ul>
+</section>
+<section id="frameworks" class="level3">
+<h3 class="anchored" data-anchor-id="frameworks">3 frameworks</h3>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/" target="_blank">FlaskRESTful</a> : mature, léger, flexible</li>
+<li><a href="https://www.djangoproject.com/" target="_blank">Django</a> : mature, robuste, complet</li>
+<li><a href="https://fastapi.tiangolo.com/" target="_blank">FastApi</a> : jeune, léger, moderne</li>
+</ul>
+<div class="notes">
+<p>FastApi pour le TP2</p>
+</div>
+</section>
+<section id="fastapi-les-bases" class="level3">
+<h3 class="anchored" data-anchor-id="fastapi-les-bases">FastApi : les bases</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fastapi" class="level3">
+<h3 class="anchored" data-anchor-id="fastapi">FastApi</h3>
+<ul>
+<li>Il est facile de coder vos endpoints</li>
+<li>La <a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank">documentation</a> est extrêmement bien faite</li>
+<li>Vous vous concentrez sur l’essentiel</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -824,6 +1283,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

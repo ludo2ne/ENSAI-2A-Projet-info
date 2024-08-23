@@ -84,11 +84,193 @@
     "text": "🚧"
   },
   {
+    "objectID": "doc/cours/webservices.html#le-plan",
+    "href": "doc/cours/webservices.html#le-plan",
+    "title": "Les Webservices",
+    "section": "Le plan",
+    "text": "Le plan\n\nAPI\nWebservice\n\nDéfinition\nExemples\nArchitecture microservices\n\nHyper Text Transfer Protocol\n\nDéfinition\nExemples"
+  },
+  {
+    "objectID": "doc/cours/webservices.html#api",
+    "href": "doc/cours/webservices.html#api",
+    "title": "Les Webservices",
+    "section": "API",
+    "text": "API\n\nDéfinition\n\n\n\n\n\n\nNote\n\n\n\nInterface entre deux ordinateurs ou deux programmes.\nC’est une application qui offre des services à d’autres applications.\nL’application implémente une API ou expose une API."
+  },
+  {
+    "objectID": "doc/cours/webservices.html#définition-1",
+    "href": "doc/cours/webservices.html#définition-1",
+    "title": "Les Webservices",
+    "section": "Définition",
+    "text": "Définition\nTermes assez vaste qui recouvre :\n\nLes bibliothèques / frameworks : Pandas Numpy\nDes webservices\nUn moyen d’accéder aux ressources d’un hardware\n\nNvidia API\n\n\n\nAPI in a nutshell\n\nExpose des méthodes/fonctions aux utilisateurs\nRéutilisation\nContractualisation des inputs/outputs\nBoîte noire\n\n\nPour reprendre l’exemple du dessus, le module d’authentification peut être utilisé aussi bien par les utilisateurs pour la version site marchand, que par les admins pour la partie administration.\n\n\n\n\n\n\n\n\nNote\n\n\n\nUne API rend un service aux utilisateurs sans qu’ils aient à savoir comment elle fait.\nIls connaissent juste ce qu’elle attend en entrée et ce qu’elle produit !"
+  },
+  {
+    "objectID": "doc/cours/webservices.html#les-webservices",
+    "href": "doc/cours/webservices.html#les-webservices",
+    "title": "Les Webservices",
+    "section": "Les webservices",
+    "text": "Les webservices\nUne API particulière\n\n\n\n\nQuestion\nÀ votre avis, X permet-il à tout le monde d’accéder à leurs bases de données directement ?\n\nBien sûr non !\n\n\n\nWait what ?!\n\nPourtant de nombreux sites utilisent les données X !\nComment font-ils ?\n\n\n\nDes idées ?\n\n\n\n\nSolution : web scraper\nConsiste à écrire une application qui se connecte à un site, et qui va lire la page pour en tirer des informations\nProblèmes\n\nCrée du trafic artificiel (côté site)\nChaque changement dans le site casse notre application\nGérer le JavaScript 😱😱😱😱\n\n\nDire que derrière un site il y a du HTML.\nMontrer un exemple ?\n\n\n\nAutre solution : créer un point d’entrée pour les machines\n\nAccessible depuis le web\nFait pour les machines\nContrôle ce que l’on rend accessible\n\n\n\n\n\n\n\nInterface entre l’extérieur et notre système\n\n\n\n\n\nDémo\n\nExemple : https://api.gouv.fr/documentation/api_data_gouv\nhttps://anapioficeandfire.com/\n\n\n\nLes webservices\n\nApplication web\nAccessible via requête HTTP/HTTPS\nSans interface graphique\nRenvoie des données compréhensibles par les machines (JSON, XML…)\n\n\nWebservice : une API particulière que nous allons utiliser\n\n\n\nPlusieurs types\n\nREST : le plus courant, le type que vous allez manipuler, JSON\nSOAP : plus complet donc plus lourd que le REST, XML\nRPC : Remote Procedure Call\n\n\nREST est un style architectural qui définit un ensemble de contraintes et de principes\n\n\nUn web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande\nComme un site web, mais pour les machines\n\n\nExemple\nLe trafic à Rennes en temps réel\n\nhttps://data.rennesmetropole.fr/explore/dataset/export-api-parking-citedia/api/\n\n\n\nArchitecture microservices\nSite de e-commerce\n\nWS authentification\nWS gestion de compte\nWS paiement\nWS de recherche\nWS analyse des données\nWS gestion panier\n\n\n\nArchitecture microservices\nChaque module est un webservice indépendant, et c’est l’application côté client qui va les contacter\n\n\n\n\n\n\nNote\n\n\n\nUtile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle\n\n\n\nUn dessin pourrait peut-être aider\n\n\n\nComment ça fonctionne ?\n\n\n\n\nLa notion de client-serveur\n\nLE MODÈLE QUI RÉGIT LE WEB\nDes machines qui attendent des demandes : serveurs\nDes machines qui font des demandes : clients\nLe client initie le contact, le serveur répond\n\n\n\nComparaison avec vie réelle\n\nVous marchez dans la rue et vous avez envie d’un café frappé Double shot espresso and Cream\nVous rentrez dans un Starbucks et demandez votre café\nLe serveur traite votre demande et vous donne votre café\nVous partez avec votre café"
+  },
+  {
+    "objectID": "doc/cours/webservices.html#hyper-text-transfer-protocol-http",
+    "href": "doc/cours/webservices.html#hyper-text-transfer-protocol-http",
+    "title": "Les Webservices",
+    "section": "Hyper Text Transfer Protocol (HTTP)",
+    "text": "Hyper Text Transfer Protocol (HTTP)\n\nHTTP\nProtocole de communication client-serveur développé pour le World Wide Web\nN’est pas le seul : FTP, SMTP, IRC …\nIl existe des protocoles non client-serveur : BitTorrent\n\nAvez vous une idée de requête HTTP ?\n\n\n\nAvez-vous une idée de requête HTTP ?\nDemander une page web via votre navigateur crée une requête HTTP\n\nVous faites tout le temps des requêtes HTTP sans le savoir.\n\n\n\nLes éléments d’une requête\n\nLa localisation de la ressource : URL (nom de domaine + chemin)\nLa méthode employée (GET, POST, UPDATE, DELETE …)\nLes paramètres de la requête\nLe corps de la requête\n\n\nLes paramètres sont derrière le ?\nLe corps vous ne le voyez pas, mais il est possible de le voir.\n\n\n\nLes éléments d’une requête\nGET https://pokeapi.co/api/v2/pokemon?limit=10&offset=200\n\nméthode\nprotocole\nadresse du ws\nendpoint\nparamètres\n\n\nPour aller plus loin : IP, DNS\n\n\n\nLes méthodes HTTP\n\nPOST\nGET\nUPDATE\nDELETE\n\n\n\n\n\n\n\nImportant\n\n\n\nC’est le CRUD !\n\n\n\nComme en SQL\n\n\n\nExemple\nhttp://web-services.domensai.ecole/attack\n\nGET : récupérer toutes les attaques\nPOST : ajouter une attaque\nUPDATE : modifier une attaque en ajoutant son id en paramètre\nDELETE : supprimer une attaque en ajoutant son id en paramètre\n\n\n\nPour résumer\n\nLe HTTP est le protocole du web\nMéthode\nURL\nParamètres dans URL ou corps"
+  },
+  {
+    "objectID": "doc/cours/webservices.html#contacterréaliser-un-webservice",
+    "href": "doc/cours/webservices.html#contacterréaliser-un-webservice",
+    "title": "Les Webservices",
+    "section": "Contacter/réaliser un webservice",
+    "text": "Contacter/réaliser un webservice\n\nContacter un webservice\nUn outil : un client HTTP\n\nUn navigateur web (assez limité)\nInsomnia/Postman\nVscode avec des plugins\nPython avec le plugin requests\n\n\n\nContacter un webservice en python\nimport requests\n\n# Construction de la requête\nurl = \"https://data.rennesmetropole.fr/api/records/1.0/search/\"\nparametres = {\"dataset\": \"etat-du-trafic-en-temps-reel\", \"rows\": 2}\n\n# Lancement de la requête\nres = requests.get(url=url, params=parametres)\n\n# Affichage du résultat\nprint(res.json())\nprint(\"\\nNombre de lignes : \", res.json()[\"parameters\"][\"rows\"])\n\n\nContacter un webservice en python\nimport json\nimport requests\n\nurl = \"https://anapioficeandfire.com/api/\"\nend_point = \"characters\"\nparametres = {\"gender\": \"Female\", \"isAlive\": True, \"culture\": \"Braavosi\"}\nresponse = requests.get(url=url + end_point, params=parametres)\n\n# Teste si le serveur a répondu\nif response.status_code != 200:\n    raise Exception(f\"Cannot reach (HTTP {response.status_code}): {response.text}\")\nprint(json.dumps(response.json()))\n\n\nContacter un webservice en python\n\nTrès facile\nres.json() retourne un dictionnaire\nget() peut devenir post(), put(), etc.\n\n\n\nRéaliser un webservice en python\n\nPeut sembler complexe 😵\nMais il existe des outils pour nous aider 😎\nPas besoin d’être un expert de l’informatique ! 🐱‍💻\n\n\n\n3 frameworks\n\nFlaskRESTful : mature, léger, flexible\nDjango : mature, robuste, complet\nFastApi : jeune, léger, moderne\n\n\nFastApi pour le TP2\n\n\n\nFastApi : les bases\nfrom fastapi import FastAPI\n\napp = FastAPI()\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello World\"}\n\n\nif __name__ == \"__main__\":\n    uvicorn.run(app, host=\"0.0.0.0\", port=8000)\n\n\nFastApi\n\nIl est facile de coder vos endpoints\nLa documentation est extrêmement bien faite\nVous vous concentrez sur l’essentiel"
+  },
+  {
+    "objectID": "doc/cours/webservices-slides.html#le-plan",
+    "href": "doc/cours/webservices-slides.html#le-plan",
+    "title": "Les Webservices",
+    "section": "Le plan",
+    "text": "Le plan\n\nAPI\nWebservice\n\nDéfinition\nExemples\nArchitecture microservices\n\nHyper Text Transfer Protocol\n\nDéfinition\nExemples"
+  },
+  {
+    "objectID": "doc/cours/webservices-slides.html#api",
+    "href": "doc/cours/webservices-slides.html#api",
+    "title": "Les Webservices",
+    "section": "API",
+    "text": "API"
+  },
+  {
+    "objectID": "doc/cours/webservices-slides.html#définition-1",
+    "href": "doc/cours/webservices-slides.html#définition-1",
+    "title": "Les Webservices",
+    "section": "Définition",
+    "text": "Définition\nTermes assez vaste qui recouvre :\n\nLes bibliothèques / frameworks : Pandas Numpy\nDes webservices\nUn moyen d’accéder aux ressources d’un hardware\n\nNvidia API"
+  },
+  {
+    "objectID": "doc/cours/webservices-slides.html#les-webservices",
+    "href": "doc/cours/webservices-slides.html#les-webservices",
+    "title": "Les Webservices",
+    "section": "Les webservices",
+    "text": "Les webservices\nUne API particulière"
+  },
+  {
+    "objectID": "doc/cours/webservices-slides.html#hyper-text-transfer-protocol-http",
+    "href": "doc/cours/webservices-slides.html#hyper-text-transfer-protocol-http",
+    "title": "Les Webservices",
+    "section": "Hyper Text Transfer Protocol (HTTP)",
+    "text": "Hyper Text Transfer Protocol (HTTP)"
+  },
+  {
+    "objectID": "doc/cours/webservices-slides.html#contacterréaliser-un-webservice",
+    "href": "doc/cours/webservices-slides.html#contacterréaliser-un-webservice",
+    "title": "Les Webservices",
+    "section": "Contacter/réaliser un webservice",
+    "text": "Contacter/réaliser un webservice"
+  },
+  {
     "objectID": "doc/cours/dao-securite.html",
     "href": "doc/cours/dao-securite.html",
     "title": "DAO et Sécurité",
     "section": "",
-    "text": "🚧"
+    "text": "Data Access Object\n\nPourquoi persister des données ?\nC’est quoi une DAO\nExemple de DAO\n\nSécurité Informatique\n\nDéfinition\nFailles de sécurité\nInjection SQL\n\nGestion des mots de passe\n\nAuthentification avec cypher\nHashage de mots de passe\nExemple\n\n\n\nNous allons commencer par parler Stockage des données"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#le-plan",
+    "href": "doc/cours/dao-securite.html#le-plan",
+    "title": "DAO et Sécurité",
+    "section": "",
+    "text": "Data Access Object\n\nPourquoi persister des données ?\nC’est quoi une DAO\nExemple de DAO\n\nSécurité Informatique\n\nDéfinition\nFailles de sécurité\nInjection SQL\n\nGestion des mots de passe\n\nAuthentification avec cypher\nHashage de mots de passe\nExemple\n\n\n\nNous allons commencer par parler Stockage des données"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#data-access-object-dao",
+    "href": "doc/cours/dao-securite.html#data-access-object-dao",
+    "title": "DAO et Sécurité",
+    "section": "Data access object (DAO)",
+    "text": "Data access object (DAO)\n\n\n\n\n\nNotre objectif va être de stocker des données, mais avant :\n\n\nUn ordinateur\nQuels sont ses composants (en gros) ?\n\n\nUn processeur (CPU) : fait UNIQUEMENT du calcul\nLa mémoire RAM : mémoire volatile rapide\nDisque dur (HDD, SSD) : mémoire longue durée\nCarte graphique : unité de calcul spécialisée\n\n\n\nBien insister sur CPU, RAM, disque !\nRendent 3 services différents :\n\nCPU : processeur\nDD : disque\nRAM : barrettes\n\n\n\n\nComment résoudre ce problème ?\n\n\n\n\nQuel problème ??\n\n\nRéponse : Conserver les données une fois le programme Python terminé\n\n\n\nUne question à se poser\nC’est quoi une variable Python ?\n\n\nUne référence (le nom de la variable)\nUn objet associé (sa valeur)\n\n\np = Personnage(prenom=\"Leia\", nom=\"Organa\", age = 35)\n\nOn zappe la notion d’adressage mémoire.\nPas besoin de stocker la référence, car elle est dans le code source\n\n\n\nUne question qui en découle\nC’est quoi un objet Python ?\n\n\nDes attributs (qui peuvent être eux-mêmes des objets)\nDes méthodes\n\n\n\n\npersonnage.py\n\nclass Personnage:\n    def __init__(self, prenom, nom, age):\n        self.prenom = prenom\n        self.nom = nom\n        self.age = age\n        self.vaisseaux = []\n\n    def anniversaire(self):\n        self.age += 1\n\n\nPareil, les méthodes c’est du code, nous on veut juste les attributs\n\n\n\nPour résumer\n\nNous voulons sauvegarder des couples clef-valeur\n\nAvec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur\n\n\n\n\n\n\n\nNous voulons sauvegarder un arbre 🌳\n\n\n\n\nBesoin d’un dessin avec Leia et Vaisseaux\nParallèle avec les dict Python / JSON\nArbre car les attributs d’objets sont parfois eux-mêmes des objets\n\n\n\nComment faire cela ?\n\nÉcrire nos données sur le disque dur dans un fichier\n\ncsv, parquet, json, xml\n\nUtiliser une base de données\n\nSQL tables + relations, NoSQL\n\n\n\nQuestion : Comment fait une BDD ?\n\nElle gère dans des fichiers\n\nOn peut faire le parallèle avec les couches\n\nLa BDD rend un service, j’ignore comment elle fait\n\nJe sais ce qu’elle attend en entrée et ce qu’elle me donne en sortie !\n\n\n\n\n\nLien persistance / application\n\nPython : Variables volatiles en RAM\nSystème de persistance : Données stockées sur disque\nData Access Objects (DAO) en guise de lien\n\n\nPetite pause récap pour essayer de récupérer tout le monde avant la DAO.\nDans la vraie vie, on ne repart pas de 0 quand on relance une appli.\nSi vous créez un Personnage, la fois suivante il sera toujours là\n\n\n\nC’est quoi une DAO ?\n\n\n\n\nOn vient de dire que l’on va stocker dans une BDD.\nComment y accéder ?\n\n\n\nC’est quoi une DAO ?\n\nClasse technique\nUne classe DAO par objet métier\nExpose des méthodes pour communiquer avec la couche de persistance\n\n\nC’est une API\nRend un service à des clients\nComment elle fait ? -&gt; osef\nComme vous au restaurant. Vous voulez manger, comment c’est fait vous importe peu tant que le service est rendu (avec un niveau d’exigence)\nDes ORM tels SQLAlchemy existent pour faire le lien Objet Python - Table BDD -&gt; pas le sujet ici\n\n\n\nQuelles méthodes exposer ?\n\n\nCreate\nRead\nUpdate\nDelete\n\n\n\nFaire participer\nEssayer de montrer que ces 4 là suffisent.\nAprès on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.\nQuid de la copie ?\nUne copie c’est une lecture + création donc on sait faire\nExemple dessin : classe Personne - table personne - dao personneDAO\n\n\n\nL’intérêt d’une classe à part\nSéparation des responsabilités\n\nClasse “jetable” 🚮\nModifiable sans risque 🔨\nParallélisation du travail 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬\n\n\nOn remet une couche, ça fait pas de mal\nDans la vraie vie, si changement de système, plus facile de migrer\nEn projet, la couche DAO peut être très facile à faire\n\n\n\nPetit recap\n\n\nPetit exemple pour illustrer.\nExemple : lister toutes les personnes fans de Pokemon"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#comment-se-connecter-à-une-db-en-python",
+    "href": "doc/cours/dao-securite.html#comment-se-connecter-à-une-db-en-python",
+    "title": "DAO et Sécurité",
+    "section": "Comment se connecter à une DB en python ?",
+    "text": "Comment se connecter à une DB en python ?\nUtilisation d’une bibliothèque dédiée\n\nPostgreSQL : psycopg2\nMySQL : mysql-connector-python\nOracle : cx_Oracle\nMongoDB : pymongo\n\n\nVous lirez en entier la doc : psycopg2.\nIl y aura des questions à l’exam !\n\n\npsycopg2\n\npip install psycopg2-binary\nconnection : permet d’établir la connexion avec la base\nPas super intéressant à faire, le code est donné\n\n\n\npsycopg2 - connection\n\n\ndb_connection.py\n\nimport os\nimport dotenv\nimport psycopg2\n\nfrom psycopg2.extras import RealDictCursor\nfrom utils.singleton import Singleton\n\nclass DBConnection(metaclass=Singleton):\n    \"\"\"\n    Classe de connexion à la base de données\n    Elle permet de n'ouvrir qu'une seule et unique connexion\n    \"\"\"\n\n    def __init__(self):\n        \"\"\"Ouverture de la connexion\"\"\"\n        dotenv.load_dotenv()\n\n        self.__connection = psycopg2.connect(\n            host=os.environ[\"POSTGRES_HOST\"],\n            port=os.environ[\"POSTGRES_PORT\"],\n            database=os.environ[\"POSTGRES_DATABASE\"],\n            user=os.environ[\"POSTGRES_USER\"],\n            password=os.environ[\"POSTGRES_PASSWORD\"],\n            options=f\"-c search_path={os.environ['POSTGRES_SCHEMA']}\",\n            cursor_factory=RealDictCursor,\n        )\n\n    @property\n    def connection(self):\n        return self.__connection\n\n\nSingleton\n\n\n\npsycopg2 - cursor\n\ncursor : encapsule la requête ```{.python} from dao.db_connection import DBConnection\nwith DBConnection().connection as connection: with connection.cursor() as cursor: ```\ncursor.execute(\"&lt;une requête SQL&gt;\") : permet de faire une requête\ncursor.fetchone()/fetchall()/fetchmany() : Récupération des résultats\n\n\n\nForme de base\ndef dao_function(self, arg1, arg2, ...):\n    # Récupération de la connexion à la base\n    with DBConnection().connection as connection:\n    # Création d'un curseur pour faire une requête\n        with connection.cursor() as cursor:\n            # On envoie au serveur la requête SQL\n            cursor.execute(\n                \"&lt;une_requete_sql_à_trous&gt;\",\n                remplisage_des_trous)\n\n            # On récupère le résultat de la requête\n            res = cursor.fetchone()  # ou fetchall()/fetchmany()\n\n    # Si la requête renvoie quelque chose\n    if res:\n      something = \"&lt;res mis en forme&gt;\"\n        \n    return something   \n\nPourquoi on ne retourne pas directement res ?\nres : list[dict]\nOn préfère retourner un Objet ou une liste[Objet]\n\n\n\nUn petit exemple : LivreDao\n\n\nISBN : International Standard Book Number\n\n\n\nCréer un livre\ndef create(self, livre) -&gt; Livre:\n    \"\"\"Pour créer un livre en base\"\"\"\n    with DBConnection().connection as conn:\n        with conn.cursor() as cursor:\n            cursor.execute(\n                \"INSERT INTO livre (isbm, titre, auteur)         \"\n                \"     VALUES (%(isbm)s, %(titre)s, %(auteur)s)   \"\n                \"  RETURNING id_livre;                           \",\n                {\"isbm\": livre.isbm, \n                 \"titre\": livre.titre, \n                 \"auteur\": livre.auteur},\n            )\n            livre.id = cursor.fetchone()[\"id_livre\"]\n    return livre\n\nPossible aussi de retourner une booléen :\n\ntrue si création réussie\nfalse sinon\n\n\n\n\nLister les livres\ndef find_all(self) -&gt; list[Livre]:\n    \"\"\"Pour récupérer tous les livres en base\"\"\"\n    with DBConnection().connection as conn:\n        with conn.cursor() as cursor:\n            cursor.execute(\n                \"SELECT id_livre,                  \"\n                \"       isbm,                      \"\n                \"       titre,                     \"\n                \"       auteur                     \"\n                \"  FROM livre ;                    \"\n            )\n            livre_bdd = cursor.fetchall()\n            \n    liste_livres = []\n\n    if livre_bdd:\n        for livre in livre_bdd:\n            liste_livres.append(\n                Livre(\n                    id=livre[\"id_livre\"],\n                    isbm=livre[\"isbm\"],\n                    titre=livre[\"titre\"],\n                    auteur=livre[\"auteur\"],\n                )\n            )\n            \n    return liste_livres\n\n\nlivre_bdd = [{id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}, {…}, …]\nlivre = {id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}\nliste_livres = [Livre(1, 123, “Le Schtroumpf hackeur”, “Peyo”), Livre(…), …]\n\n\n\n\nTrouver un livre\ndef find_by_isbm(self, isbm) -&gt; Livre:\n    \"\"\"Pour récupérer un livre depuis son isbm\"\"\"\n    with DBConnection().connection as conn:\n        with conn.cursor() as cursor:\n            cursor.execute(\n                \"SELECT *                          \"\n                \"  FROM livre                      \"\n                \" WHERE isbm = %(isbm)s            \",\n                {\"isbm\": livre.isbm}\n            livre_bdd = cursor.fetchone()\n            \n    livre = None\n    if livre_bdd:\n        livre = Livre(\n            id=livre_bdd[\"id_livre\"],\n            isbm=livre_bdd[\"isbm\"],\n            titre=livre_bdd[\"titre\"],\n            auteur=livre_bdd[\"auteur\"],\n        )\n    return livre\n\nlivre_bdd : dict livre : Livre\nPrincipe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets\n\n\n\nConclusion\n\nPython travaille en RAM (volatile)\nObligation d’avoir un mécanisme de persistance des données\nDAO : centralise les méthodes pour lire/écrire nos données\nLa couche métier appelle la DAO sans se préoccuper du système de persistance\nPermet un travail d’équipe efficace 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#sécurité-informatique",
+    "href": "doc/cours/dao-securite.html#sécurité-informatique",
+    "title": "DAO et Sécurité",
+    "section": "Sécurité informatique",
+    "text": "Sécurité informatique\n\nPrincipes CAID\n\n\n\n\n\n4 piliers de la sécurité info\n\nConfidentialité\nAuthentification\nIntégrité\nDisponibilité\n\n\nOn utilise aussi parfois DICP ou DICPA\nDisponibilité, Intégrité, Confidentialité, Preuve\n\n\n\nDeux bonus\n\nTraçabilité\nNon-répudiation\n\n\n\nConfidentialité\n\n\n\n\n\n\nSeules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées (notions de droits ou permissions).\nTout accès indésirable doit être empêché.\n\n\n\nMécanismes associés :\n\ngestion des droits (annuaires, rôles …)\ncryptographie\n\n\nOn parle plutôt de chiffrement\n\n\n\nAuthentification\n\n\n\n\n\n\nLes utilisateurs doivent prouver leur identité en répondant à un “challenge”.\n\n\n\nMécanismes associés :\n\nauthentification faible (identifiant, mot de passe)\nauthentification forte (données biométriques, multi-facteurs)\n\n\n\nIntégrité\n\n\n\n\n\n\nLes données doivent être celles que l’on attend, et ne doivent pas être altérées de façons fortuites, illicites ou malveillantes.\n\n\n\nMécanismes associés :\n\nsignature électronique\nchecksum\n\n\nSignature électronique : garantir l’intégrité d’un document, c’est-à-dire s’assurer que le document n’a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c’est-à-dire s’assurer de l’identité de la personne signataire.\nChecksum : bit de parité.\n\n\n\nDisponibilité\n\n\n\n\n\n\nL’accès aux ressources du système d’information doit être permanent et sans faille durant les plages d’utilisation prévues.\n\n\n\nMécanismes associés :\n\nredondance des serveurs\nvirtualisation\nconteneurisation\n\n\nBackup\nParler de la mise en production avant.\n\n\n\nTraçabilité\n\n\n\n\n\n\nGarantit que les accès et tentatives d’accès aux éléments considérés sont tracés et que ces traces sont conservées et exploitables.\n\n\n\nMécanisme associé :\n\njournalisation\n\n\nLogs (mieux que les prints)\nProjet 2024-2025\n\n\n\nLa non-répudiation\n\n\n\n\n\n\nAucun utilisateur ne doit pouvoir contester les opérations qu’il a réalisées dans le cadre de ses actions autorisées et aucun tiers ne doit pouvoir s’attribuer les actions d’un autre utilisateur.\n\n\n\nMécanismes associés :\n\ntraçabilité\nauthentification\nintégrité\n\n\nC’est pas moi\nMais c’est votre nom !\nNe laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#les-failles-informatiques",
+    "href": "doc/cours/dao-securite.html#les-failles-informatiques",
+    "title": "DAO et Sécurité",
+    "section": "Les failles informatiques",
+    "text": "Les failles informatiques\n\nTrop de failles !!!\n\nFailles physiques “bas niveau”\nFailles physiques “haut niveau”\nInjection SQL\nInjection de données\nFaille XSS\nExécution de code\n…\n\n\n\nFailles physiques “bas niveau” : coupure électrique, inondation salle serveur\nFailles physiques “haut niveau” : accès physique à une machine\n\n\n\n\nDe quoi faut-il se méfier ?\n\n\n\n\nDe vos utilisateurs"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#exemple-de-failles-les-injections-sql",
+    "href": "doc/cours/dao-securite.html#exemple-de-failles-les-injections-sql",
+    "title": "DAO et Sécurité",
+    "section": "Exemple de failles, les injections SQL",
+    "text": "Exemple de failles, les injections SQL\n\n\n\nSource : https://xkcd.com/\n\n\n\nInjection SQL\nConsiste à saisir du SQL pour exécuter une autre requête que celle prévue.\nProblèmes :\n\nConfidentialité\nAuthentification\nIntégrité\nDisponibilité\n\n\n\nExemple : s’authentifier sans mot de passe\nRequête d’authentification\nSELECT * \n  FROM user \n WHERE name = 'input_name' \n   AND mdp = 'input_mdp';\n\n\n\n\n\n\n\nVous saisissez\n\n\n\n\nRémi\nmon_super_password\n\n\n\n\n\nSELECT * \n  FROM user \n WHERE name = 'Rémi' \n   AND mdp = 'mon_super_password';\n\n\nSi dans votre cursor.execute vous avez ce code\n\n\n\nExemple : s’authentifier sans mot de passe\nSELECT * \n  FROM user \n WHERE name = 'input_name' \n   AND mdp = 'input_mdp';\n\n\n\n\n\n\n\nVous saisissez\n\n\n\n\nRémi\n' OR 1=1; --\n\n\n\n\n\nSELECT * \n  FROM user \n WHERE name = 'Rémi' \n   AND mdp = '' OR 1=1; --';\n\n\n\nExemple : supprimer une table\nSELECT * \n  FROM user \n WHERE name = 'input_name' \n   AND mdp = 'input_mdp';\n\n\n\n\n\n\n\nVous saisissez\n\n\n\n\nRémi\n'; DROP TABLE user CASCADE; --\n\n\n\n\n\nSELECT * \n  FROM user \n WHERE name='Rémi' \n   AND mdp=''; DROP TABLE user CASCADE; --;\n\n\n\n\n\n\n\nComment se protéger ?\n\nÉchapper les caractères spéciaux\nUtiliser une requête préparée\n\nLa bibliothèque que vous utiliserez ne fait que de l’échappement de caractères spéciaux 😨\n\nLa seconde solution est mieux que la première mais psycopg2 ne semble pas la proposer simplement.\nDonc il faut la connaître, mais savoir que c’est la première solution qui va être faite.\nÉchapper les caractères spéciaux : par exemple, « ’ » sera remplacé par « ' »\nL’apostrophe ne sera donc pas interprétée comme une fin de chaîne par le SGBD\nInstruction “prepare” :\n1. Envoie la requête à trous à la BDD\n2. Envoie pour remplir les trous\n\n\n\nCross Site Scripting\nConsiste à injecter du code provoquant des actions sur le navigateur. Cela peut permettre :\n\nDes redirections de page (phishing)\nDu vol d’information\nDes actions sur le site\nRendre le site difficile à utiliser\n\n\n\nComment se protéger ?\n\nNe jamais insérer des données brutes\nÉchapper les caractères spéciaux\nVérifier vos données\n\n\n\n\n\n\n\nTip\n\n\n\nLes bibliothèques web le font souvent pour vous !\n\n\n\n\nTo sum up : injection\n\nNe jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs\nNe jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs\nNe jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs"
+  },
+  {
+    "objectID": "doc/cours/dao-securite.html#gestion-des-mots-de-passe",
+    "href": "doc/cours/dao-securite.html#gestion-des-mots-de-passe",
+    "title": "DAO et Sécurité",
+    "section": "Gestion des mots de passe",
+    "text": "Gestion des mots de passe\n\nVotre application doit-elle stocker des mots de passe en clair?\n\n\n\n\nNo way\n\n\n\nVotre application doit-elle connaître le mot de passe d’un utilisateur pour l’authentifier ?\n\n\n\n\n….. No\n\n\n\n????\n\n\n\n\nHow it works ?\n\n\n\nHasher le mot de passe\n\nHashage du mot de passe =&gt; cypher\nStockage du cypher en base\nQuand besoin de comparer on hashe le mdp saisi\nEt on compare les cyphers\n\nAuthentification sans persister les mots de passe !!!!\n\nC’est tellement simple et sécurisé !\nMais pas tous les sites le font …\nUn site qui vous renvoie votre mdp le garde en mémoire (ou du moins le moyen de le déchiffrer)\nDans la vraie vie, on rajoute un “sel” au mdp avant de le hacher.\nC’est une valeur aléatoire calculée pour chaque utilisateur que l’on va rajouter au mdp avant de le hacher\nCela rend une attaque en force brute plus coûteuse.\n\n\n\n\n\n\n\nAjouter du sel pour plus de sécurité\n\n\n\n\n\nUne base sans sel ajouté\n\nVotre base mail/mdp fuite mais les mdp sont hachés\nLes attaquants doivent bruteforce les mdp\nIls commencent par les mdp les plus courants, et les hachent avec les algo de hash courants\nPuis ils comparent avec la base\nForte chance d’avoir plusieurs correspondances\n\n\nbruteforce : tester toutes les combinaisons possibles\n\n\n\nLe sel c’est bon pour la sécurité\nAu lieu de hacher et stocker le mdp vous stockez et hachez le mdp ET un élément lié à l’utilisateur de manière déterministe (le sel).\nMaintenant même si 2 personnes ont le même mdp, elles auront des hash différents.\n\n\nLe sel c’est bon pour la sécurité\n\nVotre base mail/mdp fuite mais les mdp sont hachés et salés\nLes attaquants doivent bruteforce les mdp\nIls commencent par les mdp les plus courants, et les hachent avec les algo de hash courants\nPuis ils comparent avec la base.\nIl y a pas de match car vos mdp sont salés\nEt trouver un mdp ne permet de trouver les autres\n\n\n\n\n\nExemple de hashage de mdp\nimport hashlib\n \ndef hash_password(password, idep):\n    salt = idep\n    return hashlib.sha256(salt.encode() + password.encode()).hexdigest()\n    \nprint(hash_password(\"mon_super_password\", \"remi\"))\n\n\nTo sum up the security part\n\nToujours vérifier les inputs\nNe jamais faire confiance aux utilisateurs\nPlusieurs niveaux de sécurité\nPas besoin de stocker les mots de passe en clair"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#le-plan",
+    "href": "doc/cours/dao-securite-slides.html#le-plan",
+    "title": "DAO et Sécurité",
+    "section": "Le plan",
+    "text": "Le plan\n\nData Access Object\n\nPourquoi persister des données ?\nC’est quoi une DAO\nExemple de DAO\n\nSécurité Informatique\n\nDéfinition\nFailles de sécurité\nInjection SQL\n\nGestion des mots de passe\n\nAuthentification avec cypher\nHashage de mots de passe\nExemple\n\n\n\nNous allons commencer par parler Stockage des données"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#data-access-object-dao",
+    "href": "doc/cours/dao-securite-slides.html#data-access-object-dao",
+    "title": "DAO et Sécurité",
+    "section": "Data access object (DAO)",
+    "text": "Data access object (DAO)\n\n\n\n\n\nNotre objectif va être de stocker des données, mais avant :"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#comment-se-connecter-à-une-db-en-python",
+    "href": "doc/cours/dao-securite-slides.html#comment-se-connecter-à-une-db-en-python",
+    "title": "DAO et Sécurité",
+    "section": "Comment se connecter à une DB en python ?",
+    "text": "Comment se connecter à une DB en python ?\nUtilisation d’une bibliothèque dédiée\n\nPostgreSQL : psycopg2\nMySQL : mysql-connector-python\nOracle : cx_Oracle\nMongoDB : pymongo\n\n\nVous lirez en entier la doc : psycopg2.\nIl y aura des questions à l’exam !"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#sécurité-informatique",
+    "href": "doc/cours/dao-securite-slides.html#sécurité-informatique",
+    "title": "DAO et Sécurité",
+    "section": "Sécurité informatique",
+    "text": "Sécurité informatique"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#les-failles-informatiques",
+    "href": "doc/cours/dao-securite-slides.html#les-failles-informatiques",
+    "title": "DAO et Sécurité",
+    "section": "Les failles informatiques",
+    "text": "Les failles informatiques"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#exemple-de-failles-les-injections-sql",
+    "href": "doc/cours/dao-securite-slides.html#exemple-de-failles-les-injections-sql",
+    "title": "DAO et Sécurité",
+    "section": "Exemple de failles, les injections SQL",
+    "text": "Exemple de failles, les injections SQL\n\n\n\nSource : https://xkcd.com/"
+  },
+  {
+    "objectID": "doc/cours/dao-securite-slides.html#gestion-des-mots-de-passe",
+    "href": "doc/cours/dao-securite-slides.html#gestion-des-mots-de-passe",
+    "title": "DAO et Sécurité",
+    "section": "Gestion des mots de passe",
+    "text": "Gestion des mots de passe"
   },
   {
     "objectID": "doc/tp/tp1.html",
