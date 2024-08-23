@@ -18,7 +18,6 @@ from: markdown+emoji
 lightbox: true
 ---
 
-:construction:
 
 ## Le plan {.smaller}
 
@@ -35,6 +34,9 @@ lightbox: true
   - Hashage de mots de passe
   - Exemple
 
+::: {.notes}
+Nous allons commencer par parler Stockage des données
+:::
 
 ## Data access object (DAO)
 
@@ -44,24 +46,24 @@ lightbox: true
 
 ::: {.notes}
 Notre objectif va être de stocker des données, mais avant :
-
-Quels sont les éléments d'un ordinateur ?
-
-- RAM (Random Access Memory)
-- ROM (Read Only Memory)
 :::
 
-### Un ordinateur (en gros)
+### Un ordinateur
 
+Quels sont ses composants (en gros) ?
+
+:::{.fragment}
 - Un processeur (CPU) : fait UNIQUEMENT du calcul
 - La mémoire RAM : mémoire volatile rapide
 - Disque dur (HDD, SSD) : mémoire longue durée
 - Carte graphique : unité de calcul spécialisée
+:::
 
 ::: {.notes}
 Bien insister sur CPU, RAM, disque !
-Rendent 3 services différents
-**Faire un dessin**
+
+Rendent 3 services différents :
+
 - CPU : processeur
 - DD : disque
 - RAM : barrettes
@@ -73,30 +75,52 @@ Rendent 3 services différents
 ![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
 ::::::
 
+::: {.fragment}
+Quel problème ??
+:::
+
 ::: {.notes}
-Quel problème ???
-Conserver les données une fois le programme Python terminé
+Réponse : Conserver les données une fois le programme Python terminé
 :::
 
 ### Une question à se poser
 
 C'est quoi une variable Python ?
 
+:::{.fragment}
 - Une référence (le nom de la variable)
 - **Un objet associé (sa valeur)**
+:::
+
+```{.python code-line-numbers="false"}
+p = Personnage(prenom="Leia", nom="Organa", age = 35)
+```
 
 ::: {.notes}
 On zappe la notion d'adressage mémoire.  
 Pas besoin de stocker la référence, car elle est dans le code source  
-`pika = Pokemon(name="Pikachu",...)`
 :::
 
 ### Une question qui en découle
 
 C'est quoi un objet Python ?
 
-- **Des attributs (qui peuvent être eux-mêmes des objets)**
+:::{.fragment}
+- Des attributs (qui peuvent être eux-mêmes des objets)
 - Des méthodes
+:::
+
+```{.python filename="personnage.py"}
+class Personnage:
+    def __init__(self, prenom, nom, age):
+        self.prenom = prenom
+        self.nom = nom
+        self.age = age
+        self.vaisseaux = []
+
+    def anniversaire(self):
+        self.age += 1
+```
 
 ::: {.notes}
 Pareil, les méthodes c'est du code, nous on veut juste les attributs
@@ -104,28 +128,31 @@ Pareil, les méthodes c'est du code, nous on veut juste les attributs
 
 ### Pour résumer
 
-On veut sauvegarder des couples clef-valeur  
-Avec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur
+- Nous voulons sauvegarder des couples clef-valeur  
+- Avec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur
 
-**On veut sauvegarder un arbre 🌳**
-
-::: {.notes}
-Besoin d'un dessin  
-Parallèle avec les dict Python / JSON  
-Arbre car les attributs d'objets sont parfois eux-mêmes des objets  
-Personne :  
-- nom, prénom  
-- Adresse : rue, ville  
-- list[Vehicule]  
+::: {.callout}
+**Nous voulons sauvegarder un arbre 🌳**
 :::
 
-### Comment faire ça ?
+::: {.notes}
+Besoin d'un dessin avec Leia et Vaisseaux
 
-- Écrire nos données sur le disque dur dans un fichier (csv, json, xml ...)
-- Utiliser une base de données (SQL tables + relations; No-SQL)
+Parallèle avec les dict Python / JSON
+
+Arbre car les attributs d'objets sont parfois eux-mêmes des objets
+:::
+
+### Comment faire cela ?
+
+- Écrire nos données sur le disque dur dans un fichier 
+  - csv, parquet, json, xml
+- Utiliser une base de données
+  - SQL tables + relations, NoSQL
 
 ::: {.notes}
-Question : Comment fait une BDD ?  
+Question : Comment fait une BDD ?
+
 - Elle gère dans des fichiers  
 - On peut faire le parallèle avec les couches  
 - La BDD rend un service, j'ignore comment elle fait  
@@ -141,7 +168,9 @@ Question : Comment fait une BDD ?
 ::: {.notes}
 Petite pause récap pour essayer de récupérer tout le monde avant la DAO.
 
-Dans la vraie vie, on ne repart pas de 0 quand on relance une appli  
+Dans la vraie vie, on ne repart pas de 0 quand on relance une appli.
+
+Si vous créez un Personnage, la fois suivante il sera toujours là
 :::
 
 ### C'est quoi une DAO ?
@@ -150,34 +179,51 @@ Dans la vraie vie, on ne repart pas de 0 quand on relance une appli
 ![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
 ::::::
 
+::: {.notes}
+On vient de dire que l'on va stocker dans une BDD.
+
+Comment y accéder ?
+:::
+
 ### C'est quoi une DAO ?
 
 - Classe technique
-- Une classe DAO / objet métier
+- Une classe DAO par objet métier
 - Expose des méthodes pour communiquer avec la couche de persistance
 
 ::: {.notes}
-C'est une API  
-Rend un service à des clients  
-Comment elle fait ? -> Pas le problème du client.  
-Comme vous au restaurant. Vous voulez manger, comment c'est fait vous importe peu tant que le service est rendu (avec un niveau d'exigence)  
+C'est une API
+
+Rend un service à des clients
+
+Comment elle fait ? -> osef
+
+Comme vous au restaurant. Vous voulez manger, comment c'est fait vous importe peu tant que le service est rendu (avec un niveau d'exigence)
+
+Des ORM tels SQLAlchemy existent pour faire le lien Objet Python - Table BDD -> pas le sujet ici
 :::
 
 ### Quelles méthodes exposer ?
 
+:::{.fragment}
 - **C**reate
 - **R**ead
 - **U**pdate
 - **D**elete
+:::
 
 ::: {.notes}
 Faire participer  
 
-Essayer de montrer que ces 4 là suffisent.  
-Après on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.  
+Essayer de montrer que ces 4 là suffisent.
 
-Quid de la copie ?  
-Une copie c'est une lecture + création donc on sait faire  
+Après on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.
+
+
+Quid de la copie ?
+
+Une copie c'est une lecture + création donc on sait faire
+
 
 Exemple dessin : classe Personne - table personne - dao personneDAO
 :::
@@ -199,24 +245,25 @@ En projet, la couche DAO peut être très facile à faire
 
 ### Petit recap
 
-![Petit recap](img/Zoom metier.png)
+![](img/couche_metier.png)
 
 ::: {.notes}
-Petit exemple pour illustrer.  
+Petit exemple pour illustrer.
+
 Exemple : lister toutes les personnes fans de Pokemon
 :::
 
-### Comment se connecter à une DB en python ?
+## Comment se connecter à une DB en python ?
 
 Utilisation d'une bibliothèque dédiée
 
-- **PostgreSQL** : psycopg2
+- **PostgreSQL** : [psycopg2](https://www.psycopg.org/docs/){target="_blank"}
 - MySQL : mysql-connector-python
 - Oracle : cx_Oracle
 - MongoDB : pymongo
 
 ::: {.notes}
-Vous lirez en entier la doc : [psycopg2 documentation](https://www.psycopg.org/docs/)
+Vous lirez en entier la doc : psycopg2. 
 
 Il y aura des questions à l'exam !
 :::
@@ -228,61 +275,95 @@ Il y aura des questions à l'exam !
 - `connection` : permet d'établir la connexion avec la base  
   Pas super intéressant à faire, le code est donné
 
-- `cursor` : encapsule la requête
 
-    ```python
-    with getConnexion() as conn:
-        with conn.cursor() as curseur:
-    ```
+### psycopg2 - connection
 
-- `cursor.execute()` : permet de faire une requête
-- `cursor.fetchone()/fetchall()/fetchmany()` : Récupération des résultats
+```{.python filename="db_connection.py"}
+import os
+import dotenv
+import psycopg2
+
+from psycopg2.extras import RealDictCursor
+from utils.singleton import Singleton
+
+class DBConnection(metaclass=Singleton):
+    """
+    Classe de connexion à la base de données
+    Elle permet de n'ouvrir qu'une seule et unique connexion
+    """
+
+    def __init__(self):
+        """Ouverture de la connexion"""
+        dotenv.load_dotenv()
+
+        self.__connection = psycopg2.connect(
+            host=os.environ["POSTGRES_HOST"],
+            port=os.environ["POSTGRES_PORT"],
+            database=os.environ["POSTGRES_DATABASE"],
+            user=os.environ["POSTGRES_USER"],
+            password=os.environ["POSTGRES_PASSWORD"],
+            options=f"-c search_path={os.environ['POSTGRES_SCHEMA']}",
+            cursor_factory=RealDictCursor,
+        )
+
+    @property
+    def connection(self):
+        return self.__connection
+```
 
 ::: {.notes}
-Classe Connection:
-
-```{.python}
-def __init__(self):
-    dotenv.load_dotenv(override=True)
-    # Open the connection.
-    self.__connection = psycopg2.connect(
-        host=os.environ["HOST"],
-        port=os.environ["PORT"],
-        database=os.environ["DATABASE"],
-        user=os.environ["USER"],
-        password=os.environ["PASSWORD"],
-        cursor_factory=RealDictCursor
-    )
-```
+Singleton
 ::: 
+
+### psycopg2 - cursor
+
+- `cursor` : encapsule la requête
+    ```{.python}
+    from dao.db_connection import DBConnection
+    
+    with DBConnection().connection as connection:
+        with connection.cursor() as cursor:
+    ```
+
+- `cursor.execute("<une requête SQL>")` : permet de faire une requête
+- `cursor.fetchone()/fetchall()/fetchmany()` : Récupération des résultats
+
+
 
 ### Forme de base
 
 ```{.python}
-def dao_function(self, arg1, arg2...):
+def dao_function(self, arg1, arg2, ...):
     # Récupération de la connexion à la base
-    with getConnexion() as conn :
+    with DBConnection().connection as connection:
     # Création d'un curseur pour faire une requête
-    # (le curseur stocke les résultats de la requête)
-        with conn.cursor() as curseur :
+        with connection.cursor() as cursor:
             # On envoie au serveur la requête SQL
-            curseur.execute(
-                une_requete_sql_à_trous,
+            cursor.execute(
+                "<une_requete_sql_à_trous>",
                 remplisage_des_trous)
 
             # On récupère le résultat de la requête
-            res = curseur.fetchone()  # ou /fetchall()/fetchmany()
+            res = cursor.fetchone()  # ou fetchall()/fetchmany()
+
+    # Si la requête renvoie quelque chose
+    if res:
+      something = "<res mis en forme>"
         
     return something   
 ```
 
 ::: {.notes}
+Pourquoi on ne retourne pas directement res ?
+
 res : list[dict]
+
+On préfère retourner un Objet ou une liste[Objet]
 :::
 
 ### Un petit exemple : LivreDao
 
-![LivreDao](img/uml/class_diagramm_DAO.png)
+![](img/class_diagram_DAO.png)
 
 ::: {.notes}
 ISBN : International Standard Book Number
@@ -307,6 +388,13 @@ def create(self, livre) -> Livre:
             livre.id = cursor.fetchone()["id_livre"]
     return livre
 ```
+
+::: {.notes}
+Possible aussi de retourner une booléen :
+
+- true si création réussie
+- false sinon
+:::
 
 ### Lister les livres
 
@@ -340,6 +428,12 @@ def find_all(self) -> list[Livre]:
     return liste_livres
 ```
 
+:::{.notes}
+- livre_bdd = [{id_livre=1, isbm=123, "Le Schtroumpf hackeur", "Peyo"}, {...}, ...]
+- livre = {id_livre=1, isbm=123, "Le Schtroumpf hackeur", "Peyo"}
+- liste_livres = [Livre(1, 123, "Le Schtroumpf hackeur", "Peyo"), Livre(...), ...]
+:::
+
 ### Trouver un livre
 
 ```{.python}
@@ -365,12 +459,19 @@ def find_by_isbm(self, isbm) -> Livre:
     return livre
 ```
 
+:::{.notes}
+livre_bdd : dict
+livre : Livre
+
+Principe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets
+:::
+
 ### Conclusion
 
-- Python travaille en RAM (volatile) ![Flash](https://img.icons8.com/color/48/000000/the-flash-sign--v2.png)
-- Obligation d'avoir un mécanisme de persistance des données ![HDD](https://img.icons8.com/dusk/48/000000/hdd.png)
-- DAO : centralise les méthodes pour lire/écrire nos données ![Edit Property](https://img.icons8.com/color/48/000000/edit-property.png)
-- La couche métier appelle la DAO sans se préoccuper du système de persistance ![Invisible](https://img.icons8.com/color/48/000000/invisible.png)
+- Python travaille en RAM (volatile)
+- Obligation d'avoir un mécanisme de persistance des données
+- DAO : centralise les méthodes pour lire/écrire nos données
+- La couche métier appelle la DAO sans se préoccuper du système de persistance
 - Permet un travail d'équipe efficace 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
 
 
@@ -378,7 +479,9 @@ def find_by_isbm(self, isbm) -> Livre:
 
 ### Principes CAID
 
-![Principes CAID](https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg)
+::: {.hide-html-render}
+![](https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg)
+:::
 
 ### 4 piliers de la sécurité info
 
@@ -388,7 +491,8 @@ def find_by_isbm(self, isbm) -> Livre:
 - **D**isponibilité
 
 ::: {.notes}
-On utilise aussi parfois DICP ou DICPA  
+On utilise aussi parfois DICP ou DICPA
+
 Disponibilité, Intégrité, Confidentialité, Preuve
 :::
 
@@ -399,10 +503,16 @@ Disponibilité, Intégrité, Confidentialité, Preuve
 
 ### Confidentialité
 
-Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées
-(notions de droits ou permissions). Tout accès indésirable doit être empêché.
+::: {.callout}
+Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées (notions de droits ou permissions). 
 
-**Mécanismes associés :** gestion des droits (annuaires, rôles ...), cryptographie
+Tout accès indésirable doit être empêché.
+:::
+
+**Mécanismes associés :** 
+
+- gestion des droits (annuaires, rôles ...)
+- cryptographie
 
 ::: {.notes}
 On parle plutôt de chiffrement
@@ -410,19 +520,28 @@ On parle plutôt de chiffrement
 
 ### Authentification
 
+::: {.callout}
 Les utilisateurs doivent prouver leur identité en répondant à un "challenge".
+:::
 
-**Mécanismes associés :** authentification faible (identifiant, mot de passe), forte (données biométriques, multi-facteurs)
+**Mécanismes associés :** 
+
+- authentification faible (identifiant, mot de passe)
+- authentification forte (données biométriques, multi-facteurs)
 
 ### Intégrité
 
+::: {.callout}
 Les données doivent être celles que l'on attend, et ne doivent pas être altérées de façons fortuites, illicites ou malveillantes.
+:::
 
-**Mécanismes associés :** signature électronique, checksum
+**Mécanismes associés :** 
 
+- signature électronique
+- checksum
 
 :::{.notes}
-**Signature électronique :** garantir l'intégrité d'un document, c’est-à-dire s’assurer que le document n'a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c’est-à-dire s’assurer de l’identité de la personne signataire.
+**Signature électronique :** garantir l'intégrité d'un document, c'est-à-dire s'assurer que le document n'a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c'est-à-dire s'assurer de l'identité de la personne signataire.
 
 **Checksum :** bit de parité.
 :::
@@ -430,9 +549,15 @@ Les données doivent être celles que l'on attend, et ne doivent pas être alté
 
 ### Disponibilité
 
+::: {.callout}
 L'accès aux ressources du système d'information doit être permanent et sans faille durant les plages d'utilisation prévues.
+:::
 
-**Mécanismes associés :** redondance des serveurs, virtualisation, conteneurisation
+**Mécanismes associés :** 
+
+- redondance des serveurs
+- virtualisation
+- conteneurisation
 
 :::{.notes}
 Backup
@@ -442,9 +567,13 @@ Parler de la mise en production avant.
 
 ### Traçabilité
 
+::: {.callout}
 Garantit que les accès et tentatives d'accès aux éléments considérés sont tracés et que ces traces sont conservées et exploitables.
+:::
 
-**Mécanisme associé :** journalisation
+**Mécanisme associé :** 
+
+- journalisation
 
 :::{.notes}
 Logs (mieux que les prints)
@@ -454,13 +583,21 @@ Projet 2024-2025
 
 ### La non-répudiation
 
+::: {.callout}
 Aucun utilisateur ne doit pouvoir contester les opérations qu'il a réalisées dans le cadre de ses actions autorisées et aucun tiers ne doit pouvoir s'attribuer les actions d'un autre utilisateur.
+:::
 
-**Mécanismes associés :** traçabilité + authentification + intégrité
+**Mécanismes associés :** 
+
+- traçabilité
+- authentification
+- intégrité
 
 :::{.notes}
-C'est pas moi<br>
-Mais c'est votre nom !<br>
+C'est pas moi
+
+Mais c'est votre nom !
+
 Ne laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)
 :::
 
@@ -485,26 +622,32 @@ Ne laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)
 
 ### De quoi faut-il se méfier ?
 
-![Méfiez-vous](https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif)
+::: {.hide-html-render}
+![](https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif)
+:::
 
-### De quoi faut-il se méfier ?
-
+:::{.fragment}
 **De vos utilisateurs**
+:::
 
 ## Exemple de failles, les injections SQL
 
-![Injection SQL](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
+![](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
+: Source : <https://xkcd.com/>{target="_blank"}
 
 
 ### Injection SQL
 
 Consiste à saisir du SQL pour exécuter une autre requête que celle prévue.
 
-- Problèmes
-  - Confidentialité
-  - Authentification
-  - Intégrité
-  - Disponibilité
+Problèmes :
+
+- Confidentialité
+- Authentification
+- Intégrité
+- Disponibilité
 
 ### Exemple : s'authentifier sans mot de passe
 
@@ -517,50 +660,80 @@ SELECT *
    AND mdp = 'input_mdp';
 ```
 
-### Exemple : s'authentifier sans mot de passe
-
-Saisie
-
+::::::{.fragment}
+::: {.callout-note title="Vous saisissez"}
 - Rémi
 - mon_super_password
+:::
+::::::
 
+:::{.fragment}
 ```{.sql}
 SELECT * 
   FROM user 
  WHERE name = 'Rémi' 
    AND mdp = 'mon_super_password';
 ```
+:::
+
+:::{.notes}
+Si dans votre cursor.execute vous avez ce code
+:::
 
 ### Exemple : s'authentifier sans mot de passe
 
-Saisie
+```{.sql}
+SELECT * 
+  FROM user 
+ WHERE name = 'input_name' 
+   AND mdp = 'input_mdp';
+```
 
+::::::{.fragment}
+::: {.callout-warning title="Vous saisissez"}
 - Rémi
 - `' OR 1=1; --`
+:::
+::::::
 
+:::{.fragment}
 ```{.sql}
 SELECT * 
   FROM user 
  WHERE name = 'Rémi' 
    AND mdp = '' OR 1=1; --';
 ```
+:::
 
 ### Exemple : supprimer une table
 
-Saisie
+```{.sql}
+SELECT * 
+  FROM user 
+ WHERE name = 'input_name' 
+   AND mdp = 'input_mdp';
+```
 
+::::::{.fragment}
+::: {.callout-warning title="Vous saisissez"}
 - Rémi
 - `'; DROP TABLE user CASCADE; --`
+:::
+::::::
 
+:::{.fragment}
 ```{.sql}
 SELECT * 
   FROM user 
  WHERE name='Rémi' 
    AND mdp=''; DROP TABLE user CASCADE; --;
 ```
+:::
 
-::: {.callout-warning}
-Bye bye la table user
+---
+
+:::{.hide-html-render}
+![](https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif){width=50%}
 :::
 
 ### Comment se protéger ?
@@ -615,16 +788,30 @@ Les bibliothèques web le font souvent pour vous !
 
 ### Votre application doit-elle stocker des mots de passe en clair?
 
-![Votre application doit-elle stocker des mots de passe en clair?](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif)
+::::::{.fragment}
+::: {.hide-html-render}
+![](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif)
+:::
+No way
+::::::
 
 ### Votre application doit-elle connaître le mot de passe d'un utilisateur pour l'authentifier ?
 
-![Votre application doit-elle connaître le mot de passe d'un utilisateur pour l'authentifier ?](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif)
+::::::{.fragment}
+::: {.hide-html-render}
+![](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif)
+:::
+..... No
+::::::
 
 ### ????
 
-![????](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif)
-
+::::::{.fragment}
+::: {.hide-html-render}
+![](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif)
+:::
+How it works ?
+::::::
 
 ### Hasher le mot de passe
 
@@ -645,12 +832,17 @@ C'est une valeur aléatoire calculée pour chaque utilisateur que l'on va rajout
 Cela rend une attaque en force brute plus coûteuse.
 :::
 
-![Gif](https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif){.w80 .plain .no-print}
+---
 
+::: {.hide-html-render}
+![](https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif)
+:::
 
 ### Ajouter du sel pour plus de sécurité
 
-![Gif](https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif){.w50 .plain .no-print}
+::: {.hide-html-render}
+![](https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif)
+:::
 
 ### Une base sans sel ajouté
 
@@ -684,7 +876,7 @@ différents.
 
 ---
 
-![made at imgflip.com](https://i.imgflip.com/3acxa9.jpg){.no-print w50}
+![](https://i.imgflip.com/3acxa9.jpg)
 
 ### Exemple de hashage de mdp
 
