@@ -11,7 +11,7 @@
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.56">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Ludovic Deneuville, Rémi Pépin">
   <title>Projet info 2A – Analyse fonctionnelle</title>
@@ -636,7 +636,12 @@ Pas évident mais très important !!!</p>
 <p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/couche_metier.png"></a></p>
 <aside class="notes">
 <p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
-<p>Dans les TP : - Couche présentation : View (on navigue entre des vues) - DAO, business_object, service - Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</p>
+<p>Dans les TP :</p>
+<ul>
+<li>Couche présentation : View (on navigue entre des vues)</li>
+<li>DAO, business_object, service</li>
+<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -654,7 +659,7 @@ Pas évident mais très important !!!</p>
 <ul>
 <li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
 <ul>
-<li>C’est la partie de votre code qui communique avec la base de données (CM3/TP3)</li>
+<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
 </ul></li>
 <li><strong><em>Service :</em></strong>
 <ul>
@@ -681,9 +686,11 @@ Pas évident mais très important !!!</p>
 </ul></li>
 </ul>
 <aside class="notes">
-<p>On découpe les objets :<br>
-Attributs -&gt; Objets métiers<br>
-Méthodes -&gt; Services</p>
+<p>On découpe les objets :</p>
+<ul>
+<li>Attributs -&gt; Objets métiers (~DTO)</li>
+<li>Méthodes -&gt; Services</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1147,7 +1154,7 @@ Et séparer en couches permet de trouver rapidement la source du problème.</p>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

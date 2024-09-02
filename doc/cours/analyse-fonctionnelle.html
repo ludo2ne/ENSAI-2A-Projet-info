@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -137,6 +137,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
+ <span class="dropdown-text">Outils de développement</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
  <span class="dropdown-text">Git</span></a>
   </li>  
@@ -147,10 +151,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
  <span class="dropdown-text">POO Avancée</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
@@ -449,7 +449,12 @@ Pas évident mais très important !!!</p>
 <p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/couche_metier.png" class="img-fluid"></a></p>
 <div class="notes">
 <p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
-<p>Dans les TP : - Couche présentation : View (on navigue entre des vues) - DAO, business_object, service - Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</p>
+<p>Dans les TP :</p>
+<ul>
+<li>Couche présentation : View (on navigue entre des vues)</li>
+<li>DAO, business_object, service</li>
+<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
+</ul>
 </div>
 </section>
 <section id="les-couches-de-la-couche-métier-12" class="level3">
@@ -457,7 +462,7 @@ Pas évident mais très important !!!</p>
 <ul>
 <li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
 <ul>
-<li>C’est la partie de votre code qui communique avec la base de données (CM3/TP3)</li>
+<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
 </ul></li>
 <li><strong><em>Service :</em></strong>
 <ul>
@@ -484,9 +489,11 @@ Pas évident mais très important !!!</p>
 </ul></li>
 </ul>
 <div class="notes">
-<p>On découpe les objets :<br>
-Attributs -&gt; Objets métiers<br>
-Méthodes -&gt; Services</p>
+<p>On découpe les objets :</p>
+<ul>
+<li>Attributs -&gt; Objets métiers (~DTO)</li>
+<li>Méthodes -&gt; Services</li>
+</ul>
 </div>
 </section>
 <section id="pourquoi-séparer-en-couches" class="level3">
@@ -1100,7 +1107,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

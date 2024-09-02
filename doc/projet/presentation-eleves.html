@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -137,6 +137,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
+ <span class="dropdown-text">Outils de développement</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
  <span class="dropdown-text">Git</span></a>
   </li>  
@@ -147,10 +151,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
  <span class="dropdown-text">POO Avancée</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
@@ -268,12 +268,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="objectifs" class="level2">
 <h2 class="anchored" data-anchor-id="objectifs">Objectifs</h2>
 <ul>
-<li>Développer une application en python</li>
+<li>Développer une application en Python</li>
 <li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostreSQL</li>
+<li>Communiquer avec une base de données PostgreSQL</li>
 <li>Utiliser des webservices</li>
-<li>Concevoir et Modéliser</li>
+<li>Concevoir et Modéliser (UML)</li>
 </ul>
+<div class="notes">
+<ul>
+<li>Éléments vus en cours et en TP</li>
+<li>PostgreSQL OK, SQLite NON</li>
+</ul>
+</div>
 </section>
 <section id="planning" class="level2 smaller">
 <h2 class="smaller anchored" data-anchor-id="planning">Planning</h2>
@@ -413,25 +419,28 @@ ul.task-list li input[type="checkbox"] {
 <li>capital pour bien avancer le projet</li>
 <li>si bien utilisé -&gt; 90 % du travail fait</li>
 </ul></li>
-<li>Prendre de l’avance en septembre</li>
+<li>Point hebdo : j’y reviens</li>
 </ul>
+<p><span class="emoji" data-emoji="bulb">💡</span> Prendre de l’avance en septembre</p>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Absences en projet ou TP -&gt; malus</p>
 </div>
 </section>
 <section id="phases" class="level2">
 <h2 class="anchored" data-anchor-id="phases">2 phases</h2>
 <ul>
-<li>Analyse / Conception générale (sept)
+<li>Analyse / Conception générale (sept.)
 <ul>
 <li>4 séances de 3h de suivi</li>
 <li>mi-octobre : retours sur le dossier d’analyse</li>
 </ul></li>
-<li>Implémentation (oct-nov)
+<li>Implémentation (oct. - nov.)
 <ul>
 <li>3 séances de 3h de suivi</li>
 </ul></li>
 </ul>
 <div class="notes">
-<p>Conseil :</p>
+<p>Si votre dossier d’analyse est nickel mais vous n’avez pas encore dev</p>
+<p><span class="emoji" data-emoji="bulb">💡</span> Conseil :</p>
 <ul>
 <li>l’élève le plus à l’aise fait un POC vers le 20 septembre</li>
 <li>puis présente l’appli v0 aux autres</li>
@@ -450,6 +459,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Avoir un bon comportement</li>
 <li>Certaines équipes vont mieux fonctionner que d’autres</li>
+<li>Dans la vie pro, on bosse pas toujours avec ses potes</li>
 <li>Si vous êtes fort -&gt; ne pas tout faire</li>
 <li>Prévenir tuteur puis Prof en cas de souci</li>
 </ul>
@@ -479,7 +489,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Plus de détails dans la notice élèves.</p>
+<p>Plus de détails dans la <a href="../../doc/projet/notice-eleves.html#point-hebdo" target="_blank">notice élèves</a>.</p>
 </div>
 </div>
 <div class="notes">
@@ -529,7 +539,7 @@ Important
 </ul>
 <div class="notes">
 <ul>
-<li>Methodes qui ne fontionnent pas car elles appellent des méthodes qui ne fontionnent pas</li>
+<li>Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas</li>
 </ul>
 </div>
 </section>
@@ -538,6 +548,15 @@ Important
 <ul>
 <li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
 </ul>
+<div class="notes">
+<ul>
+<li>data, doc, src</li>
+<li>fichiers config : logs, cov, requirements, gitignore</li>
+<li>README : modop pour installer et lancer</li>
+<li>.vscode : setup vscode</li>
+<li>CI : expliquer principe</li>
+</ul>
+</div>
 
 
 </section>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -171,6 +171,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
+ <span class="dropdown-text">Outils de développement</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
  <span class="dropdown-text">Git</span></a>
   </li>  
@@ -181,10 +185,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
  <span class="dropdown-text">POO Avancée</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
@@ -328,8 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
 </ul>
 </div>
-<section id="un-exemple-pour-illustrer-tout-ça" class="level3">
-<h3 class="anchored" data-anchor-id="un-exemple-pour-illustrer-tout-ça">Un exemple pour illustrer tout ça</h3>
+<section id="un-exemple-pour-illustrer-cela" class="level3">
+<h3 class="anchored" data-anchor-id="un-exemple-pour-illustrer-cela">Un exemple pour illustrer cela</h3>
 <p>Application de traitements automatiques des données :</p>
 <ul>
 <li>Plusieurs sources de données : enquêtes, webscraping, fichiers administratifs, …</li>
@@ -366,11 +366,11 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
 <section id="les-classes-abstraites" class="level3">
 <h3 class="anchored" data-anchor-id="les-classes-abstraites">Les classes abstraites</h3>
 <blockquote class="blockquote">
-<p><strong>Classe Abstraite :</strong> classe dont l’implémentation n’est <strong>pas complète</strong> et qui n’est <strong>pas instantiable</strong>. Permet de passer un <strong>contrat</strong>. Les classes filles vont devoir implémenter ce qui manque.</p>
+<p><strong>Classe Abstraite :</strong> classe dont l’implémentation n’est <strong>pas complète</strong> et qui n’est <strong>pas instantiable</strong>. Permet de passer un <strong>contrat</strong>. Les classes filles vont devoir implémenter ce qu’il manque.</p>
 </blockquote>
 <p><strong>Avantages :</strong></p>
 <ul>
-<li>Nous savons ce que toutes les classes filles doivent faire 👍</li>
+<li>Nous savons ce que les classes filles doivent faire 👍</li>
 <li>Nous pouvons générer du code 🙏</li>
 <li>Limite le risque d’erreur !! 👌</li>
 </ul>
@@ -484,7 +484,8 @@ Pattern Bridge
 </section>
 <section id="le-génie-logiciel" class="level2">
 <h2 class="anchored" data-anchor-id="le-génie-logiciel">Le génie logiciel</h2>
-<p><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><video src="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4" class="img-fluid" width="600" controls=""></video></a><a href="https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4">Video</a></p>
+<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q" width="600" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
 <div class="notes">
 <p>On va aller un cran au-dessus.</p>
 </div>
@@ -501,7 +502,7 @@ Pattern Bridge
 </section>
 <section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison" class="level3">
 <h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison">Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
-<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="img-fluid"></a></p>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="img-fluid"></a></p>
 </section>
 <section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1" class="level3">
 <h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1">Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
@@ -568,7 +569,7 @@ Important
 </section>
 <section id="retour-sur-le-bridge-pattern" class="level3">
 <h3 class="anchored" data-anchor-id="retour-sur-le-bridge-pattern">Retour sur le bridge pattern</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
 <div class="notes">
 <p>Je remontre le schéma quelques secondes</p>
 </div>
@@ -626,7 +627,7 @@ Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu de
 </section>
 <section id="les-design-patterns-exemple-1" class="level3">
 <h3 class="anchored" data-anchor-id="les-design-patterns-exemple-1">Les design patterns : exemple</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/class_diagram_poo_bridge_pattern_advanced.png" class="img-fluid"></a></p>
+<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/class_diagram_poo_bridge_pattern_advanced.png" class="img-fluid"></a></p>
 <div class="notes">
 <p>En ajoutant les méthodes stats</p>
 </div>
@@ -1235,7 +1236,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

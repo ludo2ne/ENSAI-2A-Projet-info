@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.56">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Ludovic Deneuville">
   <title>Projet info 2A – Outils de développement</title>
@@ -435,10 +435,16 @@ Ludovic Deneuville
 </ul>
 <aside class="notes">
 <ul>
-<li>Montrer le fichier settings.json</li>
+<li>Montrer le fichier settings.json (DEMO)</li>
 <li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
 <li>à priori vous n’avez rien à modifier</li>
 <li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
+<li>Formater et Linter en phase</li>
+</ul>
+<p>Formater :</p>
+<ul>
+<li>Ligne trop longue</li>
+<li>Espaces superflux</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -483,7 +489,7 @@ Ludovic Deneuville
 </div>
 <aside class="notes">
 <ul>
-<li>Vous pouvez disable les règles qui vous ennuies</li>
+<li>Vous pouvez disable les règles qui vous ennuient</li>
 <li>À faire régulièrement</li>
 </ul>
 <style type="text/css">
@@ -553,7 +559,10 @@ Ludovic Deneuville
 </div>
 <aside class="notes">
 <ul>
-<li>Doc classes</li>
+<li>Doc classes
+<ul>
+<li>Attributs</li>
+</ul></li>
 <li>Doc méthodes
 <ul>
 <li>brève description</li>
@@ -580,7 +589,19 @@ Ludovic Deneuville
 </section>
 <section id="quest-ce-que-les-logs" class="slide level3">
 <h3>Qu’est-ce que les logs</h3>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
 <p>La journalisation (ou logging) est le processus d’enregistrement des événements, des erreurs, et des informations dans une application.</p>
+</div>
+</div>
+</div>
 <p>Un log capture des informations sur ce qui s’est passé à un moment donné :</p>
 <ul>
 <li>Surveillance</li>
@@ -678,7 +699,28 @@ Ludovic Deneuville
 <li><strong>ERROR</strong> : affecte la logique du programme mais ne l’arrête pas complètement</li>
 <li><strong>CRITICAL</strong> : nécessite une intervention urgente</li>
 </ul>
+</section>
+<section id="un-bon-début" class="slide level3">
+<h3>Un bon début</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> logging</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="kw">def</span> ma_methode(a):</span>
+<span id="cb6-4"><a></a>    logging.debug(<span class="st">"ma_methode - DEBUT"</span>)</span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>    ...</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a>    logging.debug(<span class="st">"ma_methode - FIN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="aller-plus-loin" class="slide level3">
+<h3>Aller plus loin</h3>
+<p>Utiliser les modules :</p>
+<ul>
+<li>src/utils/log_init.py</li>
+<li>src/utils/log_decorator.py</li>
+</ul>
+<p>Et ajouter un décorateur <code>@Log</code> avant chaque méthode</p>
 <aside class="notes">
+<p>Wrapper : va encapsuler la méthode</p>
 <p>Démo log_decorator</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -691,17 +733,6 @@ Ludovic Deneuville
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="un-bon-début" class="slide level3">
-<h3>Un bon début</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> logging</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="kw">def</span> ma_methode(a):</span>
-<span id="cb6-4"><a></a>    logging.debug(<span class="st">"ma_methode - DEBUT"</span>)</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a>    ...</span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a>    logging.debug(<span class="st">"ma_methode - FIN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

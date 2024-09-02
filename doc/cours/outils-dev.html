@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -168,6 +168,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
+ <span class="dropdown-text">Outils de développement</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
  <span class="dropdown-text">Git</span></a>
   </li>  
@@ -178,10 +182,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
  <span class="dropdown-text">POO Avancée</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
@@ -321,10 +321,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="notes">
 <ul>
-<li>Montrer le fichier settings.json</li>
+<li>Montrer le fichier settings.json (DEMO)</li>
 <li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
 <li>à priori vous n’avez rien à modifier</li>
 <li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
+<li>Formater et Linter en phase</li>
+</ul>
+<p>Formater :</p>
+<ul>
+<li>Ligne trop longue</li>
+<li>Espaces superflux</li>
 </ul>
 </div>
 </section>
@@ -357,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="notes">
 <ul>
-<li>Vous pouvez disable les règles qui vous ennuies</li>
+<li>Vous pouvez disable les règles qui vous ennuient</li>
 <li>À faire régulièrement</li>
 </ul>
 </div>
@@ -417,7 +423,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="notes">
 <ul>
-<li>Doc classes</li>
+<li>Doc classes
+<ul>
+<li>Attributs</li>
+</ul></li>
 <li>Doc méthodes
 <ul>
 <li>brève description</li>
@@ -432,7 +441,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="logs">Logs</h2>
 <section id="quest-ce-que-les-logs" class="level3">
 <h3 class="anchored" data-anchor-id="quest-ce-que-les-logs">Qu’est-ce que les logs</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>La journalisation (ou logging) est le processus d’enregistrement des événements, des erreurs, et des informations dans une application.</p>
+</div>
+</div>
 <p>Un log capture des informations sur ce qui s’est passé à un moment donné :</p>
 <ul>
 <li>Surveillance</li>
@@ -500,9 +521,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>ERROR</strong> : affecte la logique du programme mais ne l’arrête pas complètement</li>
 <li><strong>CRITICAL</strong> : nécessite une intervention urgente</li>
 </ul>
-<div class="notes">
-<p>Démo log_decorator</p>
-</div>
 </section>
 <section id="un-bon-début" class="level3">
 <h3 class="anchored" data-anchor-id="un-bon-début">Un bon début</h3>
@@ -514,6 +532,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    logging.debug(<span class="st">"ma_methode - FIN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="aller-plus-loin" class="level3">
+<h3 class="anchored" data-anchor-id="aller-plus-loin">Aller plus loin</h3>
+<p>Utiliser les modules :</p>
+<ul>
+<li>src/utils/log_init.py</li>
+<li>src/utils/log_decorator.py</li>
+</ul>
+<p>Et ajouter un décorateur <code>@Log</code> avant chaque méthode</p>
+<div class="notes">
+<p>Wrapper : va encapsuler la méthode</p>
+<p>Démo log_decorator</p>
+</div>
 
 
 </section>
