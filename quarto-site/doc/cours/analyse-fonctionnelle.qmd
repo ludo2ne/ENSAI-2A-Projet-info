@@ -206,6 +206,7 @@ Exemple page web
 À l'intérieur de la couche Métier, il y a plusieurs sous-couches.
 
 Dans les TP :
+
 - Couche présentation : View (on navigue entre des vues)
 - DAO, business_object, service
 - Contrôleur (client) : Il reçoit les demandes de l'utilisateur via l'interface utilisateur (par exemple, une requête HTTP dans le cas d'une application Web) et appelle les services appropriés pour exécuter les actions demandées.
@@ -214,7 +215,7 @@ Dans les TP :
 ### Les couches de la couche métier 1/2
 
 - **_DAO_ (_Data access object_) :**
-  - C'est la partie de votre code qui communique avec la base de données (CM3/TP3)
+  - C'est la partie de votre code qui communique avec la base de données (CM4/TP4)
   
 - **_Service :_**
   - Code métier
@@ -234,9 +235,10 @@ Dans les TP :
   - Renvoie les données à afficher
 
 ::: {.notes}
-On découpe les objets :  
-Attributs -> Objets métiers  
-Méthodes -> Services
+On découpe les objets :
+
+- Attributs -> Objets métiers (~DTO)
+- Méthodes -> Services
 :::
 
 ### Pourquoi séparer en couches ?

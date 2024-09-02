@@ -46,7 +46,7 @@ Ce sont les trois principes qu'apporte la programmation orientée objet. Ils son
 - Polymorphisme : 2 types (liste d'Animal.parler(malade=True))
 :::
 
-### Un exemple pour illustrer tout ça
+### Un exemple pour illustrer cela
 
 Application de traitements automatiques des données :
 
@@ -91,11 +91,11 @@ Que pensez-vous de la classe Source ?
 
 ### Les classes abstraites
 
-> **Classe Abstraite :** classe dont l'implémentation n'est **pas complète** et qui n'est **pas instantiable**. Permet de passer un **contrat**. Les classes filles vont devoir implémenter ce qui manque.
+> **Classe Abstraite :** classe dont l'implémentation n'est **pas complète** et qui n'est **pas instantiable**. Permet de passer un **contrat**. Les classes filles vont devoir implémenter ce qu'il manque.
 
 **Avantages :**
 
-- Nous savons ce que toutes les classes filles doivent faire 👍
+- Nous savons ce que les classes filles doivent faire 👍
 - Nous pouvons générer du code 🙏
 - Limite le risque d'erreur !! 👌
 
@@ -202,11 +202,13 @@ Découpage d'une grosse classe en un groupe de petites classes avec leur propre 
 
 ## Le génie logiciel
 
-![](https://media.giphy.com/media/bU3bD2rsKq02Q/giphy.mp4){width=600}
+<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q"  width="600" height="500" frameBorder="0" class="no-print giphy-embed" allowFullScreen></iframe>
 
 ::: {.notes}
 On va aller un cran au-dessus.
 :::
+
+
 
 ### C'est quoi le génie logiciel ?
 

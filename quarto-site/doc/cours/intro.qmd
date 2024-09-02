@@ -27,9 +27,13 @@ lightbox: true
 - sur la base des cours de [Rémi Pépin](https://github.com/HealerMikado){target="_blank"}
 
 :::{.notes}
+WIN + P : Etendre ou dupliquer
+
 Présentation :
 
+- 15 ans d'info (SQL, Java, Python)
 - INSEE, informatique, Orléans GEOLOC, Lille enquêtes, Nautile
+- ENSAI
 - Rémi Pépin, assistant d'enseignement entre 2018 et 2023
   - Cours de Cloud Computing
 :::
@@ -46,34 +50,47 @@ Vous apporter les connaissances nécessaires pour mener à bien un projet inform
 - Travailler en équipe
 
 :::{.notes}
-- organiser votre code
+- Je reviens ensuite sur le projet
+- Organiser votre code
 :::
 
 ### Notions abordées
 
 - Versionnage avec git
-- Analyse fonctionnelle, génie logiciel
+- Analyse fonctionnelle, Génie logiciel
 - Programmation orientée objet avancée
 - Communication avec une base de données en python
 - Sécurité informatique
 - Communication client-serveur
 
+:::{.notes}
+- Quelques rappels POO en TP
+:::
+
 ### Les TP
 
-- Settings VScode
-- Formateur, Linter
-- Open Folder
+- 4 x 3h
+- Settings VScode, Formateur, Linter
+- Suivez précisément les consignes, n'allez pas trop vite et ne sautez pas les étapes (:warning: Open Folder)
+
+::: {.callout-warning}
+**Vérifiez sur votre EDT si vous êtes en salle info !!!**
+:::
+
 
 
 :::{.notes}
 - TP : truc à récup pour le projet
-- Révisez les Pokemon
-- Sujets très longs
+- Sujets très longs, travail à la maison
+- Si un truc ne marche pas et que vous passez à la suite -> à un moment : BOOM
+- Soyez solidaires
+
+13/09 -> manque de salles info
 :::
 
 ### Évaluation
 
-- :construction: date
+- Lundi 7 Octobre 14h
 - 2h
 - sur papier
 - 1 feuille A4 recto / verso **[manuscrite]{.underline}**
@@ -88,3 +105,9 @@ Vous apporter les connaissances nécessaires pour mener à bien un projet inform
 ### Le projet info
 
 [Présentation du projet](../projet/presentation-eleves.html){target="_blank"}
+
+:::{.notes}
+- N'oubliez pas vos voeux
+
+Questions ?
+:::

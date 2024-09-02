@@ -22,11 +22,16 @@ lightbox: true
 
 ## Objectifs
 
-- Développer une application en python
+- Développer une application en Python
 - Découvrir l'architecture logicielle
-- Communiquer avec une base de données PostreSQL
+- Communiquer avec une base de données PostgreSQL
 - Utiliser des webservices
-- Concevoir et Modéliser
+- Concevoir et Modéliser (UML)
+
+:::{.notes}
+- Éléments vus en cours et en TP
+- PostgreSQL OK, SQLite NON
+:::
 
 ## Planning {.smaller}
 
@@ -104,19 +109,25 @@ gantt
 - 3j d'immersion
   - capital pour bien avancer le projet
   - si bien utilisé -> 90 % du travail fait
-- Prendre de l'avance en septembre
+- Point hebdo : j'y reviens
+
+:bulb: Prendre de l'avance en septembre
+
+:warning: Absences en projet ou TP -> malus
 :::
 
 ## 2 phases
 
-- Analyse / Conception générale (sept)
+- Analyse / Conception générale (sept.)
   - 4 séances de 3h de suivi
   - mi-octobre : retours sur le dossier d'analyse
-- Implémentation (oct-nov)
+- Implémentation (oct. - nov.)
   - 3 séances de 3h de suivi
 
 :::{.notes}
-Conseil :
+Si votre dossier d'analyse est nickel mais vous n'avez pas encore dev
+
+:bulb: Conseil :
 
 - l'élève le plus à l'aise fait un POC vers le 20 septembre
 - puis présente l'appli v0 aux autres
@@ -133,6 +144,7 @@ Relisez vos rapports !
 :::{.notes}
 - Avoir un bon comportement
 - Certaines équipes vont mieux fonctionner que d'autres
+- Dans la vie pro, on bosse pas toujours avec ses potes
 - Si vous êtes fort -> ne pas tout faire
 - Prévenir tuteur puis Prof en cas de souci
 
@@ -149,7 +161,7 @@ Pas la peine de dire une fois que le projet est fini :
   - au plus tard le jeudi soir
 
 ::: {.callout-note}
-Plus de détails dans la notice élèves.
+Plus de détails dans la [notice élèves](./notice-eleves.qmd#point-hebdo){target="_blank"}.
 :::
 
 :::{.notes}
@@ -187,9 +199,18 @@ Respectez les bonnes pratiques de dev Python :
 - Codez par petits bouts
 
 :::{.notes}
-- Methodes qui ne fontionnent pas car elles appellent des méthodes qui ne fontionnent pas
+- Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas
 :::
 
 ## Template
 
 - [Exemple de projet simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
+
+
+:::{.notes}
+- data, doc, src
+- fichiers config : logs, cov, requirements, gitignore
+- README : modop pour installer et lancer
+- .vscode : setup vscode
+- CI : expliquer principe
+:::

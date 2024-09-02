@@ -40,10 +40,16 @@ lightbox: true
 - Linter : Flake8
 
 ::: {.notes}
-- Montrer le fichier settings.json
+- Montrer le fichier settings.json (DEMO)
 - icone :gear: niveau workspace ou user
 - à priori vous n'avez rien à modifier
 - vous pouvez intégrer ce fichier dans votre dépôt projet
+- Formater et Linter en phase
+
+Formater :
+
+- Ligne trop longue
+- Espaces superflux
 :::
 
 ## Qualité du Code
@@ -69,7 +75,7 @@ pylint --output-format=colorized --disable=C0114,C0411,C0415,W0718 $(git ls-file
 ```
 
 ::: {.notes}
-- Vous pouvez disable les règles qui vous ennuies
+- Vous pouvez disable les règles qui vous ennuient
 - À faire régulièrement
 :::
 
@@ -127,7 +133,8 @@ class OperationsMathematiques:
 ```
 
 ::: {.notes}
-- Doc classes 
+- Doc classes
+  - Attributs
 - Doc méthodes
   - brève description
   - paramètres
@@ -139,7 +146,9 @@ class OperationsMathematiques:
 
 ### Qu'est-ce que les logs
 
+::: {.callout-note}
 La journalisation (ou logging) est le processus d'enregistrement des événements, des erreurs, et des informations dans une application.
+:::
 
 Un log capture des informations sur ce qui s'est passé à un moment donné :
 
@@ -206,9 +215,6 @@ logger.error("Ceci est un message d'erreur")
 - **ERROR** : affecte la logique du programme mais ne l'arrête pas complètement
 - **CRITICAL** : nécessite une intervention urgente
 
-::: {.notes}
-Démo log_decorator
-:::
 
 ### Un bon début
 
@@ -222,3 +228,18 @@ def ma_methode(a):
 
     logging.debug("ma_methode - FIN")
 ```
+
+### Aller plus loin
+
+Utiliser les modules : 
+
+- src/utils/log_init.py
+- src/utils/log_decorator.py
+
+Et ajouter un décorateur `@Log` avant chaque méthode
+
+::: {.notes}
+Wrapper : va encapsuler la méthode
+
+Démo log_decorator
+:::
