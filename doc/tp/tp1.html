@@ -271,7 +271,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#une-application-de-menu" id="toc-une-application-de-menu" class="nav-link" data-scroll-target="#une-application-de-menu"><span class="header-section-number">4.1</span> Une application de Menu</a></li>
   <li><a href="#un-webservice" id="toc-un-webservice" class="nav-link" data-scroll-target="#un-webservice"><span class="header-section-number">4.2</span> Un webservice</a></li>
   </ul></li>
-  <li><a href="#créez-votre-répo-projet" id="toc-créez-votre-répo-projet" class="nav-link" data-scroll-target="#créez-votre-répo-projet"><span class="header-section-number">5</span> Créez votre répo projet</a></li>
+  <li><a href="#créez-votre-répo-projet" id="toc-créez-votre-répo-projet" class="nav-link" data-scroll-target="#créez-votre-répo-projet"><span class="header-section-number">5</span> Créez votre répo projet</a>
+  <ul class="collapse">
+  <li><a href="#le-fichier-.env" id="toc-le-fichier-.env" class="nav-link" data-scroll-target="#le-fichier-.env"><span class="header-section-number">5.1</span> Le fichier .env</a></li>
+  </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -722,7 +725,7 @@ Aide
 <ul class="task-list">
 <li><label><input type="checkbox">Vous choisissez d’imposer votre version</label>
 <ul>
-<li>Soit en cliquant sur *Accept Current Change</li>
+<li>Soit en cliquant sur <em>Accept Current Change</em></li>
 <li>Soit en supprimant <code>print("Bonjour Marie-&lt;prenom&gt;")</code>, ainsi que les <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> et <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></li>
 </ul></li>
 <li><label><input type="checkbox"><em>add</em>, <em>commit</em> <em>pull</em> et <em>push</em></label></li>
@@ -737,7 +740,9 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Avoir un conflit, ce n’est pas grave ! Avoir un conflit, ce n’est pas grave ! Avoir un conflit, ce n’est pas grave !</p>
+<p>Avoir un conflit, ce n’est pas grave !</p>
+<p>Avoir un conflit, ce n’est pas grave !</p>
+<p>Avoir un conflit, ce n’est pas grave !</p>
 <p>Conflit ≠ Erreur</p>
 <p>Cela arrive simplement quand Git rencontre 2 versions et il n’a pas de <span class="emoji" data-emoji="crystal_ball">🔮</span>, ni de <span class="emoji" data-emoji="game_die">🎲</span> pour choisir laquelle est la bonne.</p>
 <p>Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant que possible de travailler sur les mêmes fichiers en même temps.</p>
@@ -747,7 +752,7 @@ Important
 </section>
 <section id="un-exemple-dapplication" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="un-exemple-dapplication"><span class="header-section-number">4</span> Un exemple d’application</h2>
-<p>Pour comprendre comment est construit une application, vous allez étudier un exemple simple.</p>
+<p>Pour comprendre comment est construit une application découpée en couches, vous allez étudier un <a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">exemple simple</a>.</p>
 <p>Suivez les instructions du README pour :</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Cloner le dépôt</label></li>
@@ -945,7 +950,7 @@ Obligatoire
 <li><label><input type="checkbox">Crée un clone local du dépôt dans <code>P:/Cours2A/UE3-Projet-info</code></label></li>
 <li><label><input type="checkbox">Fait un test pour vérifier qu’il peut pousser du code, par exemple en créant :</label>
 <ul>
-<li><em>doc/suivi/2024.09.05-semaine1.md</em> : le premier point hebdo</li>
+<li><em>doc/suivi/2024.09.12-semaine1.md</em> : le premier point hebdo</li>
 <li><em>src/<strong>main</strong>.py</em> : le fichier pour lancer votre application</li>
 <li><em>requirements.txt</em> : le fichier listant les packages</li>
 </ul></li>
@@ -963,6 +968,29 @@ Caution
 <p>Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de la même manière que celui vu dans la partie précédente.</p>
 </div>
 </div>
+<section id="le-fichier-.env" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="le-fichier-.env"><span class="header-section-number">5.1</span> Le fichier .env</h3>
+<p>Ce fichier contiendra des variables d’envrionnement qui serviront par exemple pour vous connecter à la base de données PostgreSQL.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Faîtes en sorte que ce fichier reste dans votre dépôt local sans être envoyé sur GitHub</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Il suffit qu’un seul membre de l’équipe modifie le fichier adéquat, push et ensuite les autres pull.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="conclusion" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
