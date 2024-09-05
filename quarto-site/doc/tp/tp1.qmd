@@ -253,13 +253,15 @@ print("Bonjour Marie-<prenom>")         # La modification du dépôt distant - i
 ```
 
 - [ ] Vous choisissez d'imposer votre version
-  - Soit en cliquant sur *Accept Current Change
+  - Soit en cliquant sur *Accept Current Change*
   - Soit en supprimant `print("Bonjour Marie-<prenom>")`, ainsi que les `<<<<<<<`, `=======` et `>>>>>>>`
 - [ ] *add*, *commit* *pull* et *push*
 
 ::: {.callout-important}
 Avoir un conflit, ce n’est pas grave !
+
 Avoir un conflit, ce n’est pas grave !
+
 Avoir un conflit, ce n’est pas grave !
 
 Conflit ≠ Erreur
@@ -272,7 +274,7 @@ Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant
 
 ## Un exemple d'application
 
-Pour comprendre comment est construit une application, vous allez étudier un exemple simple.
+Pour comprendre comment est construit une application découpée en couches, vous allez étudier un [exemple simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}.
 
 Suivez les instructions du README pour :
 
@@ -390,12 +392,22 @@ Ensuite, chaque membre de l'équipe :
 
 - [ ] Crée un clone local du dépôt dans `P:/Cours2A/UE3-Projet-info`
 - [ ] Fait un test pour vérifier qu'il peut pousser du code, par exemple en créant :
-  - *doc/suivi/2024.09.05-semaine1.md* : le premier point hebdo
+  - *doc/suivi/2024.09.12-semaine1.md* : le premier point hebdo
   - *src/__main__.py* : le fichier pour lancer votre application
   - *requirements.txt* : le fichier listant les packages
 
 ::: {.callout-caution}
 Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de la même manière que celui vu dans la partie précédente.
+:::
+
+### Le fichier .env
+
+Ce fichier contiendra des variables d'envrionnement qui serviront par exemple pour vous connecter à la base de données PostgreSQL.
+
+- [ ] Faîtes en sorte que ce fichier reste dans votre dépôt local sans être envoyé sur GitHub
+
+::: {.callout-tip collapse="true"}
+Il suffit qu'un seul membre de l'équipe modifie le fichier adéquat, push et ensuite les autres pull.
 :::
 
 ## Conclusion {.unnumbered}

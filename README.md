@@ -2,6 +2,19 @@
 
 Projet informatique de 2e année
 
+## Cours
+
+### CM 1
+
+| Cours                 | Temps estimé   |
+|-----------------------|----------------|
+| Intro                 | 10 min         |
+| Projet                | 20 min         |
+| Outils Dev            | 20 min         |
+| Git                   | 30 min         |
+| Analyse fonctionnelle | 1 h            |
+| POO Avancée           | 30 min         |
+
 ## :rocket: Publier les pages
 
 Site construit avec [Quarto](https://quarto.org/) ([Tutoriel](https://ludo2ne.github.io/Quarto-tuto/))
@@ -21,18 +34,10 @@ Pour générer les pages :
 - [ ] Outil de suivi (Point hebdo)
 - [ ] Topo élèves (reprendre notice)
 
-### Cours
+### CM
 
-- [ ] Projet Flask pour les démo en CM
-
-### CM 1
-
-- [x] Intro
-- [x] Projet
-- [x] Git
-- [x] Outils Dev : VScode, linter, formater, logs, doc
-- [x] Analyse fonctionnelle
-- [x] POO Avancée
+- [ ] Projet Flask pour les démo en CM -> tournoi-echecs
+- [ ] 2025-2026 : Intro à Git à retirer car déplacé en 1A
 
 ## CM 2
 
