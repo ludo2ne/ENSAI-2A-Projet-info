@@ -36,7 +36,9 @@ lightbox: true
 - Pour détecter des erreurs
 - Pour éviter les régressions (quand vous modifiez du code)
 
+::: {.callout-note}
 Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
+:::
 
 ::: {.notes}
 Déjà tester une fonctionnalité d'un dev dont le cas nominal plante.
@@ -192,8 +194,9 @@ Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien
             OperationsMathematiques().diviser_cinq_par(nombre)
 ```
 
+::: {.notes}
 Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n'est pas le cas.
-
+:::
 
 ### Ce qu'il faut retenir
 
@@ -202,8 +205,72 @@ Les tests unitaires
 - vérifient qu'une méthode fait ce qu'elle doit faire
 - il faut tester les cas nominaux, mais également les cas à la marge et les erreurs
 - un test unitaire teste UNE et UNE seule chose
-  - il faut autant de tests unitaires que de retours possibles
+- il faut autant de tests unitaires que de retours possibles
 
+:::{.notes}
+
+Vu en 1A : 
+
+```{.python}
+@pytest.mark.parametrize(
+'a, b, resultat_attendu',
+[(2, 3, 5),
+ (2, 5, 7),
+ (3, 4, 7)]
+)
+```
+
+:::
+
+
+## Mock
+
+- Objet simulé qui remplace un composant réel lors des tests
+- Permet de tester une unité de code en isolant ses dépendances externes
+- Simuler des scénarios complexes comme les erreurs de réseau
+
+
+### Mock - exemple
+
+```{.python filename="joueur_service.py"}
+class JoueurService:
+    def creer(self, pseudo, mdp, age, mail, fan_pokemon) -> Joueur:
+        nouveau_joueur = Joueur(
+            pseudo=pseudo,
+            mdp=hash_password(mdp, pseudo),
+            age=age,
+            mail=mail,
+            fan_pokemon=fan_pokemon,
+        )
+        creation_ok = JoueurDao().creer(nouveau_joueur)
+        if creation_ok:
+            return nouveau_joueur
+        else 
+            return None
+```
+
+:::{.notes}
+Comment prévoir le comportement de `JoueurDao().creer(nouveau_joueur)` ?
+:::
+
+### Mock - exemple
+
+```{.python filename="test_joueur_service.py"}
+from unittest.mock import MagicMock
+
+def test_creer_ok():
+    """ "Création de Joueur réussie"""
+
+    # GIVEN
+    pseudo, mdp, age, mail, fan_pokemon = "jp", "1234", 15, "z@mail.oo", True
+    JoueurDao().creer = MagicMock(return_value=True)
+
+    # WHEN
+    joueur = JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)
+
+    # THEN
+    assert joueur.pseudo == pseudo
+```
 
 
 ## Les Test Driven Development (TDD)
@@ -219,7 +286,7 @@ Plus on teste tôt :arrow_right: plus les tests sont efficaces et peu coûteux !
 
 :::
 
-### TDD
+### Test Driven Development
 
 La meilleure pratique :
 

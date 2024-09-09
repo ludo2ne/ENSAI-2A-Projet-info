@@ -18,8 +18,6 @@ from: markdown+emoji
 lightbox: true
 ---
 
-:construction:
-
 ## Le plan
 
 - API
@@ -130,8 +128,9 @@ Interface entre l'extérieur et notre système
 ### Démo
 
 ::: {.notes}
-Exemple : [https://api.gouv.fr/documentation/api_data_gouv](https://api.gouv.fr/documentation/api_data_gouv)  
-[https://anapioficeandfire.com/](https://anapioficeandfire.com/)
+- [https://api.gouv.fr/documentation/api_data_gouv](https://api.gouv.fr/documentation/api_data_gouv)  
+- [https://anapioficeandfire.com/](https://anapioficeandfire.com/)
+- [Le trafic à Rennes en temps réel](https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel)
 :::
 
 
@@ -156,19 +155,14 @@ Webservice : une API particulière que nous allons utiliser
 REST est un style architectural qui définit un ensemble de contraintes et de principes
 :::
 
----
+### En résumé
 
+::: {.callout-note}
 Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande
-
-Comme un site web, mais pour les machines
-
-### Exemple
-
-[Le trafic à Rennes en temps réel](https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel)
-
-::: {.notes}
-https://data.rennesmetropole.fr/explore/dataset/export-api-parking-citedia/api/
 :::
+
+:arrow_right: Comme un site web, mais pour les machines
+
 
 ### Architecture microservices
 
@@ -216,6 +210,11 @@ Un dessin pourrait peut-être aider
 - Vous partez avec votre café
 
 
+::: {.notes}
+Vous vous moquez de comment à été fait votre café, tant que c'est bon
+:::
+
+
 ## Hyper Text Transfer Protocol (HTTP)
 
 ### HTTP
@@ -228,15 +227,40 @@ Il existe des protocoles non client-serveur : BitTorrent
 
 ::: {.notes}
 Avez vous une idée de requête HTTP ?
+
+- Internet est l'infrastructure
+- Web est un service qui fonctionne dessus
+
+https : http + SSL
+
+Le navigateur cache le protocole
 ::: 
 
-### Avez-vous une idée de requête HTTP ?
+### Secure Sockets Layer (SSL)
 
-Demander une page web via votre navigateur crée une requête HTTP
+Connexion sécurisée entre un client et un serveur :
+
+- Le **client** envoie un message au **serveur**
+- Le **serveur** répond et envoie son [certificat]{.underline}
+- Le **client** vérifie la validité du certificat
+- Le **client** génére une clé de [session]{.underline} chiffrée avec la clé publique du **serveur**
+- Les deux camps communiquent avec la clé de session
 
 ::: {.notes}
-Vous faites tout le temps des requêtes HTTP sans le savoir.
+Commencer par parler chiffrage :
+
+- Chiffrage symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les données
+- Chiffrage asymétrique : une clé publique pour chiffrer les données et une clé privée pour les déchiffrer
+
+Certificat :
+
+- Clé publique
+- Informations sur le propriétaire
+- Période de validité
+- Autorité de certification
+- Signature numérique : message haché puis chiffré avec clé privée
 :::
+
 
 ### Les éléments d'une requête
 
@@ -246,8 +270,11 @@ Vous faites tout le temps des requêtes HTTP sans le savoir.
 - Le corps de la requête
 
 ::: {.notes}
-Les paramètres sont derrière le ?  
+Les paramètres sont derrière le ?
+
 Le corps vous ne le voyez pas, mais il est possible de le voir.
+
+Dans le navigateur, on ne fait que des GET
 :::
 
 ### Les éléments d'une requête
@@ -281,12 +308,36 @@ Comme en SQL
 
 ### Exemple
 
-http://web-services.domensai.ecole/attack
 
-- GET : récupérer toutes les attaques
-- POST : ajouter une attaque
-- UPDATE : modifier une attaque en ajoutant son id en paramètre
-- DELETE : supprimer une attaque en ajoutant son id en paramètre
+
+- GET http://web-services.domensai.ecole/attack
+  - récupérer toutes les attaques
+- GET http://web-services.domensai.ecole/attack/2684
+  - récupérer une attaque à partir de son id
+- DELETE http://web-services.domensai.ecole/attack/2684
+  - supprimer une attaque
+
+### Exemple
+
+- POST http://web-services.domensai.ecole/attack
+  - ajouter une attaque
+- PUT http://web-services.domensai.ecole/attack/2684
+  - modifier une attaque
+
+```{.json filename="body"}
+{
+  "name": "chatouille",
+  "attack_type": "physical attack",
+  "power": 2,
+  "accuracy": 5,
+  "description": "string"
+}
+```
+
+:::{.notes}
+- PATCH http://web-services.domensai.ecole/attack/2684
+  - modifier seulement certains attributs d'une attaque
+:::
 
 ### Pour résumer
 
