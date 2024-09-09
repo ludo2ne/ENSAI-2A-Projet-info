@@ -406,10 +406,6 @@ Ludovic Deneuville, Rémi Pépin
 </div>
 
 </section>
-<section class="slide level3">
-
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-</section>
 <section id="le-plan" class="title-slide slide level2 center">
 <h2>Le plan</h2>
 <ul>
@@ -456,7 +452,11 @@ Ludovic Deneuville, Rémi Pépin
 <h2>Définition</h2>
 <p>Termes assez vaste qui recouvre :</p>
 <ul>
-<li>Les bibliothèques / frameworks : <a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Pandas</a> <a href="https://numpy.org/" target="_blank">Numpy</a></li>
+<li>Les bibliothèques / frameworks :
+<ul>
+<li><a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Pandas</a></li>
+<li><a href="https://numpy.org/" target="_blank">Numpy</a></li>
+</ul></li>
 <li>Des webservices</li>
 <li>Un moyen d’accéder aux ressources d’un hardware
 <ul>
@@ -531,7 +531,7 @@ Ludovic Deneuville, Rémi Pépin
 <section id="wait-what" class="slide level3">
 <h3>Wait what ?!</h3>
 <ul>
-<li>Pourtant de nombreux sites utilisent les données X !</li>
+<li>Pourtant de nombreux sites utilisent les données de X !</li>
 <li>Comment font-ils ?</li>
 </ul>
 </section>
@@ -542,7 +542,11 @@ Ludovic Deneuville, Rémi Pépin
 </section>
 <section id="solution-web-scraper" class="slide level3">
 <h3>Solution : web scraper</h3>
-<p>Consiste à écrire une application qui se connecte à un site, et qui va lire la page pour en tirer des informations</p>
+<p>Consiste à écrire une application qui :</p>
+<ul>
+<li>se connecte à un site</li>
+<li>et va lire la page pour en tirer des informations</li>
+</ul>
 <p><strong>Problèmes</strong></p>
 <ul>
 <li>Crée du trafic artificiel (côté site)</li>
@@ -550,8 +554,9 @@ Ludovic Deneuville, Rémi Pépin
 <li>Gérer le JavaScript 😱😱😱😱</li>
 </ul>
 <aside class="notes">
-<p>Dire que derrière un site il y a du HTML.<br>
-Montrer un exemple ?</p>
+<p>Dire que derrière un site il y a du HTML.</p>
+<p>Montrer un exemple ?</p>
+<p>Prix SNCF à l’INSEE</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -582,8 +587,12 @@ Montrer un exemple ?</p>
 <section id="démo" class="slide level3">
 <h3>Démo</h3>
 <aside class="notes">
-<p>Exemple : <a href="https://api.gouv.fr/documentation/api_data_gouv">https://api.gouv.fr/documentation/api_data_gouv</a><br>
-<a href="https://anapioficeandfire.com/">https://anapioficeandfire.com/</a></p>
+<ul>
+<li><a href="https://api.gouv.fr/documentation/api_data_gouv">https://api.gouv.fr/documentation/api_data_gouv</a><br>
+</li>
+<li><a href="https://anapioficeandfire.com/">https://anapioficeandfire.com/</a></li>
+<li><a href="https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel">Le trafic à Rennes en temps réel</a></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -639,27 +648,22 @@ Montrer un exemple ?</p>
           display:block!important;
       }</style></aside>
 </section>
-<section class="slide level3">
-
+<section id="en-résumé" class="slide level3">
+<h3>En résumé</h3>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
 <p>Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande</p>
-<p>Comme un site web, mais pour les machines</p>
-</section>
-<section id="exemple" class="slide level3">
-<h3>Exemple</h3>
-<p><a href="https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel">Le trafic à Rennes en temps réel</a></p>
-<aside class="notes">
-<p>https://data.rennesmetropole.fr/explore/dataset/export-api-parking-citedia/api/</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
+</div>
+</div>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> Comme un site web, mais pour les machines</p>
 </section>
 <section id="architecture-microservices" class="slide level3">
 <h3>Architecture microservices</h3>
@@ -675,7 +679,10 @@ Montrer un exemple ?</p>
 </section>
 <section id="architecture-microservices-1" class="slide level3">
 <h3>Architecture microservices</h3>
-<p>Chaque module est un webservice indépendant, et c’est l’application côté client qui va les contacter</p>
+<ul>
+<li>Chaque module est un webservice indépendant</li>
+<li>C’est l’application côté client qui va les contacter</li>
+</ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -685,7 +692,7 @@ Montrer un exemple ?</p>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle</p>
+<p>Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle.</p>
 </div>
 </div>
 </div>
@@ -725,6 +732,19 @@ Montrer un exemple ?</p>
 <li>Le <strong>serveur</strong> traite votre demande et vous donne votre café</li>
 <li>Vous partez avec votre café</li>
 </ul>
+<aside class="notes">
+<p>Vous vous moquez de comment à été fait votre café, tant que c’est bon</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="hyper-text-transfer-protocol-http" class="title-slide slide level2 center">
@@ -738,6 +758,12 @@ Montrer un exemple ?</p>
 <p>Il existe des protocoles non client-serveur : BitTorrent</p>
 <aside class="notes">
 <p>Avez vous une idée de requête HTTP ?</p>
+<ul>
+<li>Internet est l’infrastructure</li>
+<li>Web est un service qui fonctionne dessus</li>
+</ul>
+<p>https : http + SSL</p>
+<p>Le navigateur cache le protocole</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -750,11 +776,30 @@ Montrer un exemple ?</p>
           display:block!important;
       }</style></aside>
 </section>
-<section id="avez-vous-une-idée-de-requête-http" class="slide level3">
-<h3>Avez-vous une idée de requête HTTP ?</h3>
-<p>Demander une page web via votre navigateur crée une requête HTTP</p>
+<section id="secure-sockets-layer-ssl" class="slide level3">
+<h3>Secure Sockets Layer (SSL)</h3>
+<p>Connexion sécurisée entre un client et un serveur :</p>
+<ul>
+<li>Le <strong>client</strong> envoie un message au <strong>serveur</strong></li>
+<li>Le <strong>serveur</strong> répond et envoie son <u>certificat</u></li>
+<li>Le <strong>client</strong> vérifie la validité du certificat</li>
+<li>Le <strong>client</strong> génére une clé de <u>session</u> chiffrée avec la clé publique du <strong>serveur</strong></li>
+<li>Les deux camps communiquent avec la clé de session</li>
+</ul>
 <aside class="notes">
-<p>Vous faites tout le temps des requêtes HTTP sans le savoir.</p>
+<p>Commencer par parler chiffrage :</p>
+<ul>
+<li>Chiffrage symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les données</li>
+<li>Chiffrage asymétrique : une clé publique pour chiffrer les données et une clé privée pour les déchiffrer</li>
+</ul>
+<p>Certificat :</p>
+<ul>
+<li>Clé publique</li>
+<li>Informations sur le propriétaire</li>
+<li>Période de validité</li>
+<li>Autorité de certification</li>
+<li>Signature numérique : message haché puis chiffré avec clé privée</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -776,8 +821,9 @@ Montrer un exemple ?</p>
 <li>Le corps de la requête</li>
 </ul>
 <aside class="notes">
-<p>Les paramètres sont derrière le ?<br>
-Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
+<p>Les paramètres sont derrière le ?</p>
+<p>Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
+<p>Dans le navigateur, on ne fait que des GET</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -849,15 +895,65 @@ Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
           display:block!important;
       }</style></aside>
 </section>
+<section id="exemple" class="slide level3">
+<h3>Exemple</h3>
+<ul>
+<li>GET http://web-services.domensai.ecole/attack
+<ul>
+<li>récupérer toutes les attaques</li>
+</ul></li>
+<li>GET http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>récupérer une attaque à partir de son id</li>
+</ul></li>
+<li>DELETE http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>supprimer une attaque</li>
+</ul></li>
+</ul>
+</section>
 <section id="exemple-1" class="slide level3">
 <h3>Exemple</h3>
-<p>http://web-services.domensai.ecole/attack</p>
 <ul>
-<li>GET : récupérer toutes les attaques</li>
-<li>POST : ajouter une attaque</li>
-<li>UPDATE : modifier une attaque en ajoutant son id en paramètre</li>
-<li>DELETE : supprimer une attaque en ajoutant son id en paramètre</li>
+<li>POST http://web-services.domensai.ecole/attack
+<ul>
+<li>ajouter une attaque</li>
+</ul></li>
+<li>PUT http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>modifier une attaque</li>
+</ul></li>
 </ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>body</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="body"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a></a><span class="fu">{</span></span>
+<span id="cb1-2"><a></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"chatouille"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a></a>  <span class="dt">"attack_type"</span><span class="fu">:</span> <span class="st">"physical attack"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a></a>  <span class="dt">"power"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb1-5"><a></a>  <span class="dt">"accuracy"</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
+<span id="cb1-6"><a></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"string"</span></span>
+<span id="cb1-7"><a></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<ul>
+<li>PATCH http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>modifier seulement certains attributs d’une attaque</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="pour-résumer" class="slide level3">
 <h3>Pour résumer</h3>
@@ -885,33 +981,33 @@ Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
 </section>
 <section id="contacter-un-webservice-en-python" class="slide level3">
 <h3>Contacter un webservice en python</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co"># Construction de la requête</span></span>
-<span id="cb1-4"><a></a>url <span class="op">=</span> <span class="st">"https://data.rennesmetropole.fr/api/records/1.0/search/"</span></span>
-<span id="cb1-5"><a></a>parametres <span class="op">=</span> {<span class="st">"dataset"</span>: <span class="st">"etat-du-trafic-en-temps-reel"</span>, <span class="st">"rows"</span>: <span class="dv">2</span>}</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="co"># Lancement de la requête</span></span>
-<span id="cb1-8"><a></a>res <span class="op">=</span> requests.get(url<span class="op">=</span>url, params<span class="op">=</span>parametres)</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="co"># Affichage du résultat</span></span>
-<span id="cb1-11"><a></a><span class="bu">print</span>(res.json())</span>
-<span id="cb1-12"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Nombre de lignes : "</span>, res.json()[<span class="st">"parameters"</span>][<span class="st">"rows"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="co"># Construction de la requête</span></span>
+<span id="cb2-4"><a></a>url <span class="op">=</span> <span class="st">"https://data.rennesmetropole.fr/api/records/1.0/search/"</span></span>
+<span id="cb2-5"><a></a>parametres <span class="op">=</span> {<span class="st">"dataset"</span>: <span class="st">"etat-du-trafic-en-temps-reel"</span>, <span class="st">"rows"</span>: <span class="dv">2</span>}</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="co"># Lancement de la requête</span></span>
+<span id="cb2-8"><a></a>res <span class="op">=</span> requests.get(url<span class="op">=</span>url, params<span class="op">=</span>parametres)</span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a><span class="co"># Affichage du résultat</span></span>
+<span id="cb2-11"><a></a><span class="bu">print</span>(res.json())</span>
+<span id="cb2-12"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Nombre de lignes : "</span>, res.json()[<span class="st">"parameters"</span>][<span class="st">"rows"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="contacter-un-webservice-en-python-1" class="slide level3">
 <h3>Contacter un webservice en python</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> json</span>
-<span id="cb2-2"><a></a><span class="im">import</span> requests</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a>url <span class="op">=</span> <span class="st">"https://anapioficeandfire.com/api/"</span></span>
-<span id="cb2-5"><a></a>end_point <span class="op">=</span> <span class="st">"characters"</span></span>
-<span id="cb2-6"><a></a>parametres <span class="op">=</span> {<span class="st">"gender"</span>: <span class="st">"Female"</span>, <span class="st">"isAlive"</span>: <span class="va">True</span>, <span class="st">"culture"</span>: <span class="st">"Braavosi"</span>}</span>
-<span id="cb2-7"><a></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>url <span class="op">+</span> end_point, params<span class="op">=</span>parametres)</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a><span class="co"># Teste si le serveur a répondu</span></span>
-<span id="cb2-10"><a></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
-<span id="cb2-11"><a></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-12"><a></a><span class="bu">print</span>(json.dumps(response.json()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> json</span>
+<span id="cb3-2"><a></a><span class="im">import</span> requests</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>url <span class="op">=</span> <span class="st">"https://anapioficeandfire.com/api/"</span></span>
+<span id="cb3-5"><a></a>end_point <span class="op">=</span> <span class="st">"characters"</span></span>
+<span id="cb3-6"><a></a>parametres <span class="op">=</span> {<span class="st">"gender"</span>: <span class="st">"Female"</span>, <span class="st">"isAlive"</span>: <span class="va">True</span>, <span class="st">"culture"</span>: <span class="st">"Braavosi"</span>}</span>
+<span id="cb3-7"><a></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>url <span class="op">+</span> end_point, params<span class="op">=</span>parametres)</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a><span class="co"># Teste si le serveur a répondu</span></span>
+<span id="cb3-10"><a></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb3-11"><a></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-12"><a></a><span class="bu">print</span>(json.dumps(response.json()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="contacter-un-webservice-en-python-2" class="slide level3">
 <h3>Contacter un webservice en python</h3>
@@ -952,16 +1048,16 @@ Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
 </section>
 <section id="fastapi-les-bases" class="slide level3">
 <h3>FastApi : les bases</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb3-4"><a></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb3-5"><a></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
-<span id="cb3-6"><a></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb3-10"><a></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb4-4"><a></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb4-5"><a></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
+<span id="cb4-6"><a></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-10"><a></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="fastapi" class="slide level3">
 <h3>FastApi</h3>
@@ -1374,7 +1470,7 @@ Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

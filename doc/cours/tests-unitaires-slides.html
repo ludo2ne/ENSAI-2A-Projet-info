@@ -427,7 +427,19 @@ Ludovic Deneuville
 <li>Pour détecter des erreurs</li>
 <li>Pour éviter les régressions (quand vous modifiez du code)</li>
 </ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
 <p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <p>Déjà tester une fonctionnalité d’un dev dont le cas nominal plante.</p>
 <style type="text/css">
@@ -631,7 +643,19 @@ Ludovic Deneuville
 <span id="cb4-6"><a></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
 <span id="cb4-7"><a></a>            OperationsMathematiques().diviser_cinq_par(nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<aside class="notes">
 <p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="ce-quil-faut-retenir" class="slide level3">
 <h3>Ce qu’il faut retenir</h3>
@@ -639,11 +663,94 @@ Ludovic Deneuville
 <ul>
 <li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
 <li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
-<li>un test unitaire teste UNE et UNE seule chose
-<ul>
+<li>un test unitaire teste UNE et UNE seule chose</li>
 <li>il faut autant de tests unitaires que de retours possibles</li>
-</ul></li>
 </ul>
+<aside class="notes">
+<p>Vu en 1A :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="at">@pytest.mark.parametrize</span>(</span>
+<span id="cb5-2"><a></a><span class="st">'a, b, resultat_attendu'</span>,</span>
+<span id="cb5-3"><a></a>[(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
+<span id="cb5-4"><a></a> (<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>),</span>
+<span id="cb5-5"><a></a> (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>)]</span>
+<span id="cb5-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="mock" class="title-slide slide level2 center">
+<h2>Mock</h2>
+<ul>
+<li>Objet simulé qui remplace un composant réel lors des tests</li>
+<li>Permet de tester une unité de code en isolant ses dépendances externes</li>
+<li>Simuler des scénarios complexes comme les erreurs de réseau</li>
+</ul>
+</section>
+<section id="mock---exemple" class="slide level3">
+<h3>Mock - exemple</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>joueur_service.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="joueur_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">class</span> JoueurService:</span>
+<span id="cb6-2"><a></a>    <span class="kw">def</span> creer(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Joueur:</span>
+<span id="cb6-3"><a></a>        nouveau_joueur <span class="op">=</span> Joueur(</span>
+<span id="cb6-4"><a></a>            pseudo<span class="op">=</span>pseudo,</span>
+<span id="cb6-5"><a></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
+<span id="cb6-6"><a></a>            age<span class="op">=</span>age,</span>
+<span id="cb6-7"><a></a>            mail<span class="op">=</span>mail,</span>
+<span id="cb6-8"><a></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
+<span id="cb6-9"><a></a>        )</span>
+<span id="cb6-10"><a></a>        creation_ok <span class="op">=</span> JoueurDao().creer(nouveau_joueur)</span>
+<span id="cb6-11"><a></a>        <span class="cf">if</span> creation_ok:</span>
+<span id="cb6-12"><a></a>            <span class="cf">return</span> nouveau_joueur</span>
+<span id="cb6-13"><a></a>        <span class="cf">else</span> </span>
+<span id="cb6-14"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mock---exemple-1" class="slide level3">
+<h3>Mock - exemple</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_joueur_service.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="test_joueur_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="kw">def</span> test_creer_ok():</span>
+<span id="cb7-4"><a></a>    <span class="co">""" "Création de Joueur réussie"""</span></span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>    <span class="co"># GIVEN</span></span>
+<span id="cb7-7"><a></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
+<span id="cb7-8"><a></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-9"><a></a></span>
+<span id="cb7-10"><a></a>    <span class="co"># WHEN</span></span>
+<span id="cb7-11"><a></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb7-12"><a></a></span>
+<span id="cb7-13"><a></a>    <span class="co"># THEN</span></span>
+<span id="cb7-14"><a></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
 <section>
 <section id="les-test-driven-development-tdd" class="title-slide slide level2 center">
@@ -669,8 +776,8 @@ Ludovic Deneuville
 </div>
 </div>
 </section>
-<section id="tdd" class="slide level3">
-<h3>TDD</h3>
+<section id="test-driven-development" class="slide level3">
+<h3>Test Driven Development</h3>
 <p>La meilleure pratique :</p>
 <ol type="1">
 <li>Créer les tests</li>
@@ -1126,7 +1233,7 @@ Ludovic Deneuville
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

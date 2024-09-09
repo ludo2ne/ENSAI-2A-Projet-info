@@ -368,6 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="une-question-à-se-poser" class="level3">
 <h3 class="anchored" data-anchor-id="une-question-à-se-poser">Une question à se poser</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Personnage(prenom<span class="op">=</span><span class="st">"Leia"</span>, nom<span class="op">=</span><span class="st">"Organa"</span>, age <span class="op">=</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>C’est quoi une variable Python ?</p>
 <div class="fragment">
 <ul>
@@ -375,7 +376,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Un objet associé (sa valeur)</strong></li>
 </ul>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Personnage(prenom<span class="op">=</span><span class="st">"Leia"</span>, nom<span class="op">=</span><span class="st">"Organa"</span>, age <span class="op">=</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="notes">
 <p>On zappe la notion d’adressage mémoire.<br>
 Pas besoin de stocker la référence, car elle est dans le code source</p>
@@ -383,13 +383,6 @@ Pas besoin de stocker la référence, car elle est dans le code source</p>
 </section>
 <section id="une-question-qui-en-découle" class="level3">
 <h3 class="anchored" data-anchor-id="une-question-qui-en-découle">Une question qui en découle</h3>
-<p>C’est quoi un objet Python ?</p>
-<div class="fragment">
-<ul>
-<li>Des attributs (qui peuvent être eux-mêmes des objets)</li>
-<li>Des méthodes</li>
-</ul>
-</div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>personnage.py</strong></pre>
@@ -403,6 +396,13 @@ Pas besoin de stocker la référence, car elle est dans le code source</p>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> anniversaire(<span class="va">self</span>):</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>C’est quoi un objet Python ?</p>
+<div class="fragment">
+<ul>
+<li>Des attributs (qui peuvent être eux-mêmes des objets)</li>
+<li>Des méthodes</li>
+</ul>
 </div>
 <div class="notes">
 <p>Pareil, les méthodes c’est du code, nous on veut juste les attributs</p>
@@ -602,32 +602,35 @@ Pas super intéressant à faire, le code est donné</p></li>
 <section id="psycopg2---cursor" class="level3">
 <h3 class="anchored" data-anchor-id="psycopg2---cursor">psycopg2 - cursor</h3>
 <ul>
-<li><p><code>cursor</code> : encapsule la requête ```{.python} from dao.db_connection import DBConnection</p>
-<p>with DBConnection().connection as connection: with connection.cursor() as cursor: ```</p></li>
+<li><p><code>cursor</code> : encapsule la requête</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dao.db_connection <span class="im">import</span> DBConnection</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>cursor.execute("&lt;une requête SQL&gt;")</code> : permet de faire une requête</p></li>
 <li><p><code>cursor.fetchone()/fetchall()/fetchmany()</code> : Récupération des résultats</p></li>
 </ul>
 </section>
 <section id="forme-de-base" class="level3">
 <h3 class="anchored" data-anchor-id="forme-de-base">Forme de base</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dao_function(<span class="va">self</span>, arg1, arg2, ...):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Récupération de la connexion à la base</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Création d'un curseur pour faire une requête</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="co"># On envoie au serveur la requête SQL</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"&lt;une_requete_sql_à_trous&gt;"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                remplisage_des_trous)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="co"># On récupère le résultat de la requête</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> cursor.fetchone()  <span class="co"># ou fetchall()/fetchmany()</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Si la requête renvoie quelque chose</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      something <span class="op">=</span> <span class="st">"&lt;res mis en forme&gt;"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> something   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dao_function(<span class="va">self</span>, arg1, arg2, ...):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Récupération de la connexion à la base</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Création d'un curseur pour faire une requête</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="co"># On envoie au serveur la requête SQL</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"&lt;une_requete_sql_à_trous&gt;"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                remplisage_des_trous)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="co"># On récupère le résultat de la requête</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> cursor.fetchone()  <span class="co"># ou fetchall()/fetchmany()</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Si la requête renvoie quelque chose</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> res:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      something <span class="op">=</span> <span class="st">"&lt;res mis en forme&gt;"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> something   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="notes">
 <p>Pourquoi on ne retourne pas directement res ?</p>
 <p>res : list[dict]</p>
@@ -643,20 +646,20 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="créer-un-livre" class="level3">
 <h3 class="anchored" data-anchor-id="créer-un-livre">Créer un livre</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create(<span class="va">self</span>, livre) <span class="op">-&gt;</span> Livre:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour créer un livre en base"""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"INSERT INTO livre (isbm, titre, auteur)         "</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"     VALUES (</span><span class="sc">%(isbm)s</span><span class="st">, </span><span class="sc">%(titre)s</span><span class="st">, </span><span class="sc">%(auteur)s</span><span class="st">)   "</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  RETURNING id_livre;                           "</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"isbm"</span>: livre.isbm, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"titre"</span>: livre.titre, </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"auteur"</span>: livre.auteur},</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            livre.<span class="bu">id</span> <span class="op">=</span> cursor.fetchone()[<span class="st">"id_livre"</span>]</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create(<span class="va">self</span>, livre) <span class="op">-&gt;</span> Livre:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour créer un livre en base"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"INSERT INTO livre (isbm, titre, auteur)         "</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"     VALUES (</span><span class="sc">%(isbm)s</span><span class="st">, </span><span class="sc">%(titre)s</span><span class="st">, </span><span class="sc">%(auteur)s</span><span class="st">)   "</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  RETURNING id_livre;                           "</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"isbm"</span>: livre.isbm, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"titre"</span>: livre.titre, </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"auteur"</span>: livre.auteur},</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            livre.<span class="bu">id</span> <span class="op">=</span> cursor.fetchone()[<span class="st">"id_livre"</span>]</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="notes">
 <p>Possible aussi de retourner une booléen :</p>
 <ul>
@@ -667,33 +670,33 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="lister-les-livres" class="level3">
 <h3 class="anchored" data-anchor-id="lister-les-livres">Lister les livres</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_all(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[Livre]:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour récupérer tous les livres en base"""</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"SELECT id_livre,                  "</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       isbm,                      "</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       titre,                     "</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       auteur                     "</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  FROM livre ;                    "</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            livre_bdd <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    liste_livres <span class="op">=</span> []</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> livre_bdd:</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> livre <span class="kw">in</span> livre_bdd:</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            liste_livres.append(</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                Livre(</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">id</span><span class="op">=</span>livre[<span class="st">"id_livre"</span>],</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                    isbm<span class="op">=</span>livre[<span class="st">"isbm"</span>],</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                    titre<span class="op">=</span>livre[<span class="st">"titre"</span>],</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                    auteur<span class="op">=</span>livre[<span class="st">"auteur"</span>],</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                )</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> liste_livres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_all(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[Livre]:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour récupérer tous les livres en base"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"SELECT id_livre,                  "</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       isbm,                      "</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       titre,                     "</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"       auteur                     "</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  FROM livre ;                    "</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            livre_bdd <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    liste_livres <span class="op">=</span> []</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> livre_bdd:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> livre <span class="kw">in</span> livre_bdd:</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            liste_livres.append(</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>                Livre(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">id</span><span class="op">=</span>livre[<span class="st">"id_livre"</span>],</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>                    isbm<span class="op">=</span>livre[<span class="st">"isbm"</span>],</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>                    titre<span class="op">=</span>livre[<span class="st">"titre"</span>],</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>                    auteur<span class="op">=</span>livre[<span class="st">"auteur"</span>],</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> liste_livres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="notes">
 <ul>
 <li>livre_bdd = [{id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}, {…}, …]</li>
@@ -704,26 +707,26 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="trouver-un-livre" class="level3">
 <h3 class="anchored" data-anchor-id="trouver-un-livre">Trouver un livre</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_by_isbm(<span class="va">self</span>, isbm) <span class="op">-&gt;</span> Livre:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour récupérer un livre depuis son isbm"""</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"SELECT *                          "</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  FROM livre                      "</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">" WHERE isbm = </span><span class="sc">%(isbm)s</span><span class="st">            "</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"isbm"</span>: livre.isbm}</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            livre_bdd <span class="op">=</span> cursor.fetchone()</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    livre <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> livre_bdd:</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        livre <span class="op">=</span> Livre(</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span>livre_bdd[<span class="st">"id_livre"</span>],</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            isbm<span class="op">=</span>livre_bdd[<span class="st">"isbm"</span>],</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>            titre<span class="op">=</span>livre_bdd[<span class="st">"titre"</span>],</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            auteur<span class="op">=</span>livre_bdd[<span class="st">"auteur"</span>],</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_by_isbm(<span class="va">self</span>, isbm) <span class="op">-&gt;</span> Livre:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Pour récupérer un livre depuis son isbm"""</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            cursor.execute(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"SELECT *                          "</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"  FROM livre                      "</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">" WHERE isbm = </span><span class="sc">%(isbm)s</span><span class="st">            "</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"isbm"</span>: livre.isbm}</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            livre_bdd <span class="op">=</span> cursor.fetchone()</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    livre <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> livre_bdd:</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        livre <span class="op">=</span> Livre(</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span>livre_bdd[<span class="st">"id_livre"</span>],</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            isbm<span class="op">=</span>livre_bdd[<span class="st">"isbm"</span>],</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            titre<span class="op">=</span>livre_bdd[<span class="st">"titre"</span>],</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            auteur<span class="op">=</span>livre_bdd[<span class="st">"auteur"</span>],</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="notes">
 <p>livre_bdd : dict livre : Livre</p>
 <p>Principe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets</p>
@@ -951,10 +954,10 @@ Pas super intéressant à faire, le code est donné</p></li>
 <section id="exemple-sauthentifier-sans-mot-de-passe" class="level3">
 <h3 class="anchored" data-anchor-id="exemple-sauthentifier-sans-mot-de-passe">Exemple : s’authentifier sans mot de passe</h3>
 <p>Requête d’authentification</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <div class="callout callout-style-default callout-note callout-titled" title="Vous saisissez">
 <div class="callout-header d-flex align-content-center">
@@ -974,10 +977,10 @@ Vous saisissez
 </div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'awsome_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'awsome_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="notes">
 <p>Si dans votre cursor.execute vous avez ce code</p>
@@ -985,10 +988,10 @@ Vous saisissez
 </section>
 <section id="exemple-sauthentifier-sans-mot-de-passe-1" class="level3">
 <h3 class="anchored" data-anchor-id="exemple-sauthentifier-sans-mot-de-passe-1">Exemple : s’authentifier sans mot de passe</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <div class="callout callout-style-default callout-warning callout-titled" title="Vous saisissez">
 <div class="callout-header d-flex align-content-center">
@@ -1008,18 +1011,18 @@ Vous saisissez
 </div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exemple-supprimer-une-table" class="level3">
 <h3 class="anchored" data-anchor-id="exemple-supprimer-une-table">Exemple : supprimer une table</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <div class="callout callout-style-default callout-warning callout-titled" title="Vous saisissez">
 <div class="callout-header d-flex align-content-center">
@@ -1039,10 +1042,10 @@ Vous saisissez
 </div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Gennysson'</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Gennysson'</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <div class="hide-html-render">
@@ -1133,10 +1136,10 @@ Tip
 <section id="hasher-le-mot-de-passe" class="level3">
 <h3 class="anchored" data-anchor-id="hasher-le-mot-de-passe">Hasher le mot de passe</h3>
 <ul>
-<li>Hashage du mot de passe =&gt; cypher</li>
-<li>Stockage du cypher en base</li>
+<li>Hashage du mot de passe</li>
+<li>Stockage du hash en base</li>
 <li>Quand besoin de comparer on hashe le mdp saisi</li>
-<li>Et on compare les cyphers</li>
+<li>Et on compare les hashs</li>
 </ul>
 <p><strong>Authentification sans persister les mots de passe !!!!</strong></p>
 <div class="notes">
@@ -1191,13 +1194,13 @@ Cela rend une attaque en force brute plus coûteuse.</p>
 </section>
 <section id="exemple-de-hashage-de-mdp" class="level3">
 <h3 class="anchored" data-anchor-id="exemple-de-hashage-de-mdp">Exemple de hashage de mdp</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_password(password, idep):</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    salt <span class="op">=</span> idep</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hashlib.sha256(salt.encode() <span class="op">+</span> password.encode()).hexdigest()</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hash_password(<span class="st">"awsome_password"</span>, <span class="st">"Gennysson"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_password(password, idep):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    salt <span class="op">=</span> idep</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hashlib.sha256(salt.encode() <span class="op">+</span> password.encode()).hexdigest()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hash_password(<span class="st">"awsome_password"</span>, <span class="st">"Gennysson"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="to-sum-up-the-security-part" class="level3">
 <h3 class="anchored" data-anchor-id="to-sum-up-the-security-part">To sum up the security part</h3>
@@ -1791,7 +1794,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
