@@ -46,8 +46,8 @@ L'application implémente une API ou expose une API.
 Termes assez vaste qui recouvre :
 
 - Les bibliothèques / frameworks :
-  [Pandas](https://pandas.pydata.org/docs/reference/index.html){target="_blank"}
-  [Numpy](https://numpy.org/){target="_blank"}
+  - [Pandas](https://pandas.pydata.org/docs/reference/index.html){target="_blank"}
+  - [Numpy](https://numpy.org/){target="_blank"}
 - Des webservices
 - Un moyen d'accéder aux ressources d'un hardware
   - [Nvidia API](https://developer.nvidia.com/nvapi){target="_blank"}
@@ -89,7 +89,7 @@ Bien sûr non !
 
 ### Wait what ?!
 
-- Pourtant de nombreux sites utilisent les données X !
+- Pourtant de nombreux sites utilisent les données de X !
 - Comment font-ils ?
 
 
@@ -102,7 +102,10 @@ Bien sûr non !
 
 ### Solution : web scraper
 
-Consiste à écrire une application qui se connecte à un site, et qui va lire la page pour en tirer des informations
+Consiste à écrire une application qui :
+
+- se connecte à un site
+- et va lire la page pour en tirer des informations
 
 **Problèmes**
 
@@ -111,8 +114,11 @@ Consiste à écrire une application qui se connecte à un site, et qui va lire l
 - Gérer le JavaScript 😱😱😱😱
 
 ::: {.notes}
-Dire que derrière un site il y a du HTML.  
+Dire que derrière un site il y a du HTML.
+
 Montrer un exemple ?
+
+Prix SNCF à l'INSEE
 :::
 
 ### Autre solution : créer un point d'entrée pour les machines
@@ -177,10 +183,11 @@ Site de e-commerce
 
 ### Architecture microservices
 
-Chaque module est un webservice indépendant, et c'est l'application côté client qui va les contacter
+- Chaque module est un webservice indépendant
+- C'est l'application côté client qui va les contacter
 
 ::: {.callout-note}
-Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle
+Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle.
 :::
 
 ::: {.notes}

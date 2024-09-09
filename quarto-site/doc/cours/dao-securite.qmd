@@ -85,6 +85,10 @@ Réponse : Conserver les données une fois le programme Python terminé
 
 ### Une question à se poser
 
+```{.python code-line-numbers="false"}
+p = Personnage(prenom="Leia", nom="Organa", age = 35)
+```
+
 C'est quoi une variable Python ?
 
 :::{.fragment}
@@ -92,9 +96,6 @@ C'est quoi une variable Python ?
 - **Un objet associé (sa valeur)**
 :::
 
-```{.python code-line-numbers="false"}
-p = Personnage(prenom="Leia", nom="Organa", age = 35)
-```
 
 ::: {.notes}
 On zappe la notion d'adressage mémoire.  
@@ -102,13 +103,6 @@ Pas besoin de stocker la référence, car elle est dans le code source
 :::
 
 ### Une question qui en découle
-
-C'est quoi un objet Python ?
-
-:::{.fragment}
-- Des attributs (qui peuvent être eux-mêmes des objets)
-- Des méthodes
-:::
 
 ```{.python filename="personnage.py"}
 class Personnage:
@@ -121,6 +115,14 @@ class Personnage:
     def anniversaire(self):
         self.age += 1
 ```
+
+C'est quoi un objet Python ?
+
+:::{.fragment}
+- Des attributs (qui peuvent être eux-mêmes des objets)
+- Des méthodes
+:::
+
 
 ::: {.notes}
 Pareil, les méthodes c'est du code, nous on veut juste les attributs
@@ -318,13 +320,12 @@ Singleton
 ### psycopg2 - cursor
 
 - `cursor` : encapsule la requête
-    ```{.python}
-    from dao.db_connection import DBConnection
-    
-    with DBConnection().connection as connection:
-        with connection.cursor() as cursor:
-    ```
-
+  ```{.python}
+  from dao.db_connection import DBConnection
+  
+  with DBConnection().connection as connection:
+      with connection.cursor() as cursor:
+  ```
 - `cursor.execute("<une requête SQL>")` : permet de faire une requête
 - `cursor.fetchone()/fetchall()/fetchmany()` : Récupération des résultats
 
@@ -810,10 +811,10 @@ Les bibliothèques web le font souvent pour vous !
 
 ### Hasher le mot de passe
 
-- Hashage du mot de passe => cypher
-- Stockage du cypher en base
+- Hashage du mot de passe
+- Stockage du hash en base
 - Quand besoin de comparer on hashe le mdp saisi
-- Et on compare les cyphers
+- Et on compare les hashs
 
 **Authentification sans persister les mots de passe !!!!**
 
