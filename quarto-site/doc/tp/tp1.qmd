@@ -228,13 +228,13 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 ### Résoudre un conflit
 
-- [ ] Pour tous les fichier `<prenom.py>`, [un seul membre]{.underline} de l'équipe commence par modifier le prenom dans le code
+- [ ] Pour tous les fichiers `<prenom.py>`, [un seul membre]{.underline} de l'équipe commence par modifier le prenom dans le code
   - ne pas modifier les noms des fichiers, uniquement le code à l'intérieur
     - `print("Bonjour <prenom>")` :arrow_right: `print("Bonjour Marie-<prenom>")`
   - Et il *add*, *commit* et *push*
 - [ ] Ensuite les autres membres modifient chacun leur propre fichier
   - `print("Bonjour <prenom>")` :arrow_right: `print("Bonjour Anne-<prenom>")`
-  - Et ils *add*, *commit* *pull* et *push*
+  - Et ils *add*, *commit*, *pull* et *push*
 
 Normalement un conflit survient lors du *pull*. En effet il y a un conflit de version
 
@@ -302,7 +302,7 @@ Le README est disponible :
 
 - [ ] Toujours en suivant les instructions du README, lancez le *__main__*
 
-Vous arrivez sur le menu d'accueil. Le principe de ce type d'application est de vous faire naviguer d'une vue à l'autre. Si nécessaire, la vue appelera en arrière plan des *services*.
+Vous arrivez sur le menu d'accueil. Le principe de ce type d'application est de vous faire naviguer d'une vue à l'autre. Si nécessaire, la vue appellera en arrière plan des *services*.
 
 ::: {.callout-note}
 Quelques exemples plus concrets :
@@ -342,7 +342,7 @@ Il est également possible de créer des règles personnalisées.
 
 - [ ] Après être revenu à l'accueil, choisissez `Se connecter`
   - Vous arrivez sur une nouvelle *vue* avec un nouveau *menu*
-  - :bulb: pour aller plus vite, vous pouvez utiliser l'utilsateur « a », mot de passe « a »
+  - :bulb: pour aller plus vite, vous pouvez utiliser l'utilisateur « a », mot de passe « a »
 - [ ] Affichez les joueurs
 - [ ] Ouvrez le fichier de log dans le dossier `logs`
 
@@ -404,7 +404,7 @@ Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de 
 
 Ce fichier contiendra des variables d'envrionnement qui serviront par exemple pour vous connecter à la base de données PostgreSQL.
 
-- [ ] Faîtes en sorte que ce fichier reste dans votre dépôt local sans être envoyé sur GitHub
+- [ ] Faîtes en sorte que ce fichier reste dans votre dépôt local sans jamais être envoyé sur GitHub
 
 ::: {.callout-tip collapse="true"}
 Il suffit qu'un seul membre de l'équipe modifie le fichier adéquat, push et ensuite les autres pull.

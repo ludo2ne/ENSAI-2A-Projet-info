@@ -446,7 +446,7 @@ def find_by_isbm(self, isbm) -> Livre:
                 "SELECT *                          "
                 "  FROM livre                      "
                 " WHERE isbm = %(isbm)s            ",
-                {"isbm": livre.isbm}
+                {"isbm": isbm}
             livre_bdd = cursor.fetchone()
             
     livre = None
