@@ -1024,7 +1024,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <span id="cb8-6"><a></a>                <span class="st">"SELECT *                          "</span></span>
 <span id="cb8-7"><a></a>                <span class="st">"  FROM livre                      "</span></span>
 <span id="cb8-8"><a></a>                <span class="st">" WHERE isbm = </span><span class="sc">%(isbm)s</span><span class="st">            "</span>,</span>
-<span id="cb8-9"><a></a>                {<span class="st">"isbm"</span>: livre.isbm}</span>
+<span id="cb8-9"><a></a>                {<span class="st">"isbm"</span>: isbm}</span>
 <span id="cb8-10"><a></a>            livre_bdd <span class="op">=</span> cursor.fetchone()</span>
 <span id="cb8-11"><a></a>            </span>
 <span id="cb8-12"><a></a>    livre <span class="op">=</span> <span class="va">None</span></span>
@@ -2044,7 +2044,7 @@ Cela rend une attaque en force brute plus coûteuse.</p>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
