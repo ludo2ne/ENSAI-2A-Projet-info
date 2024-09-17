@@ -123,7 +123,7 @@ Le code du TP se trouve sur [GitHub](https://github.com/ludo2ne/ENSAI-2A-complem
 - [ ] Ouvrez **Visual Studio Code**
 - [ ] Ouvrez votre dépôt local
   - File > Open Folder
-  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP1`
+  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP2`
   - Cliquez [une seule fois]{.underline} sur :file_folder: ENSAI-2A-complement-info-TP
   - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
 
@@ -258,9 +258,9 @@ classDiagram
 ### Testez votre code
 
 - [ ] Testez la méthode `get_pokemon_attack_coef()` pour les classes `AttackerPokemon` et `AllRounderPokemon`.  
-  - `python -m unittest`
+  - `python -m pytest -v`
 
-Pour cela vous allez utiliser le package `unittest` de python.  
+Pour cela vous allez utiliser le package `pytest` de python.
 
 Ce package permet de réaliser des tests unitaires dans des classes séparées. L'avantage par rapport à `doctest`, c'est que les tests ne "polluent" pas vos classes, et qu'il est possible de *patcher* certains comportements des classes.  
 

@@ -103,9 +103,9 @@ Récupérez les données de divers datasets :
 - [ ] *menus-cantines*
 - [ ] *eco-counter-data*
 - [ ] *resultats-des-elections-municipales-2020-a-acigne*
-- [ ] Ajouter à la fin de l'URI le paramètre *rows* 
+- [ ] Ajoutez à la fin de l'URI le paramètre *rows* 
     - pour faire varier le nombre de lignes que vous recevez 
-    - ajouter simplement `&rows=X` avec X le nombre de lignes
+    - ajoutez simplement `?rows=N` avec N le nombre de lignes
 
 
 #### Webservice de votre projet
@@ -232,7 +232,7 @@ response = requests.get("http://mon-webservice.com")
 
 if response.status_code != 200:
     raise Exception(
-        "Cannot reach (HTTP {}): {}".format(response.status_code, response.text)
+        f"Cannot reach (HTTP {response.status_code}): {response.text}"
     )
 else:    
     print(json.dumps(response.json(), indent=2))       # JSON Pretty print
@@ -257,7 +257,7 @@ if req.status_code == 200:
     else:
         print("No records found.")
 else:
-    print(f"Failed to retrieve data. Status code: {req.status_code}")
+    print(f"Failed to retrieve data. Status code: {req.status_code}.\n{req.text}")
 ```
 
 :::
@@ -265,7 +265,7 @@ else:
 ### Mise à jour de votre dépôt git
 
 ::: {.callout-caution}
-Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la section *Clone du dépôt* du TP2.
+Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la section [Clone du dépôt du TP2](./tp2.qmd#clone-du-dépôt){target="blank"}.
 :::
 
 - [ ] Ouvrez **Visual Studio Code**
@@ -286,7 +286,7 @@ Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la s
   - Terminal > New Terminal (ou CTRL + ù)
   - Passez sur la branche du TP3 et mettez-là à jour
     - si vous ne l'avez pas fait à la fin du dernier TP, commencer par un *add* et un *commit*
-    - `git checkout tp3-base`
+    - `git switch tp3-base`
     - `git pull`
 
 
@@ -318,14 +318,14 @@ Regardez le fonctionnement de cette méthode et utilisez la.
 - [ ] Créez la méthode *get_all_attacks()* 
   - retourne la liste de tous les attaques disponibles sous la forme d'une liste d'objets **AbstractAttack**
 - [ ] Vérifiez que vos 2 méthodes fonctionnent
-    - Lancez les tests unitaitres du package *test_client*
+    - Lancez les tests unitaires du package *test_client*
 
 
 ### Les requêtes plus complexes
 
 Pour le moment nous nous sommes concentrés sur les requêtes **GET** (simple lecture des données). 
 
-Mais il est bien sûr possible d'en faire d'autre. Par exemple pour les requêtes **POST**, **PUT** ou **DELETE**.
+Mais il est bien sûr possible d'en faire d'autres. Par exemple pour les requêtes **POST**, **PUT** ou **DELETE**.
 Voici la syntaxe :
 
 ```{.python}
@@ -344,7 +344,7 @@ post = requests.post(url, json = data)
 
 Fonctionnellement, c'est la même chose, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.
 
-Il est également possible de passer des entêtes http en ajoutant l'attribut `headers` à la fonction utilisée.
+Il est également possible de passer des entêtes http en ajoutant le paramètre `headers` à la fonction utilisée.
 
 ```{.python}
 headers = {'accept': 'application/xml'}
@@ -380,7 +380,7 @@ Il y a trois leaders sur le marché actuellement pour faire un webservice REST e
 - [FlaskRESTful](https://flask-restful.readthedocs.io/en/latest/){target="_blank"}
 - [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
 
-Chacun à ses [avantages et inconvénients](https://www.section.io/engineering-education/choosing-between-django-flask-and-fastapi/){target="_blank"}. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de **FastApi** est la simplicité pour créer une page swagger de documentation.
+Chacun à ses avantages et inconvénients. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de **FastApi** est la simplicité pour créer une page swagger de documentation.
 
 Voici le code minimal d'un webservice REST avec FastAPI ([documentation officielle](https://fastapi.tiangolo.com/tutorial/first-steps/){target="_blank"})
 
@@ -463,9 +463,9 @@ class Todo(BaseModel):
     content : str
 ```
 
-Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôle sur les types des variables et renvoyer une erreur au client si sa requête n'est pas bien formatée.
+Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôles sur les types des variables et renvoyer une erreur au client si sa requête n'est pas bien formatée.
 
-Fondamentalement un webservice est une application comme les autres, mais au lieu d'avoir une interface graphique comme on en a l'habitude en tant qu'humain, l'interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête **GET** pour récupérer une ressource va ressembler à cela nous reprenons le modèle 3 couches vu en cours.
+Fondamentalement un webservice est une application comme les autres, mais au lieu d'avoir une interface graphique comme on en a l'habitude en tant qu'humain, l'interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête **GET** pour récupérer une ressource va ressembler à cela. Reprenons le modèle 3 couches vu en cours.
 
 ```{mermaid}
 sequenceDiagram
@@ -492,7 +492,7 @@ sequenceDiagram
 - [ ] Testez les requêtes suivantes : 
   - `GET http://localhost/hello`
   - `GET http://localhost/hello/everybody`
-- [ ] Arrétez le webservice
+- [ ] Arrêtez le webservice
   - Cliquez dans le terminal de VSCode puis CTRL + C
 
 
@@ -511,3 +511,5 @@ Pour tester les endpoints nécessitant un body json, vous pouvez utiliser :
   "age": 30
 }
 ```
+
+Savoir utiliser un webservice est essentiel, car ils représentent une vaste source de données accessibles en temps réel. Les webservices permettent de collecter des informations provenant de multiples sources, comme des APIs publiques ou des systèmes internes, sans avoir besoin de télécharger manuellement des fichiers. À vous ensuite de convertir ces données dans le format que vous préférez.
