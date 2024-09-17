@@ -427,10 +427,10 @@ Note
 <li><label><input type="checkbox"><em>menus-cantines</em></label></li>
 <li><label><input type="checkbox"><em>eco-counter-data</em></label></li>
 <li><label><input type="checkbox"><em>resultats-des-elections-municipales-2020-a-acigne</em></label></li>
-<li><label><input type="checkbox">Ajouter à la fin de l’URI le paramètre <em>rows</em></label>
+<li><label><input type="checkbox">Ajoutez à la fin de l’URI le paramètre <em>rows</em></label>
 <ul>
 <li>pour faire varier le nombre de lignes que vous recevez</li>
-<li>ajouter simplement <code>&amp;rows=X</code> avec X le nombre de lignes</li>
+<li>ajoutez simplement <code>?rows=N</code> avec N le nombre de lignes</li>
 </ul></li>
 </ul>
 </section>
@@ -577,7 +577,7 @@ Note
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Cannot reach (HTTP </span><span class="sc">{}</span><span class="st">): </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(response.status_code, response.text)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:    </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(response.json(), indent<span class="op">=</span><span class="dv">2</span>))       <span class="co"># JSON Pretty print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -599,7 +599,7 @@ Note
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"No records found."</span>)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to retrieve data. Status code: </span><span class="sc">{</span>req<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to retrieve data. Status code: </span><span class="sc">{</span>req<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="sc">{</span>req<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -616,7 +616,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si vous n’avez pas le dépôt sur votre machine, créez un clone en suivant la section <em>Clone du dépôt</em> du TP2.</p>
+<p>Si vous n’avez pas le dépôt sur votre machine, créez un clone en suivant la section <a href="../../doc/tp/tp2.html#clone-du-dépôt" target="blank">Clone du dépôt du TP2</a>.</p>
 </div>
 </div>
 <ul class="task-list">
@@ -655,7 +655,7 @@ Important
 <li>Passez sur la branche du TP3 et mettez-là à jour
 <ul>
 <li>si vous ne l’avez pas fait à la fin du dernier TP, commencer par un <em>add</em> et un <em>commit</em></li>
-<li><code>git checkout tp3-base</code></li>
+<li><code>git switch tp3-base</code></li>
 <li><code>git pull</code></li>
 </ul></li>
 </ul></li>
@@ -714,14 +714,14 @@ Tip
 </ul></li>
 <li><label><input type="checkbox">Vérifiez que vos 2 méthodes fonctionnent</label>
 <ul>
-<li>Lancez les tests unitaitres du package <em>test_client</em></li>
+<li>Lancez les tests unitaires du package <em>test_client</em></li>
 </ul></li>
 </ul>
 </section>
 <section id="les-requêtes-plus-complexes" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="les-requêtes-plus-complexes"><span class="header-section-number">2.5</span> Les requêtes plus complexes</h3>
 <p>Pour le moment nous nous sommes concentrés sur les requêtes <strong>GET</strong> (simple lecture des données).</p>
-<p>Mais il est bien sûr possible d’en faire d’autre. Par exemple pour les requêtes <strong>POST</strong>, <strong>PUT</strong> ou <strong>DELETE</strong>. Voici la syntaxe :</p>
+<p>Mais il est bien sûr possible d’en faire d’autres. Par exemple pour les requêtes <strong>POST</strong>, <strong>PUT</strong> ou <strong>DELETE</strong>. Voici la syntaxe :</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>put <span class="op">=</span> requests.put(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>delete <span class="op">=</span> requests.delete(<span class="st">"http://example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -730,7 +730,7 @@ Tip
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>}</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(url, json <span class="op">=</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Fonctionnellement, c’est la même chose, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.</p>
-<p>Il est également possible de passer des entêtes http en ajoutant l’attribut <code>headers</code> à la fonction utilisée.</p>
+<p>Il est également possible de passer des entêtes http en ajoutant le paramètre <code>headers</code> à la fonction utilisée.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'accept'</span>: <span class="st">'application/xml'</span>}</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>requests.get(<span class="st">'http://example.org'</span>, headers<span class="op">=</span>headers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -779,7 +779,7 @@ Note
 <li><a href="https://flask-restful.readthedocs.io/en/latest/" target="_blank">FlaskRESTful</a></li>
 <li><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a></li>
 </ul>
-<p>Chacun à ses <a href="https://www.section.io/engineering-education/choosing-between-django-flask-and-fastapi/" target="_blank">avantages et inconvénients</a>. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de <strong>FastApi</strong> est la simplicité pour créer une page swagger de documentation.</p>
+<p>Chacun à ses avantages et inconvénients. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de <strong>FastApi</strong> est la simplicité pour créer une page swagger de documentation.</p>
 <p>Voici le code minimal d’un webservice REST avec FastAPI (<a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank">documentation officielle</a>)</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -848,8 +848,8 @@ Note
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Todo(BaseModel):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    content : <span class="bu">str</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôle sur les types des variables et renvoyer une erreur au client si sa requête n’est pas bien formatée.</p>
-<p>Fondamentalement un webservice est une application comme les autres, mais au lieu d’avoir une interface graphique comme on en a l’habitude en tant qu’humain, l’interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête <strong>GET</strong> pour récupérer une ressource va ressembler à cela nous reprenons le modèle 3 couches vu en cours.</p>
+<p>Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôles sur les types des variables et renvoyer une erreur au client si sa requête n’est pas bien formatée.</p>
+<p>Fondamentalement un webservice est une application comme les autres, mais au lieu d’avoir une interface graphique comme on en a l’habitude en tant qu’humain, l’interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête <strong>GET</strong> pour récupérer une ressource va ressembler à cela. Reprenons le modèle 3 couches vu en cours.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -886,7 +886,7 @@ Note
 <li><code>GET http://localhost/hello</code></li>
 <li><code>GET http://localhost/hello/everybody</code></li>
 </ul></li>
-<li><label><input type="checkbox">Arrétez le webservice</label>
+<li><label><input type="checkbox">Arrêtez le webservice</label>
 <ul>
 <li>Cliquez dans le terminal de VSCode puis CTRL + C</li>
 </ul></li>
@@ -902,6 +902,7 @@ Note
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"nom"</span><span class="fu">:</span><span class="st">"Agneta"</span><span class="fu">,</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Savoir utiliser un webservice est essentiel, car ils représentent une vaste source de données accessibles en temps réel. Les webservices permettent de collecter des informations provenant de multiples sources, comme des APIs publiques ou des systèmes internes, sans avoir besoin de télécharger manuellement des fichiers. À vous ensuite de convertir ces données dans le format que vous préférez.</p>
 
 
 </section>
