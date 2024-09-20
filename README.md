@@ -31,8 +31,8 @@ Pour générer les pages :
 - [ ] maj Template
   - pytest + cov
   - CI
-- [ ] Outil de suivi (Point hebdo)
-- [ ] Topo élèves (reprendre notice)
+- [x] Outil de suivi (Point hebdo)
+- [x] Topo élèves (reprendre notice)
 
 ### CM
 
@@ -42,8 +42,8 @@ Pour générer les pages :
 ## CM 2
 
 - [x] TU pytest, coverage
-- [ ] WS
-- [ ] DAO
+- [x] WS
+- [x] DAO
 - [ ] CI
 
 ## TP
@@ -51,5 +51,8 @@ Pour générer les pages :
 - [x] TP1 : Git, VSCode, Logs et Template
 - [x] TP2 : Refresh Python, POO, TU
 - [x] TP3 : WS
+  - [ ] Exemple PUT, POST, DELETE
+  - [ ] mot clé type utilisé comme paramètre dans les factory
+  - [ ] get_attack et get_all_attack : bien utiliser tous les attributs dispo pour créer, TU à corriger ?
 - [x] TP4 : DAO
 - [x] Refaire les branches
