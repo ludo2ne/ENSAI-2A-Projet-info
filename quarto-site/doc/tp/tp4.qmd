@@ -9,6 +9,7 @@ format:
     toc-expand: 3
 from: markdown+emoji
 number-sections: true
+lightbox: true
 ---
 
 
@@ -51,9 +52,9 @@ Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la s
 
 - [ ] Ouvrez le *Git Bash* intégré dans VS Code
   - Terminal > New Terminal (ou CTRL + ù)
-  - Passez sur la branche du TP3 et mettez-là à jour
-    - si vous ne l'avez pas fait à la fin du dernier TP, commencer par un *add* et un *commit*
-    - `git checkout tp4-base`
+  - Passez sur la branche du TP4 et mettez-là à jour
+    - si vous ne l'avez pas fait à la fin du dernier TP, commencez par un *add* et un *commit*
+    - `git switch tp4-base`
     - `git pull`
 
 
@@ -70,31 +71,53 @@ S'il vous manque des packages, suivez les instructions du README.
 
 ### Connexion à la BDD
 
-- [ ] Pour pouvoir vous connecter à votre base de données, renseignez les variables du fichier `.env` présent à la racine du dépôt :
-  - `DATABASE=id????`
-  - `USER=id????`
-  - `PASSWORD=id????`
+- [ ] Pour pouvoir vous connecter à votre base de données, renseignez les variables suivantes dans le fichier `.env` présent à la racine du dépôt :
+  ```{.txt filename=".env"}
+  POSTGRES_HOST=sgbd-eleves.domensai.ecole
+  POSTGRES_PORT=5432
+  POSTGRES_DATABASE=idxxxx
+  POSTGRES_USER=idxxxx
+  POSTGRES_PASSWORD=idxxxx
+  ```
+  - N'oubliez pas de remplacer *xxxx* par votre id
 
 Maintenant que la connexion est opérationnelle, initialisez votre base de données :
 
 - [ ] Lancez le script `utils/reset_database.py`
 
-Ce script crée les tables et insére des données.
+::: {.callout-tip}
+Ce script va exécuter 2 fichiers *sql* :
 
-### Remise en jambes SQL
+- *data/init_db.sql* pour créer les tables
+- *data/pop_db.sql* pour insérer des données
+:::
+
+## Remise en jambes SQL
 
 - [ ] Ouvrez [DBeaver](https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html){target="_blank"}
-- [ ] Observez les tables et leurs liens
+
+::: {.callout-caution title="Nombre de connexions limité"}
+Sur le réseau ENSAI, le nombre de connexions à votre base de données est limité.
+
+Or par défaut, DBeaver utilise déjà 3 connexions, ce qui risque de vous poser des soucis lorsque vous essaierez de vous connecter depuis votre programme Python.
+
+La solution :
+
+- [ ] Dans DBeaver, allez dans le menu *Fenêtre* puis *Préférences*
+- [ ] Recherchez *Métadonnées* et décochez `Ouvrir une connexion séparée pour la lecture des métadonnées`
+- [ ] Recherchez *Editeur SQL* et décochez `Ouvrir une connexion séparée pour chaque éditeur`
+- [ ] Appliquez
+:::
+
+Écrivez les 3 requêtes suivantes (elle serviront pour la suite du TP) :
+
+- [ ] Listez toutes les attaques, ainsi que le nom du type d'attaque 
+- [ ] Listez tous les pokemons, ainsi que le nom du type de Pokemon
+- [ ] Listez toutes les attaques de Pikachu 
+
+Pour vous aider, voici le schéma des tables et leurs relations
 
 ![](./img/TP3 Schéma de BDD.png){width=80%}
-
-Écrivez des requêtes pour :
-
-- [ ] Lister toutes les attaques, ainsi que le nom du type d'attaque 
-- [ ] Lister tous les pokemon, ainsi que le nom du type de Pokemon
-- [ ] Lister toutes les attaques de Pikachu 
-
-Gardez ces requêtes de coté, elles seront utiles plus loin.
 
 
 ## Data Access Objet (DAO)
@@ -156,15 +179,15 @@ Et la réponse est :
 Revenons sur la phrase : **faible couplage, forte cohésion**. Si nous mettons toutes les méthodes de persistance de nos attaques dans la classe **AbstractAttack**, nous allons avoir une classe qui :
 
 - :heavy_check_mark: Détermine le comportement des attaques. C'est exactement ce que l'on souhaite (**forte cohésion**).
-- :x: Détermine comment on persiste une attaques.
+- :x: Détermine comment on persiste une attaque.
 
 ::: {.callout-important}
 Mais ça, ce n'est pas de la responsabilité d'une attaque, mais du système de persistance choisi, ou du moins de l'intermédiaire entre nos objets et le système de persistance ! 
 :::
 
-Je n'ai personnellement pas envie d'aller modifier ma classe **AbstractAttack** uniquement car j'ai décidé de changer de système de gestion de la persistance. Je risque de modifier quelque chose que je ne devrais pas et créer des régressions (faire apparaitre des erreurs sur un code qui n'en avait pas avant) dans mon code. Or j'aimerais bien limiter les sources d'erreurs.
+Je n'ai personnellement pas envie d'aller modifier ma classe **AbstractAttack** uniquement car j'ai décidé de changer de système de gestion de la persistance. Je risque de modifier quelque chose que je ne devrais pas et créer des régressions (i.e. faire apparaitre des erreurs sur un code qui n'en avait pas avant). Or j'aimerais bien limiter les sources d'erreurs.
 
-À la place, nous allons créer une classe qui va s'occuper uniquement de cette tâche : une classe DAO pour **Data Access Object**. C'est une classe technique qui va faire **l'interface entre nos données stockées et notre application**. Voilà ce que cela donne en terme de diagramme de classe.
+À la place, nous allons créer une classe qui va s'occuper uniquement de cette tâche : une classe DAO (**Data Access Object**). C'est une [classe technique]{.underline} qui va faire **l'interface entre nos données stockées et notre application**. Voilà ce que cela donne en terme de diagramme de classe.
 
 ```{mermaid}
 classDiagram
@@ -227,14 +250,14 @@ AttackDao..> DBConnection: use
 
 ### Gestion des connexions et patern singleton
 
-Pour vous connecter à la base de données nous allons utiliser la bibliothèque python [**psycopg2**](https://www.psycopg.org/docs/index.html). C'est elle qui va établir la connexion avec la base, envoyer nos requêtes et nous retourner les résultats. 
+Pour vous connecter à la base de données nous allons utiliser la bibliothèque python [**psycopg2**](https://www.psycopg.org/docs/index.html){target="_blank"}. C'est elle qui va établir la connexion avec la base, envoyer nos requêtes et nous retourner les résultats. 
 
-Mais il faut faire un peu attention à la gestion des connexions. Car nous pourrions nous retrouver à ouvrir des centaines de connexions rapidement et dégrader les performances de notre application. C'est le travail de la classe **DBConnection**. Comme c'est un singleton, il y aura une seule instance de cette classe dans toute notre application, et comme c'est elle qui se connecte à la base, nous nous assurons de l'unicité de la connexion.
+Mais il faut faire un peu attention à la gestion des connexions. Car nous pourrions nous retrouver à ouvrir des centaines de connexions rapidement et dégrader les performances de notre application. C'est le travail de la classe **DBConnection**. Comme c'est un singleton, il y aura [une seule instance]{.underline} de cette classe dans toute notre application, et comme c'est elle qui se connecte à la base, nous nous assurons de l'unicité de la connexion.
 
 ::: {.callout-tip}
 Cette classe est une solution purement technique, alors n'hésitez pas à la réutiliser pour votre projet. Elle introduit un concept avancé de POO, à savoir les méta classes. 
 
-Une **méta classe** permet de modifier le comportement d'une classe à un niveau poussé (par exemple modifier comment les objets sont construits par python). À moins que vous ayez une appétence tout particulière pour l'informatique, ne passez pas de temps sur ce sujet.
+Une **méta classe** permet de modifier le comportement d'une classe à un niveau poussé (par exemple modifier comment les objets sont construits par Python). À moins que vous ayez une appétence toute particulière pour l'informatique, ne passez pas de temps sur ce sujet.
 :::
 
 
@@ -251,27 +274,33 @@ Les méthodes de base sont généralement :
 - `delete()` : qui supprime un enregistrement
 - `update()` : qui met à jour un enregistrement
 
-Ces 5 méthodes suffisent pour communiquer avec votre base de données. Vous pouvez effectuer le reste des traitements dans vos classes **Service**. Néanmoins pour gagner du temps rien n'empêche de créer des méthodes plus complexes (ex : *find_by_type_and_level_order_by_name_desc()*)
+Ces 5 méthodes suffisent pour communiquer avec votre base de données. Vous pouvez effectuer le reste des traitements dans vos classes **Service** (conseillé). Cependant, rien ne vous empêche de créer des méthodes plus complexes (ex : *find_by_type_and_level_order_by_name_desc()*)
 
 Voici la fonctionnement général d'une des méthodes de la DAO :
 
-```{.python}
-# Etape 1 : On récupère une connexion en utilisant la classe DBConnection.
-with DBConnection().connection as connection :
+```{.python filename="une_classe_dao.py"}
+from dao.db_connection import DBConnection
 
-# Etape 2 : à partir de la connexion on fait un curseur pour la requête 
-	with connection.cursor() as cursor : 
-    
-    # Etape 3 : on exécute notre requête SQL.
-    		cursor.execute(requete_sql)
-    
-    # Etape 4 : on stocke le résultat de la requête
-    		res = cursor.fetchall()
+class UneClasseDAO(metaclass=Singleton):
 
-if res:
-    # Etape 5 : on agence les résultats selon la forme souhaitée (liste...)
-    
-return something
+	def une_methode_dao():
+
+		# Etape 1 : On récupère la connexion en utilisant la classe DBConnection.
+		with DBConnection().connection as connection :
+		
+			# Etape 2 : à partir de la connexion on crée un curseur pour la requête 
+			with connection.cursor() as cursor : 
+			
+		   		# Etape 3 : on exécute notre requête SQL
+		    	cursor.execute(requete_sql)
+
+		    	# Etape 4 : on stocke le résultat de la requête
+		    	res = cursor.fetchall()
+
+		if res:
+		    # Etape 5 : on agence les résultats selon la forme souhaitée (objet, liste...)
+
+		return something
 ```
 
 L'objet *cursor* contient un pointeur vers les résultats de votre requête. Ce résultat n'est pas encore rapatrié sur votre machine, mais est stocké par la base de données. Vous avez 3 méthodes pour récupérer le résultat :
@@ -286,30 +315,64 @@ L'objet *cursor* contient un pointeur vers les résultats de votre requête. Ce 
     - Notre application va devoir gérer une grande quantité de données, et elle en est peut-être incapable
 - `cursor.fetchmany(size)`: retourne autant d'enregistrements que demandé sous forme d'une liste de dictionnaires. Cela permet de contrôler le volume de données que l'on traite. Si vous appelez de nouveau *fetchmany(size)* sur votre curseur, vous allez récupérer les lignes suivantes (système de pagination)
 
-Pour plus d'information : [article de pynative](https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/){target="_blank"}
+
+Exemples de données retournées (requête du curseur : `SELECT * FROM tp.attack;`):  
+
+:::{.panel-tabset .nav-pills}
+
+#### fetchone
+
+Un dictionnaire
+
+```{.python}
+{"id_attack": 2, "id_attack_type": 3, "power": 20, "accuracy": 100, "element": "Grass", "attack_name": "Absorb"}
+```
+
+#### fetchall
+
+Une liste de dictionnaires
+
+```{.python}
+[
+    {"id_attack": 2, "id_attack_type": 3, "power": 20, "accuracy": 100, "element": "Grass", "attack_name": "Absorb"},
+    {"id_attack": 3, "id_attack_type": 2, "power": 40, "accuracy": 100, "element": "Rock", "attack_name": "Accelerock"},
+    {"id_attack": 4, "id_attack_type": 3, "power": 40, "accuracy": 100, "element": "Poison", "attack_name": "Acid"},
+	...
+]
+```
+
+:::
+
+
+Pour plus d'informations : [article de pynative](https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/){target="_blank"}
+
+
+::: {.callout-tip title="Objectif"}
+Comme pour les données des webservices, l'objectif va être de convertir ces données en objets métiers.
+:::
+
 
 ## Premières DAO
 
 ### DAO avec des types d'attaques
 
-- [ ] Observez le fonctionnement de la classe **AttaqueTypeDAO**
+- [ ] Observez le fonctionnement de la classe **TypeAttackDAO**
   - cela va vous être utile pour la suite
 
-Dans la classe **AttaqueDao**, créez les méthodes suivantes :
+Dans la classe **AttackDao**, créez les méthodes suivantes :
 
-- [ ] *update_attack(attack : AbstractAttack) -> bool* : met à jour les données de l'attaque passée en paramètre et retourne si la modification s'est bien passée
 - [ ] *find_attack_by_id(id:int) -> Optional[AbsractAttack]* : retourne l'attaque avec l'id en paramètre ou retourne None si l'attaque n'est pas trouvée.
 - [ ] *find_all_attacks() -> List[AbsractAttack]* : retourne la liste de toutes les attaques
-- [ ] Bonus : ajoutez à cette dernière méthode les paramètres *limit* et *offset*
+  - [Bonus]{.underline} : ajoutez à cette méthode les paramètres *limit* et *offset*
+- [ ] *update_attack(attack : AbstractAttack) -> bool* : met à jour les données de l'attaque passée en paramètre et retourne si la modification s'est bien passée
 
 ::: {.callout-tip title="Quelques conseils"}
-- Vous pouvez utiliser l'attribut *type* de chaque attaque pour avoir son label en base
-- Utilisez la classe **AttackFactory** pour instancier facilement des attaques
-- Pensez à faire des tests pour voir si votre code fonctionne
 - Dans les 2 méthodes *find*, pour créer nos objets métier **Attack**
   - nous avons besoin de connaitre le nom du type d'attaque
   - or il n'y a pas cette colonne dans la table *attaque*
   - mais peut-être avez-vous déjà une requête qui fait le job ?
+- Utilisez la classe **AttackFactory** pour instancier facilement des objets métier **Attack**
+- Pensez à faire des tests pour voir si votre code fonctionne
 :::
 
 
@@ -335,27 +398,27 @@ Ajoutez dans le fichier `app.py` les endpoints suivants :
 # Défintion du endpoint get /attack?limit=100
 @app.get("/attack/")
 async def get_all_attacks(limit:int):
-    # Vous devez récupérer les attaques en base en utilisant votre DAO
+    # TODO: récupérer les attaques en base en utilisant votre DAO
     return attacks
 
 # Défintion du endpoint get /pokemon?limit=100
 @app.get("/pokemon/")
 async def get_all_pokemons(limit:int):
-    # Vous devez récupérer les pokemons en base en utilisant votre DAO
+    # TODO: récupérer les pokemons en base en utilisant votre DAO
     return pokemons
 
 # Défintion du endpoint get /pokemon`/{name}
 @app.get("/pokemon/{name}")
 async def get_pokemon_by_name(name:str):
-    # Vous devez récupérer le pokemon en base en utilisant votre DAO
+    # TODO: récupérer le pokemon en base en utilisant votre DAO
     return pokemon
 ```
 
 - `GET localhost:80/attack?limit=100` renverra une liste de 100 attaques par défaut. Il est possible de moduler cette valeur via le paramètre de requête `limit`
-- `GET localhost:80/pokemon?limit=100`. Il renverra une liste de 100 *Pokemon* par défaut, mais peut être modulé avec le paramètre de requête `limit`. 
+- `GET localhost:80/pokemon?limit=100`. Il renverra une liste de 100 *Pokemons* par défaut, mais peut être modulé avec le paramètre de requête `limit`. 
 - `GET localhost:80/pokemon/{nom}`. Il renverra un json représentant un *Pokemon*.
 
-Pour retourner des objets, vous allez devoir définir des classes héritant de `BaseModel`. Vous trouverez toutes les infos dans la documentation de FastAPI.
+Pour retourner des objets, vous allez devoir définir des classes héritant de `BaseModel`. Vous trouverez toutes les infos dans la documentation de [FastAPI](https://fastapi.tiangolo.com/tutorial/body/){target="_blank"}.
 
 
 ## Conclusion {.unnumbered}
@@ -365,3 +428,7 @@ Dans ce TP vous avez implémenté votre première DAO.
 C'est une classe technique qui sert à communiquer avec votre système de persistance de données. L'avantage premier de faire une classe à part est de découpler au maximum la gestion du système de persistance et le code métier de votre application. 
 
 Si vous décidez d'arrêter d'utiliser une base de données relationnelle et préférez désormais une base de données *NoSQL* vous allez devoir changer uniquement les classes DAO tout en exposant toujours les mêmes méthodes.
+
+::: {.callout-note}
+Si vous souhaitez voir la version finale, positionnez-vous sur la branche `tp5-correction` et lancez le main.
+:::
