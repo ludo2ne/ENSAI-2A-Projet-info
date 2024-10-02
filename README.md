@@ -4,9 +4,7 @@ Projet informatique de 2e année
 
 ## Cours
 
-### CM 1
-
-| Cours                 | Temps estimé   |
+| CM 1                  | Temps estimé   |
 |-----------------------|----------------|
 | Intro                 | 10 min         |
 | Projet                | 20 min         |
@@ -14,6 +12,12 @@ Projet informatique de 2e année
 | Git                   | 30 min         |
 | Analyse fonctionnelle | 1 h            |
 | POO Avancée           | 30 min         |
+
+| CM 2                  | Temps estimé   |
+|-----------------------|----------------|
+| Tests Unitaires       | 30 min         |
+| Webservices           | 60 min         |
+| DAO - Sécurité        | 90 min         |
 
 ## :rocket: Publier les pages
 
@@ -26,33 +30,36 @@ Pour générer les pages :
 
 ## :construction: Todo
 
+- [ ] Projet et TP sur Datalab
+
 ### Projet
 
 - [ ] maj Template
   - pytest + cov
   - CI
-- [x] Outil de suivi (Point hebdo)
-- [x] Topo élèves (reprendre notice)
+- [ ] Bilan du point hebdo
+- Notice élèves
+  - [ ] Compléter section livraison dossier analyse (voir mail)
 
 ### CM
 
 - [ ] Projet Flask pour les démo en CM -> tournoi-echecs
-- [ ] 2025-2026 : Intro à Git à retirer car déplacé en 1A
+- [ ] Git : simples rappels car cours donné en 1A
 
-## CM 2
+### TP
 
-- [x] TU pytest, coverage
-- [x] WS
-- [x] DAO
-- [ ] CI
+#### TP1 : Git, VSCode, Logs et Template
 
-## TP
+- [ ] Nommer repo projet : `Projet-info-2A-equipe-<numéro_equipe>`
 
-- [x] TP1 : Git, VSCode, Logs et Template
-- [x] TP2 : Refresh Python, POO, TU
-- [x] TP3 : WS
-  - [ ] Exemple PUT, POST, DELETE
-  - [ ] mot clé type utilisé comme paramètre dans les factory
-  - [ ] get_attack et get_all_attack : bien utiliser tous les attributs dispo pour créer, TU à corriger ?
-- [x] TP4 : DAO
-- [x] Refaire les branches
+#### TP2 : Refresh Python, POO, TU
+
+#### TP3 : WS
+
+#### TP4 : DAO
+  
+- [ ] coquilles modèle données SQL
+
+#### TP5 : Vues
+
+- [ ] mettre au propre et à dispo en autonomie
