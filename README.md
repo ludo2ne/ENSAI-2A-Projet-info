@@ -31,6 +31,8 @@ Pour générer les pages :
 ## :construction: Todo
 
 - [ ] Projet et TP sur Datalab
+- [ ] TP simplifiés
+  - from template -> ajouter fonctionnalité "inscription tournoi" ?
 
 ### Projet
 
@@ -56,6 +58,8 @@ Pour générer les pages :
 
 #### TP3 : WS
 
+- [ ] Passer de Insomnia à [usebruno](https://www.usebruno.com/)
+
 #### TP4 : DAO
   
 - [ ] coquilles modèle données SQL
@@ -63,3 +67,4 @@ Pour générer les pages :
 #### TP5 : Vues
 
 - [ ] mettre au propre et à dispo en autonomie
+- [ ] Remplacer inquierPy par https://streamlit.io/ ? 
