@@ -281,7 +281,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#la-soutenance" id="toc-la-soutenance" class="nav-link" data-scroll-target="#la-soutenance">La soutenance</a></li>
   <li><a href="#notation-finale" id="toc-notation-finale" class="nav-link" data-scroll-target="#notation-finale">Notation finale</a></li>
   </ul></li>
-  <li><a href="#calendrier" id="toc-calendrier" class="nav-link" data-scroll-target="#calendrier">Calendrier</a></li>
+  <li><a href="#calendrier" id="toc-calendrier" class="nav-link" data-scroll-target="#calendrier">Calendrier</a>
+  <ul class="collapse">
+  <li><a href="#immersion" id="toc-immersion" class="nav-link" data-scroll-target="#immersion">Immersion</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -557,7 +560,12 @@ Tip
 </div>
 </div>
 </div>
-<p>L’encadrement de l’avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque groupe fera le bilan avec son intervenant du travail qui a été réalisé au cours de la semaine, des difficultés rencontrées et de ce qui doit encore être fait.</p>
+<p>L’encadrement de l’avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque équipe fera le bilan avec son intervenant :</p>
+<ul>
+<li>du travail qui a été réalisé au cours de la semaine</li>
+<li>des difficultés rencontrées</li>
+<li>de ce qui doit encore être fait</li>
+</ul>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -585,7 +593,7 @@ Caution
 <li>appel à un webservice,</li>
 <li>liens entre données dans un programme et dans une base de données</li>
 </ul>
-<p>Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre projet, il a également pour but final de vous donner des connaissances supplémentaires en informatique pour que vous puissiez évoluer facilement dans le monde de la <em>data science.</em></p>
+<p>Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre projet, il a également pour but final de vous donner des connaissances supplémentaires en informatique pour que vous puissiez évoluer facilement dans le milieu professionnel et en particulier dans le monde de la <em>data science.</em></p>
 </section>
 <section id="outils-de-développement" class="level3">
 <h3 class="anchored" data-anchor-id="outils-de-développement">Outils de développement</h3>
@@ -730,17 +738,17 @@ Important
 </section>
 <section id="le-rapport-final" class="level3">
 <h3 class="anchored" data-anchor-id="le-rapport-final">Le rapport final</h3>
-<p>Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Voici les éléments qu’il devra contenir&nbsp;:</p>
+<p>Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Il est à déposer sur Moodle et contiendra les éléments ci-dessous.</p>
 <section id="le-contexte-de-votre-application" class="level4">
 <h4 class="anchored" data-anchor-id="le-contexte-de-votre-application">Le contexte de votre application</h4>
 <p>Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de <strong>comprendre l’intérêt de votre travail</strong>. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.</p>
 <ul>
 <li>À quels besoins répond-elle&nbsp;? Le diagramme de cas d’utilisation n’est pas nécessaire dans le rapport final&nbsp;;</li>
 <li>Quels sont les utilisateurs&nbsp;de l’application ?</li>
-<li>Quelles sont les <strong>données intéressantes</strong> de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous enproduisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple&nbsp;:
+<li>Quelles sont les <strong>données intéressantes</strong> de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous en produisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple&nbsp;:
 <ul>
-<li>Vous récupérez des annonces immobilières via webscrapping, quel est le site ou quels sont les sites utilisés&nbsp;? Quelles données récupérées vous de la page&nbsp;? Vous pourrez décrire plus tard comment vous les récupérez&nbsp;;</li>
-<li>Vous devez traiter des données géographiques, comment sont stockées vos données dans votre source&nbsp;? Il y-a-t-il des difficultés particulières dans ces données&nbsp;?</li>
+<li>Vous récupérez des annonces immobilières via webscrapping, quel est le site ou quels sont les sites utilisés&nbsp;? Quelles données récupérez-vous de la page&nbsp;? Vous pourrez décrire plus tard comment vous les récupérez&nbsp;;</li>
+<li>Vous devez traiter des données géographiques, comment sont stockées vos données dans votre source&nbsp;? Y-a-t-il des difficultés particulières dans ces données&nbsp;?</li>
 <li>Vous récupérez des données d’un service externe, quel est le schéma de ces données&nbsp;?</li>
 </ul></li>
 </ul>
@@ -779,7 +787,8 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un diagramme de classe n’est pas une finalité en soit, il est initialement produit pour servir de boussole lors de l’implémentation de votre application. De la même manière, dans votre rapport il doit servir à guider vos explications. Ainsi, il n’est pas nécessaire de produire un diagramme de classe unique si celui-ci est illisible. Vous pouvez le décomposer en petits diagrammes qui vont se concentrer sur des fonctionnalités particulières. De même, il est fortement déconseillé de lister et décrire exhaustivement toutes les classes et les méthodes.</p>
+<p>Un diagramme de classe n’est pas une finalité en soit, il est initialement produit pour servir de boussole lors de l’implémentation de votre application. De la même manière, dans votre rapport il doit servir à guider vos explications.</p>
+<p>Ainsi, il n’est pas nécessaire de produire un diagramme de classe unique si celui-ci est illisible. Vous pouvez le décomposer en petits diagrammes qui vont se concentrer sur des fonctionnalités particulières. De même, il est fortement déconseillé de lister et décrire exhaustivement toutes les classes et les méthodes.</p>
 </div>
 </div>
 </section>
@@ -805,28 +814,15 @@ Remarque
 </section>
 <section id="note-individuelle" class="level4">
 <h4 class="anchored" data-anchor-id="note-individuelle">Note individuelle</h4>
-<p>Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. <strong>Cette note devra être insérée dans le rapport final en fin de rapport</strong>. Dans cette note d’<u>une page maximum</u>, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés. Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note&nbsp;:</p>
+<p>Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. <strong>Cette note devra être insérée dans le rapport final en fin de rapport</strong>. Dans cette note d’<u>une page maximum</u>, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés.</p>
+<p>Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note&nbsp;:</p>
 <ul>
 <li>Votre participation effective au projet (chef de projet, code, animation…)</li>
-<li>Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile&nbsp;? Enrichissant&nbsp;? Éviter les lieux communs, et préférez utilisez des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.</li>
-<li>Les enseignements que vous en tirez, ce que vous referiez, ce que vous changerez. Vous pouvez construire cette partie comme une des conseils que vous donnez à vos successeurs.</li>
+<li>Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile&nbsp;? Enrichissant&nbsp;? Éviter les lieux communs, et préférez utiliser des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.</li>
+<li>Les enseignements que vous en tirez, ce que vous referiez, ce que vous changeriez. Vous pouvez construire cette partie comme une liste de conseils que vous donneriez à vos successeurs.</li>
 </ul>
-<p>Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre du groupe, ami, famille) pour limiter les fautes et ainsi vous assurer qu’elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, <strong>faites-la sérieusement et honnêtement</strong>.</p>
-</section>
-</section>
-<section id="le-code" class="level3">
-<h3 class="anchored" data-anchor-id="le-code">Le code</h3>
-<p>Le code source complet de l’application contenant à minima :</p>
-<ul>
-<li>Un fichier <strong><strong>main</strong>.py</strong> qui permet de lancer votre application</li>
-<li>Une fichier <strong>README.md</strong> à la racine du projet présentant votre projet. Cette page sera rédigée en anglais et devra&nbsp;:
-<ul>
-<li>Présenter rapidement votre application (but) avec quelques exemples</li>
-<li>Expliquer comment l’installer</li>
-</ul></li>
-<li>Un fichier <strong>requirements.txt</strong> avec tous les modules pythons à installer pour faire fonctionner votre application</li>
-<li>un fichier <strong>data/init_db.sql</strong> permettant la création des tables et des données</li>
-</ul>
+<p>Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre de l’équipe, ami, famille) pour limiter les fautes et ainsi vous assurer qu’elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, <strong>faites-la sérieusement et honnêtement</strong>.</p>
+<hr>
 <p>Bien entendu, <strong>cette liste ne définit que les composantes minimales de votre rendu</strong>. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être&nbsp;: expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou toute autre information qui vous permet de valoriser votre travail. Vous avez le droit d’illustrer vos propos avec des figures pour aider le lecteur. Les images qui n’apportent rien à votre propos sont à proscrire.</p>
 <p>L’ordre de présentation des différents points, et de leur classement en annexe est libre. <strong>La taille optimale de ce rapport est de 25 pages hors annexe</strong>. Vous pouvez faire plus long mais dans ce cas posez-vous la question&nbsp;:&nbsp;«&nbsp;Ce que j’ajoute est-il nécessaire&nbsp;?&nbsp;». Il n’est pas obligatoire de le rédiger en LaTeX. Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Un nombre limité de coquilles dans votre production est toléré, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Remarque">
@@ -839,40 +835,109 @@ Remarque
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dans le cas où vous rédigez votre rapport en LaTeX, faites attention au placement des images. Certains d’entre vous usent et abusent du package float et l’option [H] pour fixer les images. Cela entraine de gros espaces laissés blancs dans vos rapports et donne une mauvaise impression au lecteur. Privilégier l’option [htb]. Le placement sera moins précis, mais limitera ces zones blanches.</p>
+<p>Dans le cas où vous rédigez votre rapport en LaTeX, faites attention au placement des images. Certains d’entre vous usent et abusent du package float et l’option [H] pour fixer les images.</p>
+<p>Cela entraine de gros espaces laissés blancs dans vos rapports et donne une mauvaise impression au lecteur. Privilégier l’option [htb]. Le placement sera moins précis, mais limitera ces zones blanches.</p>
 </div>
 </div>
-<p>Pendant le temps entre ce rendu et la soutenance vous avez le droit de modifier votre code, mais ces modifications ne devront être là uniquement pour améliorer la qualité de la démonstration car ce nouveau code ne sera jamais livré pour notation.</p>
+</section>
+</section>
+<section id="le-code" class="level3">
+<h3 class="anchored" data-anchor-id="le-code">Le code</h3>
+<p>Vous créerez une archive contenant tout le contenu de votre dépôt git, et en particulier le code source de votre application.</p>
+<p>Vous déposerez ce livrable sur Moodle.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Taille du répo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Taille du répo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Attention à ne pas inclure dans votre livrable des fichiers trop lourds (&gt; 10Mo), comme par exemple des fichiers de données.</p>
+</div>
+</div>
+<p>Le code source complet de l’application contenant à minima :</p>
+<ul>
+<li>Un fichier <code>README.md</code> à la racine du projet présentant votre projet. Cette page sera rédigée <u>en anglais</u> et devra&nbsp;:
+<ul>
+<li>Présenter rapidement votre application (fonctionnalités, besoins auquels elle répond)</li>
+<li>Expliquer comment l’installer</li>
+</ul></li>
+<li>Un fichier <code>requirements.txt</code> avec tous les modules pythons à installer pour faire fonctionner votre application</li>
+<li>un dossier <code>src</code> contenant votre code source et un fichier <code>main.py</code> ou <code>__main__.py</code> qui permet de lancer votre application</li>
+<li>un fichier <code>data/init_db.sql</code> permettant la création des tables et des données</li>
+</ul>
+<p>Entre ce rendu de code et la soutenance, vous avez le droit de modifier votre code. Cependant, ces modifications ne serviront qu’à améliorer la qualité de la démonstration car ce nouveau code ne comptera pas pour la notation.</p>
 </section>
 <section id="la-soutenance" class="level3">
 <h3 class="anchored" data-anchor-id="la-soutenance">La soutenance</h3>
 <p>Vous présenterez votre travail devant un jury de 3 personnes :</p>
 <ul>
-<li>un président de jury, qui est un professionnel de l’informatique</li>
-<li>votre encadrant</li>
-<li>un représentant de l’Ensai</li>
+<li>un président de jury (professionnel de l’informatique)</li>
+<li>votre encadrant de projet</li>
+<li>un enseignant informatique de l’ENSAI</li>
 </ul>
-<p>La soutenance consistera en une présentation orale de votre logiciel, partagée équitablement entre les membres du groupe. Elle fera apparaître la méthode de développement utilisée, les choix et options de conception et de programmation retenues. Cette présentation durera 20 minutes, dont 12 minutes environ devront être consacrées à une présentation type diaporama et 8 minutes à la démonstration de l’application. L’organisation du temps est libre mais doit être dynamique.</p>
-<p>Suivra une séance de questions du jury d’environ 15 minutes. Puis 5 minutes de retours du jury après délibération.</p>
+<p>La soutenance consistera en une présentation orale de votre logiciel, partagée équitablement entre les membres du groupe. Elle fera apparaître la méthode de développement utilisée, les choix et options de conception et de programmation retenues.</p>
+<p>Vous avez 20 minutes pour réaliser votre présentation. Suivrons ensuite les questions et les retours du jury.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Timing type">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Timing type
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Exposé : 20 min, dont environ :
+<ul>
+<li>12 min de présentation type diaporama</li>
+<li>8 min de démonstration de l’application</li>
+<li>La gestion de ce temps est libre mais doit être dynamique</li>
+<li>Vous pouvez mixer démo et présentation</li>
+</ul></li>
+<li>Questions du jury : 15 min</li>
+<li>Retours du jury : 10 min</li>
+</ul>
+</div>
+</div>
 <p><strong>Le jury est bienveillant et ne cherchera pas à vous piéger&nbsp;!</strong></p>
 <p>Quelques conseils pour cette soutenance :</p>
 <ul>
-<li>Présentez brièvement les membres du groupe</li>
+<li>Présentez brièvement les membres de l’équipe</li>
 <li>Même si les membres du jury ont lu votre rapport, prenez le temps de présenter sommairement le besoin initial et les données impliquées s’il y en a</li>
-<li>Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça ». Le jury déteste, surtout quand c’est le 4e groupe de suite qui raconte la même chose. Soyez un minimum original, prenez un angle décalé, racontez une histoire !</li>
-<li>Présentez la plus-value du groupe&nbsp;:
+<li>Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça »
+<ul>
+<li>Le jury déteste, surtout quand c’est la 4e équipe de suite qui raconte la même chose</li>
+<li>Soyez un minimum original, prenez un angle décalé, racontez une histoire !</li>
+</ul></li>
+<li>Présentez la plus-value de l’équipe :
 <ul>
 <li>Avez-vous fait des choix forts&nbsp;?</li>
 <li>Avez-vous mis en place un processus intéressant&nbsp;?</li>
 <li>Répondez-vous au besoin&nbsp;?</li>
 </ul></li>
-<li>Il n’est pas nécessaire de suivre le même déroulé que le rapport, ni de représenter le rapport (le jury l’a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu’elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté</li>
+<li>Il n’est pas nécessaire de suivre le même déroulé que le rapport (c’est d’ailleurs généralement une erreur), ni de représenter le rapport (le jury l’a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu’elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté</li>
 <li>Mettez en avant le projet (comment avez-vous travaillé ces 3 mois) et pas seulement le logiciel produit (vous n’essayez pas de nous vendre votre application)</li>
-<li>Vous pouvez mélanger chronologiquement la présentation et la démo</li>
-<li>Illustrez vos transparents avec des schémas / graphiques / captures d’écran / … Faites attention que vos images soient lisible une fois projetées. Mais ne mettez pas des illustrations inutiles. Si un diaporama illustré est agréable si les images utilisées aident à la compréhension, un trop plein d’images sans rapport avec le propos nuisent à la compréhension</li>
+<li>Illustrez vos transparents avec des schémas / graphiques / captures d’écran / … Faites attention que vos images soient lisible une fois projetées. Mais ne mettez pas des illustrations inutiles. Un diaporama illustré est agréable si les images utilisées aident à la compréhension, un trop plein d’images sans rapport avec le propos nuisent à la compréhension</li>
 <li>Ne mettez pas de code, mais du pseudo-code (et uniquement si l’algorithme est intéressant)</li>
-<li>Travaillez votre introduction et votre conclusion</li>
 </ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Travaillez votre introduction et votre conclusion !</p>
+</div>
+</div>
 </section>
 <section id="notation-finale" class="level3">
 <h3 class="anchored" data-anchor-id="notation-finale">Notation finale</h3>
@@ -883,7 +948,7 @@ Remarque
 <li>Soutenance (1/3)</li>
 </ul>
 <p>Le code est noté à part. Il compte pour un tiers de la note de Compléments d’informatique.</p>
-<p>Si le travail ou l’implication d’un ou plusieurs membres du groupe étaient en deçà des attentes, leurs notes pourraient être dissociées de celle du reste du groupe. <strong>Cela ne sera possible qu’après avoir alerté votre tuteur et le référent de la matière et qu’une discussion avec le groupe ait eu lieu</strong>.</p>
+<p>Si le travail ou l’implication d’un ou plusieurs membres de l’équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. <strong>Cela ne sera possible qu’après avoir alerté votre tuteur et le référent de la matière et qu’une discussion avec le groupe ait eu lieu</strong>.</p>
 <p>Vous trouverez sur Moodle les grilles de notation qui sont fournies aux intervenants, pour évaluer votre travail, cette annexe a un rôle de sensibilisation et ne constitue pas un barème définitif.</p>
 </section>
 </section>
@@ -935,11 +1000,14 @@ Remarque
 </tr>
 </tbody>
 </table>
+<section id="immersion" class="level3">
+<h3 class="anchored" data-anchor-id="immersion">Immersion</h3>
 <p>Les 21, 22 et 23 octobre aura lieu une période d’immersion. Pendant ces 3 jours, vous n’aurez pas cours et pourrez avancer votre projet. La présence dans l’école est obligatoire et sera contrôlée.</p>
 <p>À la fin de ces 3 jours, avec un travail sérieux et efficace, vous devriez avoir bien avancé la phase de code (&gt; 80 %) et commencé le squelette du rapport final. Ainsi, vous serez beaucoup plus sereins pour attaquer la dernière ligne droite en novembre.</p>
 <p>Vous verrez votre tuteur le premier jour pour qu’il vous aide à prioriser vos travaux, et le dernier pour vous aider. Une démonstration, même limitée, de votre application sera demandée le mercredi.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
