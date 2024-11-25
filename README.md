@@ -68,3 +68,9 @@ Pour générer les pages :
 
 - [ ] mettre au propre et à dispo en autonomie
 - [ ] Remplacer inquierPy par https://streamlit.io/ ? 
+
+## Licence
+
+Ce projet est sous licence [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+Vous êtes libre de partager et modifier ce travail à des fins non commerciales, à condition de me créditer et de redistribuer sous la même licence.
