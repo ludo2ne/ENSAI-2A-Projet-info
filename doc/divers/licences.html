@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="description" content="Slides">
+<meta name="description" content="Qu’est-ce-qu’une Licence et à quoi ça sert ?">
 
-<title>Les tests unitaires – Projet info 2A</title>
+<title>Licences – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -77,9 +43,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -257,33 +220,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#les-tests" id="toc-les-tests" class="nav-link active" data-scroll-target="#les-tests">Les Tests</a></li>
-  <li><a href="#les-tests-unitaires" id="toc-les-tests-unitaires" class="nav-link" data-scroll-target="#les-tests-unitaires">Les tests unitaires</a></li>
-  <li><a href="#mock" id="toc-mock" class="nav-link" data-scroll-target="#mock">Mock</a></li>
-  <li><a href="#les-test-driven-development-tdd" id="toc-les-test-driven-development-tdd" class="nav-link" data-scroll-target="#les-test-driven-development-tdd">Les Test Driven Development (TDD)</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Les tests unitaires</h1>
+<h1 class="title">Licences</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="tests-unitaires-slides.html">Slides</a>
+    Qu’est-ce-qu’une Licence et à quoi ça sert ?
   </div>
 </div>
 
@@ -306,351 +255,151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="les-tests" class="level2">
-<h2 class="anchored" data-anchor-id="les-tests">Les Tests</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/commitStrip_tester_ou_non.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Source : CommitStrip"><img src="img/commitStrip_tester_ou_non.jpg" class="r-stretch img-fluid figure-img" alt="Source : CommitStrip"></a></p>
-<figcaption>Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></figcaption>
-</figure>
-</div>
-<section id="pourquoi-tester" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-tester">Pourquoi tester ?</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Dans un monde de plus en plus numérique, la question des licences est devenue centrale pour les créateurs, les développeurs, et les utilisateurs.</p>
+<p>Que vous écriviez du code, publiiez un article, ou partagiez des images, la licence que vous choisissez détermine ce que les autres peuvent faire avec votre travail. Pourtant, ces notions restent souvent floues :</p>
 <ul>
-<li>Crash test de voiture</li>
-<li>Test de conformité</li>
-<li>Test qualité en industrie</li>
-<li>Test statistique</li>
+<li>Quel est le rôle du copyright ?</li>
+<li>Qu’est-ce que le copyleft ?</li>
+<li>Pourquoi un logiciel “gratuit” n’est-il pas toujours “libre” ?</li>
+<li>Quelles sont les différences entre une licence permissive comme la MIT et une licence copyleft comme la GPL ?</li>
+</ul>
+<p>Comprendre ces concepts est essentiel pour :</p>
+<ul>
+<li>protéger vos droits,</li>
+<li>encourager la collaboration,</li>
+<li>ou simplement éviter les litiges.</li>
 </ul>
 </section>
-<section id="en-informatique" class="level3">
-<h3 class="anchored" data-anchor-id="en-informatique">En informatique</h3>
+<section id="les-grands-principes" class="level2">
+<h2 class="anchored" data-anchor-id="les-grands-principes">Les grands principes</h2>
+<section id="copyright" class="level3">
+<h3 class="anchored" data-anchor-id="copyright">Copyright</h3>
 <ul>
-<li>Pour vérifier que votre programme fonctionne</li>
-<li>Pour détecter des erreurs</li>
-<li>Pour éviter les régressions (quand vous modifiez du code)</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
-</div>
-</div>
-<div class="notes">
-<p>Déjà tester une fonctionnalité d’un dev dont le cas nominal plante.</p>
-</div>
-</section>
-<section id="définition" class="level3">
-<h3 class="anchored" data-anchor-id="définition">Définition</h3>
-<p>Un test ressemble à une expérience scientifique.</p>
-<p>Il examine une hypothèse exprimée en fonction de trois éléments :</p>
-<ul>
-<li>les données en entrée</li>
-<li>l’objet à tester</li>
-<li>les résultats attendus</li>
-</ul>
-<p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
-</section>
-<section id="couverture-de-test" class="level3">
-<h3 class="anchored" data-anchor-id="couverture-de-test">Couverture de test</h3>
-<ul>
-<li>Pourcentage de fonctions testées</li>
-<li>Indicateur de qualité</li>
-<li>Tendance, plutôt qu’une valeur fiable</li>
-</ul>
-<p>Préférez faire peu de tests, mais des tests utiles !</p>
-<div class="notes">
-<p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
-<p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
-</div>
-</section>
-<section id="les-types-de-tests" class="level3 smaller">
-<h3 class="smaller anchored" data-anchor-id="les-types-de-tests">Les types de tests</h3>
-<p>Il existe de très nombreux tests différents, voici les principaux :</p>
-<ul>
-<li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
-<li>Test fonctionnel : teste les cas d’utilisation du logiciel</li>
-<li>Test de charge : évaluent la capacité d’un système à gérer un volume élevé de données ou de transactions</li>
-<li>Test d’intégration : vérifie que différents composants ou modules d’un système interagissent correctement ensemble</li>
-<li>Test d’intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles</li>
-<li>…</li>
+<li>Le droit d’auteur classique, qui confère à l’auteur un contrôle exclusif sur son œuvre.</li>
+<li>Par défaut, tout ce qui est créé est protégé par le copyright (tous droits réservés).</li>
+<li>Les utilisateurs doivent obtenir une autorisation explicite pour reproduire, modifier ou distribuer l’œuvre.</li>
 </ul>
 </section>
-</section>
-<section id="les-tests-unitaires" class="level2">
-<h2 class="anchored" data-anchor-id="les-tests-unitaires">Les tests unitaires</h2>
-<p>Nous allons utiliser le package <code>pytest</code> pour réaliser nos tests en Python.</p>
-<section id="un-bon-test-unitaire" class="level3">
-<h3 class="anchored" data-anchor-id="un-bon-test-unitaire">Un bon test unitaire</h3>
+<section id="copyleft" class="level3">
+<h3 class="anchored" data-anchor-id="copyleft">Copyleft</h3>
 <ul>
-<li>Teste une seule fonctionnalité</li>
-<li>Isolé</li>
-<li>Reproductible</li>
-<li>Déterministe</li>
+<li>Une approche qui utilise le copyright pour garantir la liberté de l’œuvre.</li>
+<li>Les œuvres sous copyleft permettent l’utilisation, la modification et la distribution, à condition que les œuvres dérivées soient diffusées sous la même licence.</li>
 </ul>
-<div class="notes">
+</section>
+<section id="open-source-vs-logiciel-libre" class="level3">
+<h3 class="anchored" data-anchor-id="open-source-vs-logiciel-libre">Open Source vs Logiciel Libre</h3>
 <ul>
-<li>Isolé : indépendant des autres tests
+<li><strong>Open Source</strong> : Accent mis sur le partage du code source et la collaboration, mais pas forcément sur les libertés des utilisateurs</li>
+<li><strong>Logiciel Libre</strong> : Basé sur les 4 libertés fondamentales définies par la Free Software Foundation :
 <ul>
-<li>si vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
-<li>le test ne doit se faire que sur la méthode A</li>
-<li>il faut <code>mocker</code> le comportement des autres méthodes</li>
+<li>Liberté d’utiliser</li>
+<li>Liberté d’étudier</li>
+<li>Liberté de modifier</li>
+<li>Liberté de partager</li>
 </ul></li>
-<li>Déterministe : donne toujours le même résultat</li>
 </ul>
-</div>
 </section>
-<section id="méthode-à-tester" class="level3">
-<h3 class="anchored" data-anchor-id="méthode-à-tester">Méthode à tester</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>operations_mathematiques.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb1" data-filename="operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationsMathematiques:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Opérations Mathématiques"""</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">        nombre : float or int</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">        float or None</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="gratuit-libre" class="level3">
+<h3 class="anchored" data-anchor-id="gratuit-libre">Gratuit ≠ Libre</h3>
+<p>Un <strong>logiciel gratuit</strong> (freeware) peut être utilisé sans frais mais reste souvent propriétaire et restreint.</p>
+<p><strong>Libre</strong> implique des libertés d’usage et de modification, indépendamment du coût.</p>
 </section>
-<section id="classe-de-test" class="level3">
-<h3 class="anchored" data-anchor-id="classe-de-test">Classe de test</h3>
-<p>Créons une classe de test.</p>
-<p>Pour tester le cas nominal, nous :</p>
+</section>
+<section id="principales-licences" class="level2">
+<h2 class="anchored" data-anchor-id="principales-licences">Principales licences</h2>
+<section id="pour-les-logiciels" class="level3">
+<h3 class="anchored" data-anchor-id="pour-les-logiciels">Pour les logiciels</h3>
 <ul>
-<li>choisissons un nombre en entrée</li>
-<li>appelons la méthode <code>diviser_cinq_par()</code></li>
-<li>vérifions que la valeur retournée est égale à la valeur attendue</li>
-</ul>
-</section>
-<section id="cas-nominal" class="level3">
-<h3 class="anchored" data-anchor-id="cas-nominal">Cas Nominal</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_operations_mathematiques.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb2" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operations_mathematiques <span class="im">import</span> OperationsMathematiques</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationsMathematiques():</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="notes">
-<p>Est-ce suffisant ?</p>
-</div>
-</section>
-<section id="autres-cas" class="level3">
-<h3 class="anchored" data-anchor-id="autres-cas">Autres cas</h3>
-<p>Mais ce n’est pas suffisant !</p>
+<li><strong>MIT</strong> :
 <ul>
-<li>La méthode a également un autre retour possible : <code>None</code></li>
-<li>Il faut aussi tester ce cas</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_operations_mathematiques.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb3" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="et-si" class="level3">
-<h3 class="anchored" data-anchor-id="et-si">Et si…</h3>
-<p>Nous appelons la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
-<p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_operations_mathematiques.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb4" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN / THEN</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            OperationsMathematiques().diviser_cinq_par(nombre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="notes">
-<p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
-</div>
-</section>
-<section id="ce-quil-faut-retenir" class="level3">
-<h3 class="anchored" data-anchor-id="ce-quil-faut-retenir">Ce qu’il faut retenir</h3>
-<p>Les tests unitaires</p>
+<li>Très permissive.</li>
+<li>Permet la modification et la réutilisation, même dans des projets commerciaux.</li>
+<li>Une simple attribution à l’auteur original est requise.</li>
+</ul></li>
+<li><strong>Apache 2.0</strong> :
 <ul>
-<li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
-<li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
-<li>un test unitaire teste UNE et UNE seule chose</li>
-<li>il faut autant de tests unitaires que de retours possibles</li>
-</ul>
-<div class="notes">
-<p>Vu en 1A :</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">'a, b, resultat_attendu'</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>)]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="mock" class="level2">
-<h2 class="anchored" data-anchor-id="mock">Mock</h2>
+<li>Similaire à MIT mais inclut des protections contre les brevets.</li>
+<li>Recommandée pour des projets industriels.</li>
+</ul></li>
+<li><strong>GPL (General Public License)</strong> :
 <ul>
-<li>Objet simulé qui remplace un composant réel lors des tests</li>
-<li>Permet de tester une unité de code en isolant ses dépendances externes</li>
-<li>Simuler des scénarios complexes comme les erreurs de réseau</li>
+<li>Licence copyleft stricte.</li>
+<li>Tout projet dérivé doit rester sous GPL.</li>
+</ul></li>
 </ul>
-<section id="mock---exemple" class="level3">
-<h3 class="anchored" data-anchor-id="mock---exemple">Mock - exemple</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>joueur_service.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb6" data-filename="joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JoueurService:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> creer(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Joueur:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        nouveau_joueur <span class="op">=</span> Joueur(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            pseudo<span class="op">=</span>pseudo,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            age<span class="op">=</span>age,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            mail<span class="op">=</span>mail,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        creation_ok <span class="op">=</span> JoueurDao().creer(nouveau_joueur)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> creation_ok:</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> nouveau_joueur</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="notes">
-<p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
-</div>
 </section>
-<section id="mock---exemple-1" class="level3">
-<h3 class="anchored" data-anchor-id="mock---exemple-1">Mock - exemple</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test_joueur_service.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb7" data-filename="test_joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_creer_ok():</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" "Création de Joueur réussie"""</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GIVEN</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># WHEN</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># THEN</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="pour-le-contenu-textes-images-vidéos" class="level3">
+<h3 class="anchored" data-anchor-id="pour-le-contenu-textes-images-vidéos">Pour le contenu (textes, images, vidéos)</h3>
+<ul>
+<li><strong>Creative Commons (CC)</strong> :
+<ul>
+<li>Une famille de licences pour le contenu non logiciel.</li>
+<li>Exemples :
+<ul>
+<li><strong>CC BY</strong> : Attribution requise, usage libre.</li>
+<li><strong>CC BY-SA</strong> : Attribution + partage à l’identique.</li>
+<li><strong>CC BY-NC</strong> : Pas d’utilisation commerciale autorisée.</li>
+<li><strong>CC0</strong> : Domaine public.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="pour-les-données" class="level3">
+<h3 class="anchored" data-anchor-id="pour-les-données">Pour les données</h3>
+<ul>
+<li><strong>ODbL (Open Database License)</strong> :
+<ul>
+<li>Conçue pour les bases de données.</li>
+<li>Encourage le partage des données tout en exigeant la même licence pour les dérivés.</li>
+</ul></li>
+</ul>
 </section>
 </section>
-<section id="les-test-driven-development-tdd" class="level2">
-<h2 class="anchored" data-anchor-id="les-test-driven-development-tdd">Les Test Driven Development (TDD)</h2>
-<section id="quand-tester" class="level3">
-<h3 class="anchored" data-anchor-id="quand-tester">Quand tester ?</h3>
-<div class="fragment">
-<p>Au début !</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Plus on teste tôt <span class="emoji" data-emoji="arrow_right">➡️</span> plus les tests sont efficaces et peu coûteux !</p>
-</div>
-</div>
-</div>
+<section id="avantages-et-défis-des-licences-libres-et-open-source" class="level2">
+<h2 class="anchored" data-anchor-id="avantages-et-défis-des-licences-libres-et-open-source">Avantages et défis des licences libres et open source</h2>
+<section id="avantages" class="level3">
+<h3 class="anchored" data-anchor-id="avantages">Avantages</h3>
+<ul>
+<li>Collaboration et innovation accrue.</li>
+<li>Transparence et confiance.</li>
+<li>Réduction des coûts.</li>
+</ul>
 </section>
-<section id="test-driven-development" class="level3">
-<h3 class="anchored" data-anchor-id="test-driven-development">Test Driven Development</h3>
-<p>La meilleure pratique :</p>
+<section id="défis" class="level3">
+<h3 class="anchored" data-anchor-id="défis">Défis</h3>
+<ul>
+<li>Comprendre les obligations légales.</li>
+<li>Compatibilité entre licences (exemple : intégrer un code GPL dans un projet MIT n’est pas toujours possible).</li>
+</ul>
+</section>
+</section>
+<section id="comment-choisir-une-licence" class="level2">
+<h2 class="anchored" data-anchor-id="comment-choisir-une-licence">Comment choisir une licence ?</h2>
 <ol type="1">
-<li>Créer les tests</li>
-<li>Coder la fonction</li>
+<li>Déterminez vos objectifs :</li>
+</ol>
+<ul>
+<li>Favoriser l’adoption massive ?</li>
+<li>Protéger la liberté des utilisateurs ?</li>
+<li>Limiter les usages commerciaux ?</li>
+</ul>
+<ol start="2" type="1">
+<li>Analysez le type d’œuvre (code, texte, contenu mixte).</li>
+<li>Utilisez des outils comme <a href="https://choosealicense.com">choosealicense.com</a> pour sélectionner rapidement une licence adaptée.</li>
 </ol>
 </section>
-<section id="logique" class="level3">
-<h3 class="anchored" data-anchor-id="logique">Logique</h3>
-<p>Cela paraît un peu étrange, mais en fait pas tant que ça.</p>
-<p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
+<section id="glossaire" class="level2">
+<h2 class="anchored" data-anchor-id="glossaire">GLossaire</h2>
 <ul>
-<li>quels seront les paramètres en entrée</li>
-<li>quels résultats vous attendez en sortie</li>
-<li>donc vous savez déjà quoi tester !</li>
+<li><strong>FLOSS</strong> : Free/Libre and Open Source Software</li>
+<li><strong>GNU</strong> : GNU’s Not Unix. Projet initié en 1983 par Richard Stallman avec pour objectif de créer un système d’exploitation entièrement libre. Il se distingue par son engagement à garantir les libertés des utilisateurs de logiciels</li>
 </ul>
-</section>
-<section id="pratique-du-tdd" class="level3">
-<h3 class="anchored" data-anchor-id="pratique-du-tdd">Pratique du TDD</h3>
-<ul>
-<li>✅ Amélioration de la qualité du code</li>
-<li>✅ Réduction des bugs</li>
-<li>❌ puis ✅ Temps</li>
-<li>❌ Maintenance des tests</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Avantages &gt;&gt;&gt; Incovénients</p>
-</div>
-</div>
-<div class="notes">
-<p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
-<p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
-</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1232,38 +981,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom","descPosition":"bottom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
