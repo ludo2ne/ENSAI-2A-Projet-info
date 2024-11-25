@@ -1,0 +1,116 @@
+---
+title: "Licences"
+description: "Qu'est-ce-qu'une Licence et à quoi ça sert ?"
+author: "Ludovic Deneuville"
+format: html
+from: markdown+emoji
+---
+
+:construction:
+
+## Introduction
+
+Dans un monde de plus en plus numérique, la question des licences est devenue centrale pour les créateurs, les développeurs, et les utilisateurs. 
+
+Que vous écriviez du code, publiiez un article, ou partagiez des images, la licence que vous choisissez détermine ce que les autres peuvent faire avec votre travail. Pourtant, ces notions restent souvent floues : 
+
+- Quel est le rôle du copyright ? 
+- Qu'est-ce que le copyleft ? 
+- Pourquoi un logiciel "gratuit" n'est-il pas toujours "libre" ? 
+- Quelles sont les différences entre une licence permissive comme la MIT et une licence copyleft comme la GPL ?
+
+Comprendre ces concepts est essentiel pour :
+
+- protéger vos droits, 
+- encourager la collaboration,
+- ou simplement éviter les litiges. 
+
+
+## Les grands principes
+
+### Copyright
+
+- Le droit d'auteur classique, qui confère à l'auteur un contrôle exclusif sur son œuvre.
+- Par défaut, tout ce qui est créé est protégé par le copyright (tous droits réservés).
+- Les utilisateurs doivent obtenir une autorisation explicite pour reproduire, modifier ou distribuer l'œuvre.
+
+### Copyleft
+
+- Une approche qui utilise le copyright pour garantir la liberté de l'œuvre.
+- Les œuvres sous copyleft permettent l'utilisation, la modification et la distribution, à condition que les œuvres dérivées soient diffusées sous la même licence.
+
+### Open Source vs Logiciel Libre
+
+- **Open Source** : Accent mis sur le partage du code source et la collaboration, mais pas forcément sur les libertés des utilisateurs
+- **Logiciel Libre** : Basé sur les 4 libertés fondamentales définies par la Free Software Foundation :
+  - Liberté d'utiliser
+  - Liberté d'étudier
+  - Liberté de modifier
+  - Liberté de partager
+
+### Gratuit ≠ Libre
+
+Un **logiciel gratuit** (freeware) peut être utilisé sans frais mais reste souvent propriétaire et restreint.
+
+**Libre** implique des libertés d'usage et de modification, indépendamment du coût.
+
+## Principales licences
+
+### Pour les logiciels
+
+- **MIT** :
+  - Très permissive.
+  - Permet la modification et la réutilisation, même dans des projets commerciaux.
+  - Une simple attribution à l'auteur original est requise.
+- **Apache 2.0** :
+  - Similaire à MIT mais inclut des protections contre les brevets.
+  - Recommandée pour des projets industriels.
+- **GPL (General Public License)** :
+  - Licence copyleft stricte.
+  - Tout projet dérivé doit rester sous GPL.
+
+### Pour le contenu (textes, images, vidéos)
+
+- **Creative Commons (CC)** :
+  - Une famille de licences pour le contenu non logiciel.
+  - Exemples :
+    - **CC BY** : Attribution requise, usage libre.
+    - **CC BY-SA** : Attribution + partage à l'identique.
+    - **CC BY-NC** : Pas d'utilisation commerciale autorisée.
+    - **CC0** : Domaine public.
+
+### Pour les données
+
+- **ODbL (Open Database License)** :
+  - Conçue pour les bases de données.
+  - Encourage le partage des données tout en exigeant la même licence pour les dérivés.
+
+
+## Avantages et défis des licences libres et open source
+
+### Avantages
+
+- Collaboration et innovation accrue.
+- Transparence et confiance.
+- Réduction des coûts.
+
+### Défis
+
+- Comprendre les obligations légales.
+- Compatibilité entre licences (exemple : intégrer un code GPL dans un projet MIT n'est pas toujours possible).
+
+
+## Comment choisir une licence ?
+
+1. Déterminez vos objectifs :
+  - Favoriser l'adoption massive ?
+  - Protéger la liberté des utilisateurs ?
+  - Limiter les usages commerciaux ?
+2. Analysez le type d'œuvre (code, texte, contenu mixte).
+3. Utilisez des outils comme [choosealicense.com](https://choosealicense.com) pour sélectionner rapidement une licence adaptée.
+
+## GLossaire
+
+
+- **FLOSS** : Free/Libre and Open Source Software
+- **GNU** : GNU's Not Unix. Projet initié en 1983 par Richard Stallman avec pour objectif de créer un système d'exploitation entièrement libre. Il se distingue par son engagement à garantir les libertés des utilisateurs de logiciels
