@@ -61,6 +61,8 @@ website:
         menu:
           - href: doc/divers/licences.qmd
             text: Licences
+          - href: doc/divers/sigles.qmd
+            text: Sigles
       - icon: github
         href: "{{< meta var.url-repo >}}"
         target: "_blank"

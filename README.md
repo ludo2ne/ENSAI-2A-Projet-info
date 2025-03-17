@@ -47,6 +47,18 @@ Pour générer les pages :
 
 - [ ] Projet Flask pour les démo en CM -> tournoi-echecs
 - [ ] Git : simples rappels car cours donné en 1A
+- [ ] API : https://pythonds.linogaliana.fr/content/manipulation/04c_API_TP.html
+- https://datacrafting.substack.com/p/jour-19-ii-python-the-right-way-ecrire
+- https://datacrafting.substack.com/p/jour-20-ii-python-the-right-way-les
+- Sécurité
+  - pas trop de sécurité abusive
+  - principe POLP
+  - SSO, RSA
+  - .gitignore
+  - màj version
+  - password
+  - code smell
+  - venv, poetry
 
 ### TP
 

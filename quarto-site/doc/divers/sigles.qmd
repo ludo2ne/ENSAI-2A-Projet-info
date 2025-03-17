@@ -1,0 +1,40 @@
+---
+title: "Sigles Usuels"
+description: "Quelques sigles"
+author: "Ludovic Deneuville"
+format: html
+from: markdown+emoji
+---
+
+:construction:
+
+
+## Principes
+
+
+| Sigle   | Signification                                  | Description                                                                        |
+|---------|------------------------------------------------|------------------------------------------------------------------------------------|
+| DRY     | Don't Repeat Yourself                          | Évitez les duplications, écrivez des fonctions                                     |
+| KISS    | Keep It Simple, Stupid                         | Privilégiez les solutions simples et directes                                      |
+| YAGNI   | You Aren't Gonna Need It                       | N'implémentez pas des fonctionnalités tant qu'elles ne sont pas nécessaires        |
+| TDA     | Tell, Don't Ask                                | Demandez aux objets d'effectuer des actions plutôt que de leur demander leur état et de prendre des décisions |
+
+
+
+## Bases de données
+
+| Sigle   | Signification                                  | Description                                                                        |
+|---------|------------------------------------------------|------------------------------------------------------------------------------------|
+| ACID    | Atomicité, Cohérence, Isolation, Durabilité    | Garantit la fiabilité des transactions de bases de données                         |
+| CRUD    | Create, Read, Update, Delete                   | Opérations de base pour la gestion des données                                     | 
+
+
+## Réseau et protocoles
+
+
+| Sigle   | Signification                                  | Description                                                                        |
+|---------|------------------------------------------------|------------------------------------------------------------------------------------|
+| SSO     | Single Sign-On (Authentification unique)       | Permet à un utilisateur de s'authentifier une seule fois pour accéder à plusieurs applications  |
+| SSH     | Secure Shell                                   | Protocole sécurisé permettant d'accéder à un ordinateur distant et d'exécuter des commandes |
+| HTTP    | Hypertext Transfer Protocol                    | Protocole permettant de transférer des pages web entre un serveur et un client     |
+| FTP     | File Transfer Protocol                         | Protocole de communication utilisé pour transférer des fichiers                    |

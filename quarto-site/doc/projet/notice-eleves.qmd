@@ -82,11 +82,44 @@ De retour d'étudiants, la première rencontre entre membres d'une même équipe
 
 ## Organisation et suivi
 
+
 ### Le chef de projet
 
-Au sein de chaque équipe, les élèves devront désigner un chef de projet qui sera responsable de l'animation du groupe et qui organisera les réunions de travail. Il sera également responsable de la répartition et du suivi de l'avancement du travail. Il devra également veiller au respect du planning général. Il est l'interlocuteur privilégié de l'encadrant pour l'équipe qu'il représente. Il doit permettre la discussion et la prise de décision collégiale.
+Au sein de chaque équipe, les élèves devront désigner une cheffe ou un chef de projet qui :
 
-[Ce rôle n'a pas être lié aux compétences informatiques]{.underline}, mais à l'appétence pour la gestion d'équipe. Ce rôle pourra être valorisé dans la note individuelle du rapport final.
+- sera responsable de l'animation du groupe 
+- organisera les réunions de travail
+- veillera à la répartition, au suivi de l'avancement et au respect du planning
+
+Il est l'interlocuteur privilégié de l'encadrant pour l'équipe qu'il représente. Il doit permettre la discussion et la prise de décision collégiale.
+
+[Ce rôle n'est pas lié aux compétences informatiques]{.underline}, mais à l'appétence pour la gestion d'équipe. Il faut tout de même s'investir et s'interesser aux travaux.
+
+
+### Leader technique
+
+Ce rôle revient généralement à la personne ayant le plus d'appétence pour l'informatique. Ses missions principales :
+
+- référent git : s'assurer que tous les membres ont compris les bases de git, ont cloné le répo et savent partager leurs modifications
+- coder une v0 (par exemple en s'inspirant du template fourni) et expliquer aux autres comment ça fonctionne (un diagramme de séquence peut-être fort utile)
+- assister les membres en cas de blocage technique
+
+::: {.callout-caution}
+Pour éviter toute surchage de travail, il est fortement déconseillé de cumuler les roles de tech lead et chef de projet.
+:::
+
+---
+
+Il peut bien sûr y avoir d'autres rôles dans l'équipe. L'important est de prendre des initiatives sur un sujet qui vous plait et d'être acteur du projet.
+
+Vous êtes des ingénieurs, vous avez des idées, vous devez prendre des initiatives. Cela sera un vrai plus lorsque vous serez en poste !
+
+### Crise
+
+:construction:
+
+Si le travail ou l'implication d'un ou plusieurs membres de l'équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. **Cela ne sera possible qu'après avoir alerté votre tuteur et le référent de la matière et qu'une discussion avec le groupe ait eu lieu**.
+
 
 
 ### Gestion de projet et de communication
@@ -277,7 +310,7 @@ Cette 1ère phase d'analyse consiste en la formalisation des besoins décrits pa
 - Les exigences particulières et les contraintes (normes de développement, architecture)
 
 
-### Conception générale du logiciel
+### Conception générale
 
 Cette 2e phase d'analyse aboutira à un modèle de conception pour répondre aux objectifs fixés par le cahier des charges. Le choix des diagrammes est fait par chaque groupe après validation de leur intervenant. Nous y trouverons cependant au minimum :
 
@@ -475,7 +508,7 @@ Vous avez 20 minutes pour réaliser votre présentation. Suivrons ensuite les qu
   - 12 min de présentation type diaporama 
   - 8 min de démonstration de l'application
   - La gestion de ce temps est libre mais doit être dynamique
-  - Vous pouvez mixer démo et présentation
+  - Vous pouvez mixer démo et présentation, c'est même plutôt conseillé
 - Questions du jury : 15 min
 - Retours du jury : 10 min
 :::
@@ -483,24 +516,43 @@ Vous avez 20 minutes pour réaliser votre présentation. Suivrons ensuite les qu
 
 **Le jury est bienveillant et ne cherchera pas à vous piéger !**
 
-Quelques conseils pour cette soutenance :
+#### Quelques conseils pour cette soutenance :
 
 - Présentez brièvement les membres de l'équipe
 - Même si les membres du jury ont lu votre rapport, prenez le temps de présenter sommairement le besoin initial et les données impliquées s'il y en a
-- Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça »
-  - Le jury déteste, surtout quand c'est la 4e équipe de suite qui raconte la même chose
-  - Soyez un minimum original, prenez un angle décalé, racontez une histoire !
-- Présentez la plus-value de l'équipe :
-  - Avez-vous fait des choix forts ?
-  - Avez-vous mis en place un processus intéressant ?
-  - Répondez-vous au besoin ?
-- Il n'est pas nécessaire de suivre le même déroulé que le rapport (c'est d'ailleurs généralement une erreur), ni de représenter le rapport (le jury l'a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu'elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté
-- Mettez en avant le projet (comment avez-vous travaillé ces 3 mois) et pas seulement le logiciel produit (vous n'essayez pas de nous vendre votre application)
-- Illustrez vos transparents avec des schémas / graphiques / captures d'écran / … Faites attention que vos images soient lisible une fois projetées. Mais ne mettez pas des illustrations inutiles. Un diaporama illustré est agréable si les images utilisées aident à la compréhension, un trop plein d'images sans rapport avec le propos nuisent à la compréhension
+
+Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça ». Le jury déteste, surtout quand c'est la 4e équipe de suite qui raconte la même chose. Soyez un minimum original, prenez un angle décalé, racontez une histoire !
+
+Présentez la plus-value de l'équipe :
+
+- Avez-vous fait des choix forts ?
+- Avez-vous mis en place un processus intéressant ?
+- Répondez-vous au besoin ?
+
+Il n'est pas nécessaire de suivre le même déroulé que le rapport (c'est d'ailleurs généralement une erreur), ni de représenter le rapport (le jury l'a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu'elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté.
+
+Mettez en avant le projet (comment avez-vous travaillé ces 3 mois) et pas seulement le logiciel produit (vous n'essayez pas de nous vendre votre application).
+
+**Votre diaporama** :
+
+- Numérotez les diapos !!!
+- Ne chargez pas trop vos slides en texte
+- Vous pouvez utiliser des schémas, graphiques, captures d'écran utiles à la compréhension. Faites attention que vos images soient lisible une fois projetées. 
 - Ne mettez pas de code, mais du pseudo-code (et uniquement si l'algorithme est intéressant)
+
+**La démo** :
+
+- N'allez pas trop vite !
+- Ne présentez pas la création / modification de compte, cela n'a aucune plus-value aux yeux du jury
+- Sur certains points interessants, prenez le temps d'expliquer ce qu'il se passe dans votre code (à la manière d'un diagramme de séquence)
+- Ne dîtes pas "l'utilisateur peut faire-ci, faire ça". Nous ne sommes pas à Hollywood mais un petit effort quand même, personnalisez votre démo, jouez un rôle !
 
 ::: {.callout-important}
 Travaillez votre introduction et votre conclusion !
+
+Ne terminez pas votre présentation par : "Voilà c'est fini...".
+
+Soyez solidaires !
 :::
 
 
@@ -514,9 +566,14 @@ La note finale du projet se répartit comme suit :
 
 Le code est noté à part. Il compte pour un tiers de la note de Compléments d'informatique.
 
-Si le travail ou l'implication d'un ou plusieurs membres de l'équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. **Cela ne sera possible qu'après avoir alerté votre tuteur et le référent de la matière et qu'une discussion avec le groupe ait eu lieu**.
+::: {.callout-warning title="Pénalités"}
+Des malus seront appliqués à votre note si :
 
-Vous trouverez sur Moodle les grilles de notation qui sont fournies aux intervenants, pour évaluer votre travail, cette annexe a un rôle de sensibilisation et ne constitue pas un barème définitif.
+- vous avez des absences injustifiées en suivi de projet et/ou en TP de Compléments d'info
+- vous n'avez pas été présent dans les locaux de l'ENSAI durant l'immersion
+- vous n'avez pas rempli les fichiers de suivi hebdomadaires
+- votre participation aux travaux de votre équipe est jugé insuffisant
+:::
 
 
 ## Calendrier
