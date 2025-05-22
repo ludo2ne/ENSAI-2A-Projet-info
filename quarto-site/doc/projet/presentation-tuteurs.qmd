@@ -116,58 +116,18 @@ Le code du projet comptera pour un tiers de la note du cours de Compléments d'i
 
 ## Planning {background-color="Silver"}
 
-:::white-box
-
-```{mermaid}
-gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2024-09-02,
-    CM                           :milestone, 2024-09-09, 
-    Examen                       :milestone, 2024-10-07,
-    
-    section TP
-    TP1                          :milestone, 2024-09-06,
-    TP2                          :milestone, 2024-09-13,
-    TP3                          :milestone, 2024-09-20,
-    TP4                          :milestone, 2024-09-27,
-    
-    section Projet
-    Suivi 1                      :milestone, 2024-09-06,
-    Suivi 2                      :milestone, 2024-09-13,
-    Suivi 3                      :milestone, 2024-09-27,
-    Suivi 4                      :milestone, 2024-10-11,
-    3j immersion (Suivi 5 et 6)  :active,    2024-10-21, 3d
-    Suivi 7                      :milestone, 2024-11-15,
-    
-    section Échéances
-    WEI                          :crit,      2024-09-20, 3d
-    Dossier Analyse              :milestone, 2024-10-05,
-    Toussaint                    :crit,      2024-10-26, 2024-11-03
-    Rapport final et Code        :milestone, 2024-11-23,
-    Soutenance                   :milestone, 2024-12-12,
-    
-    %%Stats univariées retraités   :done,         2021-11-28, 3d
-```
-
-:::
-
-### Dates {.smaller}
+### Dates provisoires 2025 {.smaller}
 
 | Date                        | Topic                                       |
 |-----------------------------|---------------------------------------------|
-| vendredi 6 septembre        | TP1 et Suivi 1                              |
-| vendredi 13 septembre       | TP2 et Suivi 2                              |
-| vendredi 20 septembre       | TP3                                         |
-| vendredi 27 septembre       | TP4 et Suivi 3                              |
-| vendredi 11 octobre         | Suivi 4 (retour sur les dossiers d'analyse) |
-| lun-mer 21-23 octobre       | 3 jours d'immersion (Suivi 5 et 6)          |
-| vendredi 15 novembre        | Suivi 7                                     |
-| jeudi 12 décembre           | Soutenance                                  |
+| vendredi 29 août            | TP1 et Suivi 1                              |
+| vendredi 5 septembre        | TP2 et Suivi 2                              |
+| vendredi 12 septembre       | TP3 et Suivi 3                              |
+| vendredi 19 septembre       | TP4 (matin)                                 |
+| vendredi 3 octobre          | Suivi 4 (retour sur les dossiers d'analyse) |
+| mar-jeu 4-6 novembre        | 3 jours d'immersion (Suivi 5 et 6)          |
+| vendredi 14 novembre        | Suivi 7                                     |
+| mercredi 10 décembre        | Soutenance                                  |
 
 
 ## Sujet

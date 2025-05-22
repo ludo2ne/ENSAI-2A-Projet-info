@@ -6,6 +6,14 @@ format: html
 from: markdown+emoji
 ---
 
+## Évolution potentielles pour 2025
+
+- [ ] Dédoublement du cours (une partie de la promo suivra le cours et les TP en Anglais)
+- [ ] Supports de cours et de TP en Anglais
+- [ ] Utilisation du Datalab
+  - La VM restera en backup
+- [ ] Maj des TP2, 3, 4 (s'appuyer sur le template pour dev des fonctionnalités simples)
+
 ## Le projet info 2A
 
 - [Présentation du projet aux tutrices et tuteurs](doc/projet/presentation-tuteurs.qmd)
