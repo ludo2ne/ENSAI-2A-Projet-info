@@ -11,6 +11,18 @@ from: markdown+emoji
 number-sections: true
 ---
 
+:::{.notes}
+
+## TODO
+
+- [ ] Datalab
+  - [ ] Conf Git https
+  - [ ] backup VM
+
+
+:::
+
+
 ::: {.callout-important}
 Les TP sont prévus pour être réalisés en étant connecté à votre [**VM ENSAI**]{.underline}, soit depuis les clients légers des salles info, soit via <https://view.ensai.fr/>{target="_blank"}. Vous y disposez de tous les outils nécessaires :
 

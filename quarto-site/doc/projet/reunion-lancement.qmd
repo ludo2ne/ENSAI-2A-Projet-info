@@ -1,5 +1,5 @@
 ---
-title: "Lancement du projet info 2024-2025"
+title: "Lancement du projet info 2025-2026"
 description: "[Slides](reunion-lancement-slides.html)"
 author: "Ludovic Deneuville"
 format:
@@ -19,59 +19,142 @@ number-sections: false
 lightbox: true
 ---
 
+
 ## Merci & Bienvenue
 
-Rapide tour de table
 
 :::{.notes}
-- 1 min chacun
+Rapide tour de table
+
+- 1 min chacun (Localisation ? INSEE ? Ancien élève ? Domaine ?)
 - Ensuite parlons rapidement Administratif et Logistique
 - N'hésitez pas à m'interrompre si questions
 :::
 
-## Administratif {.smaller}
+## MyENSAI
 
-- Dossier administratif à bien remplir pour être rémunéré
-  - Fiche de renseignement
-  - RIB
-  - Décision d'engagement
-  - Attestation sécu
-  - Fiche de paie + attestation employeur (sauf INSEE)
-  - Autorisation de cumul (fonctionnaires)
+- Pamplemousse : Scolarité, EDT, Appel
+- Moodle : Contenu pédagogique
+- Datalab : <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+- VM : <https://view.ensai.fr/>{target="_blank"}
+
+:::{.notes}
+MyENSAI : intranet, compte pour accéder à tout
+
+Pour créer votre compte : nom, prenom, tel, mail
+:::
+
+## Dossier Administratif {.smaller}
+
+Quelques papiers pour être rémunéré
+
+- Fiche de renseignement
+- RIB
+- Attestation sécu
+- Décision d'engagement à signer
+- Fiche de paie + attestation employeur (sauf INSEE)
+- Autorisation de cumul (fonctionnaires)
 
 À envoyer à `vacatairesensai@ensai.fr`
 
 :::{.notes}
-Vous recevrez un mail avec toutes les infos
-
-Paie et Frais :
-
-- TP complément info :arrow_right: décembre
-- Projet info :arrow_right: mars
-
-Vacataires -> ENSAI-gestion/frais-vacataires.html
+Vous recevrez un mail avec toutes les infos après la bascule Pamplemousse
 :::
+
+### Paie
+
+2-3 mois après la fin de l'intervention
+
+- décembre : TP
+- mars : projet
+
+Fiches de paie sur <https://ensap.gouv.fr/>{target="_blank"}
+
+
+:::{.notes}
+Créez un compte ENSAI avec votre numéro de sécu
+:::
+
+### Scolarité
+
+Pour les questions d'emploi du temps
+
+- `scolarite@ensai.fr`
+- `isabelle-laure.dang@ensai.fr`
+
+:::{.notes}
+- Modop pour faire l'appel
+  - Conseil : faire au début pour pas oublier
+:::
+
+### Dossier frais
+
+Si vous habitez **hors aire urbaine de Rennes**, vous êtes remboursés de :
+
+- Billets de train 2e classe, metro, bus
+  - fournir des scans propres
+- 20€ par repas
+- Nuitée si pas possible d'arriver le matin même
+
+`mission@ensai.fr`
+
+:::{.notes}
+Possible de demander l'achat direct de vos billet :
+
+- Si vous ne voulez pas avancer les frais
+- Si fait en avance > 15j
+
+Note de frais à envoyer indiv ou par lots
+:::
+
 
 ### Repas Midi
 
 Entre 12h45 et 14h00, plusieurs possibilités :
 
-- MSA ~ 12-15€
-- Restaurant du Forum : Menu du jour à 15€
+- MSA ~ 15€
+- [Ti-miam](https://timiam.fr/restaurant){target="_blank"} : Menu du jour à 15€
 - Popotte personnelle
 
 :::{.notes}
+- ou Subway, McDo
 - 1h15 : Assez speed, ne pas trop trainer
 - Restaurant du Forum : réserver
 - Sympa de manger ensemble, après si vous mangez ailleurs n'hésitez pas à prévenir qu'on ne vous attende pas
+- Végé ?
+- Qui vient en voiture ?
+:::
+
+### Café
+
+- Machines élèves au foyer (CB)
+- Machine salle des permanents (pièces)
+  - 1er étage, au milieu, face aux :toilet:
+
+:::{.notes}
+- Aussi fontaine à eau (chaude, froide, normale)
+- Si vous manquez de sucre, j'ai de quoi faire
+- Pauses : généralement je me balade dans les couloirs
+- Pour me reconnaitre -> Linkedin, site GitHub
+- Vous pouvez passer bureau 161
+- Le 29/08, je suis en TP à 8h
 :::
 
 ## Les TP
 
-- [Page cours et TP](https://ludo2ne.github.io/ENSAI-2A-complements-info/){target="_blank"} :construction:
-  - [Cours 2023-2024](https://ludo2ne.github.io/ENSAI-2A-complement-info/){target="_blank"}
-- Infos sur Moodle 
-  - qui vont être transférés vers cette page 
+### Techno et outils
+
+- VSCode
+- Python
+- PostgreSQL
+- Git
+
+### Contenu
+
+- TP1 : Rappels Git, exemple d'application
+- TP2 : POO, TU, doc
+- TP3 : Webservices 
+- TP4 : DAO
 
 :::{.notes}
 Appli Pokemon créée par Rémi comme un projet
@@ -79,85 +162,117 @@ Appli Pokemon créée par Rémi comme un projet
 Quand vous avez TP + projet, l'ordre importe peu (sauf ATPA)
 :::
 
+### English
+
+- 2 groups
+- Full english
+- Volunteers?
+
+
+### Datalab
+
+- <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+- Connexion avec votre compte ENSAI
+- demo
+
+:::{.notes}
+- Lancer services
+  - paramètres
+  - open port
+- suivre README
+  - .env
+  - run
+  - api
+  - inquirerPy
+:::
+
+
 ### Accès VM
+
+Backup :
 
 - <http://view.ensai.fr/>{target="_blank"}
   - via navigateur
   - ou installer VMWare Horizon Client
-- id et mots de passe envoyés par mail
 
 :::{.notes}
 VMWare Horizon Client : Désactiver la vérification de Certificat
 
 CTRL + ALT + F12
-
-Les élèves sont incités fortement à faire TP et projet sur la VM car ils ne savent pas faire sur leur machine.
 :::
 
-### Contenu
+### Machine perso
 
-- TP1 : Git, rappels POO, TU
-- TP2 : Webservices
-- TP3 : DAO
-- TP4 : Session, Création d'une IHM
+::: {.callout-warning}
+Élèves qui ne veulent pas travailler sur la VM :
 
-à inclure : logs, CI, couverture de tests
+- Installer IDE, Python, Git, BDD
+- Manque de maîtrise
+- Perte de temps
+- TP DAO -> besoin d'une BDD
+:::
 
 :::{.notes}
-- Git 
-  - passe au 1er TP cette année
-  - config ssh à faire
-- Logs : new
+- Ne soyez pas trop gentil
+- Ne les aidez pas à installer
+- ça ne leur rend pas service
+- Surtout si vous voyez qu'ils ne maitrisent pas
 :::
+
+
 
 ## Le projet
 
-### Rappels des attendus
+### Attendus
 
-- Développer une application en python
+- Développer une application en Python
 - Découvrir l'architecture logicielle
-- Communiquer avec une base de données PostreSQL
-- Utiliser des webservices
+- Communiquer avec une base de données PostgreSQL
+- Utiliser et/ou Créer des webservices
 - Concevoir et Modéliser
 
 ### Sujets
 
-- 15 août au plus tard dernier délai
+- 20 août au plus tard dernier délai
 - [Lien vers la liste](https://hackmd.io/qpcWPXGiSpi2kXOEJY41SQ){target="_blank"}
 
 :::{.notes}
 - Contraintes EDT
-- Sinon : sujet mystère
+- Sinon : sujet mystère (les élèves n'aiment pas)
 :::
 
 ### 1ère séance
 
-- Présenter le sujet
+- Présenter le sujet (diapo)
 - Répondre aux questions
 - Présenter votre mode de fonctionnement
+- Pour les élèves
+  - Recontrer son équipe
+  - Lister les compétences
+  - Répartir les rôles
 
 :::{.notes}
-Conseils des anciens ?
-
-Les étapes :
+Les étapes pour les élèves :
 
 - lister les fonctionnalités
 - modéliser (diag classe)
 - créer la base de données
 - coder
+
+Les élèves sont sympas mais doivent être bien cadrés
+
 :::
 
 ### Suivi
 
-- Point hebdo vendredi soir
-  - jeudi soir quand il y a suivi le vendredi
-- Gantt
-- Projet GitHub ? un peu lourd ?
+- [Point hebdo](./notice-eleves.qmd#point-hebdo) jeudi soir
+- Diagramme de Gantt
 - Bien sonder le groupe si tout va bien
+  - Prévenir au plus tôt si ça coince
 
 :::{.notes}
 - Inclure une backlog 
-- En cas de soucis avec un élève ou un groupe :arrow_right: me prévenir
+- En cas de soucis avec un élève ou une équipe :arrow_right: me prévenir
 :::
 
 ### Évaluations
@@ -176,20 +291,18 @@ Les étapes :
 
 ### Template
 
-[Modèle](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"} qui peut servir de base :construction:
-
-:::{.notes}
-Datalab ?
-:::
+- [Modèle](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"} qui peut servir de base :construction:
+- Les élèves peuvent utiliser ou non
+- Possibilité de fournir votre propre template
 
 
 ## Communiquer
 
 - Mailing list
-- [Serveur Discord](https://discord.gg/dWg4mwEK){target="_blank"}
-  - l'invitation expire le 2 juillet
+- [Serveur Discord](https://discord.gg/GXvFUXRJ){target="_blank"}
+  - l'invitation expire le 10 juillet
 - Ludo : 06.45.45.40.82 ou 02.99.05.33.19
-  - bureau 161 (1er étage, au fond côté DSI)
+  - bureau 161 (1er étage, 3e gauche après passerelle)
 
 :::{.notes}
 N'hésitez pas à passer à mon bureau
