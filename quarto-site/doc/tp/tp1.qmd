@@ -126,7 +126,7 @@ An environment variable is a system-defined value used to configure how applicat
 
 It is like a key-value pair in a dictionary. For example, `GIT_PERSONAL_ACCESS_TOKEN` is a variable whose value stores your GitHub personal access token.
 
-```{bash}
+```{.bash}
 export MY_VAR_KEY=my_var_value   # Create or replace
 echo $MY_VAR_KEY                 # Display
 printenv                         # Display all
