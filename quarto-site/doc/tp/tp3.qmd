@@ -296,7 +296,7 @@ Pour pour vérifier que tout fonctionne :
 
 - [ ] lancez les tests unitaires du package business_object
   - dans le terminal : `python -m pytest -v src/tests/test_business_object/`
-- [ ] lancez le main : `python src/__main__.py`
+- [ ] lancez le main : `python src/main.py`
 
 S'il vous manque des packages, suivez les instructions du README.
 :::

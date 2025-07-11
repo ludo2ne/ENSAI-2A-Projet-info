@@ -1,6 +1,6 @@
 ---
-title: "Git, Exemple d'Application"
-description: "TP 1"
+title: "Git, Example of Application"
+description: "Lab 1"
 author: "Ludovic Deneuville"
 format:
   html:
@@ -11,220 +11,329 @@ from: markdown+emoji
 number-sections: true
 ---
 
-:::{.notes}
-
-## TODO
-
-- [ ] Datalab
-  - [ ] Conf Git https
-  - [ ] backup VM
 
 
-:::
+The practical labs will be carried out on one of the two datalabs :
 
+- <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+- <https://datalab.sspcloud.fr/>{target="_blank"} (create an account using `firstname.lastname@eleve.ensai.fr`)
 
-::: {.callout-important}
-Les TP sont prévus pour être réalisés en étant connecté à votre [**VM ENSAI**]{.underline}, soit depuis les clients légers des salles info, soit via <https://view.ensai.fr/>{target="_blank"}. Vous y disposez de tous les outils nécessaires :
+We will be using the following tools:
 
-- `Python 3.10` : la version de Python installée à l'ENSAI
-  - ainsi que les packages nécessaires
-- `Visual Studio Code` : votre éditeur de code
-- `Git` : pour gérer vos dépôts
-- `PostgreSQL` : une base de données
-  - `DBeaver` : pour consulter, modifier cette base de données
-
-À moins que vous ne maîtrisiez des outils tels [Docker](https://www.docker.com/){target="_blank"} pour créer votre base de données, il est fortement déconseillé de coder sur votre propre machine que ce soit en TP ou en projet. Vous allez perdre un temps considérable en installation et configuration. Et même si vous êtes très très doués certaines parties ne pourront de toute manière pas fonctionner.
-:::
+- Python 3.13
+- Visual Studio Code
+- Git
+- PostgreSQL
+- DBeaver
 
 
 
-## À faire à la maison {.unnumbered}
 
-Un prérequis de ce TP est que votre configuration `Git` soit opérationnelle.
+## Accounts and Configuration {.unnumbered}
 
-::: {.callout-tip}
-Si vous avez besoin de vous rafrîchir la mémoire sur Git, suivez ce [lien](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html){target="_blank"}.
-:::
-
-#### Compte GitHub {.unnumbered}
-
-- [ ] Créez un compte [GitHub](https://github.com/){target="_blank"}, si vous n'en avez pas déjà un
-
-#### Config Git {.unnumbered}
-
-- [ ] Ouvrez Git Bash
-- [ ] Exécutez cette commande : `git config -l`
-
-Si les valeurs *user.name* et *user.email* sont bien renseignées, tout est ok.
-
-Si ce n'est pas le cas, exécutez [une à une]{.underline} les [5 commandes git config](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#configuration){target="_blank"}.
-
-#### Clé SSH {.unnumbered}
-
-- [ ] Exécutez cette commande : `cat ~/.ssh/id_rsa.pub` (toujours dans Git Bash)
-
-Si le fichier existe et que cela renvoie un réultat commençant par *ssh-rsa*, cela signifie que vous avez bien défini une clé SSH sur votre machine.
-
-Dans le cas contraire, [créez une clé SSH](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#cr%C3%A9ation-dune-cl%C3%A9-ssh){target="_blank"}
-
-Nous allons maintenant vérifier si vous avez bien déclaré cette clé publique sur GitHub, ou sinon l'ajouter
-
-- [ ] Copiez la clé publique : `cat ~/.ssh/id_rsa.pub | clip`
-- [ ] Allez sur la [page pour déclarer une nouvelle clé SSH](https://github.com/settings/ssh/new) (Settings > SSH and GPG keys > New)
-  - Title : VM ENSAI
-  - Key : Collez votre clé
-  - [Add SSH key]{.green-button}
-
-Soit votre clé publique est maintenant déclarée à GitHub, ou au pire, GitHub vous dira qu'il connait déjà cette clé.  
-
-
-## Objectifs {.unnumbered}
-
-Les objectifs de ce premier TP sont les suivants :
-
-- Utilisation de *Git*
-- Prise en main de *VS Code*
-- Comprendre comment fonctionne une application
-
-Ce TP mêle explications et phases de code.  
-
-Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.
-
-
-## Création des dépôts
+### GitHub account {.unnumbered}
 
 ::: {.callout-note}
-Pour ce premier TP, vous allez [**travailler avec votre équipe projet**]{.underline} sur un seul et même dépôt distant.
+GitHub is a web-based platform that provides hosting for software development and version control using Git. 
 
-Un membre de l'équipe va créer un dépôt sur GitHub et ensuite tous les membres (le créateur du dépôt GitHub inclus) vont créer leurs dépôt locaux en clonant ce dépôt distant.
+It's widely used by developers to collaborate on projects.
 :::
 
-### Le dépôt distant
-
-::: {.callout-important}
-Un seul membre de l'équipe crée ce dépôt distant.
-:::
-
-- [ ] Connectez-vous sur [GitHub](https://github.com/){target="_blank"}
-- [ ] Créez un *fork* du dépôt [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
-  - Un fork est une copie d'un dépôt, permettant à un utilisateur de développer indépendamment sans affecter l'original
-- [ ] Ajoutez les membres de votre équipe
-  - Sur la page du dépôt > :gear: Settings > Collaborators > [Add people]{.green-button}
-- [ ] Envoyez à vos camarades, l'adresse du dépôt distant
+- [ ] Create a [GitHub](https://github.com/){target="_blank"} account, if you don't already have one
 
 
-### Les dépôts locaux
 
-Maintenant, chaque membre de l'équipe va créer sur sa propre machine, son clone du dépôt.
-
-Commençons par créer un dossier pour ranger votre dépôt local :
-
-- [ ] Ouvrez **Git Bash**
-- [ ] Exécutez cette commande : `mkdir -p /p/Cours2A/UE3-Complements-info/TP1 && cd $_`
-  - Elle crée l'arborescence demandée (*mkdir*)
-  - Puis elle vous positionne dans ce dossier (*cd*)
-- [ ] Clonez le dépôt distant avec SSH
-  - Lorsque vous êtes sur la page GitHub du dépôt, cliquez sur [Code]{.green-button}, puis sur l'onglet SSH
-  - Copiez l'url qui commence par `git@github.com...`
-  - Dans Git Bash : `git clone <url>` (en remplaçant \<url\>)
-
-Votre clone est prêt, vous pouvez vérifier sa présence via l'explorateur Windows (WIN + E, puis allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP1`).
-
-- [ ] Fermez *Git Bash*
-  - Si tout s'est bien passé
-  - Vous allez retrouver ensuite le même Git Bash, qui est intégré dans VS Code 
-
-
-## Visual Studio Code
-
-### Ouvrir le dépôt
-
-Un dépôt est un ensemble de dossiers et de fichiers. Pour consulter et éditer ces fichiers, vous allez utiliser [Visual Studio Code](https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/VSCode.html){target="_blank"}, un éditeur très populaire.
-
-::: {.callout-note}
-Au lieu de VS Code, vous pouvez tout à fait ouvrir vos fichiers avec le *bloc-notes*, mais vous vous rendrez rapidement compte que c'est beaucoup moins pratique.
-:::
-
-- [ ] Ouvrez **Visual Studio Code**
-- [ ] Ouvrez votre dépôt local
-  - File > Open Folder
-  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP1`
-  - Cliquez une seule fois sur :file_folder: ENSAI-2A-complement-info-TP
-  - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
-
-::: {.callout-important}
-- [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
-  - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
-
-:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
-:::
-
-### Contenu du dépôt
-
-Ce dépôt contient les éléments suivants :
-
-
-| Élément             | Description                                                                                   |
-|---------------------|-----------------------------------------------------------------------------------------------|
-| `.vscode`           | Contient les paramètres VS Code pour ce projet                                                |
-| `src`               | Dossier contenant les fichiers Python rangés dans une arborescence respectant la programmation en couches           |
-| `.gitignore`        | Liste des fichiers à ne pas versionner avec git                                               |
-| `LICENSE`           | Définit les droits d’utilisation du dépôt                                                     |
-| `README.md`         | Contient des informations utiles pour présenter, installer et utiliser l’application          |
-| `requirements.txt`  | Liste les packages Python nécessaires                                                         |
-
-
-### La config VSCode
+### Git Config{.unnumbered}
 
 ::: {.callout-tip}
-VS Code est hautement paramétrable, aussi bien au niveau User qu'au niveau Workspace (i.e. considérons que Workspace = dépôt).
+To avoid having to identify yourself every time you want to push code onto GitHub, we're going to:
+
+- create a token on GitHub
+- declare this token on the datalab
+
+See this [tutorial](https://docs.sspcloud.fr/en/content/version-control.html){target="_blank"} for more information.
 :::
 
-- [ ] Ouvrez le fichier `.vscode/settings.json`
+- [ ] Log on to the datalab of your choice
+- [ ] Go to `My account` > `Git` tab
 
-Ce fichier contient du paramétrage pour le dépôt, par exemple :
+You must have an active [Personal Access Token](https://github.com/settings/tokens){target="_blank"}
 
-- Le formattage automatique lorsque vous sauvegardez un fichier Python
-  - Le formateur utilisé est [Black](https://black.readthedocs.io/){target="_blank"}
-  - La taille des lignes est limitée à 100 caractères
-  - Les tabulations sont remplacées par 4 espaces
-- Le dossier source se nomme `src`
-  - Pour importer des modules, ce dossier *src* sera la racine
-- le terminal par défaut est *Git Bash*
+If not :
+
+- [ ] In GitHub, Generate a new token (classic)
+  - Expiration: 90 days
+  - tick repo and workflow
+  - [Generate token]{.green-button}
+- [ ] Copy the token (ghp_xxxxxxxxxx)
+- [ ] Paste it in the datalab
+
+
+## Objectives {.unnumbered}
+
+The objectives of this first tutorial are as follows:
+
+- Use of *Git*
+- Getting to grips with *VS Code*
+- Understand how an application works
+
+This tutorial combines explanations and code phases.
+
+The explanations in this tutorial should not take precedence over those of your instructor. Use them as a knowledge base for later, but always prefer oral explanations.
+
+
+
+## Repositories creation
+
+::: {.callout-caution}
+For this first tutorial, you will [**work with your project team**]{.underline} on a single remote repository.
+
+One member of the team will create a repository on GitHub and then all the members (including the creator of the GitHub repository) will create their local repositories by cloning this remote repository.
+:::
+
+### Remote repository
+
+::: {.callout-important}
+A single team member creates this remote repository.
+:::
+
+- [ ] Connect on [GitHub](https://github.com/){target="_blank"}
+- [ ] Create a *fork* of the repository [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
+  - A fork is a copy of a repository, allowing a user to develop independently without affecting the original
+- [ ] Add your team members
+  - On the repository page > :gear: Settings > Collaborators > [Add people]{.green-button}
+- [ ] Send the address of the remote repository to your team
+
+
+### Local repositories
+
+All team members will now create a local repository on a VSCode service in the datalab.
+
+- [ ] Launch a VSCode-python service
+  - Important: in tab *Network access*, enable Port **9876**
+  - It will be usefull later to expose your webservice
+- [ ] Once VSCode has been launched, open a new terminal
+  - Top left, icon with 3 horizontal bars > Terminal > New
+  - or use shortcut CTRL + SHIFT + C
+- [ ] Clone the remote repository using the token
+  - `git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/<user_name>/<repo_name>.git`
+  - **GIT_PERSONAL_ACCESS_TOKEN**
+- [ ] Position yourself in your repo
+  - File > Open Folder > `/home/onyxia/work/<repo_name>` > OK
+
+:::{.callout-note title="Environment Variables"}
+An environment variable is a system-defined value used to configure how applications run or to securely store information like file paths, keys, or access tokens.
+
+It is like a key-value pair in a dictionary. For example, `GIT_PERSONAL_ACCESS_TOKEN` is a variable whose value stores your GitHub personal access token.
+
+```{bash}
+export MY_VAR_KEY=my_var_value   # Create or replace
+echo $MY_VAR_KEY                 # Display
+printenv                         # Display all
+printenv | grep GIT              # Display all containing the word GIT
+```
+:::
+
+
+
+## Repository content
+
+::: {.callout-note}
+Focus on some files.
+:::
+
+### README
+
+The README file is essential for every project. It contains all the information needed to **describe, install and use** the application.
+
+You will now follow the README instructions to :
+
+- [ ] Install required packages
+- [ ] Fill in the environment variables 
+
+::: {.callout-tip}
+You notice that you need to connect to a PostgreSQL database.
+
+- [ ] In the datalab, launch a new PostgreSQL service
+  - Ressources tab > Persistent volume size: 1Gi
+- [ ] While the service is starting, copy the properties and fill in the .env file
+:::
+
+### VSCode settings
+
+Most of these settings concern the automatic formatting of code when you save a file:
+
+- Formatter: [Ruff](https://docs.astral.sh/ruff/formatter/){target="_blank"}
+- `"editor.formatOnSave": true`: apply format when you save a file
+- `"editor.insertSpaces": true,: replace tabulation by spaces
+
+Another important property :
+
+- `"PYTHONPATH": "${workspaceFolder}/src"`: Python code is in folder *src*
+
+
+
+## Application example
+
+To understand how a layered application is built, we'll look at a [project template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}.
+
+
+You may be asked to design 2 types of application:
+
+- A CLI application
+  - the user navigates through menus
+- A webservice
+  - the application exposes endpoints
+  - the user can query these endpoints and retrieve the results
+
+
+### CLI application
+
+- [ ] Follow README instructions to run the application
+
+You arrive at the home menu. The principle of this type of application is to let you navigate from one view to another. If necessary, the view will call up *services* in the background.
+
+- [ ] Create a new account
+
+
+::: {.callout-note}
+Below is a sequence diagram explaining the process.
+
+You will find the same information in the log file.
+
+```{mermaid}
+sequenceDiagram
+    participant CLI
+    participant Vue as InscriptionVue
+    participant Service as JoueurService
+    participant Dao as JoueurDao
+
+    CLI->>Vue: Enter pseudo
+    Vue->>Service: pseudo_deja_utilise()
+    Service->>Dao: lister_tous()
+    Dao-->>Service: All players
+    Service-->>Vue: True or False
+    Vue->>CLI: continue if True
+
+    CLI->>Vue: Enter pwd, mail...
+    Vue->>Service: creer()
+    Service->>Dao: creer()
+    Dao-->>Service: True
+    Service-->>Vue: Joueur object
+    Vue->>CLI: Success
+```
+
+:::
+
+
+
+You'll notice that the application asks for a password that's a little too long. 
+
+- [ ] Find and change the password required length to 16 characters
+  - You will find it in one of the classes above
+- [ ] Read the [inquirerPy](https://inquirerpy.readthedocs.io/en/latest/pages/validator.html){target="_blank"} to add a special character
+
+::: {.callout-tip title="You can do better"}
+In software development, hardcoding fixed values is discouraged because it reduces flexibility and security. 
+
+Instead, using variables or configuration settings allows for easier adjustments and better adaptability across different environments.
+:::
+
+- [ ] Create an environment variable called `PASSWORD_MIN_LENGTH`
+- [ ] Use it ! :rugby_football:
+  - with this code `os.environ["PASSWORD_MIN_LENGTH"]` after importing os
+
+
+
+::: {.callout-tip}
+There are many ways of restricting user input.
+
+It is also possible to create custom rules.
+:::
+
+
+- [ ] After returning to the home page, choose `Se connecter`
+  - You will arrive at a new *view* with a new *menu*
+  - :bulb: to go faster, you can use user "a", password "a"
+- [ ] Display the players
+- [ ] Open the log file in the `logs` folder
+
+
+::: {.callout-note}
+In the logs, you can see the flow of operations:
+
+- You navigate from view to view
+- Some views call *services*, which in turn call *DAOs*
+:::
+
+
+- [ ] Log out and stop the application
+
+
+### A webservice
+
+We'll come back to webservices in more detail in TP3.
+
+- [ ] Following the instructions in the README, run the webservice
+
+::: {.callout-tip title="How to query it"}
+Inside the Datalab VSCode service, You can query your webservice by running this command in another terminal: `curl http://localhost:9876/hello/Alice`
+
+However, you may remember that at the beginning we opened port 9876 to the outside world, i.e. the whole Internet.
+
+So anyone who knows the address can query this web service from any machine.
+
+To get the address:
+
+- [ ] In the Datalab, go to *My Services* tab
+- [ ] Open once again the VSCode service
+- [ ] You will find a link
+:::
+
+
+
+- [ ] In your browser, test the *GET* (read) requests
+- [ ] Check the logs to see the methods called
+- [ ] Stop the webservice
+
+::: {.callout-caution}
+For other types of http request (PUT, POST, DELETE), the browser is not enough.
+
+You will see how to make these requests in a later tutorial.
+:::
+
+
 
 
 ## Git
 
 ::: {.callout-note}
-Vous allez maintenant faire quelques manipulations basiques avec Git :
+You're now going to do a few basic things with Git :
 
-- Ajouter des fichiers au dépôts
-- Créer des points de sauvegarde
-- Envoyer vos modifications locales vers les dépôts distant
-- Mettre à jour votre dépôt local
+- Add files to the repository
+- Create save points
+- Send your local modifications to remote repositories
+- Update your local repository
 :::
 
-### Routine Git
+### Git routine
 
-- [ ] Ouvrez le *Git Bash* intégré dans VS Code
-  - Terminal > New Terminal (ou CTRL + ù)
-- [ ] Lancez le programme principal pour vérifier que tout fonctionne bien
-  - `python src/__main__.py`
-- [ ] Créez un nouveau fichier dans le dossier *src* en complétant avec votre propre prénom et collez ce code
-  ```{.python filename="<prenom>.py"}
+
+- [ ] Create a new file in the *src* folder using your own first name and paste this code
+  ```{.python filename="<firstname>.py"}
   a, b = 0, 5
 
   for i in range(b):
       print(" " * a, end="")
       a += 1
-      print("Bonjour <prenom>")
+      print("Hello <firstname>")
   ```
-- [ ] Dans Git Bash, utilisez les commandes *status*, *add*, *commit*, *push* et *pull* pour envoyer vos modifications vers le dépôt distant
+- [ ] In Git Bash, use the *status*, *add*, *commit*, *push* and *pull* commands to send your changes to the remote repository.
 
 ::: {.callout-tip collapse="true" title="Aide"}
-[L'enchainement des commandes Git](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target="_blank"} devra devenir un automatisme.
+[The sequence of Git commands](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target=‘_blank’} should become automatic.
 
-Si lors du *push*, vous avez ce message, c'est qu'il faut commencer par *pull*.
+If you get this message when you *push*, you need to start with *pull*.
 ```{.txt}
 To https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git
 Merge branch 'main' of https://github.com/ludo2ne/ENSAI-2A-complement-info-TP
@@ -238,190 +347,110 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 :::
 
-### Résoudre un conflit
+### Creating conflict
 
-- [ ] Pour tous les fichiers `<prenom.py>`, [un seul membre]{.underline} de l'équipe commence par modifier le prenom dans le code
-  - ne pas modifier les noms des fichiers, uniquement le code à l'intérieur
-    - `print("Bonjour <prenom>")` :arrow_right: `print("Bonjour Marie-<prenom>")`
-  - Et il *add*, *commit* et *push*
-- [ ] Ensuite les autres membres modifient chacun leur propre fichier
-  - `print("Bonjour <prenom>")` :arrow_right: `print("Bonjour Anne-<prenom>")`
-  - Et ils *add*, *commit*, *pull* et *push*
+::: {.callout-important}
+Only one team member will do it!
+:::
 
-Normalement un conflit survient lors du *pull*. En effet il y a un conflit de version
+- [ ] For all `<firstname.py>` files, first name in the code.
+  - do not change the file names, only the code inside
+    - `print("Hello <firstname>")` :arrow_right: `print("Hello Mary-<firstname>")`
+  - And it *add*, *commit* and *push*
 
-| Version                      | Code                                      |
-|------------------------------|-------------------------------------------|
-| Version originale            | `print("Bonjour <prenom>")`               |
-| Votre modification           | `print("Bonjour Anne-<prenom>")`          |
-| Version sur le dépôt distant | `print("Bonjour Marie-<prenom>")`         |
+### Solve conflits
+
+- [ ] Then the other members each modify their own file
+  - `print("Hello <firstname>")` :arrow_right: `print("Hello Anna-<firstname>")`
+  - And they *add*, *commit*, *pull* and *push*.
+
+Normally a conflict arises during *pull*. This is because there is a version conflict
+
+
+| Version                      | Code                                     |
+|------------------------------|------------------------------------------|
+| Original version             | `print("Hello <firstname>")`             |
+| Your modification            | `print("Hello Anne-<firstname>")`        |
+| Version on remote repository | `print("Hello Marie-<firstname>")`       |
+
 
 ```{.python}
 <<<<<<< HEAD
-print("Bonjour Anne-<prenom>")          # Votre modification - current change
+print("Bonjour Anna-<firstname>")         # Your code - current change
 =======
-print("Bonjour Marie-<prenom>")         # La modification du dépôt distant - incoming change
+print("Bonjour Mary-<firstname>")         # Code in the remote repository - incoming change
 >>>>>>>
 ```
 
-- [ ] Vous choisissez d'imposer votre version
-  - Soit en cliquant sur *Accept Current Change*
-  - Soit en supprimant `print("Bonjour Marie-<prenom>")`, ainsi que les `<<<<<<<`, `=======` et `>>>>>>>`
-- [ ] *add*, *commit* *pull* et *push*
+- [ ] You can choose to impose your version
+  - either by clicking on *Accept Current Change*
+  - Or by deleting `print(‘Hello Mary-<firstname>’)`, as well as `<<<<<<<`, `=======` and `>>>>>>>`.
+- [ ] *add*, *commit* *pull* and *push*
+
 
 ::: {.callout-important}
-Avoir un conflit, ce n’est pas grave !
+Having a conflict isn't a big deal!
 
-Avoir un conflit, ce n’est pas grave !
+Having a conflict isn't a big deal!
 
-Avoir un conflit, ce n’est pas grave !
+Having a conflict isn't a big deal!
 
-Conflit ≠ Erreur
+Conflict ≠ Error
 
-Cela arrive simplement quand Git rencontre 2 versions et il n’a pas de :crystal_ball:, ni de :game_die: pour choisir laquelle est la bonne.
+This simply happens when Git encounters 2 versions and it doesn't have a :crystal_ball: or a :game_die: to choose which is the right one.
 
-Pour éviter les conflits, organisez-vous avec votre équipe pour éviter autant que possible de travailler sur les mêmes fichiers en même temps.
+To avoid conflicts, get organised with your team to avoid working on the same files at the same time as much as possible.
 :::
 
 
-## Un exemple d'application
 
-Pour comprendre comment est construit une application découpée en couches, vous allez étudier un [exemple simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}.
 
-Suivez les instructions du README pour :
+## Create your project repository
 
-- [ ] Cloner le dépôt
-- [ ] Ouvrir le dépôt avec VS Code
-- [ ] Installer les packages
-- [ ] Saisie de vos Variables d'environnement
+A team member :
 
-::: {.callout-tip title="Le fichier README"}
-Le README est disponible :
+- [ ] Creates a remote repository on GitHub ([new Repository](https://github.com/new){target="_blank"})
+  - Repository name: for example *ENSAI-Projet-info-2A*.
+  - Public or Private, as you wish
+  - Check *Add a README file*.
+  - .gitignore : *Python
+  - Choose a license : Apache, GNU, MIT...
+- [ ] Invite your teammates
 
-- en bas de la [page GitHub du dépôt distant](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"} (mis en forme)
-- sur votre dépôt local, fichier README.md (version brute)
+::: {.callout-important title="Mandatory"}
+- [ ] Also invite your tutor and teacher (username: *ludo2ne*)
 :::
 
-2 types d'applications peuvent vous être demandés en projet :
+Next, each team member :
 
-- Une application de Menu
-  - l'utilisateur navigue dans des menus
-- Un webservice
-  - l'application expose des endpoints
-  - l'utilisateur peut interroger ces endpoints et récupérer les résultats
-
-### Une application de Menu
-
-- [ ] Toujours en suivant les instructions du README, lancez le *__main__*
-
-Vous arrivez sur le menu d'accueil. Le principe de ce type d'application est de vous faire naviguer d'une vue à l'autre. Si nécessaire, la vue appellera en arrière plan des *services*.
-
-::: {.callout-note}
-Quelques exemples plus concrets :
-
-##### Vue de Connexion {.unnumbered}
-
-- Vous rentrez votre nom d'utilisateur et votre mot de passe et validez
-- La vue appelle alors un service qui va vérifier les informations saisies
-  - Si valide, vous êtes connecté et redirigé vers la vue du joueur connecté
-  - Sinon, vous êtes redirigé vers l'accueil
-
-##### Vue liste des joueurs {.unnumbered}
-
-- Les joueurs sont stockés en base de données
-- Lorsqu'elle est chargée la vue n'a pas accès à la liste des joueurs
-- La vue appelle un service qui fournit cette liste
-  - Ce service va lui même appeler une méthode DAO pour interroger la base de données (TP4)
-- La liste remonte jusque la vue qui affiche la liste des joueurs
-
-:::
-
-- [ ] Rechercher le code du menu d'accueil dans la couche *view*
-  - Si vous observez le code, cette classe ne fait qu'une seule chose : vous rediriger vers une nouvelle vue
-- [ ] Sélectionnez le choix `Ré-initialiser la base de données`
-  - Cela permet de créer les tables dans la base de données
-  - Et d'insérer des données
-  - Si vous explorez le code, vous verrez que cela exécute les scripts sql du dossier `data`
-- [ ] Sélectionnez `Créer un compte` et saisissez les éléments demandés
-  - Observez le code *inscription_vue.py* pour voir comment sont vérifiées les saisies
-
-::: {.callout-tip}
-Il existe de nombreuses possibilités pour restreindre l'utilisateur dans ses saisies.
-
-Il est également possible de créer des règles personnalisées.
-:::
-
-
-- [ ] Après être revenu à l'accueil, choisissez `Se connecter`
-  - Vous arrivez sur une nouvelle *vue* avec un nouveau *menu*
-  - :bulb: pour aller plus vite, vous pouvez utiliser l'utilisateur « a », mot de passe « a »
-- [ ] Affichez les joueurs
-- [ ] Ouvrez le fichier de log dans le dossier `logs`
-
-::: {.callout-note}
-Dans les logs, vous pouvez observer le cheminement des opérations :
-
-- Vous naviguez de vues en vues
-- Certaines vues appellent de *services* qui eux mêmes appellent des *DAO*.
-:::
-
-- [ ] Déconnectez-vous et arrêtez l'application
-
-
-### Un webservice
-
-Nous reviendrons plus en détail sur les webservices lors du TP3.
-
-- [ ] En suivant les instructions du README, lancez le webservice
-- [ ] Dans votre navigateur, testez les requêtes *GET* (lecture)
-- [ ] Consultez les logs pour voir les méthodes appelées
-- [ ] Arrêtez le webservice
-
-::: {.callout-note}
-Pour les autres types de requêtes http (PUT, POST, DELETE), le navigateur ne suffit pas.
-
-Vous verrez comment réaliser ces requêtes dans un prochain TP.
-:::
-
-
-## Créez votre répo projet
-
-Un membre de l'équipe :
-
-- [ ] Crée un dépôt distant sur GitHub ([new Repository](https://github.com/new){target="_blank"})
-  - Repository name : par exemple *ENSAI-Projet-info-2A*
-  - Public ou Privé, comme vous voulez
-  - Cochez *Add a README file*
-  - .gitignore : *Python*
-  - Choose a license : au choix Apache, GNU ou MIT
-- [ ] Invite ses camarades
-
-::: {.callout-important title="Obligatoire"}
-- [ ] Invitez également votre tutrice ou tuteur, ainsi que l'enseignant (pseudo : *ludo2ne*)
-:::
-
-Ensuite, chaque membre de l'équipe :
-
-- [ ] Crée un clone local du dépôt dans `P:/Cours2A/UE3-Projet-info`
-- [ ] Fait un test pour vérifier qu'il peut pousser du code, par exemple en créant :
-  - *doc/suivi/2024.09.12-semaine1.md* : le premier point hebdo
-  - *src/__main__.py* : le fichier pour lancer votre application
-  - *requirements.txt* : le fichier listant les packages
+- [ ] Creates a local clone of the repository
+- [ ] Does a test to check that they can push code, for example by creating:
+  - *doc/tracking/2025.09.04-week1.md*: the first weekly point
+  - *src/main.py*: the file to launch your application
+  - *requirements.txt*: the file listing the packages
 
 ::: {.callout-caution}
-Par la suite, vous veillerez à ce que votre dépôt soit « bien rangé », de la même manière que celui vu dans la partie précédente.
+Afterwards, you'll make sure that your depot is "tidy", in the same way as described in the previous section.
 :::
 
-### Le fichier .env
+### .env file
 
-Ce fichier contiendra des variables d'envrionnement qui serviront par exemple pour vous connecter à la base de données PostgreSQL.
+This file will contain environment variables that will be used, for example, to connect to the PostgreSQL database.
 
-- [ ] Faîtes en sorte que ce fichier reste dans votre dépôt local sans jamais être envoyé sur GitHub
+- [ ] Make sure that this file remains in your local repository and is never sent to GitHub.
 
 ::: {.callout-tip collapse="true"}
-Il suffit qu'un seul membre de l'équipe modifie le fichier adéquat, push et ensuite les autres pull.
+Just one member of the team needs to modify the appropriate file, push, and then the others pull.
 :::
 
 ## Conclusion {.unnumbered}
 
-Le but de ce TP était de vous remettre en jambe concernant l'utilisation de Git, ainsi que de vous faire découvrir et comprendre comment fonctionne une application découpée en couche.
+The aim of this tutorial was to get you up to speed on using Git, and to help you discover and understand how a layered application works.
+
+
+::: {.callout-important}
+When you have finished coding, don't forget to :
+
+- push your code to GitHub
+- pause or delete your services
+:::
