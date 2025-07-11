@@ -413,7 +413,7 @@ A team member :
   - Repository name: for example *ENSAI-Projet-info-2A*.
   - Public or Private, as you wish
   - Check *Add a README file*.
-  - .gitignore : *Python
+  - .gitignore : *Python*
   - Choose a license : Apache, GNU, MIT...
 - [ ] Invite your teammates
 
