@@ -48,6 +48,8 @@ website:
             text: DAO et Sécurité
       - text: TP
         menu:
+          - href: doc/tp/tools.qmd
+            text: Tools
           - href: doc/tp/tp1.qmd
             text: TP 1
           - href: doc/tp/tp2.qmd

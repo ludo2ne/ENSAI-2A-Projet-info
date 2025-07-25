@@ -1,0 +1,107 @@
+---
+title: "Tools for labs"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+from: markdown+emoji
+---
+
+
+## Instructions
+
+- In the lab instructions, [**you have to replace**]{.underline} `<...>` with an appropriate value.
+
+::: {.callout-tip title="Example"}
+- `git commit -m "<explicit message>"` 
+- :arrow_right: `git commit -m "fix: log in error"`
+:::
+
+- Don't skip a step that didn't work, telling yourself that it doesn't matter. This may cause problems later on.
+
+## Exercices repository
+
+- [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
+- Create a [fork](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork){target="_blank"} of this repository
+
+
+## Datalabs
+
+::: {.callout-important}
+You require resources to start your services, the datalabs are available for that purpose. 
+
+Once you have completed your tasks, make sure to [free up these resources]{.underline} by deleting or pausing your services.
+:::
+
+- SSPCloud (INSEE): <https://datalab.sspcloud.fr/>{target="_blank"}
+- GENES: <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+
+
+### Custom service
+
+URLs to launch custom VSCode-python services for:
+
+- [SSPCloud](https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.3.17&s3=region-79669f20&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FTP0-datalab%2Frefs%2Fheads%2Fmain%2Ftestinit.sh»&networking.user.enabled=true&autoLaunch=true)
+- GENES Datalab
+
+:construction:
+
+In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:
+
+- by installing additional Python packages
+- by modifying certain extensions
+  - using :heavy_plus_sign: Ruff instead of :heavy_minus_sign: Flake8 to format the code
+- by opening a specific port to deploy an API
+
+
+There are several ways to customise a service:
+
+- Launch the catalogue service, then modify it by executing commands manually
+- Use an initialisation script that will run immediately after the catalogue service is launched
+  - In the form before Launch: Initialization scripts
+- Create and use a Docker image based on the original service
+  - In the form before Launch: Service > Use a custom image
+
+```{.bash}
+pip install inquirerPy psycopg2-binary pytest python-dotenv tabulate
+
+code-server --install-extension charliermarsh.ruff
+code-server --uninstall-extension ms-python.flake8
+```
+
+::: {.callout-important}
+Opening the port to deploy the API must be done before launching the service; after that, it is too late, and you will have to delete it and start over.
+:::
+
+
+## VSCode
+
+### Open Folder
+
+File > Open Folder > `/home/onyxia/work/<repo_name>` > OK
+
+::: {.callout-caution}
+Open Folder allows you to determine the root folder you are currently in.
+
+To find out the current folder, look at the top left of the [explorer]{.underline} for the parent folder.
+
+This choice is very important because imports between Python modules use relative paths.
+:::
+
+
+## Git
+
+[Git tuto](https://ludo2ne.github.io/Git-tuto/){target="_blank"}
+
+| Command                                                  | Description                                                          |
+|----------------------------------------------------------|----------------------------------------------------------------------|
+| `git clone https://....git`                              | Creates a copy of a remote repository in your local directory.       |
+| `git add .`                                              | Stages all changes for the next commit.                              |
+| `git commit -m "<explicit message>"`                     | Commits the staged changes to the local repository.                  |
+| `git push`                                               | Uploads local changes to a remote repository.                        |
+| `git pull`                                               | Merge changes from a remote to the local repository.                 |
+| `git switch <branch>`                                    | Switches to the specified branch.                                    |
+
+

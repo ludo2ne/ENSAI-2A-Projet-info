@@ -1,6 +1,6 @@
 ---
-title: "Python, POO, Tests Unitaires et Documentation"
-description: "TP 2"
+title: "Python, OOP, Unit Tests and Documentation"
+description: "Lab 2"
 author: "Rémi Pépin, Ludovic Deneuville"
 format:
   html:
@@ -11,60 +11,66 @@ from: markdown+emoji
 number-sections: true
 ---
 
-## Avant de commencer {.unnumbered}
+## Todo
 
-Ce TP mêle explications et phases de code.
+- [ ] Update settings
+- [ ] Image with Ruff
 
-Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.
 
-::: {.callout-note title="Notions abordées"}
-- Rappels sur la POO
-- Tests Unitaires
-- Objets métier
-- Patron de conception strategy
+## Before you start {.unnumbered}
+
+This tutorial combines explanations and code phases.
+
+The explanations in this tutorial should not take precedence over those of your teacher. Take them as a knowledge base for later, but always prefer oral explanations.
+
+::: {.callout-note title="Concepts covered"}
+- OOP reminder
+- Unit tests
+- Business objects
+- Strategy design pattern
 :::
 
-## Ce que vous allez coder
+## What you will be coding
 
-Notre jeu s'inspirera de *Pokémon Unite* (aucune connaissance du jeu, ni de *Pokémon* n'est nécessaire).
+Our game will be inspired by *Pokémon Unite* (no knowledge of the game or *Pokémon* is necessary).
 
-En quelques mots, il y aura des *Pokemons* qui s'affronteront lors de *Battles* en lançant des *Attacks*.
+In a nutshell, there will be *Pokemons* competing in *Battles* by throwing *Attacks*.
 
 
-### Objets métier
+### Business objects
 
-Vous allez créer les **objets métier** pour un jeu *Pokémon*.
+You're going to create **business objects** for a *Pokémon* game.
 
-::: {.callout-note title="Objet métier (business object)"}
-Un objet métier est une représentation d'une entité spécifique dans le contexte d'une application métier. Il encapsule les données et les comportements associés à cette entité et est souvent utilisé pour modéliser des concepts du monde réel dans le domaine de l'application.
+::: {.callout-note title="Business object"}
+A business object is a representation of a specific entity in the context of a business application. It encapsulates the data and behaviour associated with that entity and is often used to model real-world concepts in the application domain.
 
-Cela conduit à avoir des objets contenant essentiellement des attributs et très peu de méthodes autre que des *getter* et *setter*.
+This leads to objects containing mainly attributes and very few methods other than *getter* and *setter*.
 :::
 
-Pour prendre un autre exemple, voici des objets métier pour une application simple qui gère la location de vélos :
+To take another example, here are the business objects for a simple application that manages bike hire:
 
-- **Velo** : Représente un vélo (id, type, modèle...)
-- **Client** : Représente une personne (id, nom, prénom...)
-- **Location** : Représente une transaction de location (id, Client, Velo, debut, fin, montant...)
+- **Bike**: Represents a bike (id, type, model...)
+- **Customer**: Represents a person (id, surname, first name, etc.)
+- **Rental**: Represents a rental transaction (id, Client, Bike, start, end, amount, etc.)
 
 
-### Les objets métier de l'appli
+### The application's business objects
 
-- `Pokemon` : qui ont diverses caractéristiques et statistiques
-  - un nom
-  - un niveau
-  - [un type](https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon){target="_blank"}
-    - ici les types sont : Attaquant, Défenseur, Polyvalant, Soutient et Rapide (et non pas : Feu, Eau, Plante...)
-  - des statistiques contenues dans un objet *Statistic* défini ci-dessous
-- `Statistic` : pour éviter de surcharger la classe Pokemon, leurs stats sont stockées dans un objet de la classe Statistic
-  - hp : health points
-  - attack, defense, speed... : qui serviront déterminer la force de ses attaques
-- `Attack` : différents types d'attaques dont disposeront les Pokemons (partie 3)
-- `Battle` : servira à faire s'affronter 2 Pokemons pour déterminer l'issue du combat (partie 4)
+- `Pokemon`: which have various characteristics and statistics
+  - a name
+  - a level
+  - [a type](https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon){target="_blank"}
+    - here the types are : Attacker, Defender, Versatile, Helper and Fast (and not: Fire, Water, Plant...)
+  - statistics contained in a *Statistic* object defined below
+- `Statistic`: to avoid overloading the Pokemon class, their stats are stored in an object of the Statistic class.
+  - hp: health points
+  - attack, defense, speed... which are used to determine the strength of its attacks
+- `Attack`: different types of attack available to Pokemons (part 3)
+- `Battle`: used to pit 2 Pokemons against each other to determine the outcome of the battle (part 4)
 
-### Diagramme de classes 
+### Class diagram
 
-Voici un diagramme de classes très simplifié des classes principales à coder lors de ces TP.
+Here is a very simplified class diagram of the main classes to be coded during these practical sessions.
 
 ```{mermaid}
 classDiagram
@@ -104,85 +110,88 @@ classDiagram
 ```
 
 
-## Clone du dépôt
-
-Le code du TP se trouve sur [GitHub](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}, vous allez créer un clone local.
-
-- [ ] Ouvrez **Git Bash**
-- [ ] Créez un dossier pour stocker votre clone
-  - À la main ou avec cette commande : `mkdir -p /p/Cours2A/UE3-Complements-info/TP2 && cd $_`
-    - Elle crée l'arborescence demandée (*mkdir*)
-    - Puis elle vous positionne dans ce dossier (*cd*)
-- [ ] Clonez le dépôt distant
-  - `git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
-- [ ] Fermez Git Bash si tout s'est bien passé
-
-
-### Ouverture dans VSCode
-
-- [ ] Ouvrez **Visual Studio Code**
-- [ ] Ouvrez votre dépôt local
-  - File > Open Folder
-  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP2`
-  - Cliquez [une seule fois]{.underline} sur :file_folder: ENSAI-2A-complement-info-TP
-  - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
+## Get the code
 
 ::: {.callout-important}
-- [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
-  - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
+At the end of the course, don't forget to:
 
-:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
+- Save your work using Git
+- Delete or pause your VSCode service
 :::
 
-- [ ] Ouvrez le *Git Bash* intégré dans VS Code
-  - Terminal > New Terminal (ou CTRL + ù)
+### Launch VScode
+
+- [ ] Login to a datalab
+- [ ] Launch a **VScode-python** service
 
 
-## Modélisation et implémentation
+### Fork and Clone 
 
-Dans un premier temps, nous allons travailler uniquement sur les `Pokemons` (la classe `Statistic` est déjà codée).
+The TP code can be found on this GitHub repository: [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
 
-Avant d'écrire du code, nous allons réfléchir à la meilleure conception possible pour réaliser nos Pokémons. Notre conception essaiera au maximum de respecter la règle suivante : **faible couplage, forte cohésion**.  
+- [ ] Create a [fork](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork){target="_blank"} of this repository
 
-En d'autre termes nous allons essayer de faire :
+::: {.callout-tip title="Fork a repository"}
+A fork is a personal copy of another user's repository. 
 
-- des classes **les plus disjointes possibles** (*faible couplage*) pour qu'une modification dans une classe ne nous demande pas de modifier les autres
-- tout en essayant d'avoir dans chaque classe **les tâches les plus liées possibles** (*forte cohésion*).
+This allows you to freely experiment with changes without affecting the original project, and then propose your modifications back to the original repository via a pull request if desired.
+:::
 
-### Première approche : le « if/elif/else »
+In VSCode:
 
-- [ ] Ouvrez le code de la classe `Pokemon`
+- [ ] Open a **Git Bash** terminal
+- [ ] Clone with *https* your forked repository
+- [ ] Open Folder
+  - File > Open Folder > `/home/onyxia/work/<repo_name>` > OK
+- [ ] Install all needed packages
 
-Nous nous interessons à la méthode `get_pokemon_attack_coef()` qui va servir à déterminer la puissance de l'attaque en fonction du type de *Pokémon*.
 
-- [ ] Expliquez pourquoi une implémentation à base de `if/elif/else` pour les types est une mauvaise idée ? 
-  - Imaginez s'il y avait plusieurs blocs de code similaires dans notre application, et que nous devions ajouter un nouveau type
+## Modelling and implementation
+
+Initially, we're going to work only on the `Pokemons` (the `Statistic` class has already been coded).
+
+Before writing any code, we're going to think about the best possible design for our Pokémons. Our design will try as far as possible to respect the following rule: **low coupling, high cohesion**.
+
+In other words, we will try to make :
+
+- classes that are **as disjoint as possible** (*low coupling*) so that a modification to one class does not require us to modify the others
+- while trying to have in each class **tasks that are as linked as possible** (*strong cohesion*).
 
 
-### La puissance de la POO
+### First approach: if/elif/else
 
-Au lieu d'externaliser les comportements de nos *Pokemons*, nous allons mettre tous leurs comportements spécifiques dans des classes filles d'une super classe `Pokemon`. Ceci est rendu possible grâce à deux propriétés des objets en POO :
+- [ ] Open the code for the `Pokemon` class
 
-- **héritage** : il est possible de spécialiser une classe existante en modifiant son comportement, ou en ajoutant de nouveaux
-- **polymorphisme** : deux fonctions peuvent avoir le même nom mais avoir des comportements différents
+We're interested in the `get_pokemon_attack_coef()` method, which will be used to determine the power of the attack according to the type of *Pokemon*.
 
-En plus, comme chacun de nos *Pokemons* va forcement être d'un type, aucun ne sera simplement de la classe `Pokemon`, cela nous permet de rendre cette classe *abstraite*. En définissant clairement notre classe abstraite nous allons avoir :
+- [ ] Explain why an implementation based on `if/elif/else` for types is a bad idea? 
+  - Imagine if there were several similar blocks of code in our application, and we had to add a new type
 
-- Un plan pour toutes les classes qui en héritent. Cela à pour avantages de :
-  - Donner des informations sur la structuration du code  
-  - Permettre de générer automatiquement les méthodes à définir
-  - Limiter les bug. Si on oublie une méthode, le code plante au démarrage, ce qui évite des comportements non prévus difficiles à détecter
-- Une **interface** unique pour tous les types de *Pokemons*. Quelque soit le type du *Pokemon*, il sera considéré comme un `AbstractPokemon` partout dans le code.
+
+### The power of OOP
+
+Instead of externalising the behaviour of our *Pokemons*, we're going to put all their specific behaviour into child classes of a `Pokemon` superclass. This is made possible by two properties of OOP objects:
+
+- **inheritance**: it's possible to specialise an existing class by modifying its behaviour, or by adding new ones.
+- **polymorphism**: two functions can have the same name but different behaviours
+
+Furthermore, as each of our *Pokemons* will necessarily be of a type, none of them will simply be of the `Pokemon` class, which allows us to make this class *abstract*. By clearly defining our abstract class, we'll have :
+
+- A blueprint for all the classes that inherit from it. This has the following advantages
+  - Provides information on how the code is structured
+  - Automatically generate the methods to be defined
+  - Limits bugs. If a method is forgotten, the code crashes on start-up, which prevents unexpected behaviour that is difficult to detect.
+- A single **interface** for all *Pokemon* types. Whatever the type of *Pokemon*, it will be considered as an `AbstractPokemon` everywhere in the code.
 
 ---
 
-- [ ] Transformez la classe `Pokemon` en classe abstraite `AbstractPokemon`
-  - renommez également le fichier en `abstract_pokemon.py`
-- [ ] Transformez la méthode `get_pokemon_attack_coef()` en méthode abstraite
-- [ ] Créez les classes `Attacker`, `Defender` et `AllRounder` qui héritent de `AbstractPokemon`
-- [ ] Dans ces 3 classes, implémentez la méthode `get_pokemon_attack_coef()`
+- [ ] Transform the `Pokemon` class into an abstract class `AbstractPokemon`
+  - rename the file to *abstract_pokemon.py* as well
+- [ ] Turn the *get_pokemon_attack_coef()* method into an abstract method
+- [ ] Create the `AttackerPokemon`, `DefenderPokemon` and `AllRounderPokemon` classes, which inherit from `AbstractPokemon`
+- [ ] In these 3 classes, implement the required method
 
-Vous devriez arriver à la fin à une arborescence proche de celle-ci :
+You should end up with a tree structure similar to this one:
 
 ```{.txt}
 ENSAI-2A-COMPLEMENTS-INFO-TP
@@ -190,16 +199,16 @@ ENSAI-2A-COMPLEMENTS-INFO-TP
         └── business_object
             ├── pokemon
             │   ├── abstract_pokemon.py
-            │   ├── attacker.py
-            │   ├── defender.py
-            │   └── all_rounder.py
+            │   ├── attacker_pokemon.py
+            │   ├── defender_pokemon.py
+            │   └── all_rounder_pokemon.py
             └── statistic.py
 ```
 
-::: {.callout-tip title="Aide" collapse="true"}
-Pour faire une classe abstraite, utilisez le package `abc`.
+::: {.callout-tip title="Help" collapse="true"}
+To make an abstract class, use the `abc` package.
 
-Voici, pour vous inspirer, un exemple de ce qui est attendu :
+For inspiration, here's an example of what's expected:
 
 ```{.python filename="abstract_personnage.py"}
 from abc import ABC, abstractmethod
@@ -209,8 +218,8 @@ class AbstractPersonnage(ABC):
         self._phrase_attaque = phrase_attaque
         self._phrase_defense = phrase_defense
        
-    @abstractmethod  # décorateur qui définit une méthode comme abstraite
-    def degat_attaque(self) -> int:
+    @abstractmethod  # decorator that defines a method as abstract
+    def damages(self) -> int:
         pass
 ```
 
@@ -219,14 +228,14 @@ from abstract_personnage import AbstractPersonnage
 
 class Magicien(AbstractPersonnage):
     def __init__(self):
-        super().__init__("Lance une boule de feu", "Utilise une barrière magique")
+        super().__init__("Throw a fireball", "Use a magic barrier")
        
-    def degat_attaque(self) -> int:
+    def damages(self) -> int:
         return 10
 ```
 :::
 
-Pour vous aider, voici le diagramme de classes :
+To help you, here is the class diagram:
 
 ```{mermaid}
 classDiagram
@@ -248,29 +257,27 @@ classDiagram
     - __speed : int
   }
  
-  AbstractPokemon <|-- Attacker
-  AbstractPokemon <|-- Defender
-  AbstractPokemon <|-- AllRounder
+  AbstractPokemon <|-- AttackerPokemon
+  AbstractPokemon <|-- DefenderPokemon
+  AbstractPokemon <|-- AllRounderPokemon
   AbstractPokemon o-- Statistic
 ```
 
 
-### Testez votre code
+### Test your code
 
-- [ ] Testez la méthode `get_pokemon_attack_coef()` pour les classes `AttackerPokemon` et `AllRounderPokemon`.  
-  - `python -m pytest -v`
+- [ ] Test the *get_pokemon_attack_coef()* method for the `AttackerPokemon` and `AllRounderPokemon` classes.
+  - `pytest -v`
 
-Pour cela vous allez utiliser le package `pytest` de python.
+To do this, you will use the [pytest](https://docs.pytest.org/en/stable/){target="_blank"} package in python.
 
-Ce package permet de réaliser des tests unitaires dans des classes séparées. L'avantage par rapport à `doctest`, c'est que les tests ne "polluent" pas vos classes, et qu'il est possible de *patcher* certains comportements des classes.  
+An example of a test is given in the `TestDefenderPokemon` class. As a reminder, a test breaks down into 3 parts:
 
-Un exemple de test est donné dans la classe `testDefenderPokemon`. Pour rappel, un test se décompose en 3 parties :
+- **GIVEN**: create the objects needed to run the test
+- **WHEN**: call the method to be tested
+- **THEN**: check the result
 
-- **GIVEN** : création des objets nécessaires à la réalisation du test
-- **WHEN** : appel de la méthode à tester
-- **THEN** : vérification du résultat
-
-Les classes de test seront organisées de la manière suivante, en reproduisant l'architecture de votre application :
+The test classes will be organised as follows, reproducing the architecture of your application:
 
 ```{.txt}
 ENSAI-2A-COMPLEMENTS-INFO-TP
@@ -278,50 +285,49 @@ ENSAI-2A-COMPLEMENTS-INFO-TP
         ├── business_object
         │   ├── pokemon
         │   │   ├── abstract_pokemon.py
-        │   │   ├── attacker.py
-        │   │   ├── defender.py
-        │   │   └── all_rounder.py
+        │   │   ├── attacker_pokemon.py
+        │   │   ├── defender_pokemon.py
+        │   │   └── all_rounder_pokemon.py
         │   └── statistic.py
         └── test
             └── test_business_object
                 └── test_pokemon
-                    ├── test_attacker.py
-                    ├── test_defender.py
-                    └── test_all_rounder.py
+                    ├── test_attacker_pokemon.py
+                    ├── test_defender_pokemon.py
+                    └── test_all_rounder_pokemon.py
 ```
 
-::: {.callout-caution title="Si vous rencontrez des problèmes d'imports"}
-- Vérifiez que le dossier parent dans l'explorer de VSCode est : **ENSAI-2A-complement-info-TP**
-- Utilisez des chemins complets d'import plutôt que des chemins relatifs
-  - la racine des chemins est paramétrée au niveau du dossier `src`
-  - exemple : `from business_object.pokemon.abstract_pokemon import AbstractPokemon`
-- Créez des fichiers `__init__.py` (vide)
-  - dans TOUS les dossiers que vous créez
-  - c'est un peu pénible mais ça peut débloquer la situation
+::: {.callout-caution title="If you're having import problems"}
+- Check that the parent folder in the VSCode explorer is : **ENSAI-2A-complement-info-TP**
+- Use full import paths rather than relative paths
+  - the path root is set in the `src` folder
+  - example: `from business_object.pokemon.abstract_pokemon import AbstractPokemon`
+- Create `__init__.py` files (empty)
+  - in ALL the folders you create
+  - it's a bit of a pain but it can unblock the situation
 :::
 
 
-- [ ] Pouvez-vous tester la méthode `level_up()` directement sur un `AbstractPokemon` ? 
+- [ ] Can you test the *level_up()* method directly on an `AbstractPokemon`?
 
 
-## L'agrégation, l'autre façon d'ajouter de la souplesse dans le code
+## Aggregation, the other way of adding flexibility to code
 
-Maintenant que nos Pokémons sont faits, nous allons y ajouter les attaques.  
+Now that our Pokémons are done, we're going to add the attacks.
 
-Notre système va devoir respecter certaines contraintes :
+Our system will have to respect certain constraints:
 
-- Plusieurs types d'attaques vont coexister, chacune avec un mode de calcul de dégâts différent :
-  - Des attaques  à dégâts variables séparées en 2 types :
-    - attaques "physiques" qui utilisent l'attaque et la défense des Pokémons
-    - attaques "spéciales" qui utilisent l'attaque spé et la défense spé des Pokémons
-  - Des attaques à dégâts fixes qui font un nombre fixe de dégâts.
-- Un pokémon peut avoir plusieurs attaques et le type de l'attaque doit être transparent pour le pokémon.
+- Several types of attack will co-exist, each with a different way of calculating damage:
+  - Variable damage attacks divided into 2 types:
+    - **Physical attacks**, which use the Pokémon's attack and defence
+    - **Special attacks**, which use the Pokémon's special attack and special defence
+  - **Fixed damage attacks**, which do a fixed amount of damage.
+- A pokémon can have several attacks, and the type of attack must be transparent to the pokémon.
 
----
 
-### Attaques à dégâts fixes
+### Fixed damage attacks
 
-Nous allons commencer par les attaques à dégâts fixes. Comme il y aura un autre type d'attaques, toutes les attaques hériterons de la classe abstraite `AbstractAttack` déjà créée. Cette classe possède la méthode abstraite *compute_damage()* qui devra être implémentée dans les classes filles.
+We'll start with fixed damage attacks. As there will be another type of attack, all attacks will inherit from the `AbstractAttack` class. This class has the abstract method *compute_damage()* which will need to be implemented in the child classes.
 
 ```{mermaid}
 classDiagram
@@ -335,32 +341,37 @@ classDiagram
   }
 
    class FixedDamageAttack{
-    + compute_damage(APkm,APkm )  int
+    + compute_damage(APkm,APkm)  int
    }
  
    AbstractAttack <|-- FixedDamageAttack
 ```
 
-- [ ] Implémentez la classe `FixedDamageAttack`
-  - ainsi que sa méthode `compute_damage()` qui retournera simplement la puissance (*power*) de l'attaque
-- [ ] Créez des tests unitaires pour vérifier que tout fonctionne correctement
+- [ ] Create class `AbstractAttack`
+- [ ] Implement the `FixedDamageAttack` class
+  - class and its *compute_damage()* method, which will simply return the *power* of the attack.
+- [ ] Create unit tests to check that everything is working correctly
 
-### Attaques à dégâts variables
+### Variable damage attacks
 
-Nous allons ensuite coder les attaques à dégâts variables. Elles utilisent la formule suivante :
+Next we're going to code the variable damage attacks. They use the following formula:
 
-$$Damage = \big ( \frac{(\frac{2*Level}{5}+2)* Power *Att}{Def*50} +2\big) *random* other\_multipliers$$
+$$Damage = \big ( \frac{(\frac{2 \times Level}{5}+2) \times Power \times Att}{Def \times 50} +2\big) \times random \times other\_multipliers$$
 
 
-avec :
+with:
 
-- $Att$​ : égal soit à l'attaque ou l'attaque spé du Pokemon attaquant
-- $Def$​​ : égal soit à la défense ou défense spé du Pokemon défenseur
-- $Power$​ : la valeur de puissance de l'attaque
-- $random$​​ :une valeur comprise dans l'intervalle [0.85; 1]
-- $other\_ multipliers$ : les autres multiplicateurs possibles, comme le coefficient d'attaque des pokémons.
+- $Att$: equal to either the attack or special attack of the attacking Pokemon
+- $Def$: equal to either the defence or special defence of the defending Pokemon
+- $Power$: the attack's power value
+- $random$ : a value in the range [0.85; 1]
+- $other\_ multipliers$: Other possible multipliers, such as the pokemon's attack coefficient
 
-La seule différence entre attaque physique et spéciale vient des coefficients $Att$ et $Def$, le reste de la formule des dégâts est identique. Nous allons donc utiliser le patron de conception *template method*, dont voici la modélisation UML dans notre cas :
+::: {.callout-important}
+The only difference between physical and special attacks is the coefficients $Att$ and $Def$.
+
+The rest of the damage formula is identical. So we're going to use the *template method* design pattern, the UML model of which is as follows.
+:::
 
 ```{mermaid}
 classDiagram
@@ -400,25 +411,28 @@ classDiagram
    AbstractFormulaAttack <|-- PhysicalFormulaAttack
 ```
 
-La classe `AbstractFormulaAttack` va contenir les méthodes :
+The `AbstractFormulaAttack` class will contain the methods :
 
-- **compute_damage()**. Cette méthode va contenir la formule de calcul des dégâts
-  - mais en appelant les méthodes  *get_attaque_stat()* et *get_defense_stat()* pour savoir quelle statistique utiliser
--  **get_attack_stat()** et **get_defense_stat()** (abstraites). Ces méthodes devront être implémentées dans les classes filles pour déterminer quelles statistiques utiliser.
+- **compute_damage()**
+  - This method will contain the formula for calculating damage
+  - It will call the *get_attack_stat()* and *get_defense_stat()* methods to find out which statistics to use
+- **get_attack_stat()** and **get_defense_stat()** (abstract). 
+  - These methods will need to be implemented in the child classes to determine which statistics to use
 
 ---
 
-- [ ] Implémentez les 3 nouvelles classes et créez des tests pour vérifier que tout fonctionne correctement
+- [ ] Implement the 3 new classes
+- [ ] Create unit tests to check that everything is working properly
 
 
-## Architecture finale 
+## Final architecture
 
 ::: {.callout-note title="Bonus"}
-Si vous avez le temps !
+If you have time!
 :::
 
 
-Nous allons maintenant rattacher les bouts pour créer notre architecture finale :
+We are now going to reattach the ends to create our final architecture:
 
 ```{mermaid}
 classDiagram
@@ -464,7 +478,7 @@ classDiagram
   AbstractPokemon <|-- Attacker
   AbstractPokemon <|-- Defender
   AbstractPokemon <|-- AllRounder
-  Statistique *-- AbstractPokemon
+  Statistique --* AbstractPokemon
 
   Battle .. BattleService
   Battle .. Round
@@ -507,38 +521,22 @@ classDiagram
 
 ```
 
-- [ ] Implémentez le diagramme de classes ci-dessus
-- [ ] Testez votre code en écrivant de nouveaux tests unitaires
+- [ ] Implement the class diagram above
+- [ ] Test your code by writing new unit tests
 
-Cette architecture permet de décorréler les attaques des pokémons et de spécifier le comportement des attaques au fur et à mesure des héritages. Les avantages sont :
+This architecture makes it possible to decorrelate pokemon attacks and specify the behaviour of attacks as they are inherited. The advantages are:
 
-* Pour la classe `AbstractPokemon`, toutes les attaques sont des `AbstractAttack`. Tant qu'elles exposent la méthode *compute_damage()* notre programme va fonctionner. On peut ainsi facilement ajouter de nouveaux types d'attaques sans problème.
-* Un *Pokémon* peut avoir des attaques de tous les types
-* Nous pouvons ajouter un système d'état comme la paralysie ou le poison assez facilement. Il faut pour cela modifier la classe `AbstractAttack` et les classes qui en héritent. Cela sera potentiellement long, mais ne demande pas de toucher à la partie "*Pokémon*" de notre architecture.
-* Une personne pourrait se concentrer sur la création des *Pokémons* alors qu'une autre pourrait se concentrer sur celles des attaques sans difficulté. Les deux parties du code sont relativement indépendantes, la seule zone de couplage sont les classes `AbstractPokemon` et `AbstractAttack`, qui servent avant tout à définir ce qui doit être fait par les classes filles et ce qui est accessible à l'extérieur.
+- For the `AbstractPokemon` class, all attacks are `AbstractAttacks`. As long as they expose the *compute_damage()* method, our program will work. This makes it easy to add new types of attack.
+- A *Pokémon* can have any type of attack.
+- We can add a status system such as paralysis or poison quite easily. To do this, we need to modify the `AbstractAttack` class and the classes that inherit from it. This is potentially time-consuming, but doesn't require any changes to the “Pokémon” part of our architecture.
+- One person could concentrate on creating *Pokémons*, while another could concentrate on creating attacks without difficulty. The two parts of the code are relatively independent, the only area of coupling being the `AbstractPokemon` and `AbstractAttack` classes, which are used above all to define what must be done by the daughter classes and what is accessible to the outside.
 
-Le fait d'externaliser le comportement des attaques dans des classes spécifiques puis de les lier aux Pokémons via une relation d'agrégation assez souple qui permet de changer dynamiquement les attaques d'un Pokémon est le patron de conception *strategy*.
+Externalizing the behaviour of attacks into specific classes and then linking them to Pokémon via a fairly flexible aggregation relationship that allows a Pokémon's attacks to be changed dynamically is the *strategy* design pattern.
 
----
 
-::: {.callout-tip title="Correction"}
-Vous avez la possibilité de consulter la correction soit :
+## End of the Lab {.unnumbered}
 
-- en changeant votre dépôt local de branche
-- en consultant la branche adéquat sur le dépôt distant
-
-Voici quelques commandes git utiles pour changer de branche :
-
-```{.txt}
-# Lister toutes les branches
-git branch -a
-
-# Avant de changer de branche, créez un point de sauvegarde de votre travail
-git add .
-git commit -m "<message>"
-
-# changer de branche
-git checkout <nouvelle_branche>   # dans le terminal, la branche courante est indiquée entre ()
-git checkout -                    # pour retourner à la branche précédente
-```
+::: {.callout-important}
+- Push your code to GitHub
+- Pause or delete your datalab services
 :::

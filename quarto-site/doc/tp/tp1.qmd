@@ -443,14 +443,14 @@ This file will contain environment variables that will be used, for example, to 
 Just one member of the team needs to modify the appropriate file, push, and then the others pull.
 :::
 
-## Conclusion {.unnumbered}
+## End of the Lab {.unnumbered}
 
 The aim of this tutorial was to get you up to speed on using Git, and to help you discover and understand how a layered application works.
 
 
-::: {.callout-important}
+::: {.callout-important title="The same goes for all labs"}
 When you have finished coding, don't forget to :
 
-- push your code to GitHub
-- pause or delete your services
+- Push your code to GitHub
+- Pause or delete your datalab services
 :::

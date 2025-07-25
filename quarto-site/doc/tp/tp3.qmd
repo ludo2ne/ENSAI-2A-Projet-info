@@ -11,225 +11,278 @@ from: markdown+emoji
 number-sections: true
 ---
 
-## Avant de commencer {.unnumbered}
 
-:scream: Comme vous pouvez le constater, le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer.
+## Before you start {.unnumbered}
 
-Il mélange explications complètes et manipulations pour être au maximum autosuffisant.
+:scream: As you can see, the subject of this practical assignment is also quite extensive. Don't let that scare you.
 
-**Vous n'allez surement pas terminer le sujet, ce n'est pas grave. Il est là pour vous aider lors du projet informatique.**
+It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.
 
-::: {.callout-note title="Objectifs"}
-Dans ce TP vous allez : 
+**You probably won't finish the whole subject, but that's okay. It's there to help you with your IT project.**
 
-- Faire des appels à un webservice à la main avec *Insomnia*
-- Faire des appels à un webservice avec la bibliothèque python *requests*
-- Découvrir la page swagger d'un webservice
-- Manipuler différents formats de données
-- Créer un webservice avec le framework python *fastAPI*
+::: {.callout-note title="Objectives"}
+In this lab, you will:
+
+- Manually call a web service using an API Client
+- Call a web service using the Python library *requests*
+- Discover the Swagger page of a web service
+- Manipulate different data formats
+- Create a web service using the Python framework [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
 :::
 
 
 
-## Appeler un webservice à la main
+## Calling manually a web service 
 
-La première partie de ce TP ne nécessite pas d'écrire du code, mais seulement de faire des requêtes à un webservice en utilisant le logiciel [Insomnia](https://insomnia.rest/){target="_blank"} installé sur votre machine.
+The first part of this practical assignment does not require you to write any code, but only to make requests to a web service using an API client.
 
 ### Webservices
 
-::: {.callout-note}
-**Webservice** : le terme webservice est un terme vaste et il serait compliqué d'en donner une définition courte ([article wikipedia](https://en.wikipedia.org/wiki/Web_service){target="_blank"}).
+::: {.callout-note title="Web service"}
+**Web service**: The term web service is a broad one, and it would be difficult to provide a concise definition ([Wikipedia article](https://en.wikipedia.org/wiki/Web_service){target="_blank"}).
 
-Dans le cadre du projet un webservice désigne une application accessible via le protocole HTTP (**H**yper**T**ext **T**ransfer **P**rotocol) qui respecte généralement l'architecture REST (**RE**presentational **S**tate **T**ransfer).
+Within the scope of the project, a web service refers to an application accessible via the HTTP (Hypertext Transfer Protocol) protocol, which generally complies with the REST (Representational State Transfer) architecture.
 
-Mais il en existe d'autre comme SOAP (**S**imple **O**bjet- **A**ccess **P**rotocol) ou RPC (**R**emote **P**rocedure **C**all)
+But there are others, such as SOAP (Simple Object Access Protocol) and RPC (Remote Procedure Call).
 ::: 
 
-En d'autres termes, un webservice est une application accessible via le web que l'on va pouvoir **requêter** soit :
+In other words, a web service is an application accessible via the web that can be queried either:
 
-- pour obtenir des **ressources**
-- pour **modifier** les ressources accessibles. 
+- to obtain resources
+- to modify accessible resources
 
-Un webservice peut seulement avoir pour but d'être une **point d'accès unique et normalisé** à des données (comme une interface à une base de données), mais il peut également être une **manière de contrôler un système d'informations** (lancer des travaux, les mettre en attente, récupérer des résultats...)
+A web service can simply be a **single, standardised access point** to data (such as a database interface), but it can also be a **way of controlling an information system** (launching jobs, putting them on hold, retrieving results, etc.).
 
-Les webservices utilisent le protocole HTTP qui est le protocole du web (et pas d'internet). C'est celui que vous utilisez sans le savoir avec votre navigateur web. Requêter un webservice se fait presque comme requêter une page web. 
+Web services use the HTTP protocol, which is the web protocol (not the internet protocol). It is the one you use without knowing it with your web browser. Requesting a web service is almost like requesting a web page.
 
-Pour cela il vous faut :
+To do this, you need:
 
-- l'adresse de la ressource, son *Uniforme Resource Identifier* (URI) 
-  - c'est une notion plus générale que les *Uniforme Resource Locator* (URL)
-- une méthode (GET, POST, PUT, DELETE, [liste des méthodes](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods){target="_blank"})
-- et potentiellement des données
+- the address of the resource, its Uniform Resource Identifier (URI) 
+  - this is a more general concept than Uniform Resource Locator (URL)
+- a method (GET, POST, PUT, DELETE, [list of methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods){target="_blank"})
+- and potentially some data
 
-### Premières requêtes GET
+### First GET requests
 
-- [ ] Lancez le programme **Insomnia**
-  - Icone Windows en bas à gauche > 5-Informatique
-- [ ] Créez une collection de requête 
-    - bouton **Create** à droite
-    - puis cliquez sur votre collection
-- [ ] Créez une nouvelle requête 
-    - en appuyant sur **CTRL+N**
-    - donnez lui un nom 
-    - vérifiez que c'est bien une requête de type **GET**
+::: {.callout-tip}
+In this example, we will use a GET request to read data from a web service.
+A GET request is like asking a question: "Do you have this information?"
 
-Dans la barre d'adresse, testez les requêtes des webservices ci-dessous :
+If the data exists, the web service responds with it, usually in JSON format. If not, it may return an error like 404 Not Found.
+:::
 
-- Regardez la réponse dans la partie droite de votre écran
-- Quelles sont les similarités entre les réponses ?
+
+Several ways to make GET requests to web services (choose one):
+
+- <https://hoppscotch.io/>{target="_blank"}  (Online client)
+- [Bruno](https://www.usebruno.com/downloads){target="_blank"} (download and install)
+- [Insomnia](https://insomnia.rest/){target="_blank"} (already installed on ENSAI VMs)
+- Entering the URL in the address bar of your web browser (Chrome, Firefox...)
+- command-line cURL : `curl -X GET "https://swapi.info/api/people/35"`
+
+
+
+Test the web service requests below:
+
+- Look at the response on the right side of your screen
+- What are the similarities between the responses?
 
 
 #### Carbon intensity
 
-Webservice sur les émissions carbone du Royaume-Uni
+Web service on carbon emissions in the United Kingdom
 
 - [Documentation](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0){target="_blank"}
-  - [Les endpoints](https://carbon-intensity.github.io/api-definitions/#intensity){target="_blank"}
-  - [Les schémas](https://carbon-intensity.github.io/api-definitions/#schemas){target="_blank"}
+  - [Endpoints](https://carbon-intensity.github.io/api-definitions/#intensity){target="_blank"}
+  - [Schemas](https://carbon-intensity.github.io/api-definitions/#schemas){target="_blank"}
 
-Requêtes à tester :
+Requests to test:
 
 - [ ] `api.carbonintensity.org.uk/intensity`
 - [ ] `api.carbonintensity.org.uk/intensity/date/{date}` 
-  - en remplaçant *{date}* par la date de votre choix au format *YYYY-MM-DD*
+  - replacing *{date}* with the date of your choice in the format *YYYY-MM-DD*
 
-#### Rennes Métropole en accès libre
+#### Rennes Métropole open data
 
-Webservice [Rennes Métropole en accès libre](https://data.rennesmetropole.fr/explore/){target="_blank"}
+[Data Rennes Métropole](https://data.rennesmetropole.fr/explore/){target="_blank"}
 
-Récupérez les données de divers datasets :
+Retrieve data from various datasets: `https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/<dataset_id>/records`
 
-- [ ] `https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/<dataset_id>/records`
-  - Remplacez `<dataset_id>` par une des valeurs ci-après
+Replace `<dataset_id>` with one of the following values:
+
 - [ ] *menus-cantines*
-- [ ] *eco-counter-data*
-- [ ] *resultats-des-elections-municipales-2020-a-acigne*
-- [ ] Ajoutez à la fin de l'URI le paramètre *rows* 
-    - pour faire varier le nombre de lignes que vous recevez 
-    - ajoutez simplement `?rows=N` avec N le nombre de lignes
+- [ ] *arbre*
+- [ ] *aire_jeu*
+- [ ] *jeux_aires_de_jeux*
 
 
-#### Webservice de votre projet
+To vary the number of rows you receive:
 
-- [ ] Explorez quelques méthodes utiles du webservice de votre projet informatique (voyez cela avec votre tuteur).
+- simply add to the end of the URI `?rows=N` , where N is the number of rows
 
-### Requêtes avancées
 
-Après avoir exploré quelques webservices externes, vous allez travaillez avec un webservice hébergé à l'ENSAI spécialement créé pour ces TP.
+#### Your project's web service
 
-Toujours avec **Insomnia** :
+- [ ] Explore some useful methods of your IT project's web service (discuss this with your tutor).
 
-- [ ] Faites une requête avec la méthode **GET** sur la ressource suivante. Qu'obtenez-vous ? 
-    - `web-services.domensai.ecole/attack`
-- [ ] Faites une requête avec la méthode **GET** sur la ressource suivante. Qu'obtenez-vous ? 
-    - `web-services.domensai.ecole/attack/{identifier}`
-    - en remplaçant *{identifier}* par le nom ou l'id d'une attaque que vous venez de récupérer
-- [ ] Faites une requête avec la méthode **GET** sur la ressource suivante. Qu'obtenez-vous ?
-    - `web-services.domensai.ecole/attack?type_attack_id={id_type}`
-    - en remplaçant *{id_type}* par un entier entre 1 et 4. 
-- [ ] Faites une requête avec la méthode **GET** sur la ressource suivante
-    -  `web-services.domensai.ecole/attack?type_attack_name={type attack}`
-    -  en remplaçant *{type attack}* par  *special attack* ou *physical attack* ou *fixed damage* ou *status attack*
-- [ ] Faites une requête de type **POST** sur la ressource suivante 
-    - `web-services.domensai.ecole/attack` 
-    - Cliquez sur **Body**, puis **JSON**, coller le texte ci-dessous, puis remplacez les valeurs des attributs pour créer votre propre attaque
-  ```{.json}
-  {
-    "name": "An awesome name",
-    "attack_type": "physical attack"/"physical attack"/"fixed damage"/"status attack",
-    "power": 0,
-    "accuracy": 0,
-    "element": "An awesome element",
-    "description": "An awesome description"
-  }
-  ```
-- [ ] Faites une requête avec la méthode **GET** sur la ressource suivante
-    - `web-services.domensai.ecole/attack/{identifier}`
-    - en remplaçant *{identifier}* par le nom ou l'id de l'attaque que vous venez de créer
+
+### Advanced queries
+
+You will use a web service created with FastAPI specifically for this purpose.
+
+::: {.callout-tip}
+If you want to create this web service yourself using this code : <https://github.com/ludo2ne/ENSAI-2A-WS-TP3/>{target="_blank"}
+
+- [ ] Create a PostgreSQL service
+- [ ] Using cloudBeaver create and pop table
+- [ ] Create a Vscode-python service
+  - Network access : For example, open port 5000
+  - Clone the repo and create *.env* file to connect your PostgreSQL database
+- [ ] `python main.py`
+:::
+
+```{.txt filename=".env"}
+PASSWORD=
+HOST=
+PORT=5432
+DATABASE=
+USER=
+```
+
+
+After exploring a few external web services, you will work with a web service created specifically for these practical exercises.
+
+Still using your API Client, query the following endpoints:
+
+- [ ] `GET /attack`
+- [ ] `GET /attack/<identifier>`
+  - replacing *identifier* with the name or ID of an attack you have just retrieved
+- [ ] `GET /attack?type_attack_id=<id_type>`
+  -  replacing *id_type* with an integer between 1 and 4
+- [ ] `GET /attack?type_attack_name=<type attack>`
+  - type attack: *special attack*, *physical attack*, *fixed damage* or *status attack*
+
+::: {.callout-warning}
+If you have any issues with the API Client, you can connect directly to Swagger (see instructions below) to execute requests.
+:::
+
+Let's create an attack:
+
+- [ ] `POST /attack`
+  - Click on **Body**, then **application/json**
+  - Paste the text below
+  - Custom your own attack replacing attribute values
+  - attack_type: *physical attack* / "special attack" / "fixed damage" / "status attack"
+
+```{.json filename="application/body"}
+{
+  "name": "<An awesome name>",
+  "attack_type": "<An awesome type>",
+  "power": 0,
+  "accuracy": 0,
+  "element": "<An awesome element>",
+  "description": "<An awesome description>"
+}
+```
+
+- [ ] Check that your attack has been created successfully.
+  - `GET /attack/<attack_name>`
+  - replacing attack_name with the name of the attack you just created
 
 
 ### Swagger
 
-Dans votre navigateur web allez sur la page <http://web-services.domensai.ecole/docs>{target="_blank"}.
+In your web browser, go to the endpoint `/docs`.
 
-Cela vous amène sur la page swagger du webservice. Cette page recense tous les endpoints du webservice, et comment les utiliser. Essayez via l'interface de :
+This will take you to the webservice's swagger page. This page lists all the webservice endpoints and how to use them. Try using the interface to:
 
-- modifier une attaque
-- supprimer une attaque
-- afficher une liste de pokémon
-- ajouter un pokémon
+- modify an attack
+- delete an attack
+- display a list of Pokémon
+- add a Pokémon
 
-## Webservice en Python
+Further documentation is available at the `/redoc` endpoint.
 
-Aujourd'hui, les plus grands consommateurs de webservices sont les machines. Nous allons voir comment automatiser des appels à un webservice en Python.
+
+
+
+
+## Python Webservice
+
+Today, the biggest consumers of web services are machines. We will see how to automate calls to a web service in Python.
 
 ::: {.callout-note}
+Today, many web applications (e.g. Facebook, Netflix, Dailymotion, Uber) use what are known as "micro services" architectures. 
 
-Aujourd'hui beaucoup d'applications web (par exemple Facebook, Netflix, Dailymotion, Uber) utilisent ce que l'on appelle des architectures "micro services". 
+Communication between their application components (e.g. between their human-machine interface (HMI) and their internal services) is carried out via single-purpose web services. This allows modules to be decoupled from one another, as they communicate solely via HTTP requests or event management systems. They only need to know how to communicate with one another, not the internal workings of other modules. 
 
-Les échanges entre leurs composants applicatifs (par exemple entre leur interface homme machine (IHM) et leurs services internes) se font via des webservices à but unique. Cela permet d'avoir des modules découplés les uns des autres car ils communiquent uniquement via des requêtes HTTP, ou avec des systèmes de gestion d'évènements. Ils ont seulement à savoir comment ils doivent communiquer les uns avec les autres et pas le fonctionnement interne des autres modules. 
-
-Cela demande de bien documenter ses webservices et de gérer ÉNORMÉMENT d'applications en parallèle. Amazon, Google, Facebook peuvent se le permettre, par contre une petite entreprise de 10 employés non.
+This requires thorough documentation of web services and the management of a HUGE number of applications in parallel. Amazon, Google and Facebook can afford to do this, but a small company with 10 employees cannot.
 :::
 
-### La bibliothèque requests
+### Requests Library
 
-Le principe va rester le même que faire une requête à la main avec *Insomnia*. Vous allez utiliser la bibliothèque [**requests**](https://requests.readthedocs.io/en/master/){target="_blank"} pour avoir seulement à remplir les parties intéressantes de vos requêtes.
+The principle remains the same as making a request manually with an API client. You will use the [**requests**](https://requests.readthedocs.io/en/master/){target="_blank"} library so that you only have to fill in the relevant parts of your requests.
 
-Pour faire une requête **GET** vous allez simplement faire : 
+To make a **GET** request, simply do the following:
 
 ```{.python}
 import requests
 
-response = requests.get("http://mon-webservice.com") 
+response = requests.get("http://my-webservice.com") 
 ```
 
-Exécuter cette ligne de code va :
+Executing this line of code will:
 
-1. Envoyer la requête *GET* au serveur que vous contactez
-2. Stockez le résultat dans la variable *response*
+1. Send the *GET* request to the server you are contacting
+2. Store the result in the *response* variable
 
-Cette variable *response* est un objet, et comme tout objet elle a des attributs et des méthodes, par exemple : 
+This *response* variable is an object, and like any object, it has attributes and methods, for example:
 
-- `response.text` : le corps du résultat sous forme de string en laissant *requests* inférer l'encodage (cela fonctionne souvent) 
-  - Problème : vous avez un string, et ce n'est pas le meilleur format de données à manipuler
-- **`response.json()`** : le corps du résultat comme un dictionnaire. 
-  - C'est ce que vous allez faire le plus souvent car le format json est un format simple à manipuler
-- `response.encoding` : l'encoding de votre requête (utile en cas de problème d'encoding)
-- **`response.status_code`** : le statut de la requête. les principaux sont :
-  - 200 : retour général pour dire que tout c'est bien passé
-  - 201 : ressource créée avec succès
-  - 202 : requête acceptée, sans garantie du résultat (par exemple dans un système asynchrone)
-  - 400 : erreur de syntaxe dans la requête
-  - 401 : erreur, une authentification est nécessaire
-  - 403 : la ressource est interdite (droits insuffisants)
-  - 404 : ressource non trouvée
-  - 405 : une mauvaise méthode http a été utilisée
-  - 500 : erreur côté serveur
-  - 503 : service temporairement indisponible
+- `response.text`: the body of the result in string form, letting *requests* infer the encoding (this often works)
+- Problem: you have a string, and this is not the best data format to work with
+- **`response.json()`**: the body of the result as a dictionary. 
+  - This is what you will do most often because the JSON format is easy to manipulate
+- `response.encoding`: the encoding of your request (useful in case of encoding problems)
+- **`response.status_code`**: the status of the request. The main ones are:
 
-Pour résumer, les résultats :
 
-- *2xx* indiquent un succès
-- un résultat *4xx* ou *5xx* un problème
+| Code | Description                                              |
+|------|----------------------------------------------------------|
+| 200  | General return to say that everything went well          |
+| 201  | Resource created successfully                            |
+| 202  | Accepted, with no guarantee of the result (asynchronous system) |
+| 400  | Bad request (Syntax error)                               |
+| 401  | Error, authentication required                           |
+| 403  | Resource prohibited (insufficient rights)                |
+| 404  | Resource not found                                       |
+| 405  | Method Not Allowed                                       |
+| 500  | Server-side error                                        |
+| 503  | Service temporarily unavailable                          |
+
+To summarise, the results:
+
+- :white_check_mark: *2xx* (success): the client's request was successfully received, understood, and accepted
+- :x: *4xx* (Client Errors): this could be due to incorrect syntax, unauthorized access, or the resource not being found
+- :x: *5xx* (Server Errors): the server failed to fulfill a valid request
+
 
 ### Exemples d'utilisation
 
-Le principe sera toujours le même :
+The principle will always be the same:
 
-1. Vous lancez la requête
-2. Vous vérifiez si le statut est OK
-3. Vous récupérez le json et traitez le résultat (affichage, convertion en dataframe...)
+1. You launch the query
+2. You check if the status is OK
+3. You retrieve the JSON and process the result (display, conversion to dataframe, etc.)
 
 :::{.panel-tabset .nav-pills}
 
-#### Modèle
+#### Template
 
 ```{.python}
 import requests
 import json
 
-response = requests.get("http://mon-webservice.com")
+response = requests.get("http://my-webservice.com")
 
 if response.status_code != 200:
     raise Exception(
@@ -263,71 +316,55 @@ else:
 
 :::
 
-### Mise à jour de votre dépôt git
+### Tour lab repo
 
 ::: {.callout-caution}
-Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la section [Clone du dépôt du TP2](./tp2.qmd#clone-du-dépôt){target="blank"}.
+You will now code on the fork you created in TP2. If you did not do so last time, [create a fork](./tp2.qmd#Fork-and-Clone){target="blank"}.
 :::
 
-- [ ] Ouvrez **Visual Studio Code**
-- [ ] Ouvrez votre dépôt local
-  - File > Open Folder
-  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP2`
-  - Cliquez [une seule fois]{.underline} sur :file_folder: ENSAI-2A-complement-info-TP
-  - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
+- [ ] Log in to the datalab
+- [ ] Open a **VSCode-python** service
+  - init script: <https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh>
+  - Open port 5000
+- [ ] Clone your repo
+- [ ] Open Folder `/home/onyxia/work/<repo_name>`
+- [ ] To ensure that everyone starts at the same level, position yourself on the branch *tp3-base*
+  - `git switch tp3-base`
 
-::: {.callout-important}
-- [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
-  - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
-
-:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
-:::
-
-- [ ] Ouvrez le *Git Bash* intégré dans VS Code
-  - Terminal > New Terminal (ou CTRL + ù)
-  - Passez sur la branche du TP3 et mettez-là à jour
-    - si vous ne l'avez pas fait à la fin du dernier TP, commencer par un *add* et un *commit*
-    - `git switch tp3-base`
-    - `git pull`
-
-
-::: {.callout-important}
-Pour pour vérifier que tout fonctionne :
-
-- [ ] lancez les tests unitaires du package business_object
-  - dans le terminal : `python -m pytest -v src/tests/test_business_object/`
-- [ ] lancez le main : `python src/main.py`
-
-S'il vous manque des packages, suivez les instructions du README.
+::: {.callout-important title="Verify that everything is working"}
+- [ ] Run the unit tests for the business_object package
+  - `python -m pytest -v src/tests/test_business_object/`
+- [ ] Run the main program : `python src/main.py`
 :::
 
 
 ### Mes premières requêtes en Python
 
-- [ ] Ouvrez le fichier `/src/client/attack_client.py` 
-- [ ] Complétez la méthode *get_attack(int)* qui :
-  - prend en paramètre un id d'attaque 
-  - va chercher toutes les informations disponibles sur cette attaque
-  - retourne un objet de type **AbstractAttack**
+- [ ] Open the file `/src/client/attack_client.py`
+- [ ] Complete the *get_attack(int)* method, which:
+  - takes an attack ID as a parameter
+  - retrieves all available information about this attack
+  - returns an object of type **AbstractAttack**
 
 ::: {.callout-tip}
-Pour vous aider, observez la méthode *instantiate_attack()* de la classe **AttackFactory** (business_object).
+To help you, take a look at the *instantiate_attack()* method of the **AttackFactory** class (business_object).
 
-Regardez le fonctionnement de cette méthode et utilisez la.
+See how this method works and use it.
 :::
 
-- [ ] Créez la méthode *get_all_attacks()* 
-  - retourne la liste de tous les attaques disponibles sous la forme d'une liste d'objets **AbstractAttack**
-- [ ] Vérifiez que vos 2 méthodes fonctionnent
-    - Lancez les tests unitaires du package *test_client*
+- [ ] Create the *get_all_attacks()* method
+- Returns the list of all available attacks in the form of a list of **AbstractAttack** objects
+- [ ] Verify that your two methods are functioning
+- Run the unit tests for the *test_client* package
 
 
-### Les requêtes plus complexes
+### More complex requests
 
-Pour le moment nous nous sommes concentrés sur les requêtes **GET** (simple lecture des données). 
+So far, we have focused on **GET** queries (simple data reading). 
 
-Mais il est bien sûr possible d'en faire d'autres. Par exemple pour les requêtes **POST**, **PUT** ou **DELETE**.
-Voici la syntaxe :
+But it is of course possible to do others. For example, **POST**, **PUT** or **DELETE** queries.
+
+Here is the syntax:
 
 ```{.python}
 post = requests.post("http://example.org", json = {'key':'value'})
@@ -335,75 +372,73 @@ put = requests.put("http://example.org", json = {'key':'value'})
 delete = requests.delete("http://example.org")
 ```
 
-Comme vous le voyez, les syntaxes sont très proches de la syntaxe de la méthode **GET**. Nous avons seulement ajouté pour certaines requêtes des données. C'est ce que vous avez fait plus tôt avec Insomnia. Pour passer des paramètres à votre requête je vous conseille néanmoins de préférer ce genre de syntaxe :
+As you can see, the syntaxes are very similar to the syntax of the **GET** method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, I recommend using this type of syntax:
 
 ```{.python}
+# Prepare Arguments
 url = "http://example.org"
-data = {'key':'value'}
-post = requests.post(url, json = data)
+headers = {'accept': 'application/json'}
+data = {'key1':'value1', 'key2':'value2'}
+
+# Launch Request
+post = requests.post(url, headers=headers, json = data)
 ```
 
-Fonctionnellement, c'est la même chose, mais il vaut mieux définir les éléments hors de la requête pour ne pas se perdre.
+Functionally, it's the same thing, but it's better to define the elements outside the query so you don't get lost.
 
-Il est également possible de passer des entêtes http en ajoutant le paramètre `headers` à la fonction utilisée.
 
-```{.python}
-headers = {'accept': 'application/xml'}
-requests.get('http://example.org', headers=headers)
-```
+### Advanced requests in Python
 
-### Requêtes avancées en python
-
-Dans le module `attack_client.py` implémentez les méthodes suivantes : 
+In the `attack_client.py` module, implement the following methods:
 
 - [ ] *create_attack(AbstractAttack)*
-  - prend une **AbstractAttack** en paramètre
-  - crée une nouvelle ressource dans notre webservice
+  - takes an **AbstractAttack** as a parameter
+  - creates a new resource in our web service
 - [ ] *update_attack(AbstractAttack)*
-  - prend une **AbstractAttack** en paramètre
-  - modifie la ressource associée dans notre webservice
+  - takes an **AbstractAttack** as a parameter
+  - modifies the associated resource in our web service
 - [ ] *delete_attack(AbstractAttack)*
-  - prend une **AbstractAttack** en paramètre
-  - supprime la ressource associée dans notre webservice
-- [ ] Testez vos méthodes
+  - takes an **AbstractAttack** as a parameter
+  - deletes the associated resource in our web service
+- [ ] Test your methods
 
-## Codez un webservice en Python
+## Code a web service in Python
 
 ::: {.callout-note}
-Jusqu'à maintenant vous avez utilisé des webservices existants. Maintenant vous allez créer votre propre webservice.
+Until now, you have been using existing web services. Now you are going to create your own web service.
 :::
 
-Avec les outils à disposition aujourd'hui, il est facile de faire un webservice soit même. 
+With the tools available today, it is easy to create a web service yourself.
 
-Il y a trois leaders sur le marché actuellement pour faire un webservice REST en Python :
+There are currently three market leaders for creating a REST web service in Python:
 
 - [Django REST](https://www.django-rest-framework.org/){target="_blank"}
 - [FlaskRESTful](https://flask-restful.readthedocs.io/en/latest/){target="_blank"}
 - [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
 
-Chacun à ses avantages et inconvénients. Django est sûrement le plus complet mais le plus lourd, Flask et FastApi sont plus légers et rapides à mettre en place. Le gros avantage de **FastApi** est la simplicité pour créer une page swagger de documentation.
+Each has its advantages and disadvantages. Django is certainly the most comprehensive but also the heaviest, while Flask and FastApi are lighter and quicker to set up. The big advantage of **FastApi** is the simplicity with which you can create a Swagger documentation page.
 
-Voici le code minimal d'un webservice REST avec FastAPI ([documentation officielle](https://fastapi.tiangolo.com/tutorial/first-steps/){target="_blank"})
+Here is the minimal code for a REST web service with FastAPI ([official documentation](https://fastapi.tiangolo.com/tutorial/first-steps/){target="_blank"})
 
-```{.python}
+```{.python filename="app.py"}
 from fastapi import FastAPI
 
-# On instancie le webservice
+# Instantiate the web service
 app = FastAPI()
 
-# Création d'un enpoint qui répond à la méthode GET à l'adresse "/" qui va retourne le message "Hello World"
+# Create an endpoint that responds to the GET method at the address "/" and returns the message "Hello World".
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
-# Lancement de l'application sur le le port 80
+# Launching the application on port 5000
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    uvicorn.run(app, host="0.0.0.0", port=5000)
 ```
 
-Appeler la ressource "/" du webservice va retourner le json : `{"message": "Hello World"}`
+Calling the "/" resource of the web service will return the JSON:  `{"message": "Hello World"}`
 
-Voici un exemple plus complet inspiré de la [documentation officielle](https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing){target="_blank"} (vous voulez créer un webservice pour exposer vos **todos**)
+Here is a more complete example inspired by the [official documentation](https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing){target="_blank"} (you want to create a web service to expose your **todos**)
 
 ```{.python code-line-numbers="true"}
 from fastapi import FastAPI
@@ -423,12 +458,12 @@ todos = {1 : Todo(1,"Step 1 : Learn python")
         , 3 : Todo(3,"Step 3 : ???")
         , 4 : Todo(4,"Step 4 : Profit")}
 
-# Définition du endpoint get /todo
+# Endpoint GET /todo
 @app.get("/todo")
 async def get_all_todo():
     return todos.values()
 
-# Définition du endpoint get /todo/{id_doto}
+# Endpoint GET /todo/{id_doto}
 @app.get("/todo/{id_toto}")
 async def get_todo_by_id(id_toto : int = Path(..., description = "The `id` of the todo you want to get")):
     if todos.get[id_toto] :
@@ -436,7 +471,7 @@ async def get_todo_by_id(id_toto : int = Path(..., description = "The `id` of th
     else :
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND)
 
-# Définition du endpoint post /todo
+# Endpoint POST /todo
 @app.post("/todo", todo, status_code=201)
 async def post_todo(todo:Todo):
     if not todos.get(todo.id):
@@ -445,18 +480,18 @@ async def post_todo(todo:Todo):
         todos[todo.id] = todo
         return todo
 
-# Lancement de l'application sur le le port 8XXX avec XXX les 3 derniers numéros de votre id
+# Launch the web service
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8XXX)
+    uvicorn.run(app, host="0.0.0.0", port=5000)
 ```
 
-Ce code va créer un web service qui va répondre aux requêtes suivantes :
+This code will create a web service that will respond to the following requests:
 
-- `GET host/todo` : retourne toutes les tâches à faire
-- `GET host/todo/{todo_id}` : retourne la tâche derrière l'id en paramètre
-- `POST host/todo/` : ajoute la tâche passée en corps de la rêquete
+- `GET host/todo`: returns all tasks to be done
+- `GET host/todo/{todo_id}`: returns the task behind the ID in the parameter
+- `POST host/todo/`: adds the task passed in the body of the request
 
-FastAPI sérialise pour vous les objets que vous retournez. Donc pas besoin de mettre en forme vos données. Néanmoins, pour plus de clarté, vous pouvez utiliser des classes `BaseModel`. Ce sont des classes qui ne vont contenir que des attributs que vous pouvez déclarer sans constructeur :
+FastAPI serialises the objects you return for you. So there's no need to format your data. However, for clarity, you can use `BaseModel` classes. These are classes that will only contain attributes that you can declare without a constructor:
 
 ```{.python}
 class Todo(BaseModel):
@@ -464,9 +499,9 @@ class Todo(BaseModel):
     content : str
 ```
 
-Ces classes peuvent être utilisées en sortie de votre webservice, comme en entrée (ligne 33). FastApi va faire pour vous tout une série de contrôles sur les types des variables et renvoyer une erreur au client si sa requête n'est pas bien formatée.
+These classes can be used as output from your web service, as well as input (line 33). FastApi will perform a series of checks on the variable types and return an error to the client if their request is not formatted correctly.
 
-Fondamentalement un webservice est une application comme les autres, mais au lieu d'avoir une interface graphique comme on en a l'habitude en tant qu'humain, l'interface est une interface HTTP qui va accepter des requêtes et envoyer des résultats. Ainsi le diagramme de séquence des différentes couches qui vont être impliquées dans une requête **GET** pour récupérer une ressource va ressembler à cela. Reprenons le modèle 3 couches vu en cours.
+Basically, a web service is an application like any other, but instead of having a graphical interface as we humans are used to, the interface is an HTTP interface that will accept requests and send results. Thus, the sequence diagram of the different layers that will be involved in a GET request to retrieve a resource will look like this. Let's go back to the 3-layer model we saw in class.
 
 ```{mermaid}
 sequenceDiagram
@@ -474,37 +509,37 @@ sequenceDiagram
     participant R as Webservice
     participant S as Service
     participant D as DAO
-    participant B as Base de données
-    U ->> R : HTTP requête
-    R ->> S : get_by_id()
-    S ->> D : find_by_id()
-    D ->> B : requête SQL (psycopg)
-    B ->> D : curseur SQL (psycopg)
-    D ->> S : instance objet metier
-    S ->> R : instance objet metier
-    Note over S,R: l'objet est potentiellement altéré
-    R ->> U : Réponse HTTP
+    participant B as Database
+    U ->> R: HTTP request
+    R ->> S: get_by_id()
+    S ->> D: find_by_id()
+    D ->> B: SQL query (psycopg)
+    B ->> D: SQL cursor (psycopg)
+    D ->> S: business object instance
+    S ->> R: business object instance
+    Note over S,R: the object is potentially altered
+    R ->> U: HTTP response
 ```
 
 ### Mon premier webservice 
 
-- [ ] Ouvrez le fichier `app.py`
-- [ ] Lancez ce fichier
-- [ ] Testez les requêtes suivantes : 
-  - `GET http://localhost/hello`
-  - `GET http://localhost/hello/everybody`
-- [ ] Arrêtez le webservice
-  - Cliquez dans le terminal de VSCode puis CTRL + C
+- [ ] Open the `app.py` file
+- [ ] Run this file
+- [ ] Test the following requests:
+- `GET http://localhost/hello`
+- `GET http://localhost/hello/everybody`
+- [ ] Stop the web service
+- Click in the VSCode terminal, then press CTRL + C
 
 
 
-En utilisant la liste de personnages définie dans le fichier *app.py*, ajoutez les endpoints suivants :
+Using the list of characters defined in the *app.py* file, add the following endpoints:
 
-- [ ] `GET localhost:80/character` : retournera un json contenant une liste des personnages
-- [ ] `PUT localhost:80/character/{id}` qui modifiera le nom du personnage à l'index `{id}` à partir d'un body
-- [ ] `DELETE localhost:80/character/{id}` qui supprimera l'élément à l'index `{id}`
+- [ ] `GET localhost:80/character`: will return a JSON containing a list of characters
+- [ ] `PUT localhost:80/character/{id}`, which will modify the name of the character at index `{id}` from a body
+- [ ] `DELETE localhost:80/character/{id}`, which will delete the item at index `{id}`
 
-Pour tester les endpoints nécessitant un body json, vous pouvez utiliser :
+To test endpoints requiring a JSON body, you can use:
 
 ```{.json}
 {
@@ -513,4 +548,13 @@ Pour tester les endpoints nécessitant un body json, vous pouvez utiliser :
 }
 ```
 
-Savoir utiliser un webservice est essentiel, car ils représentent une vaste source de données accessibles en temps réel. Les webservices permettent de collecter des informations provenant de multiples sources, comme des APIs publiques ou des systèmes internes, sans avoir besoin de télécharger manuellement des fichiers. À vous ensuite de convertir ces données dans le format que vous préférez.
+
+## End of the Lab {.unnumbered}
+
+Knowing how to use a web service is essential, as they represent a vast source of data accessible in real time. Web services allow you to collect information from multiple sources, such as public APIs or internal systems, without having to manually download files. It is then up to you to convert this data into your preferred format.
+
+
+::: {.callout-important}
+- Push your code to GitHub
+- Pause or delete your datalab services
+:::
