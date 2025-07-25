@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ludovic Deneuville, Rémi Pépin">
-<meta name="description" content="Slides">
+<meta name="author" content="Ludovic Deneuville">
 
-<title>Analyse fonctionnelle – Projet info 2A</title>
+<title>Tools for labs – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -44,9 +78,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-4c655423fa628e8db4e72bbd8cc85dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-30e136824c92c3357f4818064204e119.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -393,15 +424,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
     <h2 id="toc-title">On this page</h2>
    
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#exercices-repository" id="toc-exercices-repository" class="nav-link" data-scroll-target="#exercices-repository">Exercices repository</a></li>
+  <li><a href="#datalabs" id="toc-datalabs" class="nav-link" data-scroll-target="#datalabs">Datalabs</a>
   <ul class="collapse">
-  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">Plan</a></li>
-  <li><a href="#analyse-fonctionnelle" id="toc-analyse-fonctionnelle" class="nav-link" data-scroll-target="#analyse-fonctionnelle">Analyse fonctionnelle</a></li>
-  <li><a href="#architecture-logicielle" id="toc-architecture-logicielle" class="nav-link" data-scroll-target="#architecture-logicielle">Architecture logicielle</a></li>
+  <li><a href="#custom-service" id="toc-custom-service" class="nav-link" data-scroll-target="#custom-service">Custom service</a></li>
+  </ul></li>
+  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a>
+  <ul class="collapse">
+  <li><a href="#open-folder" id="toc-open-folder" class="nav-link" data-scroll-target="#open-folder">Open Folder</a></li>
+  </ul></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="analyse-fonctionnelle-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -413,14 +452,9 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analyse fonctionnelle</h1>
+<h1 class="title">Tools for labs</h1>
 </div>
 
-<div>
-  <div class="description">
-    <a href="analyse-fonctionnelle-slides.html">Slides</a>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -428,7 +462,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ludovic Deneuville, Rémi Pépin </p>
+             <p>Ludovic Deneuville </p>
           </div>
   </div>
     
@@ -441,272 +475,171 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="plan" class="level2">
-<h2 class="anchored" data-anchor-id="plan">Plan</h2>
-<ol type="1">
-<li>L’analyse fonctionnelle
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <ul>
-<li>Définition</li>
-<li>Diagrammes UML</li>
+<li>In the lab instructions, <u><strong>you have to replace</strong></u> <code>&lt;...&gt;</code> with an appropriate value.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>git commit -m "&lt;explicit message&gt;"</code></li>
+<li><span class="emoji" data-emoji="arrow_right">➡️</span> <code>git commit -m "fix: log in error"</code></li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Don’t skip a step that didn’t work, telling yourself that it doesn’t matter. This may cause problems later on.</li>
+</ul>
+</section>
+<section id="exercices-repository" class="level2">
+<h2 class="anchored" data-anchor-id="exercices-repository">Exercices repository</h2>
+<ul>
+<li><a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP" target="_blank">ENSAI-2A-complement-info-TP</a></li>
+<li>Create a <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork" target="_blank">fork</a> of this repository</li>
+</ul>
+</section>
+<section id="datalabs" class="level2">
+<h2 class="anchored" data-anchor-id="datalabs">Datalabs</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You require resources to start your services, the datalabs are available for that purpose.</p>
+<p>Once you have completed your tasks, make sure to <u>free up these resources</u> by deleting or pausing your services.</p>
+</div>
+</div>
+<ul>
+<li>SSPCloud (INSEE): <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
+<li>GENES: <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
+</ul>
+<section id="custom-service" class="level3">
+<h3 class="anchored" data-anchor-id="custom-service">Custom service</h3>
+<p>URLs to launch custom VSCode-python services for:</p>
+<ul>
+<li><a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.17&amp;s3=region-79669f20&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FTP0-datalab%2Frefs%2Fheads%2Fmain%2Ftestinit.sh»&amp;networking.user.enabled=true&amp;autoLaunch=true">SSPCloud</a></li>
+<li>GENES Datalab</li>
+</ul>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p>In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:</p>
+<ul>
+<li>by installing additional Python packages</li>
+<li>by modifying certain extensions
+<ul>
+<li>using <span class="emoji" data-emoji="heavy_plus_sign">➕</span> Ruff instead of <span class="emoji" data-emoji="heavy_minus_sign">➖</span> Flake8 to format the code</li>
 </ul></li>
-<li>L’architecture logicielle
+<li>by opening a specific port to deploy an API</li>
+</ul>
+<p>There are several ways to customise a service:</p>
 <ul>
-<li>Définition</li>
-<li>Séparation des responsabilités</li>
+<li>Launch the catalogue service, then modify it by executing commands manually</li>
+<li>Use an initialisation script that will run immediately after the catalogue service is launched
+<ul>
+<li>In the form before Launch: Initialization scripts</li>
 </ul></li>
-</ol>
-</section>
-<section id="analyse-fonctionnelle" class="level2 hide-html-render">
-<h2 class="anchored" data-anchor-id="analyse-fonctionnelle">Analyse fonctionnelle</h2>
-<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-<div class="notes">
-<p>Les questions qu’il faut se poser avant de commencer :</p>
+<li>Create and use a Docker image based on the original service
 <ul>
-<li>Qu’est ce qu’on fait ? Qui le fait</li>
-<li>Besoins du client</li>
-<li>Fonctionnalités requises / optionnelles / bonus</li>
-<li>Bien gérer les priorités</li>
-<li>Répartition des rôles dans l’équipe</li>
-</ul>
-</div>
-</section>
-<section id="phases-dun-projet" class="level3">
-<h3 class="anchored" data-anchor-id="phases-dun-projet">Phases d’un projet</h3>
-<ul>
-<li>Analyse des besoins</li>
-<li>Planification</li>
-<li>Conception</li>
-<li>Développements</li>
-<li>Recette</li>
-<li>Déploiement</li>
-<li>Maintenance</li>
-</ul>
-<div class="notes">
-<p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
-</div>
-<hr>
-<p><a href="./img/balancoire_agile.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/balancoire_agile.png" class="img-fluid"></a></p>
-<div class="notes">
-<ul>
-<li>Important de discuter</li>
-<li>Reformulez</li>
-<li>Utilisez des mots simples</li>
-<li>Imaginez que vous expliquez le projet à vos grands parents</li>
-<li>parler doc, arrivée sur poste, initiatives</li>
-</ul>
-</div>
-</section>
-<section id="cest-quoi-lanalyse-fonctionnelle" class="level3">
-<h3 class="anchored" data-anchor-id="cest-quoi-lanalyse-fonctionnelle">C’est quoi l’analyse fonctionnelle ?</h3>
-<ul>
-<li>Première étape de tous les projets</li>
-<li>Détermine les fonctions, acteurs du produit pour répondre aux besoins du client</li>
-<li>Diagrammes pour échanger avec le client</li>
-<li>Priorise les travaux</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Permet de s’approprier le sujet</li>
-<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
-<li>Cette phase sera la première partie du rapport intermédiaire</li>
-</ul>
-</div>
-</section>
-<section id="les-questions-à-se-poser" class="level3">
-<h3 class="anchored" data-anchor-id="les-questions-à-se-poser">Les questions à se poser</h3>
-<ul>
-<li>Quels sont les types d’utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client…) ?</li>
-<li>Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?</li>
-<li>Comment fonctionnent les processus de l’application ?</li>
-<li>Quels sont les diagrammes à utiliser ?</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Pour les premières questions diagramme de cas d’utilisation</li>
-<li>Processus -&gt; diagramme d’activité</li>
-<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
-<ul>
-<li>Commentez vos diagrammes</li>
+<li>In the form before Launch: Service &gt; Use a custom image</li>
 </ul></li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install inquirerPy psycopg2-binary pytest python-dotenv tabulate</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">code-server</span> <span class="at">--install-extension</span> charliermarsh.ruff</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">code-server</span> <span class="at">--uninstall-extension</span> ms-python.flake8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Opening the port to deploy the API must be done before launching the service; after that, it is too late, and you will have to delete it and start over.</p>
+</div>
 </div>
 </section>
-<section id="les-diagrammes-uml" class="level3">
-<h3 class="anchored" data-anchor-id="les-diagrammes-uml">Les diagrammes UML</h3>
-<ul>
-<li>Cours de 1A</li>
-<li>UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Pas le temps de vous refaire un cours</li>
-<li>Il y a des ressources à la bibliothèque et sur internet</li>
-<li>Demandez à votre tuteur ce qu’il attend</li>
-</ul>
+</section>
+<section id="vscode" class="level2">
+<h2 class="anchored" data-anchor-id="vscode">VSCode</h2>
+<section id="open-folder" class="level3">
+<h3 class="anchored" data-anchor-id="open-folder">Open Folder</h3>
+<p>File &gt; Open Folder &gt; <code>/home/onyxia/work/&lt;repo_name&gt;</code> &gt; OK</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Open Folder allows you to determine the root folder you are currently in.</p>
+<p>To find out the current folder, look at the top left of the <u>explorer</u> for the parent folder.</p>
+<p>This choice is very important because imports between Python modules use relative paths.</p>
+</div>
 </div>
 </section>
-<section id="questions" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="questions">Questions ?</h3>
-<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
 </section>
-<section id="architecture-logicielle" class="level2">
-<h2 class="anchored" data-anchor-id="architecture-logicielle">Architecture logicielle</h2>
-<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="img-fluid"></a></p>
-<section id="cest-quoi-larchitecture-logicielle" class="level3">
-<h3 class="anchored" data-anchor-id="cest-quoi-larchitecture-logicielle">C’est quoi l’architecture logicielle ?</h3>
-<ul>
-<li>Le pendant technique de l’analyse fonctionnelle</li>
-<li>Maintenant que l’on a le qui et quoi, on détermine le comment</li>
-<li>On dessine le code de notre application</li>
-<li>Vision macro de notre application (agencement des grandes pièces)</li>
-</ul>
-<div class="notes">
-<p>Pour le moment on ne fait pas encore de code.</p>
-<p>On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).</p>
-<p>Par exemple dans votre cas vous allez sûrement avoir :</p>
-<ul>
-<li>Un code python qui tourne sur votre ordinateur</li>
-<li>Un webservice externe qui vous fournis des données</li>
-<li>Une base de données postgres.</li>
-</ul>
-<p>C’est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer</p>
-</div>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture">Pourquoi c’est important : parallèle avec l’architecture</h3>
-<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="img-fluid"></a></p>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture-1" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture-1">Pourquoi c’est important : parallèle avec l’architecture</h3>
-<ul>
-<li>Pièces, l’installation électrique, l’eau, le gaz, contraintes législatives, s’adapter au terrain…</li>
-<li>Besoin de réfléchir comment il faut agencer tout ça dès le début</li>
-<li>Si on construit au fil de l’eau, on risque d’avoir une maison incohérente (au mieux)</li>
-<li><strong>Ce n’est pas du temps perdu !</strong></li>
-</ul>
-<div class="notes">
-<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !<br>
-ChatGPT peut presque coder à notre place.</p>
-</div>
-</section>
-<section id="un-grand-principe-separation-of-concerns" class="level3">
-<h3 class="anchored" data-anchor-id="un-grand-principe-separation-of-concerns">Un grand principe : separation of concerns</h3>
-<p><a href="img/couches.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/couches.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>Version macro en 3 couches.</p>
-<ul>
-<li>Présentation : tout ce qui se charge de l’affichage</li>
-<li>Business : c’est le métier de votre application, sa plus-value</li>
-<li>Data : stockage des données</li>
-</ul>
-<p>Chaque couche communique avec celles adjacentes.<br>
-Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
-Pas évident mais très important !!!</p>
-</div>
-</section>
-<section id="les-principales-couches-dune-application" class="level3">
-<h3 class="anchored" data-anchor-id="les-principales-couches-dune-application">Les principales couches d’une application</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> tout ce qui se charge de l’affichage (page web, console, fenêtre)</li>
-<li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
-<li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
-</ul>
-</section>
-<section id="pour-votre-projet" class="level3">
-<h3 class="anchored" data-anchor-id="pour-votre-projet">Pour votre projet</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> terminal</li>
-<li><strong><em>Métier :</em></strong> votre code Python</li>
-<li><strong><em>Persistance :</em></strong> base de données</li>
-</ul>
-<div class="notes">
-<p>Exemple page web</p>
-</div>
-</section>
-<section id="zoom-sur-la-couche-métier" class="level3">
-<h3 class="anchored" data-anchor-id="zoom-sur-la-couche-métier">Zoom sur la couche métier</h3>
-<p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/couche_metier.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
-<p>Dans les TP :</p>
-<ul>
-<li>Couche présentation : View (on navigue entre des vues)</li>
-<li>DAO, business_object, service</li>
-<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
-</ul>
-</div>
-</section>
-<section id="les-couches-de-la-couche-métier-12" class="level3">
-<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-12">Les couches de la couche métier 1/2</h3>
-<ul>
-<li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
-<ul>
-<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
-</ul></li>
-<li><strong><em>Service :</em></strong>
-<ul>
-<li>Code métier</li>
-<li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
-<li>Demande des objets à la couche DAO (TP4)</li>
-<li>Appelle les webservices externes (TP3)</li>
-</ul></li>
-</ul>
-</section>
-<section id="les-couches-de-la-couche-métier-22" class="level3">
-<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-22">Les couches de la couche métier 2/2</h3>
-<ul>
-<li><strong><em>Objets métiers :</em></strong>
-<ul>
-<li>Couche transversale</li>
-<li>Représentent des concepts métiers que votre code va manipuler</li>
-<li>Objets avec surtout des attributs et peu de méthodes</li>
-</ul></li>
-<li><strong><em>Contrôleur :</em></strong>
-<ul>
-<li>Récupère les inputs des utilisateurs</li>
-<li>Renvoie les données à afficher</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p>On découpe les objets :</p>
-<ul>
-<li>Attributs -&gt; Objets métiers (~DTO)</li>
-<li>Méthodes -&gt; Services</li>
-</ul>
-</div>
-</section>
-<section id="pourquoi-séparer-en-couches" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-séparer-en-couches">Pourquoi séparer en couches ?</h3>
-<ul>
-<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
-<li>Lisibilité du code 📖</li>
-<li>Débogages 🐞</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Limiter les risques d’erreurs quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
-</blockquote>
-<div class="notes">
-<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
-Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
-Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
-Et séparer en couches permet de trouver rapidement la source du problème.</p>
-</div>
-</section>
-<section id="informations-à-retenir" class="level3">
-<h3 class="anchored" data-anchor-id="informations-à-retenir">Informations à retenir</h3>
-<ul>
-<li>Passer du temps à réfléchir aux différents modules d’une application n’est pas une perte de temps 🕵️‍♀️</li>
-<li>Diviser en couches permet de travailler en parallèle 🧪🧫📚</li>
-<li>Mais il faut encore réfléchir à comment bien coder 🤖</li>
-</ul>
-<div class="notes">
-<p>Possible en projet de se répartir les couches.</p>
-</div>
+<section id="git" class="level2">
+<h2 class="anchored" data-anchor-id="git">Git</h2>
+<p><a href="https://ludo2ne.github.io/Git-tuto/" target="_blank">Git tuto</a></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git clone https://....git</code></td>
+<td>Creates a copy of a remote repository in your local directory.</td>
+</tr>
+<tr class="even">
+<td><code>git add .</code></td>
+<td>Stages all changes for the next commit.</td>
+</tr>
+<tr class="odd">
+<td><code>git commit -m "&lt;explicit message&gt;"</code></td>
+<td>Commits the staged changes to the local repository.</td>
+</tr>
+<tr class="even">
+<td><code>git push</code></td>
+<td>Uploads local changes to a remote repository.</td>
+</tr>
+<tr class="odd">
+<td><code>git pull</code></td>
+<td>Merge changes from a remote to the local repository.</td>
+</tr>
+<tr class="even">
+<td><code>git switch &lt;branch&gt;</code></td>
+<td>Switches to the specified branch.</td>
+</tr>
+</tbody>
+</table>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1136,38 +1069,6 @@ Et séparer en couches permet de trouver rapidement la source du problème.</p>
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

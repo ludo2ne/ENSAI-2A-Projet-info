@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rémi Pépin, Ludovic Deneuville">
-<meta name="description" content="TP 2">
+<meta name="description" content="Lab 2">
 
-<title>Python, POO, Tests Unitaires et Documentation – Projet info 2A</title>
+<title>Python, OOP, Unit Tests and Documentation – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e5be4814725dea48736acb40950f1f11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-4e25e081efccdd80291a63f8da4c21ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-4c655423fa628e8db4e72bbd8cc85dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-30e136824c92c3357f4818064204e119.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -397,6 +397,10 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
         <li>
+    <a class="dropdown-item" href="../../doc/tp/tools.html">
+ <span class="dropdown-text">Tools</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../doc/tp/tp1.html">
  <span class="dropdown-text">TP 1</span></a>
   </li>  
@@ -457,29 +461,32 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
-  <li><a href="#ce-que-vous-allez-coder" id="toc-ce-que-vous-allez-coder" class="nav-link" data-scroll-target="#ce-que-vous-allez-coder"><span class="header-section-number">1</span> Ce que vous allez coder</a>
+  <li><a href="#todo" id="toc-todo" class="nav-link active" data-scroll-target="#todo"><span class="header-section-number">1</span> Todo</a></li>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#what-you-will-be-coding" id="toc-what-you-will-be-coding" class="nav-link" data-scroll-target="#what-you-will-be-coding"><span class="header-section-number">2</span> What you will be coding</a>
   <ul class="collapse">
-  <li><a href="#objets-métier" id="toc-objets-métier" class="nav-link" data-scroll-target="#objets-métier"><span class="header-section-number">1.1</span> Objets métier</a></li>
-  <li><a href="#les-objets-métier-de-lappli" id="toc-les-objets-métier-de-lappli" class="nav-link" data-scroll-target="#les-objets-métier-de-lappli"><span class="header-section-number">1.2</span> Les objets métier de l’appli</a></li>
-  <li><a href="#diagramme-de-classes" id="toc-diagramme-de-classes" class="nav-link" data-scroll-target="#diagramme-de-classes"><span class="header-section-number">1.3</span> Diagramme de classes</a></li>
+  <li><a href="#business-objects" id="toc-business-objects" class="nav-link" data-scroll-target="#business-objects"><span class="header-section-number">2.1</span> Business objects</a></li>
+  <li><a href="#the-applications-business-objects" id="toc-the-applications-business-objects" class="nav-link" data-scroll-target="#the-applications-business-objects"><span class="header-section-number">2.2</span> The application’s business objects</a></li>
+  <li><a href="#class-diagram" id="toc-class-diagram" class="nav-link" data-scroll-target="#class-diagram"><span class="header-section-number">2.3</span> Class diagram</a></li>
   </ul></li>
-  <li><a href="#clone-du-dépôt" id="toc-clone-du-dépôt" class="nav-link" data-scroll-target="#clone-du-dépôt"><span class="header-section-number">2</span> Clone du dépôt</a>
+  <li><a href="#get-the-code" id="toc-get-the-code" class="nav-link" data-scroll-target="#get-the-code"><span class="header-section-number">3</span> Get the code</a>
   <ul class="collapse">
-  <li><a href="#ouverture-dans-vscode" id="toc-ouverture-dans-vscode" class="nav-link" data-scroll-target="#ouverture-dans-vscode"><span class="header-section-number">2.1</span> Ouverture dans VSCode</a></li>
+  <li><a href="#launch-vscode" id="toc-launch-vscode" class="nav-link" data-scroll-target="#launch-vscode"><span class="header-section-number">3.1</span> Launch VScode</a></li>
+  <li><a href="#fork-and-clone" id="toc-fork-and-clone" class="nav-link" data-scroll-target="#fork-and-clone"><span class="header-section-number">3.2</span> Fork and Clone</a></li>
   </ul></li>
-  <li><a href="#modélisation-et-implémentation" id="toc-modélisation-et-implémentation" class="nav-link" data-scroll-target="#modélisation-et-implémentation"><span class="header-section-number">3</span> Modélisation et implémentation</a>
+  <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">4</span> Modelling and implementation</a>
   <ul class="collapse">
-  <li><a href="#première-approche-le-ifelifelse" id="toc-première-approche-le-ifelifelse" class="nav-link" data-scroll-target="#première-approche-le-ifelifelse"><span class="header-section-number">3.1</span> Première approche : le « if/elif/else »</a></li>
-  <li><a href="#la-puissance-de-la-poo" id="toc-la-puissance-de-la-poo" class="nav-link" data-scroll-target="#la-puissance-de-la-poo"><span class="header-section-number">3.2</span> La puissance de la POO</a></li>
-  <li><a href="#testez-votre-code" id="toc-testez-votre-code" class="nav-link" data-scroll-target="#testez-votre-code"><span class="header-section-number">3.3</span> Testez votre code</a></li>
+  <li><a href="#first-approach-ifelifelse" id="toc-first-approach-ifelifelse" class="nav-link" data-scroll-target="#first-approach-ifelifelse"><span class="header-section-number">4.1</span> First approach: if/elif/else</a></li>
+  <li><a href="#the-power-of-oop" id="toc-the-power-of-oop" class="nav-link" data-scroll-target="#the-power-of-oop"><span class="header-section-number">4.2</span> The power of OOP</a></li>
+  <li><a href="#test-your-code" id="toc-test-your-code" class="nav-link" data-scroll-target="#test-your-code"><span class="header-section-number">4.3</span> Test your code</a></li>
   </ul></li>
-  <li><a href="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" id="toc-lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="nav-link" data-scroll-target="#lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">4</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</a>
+  <li><a href="#aggregation-the-other-way-of-adding-flexibility-to-code" id="toc-aggregation-the-other-way-of-adding-flexibility-to-code" class="nav-link" data-scroll-target="#aggregation-the-other-way-of-adding-flexibility-to-code"><span class="header-section-number">5</span> Aggregation, the other way of adding flexibility to code</a>
   <ul class="collapse">
-  <li><a href="#attaques-à-dégâts-fixes" id="toc-attaques-à-dégâts-fixes" class="nav-link" data-scroll-target="#attaques-à-dégâts-fixes"><span class="header-section-number">4.1</span> Attaques à dégâts fixes</a></li>
-  <li><a href="#attaques-à-dégâts-variables" id="toc-attaques-à-dégâts-variables" class="nav-link" data-scroll-target="#attaques-à-dégâts-variables"><span class="header-section-number">4.2</span> Attaques à dégâts variables</a></li>
+  <li><a href="#fixed-damage-attacks" id="toc-fixed-damage-attacks" class="nav-link" data-scroll-target="#fixed-damage-attacks"><span class="header-section-number">5.1</span> Fixed damage attacks</a></li>
+  <li><a href="#variable-damage-attacks" id="toc-variable-damage-attacks" class="nav-link" data-scroll-target="#variable-damage-attacks"><span class="header-section-number">5.2</span> Variable damage attacks</a></li>
   </ul></li>
-  <li><a href="#architecture-finale" id="toc-architecture-finale" class="nav-link" data-scroll-target="#architecture-finale"><span class="header-section-number">5</span> Architecture finale</a></li>
+  <li><a href="#final-architecture" id="toc-final-architecture" class="nav-link" data-scroll-target="#final-architecture"><span class="header-section-number">6</span> Final architecture</a></li>
+  <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
 </nav>
@@ -493,12 +500,12 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python, POO, Tests Unitaires et Documentation</h1>
+<h1 class="title">Python, OOP, Unit Tests and Documentation</h1>
 </div>
 
 <div>
   <div class="description">
-    TP 2
+    Lab 2
   </div>
 </div>
 
@@ -521,82 +528,89 @@ window.Quarto = {
 </header>
 
 
-<section id="avant-de-commencer" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
-<p>Ce TP mêle explications et phases de code.</p>
-<p>Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez les comme une base de connaissance pour plus tard, mais préférez toujours les explications orales.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Notions abordées">
+<section id="todo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="todo"><span class="header-section-number">1</span> Todo</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Update settings</label></li>
+<li><label><input type="checkbox">Image with Ruff</label></li>
+</ul>
+</section>
+<section id="before-you-start" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
+<p>This tutorial combines explanations and code phases.</p>
+<p>The explanations in this tutorial should not take precedence over those of your teacher. Take them as a knowledge base for later, but always prefer oral explanations.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Concepts covered">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Notions abordées
+Concepts covered
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Rappels sur la POO</li>
-<li>Tests Unitaires</li>
-<li>Objets métier</li>
-<li>Patron de conception strategy</li>
+<li>OOP reminder</li>
+<li>Unit tests</li>
+<li>Business objects</li>
+<li>Strategy design pattern</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="ce-que-vous-allez-coder" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="ce-que-vous-allez-coder"><span class="header-section-number">1</span> Ce que vous allez coder</h2>
-<p>Notre jeu s’inspirera de <em>Pokémon Unite</em> (aucune connaissance du jeu, ni de <em>Pokémon</em> n’est nécessaire).</p>
-<p>En quelques mots, il y aura des <em>Pokemons</em> qui s’affronteront lors de <em>Battles</em> en lançant des <em>Attacks</em>.</p>
-<section id="objets-métier" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="objets-métier"><span class="header-section-number">1.1</span> Objets métier</h3>
-<p>Vous allez créer les <strong>objets métier</strong> pour un jeu <em>Pokémon</em>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Objet métier (business object)">
+<section id="what-you-will-be-coding" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="what-you-will-be-coding"><span class="header-section-number">2</span> What you will be coding</h2>
+<p>Our game will be inspired by <em>Pokémon Unite</em> (no knowledge of the game or <em>Pokémon</em> is necessary).</p>
+<p>In a nutshell, there will be <em>Pokemons</em> competing in <em>Battles</em> by throwing <em>Attacks</em>.</p>
+<section id="business-objects" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="business-objects"><span class="header-section-number">2.1</span> Business objects</h3>
+<p>You’re going to create <strong>business objects</strong> for a <em>Pokémon</em> game.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Business object">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Objet métier (business object)
+Business object
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un objet métier est une représentation d’une entité spécifique dans le contexte d’une application métier. Il encapsule les données et les comportements associés à cette entité et est souvent utilisé pour modéliser des concepts du monde réel dans le domaine de l’application.</p>
-<p>Cela conduit à avoir des objets contenant essentiellement des attributs et très peu de méthodes autre que des <em>getter</em> et <em>setter</em>.</p>
+<p>A business object is a representation of a specific entity in the context of a business application. It encapsulates the data and behaviour associated with that entity and is often used to model real-world concepts in the application domain.</p>
+<p>This leads to objects containing mainly attributes and very few methods other than <em>getter</em> and <em>setter</em>.</p>
 </div>
 </div>
-<p>Pour prendre un autre exemple, voici des objets métier pour une application simple qui gère la location de vélos :</p>
+<p>To take another example, here are the business objects for a simple application that manages bike hire:</p>
 <ul>
-<li><strong>Velo</strong> : Représente un vélo (id, type, modèle…)</li>
-<li><strong>Client</strong> : Représente une personne (id, nom, prénom…)</li>
-<li><strong>Location</strong> : Représente une transaction de location (id, Client, Velo, debut, fin, montant…)</li>
+<li><strong>Bike</strong>: Represents a bike (id, type, model…)</li>
+<li><strong>Customer</strong>: Represents a person (id, surname, first name, etc.)</li>
+<li><strong>Rental</strong>: Represents a rental transaction (id, Client, Bike, start, end, amount, etc.)</li>
 </ul>
 </section>
-<section id="les-objets-métier-de-lappli" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="les-objets-métier-de-lappli"><span class="header-section-number">1.2</span> Les objets métier de l’appli</h3>
+<section id="the-applications-business-objects" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="the-applications-business-objects"><span class="header-section-number">2.2</span> The application’s business objects</h3>
 <ul>
-<li><code>Pokemon</code> : qui ont diverses caractéristiques et statistiques
+<li><code>Pokemon</code>: which have various characteristics and statistics
 <ul>
-<li>un nom</li>
-<li>un niveau</li>
-<li><a href="https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon" target="_blank">un type</a>
+<li>a name</li>
+<li>a level</li>
+<li><a href="https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon" target="_blank">a type</a>
 <ul>
-<li>ici les types sont : Attaquant, Défenseur, Polyvalant, Soutient et Rapide (et non pas : Feu, Eau, Plante…)</li>
+<li>here the types are : Attacker, Defender, Versatile, Helper and Fast (and not: Fire, Water, Plant…)</li>
 </ul></li>
-<li>des statistiques contenues dans un objet <em>Statistic</em> défini ci-dessous</li>
+<li>statistics contained in a <em>Statistic</em> object defined below</li>
 </ul></li>
-<li><code>Statistic</code> : pour éviter de surcharger la classe Pokemon, leurs stats sont stockées dans un objet de la classe Statistic
+<li><code>Statistic</code>: to avoid overloading the Pokemon class, their stats are stored in an object of the Statistic class.
 <ul>
-<li>hp : health points</li>
-<li>attack, defense, speed… : qui serviront déterminer la force de ses attaques</li>
+<li>hp: health points</li>
+<li>attack, defense, speed… which are used to determine the strength of its attacks</li>
 </ul></li>
-<li><code>Attack</code> : différents types d’attaques dont disposeront les Pokemons (partie 3)</li>
-<li><code>Battle</code> : servira à faire s’affronter 2 Pokemons pour déterminer l’issue du combat (partie 4)</li>
+<li><code>Attack</code>: different types of attack available to Pokemons (part 3)</li>
+<li><code>Battle</code>: used to pit 2 Pokemons against each other to determine the outcome of the battle (part 4)</li>
 </ul>
 </section>
-<section id="diagramme-de-classes" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="diagramme-de-classes"><span class="header-section-number">1.3</span> Diagramme de classes</h3>
-<p>Voici un diagramme de classes très simplifié des classes principales à coder lors de ces TP.</p>
+<section id="class-diagram" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="class-diagram"><span class="header-section-number">2.3</span> Class diagram</h3>
+<p>Here is a very simplified class diagram of the main classes to be coded during these practical sessions.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -644,37 +658,8 @@ Objet métier (business object)
 </div>
 </section>
 </section>
-<section id="clone-du-dépôt" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="clone-du-dépôt"><span class="header-section-number">2</span> Clone du dépôt</h2>
-<p>Le code du TP se trouve sur <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP" target="_blank">GitHub</a>, vous allez créer un clone local.</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Ouvrez <strong>Git Bash</strong></label></li>
-<li><label><input type="checkbox">Créez un dossier pour stocker votre clone</label>
-<ul>
-<li>À la main ou avec cette commande : <code>mkdir -p /p/Cours2A/UE3-Complements-info/TP2 &amp;&amp; cd $_</code>
-<ul>
-<li>Elle crée l’arborescence demandée (<em>mkdir</em>)</li>
-<li>Puis elle vous positionne dans ce dossier (<em>cd</em>)</li>
-</ul></li>
-</ul></li>
-<li><label><input type="checkbox">Clonez le dépôt distant</label>
-<ul>
-<li><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></li>
-</ul></li>
-<li><label><input type="checkbox">Fermez Git Bash si tout s’est bien passé</label></li>
-</ul>
-<section id="ouverture-dans-vscode" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="ouverture-dans-vscode"><span class="header-section-number">2.1</span> Ouverture dans VSCode</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Ouvrez <strong>Visual Studio Code</strong></label></li>
-<li><label><input type="checkbox">Ouvrez votre dépôt local</label>
-<ul>
-<li>File &gt; Open Folder</li>
-<li>Allez dans le dossier <code>P:\Cours2A\UE3-Complements-info\TP2</code></li>
-<li>Cliquez <u>une seule fois</u> sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP</li>
-<li>Puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
-</ul></li>
-</ul>
+<section id="get-the-code" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="get-the-code"><span class="header-section-number">3</span> Get the code</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -685,97 +670,125 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul class="task-list">
-<li><label><input type="checkbox">Vérifiez que le dossier parent dans l’Explorer VS Code est <em>ENSAI-2A-complement-info-TP</em></label>
+<p>At the end of the course, don’t forget to:</p>
 <ul>
-<li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
-</ul></li>
+<li>Save your work using Git</li>
+<li>Delete or pause your VSCode service</li>
 </ul>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</p>
 </div>
 </div>
+<section id="launch-vscode" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="launch-vscode"><span class="header-section-number">3.1</span> Launch VScode</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez le <em>Git Bash</em> intégré dans VS Code</label>
+<li><label><input type="checkbox">Login to a datalab</label></li>
+<li><label><input type="checkbox">Launch a <strong>VScode-python</strong> service</label></li>
+</ul>
+</section>
+<section id="fork-and-clone" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="fork-and-clone"><span class="header-section-number">3.2</span> Fork and Clone</h3>
+<p>The TP code can be found on this GitHub repository: <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP" target="_blank">ENSAI-2A-complement-info-TP</a></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork" target="_blank">fork</a> of this repository</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Fork a repository">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fork a repository
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A fork is a personal copy of another user’s repository.</p>
+<p>This allows you to freely experiment with changes without affecting the original project, and then propose your modifications back to the original repository via a pull request if desired.</p>
+</div>
+</div>
+<p>In VSCode:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Open a <strong>Git Bash</strong> terminal</label></li>
+<li><label><input type="checkbox">Clone with <em>https</em> your forked repository</label></li>
+<li><label><input type="checkbox">Open Folder</label>
 <ul>
-<li>Terminal &gt; New Terminal (ou CTRL + ù)</li>
+<li>File &gt; Open Folder &gt; <code>/home/onyxia/work/&lt;repo_name&gt;</code> &gt; OK</li>
 </ul></li>
+<li><label><input type="checkbox">Install all needed packages</label></li>
 </ul>
 </section>
 </section>
-<section id="modélisation-et-implémentation" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="modélisation-et-implémentation"><span class="header-section-number">3</span> Modélisation et implémentation</h2>
-<p>Dans un premier temps, nous allons travailler uniquement sur les <code>Pokemons</code> (la classe <code>Statistic</code> est déjà codée).</p>
-<p>Avant d’écrire du code, nous allons réfléchir à la meilleure conception possible pour réaliser nos Pokémons. Notre conception essaiera au maximum de respecter la règle suivante : <strong>faible couplage, forte cohésion</strong>.</p>
-<p>En d’autre termes nous allons essayer de faire :</p>
+<section id="modelling-and-implementation" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="modelling-and-implementation"><span class="header-section-number">4</span> Modelling and implementation</h2>
+<p>Initially, we’re going to work only on the <code>Pokemons</code> (the <code>Statistic</code> class has already been coded).</p>
+<p>Before writing any code, we’re going to think about the best possible design for our Pokémons. Our design will try as far as possible to respect the following rule: <strong>low coupling, high cohesion</strong>.</p>
+<p>In other words, we will try to make :</p>
 <ul>
-<li>des classes <strong>les plus disjointes possibles</strong> (<em>faible couplage</em>) pour qu’une modification dans une classe ne nous demande pas de modifier les autres</li>
-<li>tout en essayant d’avoir dans chaque classe <strong>les tâches les plus liées possibles</strong> (<em>forte cohésion</em>).</li>
+<li>classes that are <strong>as disjoint as possible</strong> (<em>low coupling</em>) so that a modification to one class does not require us to modify the others</li>
+<li>while trying to have in each class <strong>tasks that are as linked as possible</strong> (<em>strong cohesion</em>).</li>
 </ul>
-<section id="première-approche-le-ifelifelse" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="première-approche-le-ifelifelse"><span class="header-section-number">3.1</span> Première approche : le « if/elif/else »</h3>
+<section id="first-approach-ifelifelse" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="first-approach-ifelifelse"><span class="header-section-number">4.1</span> First approach: if/elif/else</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez le code de la classe <code>Pokemon</code></label></li>
+<li><label><input type="checkbox">Open the code for the <code>Pokemon</code> class</label></li>
 </ul>
-<p>Nous nous interessons à la méthode <code>get_pokemon_attack_coef()</code> qui va servir à déterminer la puissance de l’attaque en fonction du type de <em>Pokémon</em>.</p>
+<p>We’re interested in the <code>get_pokemon_attack_coef()</code> method, which will be used to determine the power of the attack according to the type of <em>Pokemon</em>.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Expliquez pourquoi une implémentation à base de <code>if/elif/else</code> pour les types est une mauvaise idée ?</label>
+<li><label><input type="checkbox">Explain why an implementation based on <code>if/elif/else</code> for types is a bad idea?</label>
 <ul>
-<li>Imaginez s’il y avait plusieurs blocs de code similaires dans notre application, et que nous devions ajouter un nouveau type</li>
+<li>Imagine if there were several similar blocks of code in our application, and we had to add a new type</li>
 </ul></li>
 </ul>
 </section>
-<section id="la-puissance-de-la-poo" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="la-puissance-de-la-poo"><span class="header-section-number">3.2</span> La puissance de la POO</h3>
-<p>Au lieu d’externaliser les comportements de nos <em>Pokemons</em>, nous allons mettre tous leurs comportements spécifiques dans des classes filles d’une super classe <code>Pokemon</code>. Ceci est rendu possible grâce à deux propriétés des objets en POO :</p>
+<section id="the-power-of-oop" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="the-power-of-oop"><span class="header-section-number">4.2</span> The power of OOP</h3>
+<p>Instead of externalising the behaviour of our <em>Pokemons</em>, we’re going to put all their specific behaviour into child classes of a <code>Pokemon</code> superclass. This is made possible by two properties of OOP objects:</p>
 <ul>
-<li><strong>héritage</strong> : il est possible de spécialiser une classe existante en modifiant son comportement, ou en ajoutant de nouveaux</li>
-<li><strong>polymorphisme</strong> : deux fonctions peuvent avoir le même nom mais avoir des comportements différents</li>
+<li><strong>inheritance</strong>: it’s possible to specialise an existing class by modifying its behaviour, or by adding new ones.</li>
+<li><strong>polymorphism</strong>: two functions can have the same name but different behaviours</li>
 </ul>
-<p>En plus, comme chacun de nos <em>Pokemons</em> va forcement être d’un type, aucun ne sera simplement de la classe <code>Pokemon</code>, cela nous permet de rendre cette classe <em>abstraite</em>. En définissant clairement notre classe abstraite nous allons avoir :</p>
+<p>Furthermore, as each of our <em>Pokemons</em> will necessarily be of a type, none of them will simply be of the <code>Pokemon</code> class, which allows us to make this class <em>abstract</em>. By clearly defining our abstract class, we’ll have :</p>
 <ul>
-<li>Un plan pour toutes les classes qui en héritent. Cela à pour avantages de :
+<li>A blueprint for all the classes that inherit from it. This has the following advantages
 <ul>
-<li>Donner des informations sur la structuration du code<br>
-</li>
-<li>Permettre de générer automatiquement les méthodes à définir</li>
-<li>Limiter les bug. Si on oublie une méthode, le code plante au démarrage, ce qui évite des comportements non prévus difficiles à détecter</li>
+<li>Provides information on how the code is structured</li>
+<li>Automatically generate the methods to be defined</li>
+<li>Limits bugs. If a method is forgotten, the code crashes on start-up, which prevents unexpected behaviour that is difficult to detect.</li>
 </ul></li>
-<li>Une <strong>interface</strong> unique pour tous les types de <em>Pokemons</em>. Quelque soit le type du <em>Pokemon</em>, il sera considéré comme un <code>AbstractPokemon</code> partout dans le code.</li>
+<li>A single <strong>interface</strong> for all <em>Pokemon</em> types. Whatever the type of <em>Pokemon</em>, it will be considered as an <code>AbstractPokemon</code> everywhere in the code.</li>
 </ul>
 <hr>
 <ul class="task-list">
-<li><label><input type="checkbox">Transformez la classe <code>Pokemon</code> en classe abstraite <code>AbstractPokemon</code></label>
+<li><label><input type="checkbox">Transform the <code>Pokemon</code> class into an abstract class <code>AbstractPokemon</code></label>
 <ul>
-<li>renommez également le fichier en <code>abstract_pokemon.py</code></li>
+<li>rename the file to <em>abstract_pokemon.py</em> as well</li>
 </ul></li>
-<li><label><input type="checkbox">Transformez la méthode <code>get_pokemon_attack_coef()</code> en méthode abstraite</label></li>
-<li><label><input type="checkbox">Créez les classes <code>Attacker</code>, <code>Defender</code> et <code>AllRounder</code> qui héritent de <code>AbstractPokemon</code></label></li>
-<li><label><input type="checkbox">Dans ces 3 classes, implémentez la méthode <code>get_pokemon_attack_coef()</code></label></li>
+<li><label><input type="checkbox">Turn the <em>get_pokemon_attack_coef()</em> method into an abstract method</label></li>
+<li><label><input type="checkbox">Create the <code>AttackerPokemon</code>, <code>DefenderPokemon</code> and <code>AllRounderPokemon</code> classes, which inherit from <code>AbstractPokemon</code></label></li>
+<li><label><input type="checkbox">In these 3 classes, implement the required method</label></li>
 </ul>
-<p>Vous devriez arriver à la fin à une arborescence proche de celle-ci :</p>
+<p>You should end up with a tree structure similar to this one:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        └── business_object</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            ├── pokemon</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            │   ├── abstract_pokemon.py</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            │   ├── attacker.py</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            │   ├── defender.py</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            │   └── all_rounder.py</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            │   ├── attacker_pokemon.py</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            │   ├── defender_pokemon.py</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            │   └── all_rounder_pokemon.py</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            └── statistic.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Aide">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-tip callout-titled" title="Help">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aide
+Help
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Pour faire une classe abstraite, utilisez le package <code>abc</code>.</p>
-<p>Voici, pour vous inspirer, un exemple de ce qui est attendu :</p>
+<p>To make an abstract class, use the <code>abc</code> package.</p>
+<p>For inspiration, here’s an example of what’s expected:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>abstract_personnage.py</strong></pre>
@@ -787,8 +800,8 @@ Aide
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span>  <span class="co"># décorateur qui définit une méthode comme abstraite</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span>  <span class="co"># decorator that defines a method as abstract</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> damages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
@@ -799,15 +812,15 @@ Aide
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Lance une boule de feu"</span>, <span class="st">"Utilise une barrière magique"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Throw a fireball"</span>, <span class="st">"Use a magic barrier"</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> degat_attaque(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> damages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
-<p>Pour vous aider, voici le diagramme de classes :</p>
+<p>To help you, here is the class diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -832,9 +845,9 @@ Aide
     - __speed : int
   }
  
-  AbstractPokemon &lt;|-- Attacker
-  AbstractPokemon &lt;|-- Defender
-  AbstractPokemon &lt;|-- AllRounder
+  AbstractPokemon &lt;|-- AttackerPokemon
+  AbstractPokemon &lt;|-- DefenderPokemon
+  AbstractPokemon &lt;|-- AllRounderPokemon
   AbstractPokemon o-- Statistic
 </pre>
 </div>
@@ -843,88 +856,86 @@ Aide
 </div>
 </div>
 </section>
-<section id="testez-votre-code" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="testez-votre-code"><span class="header-section-number">3.3</span> Testez votre code</h3>
+<section id="test-your-code" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="test-your-code"><span class="header-section-number">4.3</span> Test your code</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Testez la méthode <code>get_pokemon_attack_coef()</code> pour les classes <code>AttackerPokemon</code> et <code>AllRounderPokemon</code>.</label>
+<li><label><input type="checkbox">Test the <em>get_pokemon_attack_coef()</em> method for the <code>AttackerPokemon</code> and <code>AllRounderPokemon</code> classes.</label>
 <ul>
-<li><code>python -m pytest -v</code></li>
+<li><code>pytest -v</code></li>
 </ul></li>
 </ul>
-<p>Pour cela vous allez utiliser le package <code>pytest</code> de python.</p>
-<p>Ce package permet de réaliser des tests unitaires dans des classes séparées. L’avantage par rapport à <code>doctest</code>, c’est que les tests ne “polluent” pas vos classes, et qu’il est possible de <em>patcher</em> certains comportements des classes.</p>
-<p>Un exemple de test est donné dans la classe <code>testDefenderPokemon</code>. Pour rappel, un test se décompose en 3 parties :</p>
+<p>To do this, you will use the <a href="https://docs.pytest.org/en/stable/" target="_blank">pytest</a> package in python.</p>
+<p>An example of a test is given in the <code>TestDefenderPokemon</code> class. As a reminder, a test breaks down into 3 parts:</p>
 <ul>
-<li><strong>GIVEN</strong> : création des objets nécessaires à la réalisation du test</li>
-<li><strong>WHEN</strong> : appel de la méthode à tester</li>
-<li><strong>THEN</strong> : vérification du résultat</li>
+<li><strong>GIVEN</strong>: create the objects needed to run the test</li>
+<li><strong>WHEN</strong>: call the method to be tested</li>
+<li><strong>THEN</strong>: check the result</li>
 </ul>
-<p>Les classes de test seront organisées de la manière suivante, en reproduisant l’architecture de votre application :</p>
+<p>The test classes will be organised as follows, reproducing the architecture of your application:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        ├── business_object</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        │   ├── pokemon</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        │   │   ├── abstract_pokemon.py</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        │   │   ├── attacker.py</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        │   │   ├── defender.py</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        │   │   └── all_rounder.py</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        │   │   ├── attacker_pokemon.py</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        │   │   ├── defender_pokemon.py</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        │   │   └── all_rounder_pokemon.py</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        │   └── statistic.py</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        └── test</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            └── test_business_object</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                └── test_pokemon</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                    ├── test_attacker.py</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                    ├── test_defender.py</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    └── test_all_rounder.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Si vous rencontrez des problèmes d'imports">
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                    ├── test_attacker_pokemon.py</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                    ├── test_defender_pokemon.py</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    └── test_all_rounder_pokemon.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-caution callout-titled" title="If you're having import problems">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Si vous rencontrez des problèmes d’imports
+If you’re having import problems
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Vérifiez que le dossier parent dans l’explorer de VSCode est : <strong>ENSAI-2A-complement-info-TP</strong></li>
-<li>Utilisez des chemins complets d’import plutôt que des chemins relatifs
+<li>Check that the parent folder in the VSCode explorer is : <strong>ENSAI-2A-complement-info-TP</strong></li>
+<li>Use full import paths rather than relative paths
 <ul>
-<li>la racine des chemins est paramétrée au niveau du dossier <code>src</code></li>
-<li>exemple : <code>from business_object.pokemon.abstract_pokemon import AbstractPokemon</code></li>
+<li>the path root is set in the <code>src</code> folder</li>
+<li>example: <code>from business_object.pokemon.abstract_pokemon import AbstractPokemon</code></li>
 </ul></li>
-<li>Créez des fichiers <code>__init__.py</code> (vide)
+<li>Create <code>__init__.py</code> files (empty)
 <ul>
-<li>dans TOUS les dossiers que vous créez</li>
-<li>c’est un peu pénible mais ça peut débloquer la situation</li>
+<li>in ALL the folders you create</li>
+<li>it’s a bit of a pain but it can unblock the situation</li>
 </ul></li>
 </ul>
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Pouvez-vous tester la méthode <code>level_up()</code> directement sur un <code>AbstractPokemon</code> ?</label></li>
+<li><label><input type="checkbox">Can you test the <em>level_up()</em> method directly on an <code>AbstractPokemon</code>?</label></li>
 </ul>
 </section>
 </section>
-<section id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="lagrégation-lautre-façon-dajouter-de-la-souplesse-dans-le-code"><span class="header-section-number">4</span> L’agrégation, l’autre façon d’ajouter de la souplesse dans le code</h2>
-<p>Maintenant que nos Pokémons sont faits, nous allons y ajouter les attaques.</p>
-<p>Notre système va devoir respecter certaines contraintes :</p>
+<section id="aggregation-the-other-way-of-adding-flexibility-to-code" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="aggregation-the-other-way-of-adding-flexibility-to-code"><span class="header-section-number">5</span> Aggregation, the other way of adding flexibility to code</h2>
+<p>Now that our Pokémons are done, we’re going to add the attacks.</p>
+<p>Our system will have to respect certain constraints:</p>
 <ul>
-<li>Plusieurs types d’attaques vont coexister, chacune avec un mode de calcul de dégâts différent :
+<li>Several types of attack will co-exist, each with a different way of calculating damage:
 <ul>
-<li>Des attaques à dégâts variables séparées en 2 types :
+<li>Variable damage attacks divided into 2 types:
 <ul>
-<li>attaques “physiques” qui utilisent l’attaque et la défense des Pokémons</li>
-<li>attaques “spéciales” qui utilisent l’attaque spé et la défense spé des Pokémons</li>
+<li><strong>Physical attacks</strong>, which use the Pokémon’s attack and defence</li>
+<li><strong>Special attacks</strong>, which use the Pokémon’s special attack and special defence</li>
 </ul></li>
-<li>Des attaques à dégâts fixes qui font un nombre fixe de dégâts.</li>
+<li><strong>Fixed damage attacks</strong>, which do a fixed amount of damage.</li>
 </ul></li>
-<li>Un pokémon peut avoir plusieurs attaques et le type de l’attaque doit être transparent pour le pokémon.</li>
+<li>A pokémon can have several attacks, and the type of attack must be transparent to the pokémon.</li>
 </ul>
-<hr>
-<section id="attaques-à-dégâts-fixes" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="attaques-à-dégâts-fixes"><span class="header-section-number">4.1</span> Attaques à dégâts fixes</h3>
-<p>Nous allons commencer par les attaques à dégâts fixes. Comme il y aura un autre type d’attaques, toutes les attaques hériterons de la classe abstraite <code>AbstractAttack</code> déjà créée. Cette classe possède la méthode abstraite <em>compute_damage()</em> qui devra être implémentée dans les classes filles.</p>
+<section id="fixed-damage-attacks" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="fixed-damage-attacks"><span class="header-section-number">5.1</span> Fixed damage attacks</h3>
+<p>We’ll start with fixed damage attacks. As there will be another type of attack, all attacks will inherit from the <code>AbstractAttack</code> class. This class has the abstract method <em>compute_damage()</em> which will need to be implemented in the child classes.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -941,7 +952,7 @@ Si vous rencontrez des problèmes d’imports
   }
 
    class FixedDamageAttack{
-    + compute_damage(APkm,APkm )  int
+    + compute_damage(APkm,APkm)  int
    }
  
    AbstractAttack &lt;|-- FixedDamageAttack
@@ -952,26 +963,40 @@ Si vous rencontrez des problèmes d’imports
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Implémentez la classe <code>FixedDamageAttack</code></label>
+<li><label><input type="checkbox">Create class <code>AbstractAttack</code></label></li>
+<li><label><input type="checkbox">Implement the <code>FixedDamageAttack</code> class</label>
 <ul>
-<li>ainsi que sa méthode <code>compute_damage()</code> qui retournera simplement la puissance (<em>power</em>) de l’attaque</li>
+<li>class and its <em>compute_damage()</em> method, which will simply return the <em>power</em> of the attack.</li>
 </ul></li>
-<li><label><input type="checkbox">Créez des tests unitaires pour vérifier que tout fonctionne correctement</label></li>
+<li><label><input type="checkbox">Create unit tests to check that everything is working correctly</label></li>
 </ul>
 </section>
-<section id="attaques-à-dégâts-variables" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="attaques-à-dégâts-variables"><span class="header-section-number">4.2</span> Attaques à dégâts variables</h3>
-<p>Nous allons ensuite coder les attaques à dégâts variables. Elles utilisent la formule suivante :</p>
-<p><span class="math display">\[Damage = \big ( \frac{(\frac{2*Level}{5}+2)* Power *Att}{Def*50} +2\big) *random* other\_multipliers\]</span></p>
-<p>avec :</p>
+<section id="variable-damage-attacks" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="variable-damage-attacks"><span class="header-section-number">5.2</span> Variable damage attacks</h3>
+<p>Next we’re going to code the variable damage attacks. They use the following formula:</p>
+<p><span class="math display">\[Damage = \big ( \frac{(\frac{2 \times Level}{5}+2) \times Power \times Att}{Def \times 50} +2\big) \times random \times other\_multipliers\]</span></p>
+<p>with:</p>
 <ul>
-<li><span class="math inline">\(Att\)</span>​ : égal soit à l’attaque ou l’attaque spé du Pokemon attaquant</li>
-<li><span class="math inline">\(Def\)</span>​​ : égal soit à la défense ou défense spé du Pokemon défenseur</li>
-<li><span class="math inline">\(Power\)</span>​ : la valeur de puissance de l’attaque</li>
-<li><span class="math inline">\(random\)</span>​​ :une valeur comprise dans l’intervalle [0.85; 1]</li>
-<li><span class="math inline">\(other\_ multipliers\)</span> : les autres multiplicateurs possibles, comme le coefficient d’attaque des pokémons.</li>
+<li><span class="math inline">\(Att\)</span>: equal to either the attack or special attack of the attacking Pokemon</li>
+<li><span class="math inline">\(Def\)</span>: equal to either the defence or special defence of the defending Pokemon</li>
+<li><span class="math inline">\(Power\)</span>: the attack’s power value</li>
+<li><span class="math inline">\(random\)</span> : a value in the range [0.85; 1]</li>
+<li><span class="math inline">\(other\_ multipliers\)</span>: Other possible multipliers, such as the pokemon’s attack coefficient</li>
 </ul>
-<p>La seule différence entre attaque physique et spéciale vient des coefficients <span class="math inline">\(Att\)</span> et <span class="math inline">\(Def\)</span>, le reste de la formule des dégâts est identique. Nous allons donc utiliser le patron de conception <em>template method</em>, dont voici la modélisation UML dans notre cas :</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The only difference between physical and special attacks is the coefficients <span class="math inline">\(Att\)</span> and <span class="math inline">\(Def\)</span>.</p>
+<p>The rest of the damage formula is identical. So we’re going to use the <em>template method</em> design pattern, the UML model of which is as follows.</p>
+</div>
+</div>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1018,22 +1043,27 @@ Si vous rencontrez des problèmes d’imports
 </div>
 </div>
 </div>
-<p>La classe <code>AbstractFormulaAttack</code> va contenir les méthodes :</p>
+<p>The <code>AbstractFormulaAttack</code> class will contain the methods :</p>
 <ul>
-<li><strong>compute_damage()</strong>. Cette méthode va contenir la formule de calcul des dégâts
+<li><strong>compute_damage()</strong>
 <ul>
-<li>mais en appelant les méthodes <em>get_attaque_stat()</em> et <em>get_defense_stat()</em> pour savoir quelle statistique utiliser</li>
+<li>This method will contain the formula for calculating damage</li>
+<li>It will call the <em>get_attack_stat()</em> and <em>get_defense_stat()</em> methods to find out which statistics to use</li>
 </ul></li>
-<li><strong>get_attack_stat()</strong> et <strong>get_defense_stat()</strong> (abstraites). Ces méthodes devront être implémentées dans les classes filles pour déterminer quelles statistiques utiliser.</li>
+<li><strong>get_attack_stat()</strong> and <strong>get_defense_stat()</strong> (abstract).
+<ul>
+<li>These methods will need to be implemented in the child classes to determine which statistics to use</li>
+</ul></li>
 </ul>
 <hr>
 <ul class="task-list">
-<li><label><input type="checkbox">Implémentez les 3 nouvelles classes et créez des tests pour vérifier que tout fonctionne correctement</label></li>
+<li><label><input type="checkbox">Implement the 3 new classes</label></li>
+<li><label><input type="checkbox">Create unit tests to check that everything is working properly</label></li>
 </ul>
 </section>
 </section>
-<section id="architecture-finale" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="architecture-finale"><span class="header-section-number">5</span> Architecture finale</h2>
+<section id="final-architecture" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="final-architecture"><span class="header-section-number">6</span> Final architecture</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Bonus">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1044,10 +1074,10 @@ Bonus
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si vous avez le temps !</p>
+<p>If you have time!</p>
 </div>
 </div>
-<p>Nous allons maintenant rattacher les bouts pour créer notre architecture finale :</p>
+<p>We are now going to reattach the ends to create our final architecture:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -1096,7 +1126,7 @@ Bonus
   AbstractPokemon &lt;|-- Attacker
   AbstractPokemon &lt;|-- Defender
   AbstractPokemon &lt;|-- AllRounder
-  Statistique *-- AbstractPokemon
+  Statistique --* AbstractPokemon
 
   Battle .. BattleService
   Battle .. Round
@@ -1144,44 +1174,34 @@ Bonus
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Implémentez le diagramme de classes ci-dessus</label></li>
-<li><label><input type="checkbox">Testez votre code en écrivant de nouveaux tests unitaires</label></li>
+<li><label><input type="checkbox">Implement the class diagram above</label></li>
+<li><label><input type="checkbox">Test your code by writing new unit tests</label></li>
 </ul>
-<p>Cette architecture permet de décorréler les attaques des pokémons et de spécifier le comportement des attaques au fur et à mesure des héritages. Les avantages sont :</p>
+<p>This architecture makes it possible to decorrelate pokemon attacks and specify the behaviour of attacks as they are inherited. The advantages are:</p>
 <ul>
-<li>Pour la classe <code>AbstractPokemon</code>, toutes les attaques sont des <code>AbstractAttack</code>. Tant qu’elles exposent la méthode <em>compute_damage()</em> notre programme va fonctionner. On peut ainsi facilement ajouter de nouveaux types d’attaques sans problème.</li>
-<li>Un <em>Pokémon</em> peut avoir des attaques de tous les types</li>
-<li>Nous pouvons ajouter un système d’état comme la paralysie ou le poison assez facilement. Il faut pour cela modifier la classe <code>AbstractAttack</code> et les classes qui en héritent. Cela sera potentiellement long, mais ne demande pas de toucher à la partie “<em>Pokémon</em>” de notre architecture.</li>
-<li>Une personne pourrait se concentrer sur la création des <em>Pokémons</em> alors qu’une autre pourrait se concentrer sur celles des attaques sans difficulté. Les deux parties du code sont relativement indépendantes, la seule zone de couplage sont les classes <code>AbstractPokemon</code> et <code>AbstractAttack</code>, qui servent avant tout à définir ce qui doit être fait par les classes filles et ce qui est accessible à l’extérieur.</li>
+<li>For the <code>AbstractPokemon</code> class, all attacks are <code>AbstractAttacks</code>. As long as they expose the <em>compute_damage()</em> method, our program will work. This makes it easy to add new types of attack.</li>
+<li>A <em>Pokémon</em> can have any type of attack.</li>
+<li>We can add a status system such as paralysis or poison quite easily. To do this, we need to modify the <code>AbstractAttack</code> class and the classes that inherit from it. This is potentially time-consuming, but doesn’t require any changes to the “Pokémon” part of our architecture.</li>
+<li>One person could concentrate on creating <em>Pokémons</em>, while another could concentrate on creating attacks without difficulty. The two parts of the code are relatively independent, the only area of coupling being the <code>AbstractPokemon</code> and <code>AbstractAttack</code> classes, which are used above all to define what must be done by the daughter classes and what is accessible to the outside.</li>
 </ul>
-<p>Le fait d’externaliser le comportement des attaques dans des classes spécifiques puis de les lier aux Pokémons via une relation d’agrégation assez souple qui permet de changer dynamiquement les attaques d’un Pokémon est le patron de conception <em>strategy</em>.</p>
-<hr>
-<div class="callout callout-style-default callout-tip callout-titled" title="Correction">
+<p>Externalizing the behaviour of attacks into specific classes and then linking them to Pokémon via a fairly flexible aggregation relationship that allows a Pokémon’s attacks to be changed dynamically is the <em>strategy</em> design pattern.</p>
+</section>
+<section id="end-of-the-lab" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Correction
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vous avez la possibilité de consulter la correction soit :</p>
 <ul>
-<li>en changeant votre dépôt local de branche</li>
-<li>en consultant la branche adéquat sur le dépôt distant</li>
+<li>Push your code to GitHub</li>
+<li>Pause or delete your datalab services</li>
 </ul>
-<p>Voici quelques commandes git utiles pour changer de branche :</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a># Lister toutes les branches</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>git branch -a</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a># Avant de changer de branche, créez un point de sauvegarde de votre travail</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>git add .</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>git commit -m "&lt;message&gt;"</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a># changer de branche</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>git checkout &lt;nouvelle_branche&gt;   # dans le terminal, la branche courante est indiquée entre ()</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>git checkout -                    # pour retourner à la branche précédente</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 
