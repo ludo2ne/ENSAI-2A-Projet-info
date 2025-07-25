@@ -521,23 +521,30 @@ sequenceDiagram
     R ->> U: HTTP response
 ```
 
-### Mon premier webservice 
+### My first web service
+
+::: {.callout-tip}
+The web service you will create will be deployed on a specific url. To find this url:
+
+- In the datalab > My services
+- VScode-python > Open > your will find a link
+:::
 
 - [ ] Open the `app.py` file
 - [ ] Run this file
 - [ ] Test the following requests:
-- `GET http://localhost/hello`
-- `GET http://localhost/hello/everybody`
+- `GET hello`
+- `GET hello/everybody`
 - [ ] Stop the web service
-- Click in the VSCode terminal, then press CTRL + C
+  - Click in the VSCode terminal, then press CTRL + C
 
 
 
 Using the list of characters defined in the *app.py* file, add the following endpoints:
 
-- [ ] `GET localhost:80/character`: will return a JSON containing a list of characters
-- [ ] `PUT localhost:80/character/{id}`, which will modify the name of the character at index `{id}` from a body
-- [ ] `DELETE localhost:80/character/{id}`, which will delete the item at index `{id}`
+- [ ] `GET character`: will return a JSON containing a list of characters
+- [ ] `PUT character/{id}`, which will modify the name of the character at index `{id}` from a body
+- [ ] `DELETE character/{id}`, which will delete the item at index `{id}`
 
 To test endpoints requiring a JSON body, you can use:
 
