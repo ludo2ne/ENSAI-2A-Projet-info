@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+  <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Ludovic Deneuville, Rémi Pépin">
   <title>Projet info 2A – Analyse fonctionnelle</title>
@@ -163,6 +163,7 @@ Ludovic Deneuville, Rémi Pépin
 <iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
 </iframe>
 <aside class="notes">
+<p>80 % des projets sont un echec (total ou relatif).</p>
 <p>Les questions qu’il faut se poser avant de commencer :</p>
 <ul>
 <li>Qu’est ce qu’on fait ? Qui le fait</li>
@@ -246,6 +247,14 @@ Ludovic Deneuville, Rémi Pépin
 <li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
 <li>Cette phase sera la première partie du rapport intermédiaire</li>
 </ul>
+<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
+<p>Cost of Change Curve:</p>
+<ul>
+<li>Cahier des charges : 1 €</li>
+<li>Développement : 10 €</li>
+<li>Tests : 50 €</li>
+<li>Production : 100 €</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -320,6 +329,20 @@ Ludovic Deneuville, Rémi Pépin
 <section id="architecture-logicielle" class="title-slide slide level2 center">
 <h2>Architecture logicielle</h2>
 <p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif"></a></p>
+<aside class="notes">
+<p>Voila pour les grand principes.</p>
+<p>On va maintenant rentrer dans le concret.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="cest-quoi-larchitecture-logicielle" class="slide level3">
 <h3>C’est quoi l’architecture logicielle ?</h3>
@@ -364,8 +387,9 @@ Ludovic Deneuville, Rémi Pépin
 <li><strong>Ce n’est pas du temps perdu !</strong></li>
 </ul>
 <aside class="notes">
-<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !<br>
-ChatGPT peut presque coder à notre place.</p>
+<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder.</p>
+<p>Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+<p>Les IAgen peuvent presque coder à notre place.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -410,6 +434,24 @@ Pas évident mais très important !!!</p>
 <li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
 <li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
 </ul>
+<aside class="notes">
+<p>Dans le monde pro :</p>
+<ul>
+<li>Présentation : JavaScript</li>
+<li>Métier : Java / Python</li>
+<li>Persistance : PostgreSQL ou MariaDB</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="pour-votre-projet" class="slide level3">
 <h3>Pour votre projet</h3>

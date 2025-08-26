@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,12 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4c655423fa628e8db4e72bbd8cc85dd5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-30e136824c92c3357f4818064204e119.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-18fa3abbf1c5ae3a8a22ddce1a7e52a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-47e542ebd0a9366a00a6ecf85106c601.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -461,6 +461,7 @@ ul.task-list li input[type="checkbox"] {
 <iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
 </iframe>
 <div class="notes">
+<p>80 % des projets sont un echec (total ou relatif).</p>
 <p>Les questions qu’il faut se poser avant de commencer :</p>
 <ul>
 <li>Qu’est ce qu’on fait ? Qui le fait</li>
@@ -511,6 +512,14 @@ ul.task-list li input[type="checkbox"] {
 <li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
 <li>Cette phase sera la première partie du rapport intermédiaire</li>
 </ul>
+<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
+<p>Cost of Change Curve:</p>
+<ul>
+<li>Cahier des charges : 1 €</li>
+<li>Développement : 10 €</li>
+<li>Tests : 50 €</li>
+<li>Production : 100 €</li>
+</ul>
 </div>
 </section>
 <section id="les-questions-à-se-poser" class="level3">
@@ -554,6 +563,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="architecture-logicielle" class="level2">
 <h2 class="anchored" data-anchor-id="architecture-logicielle">Architecture logicielle</h2>
 <p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="img-fluid"></a></p>
+<div class="notes">
+<p>Voila pour les grand principes.</p>
+<p>On va maintenant rentrer dans le concret.</p>
+</div>
 <section id="cest-quoi-larchitecture-logicielle" class="level3">
 <h3 class="anchored" data-anchor-id="cest-quoi-larchitecture-logicielle">C’est quoi l’architecture logicielle ?</h3>
 <ul>
@@ -587,8 +600,9 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Ce n’est pas du temps perdu !</strong></li>
 </ul>
 <div class="notes">
-<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !<br>
-ChatGPT peut presque coder à notre place.</p>
+<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder.</p>
+<p>Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+<p>Les IAgen peuvent presque coder à notre place.</p>
 </div>
 </section>
 <section id="un-grand-principe-separation-of-concerns" class="level3">
@@ -613,6 +627,14 @@ Pas évident mais très important !!!</p>
 <li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
 <li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
 </ul>
+<div class="notes">
+<p>Dans le monde pro :</p>
+<ul>
+<li>Présentation : JavaScript</li>
+<li>Métier : Java / Python</li>
+<li>Persistance : PostgreSQL ou MariaDB</li>
+</ul>
+</div>
 </section>
 <section id="pour-votre-projet" class="level3">
 <h3 class="anchored" data-anchor-id="pour-votre-projet">Pour votre projet</h3>
