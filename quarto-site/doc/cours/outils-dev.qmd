@@ -18,7 +18,22 @@ from: markdown+emoji
 lightbox: true
 ---
 
-## Stack VM
+## Environnement de dev
+
+- TP et projet réalisés sur un Datalab
+- Possible de faire sur la VM (backup)
+
+
+### Stack Datalab
+
+- `Visual Studio Code` : votre éditeur de code
+- `Python 3.13`
+- `Git` : pour versionner votre code
+- `PostgreSQL` : une base de données
+  - `cloudBeaver` : pour consulter, modifier cette base de données
+
+
+### Stack VM
 
 - `Python 3.10` : la version de Python installée à l'ENSAI
 - `Visual Studio Code` : votre éditeur de code
@@ -36,8 +51,7 @@ lightbox: true
 ### Zoom sur les Settings
 
 - fichier *.vscode/settings.json*
-- Formater : Black
-- Linter : Flake8
+- Formater : Ruff
 
 ::: {.notes}
 - Montrer le fichier settings.json (DEMO)

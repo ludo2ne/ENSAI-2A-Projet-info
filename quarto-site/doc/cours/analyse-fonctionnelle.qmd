@@ -36,6 +36,8 @@ lightbox: true
 
 
 ::: {.notes}
+80 % des projets sont un echec (total ou relatif).
+
 Les questions qu'il faut se poser avant de commencer :
 
 - Qu'est ce qu'on fait ? Qui le fait
@@ -86,6 +88,15 @@ Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
 - Permet de s'approprier le sujet
 - Ce n'est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué
 - Cette phase sera la première partie du rapport intermédiaire
+
+coût d'ajout d'une fonctionnalité / coût correction bug
+
+Cost of Change Curve:
+
+- Cahier des charges : 1 €
+- Développement : 10 €
+- Tests : 50 €
+- Production : 100 €
 :::
 
 
@@ -127,6 +138,12 @@ Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
 ![](https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif)
 
 
+::: {.notes}
+Voila pour les grand principes.
+
+On va maintenant rentrer dans le concret.
+:::
+
 ### C'est quoi l'architecture logicielle ?
 
 - Le pendant technique de l'analyse fonctionnelle
@@ -162,8 +179,11 @@ C'est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comm
 - **Ce n'est pas du temps perdu !**
 
 ::: {.notes}
-Certaines personnes disent même qu'on devrait passer plus de temps à analyser qu'à coder. Sujet à débat, mais cela montre bien que la phase d'analyse (comment je code les fonctions) est super importante !  
-ChatGPT peut presque coder à notre place.
+Certaines personnes disent même qu'on devrait passer plus de temps à analyser qu'à coder. 
+
+Sujet à débat, mais cela montre bien que la phase d'analyse (comment je code les fonctions) est super importante !  
+
+Les IAgen peuvent presque coder à notre place.
 :::
 
 ### Un grand principe : separation of concerns
@@ -187,6 +207,14 @@ Pas évident mais très important !!!
 - **_Présentation :_** tout ce qui se charge de l'affichage (page web, console, fenêtre)
 - **_Métier :_** c'est le métier de votre application, sa **plus-value**
 - **_Persistance :_** gère la persistance des données. Base de données ou système de fichiers
+
+::: {.notes}
+Dans le monde pro :
+
+- Présentation : JavaScript
+- Métier : Java / Python
+- Persistance : PostgreSQL ou MariaDB
+:::
 
 ### Pour votre projet
 

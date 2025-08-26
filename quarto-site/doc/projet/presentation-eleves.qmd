@@ -49,32 +49,30 @@ gantt
     tickInterval 1week
     
     section Cours
-    CM                           :milestone, 2024-09-02,
-    CM                           :milestone, 2024-09-09, 
-    Examen                       :milestone, 2024-10-07,
+    CM                           :milestone, 2025-08-26,
+    CM                           :milestone, 2025-09-02, 
+    Examen                       :milestone, 2025-09-29,
     
     section TP
-    TP1                          :milestone, 2024-09-06,
-    TP2                          :milestone, 2024-09-13,
-    TP3                          :milestone, 2024-09-20,
-    TP4                          :milestone, 2024-09-27,
+    TP1                          :milestone, 2025-08-29,
+    TP2                          :milestone, 2025-09-05,
+    TP3                          :milestone, 2025-09-12,
+    TP4                          :milestone, 2025-09-19,
     
     section Projet
-    Suivi 1                      :milestone, 2024-09-06,
-    Suivi 2                      :milestone, 2024-09-13,
-    Suivi 3                      :milestone, 2024-09-27,
-    Suivi 4                      :milestone, 2024-10-11,
-    3j immersion (Suivi 5 et 6)  :active,    2024-10-21, 3d
-    Suivi 7                      :milestone, 2024-11-15,
+    Suivi 1                      :milestone, 2025-08-29,
+    Suivi 2                      :milestone, 2025-09-05,
+    Suivi 3                      :milestone, 2025-09-12,
+    Suivi 4                      :milestone, 2025-10-03,
+    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d
+    Suivi 7                      :milestone, 2025-11-14,
     
     section Échéances
-    WEI                          :crit,      2024-09-20, 3d
-    Dossier Analyse              :milestone, 2024-10-05,
-    Toussaint                    :crit,      2024-10-26, 2024-11-03
-    Rapport final et Code        :milestone, 2024-11-23,
-    Soutenance                   :milestone, 2024-12-12,
-    
-    %%Stats univariées retraités   :done,         2021-11-28, 3d
+    WEI                          :crit,      2025-09-19, 3d
+    Dossier Analyse              :milestone, 2025-09-27,
+    Toussaint                    :crit,      2025-10-25, 7d
+    Rapport final et Code        :milestone, 2025-11-22,
+    Soutenance                   :milestone, 2025-12-10,
 ```
 
 :::
@@ -83,23 +81,23 @@ gantt
 
 | Date                        | Topic                                       |
 |-----------------------------|---------------------------------------------|
-| vendredi 6 septembre        | TP1 et Suivi 1                              |
-| vendredi 13 septembre       | TP2 et Suivi 2                              |
-| vendredi 20 septembre       | TP3                                         |
-| vendredi 27 septembre       | TP4 et Suivi 3                              |
-| vendredi 11 octobre         | Suivi 4 (retour sur les dossiers d'analyse) |
-| lun-mer 21-23 octobre       | 3 jours d'immersion (Suivi 5 et 6)          |
-| vendredi 15 novembre        | Suivi 7                                     |
-| jeudi 12 décembre           | Soutenance                                  |
+| vendredi 29 août            | TP1 et Suivi 1                              |
+| vendredi 5 septembre        | TP2 et Suivi 2                              |
+| vendredi 12 septembre       | TP3 et Suivi 3                              |
+| vendredi 19 septembre       | TP4                                         |
+| vendredi 3 octobre          | Suivi 4 (retour sur les dossiers d'analyse) |
+| mar-jeu 4-6 novembre        | 3 jours d'immersion (Suivi 5 et 6)          |
+| vendredi 14 novembre        | Suivi 7                                     |
+| mercredi 10 décembre        | Soutenances                                 |
+
 
 #### Livrables
-
 
 | Date                        | Topic                                       |
 |-----------------------------|---------------------------------------------|
 | TOUS les Jeudis             | Point hebdo                                 |
-| Samedi 5 octobre 12h00      | Dossier d'Analyse                           |
-| Samedi 23 novembre 20h00    | Rapport final et Code                       |
+| Samedi 27 septembre 12h00   | Dossier d'Analyse                           |
+| Samedi 22 novembre 20h00    | Rapport final et Code                       |
 
 
 
@@ -176,11 +174,12 @@ Plus de détails dans la [notice élèves](./notice-eleves.qmd#point-hebdo){targ
 ## Environnement de travail
 
 ::: {.callout-important}
-Vous avez tous les outils nécessaires pour coder sur la VM.
+Vous pouvez coder sur :
 
-Si vous n'êtes pas à très l'aise en info, il vous sera quasi impossible de coder hors VM. 
+- un datalab (recommandé)
+- la VM ENSAI
 
-**Aucune aide ne vous sera apportée pour installer les outils nécessaires si vous êtes hors VM.**
+Vous pouvez également coder sur votre propre machine mais **vous devrez gérer en totale autonomie les installations nécessaires.** 
 :::
 
 - Nous attendons du code de **[qualité]{.underline}**

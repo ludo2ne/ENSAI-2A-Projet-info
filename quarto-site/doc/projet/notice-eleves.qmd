@@ -116,7 +116,6 @@ Vous êtes des ingénieurs, vous avez des idées, vous devez prendre des initiat
 
 ### Crise
 
-:construction:
 
 Si le travail ou l'implication d'un ou plusieurs membres de l'équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. **Cela ne sera possible qu'après avoir alerté votre tuteur et le référent de la matière et qu'une discussion avec le groupe ait eu lieu**.
 
@@ -271,7 +270,7 @@ Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre
 
 Les outils de développement à votre disposition seront :
 
-- L'environnement de développement **Visual Studio Code** disponible sur votre VM
+- L'environnement de développement **Visual Studio Code**
 - Le logiciel de partage de code et versionnement **Git**, accessible depuis l'environnement de développement, accompagné d'un dépôt (privé) que vous devrez créer sur un serveur public (GitLab, Github, Bitbucket),
 - Une base de données **PostgreSQL** (hébergée à l'Ensai) comme système de gestion de base de données (SGBD) pour la persistance des données,
 - Un certain nombre de librairies et outils pour le lien entre Python et le SGBD, les tests unitaires, la génération automatique de documentations
