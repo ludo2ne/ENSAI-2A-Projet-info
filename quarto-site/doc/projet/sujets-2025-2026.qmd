@@ -1,0 +1,529 @@
+---
+title: "Sujets de projet informatique 2A"
+description: "Sujets 2025-2026"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+from: markdown+emoji
+---
+
+
+## ensaiGPT
+
+Tuteur : Adrien Lacaille
+
+### Présentation
+
+Vous utilisez tous ChatGPT, mais avez-vous déjà essayé de le créer vous-même ?
+Ce projet vous propose de concevoir votre propre assistant conversationnel "ensaiGPT", une application dans laquelle chaque utilisateur pourra se connecter, discuter avec un agent intelligent, et retrouver ses anciennes conversations comme s'il s'agissait d'un carnet de bord interactif.
+
+Chaque étudiant pourra personnaliser l'agent : ton formel ou décontracté, réponses synthétiques ou très détaillées, style humoristique ou professionnel… C'est vous qui décidez de son comportement.
+
+### Fonctionnalités de base
+
+- F1 : Création d'un utilisateur avec authentification. Chaque utilisateur doit créer un compte (login simple avec mot de passe) pour accéder à son espace personnel.
+- F2 : Création et gestion de conversations. Un utilisateur peut démarrer une conversation avec l'agent, voir l'historique de ses conversations, et reprendre une conversation interrompue.
+- F3 : Recherche dans les conversations passées. Permettre à l'utilisateur de rechercher des messages ou réponses par mot-clé ou date dans ses conversations archivées.
+- F4 : Personnalisation de l'agent conversationnel. L'utilisateur peut configurer le comportement du bot via un prompt système (ex : ton formel / humour / résumé / tâche spécifique).
+
+### Fonctionnalités optionnelles
+
+- FO1 : Mode collaboratif. Plusieurs utilisateurs peuvent participer à une même conversation (ex : groupe projet, binôme).
+- FO2 : Tableau de bord utilisateur. Affichage de statistiques personnalisées (nombre de conversations, messages échangés, sujets les plus fréquents, temps passé, etc.)
+- FO3 : Export de conversations. Possibilité d'exporter une conversation en texte simple pour archivage ou présentation.
+
+
+---
+
+## Shotgun
+
+Tutrice : Raya Berova
+
+### Présentation
+
+Ce projet a pour but de créer une application permettant au BDE de gérer les inscriptions à un événement (Chartres, WEI, Gala...).  
+Chaque événement, créé par un administrateur, propose plusieurs choix de créneaux de bus aller et retour, avec une capacité maximale pour chaque créneau et une capacité maximale globale pour l'évènement.
+
+Chaque participant peut s'inscrire à l'évènement en sélectionnant ses créneaux de bus et en précisant s'il boit ou non.  
+Un mail de confirmation est automatiquement envoyé après inscription, contenant un récapitulatif des bus choisis, combien il doit payer et comment, ainsi qu'un code de réservation.
+
+L'application sera réalisée en Python, en utilisant la POO, la gestion d'une base de données PostgreSQL, une couche DAO, et des envois d'email via une API (Brevo).
+
+### Fonctionnalités de base
+
+- F1 : Création d'un compte admin
+- F2 : Création d'un événement par un admin (titre, créneaux de bus aller/retour avec capacité)
+- F3 : Inscription d'un participant à un événement
+- F4 : Lister tous les événements auxquels le client peut s'inscrire
+- F5 : Génération d'un code de réservation unique et envoi d'un mail de confirmation
+- F6 : Pour les admin, avoir la liste des inscrits en temps réel à l'évènement
+- F7 : Suppression d'une réservation à partir du code de réservation
+- F8 : Gestion des capacités maximales des créneaux de bus et des évènements
+
+### Fonctionnalités optionnelles
+
+- FO1 : Création facultative de compte client pour pré-remplissage à la prochaine inscription
+- FO2 : Modification d'une réservation à partir du code de réservation
+- FO3 : Frontend simple pour les admins/participants
+- F05 : Afficher des statistiques sur le nombre d'inscrits
+- F06 : Envoyer des rappels par mail pour les paiements
+- F07 : Déployer l'application
+- F08 : Envoyer un mail d'alerte à tous les clients lorsqu'un nouvel événement est créé
+
+### Conseils / Outils ...
+
+- API **Brevo** pour l'envoi d'emails
+- **Langage** : Python
+- **Gestion de version** : Git
+- **Tests** : `pytest`
+- **Base de données** : PostgreSQL
+- **Backend API** : FastAPI
+
+
+
+## FuelTrack : Analyse interactive des prix des carburants en France
+
+Tuteur : Anas KNEFATI
+
+### Présentation
+
+Le projet FuelTrack a pour objectif de développer une application en ligne de commande (CLI) dédiée à l'analyse des prix des carburants en France. Cette application s'appuie sur les données ouvertes fournies par l'API officielle <https://transport.data.gouv.fr/datasets/prix-des-carburants-en-france-flux-quotidien-1>{target="_blank"}
+
+L'ambition est de construire un pipeline complet, allant du téléchargement quotidien des données à leur traitement, leur analyse et leur visualisation graphique. L'outil permettra à l'utilisateur de suivre l'évolution des prix des carburants (Gazole, SP95, E85, etc.) et d'identifier les meilleures opportunités d'approvisionnement.
+
+Vous avez toutefois la liberté de développer une interface graphique supplémentaire si vous le souhaitez, en prenant en compte la complexité et le temps de développement. Dans tous les cas, un outil fonctionnel en CLI doit être fourni.
+
+
+### Fonctionnalités de base
+
+- F1 : **Téléchargement et extraction des données**
+Automatiser le téléchargement quotidien des fichiers compressés (XML) via l'API. Extraire et stocker localement les données pour analyse.
+- F2 : **Parsing et stockage des données**
+Implémenter un parser XML pour extraire les champs que vous jugez essentiels dans votre développement. Stocker les données dans une base de données locale.
+- F3 : **Analyse temporelle des prix**
+Permettre le calcul de l'évolution du prix moyen national d'un carburant donné sur une période définie (par exemple : 7 jours) et afficher les résultats sous forme de graphiques 
+- F4 : **Recherche des meilleurs prix dans une commune donnée**
+Pour la date la plus récente disponible, permettre à l'utilisateur de rechercher les trois stations les moins chères dans une commune spécifiée (code postal), pour un type de carburant donné.
+- F5: **Gestion des utilisateurs et des accès**
+Mettre en place un système d'authentification avec plusieurs niveaux d'accès :
+    - *User* : accès en lecture seule pour consulter les analyses et les visualisations.
+    - *Admin* : accès complet incluant la gestion des données (modification, suppression), le suivi des activités, ainsi que la gestion des comptes utilisateurs, rôles et configuration de l'application.
+
+
+### Fonctionnalités optionnelles
+
+- FO1 : **Comparaison multi-carburants**
+Permettre la comparaison simultanée de l'évolution des prix de plusieurs carburants sur un même graphique.
+- FO2 : **Export des résultats d'analyse**
+Offrir la possibilité d'exporter les données analysées dans différents formats : CSV, JSON ou Excel.
+- FO3 : **Fonctionnalité libre**
+Proposez une fonctionnalité originale et pertinente, que vous estimez utile dans le cadre du projet.
+- FO4 : **Recherche des meilleurs prix autour d'une adresse**
+Permettre à l'utilisateur d'entrer une adresse et de rechercher les prix les plus bas dans un rayon défini.
+
+### Conseils / Outils 
+- **Langage** : Python  
+- **Traitement des données** : Pandas  
+- **Visualisation** : Matplotlib / Seaborn / Plotly  
+- **Parsing & compression** : `zipfile`, `xml.etree.ElementTree`  
+- **Base de données** : PostgreSQL  
+- **Sécurité** : bcrypt, sessions/tokens  
+- **Gestion de version** : Git  
+- **Rédaction de tests unitaires** : avec `pytest`
+
+
+## Mus'IA : Générateur de playlists qui correspondent à vos envies et à vos idées
+
+**Tutrice** : Apolline Guérineau
+
+### Présentation
+
+Trouver la playlist parfaite qui correspond vraiment à votre humeur, ce n'est pas toujours facile.
+Mus'IA vous permettra de décrire une ambiance ou une humeur avec vos propres mots, comme « soleil et plage » ou « amitié », et génèrera une playlist de chansons dont les paroles collent à votre demande. Grâce à l'intelligence artificielle, Mus'IA analyse le sens des paroles pour créer une sélection musicale unique et personnalisée.
+
+Ce projet propose de générer automatiquement des playlists musicales à partir d'une requête utilisateur exprimée en langage naturel (ex : _« aventure et découverte »_). Le système s'appuie sur un modèle de traitement du langage pour représenter les paroles des chansons sous forme d'embeddings vectoriels (vecteurs de nombres), permettant de calculer leur similarité avec la requête de l'utilisateur.
+Un outil en CLI permettra à l'utilisateur de se servir de l'application.
+
+### Fonctionnalités de base
+
+- **F1** : Ajout de chansons dans la base avec nom, artiste, paroles, année, et calcul automatique des embeddings.
+- **F2** : Requête utilisateur en langage naturel pour générer une playlist (via recherche par similarité sémantique).
+- **F3** : Création de playlists personnalisées (ajout, suppression, consultation).
+- **F4** : Endpoints FastAPI pour interagir avec les chansons et playlists depuis l'interface CLI 
+
+### Fonctionnalités optionnelles
+
+- **FO1** : Obtenir les paroles des chansons à partir de leur nom et artiste(s) via une API externe.
+- **FO2** : Enrichir les chansons en base avec des informations complémentaires (album, année, tempo, etc) via une/des API externes. 
+- **FO3** : Permettre à l'utilisateur d'ajouter des filtres (année, artiste, genre, langue, etc.) pour affiner la playlist générée 
+- **FO4** : Permettre d'exporter les playlists créées en fichiers compatibles avec des players externes (ex : CSV, JSON, ou intégration Spotify).
+
+
+### Conseils / Outils
+
+- Pour le modèle d'embeddings :
+    - Utiliser `sentence-transformers` de la bibliothèque Hugginface avec un modèle léger comme `all-MiniLM-L6-v2` pour générer les embeddings - le modèle ainsi qu'un exemple de script pour l'utiliser pourront vous être fournis
+    - Ou bien utiliser OpenWebUI sur le SSPCloud
+- Une API pour obtenir les paroles : LRCLIB's API, mais d'autres existent !
+
+
+
+## MagicSearch: Semantic Search for Magic Cards
+
+Supervisor: Gaspard Ferey
+
+### Overview
+
+**Magic: The Gathering** is a popular trading card game built around the mechanic of constructing your own deck. With more than 50,000 cards published since 1993, finding the one you need can quickly become overwhelming... unless you have the right tool!
+
+💡 Traditional search engines let you filter by name, color, or type, but it's often the **text description** of a card that reveals its true purpose. **MagicSearch** offers an intelligent **semantic search** engine that understands your queries in natural language, even if you don't know the exact name of the card.
+
+Example:
+
+- 🔎 *Enchantement qui accorde le vol à une créature et permet de piocher des cartes*
+- 🎯 ***Take Flight**: Enchanted creature gets +1/+0 and has flying and "Whenever this creature attacks, draw a card."*
+
+Under the hood, this functionality relies on modern **semantic embedding** techniques to represent both user queries and card descriptions as **vectors**. Semantic similarity between a query and a card is then simply evaluated by comparing the proximity of their respective vectors. The search operation can therefore be executed quickly and efficiently within the database.
+
+🌍 Bonus: the model understands multiple languages and does not require the use of technical or exact vocabulary.
+
+👉 No need to be a Magic rules expert to contribute to this project!
+
+### Core Features
+
+- **F1**: Knowledge Base Construction  🛠️
+    - Download raw data files
+    - Automatically generate a text description for each card
+    - Convert to vector embeddings using an API
+    - Insert into the database
+- **F2**: Endpoints for browsing/exploring the database  🔎
+    - `/cards/{id}` : retrieve a card by its unique ID
+    - `/cards?name=...` : search by exact or partial name
+    - `/cards/random` : get a random card (useful for testing or fun)
+- **F3**: Semantic Search Engine 🧠
+    - Convert user query into a vector
+    - Perform similarity search in the database
+    - Display results
+- **F4**: API and/or CLI Interface 💻
+
+### Optional Features
+
+The project can be extended in various directions depending on the group's interests.
+
+::: {.callout-note collapse="true" title="Optimizing Semantic Search Performance 🚀"}
+- **FO1a**: Experiment with different string formats for card descriptions
+  - (short) *[name] : [description]"*
+  - (detailed) *"This is a MTG card with the name [name]. It costs [cost] to play. It is a [type]. It is described as follows: [description]. I has the following capacities: [...]"*
+- **FO1b**: Contextualize by adding definitions for Magic-specific keywords to the input
+    *e.g. "Scry N" = "look at the top N cards from your library and put any number on the bottom, and the rest back on top in any order"*
+- **FO1c**: Build an evaluation dataset to measure performance
+- **FO1d**: Implement reranking techniques to refine results
+- **FO1e**: Try out different embedding models
+:::
+
+
+::: {.callout-note collapse="true" title="Extending to Other Data or Advanced Use Cases 🧩"}
+- **FO2a**: Search within a library of standard preconstructed decks
+- **FO2b**: Search using thematic descriptions (e.g. "cards about dragons")
+- **FO2c**: Search the game rules database
+- **FO2d**: Build a virtual deck assistant, add/remove cards, check rules compatibility, show deck stats
+:::
+
+
+::: {.callout-note collapse="true" title="Improving Usability 🎨"}
+- **FO3a**: Combine semantic search with more traditional filters (color, type, cost, etc.)
+- **FO3b**: Allow users to exclude specific cards from results
+- **FO3c**: Include game format restrictions (e.g. banned cards)
+- **FO3d**: Build a **simple** web interface
+:::
+
+### Tools & Technologies
+
+- **Language**: Python
+- **Version Control**: Git
+- **Testing**: `pytest`
+- **Database**: PostgreSQL + `pg_vector` extension
+- **Backend API**: FastAPI
+- **Frontend GUI** (optional, use a **well-known** framework):
+  - Quick prototyping: Observable, Streamlit, Shiny, etc.
+  - SPA client for the API: Vue3, React, Svelte, etc.
+- **Knowledge database** : <https://mtgjson.com/>{target="_blank"}
+- **Embedding API** : OpenWebUI on SSPCloud (<https://llm.lab.sspcloud.fr/>{target="_blank"})
+</details>
+
+::: {.callout-tip collapse="true" title="French version"}
+
+### Présentation
+
+**Magic: The Gathering** est un jeu de cartes populaire s'appuyant sur une mécanique de constitution de son propre paquet (*deck building*). Avec plus de 50 000 cartes publiées depuis 1993, retrouver celle qu'il vous faut peut vite devenir un casse-tête... sauf si vous avez le bon outil !
+
+💡 Les moteurs de recherche classiques vous permettent de filtrer par nom, couleur ou type, mais ce sont souvent les descriptions **textuelles** des cartes qui révèlent leur véritable intérêt. **MagicSearch** propose un moteur de **recherche sémantique** intelligent qui comprend vos requêtes en langage naturel, même si vous ne connaissez pas le nom exact de la carte.
+
+Exemple :
+- 🔎 *Enchantement qui accorde le vol à une créature et permet de piocher des cartes*
+- 🎯 ***Take Flight**: Enchanted creature gets +1/+0 and has flying and "Whenever this creature attacks, draw a card."*
+
+Sous le capot, cette fonctionnalité s'appuiera sur la technique moderne de **plongement sémantique** (*embedding*) pour représenter les requêtes des utilisateurs et la description textuelle de chaque carte par des **vecteurs**. La similarité sémantique entre requête et description d'une carte se rapporte ainsi à une simple évaluation de la proximité des vecteurs les représentant. L'opération de recherche peut donc être effectuée rapidement et efficacement en BDD.
+
+🌍 Bonus : le modèle comprend plusieurs langues et ne nécessite pas d'utiliser un vocabulaire précis ou technique.
+
+👉 Pas besoin d'être un expert en règles de Magic pour contribuer à ce projet.
+
+### Fonctionnalités de base
+
+- **F1** : Construction de la base de connaissance 🛠️
+    - téléchargement d'un fichier de données brutes
+    - génération automatique d'une description textuelle de chaque carte
+    - transformation en vecteur via une API d'*embedding*
+    - insertion en BDD
+- **F2** : Endpoints de consultation/exploration de la base 🔎
+    - `/cards/{id}` : retrouver une carte par son identifiant unique
+    - `/cards?name=...` : recherche par nom exact ou partiel
+    - `/cards/random` : carte aléatoire (utile pour tester ou s'amuser)
+- **F3** : Recherche sémantique 🧠
+    - transformation de la requête utilisateur en vecteur
+    - recherche par similarité en BDD
+    - présentation des résultats
+- **F4** : Interface API et/ou CLI 💻
+
+### Fonctionnalités optionnelles
+
+Il est possible d'enrichir ces fonctionnalités de différentes manières en fonction des apétences du groupe.
+
+- **FO1a** : travail sur la chaîne de caractères représentant une carte
+  - *[name] : [description]"* (version courte)
+  - *"This is a MTG card with the name [name]. It costs [cost] to play. It is a [type]. It is described as follows: [description]. I has the following capacities: [...]"* (version plus précise)
+- **FO1b** : contextualisation en ajoutant les définitions de mots-clef spécifique au jeu
+    *par exemple: "Scry N" = "look at the top N cards from your library and put any number on the bottom, and the rest back on top in any order"*
+- **FO1c** : évaluation de la performance (constitution d'un jeu de donnée d'évaluation)
+- **FO1d** : méthode de *reranking* (réordonnancement des résultats à partir de la requête utilisateur)
+- **FO1e** : experimentation de différents modèles d'*embedding*
+
+---
+
+- **FO2a** : recherche parmi une base de *decks* standards préconstitués
+- **FO2b** : recherche à partir des descriptions thématiques des cartes
+- **FO2c** : recherche de règles du jeu
+- **FO2d** : assistant de création d'un paquet "virtuel": ajouter / retirer une carte, vérifier les règles, afficher des statistiques
+
+---
+
+- **FO3a** : combiner recherche sémantique avec des filtres plus classiques sur les caractéristiques des cartes
+- **FO3b** : possibilité d'écarter certaines cartes de la recherche
+- **FO3c** : prise en compte du "format de jeu" qui interdit certaines cartes
+- **FO3d** : interface web **simple**
+
+
+### Conseils / Outils
+
+- **Langage** : Python
+- **Gestion de version** : Git
+- **Tests** : `pytest`
+- **Base de données** : PostgreSQL + extension `pg_vector`
+- **Backend API** : FastAPI
+- **Frontend GUI** (optionnel, utiliser un framework **déjà bien maîtrisé**) :
+  - Prototypage rapide: Observable, Streamlit, Shiny, etc.
+  - SPA client de l'API: Vue3, React, Svelte, etc.
+- **Knowledge database** : <https://mtgjson.com/>{target="_blank"}
+- **API d'*embedding*** : OpenWebUI sur le SSPCloud (<https://llm.lab.sspcloud.fr/>{target="_blank"})
+
+
+:::
+
+
+
+
+## Créez votre propre serveur de poker 🂱
+
+Tuteur : Lucas Bouju 
+
+### Présentation
+
+L'objectif de ce projet est de créer un serveur de poker permettant d'hoster des tables et jouer des parties de texas hold'em poker.
+Votre serveur communiquera avec les utilisateurs à l'aide d'HTTP, et utilisera une base de données postgresql pour sauvegarder les informations des joueurs.
+
+### Fonctionnalités de base
+
+- F1 : En tant que joueur identifié, je peux rejoindre une table où il reste de la place pour démarrer un cash game
+- F2 : En tant que joueur sur une table, je peux participer à la partie lorsque c'est mon tour 
+- F3 : En tant que serveur de poker, je garantis le respect des règles du jeu de poker
+- F4 : En tant qu'admin du serveur, je peux créditer les portefeuilles des joueurs 
+
+### Fonctionnalités optionnelles
+
+- FO1 : Création d'un client pour joueur en CLI
+    - création d'un nouveau compte
+    - identification par mot de passe
+    - jouer une partie
+    - envoi de référence de virement à l'administrateur pour un renflouage plus rapide
+- FO2 : Ajout de modes de jeu supplémentaires
+    - Mode tournoi
+    - Omaha, Bomb pot
+    - Multiples showdown : "running it twice"
+- FO3 : Fonctionnalités avancées
+    - identification par mot de passe
+    - suivi des statistiques des joueurs au fil du temps
+    - impossiblité de rejoindre une partie à moins d'être big blind ou de la payer
+    - ajout de bots pour jouer même lorsque personne n'est connecté
+- FOX : La fonctionalité dont vous avez toujours rêvé mais qui n'a jamais été implémentée sur les sites de poker en ligne
+
+### Conseils / Outils
+
+Les règles du jeu sont accessibles ici :
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Texas_hold_%27em){target="_blank"}
+- [California State Justice Dpt](https://oag.ca.gov/sites/all/files/agweb/pdfs/gambling/BGC_texas.pdf){target="_blank"}
+
+
+## QR Code Tracking
+
+Tuteur : Thierry Mathé
+
+### Présentation
+
+Ce projet a pour but de créer une interface de programmation d'application Web (ou API web) permettant la création de QR code et le suivi de leurs utilisations.
+
+Une API Web est une interface qui permet à une application dite "cliente" d'accéder à des services offerts par une autre application. Les API présentent un point d'accès (ou endpoint) pour chaque service offert. Voici quelques exemples de services: obtenir des horaires de train, calculer un itinéraire... 
+
+Les échanges se font via le protocole HTTP. L'application cliente envoie une requête HTTP vers un endpoint de l'API, l'API transmet la requête à l'application sous jacante et renvoie la réponse fournie au client. 
+
+Ce projet à donc pour but de créer une application permettant la création de QR code et le suivi de leurs utilisations puis de l'associer à une API afin que des applications clientes puissent l'utiliser via le web. 
+ 
+Les QR Code font maintenant parti de notre quotidien. Ces pictogrammes permettent de stocker des informations textuelles ou numériques. En plus de la création de QR code l'application à créer devra être capable d'en suivre l'utilisation.
+
+Ce suivi concerne uniquement les QR code permettant d'accéder à un site internet. Le QR code généré ne contiendra pas l'adresse du site en question mais l'adresse d'un endpoint spécifique de l'API qui mémorisera l'appel puis redirigera l'utilisateur vers le site voulu. Ce suivi permet de mesurer l'utilisation du QR code.
+
+
+### Fonctionnalités de base
+
+Chaque fonctionnalité correspond à un "endpoint" de l'API à créer:
+
+- F1 : Génére un QR code simple à partir du texte donnée (accessible à tous)
+- F2 : Créer un compte utilisateur (accessible à tous)
+- F3 : Créer un QR code suivi à partir d'une URL données (authentification nécessaire)
+- F4 : Reception des QR code suivis et redirection (accessible à tous)
+- F5 : Accéder aux données de suivi d'un QR suivi (authentification nécessaire). A minima les informations sont la date et l'heure d'utilisation.
+
+### Fonctionnalités optionnelles
+
+- FO1 : Authentification par jeton
+- FO2 : Création de QR code personnalisables (couleur, ajout de logo...)
+- FO3 : Ajout d'autres informations de suivi (adresse IP d'appel, toutes autres informations présentes dans l'entête http)
+
+
+
+## À Portée De Verre : gestion de bar personnel et suggestion de cocktails
+
+Tuteur : Elwenn Joubrel 
+
+### Présentation
+
+Ce projet vise à créer une application pratique et ludique destinée à la préparation de cocktails. À partir des ingrédients qu'ils ont à disposition, les utilisateurs peuvent découvrir les recettes de cocktails qu'ils sont déjà en mesure de réaliser, ou celles pour lesquelles il ne manque que quelques éléments.
+
+En pratique, le projet repose d'abord sur le développement d'une API REST exploitant des recettes provenant de l'API publique TheCocktailDB, qui fournit les compositions, instructions et visuels de centaines de cocktails.
+
+L'application permet à tout utilisateur d'interroger l'API (depuis un client CLI ou HTTP) pour rechercher des recettes, avec possibilité de filtrer les résultats. Un utilisateur authentifié peut en complément enregistrer les ingrédients disponibles dans son stock personnel. À partir de cette information, l'API propose :
+* les recettes réalisables immédiatement ;
+* les recettes proches, nécessitant un nombre limité d'ingrédients supplémentaires.
+
+Dans sa version la plus simple, l'application n'aura pas besoin d'un client et se contentera parfaitement de endpoints d'API soigneusement documentés.
+
+### Fonctionnalités de base
+
+- F1 : Tout visiteur peut rechercher des recettes, en particulier avec filtrage (alcoolisé ou non, par catégorie, etc.)
+- F2 : Un visiteur peut créer un compte, puis s'authentifier par mot de passe
+- F3 : Un utilisateur peut ajouter, supprimer et consulter les ingrédients dont il dispose 
+- F4 : L'application peut proposer à un utilisateur la liste des cocktails qu'il peut réaliser immédiatement
+- F5 : Elle propose également les recettes pour lesquelles il manque peu d'ingrédients
+
+### Fonctionnalités optionnelles
+
+- FO1 : Création et gestion de recettes privées, indépendantes de TheCocktailDB
+- FO2 : Choix de cocktails à mettre en favoris, avec ajout de notes personnalisées
+- FO3 : Génération d'une liste de courses optimisée en identifiant les ingrédients à acheter en priorité pour maximiser le nombre de nouvelles recettes réalisables
+- FO4 : Développement d'un client simple, CLI ou GUI au choix
+- ...
+- FOX : Vous pouvez évidemment laisser libre cours à votre imagination et implémenter les fonctionnalités qui vous intéressent (multi-utilisateur, mode anti-gaspi, recherches avancées, etc.)
+
+### Conseils / Outils ...
+
+- **Langage** : Python
+- **Outil de versionnage** : Git
+- **Base de données** : PostgreSQL
+- **Backend API** : FastAPI
+- **Frontend** (Attention, l'accompagnement sera limité selon le framework choisi) : 
+    - **CLI** : `InquirerPy`
+    - **GUI** : En python (`tkinter`, `streamlit`, `reflex`, etc.) ou HTML/JS/CSS (React, Vue, etc.) selon votre appétance
+- **Tests** : `pytest`
+- **Linting** : `ruff`
+
+
+## Créez votre propre application de sport
+
+Tuteur : Samuel GOUTIN
+
+### Présentation
+
+Strava est un réseau social utilisé pour enregistrer et partager ses activités sportives. Beaucoup de fonctionnalités sont payantes et d'autres pas au goût de chacun. Ce projet vise à créer une alternative à Strava, mais en mieux !
+
+Concrétement, le projet prendra la forme d'une API qui s'appuiera sur une base de données pour persister des informations et sur une interface graphique pour la présentation.
+
+### Fonctionnalités de base
+
+- F1 : Un utilisateur doit pouvoir :
+    - créer une activité en chargeant un fichier gpx,
+    - consulter ses activités avec possibilité d'appliquer un ou deux filtres,
+    - modifier ou supprimer une activité.
+- F2 : Un utilisateur doit pouvoir accéder à un fil d'actualité listant les activités de tous les utilisateurs qu'il suit.
+- F3 : Un utilisateur doit pouvoir liker et commenter l'activité d'un utilisateur qu'il suit.
+- F4 : Un utilisateur doit pouvoir accéder à des statistiques le concernant :
+    - nombre d'activités par semaine et par sport,
+    - nombre de kilomètres parcouru par semaine,
+    - nombre d'heures d'activité par semaine.
+
+### Fonctionnalités optionnelles
+
+- FO1 : Un utilisateur doit pouvoir visualiser (via barplots, calendar heatmap, ou autre) ses statistiques définis en **F4**.
+- FO2 : Un utilisateur doit pouvoir visualiser le tracé de ses activités sur une carte.
+- FO3 : Un utilisateur doit pouvoir :
+    - créer un parcours à partir d'une adresse de départ et d'arrivée,
+    - visualiser le parcours sur une carte,
+    - télécharger la trace gps du parcours.
+- FO4 : Un utilisateur doit pouvoir accéder à des prédictions sur des distances inconnues à partir de ses activités.
+
+### Conseils / Outils ...
+
+- Outils : FastAPI (webservice), sqlite (base de données), streamlit (interface graphique)
+- Qui dit utilisateur dit authentification : optez pour une authentification HTTP basique
+- Les indications sont parfois incomplètes de manière laisser de la place à votre imagination et à votre bon sens
+
+
+## Ub'EJR Eats
+
+Tutor: Clément Valot 
+
+### Abstract
+
+The EJR's famed galette-saucisse is now the most sought-after delicacy in all of Rennes!
+To keep up with the increasing demand, the EJR has tasked you with delivering a back-end application to help with the orders and deliveries.
+
+### Features
+
+- F0: Provide secure authentication
+- F1: As the EJR administrator, I can store and expose an editable menu with various items and prices
+- F2: As an EJR customer, I can pick items from the menu to place an order after providing an address in Rennes 
+- F3: As an EJR delivery driver, I am provided with a map and itinerary for the next deliveries
+
+### Optional Features
+
+- OF1 : Include bundles (e.g. main course + drink for a small discount), discounts, and limited availability in the menu. Difficulty :star: 
+- OF2 : Automate the delivery process so that the delivery driver is automatically notified once a certain amount of orders have been placed, or a certain amount of time elapsed since the last order has been placed. Difficulty :star: :star:
+- OF3 : Integrate with a payment system (e.g. Stripe). Difficulty :star: :star: :star: 
+
+### Specifications 
+- Python PDM project (Template provided)
+- PostGreSQL database
+- FastAPI interface (To be tested with an API client)
+- Integration with Google Maps API
