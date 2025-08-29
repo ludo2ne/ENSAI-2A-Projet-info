@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-18fa3abbf1c5ae3a8a22ddce1a7e52a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-47e542ebd0a9366a00a6ecf85106c601.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-e8e54fbf2d9ade825dca367f4b247db7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f4a5ee9f428d00c6bef4a716450a67ee.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -607,13 +607,13 @@ Caution
 </div>
 <section id="remote-repository" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="remote-repository"><span class="header-section-number">1.1</span> Remote repository</h3>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -622,7 +622,7 @@ Important
 </div>
 <ul class="task-list">
 <li><label><input type="checkbox">Connect on <a href="https://github.com/" target="_blank">GitHub</a></label></li>
-<li><label><input type="checkbox">Create a <em>fork</em> of the repository <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP" target="_blank">ENSAI-2A-complement-info-TP</a></label>
+<li><label><input type="checkbox">Create a <em>fork</em> of the repository <a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">ENSAI-2A-projet-info-template</a></label>
 <ul>
 <li>A fork is a copy of a repository, allowing a user to develop independently without affecting the original</li>
 </ul></li>
@@ -639,9 +639,24 @@ Important
 <ul class="task-list">
 <li><label><input type="checkbox">Launch a VSCode-python service</label>
 <ul>
-<li>Important: in tab <em>Network access</em>, enable Port <strong>9876</strong></li>
+<li>In tab <em>Network access</em>, enable Port <strong>9876</strong></li>
 <li>It will be usefull later to expose your webservice</li>
 </ul></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you don’t enable port 9876, you will have no choice but to start over with creating your VScode-python service and everything that follows.</p>
+</div>
+</div>
+<ul class="task-list">
 <li><label><input type="checkbox">Once VSCode has been launched, open a new terminal</label>
 <ul>
 <li>Top left, icon with 3 horizontal bars &gt; Terminal &gt; New</li>
@@ -649,8 +664,7 @@ Important
 </ul></li>
 <li><label><input type="checkbox">Clone the remote repository using the token</label>
 <ul>
-<li><code>git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/&lt;user_name&gt;/&lt;repo_name&gt;.git</code></li>
-<li><strong>GIT_PERSONAL_ACCESS_TOKEN</strong></li>
+<li><code>git clone https://github.com/&lt;user_name&gt;/&lt;repo_name&gt;.git</code></li>
 </ul></li>
 <li><label><input type="checkbox">Position yourself in your repo</label>
 <ul>
@@ -658,21 +672,29 @@ Important
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Environment Variables">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Environment Variables
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>In principle, there is no longer any need to specify the token when cloning.</p>
+<p>Old way of doing things using environment variable <code>GIT_PERSONAL_ACCESS_TOKEN</code>:</p>
+<ul>
+<li><code>git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/&lt;user_name&gt;/&lt;repo_name&gt;.git</code></li>
+</ul>
 <p>An environment variable is a system-defined value used to configure how applications run or to securely store information like file paths, keys, or access tokens.</p>
 <p>It is like a key-value pair in a dictionary. For example, <code>GIT_PERSONAL_ACCESS_TOKEN</code> is a variable whose value stores your GitHub personal access token.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MY_VAR_KEY</span><span class="op">=</span>my_var_value   <span class="co"># Create or replace</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$MY_VAR_KEY</span>                 <span class="co"># Display</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">printenv</span>                         <span class="co"># Display all</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">printenv</span> <span class="kw">|</span> <span class="fu">grep</span> GIT              <span class="co"># Display all containing the word GIT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -737,7 +759,6 @@ Tip
 </section>
 <section id="application-example" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="application-example"><span class="header-section-number">3</span> Application example</h2>
-<p>To understand how a layered application is built, we’ll look at a <a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">project template</a>.</p>
 <p>You may be asked to design 2 types of application:</p>
 <ul>
 <li>A CLI application
@@ -805,11 +826,15 @@ Note
 </div>
 <p>You’ll notice that the application asks for a password that’s a little too long.</p>
 <ul class="task-list">
+<li><label><input type="checkbox">Quit the application</label>
+<ul>
+<li>Each time you make a change, you will need to close and restart the application</li>
+</ul></li>
 <li><label><input type="checkbox">Find and change the password required length to 16 characters</label>
 <ul>
 <li>You will find it in one of the classes above</li>
 </ul></li>
-<li><label><input type="checkbox">Read the <a href="https://inquirerpy.readthedocs.io/en/latest/pages/validator.html" target="_blank">inquirerPy</a> to add a special character</label></li>
+<li><label><input type="checkbox">Read the <a href="https://inquirerpy.readthedocs.io/en/latest/pages/validator.html" target="_blank">inquirerPy</a> documentation to add a special character</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="You can do better">
 <div class="callout-header d-flex align-content-center">
@@ -963,7 +988,7 @@ Note
 <li><p><label><input type="checkbox">In Git Bash, use the <em>status</em>, <em>add</em>, <em>commit</em>, <em>push</em> and <em>pull</em> commands to send your changes to the remote repository.</label></p></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Aide">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -972,7 +997,7 @@ Aide
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><a href="https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push" target="‘_blank’">The sequence of Git commands</a> should become automatic.</p>
 <p>If you get this message when you <em>push</em>, you need to start with <em>pull</em>.</p>
@@ -1118,7 +1143,7 @@ Mandatory
 <li><label><input type="checkbox">Creates a local clone of the repository</label></li>
 <li><label><input type="checkbox">Does a test to check that they can push code, for example by creating:</label>
 <ul>
-<li><em>doc/tracking/2025.09.04-week1.md</em>: the first weekly point</li>
+<li><em>doc/suivi/2025.09.04-week1.md</em>: the first weekly point</li>
 <li><em>src/main.py</em>: the file to launch your application</li>
 <li><em>requirements.txt</em>: the file listing the packages</li>
 </ul></li>
@@ -1143,7 +1168,7 @@ Caution
 <li><label><input type="checkbox">Make sure that this file remains in your local repository and is never sent to GitHub.</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1152,7 +1177,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Just one member of the team needs to modify the appropriate file, push, and then the others pull.</p>
 </div>
@@ -1178,6 +1203,8 @@ The same goes for all labs
 <li>Push your code to GitHub</li>
 <li>Pause or delete your datalab services</li>
 </ul>
+<p>It is very important to <strong>push your code</strong> to the remote repository because there is no guarantee regarding the lifespan of Datalab services.</p>
+<p>If your service is terminated, all unpushed code is lost…</p>
 </div>
 </div>
 
