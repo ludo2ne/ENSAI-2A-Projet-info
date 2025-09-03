@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+  <meta name="generator" content="quarto-1.7.34">
 
   <meta name="author" content="Ludovic Deneuville">
   <title>Projet info 2A – Les tests unitaires</title>
@@ -212,7 +212,21 @@ Ludovic Deneuville
 <section id="les-tests" class="title-slide slide level2 center">
 <h2>Les Tests</h2>
 
-<img data-src="img/commitStrip_tester_ou_non.jpg" class="r-stretch quarto-figure-center" alt="Source : CommitStrip"><p class="caption">Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></p></section>
+<img data-src="img/commitStrip_tester_ou_non.jpg" class="r-stretch quarto-figure-center" alt="Source : CommitStrip"><p class="caption">Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></p><aside class="notes">
+<p>ça parait évident, et pourtant…</p>
+<p>j’ai déjà testé une fonctionnalité d’un dev dont le cas nominal plante.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="pourquoi-tester" class="slide level3">
 <h3>Pourquoi tester ?</h3>
 <ul>
@@ -242,19 +256,6 @@ Ludovic Deneuville
 </div>
 </div>
 </div>
-<aside class="notes">
-<p>Déjà tester une fonctionnalité d’un dev dont le cas nominal plante.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="définition" class="slide level3">
 <h3>Définition</h3>
@@ -266,6 +267,23 @@ Ludovic Deneuville
 <li>les résultats attendus</li>
 </ul>
 <p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
+<aside class="notes">
+<ul>
+<li>GIVEN</li>
+<li>WHEN</li>
+<li>THEN</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="couverture-de-test" class="slide level3">
 <h3>Couverture de test</h3>
@@ -551,7 +569,8 @@ Ludovic Deneuville
 <span id="cb7-11"><a></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
 <span id="cb7-12"><a></a></span>
 <span id="cb7-13"><a></a>    <span class="co"># THEN</span></span>
-<span id="cb7-14"><a></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-14"><a></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(joueur, Joueur)</span>
+<span id="cb7-15"><a></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
