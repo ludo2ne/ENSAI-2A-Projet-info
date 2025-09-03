@@ -19,12 +19,8 @@ from: markdown+emoji
 - :arrow_right: `git commit -m "fix: log in error"`
 :::
 
-- Don't skip a step that didn't work, telling yourself that it doesn't matter. This may cause problems later on.
-
-## Exercices repository
-
-- [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
-- Create a [fork](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork){target="_blank"} of this repository
+- Don't skip a step that didn't work, telling yourself that it doesn't matter
+  - This may cause problems later on
 
 
 ## Datalabs
@@ -41,12 +37,16 @@ Once you have completed your tasks, make sure to [free up these resources]{.unde
 
 ### Custom service
 
+If the catalogue services do not fully meet your needs, you can use customised services.
+
+::: {.callout-note}
 URLs to launch custom VSCode-python services for:
 
-- [SSPCloud](https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.3.17&s3=region-79669f20&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FTP0-datalab%2Frefs%2Fheads%2Fmain%2Ftestinit.sh»&networking.user.enabled=true&autoLaunch=true)
-- GENES Datalab
+- [SSPCloud](https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.3.19&s3=region-79669f20&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&networking.user.enabled=true&networking.user.ports[0]=9876&autoLaunch=true){target="_blank"}
+- [GENES Datalab](https://onyxia.lab.groupe-genes.fr/launcher/ide/vscode-python?name=vscode-python&version=2.3.19&s3=region-46d082f3&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&networking.user.enabled=true&networking.user.port=9876&autoLaunch=true){target="_blank"}
+:::
 
-:construction:
+#### Explanations
 
 In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:
 
@@ -56,24 +56,21 @@ In these labs, we will need a customised VSCode service, different from the one 
 - by opening a specific port to deploy an API
 
 
-There are several ways to customise a service:
+::: {.callout-important}
+Opening the port to deploy the API must be done before launching the service.
+
+After that, it is too late, and you will have to delete it and start over.
+:::
+
+#### Ways to customise a service
 
 - Launch the catalogue service, then modify it by executing commands manually
 - Use an initialisation script that will run immediately after the catalogue service is launched
   - In the form before Launch: Initialization scripts
+  - [Example](https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh){target="_blank"}
 - Create and use a Docker image based on the original service
   - In the form before Launch: Service > Use a custom image
 
-```{.bash}
-pip install inquirerPy psycopg2-binary pytest python-dotenv tabulate
-
-code-server --install-extension charliermarsh.ruff
-code-server --uninstall-extension ms-python.flake8
-```
-
-::: {.callout-important}
-Opening the port to deploy the API must be done before launching the service; after that, it is too late, and you will have to delete it and start over.
-:::
 
 
 ## VSCode
@@ -104,4 +101,34 @@ This choice is very important because imports between Python modules use relativ
 | `git pull`                                               | Merge changes from a remote to the local repository.                 |
 | `git switch <branch>`                                    | Switches to the specified branch.                                    |
 
+## VM ENSAI
 
+In previous years, tutorials and projects were carried out on ENSAI VMs. You can therefore use it as a backup.
+
+The necessary tools are still available there for development:
+
+- Visual Studio Code
+- Python 3.10
+- Git
+- a PostgreSQL database
+
+::: {.callout-important}
+All students have access to a database that can only be accessed from ENSAI VMs. For more information, [click here](https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html){target="_blank"}
+:::
+
+## Personal computer
+
+::: {.callout-warning}
+The biggest challenge if you want to work on your personal machine will be to **setup a local PostgreSQL database.**
+
+That is why it is strongly advised not to work on your personal computer if you do not feel capable of carrying out these installations completely on your own.
+
+This could take a lot of time and energy, and it is not the role of project managers to help you with these installations.
+:::
+
+To complete the practical work and project on your personal computer, you must install:
+
+- Visual Studio Code or another IDE
+- Python
+- Git
+- PostgreSQL

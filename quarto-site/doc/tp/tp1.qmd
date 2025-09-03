@@ -59,7 +59,7 @@ See this [tutorial](https://docs.sspcloud.fr/en/content/version-control.html){ta
 
 You must have an active [Personal Access Token](https://github.com/settings/tokens){target="_blank"}
 
-If not :
+If not:
 
 - [ ] In GitHub, Generate a new token (classic)
   - Expiration: 90 days
@@ -340,7 +340,7 @@ You're now going to do a few basic things with Git :
   ```
 - [ ] In Git Bash, use the *status*, *add*, *commit*, *push* and *pull* commands to send your changes to the remote repository.
 
-::: {.callout-tip collapse="true" title="Aide"}
+::: {.callout-tip collapse="true" title="Help"}
 [The sequence of Git commands](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target=‘_blank’} should become automatic.
 
 If you get this message when you *push*, you need to start with *pull*.
@@ -459,7 +459,7 @@ The aim of this tutorial was to get you up to speed on using Git, and to help yo
 
 
 ::: {.callout-important title="The same goes for all labs"}
-When you have finished coding, don't forget to :
+When you have finished coding, don't forget to:
 
 - Push your code to GitHub
 - Pause or delete your datalab services

@@ -22,6 +22,11 @@ lightbox: true
 
 ![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](img/commitStrip_tester_ou_non.jpg){.r-stretch}
 
+::: {.notes}
+ça parait évident, et pourtant...
+
+j'ai déjà testé une fonctionnalité d'un dev dont le cas nominal plante.
+:::
 
 ### Pourquoi tester ?
 
@@ -40,9 +45,7 @@ lightbox: true
 Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
 :::
 
-::: {.notes}
-Déjà tester une fonctionnalité d'un dev dont le cas nominal plante.
-:::
+
 
 
 ### Définition
@@ -56,6 +59,12 @@ Il examine une hypothèse exprimée en fonction de trois éléments :
 - les résultats attendus
 
 Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l'idéal, être reproduit.
+
+::: {.notes}
+- GIVEN
+- WHEN
+- THEN
+:::
 
 
 ### Couverture de test
@@ -269,6 +278,7 @@ def test_creer_ok():
     joueur = JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)
 
     # THEN
+    assert isinstance(joueur, Joueur)
     assert joueur.pseudo == pseudo
 ```
 
