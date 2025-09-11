@@ -11,11 +11,6 @@ from: markdown+emoji
 number-sections: true
 ---
 
-## Todo
-
-- [ ] Update settings
-- [ ] Image with Ruff
-
 
 ## Before you start {.unnumbered}
 
@@ -29,6 +24,7 @@ The explanations in this tutorial should not take precedence over those of your 
 - Business objects
 - Strategy design pattern
 :::
+
 
 ## What you will be coding
 
@@ -47,7 +43,7 @@ A business object is a representation of a specific entity in the context of a b
 This leads to objects containing mainly attributes and very few methods other than *getter* and *setter*.
 :::
 
-To take another example, here are the business objects for a simple application that manages bike hire:
+Another example, here are the business objects for a simple application that manages bike hire:
 
 - **Bike**: Represents a bike (id, type, model...)
 - **Customer**: Represents a person (id, surname, first name, etc.)
@@ -66,7 +62,7 @@ To take another example, here are the business objects for a simple application 
   - hp: health points
   - attack, defense, speed... which are used to determine the strength of its attacks
 - `Attack`: different types of attack available to Pokemons (part 3)
-- `Battle`: used to pit 2 Pokemons against each other to determine the outcome of the battle (part 4)
+- `Battle`: used to confront 2 Pokemons to determine the outcome of the battle (part 4)
 
 ### Class diagram
 
@@ -112,24 +108,60 @@ classDiagram
 
 ## Get the code
 
-::: {.callout-important}
 At the end of the course, don't forget to:
 
 - Save your work using Git
 - Delete or pause your VSCode service
-:::
 
 ### Launch VScode
 
-- [ ] Login to a datalab
-- [ ] Launch a **VScode-python** service
+::: {.callout-important title="Custom VSCode service"}
+You [should not launch]{.underline} a standard VSCode-python service, but rather a customised version.
+:::
+
+- [ ] Login to a Datalab
+  - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+  - <https://datalab.sspcloud.fr/>{target="_blank"} 
+- [ ] Go to the [Tools page](./tools.qmd){target="_blank"}
+  - It explains why we are going to use a customised service
+- [ ] Launch a [**customised**]{.underline} VSCode service
 
 
-### Fork and Clone 
+### Fork or update your forked repo
 
-The TP code can be found on this GitHub repository: [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
+The TP code can be found on this GitHub repository: [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}.
 
-- [ ] Create a [fork](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork){target="_blank"} of this repository
+- [ ] Login to [GitHub](https://github.com/){target="_blank"}
+
+
+```{.python}
+repository_already_forked = "Did you fork it on TP1?"
+
+if repository_already_forked:
+```
+
+:::::: {.columns}
+::: {.column width="5%"}
+:::
+::: {.column width="95%"}
+- [ ] Go to the GitHub repository page of your fork
+  - `https://github.com/<username>/ENSAI-2A-complement-info-TP`
+- [ ] Click on the button [Sync fork]{.grey-button}
+:::
+::::::
+
+```{.python}
+else:
+```
+
+:::::: {.columns}
+::: {.column width="5%"}
+:::
+::: {.column width="95%"}
+- [ ] Create a [fork](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork){target="_blank"}
+:::
+::::::
+
 
 ::: {.callout-tip title="Fork a repository"}
 A fork is a personal copy of another user's repository. 
@@ -137,13 +169,16 @@ A fork is a personal copy of another user's repository.
 This allows you to freely experiment with changes without affecting the original project, and then propose your modifications back to the original repository via a pull request if desired.
 :::
 
-In VSCode:
+### Clone
+
+In your VSCode service:
 
 - [ ] Open a **Git Bash** terminal
 - [ ] Clone with *https* your forked repository
 - [ ] Open Folder
   - File > Open Folder > `/home/onyxia/work/<repo_name>` > OK
-- [ ] Install all needed packages
+  - Or using command: `code-server ENSAI-2A-complement-info-TP`
+
 
 
 ## Modelling and implementation
@@ -160,9 +195,9 @@ In other words, we will try to make :
 
 ### First approach: if/elif/else
 
-- [ ] Open the code for the `Pokemon` class
+- [ ] Open the `Pokemon` class
 
-We're interested in the `get_pokemon_attack_coef()` method, which will be used to determine the power of the attack according to the type of *Pokemon*.
+We're interested in the *get_pokemon_attack_coef()* method, which will be used to determine the power of the attack according to the type of *Pokemon*.
 
 - [ ] Explain why an implementation based on `if/elif/else` for types is a bad idea? 
   - Imagine if there were several similar blocks of code in our application, and we had to add a new type
@@ -177,7 +212,7 @@ Instead of externalising the behaviour of our *Pokemons*, we're going to put all
 
 Furthermore, as each of our *Pokemons* will necessarily be of a type, none of them will simply be of the `Pokemon` class, which allows us to make this class *abstract*. By clearly defining our abstract class, we'll have :
 
-- A blueprint for all the classes that inherit from it. This has the following advantages
+- A blueprint for all the classes that inherit from it. This has the following advantages:
   - Provides information on how the code is structured
   - Automatically generate the methods to be defined
   - Limits bugs. If a method is forgotten, the code crashes on start-up, which prevents unexpected behaviour that is difficult to detect.
@@ -208,7 +243,7 @@ ENSAI-2A-COMPLEMENTS-INFO-TP
 ::: {.callout-tip title="Help" collapse="true"}
 To make an abstract class, use the `abc` package.
 
-For inspiration, here's an example of what's expected:
+Here's an example of what's expected:
 
 ```{.python filename="abstract_personnage.py"}
 from abc import ABC, abstractmethod
@@ -235,7 +270,7 @@ class Magicien(AbstractPersonnage):
 ```
 :::
 
-To help you, here is the class diagram:
+To help you, here is the target class diagram:
 
 ```{mermaid}
 classDiagram
@@ -266,10 +301,19 @@ classDiagram
 
 ### Test your code
 
-- [ ] Test the *get_pokemon_attack_coef()* method for the `AttackerPokemon` and `AllRounderPokemon` classes.
-  - `pytest -v`
+You are going to test the method *get_pokemon_attack_coef()*.
+
+- [ ] Create unit tests in classes `AttackerPokemon` and `AllRounderPokemon` classes.
+- [ ] Run unit tests
 
 To do this, you will use the [pytest](https://docs.pytest.org/en/stable/){target="_blank"} package in python.
+
+Examples of commands to run unit tests:
+
+- `pytest`
+- `pytest --tb=short` to display a short, summarised trace
+- `pytest --maxfail=1` to stop at the first failure
+- `pytest -v` v: verbose, for more details
 
 An example of a test is given in the `TestDefenderPokemon` class. As a reminder, a test breaks down into 3 parts:
 
@@ -297,7 +341,7 @@ ENSAI-2A-COMPLEMENTS-INFO-TP
                     └── test_all_rounder_pokemon.py
 ```
 
-::: {.callout-caution title="If you're having import problems"}
+::: {.callout-caution title="If you encounter import issues"}
 - Check that the parent folder in the VSCode explorer is : **ENSAI-2A-complement-info-TP**
 - Use full import paths rather than relative paths
   - the path root is set in the `src` folder
@@ -309,6 +353,7 @@ ENSAI-2A-COMPLEMENTS-INFO-TP
 
 
 - [ ] Can you test the *level_up()* method directly on an `AbstractPokemon`?
+- [ ] Create a commit and push your code
 
 
 ## Aggregation, the other way of adding flexibility to code
@@ -322,7 +367,7 @@ Our system will have to respect certain constraints:
     - **Physical attacks**, which use the Pokémon's attack and defence
     - **Special attacks**, which use the Pokémon's special attack and special defence
   - **Fixed damage attacks**, which do a fixed amount of damage.
-- A pokémon can have several attacks, and the type of attack must be transparent to the pokémon.
+- A Pokémon can have several attacks, and the type of attack must be transparent to the Pokémon.
 
 
 ### Fixed damage attacks
@@ -356,7 +401,7 @@ classDiagram
 
 Next we're going to code the variable damage attacks. They use the following formula:
 
-$$Damage = \big ( \frac{(\frac{2 \times Level}{5}+2) \times Power \times Att}{Def \times 50} +2\big) \times random \times other\_multipliers$$
+$$Damage = \biggl( \frac{(\frac{2 \times Level}{5}+2) \times Power \times Att}{Def \times 50} +2\biggl) \times random$$
 
 
 with:
@@ -365,7 +410,6 @@ with:
 - $Def$: equal to either the defence or special defence of the defending Pokemon
 - $Power$: the attack's power value
 - $random$ : a value in the range [0.85; 1]
-- $other\_ multipliers$: Other possible multipliers, such as the pokemon's attack coefficient
 
 ::: {.callout-important}
 The only difference between physical and special attacks is the coefficients $Att$ and $Def$.
@@ -537,6 +581,9 @@ Externalizing the behaviour of attacks into specific classes and then linking th
 ## End of the Lab {.unnumbered}
 
 ::: {.callout-important}
-- Push your code to GitHub
-- Pause or delete your datalab services
+- [ ] Push your code to GitHub
+  - if your VSCode service dies, your code will not be lost
+  - on Datalabs, there is no guarantee of the lifespan of your services
+- [ ] Pause or delete your datalab services
+  - to free up reserved resources
 :::

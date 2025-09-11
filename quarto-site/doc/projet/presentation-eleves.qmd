@@ -30,8 +30,6 @@ lightbox: true
 - PostgreSQL OK, SQLite NO
 :::
 
-## Schedule {.smaller}
-
 :::{.notes}
 - 3-day immersion
   - Crucial to make significant progress on the project
@@ -91,10 +89,13 @@ More details in the [student notice](./notice-eleves.qmd#point-hebdo){target="_b
 
 ## Work Environment
 ::: {.callout-important}
-You have all the necessary tools to code on the VM.
-If you are not very comfortable with IT, it will be almost impossible to code outside the VM.
+
+You have all the necessary tools to code on the VM or a datalab (better). 
+If you are not very comfortable with IT, it will be almost impossible to code outside the VM/datalab.
 **No help will be provided to install the necessary tools if you are outside the VM.**
+
 :::
+
 - We expect **[quality]{.underline}** code
 - Documentation is mandatory for each class and each method
 

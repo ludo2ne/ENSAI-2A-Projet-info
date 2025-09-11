@@ -182,6 +182,7 @@ Not obvious but very important!!!
 - **_Business:_** the core of your application, its **added value**
 - **_Persistence:_** manages data persistence. Database or file system
 
+
 ### For Your Project
 - **_Presentation:_** terminal
 - **_Business:_** your Python code

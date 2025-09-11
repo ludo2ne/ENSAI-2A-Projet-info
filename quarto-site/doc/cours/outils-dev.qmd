@@ -17,6 +17,7 @@ format:
 from: markdown+emoji
 lightbox: true
 ---
+
 ## What's on your school VM?
 - `Python 3.10`: Python version chosen by ENSAI
 - `Visual Studio Code`: your code editor

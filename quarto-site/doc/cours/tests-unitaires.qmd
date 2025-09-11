@@ -31,6 +31,7 @@ lightbox: true
 - To detect errors
 - To avoid regressions (when you modify code)
 
+
 ::: {.callout-note}
 No test is perfect, but it still helps eliminate many errors.
 :::
@@ -38,6 +39,7 @@ No test is perfect, but it still helps eliminate many errors.
 ::: {.notes}
 Already testing a feature from a developer whose nominal case crashes.
 :::
+
 
 ### Definition
 A test resembles a scientific experiment.
@@ -53,6 +55,14 @@ This examination is conducted
 - under controlled conditions 
 - with the goal to draw conclusions 
 - and ideally, be reproducible.
+
+
+::: {.notes}
+- GIVEN
+- WHEN
+- THEN
+:::
+
 
 ### Test Coverage
 - Percentage of functions tested
@@ -244,6 +254,7 @@ def test_creer_ok():
     # WHEN
     joueur = JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)
     # THEN
+    assert isinstance(joueur, Joueur)
     assert joueur.pseudo == pseudo
 ```
 

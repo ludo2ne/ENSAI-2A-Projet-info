@@ -6,13 +6,6 @@ format: html
 from: markdown+emoji
 ---
 
-## Évolution potentielles pour 2025
-
-- [ ] Dédoublement du cours (une partie de la promo suivra le cours et les TP en Anglais)
-- [ ] Supports de cours et de TP en Anglais
-- [ ] Utilisation du Datalab
-  - La VM restera en backup
-- [ ] Maj des TP2, 3, 4 (s'appuyer sur le template pour dev des fonctionnalités simples)
 
 ## Le projet info 2A
 
@@ -43,7 +36,6 @@ Le travail demandé consiste à [construire une application]{.underline} permett
 Le but de ce cours est de vous aider à mener à bien le projet informatique en vous apportant les compétences et les outils nécessaires.
 :::
 
-[Cours 2023-2024](https://ludo2ne.github.io/ENSAI-2A-complement-info/){target="_blank"}
 
 ### Notions évoquées
 
@@ -56,7 +48,7 @@ Le but de ce cours est de vous aider à mener à bien le projet informatique en 
 
 ### Les TP
 
-4 TP de 3h permettent de mettre en applications les notions vues en cours. il y a également dans ces TP de nombreux éléments réutilisables en projet.
+4 TP de 3h permettent de mettre en applications les notions vues en cours. Il y a également dans ces TP de nombreux éléments réutilisables en projet.
 
 Le code des TP est disponible sur [ce dépôt](https://github.com/ludo2ne/ENSAI-2A-complement-info-tp/){target="_blank"}
 

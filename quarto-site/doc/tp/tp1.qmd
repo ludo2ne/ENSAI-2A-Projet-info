@@ -59,7 +59,7 @@ See this [tutorial](https://docs.sspcloud.fr/en/content/version-control.html){ta
 
 You must have an active [Personal Access Token](https://github.com/settings/tokens){target="_blank"}
 
-If not :
+If not:
 
 - [ ] In GitHub, Generate a new token (classic)
   - Expiration: 90 days
@@ -93,12 +93,12 @@ One member of the team will create a repository on GitHub and then all the membe
 
 ### Remote repository
 
-::: {.callout-important}
+::: {.callout-warning}
 A single team member creates this remote repository.
 :::
 
 - [ ] Connect on [GitHub](https://github.com/){target="_blank"}
-- [ ] Create a *fork* of the repository [ENSAI-2A-complement-info-TP](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP){target="_blank"}
+- [ ] Create a *fork* of the repository [ENSAI-2A-projet-info-template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
   - A fork is a copy of a repository, allowing a user to develop independently without affecting the original
 - [ ] Add your team members
   - On the repository page > :gear: Settings > Collaborators > [Add people]{.green-button}
@@ -110,18 +110,29 @@ A single team member creates this remote repository.
 All team members will now create a local repository on a VSCode service in the datalab.
 
 - [ ] Launch a VSCode-python service
-  - Important: in tab *Network access*, enable Port **9876**
+  - In tab *Network access*, enable Port **9876**
   - It will be usefull later to expose your webservice
+
+::: {.callout-important}
+If you don't enable port 9876, you will have no choice but to start over with creating your VScode-python service and everything that follows.
+:::
+
 - [ ] Once VSCode has been launched, open a new terminal
   - Top left, icon with 3 horizontal bars > Terminal > New
   - or use shortcut CTRL + SHIFT + C
 - [ ] Clone the remote repository using the token
-  - `git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/<user_name>/<repo_name>.git`
-  - **GIT_PERSONAL_ACCESS_TOKEN**
+  - `git clone https://github.com/<user_name>/<repo_name>.git`
 - [ ] Position yourself in your repo
   - File > Open Folder > `/home/onyxia/work/<repo_name>` > OK
 
-:::{.callout-note title="Environment Variables"}
+:::{.callout-note title="Environment Variables" collapse="true"}
+
+In principle, there is no longer any need to specify the token when cloning.
+
+Old way of doing things using environment variable `GIT_PERSONAL_ACCESS_TOKEN`:
+
+- `git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/<user_name>/<repo_name>.git`
+
 An environment variable is a system-defined value used to configure how applications run or to securely store information like file paths, keys, or access tokens.
 
 It is like a key-value pair in a dictionary. For example, `GIT_PERSONAL_ACCESS_TOKEN` is a variable whose value stores your GitHub personal access token.
@@ -175,9 +186,6 @@ Another important property :
 
 ## Application example
 
-To understand how a layered application is built, we'll look at a [project template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}.
-
-
 You may be asked to design 2 types of application:
 
 - A CLI application
@@ -229,9 +237,11 @@ sequenceDiagram
 
 You'll notice that the application asks for a password that's a little too long. 
 
+- [ ] Quit the application
+  - Each time you make a change, you will need to close and restart the application
 - [ ] Find and change the password required length to 16 characters
   - You will find it in one of the classes above
-- [ ] Read the [inquirerPy](https://inquirerpy.readthedocs.io/en/latest/pages/validator.html){target="_blank"} to add a special character
+- [ ] Read the [inquirerPy](https://inquirerpy.readthedocs.io/en/latest/pages/validator.html){target="_blank"} documentation to add a special character
 
 ::: {.callout-tip title="You can do better"}
 In software development, hardcoding fixed values is discouraged because it reduces flexibility and security. 
@@ -330,7 +340,7 @@ You're now going to do a few basic things with Git :
   ```
 - [ ] In Git Bash, use the *status*, *add*, *commit*, *push* and *pull* commands to send your changes to the remote repository.
 
-::: {.callout-tip collapse="true" title="Aide"}
+::: {.callout-tip collapse="true" title="Help"}
 [The sequence of Git commands](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target=‘_blank’} should become automatic.
 
 If you get this message when you *push*, you need to start with *pull*.
@@ -425,7 +435,7 @@ Next, each team member :
 
 - [ ] Creates a local clone of the repository
 - [ ] Does a test to check that they can push code, for example by creating:
-  - *doc/tracking/2025.09.04-week1.md*: the first weekly point
+  - *doc/suivi/2025.09.04-week1.md*: the first weekly point
   - *src/main.py*: the file to launch your application
   - *requirements.txt*: the file listing the packages
 
@@ -449,8 +459,12 @@ The aim of this tutorial was to get you up to speed on using Git, and to help yo
 
 
 ::: {.callout-important title="The same goes for all labs"}
-When you have finished coding, don't forget to :
+When you have finished coding, don't forget to:
 
 - Push your code to GitHub
 - Pause or delete your datalab services
+
+It is very important to **push your code** to the remote repository because there is no guarantee regarding the lifespan of Datalab services.
+
+If your service is terminated, all unpushed code is lost...
 :::
