@@ -443,11 +443,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#python-webservice" id="toc-python-webservice" class="nav-link" data-scroll-target="#python-webservice"><span class="header-section-number">2</span> Python Webservice</a>
   <ul class="collapse">
   <li><a href="#requests-library" id="toc-requests-library" class="nav-link" data-scroll-target="#requests-library"><span class="header-section-number">2.1</span> Requests Library</a></li>
-  <li><a href="#exemples-dutilisation" id="toc-exemples-dutilisation" class="nav-link" data-scroll-target="#exemples-dutilisation"><span class="header-section-number">2.2</span> Exemples d’utilisation</a></li>
-  <li><a href="#tour-lab-repo" id="toc-tour-lab-repo" class="nav-link" data-scroll-target="#tour-lab-repo"><span class="header-section-number">2.3</span> Tour lab repo</a></li>
-  <li><a href="#mes-premières-requêtes-en-python" id="toc-mes-premières-requêtes-en-python" class="nav-link" data-scroll-target="#mes-premières-requêtes-en-python"><span class="header-section-number">2.4</span> Mes premières requêtes en Python</a></li>
-  <li><a href="#more-complex-requests" id="toc-more-complex-requests" class="nav-link" data-scroll-target="#more-complex-requests"><span class="header-section-number">2.5</span> More complex requests</a></li>
-  <li><a href="#advanced-requests-in-python" id="toc-advanced-requests-in-python" class="nav-link" data-scroll-target="#advanced-requests-in-python"><span class="header-section-number">2.6</span> Advanced requests in Python</a></li>
+  <li><a href="#examples-of-use" id="toc-examples-of-use" class="nav-link" data-scroll-target="#examples-of-use"><span class="header-section-number">2.2</span> Examples of use</a></li>
+  <li><a href="#launch-vscode" id="toc-launch-vscode" class="nav-link" data-scroll-target="#launch-vscode"><span class="header-section-number">2.3</span> Launch VScode</a></li>
+  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository"><span class="header-section-number">2.4</span> Clone the repository</a></li>
+  <li><a href="#my-first-queries-in-python" id="toc-my-first-queries-in-python" class="nav-link" data-scroll-target="#my-first-queries-in-python"><span class="header-section-number">2.5</span> My first queries in Python</a></li>
+  <li><a href="#more-complex-requests" id="toc-more-complex-requests" class="nav-link" data-scroll-target="#more-complex-requests"><span class="header-section-number">2.6</span> More complex requests</a></li>
+  <li><a href="#advanced-requests-in-python" id="toc-advanced-requests-in-python" class="nav-link" data-scroll-target="#advanced-requests-in-python"><span class="header-section-number">2.7</span> Advanced requests in Python</a></li>
   </ul></li>
   <li><a href="#code-a-web-service-in-python" id="toc-code-a-web-service-in-python" class="nav-link" data-scroll-target="#code-a-web-service-in-python"><span class="header-section-number">3</span> Code a web service in Python</a>
   <ul class="collapse">
@@ -631,30 +632,34 @@ Tip
 </section>
 <section id="advanced-queries" class="level3" data-number="1.3">
 <h3 data-number="1.3" class="anchored" data-anchor-id="advanced-queries"><span class="header-section-number">1.3</span> Advanced queries</h3>
-<p>You will use a web service created with FastAPI specifically for this purpose.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>You will use a web service created with FastAPI specifically for this purpose : <strong><a href="https://user-ludo2ne-450102-user.user.lab.sspcloud.fr/docs" target="_blank">https://user-ludo2ne-450102-user.user.lab.sspcloud.fr/docs</a></strong></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="If you want to create this web service yourself">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+If you want to create this web service yourself
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you want to create this web service yourself using this code : <a href="https://github.com/ludo2ne/ENSAI-2A-WS-TP3/" target="_blank">https://github.com/ludo2ne/ENSAI-2A-WS-TP3/</a></p>
-<ul class="task-list">
-<li><label><input type="checkbox">Create a PostgreSQL service</label></li>
-<li><label><input type="checkbox">Using cloudBeaver create and pop table</label></li>
-<li><label><input type="checkbox">Create a Vscode-python service</label>
+<p>use this code : <a href="https://github.com/ludo2ne/ENSAI-2A-WS-TP3/" target="_blank">https://github.com/ludo2ne/ENSAI-2A-WS-TP3/</a></p>
+<ul>
+<li>Create a PostgreSQL service</li>
+<li>Using cloudBeaver create and pop table (data/init_db.sql)</li>
+<li>Create a Vscode-python service
 <ul>
 <li>Network access : For example, open port 5000</li>
-<li>Clone the repo and create <em>.env</em> file to connect your PostgreSQL database</li>
+<li>Clone the repo</li>
+<li>Create <em>.env</em> file to connect your PostgreSQL database</li>
+<li>install required packages</li>
 </ul></li>
-<li><label><input type="checkbox"><code>python main.py</code></label></li>
+<li><code>python main.py</code>
+<ul>
+<li>to run in the background: <code>nohup python src/main.py &amp;</code></li>
+<li><code>kill -9 &lt;PID&gt;</code> to stop</li>
+</ul></li>
 </ul>
-</div>
-</div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>.env</strong></pre>
@@ -665,22 +670,22 @@ Tip
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>DATABASE=</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>USER=</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</div>
 <p>After exploring a few external web services, you will work with a web service created specifically for these practical exercises.</p>
 <p>Still using your API Client, query the following endpoints:</p>
 <ul class="task-list">
 <li><label><input type="checkbox"><code>GET /attack</code></label></li>
-<li><label><input type="checkbox"><code>GET /attack/&lt;identifier&gt;</code></label>
-<ul>
-<li>replacing <em>identifier</em> with the name or ID of an attack you have just retrieved</li>
-</ul></li>
+<li><label><input type="checkbox"><code>GET /attack/&lt;attack_name_or_id&gt;</code></label></li>
 <li><label><input type="checkbox"><code>GET /attack?type_attack_id=&lt;id_type&gt;</code></label>
 <ul>
 <li>replacing <em>id_type</em> with an integer between 1 and 4</li>
 </ul></li>
-<li><label><input type="checkbox"><code>GET /attack?type_attack_name=&lt;type attack&gt;</code></label>
+<li><label><input type="checkbox"><code>GET /attack?type_attack_name=&lt;type attack&gt;&amp;limit=8</code></label>
 <ul>
 <li>type attack: <em>special attack</em>, <em>physical attack</em>, <em>fixed damage</em> or <em>status attack</em></li>
 </ul></li>
+<li><label><input type="checkbox">Use parameters <em>limit</em> and <em>offset</em> to get attacks id between 11 and 15</label></li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -719,10 +724,9 @@ Warning
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Check that your attack has been created successfully.</label>
+<li><label><input type="checkbox">Check your attack has been created successfully.</label>
 <ul>
 <li><code>GET /attack/&lt;attack_name&gt;</code></li>
-<li>replacing attack_name with the name of the attack you just created</li>
 </ul></li>
 </ul>
 </section>
@@ -771,8 +775,10 @@ Note
 </ol>
 <p>This <em>response</em> variable is an object, and like any object, it has attributes and methods, for example:</p>
 <ul>
-<li><code>response.text</code>: the body of the result in string form, letting <em>requests</em> infer the encoding (this often works)</li>
+<li><code>response.text</code>: the body of the result in string form, letting <em>requests</em> infer the encoding (this often works)
+<ul>
 <li>Problem: you have a string, and this is not the best data format to work with</li>
+</ul></li>
 <li><strong><code>response.json()</code></strong>: the body of the result as a dictionary.
 <ul>
 <li>This is what you will do most often because the JSON format is easy to manipulate</li>
@@ -841,8 +847,8 @@ Note
 <li><span class="emoji" data-emoji="x">❌</span> <em>5xx</em> (Server Errors): the server failed to fulfill a valid request</li>
 </ul>
 </section>
-<section id="exemples-dutilisation" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="exemples-dutilisation"><span class="header-section-number">2.2</span> Exemples d’utilisation</h3>
+<section id="examples-of-use" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="examples-of-use"><span class="header-section-number">2.2</span> Examples of use</h3>
 <p>The principle will always be the same:</p>
 <ol type="1">
 <li>You launch the query</li>
@@ -887,33 +893,45 @@ Note
 </div>
 </div>
 </section>
-<section id="tour-lab-repo" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="tour-lab-repo"><span class="header-section-number">2.3</span> Tour lab repo</h3>
-<div class="callout callout-style-default callout-caution callout-titled">
+<section id="launch-vscode" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="launch-vscode"><span class="header-section-number">2.3</span> Launch VScode</h3>
+<div class="callout callout-style-default callout-important callout-titled" title="Custom VSCode service">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Caution
+Custom VSCode service
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You will now code on the fork you created in TP2. If you did not do so last time, <a href="../../doc/tp/tp2.html#Fork-and-Clone" target="blank">create a fork</a>.</p>
+<p>You <u>should not launch</u> a standard VSCode-python service, but rather a customised version.</p>
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Log in to the datalab</label></li>
-<li><label><input type="checkbox">Open a <strong>VSCode-python</strong> service</label>
+<li><label><input type="checkbox">Login to a Datalab</label>
 <ul>
-<li>init script: <a href="https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh" class="uri">https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh</a></li>
-<li>Open port 5000</li>
+<li><a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
+<li><a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
 </ul></li>
-<li><label><input type="checkbox">Clone your repo</label></li>
-<li><label><input type="checkbox">Open Folder <code>/home/onyxia/work/&lt;repo_name&gt;</code></label></li>
-<li><label><input type="checkbox">To ensure that everyone starts at the same level, position yourself on the branch <em>tp3-base</em></label>
+<li><label><input type="checkbox">Go to the <a href="../../doc/tp/tools.html" target="_blank">Tools page</a></label>
+<ul>
+<li>It explains why we are going to use a customised service</li>
+</ul></li>
+<li><label><input type="checkbox">Launch a <u><strong>customised</strong></u> VSCode service</label></li>
+</ul>
+</section>
+<section id="clone-the-repository" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="clone-the-repository"><span class="header-section-number">2.4</span> Clone the repository</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Clone your fork of repository <em>ENSAI-2A-complement-info-TP</em></label>
+<ul>
+<li>refer to previous TP if you have not already created the fork</li>
+</ul></li>
+<li><label><input type="checkbox">Position yourself on the branch <em>tp3-base</em></label>
 <ul>
 <li><code>git switch tp3-base</code></li>
+<li>to ensure that everyone starts at the same level</li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled" title="Verify that everything is working">
@@ -927,19 +945,20 @@ Verify that everything is working
 </div>
 <div class="callout-body-container callout-body">
 <ul class="task-list">
+<li><label><input type="checkbox">Install required packages</label></li>
 <li><label><input type="checkbox">Run the unit tests for the business_object package</label>
 <ul>
-<li><code>python -m pytest -v src/tests/test_business_object/</code></li>
+<li><code>pytest -v src/tests/test_business_object/</code></li>
 </ul></li>
-<li><label><input type="checkbox">Run the main program : <code>python src/main.py</code></label></li>
+<li><label><input type="checkbox">Run the main program : <code>python src/__main__.py</code></label></li>
 </ul>
 </div>
 </div>
 </section>
-<section id="mes-premières-requêtes-en-python" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="mes-premières-requêtes-en-python"><span class="header-section-number">2.4</span> Mes premières requêtes en Python</h3>
+<section id="my-first-queries-in-python" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="my-first-queries-in-python"><span class="header-section-number">2.5</span> My first queries in Python</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Open the file <code>/src/client/attack_client.py</code></label></li>
+<li><label><input type="checkbox">Open file <code>/src/client/attack_client.py</code></label></li>
 <li><label><input type="checkbox">Complete the <em>get_attack(int)</em> method, which:</label>
 <ul>
 <li>takes an attack ID as a parameter</li>
@@ -961,22 +980,26 @@ Tip
 <p>See how this method works and use it.</p>
 </div>
 </div>
+<ul class="task-list">
+<li><label><input type="checkbox">Create the <em>get_all_attacks()</em> method</label>
 <ul>
-<li><label><input type="checkbox">Create the <em>get_all_attacks()</em> method</label></li>
 <li>Returns the list of all available attacks in the form of a list of <strong>AbstractAttack</strong> objects</li>
-<li><label><input type="checkbox">Verify that your two methods are functioning</label></li>
+</ul></li>
+<li><label><input type="checkbox">Check that both methods work</label>
+<ul>
 <li>Run the unit tests for the <em>test_client</em> package</li>
+</ul></li>
 </ul>
 </section>
-<section id="more-complex-requests" class="level3" data-number="2.5">
-<h3 data-number="2.5" class="anchored" data-anchor-id="more-complex-requests"><span class="header-section-number">2.5</span> More complex requests</h3>
+<section id="more-complex-requests" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="more-complex-requests"><span class="header-section-number">2.6</span> More complex requests</h3>
 <p>So far, we have focused on <strong>GET</strong> queries (simple data reading).</p>
-<p>But it is of course possible to do others. For example, <strong>POST</strong>, <strong>PUT</strong> or <strong>DELETE</strong> queries.</p>
+<p>But it is possible to do others. For example, <strong>POST</strong>, <strong>PUT</strong> or <strong>DELETE</strong> queries.</p>
 <p>Here is the syntax:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>put <span class="op">=</span> requests.put(<span class="st">"http://example.org"</span>, json <span class="op">=</span> {<span class="st">'key'</span>:<span class="st">'value'</span>})</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>delete <span class="op">=</span> requests.delete(<span class="st">"http://example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>As you can see, the syntaxes are very similar to the syntax of the <strong>GET</strong> method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, I recommend using this type of syntax:</p>
+<p>As you can see, syntaxes are very similar to the syntax of the <strong>GET</strong> method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, We recommend using this type of syntax:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare Arguments</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://example.org"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'accept'</span>: <span class="st">'application/json'</span>}</span>
@@ -986,24 +1009,24 @@ Tip
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>post <span class="op">=</span> requests.post(url, headers<span class="op">=</span>headers, json <span class="op">=</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Functionally, it’s the same thing, but it’s better to define the elements outside the query so you don’t get lost.</p>
 </section>
-<section id="advanced-requests-in-python" class="level3" data-number="2.6">
-<h3 data-number="2.6" class="anchored" data-anchor-id="advanced-requests-in-python"><span class="header-section-number">2.6</span> Advanced requests in Python</h3>
+<section id="advanced-requests-in-python" class="level3" data-number="2.7">
+<h3 data-number="2.7" class="anchored" data-anchor-id="advanced-requests-in-python"><span class="header-section-number">2.7</span> Advanced requests in Python</h3>
 <p>In the <code>attack_client.py</code> module, implement the following methods:</p>
 <ul class="task-list">
 <li><label><input type="checkbox"><em>create_attack(AbstractAttack)</em></label>
 <ul>
 <li>takes an <strong>AbstractAttack</strong> as a parameter</li>
-<li>creates a new resource in our web service</li>
+<li>creates a new attack calling the web service</li>
 </ul></li>
 <li><label><input type="checkbox"><em>update_attack(AbstractAttack)</em></label>
 <ul>
 <li>takes an <strong>AbstractAttack</strong> as a parameter</li>
-<li>modifies the associated resource in our web service</li>
+<li>modifies it in the web service</li>
 </ul></li>
 <li><label><input type="checkbox"><em>delete_attack(AbstractAttack)</em></label>
 <ul>
 <li>takes an <strong>AbstractAttack</strong> as a parameter</li>
-<li>deletes the associated resource in our web service</li>
+<li>deletes it in the web service</li>
 </ul></li>
 <li><label><input type="checkbox">Test your methods</label></li>
 </ul>
@@ -1021,7 +1044,8 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Until now, you have been using existing web services. Now you are going to create your own web service.</p>
+<p>Until now, you have been using existing web services.</p>
+<p>Now you are going to create your own web service.</p>
 </div>
 </div>
 <p>With the tools available today, it is easy to create a web service yourself.</p>
@@ -1152,12 +1176,14 @@ Tip
 </ul>
 </div>
 </div>
-<ul>
+<ul class="task-list">
 <li><label><input type="checkbox">Open the <code>app.py</code> file</label></li>
 <li><label><input type="checkbox">Run this file</label></li>
-<li><label><input type="checkbox">Test the following requests:</label></li>
+<li><label><input type="checkbox">Test the following requests:</label>
+<ul>
 <li><code>GET hello</code></li>
 <li><code>GET hello/everybody</code></li>
+</ul></li>
 <li><label><input type="checkbox">Stop the web service</label>
 <ul>
 <li>Click in the VSCode terminal, then press CTRL + C</li>
@@ -1178,7 +1204,6 @@ Tip
 </section>
 <section id="end-of-the-lab" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
-<p>Knowing how to use a web service is essential, as they represent a vast source of data accessible in real time. Web services allow you to collect information from multiple sources, such as public APIs or internal systems, without having to manually download files. It is then up to you to convert this data into your preferred format.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1189,9 +1214,16 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Push your code to GitHub</label>
 <ul>
-<li>Push your code to GitHub</li>
-<li>Pause or delete your datalab services</li>
+<li>if your VSCode service dies, your code will not be lost</li>
+<li>on Datalabs, there is no guarantee of the lifespan of your services</li>
+</ul></li>
+<li><label><input type="checkbox">Pause or delete your datalab services</label>
+<ul>
+<li>to free up reserved resources</li>
+</ul></li>
 </ul>
 </div>
 </div>
