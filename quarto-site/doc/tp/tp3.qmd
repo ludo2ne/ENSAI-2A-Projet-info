@@ -128,18 +128,21 @@ To vary the number of rows you receive:
 
 ### Advanced queries
 
-You will use a web service created with FastAPI specifically for this purpose.
+You will use a web service created with FastAPI specifically for this purpose : **<https://user-ludo2ne-450102-user.user.lab.sspcloud.fr/docs>{target="_blank"}**
 
-::: {.callout-tip}
-If you want to create this web service yourself using this code : <https://github.com/ludo2ne/ENSAI-2A-WS-TP3/>{target="_blank"}
+::: {.callout-tip title="If you want to create this web service yourself"}
+use this code : <https://github.com/ludo2ne/ENSAI-2A-WS-TP3/>{target="_blank"}
 
-- [ ] Create a PostgreSQL service
-- [ ] Using cloudBeaver create and pop table
-- [ ] Create a Vscode-python service
+- Create a PostgreSQL service
+- Using cloudBeaver create and pop table (data/init_db.sql)
+- Create a Vscode-python service
   - Network access : For example, open port 5000
-  - Clone the repo and create *.env* file to connect your PostgreSQL database
-- [ ] `python main.py`
-:::
+  - Clone the repo
+  - Create *.env* file to connect your PostgreSQL database
+  - install required packages
+- `python main.py`
+  - to run in the background: `nohup python src/main.py &`
+  - `kill -9 <PID>` to stop
 
 ```{.txt filename=".env"}
 PASSWORD=
@@ -148,6 +151,9 @@ PORT=5432
 DATABASE=
 USER=
 ```
+:::
+
+
 
 
 After exploring a few external web services, you will work with a web service created specifically for these practical exercises.
@@ -155,12 +161,12 @@ After exploring a few external web services, you will work with a web service cr
 Still using your API Client, query the following endpoints:
 
 - [ ] `GET /attack`
-- [ ] `GET /attack/<identifier>`
-  - replacing *identifier* with the name or ID of an attack you have just retrieved
+- [ ] `GET /attack/<attack_name_or_id>`
 - [ ] `GET /attack?type_attack_id=<id_type>`
   -  replacing *id_type* with an integer between 1 and 4
-- [ ] `GET /attack?type_attack_name=<type attack>`
+- [ ] `GET /attack?type_attack_name=<type attack>&limit=8`
   - type attack: *special attack*, *physical attack*, *fixed damage* or *status attack*
+- [ ] Use parameters *limit* and *offset* to get attacks id between 11 and 15
 
 ::: {.callout-warning}
 If you have any issues with the API Client, you can connect directly to Swagger (see instructions below) to execute requests.
@@ -185,9 +191,8 @@ Let's create an attack:
 }
 ```
 
-- [ ] Check that your attack has been created successfully.
+- [ ] Check your attack has been created successfully.
   - `GET /attack/<attack_name>`
-  - replacing attack_name with the name of the attack you just created
 
 
 ### Swagger
@@ -202,8 +207,6 @@ This will take you to the webservice's swagger page. This page lists all the web
 - add a Pokémon
 
 Further documentation is available at the `/redoc` endpoint.
-
-
 
 
 
@@ -239,7 +242,7 @@ Executing this line of code will:
 This *response* variable is an object, and like any object, it has attributes and methods, for example:
 
 - `response.text`: the body of the result in string form, letting *requests* infer the encoding (this often works)
-- Problem: you have a string, and this is not the best data format to work with
+  - Problem: you have a string, and this is not the best data format to work with
 - **`response.json()`**: the body of the result as a dictionary. 
   - This is what you will do most often because the JSON format is easy to manipulate
 - `response.encoding`: the encoding of your request (useful in case of encoding problems)
@@ -266,7 +269,7 @@ To summarise, the results:
 - :x: *5xx* (Server Errors): the server failed to fulfill a valid request
 
 
-### Exemples d'utilisation
+### Examples of use
 
 The principle will always be the same:
 
@@ -316,31 +319,39 @@ else:
 
 :::
 
-### Tour lab repo
+### Launch VScode
 
-::: {.callout-caution}
-You will now code on the fork you created in TP2. If you did not do so last time, [create a fork](./tp2.qmd#Fork-and-Clone){target="blank"}.
+::: {.callout-important title="Custom VSCode service"}
+You [should not launch]{.underline} a standard VSCode-python service, but rather a customised version.
 :::
 
-- [ ] Log in to the datalab
-- [ ] Open a **VSCode-python** service
-  - init script: <https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh>
-  - Open port 5000
-- [ ] Clone your repo
-- [ ] Open Folder `/home/onyxia/work/<repo_name>`
-- [ ] To ensure that everyone starts at the same level, position yourself on the branch *tp3-base*
+- [ ] Login to a Datalab
+  - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+  - <https://datalab.sspcloud.fr/>{target="_blank"} 
+- [ ] Go to the [Tools page](./tools.qmd){target="_blank"}
+  - It explains why we are going to use a customised service
+- [ ] Launch a [**customised**]{.underline} VSCode service
+
+
+### Clone the repository
+
+- [ ] Clone your fork of repository *ENSAI-2A-complement-info-TP*
+  - refer to previous TP if you have not already created the fork
+- [ ] Position yourself on the branch *tp3-base*
   - `git switch tp3-base`
+  - to ensure that everyone starts at the same level
 
 ::: {.callout-important title="Verify that everything is working"}
+- [ ] Install required packages
 - [ ] Run the unit tests for the business_object package
-  - `python -m pytest -v src/tests/test_business_object/`
-- [ ] Run the main program : `python src/main.py`
+  - `pytest -v src/tests/test_business_object/`
+- [ ] Run the main program : `python src/__main__.py`
 :::
 
 
-### Mes premières requêtes en Python
+### My first queries in Python
 
-- [ ] Open the file `/src/client/attack_client.py`
+- [ ] Open file `/src/client/attack_client.py`
 - [ ] Complete the *get_attack(int)* method, which:
   - takes an attack ID as a parameter
   - retrieves all available information about this attack
@@ -353,16 +364,16 @@ See how this method works and use it.
 :::
 
 - [ ] Create the *get_all_attacks()* method
-- Returns the list of all available attacks in the form of a list of **AbstractAttack** objects
-- [ ] Verify that your two methods are functioning
-- Run the unit tests for the *test_client* package
+  - Returns the list of all available attacks in the form of a list of **AbstractAttack** objects
+- [ ] Check that both methods work
+  - Run the unit tests for the *test_client* package
 
 
 ### More complex requests
 
 So far, we have focused on **GET** queries (simple data reading). 
 
-But it is of course possible to do others. For example, **POST**, **PUT** or **DELETE** queries.
+But it is possible to do others. For example, **POST**, **PUT** or **DELETE** queries.
 
 Here is the syntax:
 
@@ -372,7 +383,7 @@ put = requests.put("http://example.org", json = {'key':'value'})
 delete = requests.delete("http://example.org")
 ```
 
-As you can see, the syntaxes are very similar to the syntax of the **GET** method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, I recommend using this type of syntax:
+As you can see, syntaxes are very similar to the syntax of the **GET** method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, We recommend using this type of syntax:
 
 ```{.python}
 # Prepare Arguments
@@ -393,19 +404,21 @@ In the `attack_client.py` module, implement the following methods:
 
 - [ ] *create_attack(AbstractAttack)*
   - takes an **AbstractAttack** as a parameter
-  - creates a new resource in our web service
+  - creates a new attack calling the web service
 - [ ] *update_attack(AbstractAttack)*
   - takes an **AbstractAttack** as a parameter
-  - modifies the associated resource in our web service
+  - modifies it in the web service
 - [ ] *delete_attack(AbstractAttack)*
   - takes an **AbstractAttack** as a parameter
-  - deletes the associated resource in our web service
+  - deletes it in the web service
 - [ ] Test your methods
 
 ## Code a web service in Python
 
 ::: {.callout-note}
-Until now, you have been using existing web services. Now you are going to create your own web service.
+Until now, you have been using existing web services. 
+
+Now you are going to create your own web service.
 :::
 
 With the tools available today, it is easy to create a web service yourself.
@@ -533,8 +546,8 @@ The web service you will create will be deployed on a specific url. To find this
 - [ ] Open the `app.py` file
 - [ ] Run this file
 - [ ] Test the following requests:
-- `GET hello`
-- `GET hello/everybody`
+  - `GET hello`
+  - `GET hello/everybody`
 - [ ] Stop the web service
   - Click in the VSCode terminal, then press CTRL + C
 
@@ -558,10 +571,10 @@ To test endpoints requiring a JSON body, you can use:
 
 ## End of the Lab {.unnumbered}
 
-Knowing how to use a web service is essential, as they represent a vast source of data accessible in real time. Web services allow you to collect information from multiple sources, such as public APIs or internal systems, without having to manually download files. It is then up to you to convert this data into your preferred format.
-
-
 ::: {.callout-important}
-- Push your code to GitHub
-- Pause or delete your datalab services
+- [ ] Push your code to GitHub
+  - if your VSCode service dies, your code will not be lost
+  - on Datalabs, there is no guarantee of the lifespan of your services
+- [ ] Pause or delete your datalab services
+  - to free up reserved resources
 :::
