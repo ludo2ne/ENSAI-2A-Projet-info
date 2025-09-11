@@ -1,8 +1,8 @@
-# ENSAI-2A-Projet-info
++# ENSAI-2A-Projet-info
 
 Projet informatique de 2e année
 
-## Cours
+## Courss
 
 | CM 1                  | Temps estimé   |
 |-----------------------|----------------|
@@ -10,7 +10,7 @@ Projet informatique de 2e année
 | Projet                | 20 min         |
 | Outils Dev            | 20 min         |
 | Git                   | 30 min         |
-| Analyse fonctionnelle | 1 h            |
+| Analyse fonctionnelle | 1 h            |s
 | POO Avancée           | 30 min         |
 
 | CM 2                  | Temps estimé   |

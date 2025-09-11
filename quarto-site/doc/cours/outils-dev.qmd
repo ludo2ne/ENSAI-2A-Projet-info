@@ -1,15 +1,15 @@
 ---
-title: "Outils de développement"
+title: "Development Tools"
 description: "[Slides](outils-dev-slides.html)"
 author: "Ludovic Deneuville"
-format: 
+format:
   html:
     toc: true
     toc-location: left
     toc-depth: 2
   revealjs:
     theme: moon
-    footer: "[Home](../../index.html) --- [Outils de développement](outils-dev.html)"
+    footer: "[Home](../../index.html) --- [Development Tools](outils-dev.html)"
     slide-number: c/t                    ## collapsed/total
     slide-level: 3
     controls: true
@@ -17,70 +17,61 @@ format:
 from: markdown+emoji
 lightbox: true
 ---
-
-## Stack VM
-
-- `Python 3.10` : la version de Python installée à l'ENSAI
-- `Visual Studio Code` : votre éditeur de code
-- `Git` : pour gérer vos dépôts
-- `PostgreSQL` : une base de données
-  - `DBeaver` : pour consulter, modifier cette base de données
+## What's on your school VM?
+- `Python 3.10`: Python version chosen by ENSAI
+- `Visual Studio Code`: your code editor
+- `Git`: to manage your repositories
+- `PostgreSQL`: an SQL database
+- `DBeaver`: database administration tool to consult or change the database
 
 ## Visual Studio Code
+- Widely used and known code editor
+- Includes a file navigator and a terminal
+- Many (many many) extensions
+- Customization
 
-- Éditeur de code source populaire 
-- Intégre un explorer et un terminal
-- Nombreuses extensions
-- Personnalisation avancée
+### Some VS Code settings
+- File: *.vscode/settings.json*
+- Formatter (predefined style guidelines for code): Black
+- Linter (check for errors or style issues): Flake8
 
-### Zoom sur les Settings
-
-- fichier *.vscode/settings.json*
-- Formater : Black
-- Linter : Flake8
-
-::: {.notes}
-- Montrer le fichier settings.json (DEMO)
-- icone :gear: niveau workspace ou user
-- à priori vous n'avez rien à modifier
-- vous pouvez intégrer ce fichier dans votre dépôt projet
-- Formater et Linter en phase
-
-Formater :
-
-- Ligne trop longue
-- Espaces superflux
+:::{.notes}
+- Show the settings.json file (DEMO)
+- Gear icon :gear: at workspace or user level
+- You probably don't need to modify anything
+- You can include this file in your project repository
+- Formatter and Linter in sync
+Formatter:
+- Line too long
+- Superfluous spaces
 :::
 
-## Qualité du Code
-
-### Pourquoi la Qualité ?
-
-- **Maintenabilité** : plus facile à comprendre, à maintenir et à modifier
-- **Lisibilité** : facilite la collaboration et réduit les erreurs
-- **Performance** : fonctionne mieux et consomme moins de ressources
-- **Sécurité** : moins susceptible de contenir des vulnérabilités
+## Code Quality
+### What is "quality" for code?
+- **Maintenance**: easier to understand, maintain, and change/improve
+- **Readability**: reduces errors and makes collaboration easier
+- **Performance**: works better, faster, with fewer resources
+- **Security**: less vulnerable and susceptible to exploits
 
 ### Pylint
+A static analysis tool for Python that:
 
-Outil d'analyse statique pour Python qui :
+ - Checks code compliance with style standards
+ - Detects potential errors
+ - Identifies bad practices
 
-- Vérifie la conformité du code aux normes de style
-- Détecte les erreurs potentielles
-- Identifie les mauvaises pratiques
 
-```{.bash filename="Commandes"}
+```{.bash filename="Commands"}
 pylint src
 pylint --output-format=colorized --disable=C0114,C0411,C0415,W0718 $(git ls-files '*.py') --fail-under=7.5
 ```
 
-::: {.notes}
-- Vous pouvez disable les règles qui vous ennuient
-- À faire régulièrement
+:::{.notes}
+- You can disable rules that bother you
+- Do this regularly
 :::
 
-### Aborescence du dépôt {.smaller}
-
+### Repository Structure {.smaller}
 ```{.txt code-line-numbers="false"}
 PROJET-INFO-2A
     ├── .vscode
@@ -89,157 +80,136 @@ PROJET-INFO-2A
     │   └── init_db.sql
     ├── doc
     │   └── suivi
-    │       └── YYYY.MM.DD-semaineN.md
+    │       └── YYYY.MM.DD-weekN.md
     ├── src
     │   ├── business_object
-    │   │   └── une_classe.py
+    │   │   └── a_class.py
     │   ├── dao
-    │   │   └── une_classe_dao.py
+    │   │   └── a_class_dao.py
     │   ├── service
-    │   │   └── une_classe_service.py
+    │   │   └── a_class_service.py
     │   ├── tests
     │   │   ├── dao
     │   │   └── service
     │   ├── utils
     │   └── view
-    │       └── accueil_view.py
+    │       └── home_view.py
     ├── .gitignore
-    ├── LICENCE
+    ├── LICENSE
     ├── README.md
     └── requirements.txt
 ```
 
 ### Documentation
-
-```{.python filename="operations_mathematiques.py"}
-class OperationsMathematiques:
-    """Opérations Mathématiques"""
-    def diviser_cinq_par(self, nombre) -> float:
-        """Divise le nombre 5 par un nombre donné.
+```{.python filename="mathematical_operations.py"}
+class MathematicalOperations:
+    """Mathematical Operations"""
+    def divide_five_by(self, number) -> float:
+        """Divides the number 5 by a given number.
         Parameters
         ----------
-        nombre : float or int
-            Le nombre par lequel 5 sera divisé.
+        number : float or int
+            The number by which 5 will be divided.
         Returns
         -------
         float or None
-            Le résultat de la division de 5 par le nombre donné.
-            Si le nombre est égal à 0, la méthode retourne None.
+            The result of dividing 5 by the given number.
+            If the number is equal to 0, the method returns None.
         """
-        if nombre != 0:
-            return 5 / nombre
+        if number != 0:
+            return 5 / number
         else:
             return None
 ```
 
-::: {.notes}
-- Doc classes
-  - Attributs
-- Doc méthodes
-  - brève description
-  - paramètres
-  - retour
-
+:::{.notes}
+- Document classes
+  - Attributes
+- Document methods
+  - Brief description
+  - Parameters
+  - Return
 :::
 
 ## Logs
+### What are logs?
+:::{.callout-note}
+Logging is the process of recording events, errors, and information in an application.
+:::
+A log captures information about what happened at a given time:
 
-### Qu'est-ce que les logs
+ - Monitoring
+ - Debugging
 
-::: {.callout-note}
-La journalisation (ou logging) est le processus d'enregistrement des événements, des erreurs, et des informations dans une application.
+:::{.notes}
+- They allow monitoring the state of a system, unexpected behaviors
+- They help identify and resolve issues
 :::
 
-Un log capture des informations sur ce qui s'est passé à un moment donné :
+### Level 1 - Beginner
+- You have an error in your code
+- But you don't know exactly where?
+- What do you do?
 
-- Surveillance
-- Débogage 
-
-::: {.notes}
-- Ils permettent de surveiller l'état d'un système, des comportements inattendus
-- Ils aident à identifier et résoudre les problèmes
+:::{.notes}
+You put "prints" everywhere
 :::
 
-### Level 1 - Débutant
+### Level 2 - Debug Mode
+- You add a breakpoint
+- You launch in debug mode
+- You proceed until the error
 
-- Vous avez une erreur dans votre code
-- Mais vous ne savez pas exactement où ?
-- Que faites-vous ?
-
-::: {.notes}
-Vous mettez des "prints" partout
-:::
-
-### Level 2 - Mode Debug
-
-- Vous ajoutez un point d'arrêt
-- Vous lancez en mode debug
-- Vous avancez jusqu'à l'erreur
-
-::: {.notes}
+:::{.notes}
 Demo
 :::
 
 ### Level 3 - Logs
-
-- [ ] Importez le module *logging* et configurez
-
+- [ ] Import the *logging* module and configure it
 ```{.python}
 import logging
-
 logging.basicConfig(
-    filename='logs/example.log',  
-    level=logging.INFO,     
+    filename='logs/example.log',
+    level=logging.INFO,
     format="%(asctime)s - %(levelname)-8s - %(message)s",
     datefmt="%d/%m/%Y %H:%M:%S")
 ```
-
-Possible d'externaliser la config dans un fichier `logging_config.yml`
+It is possible to externalize the configuration in a `logging_config.yml` file
 
 ### Level 3 - Logs
-
-- [ ] Postionnez vos logs
-
+- [ ] Position your logs
 ```{.python}
-logger.debug("Ceci est un message de débogage")
-logger.info("Ceci est un message d'information")
-logger.warning("Ceci est un message d'avertissement")
-logger.error("Ceci est un message d'erreur")
+logger.debug("This is a debug message")
+logger.info("This is an info message")
+logger.warning("This is a warning message")
+logger.error("This is an error message")
 ```
 
-### Les niveaux de logs
+### Log Levels
+- **DEBUG**: useful for debugging during development
+- **INFO**: tracking executed code
+- **WARNING**: unusual but non-blocking situation
+- **ERROR**: affects program logic but doesn't stop it completely
+- **CRITICAL**: requires urgent intervention
 
-- **DEBUG** : utile pour le débogage lors du développement
-- **INFO** : suivi du code exécuté
-- **WARNING** : situation inhabituelle mais non bloquante
-- **ERROR** : affecte la logique du programme mais ne l'arrête pas complètement
-- **CRITICAL** : nécessite une intervention urgente
-
-
-### Un bon début
-
+### A Good Start
 ```{.python}
 import logging
-
-def ma_methode(a):
-    logging.debug("ma_methode - DEBUT")
-
+def my_method(a):
+    logging.debug("my_method - START")
     ...
-
-    logging.debug("ma_methode - FIN")
+    logging.debug("my_method - END")
 ```
 
-### Aller plus loin
-
-Utiliser les modules : 
+### Going Further
+Use the modules:
 
 - src/utils/log_init.py
 - src/utils/log_decorator.py
 
-Et ajouter un décorateur `@Log` avant chaque méthode
+And add a `@Log` decorator before each method
 
-::: {.notes}
-Wrapper : va encapsuler la méthode
-
-Démo log_decorator
+:::{.notes}
+Wrapper: will encapsulate the method
+Demo log_decorator
 :::

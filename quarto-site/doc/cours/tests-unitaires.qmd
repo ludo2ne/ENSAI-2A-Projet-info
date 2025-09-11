@@ -1,15 +1,15 @@
 ---
-title: "Les tests unitaires"
+title: "Unit Testing"
 description: "[Slides](tests-unitaires-slides.html)"
 author: "Ludovic Deneuville"
-format: 
+format:
   html:
     toc: true
     toc-location: left
     toc-depth: 2
   revealjs:
     theme: moon
-    footer: "[Home](../../index.html) --- [Tests unitaires](tests-unitaires.html)"
+    footer: "[Home](../../index.html) --- [Unit Testing](tests-unitaires.html)"
     slide-number: c/t                    ## collapsed/total
     slide-level: 3
     controls: true
@@ -17,200 +17,184 @@ format:
 from: markdown+emoji
 lightbox: true
 ---
+## Testing
+![Source: [CommitStrip](https://www.commitstrip.com/){target="_blank"}](img/commitStrip_tester_ou_non.jpg){style="background-color: white; padding: 10px; border-radius: 5px; display: inline-block"}
 
-## Les Tests
+### Why Test?
+- Car crash tests
+- Compliance tests
+- Quality tests in industry
+- Statistical tests
 
-![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](img/commitStrip_tester_ou_non.jpg){.r-stretch}
-
-
-### Pourquoi tester ?
-
-- Crash test de voiture
-- Test de conformité
-- Test qualité en industrie
-- Test statistique
-
-### En informatique
-
-- Pour vérifier que votre programme fonctionne
-- Pour détecter des erreurs
-- Pour éviter les régressions (quand vous modifiez du code)
+### In Computer Science
+- To verify that your program works
+- To detect errors
+- To avoid regressions (when you modify code)
 
 ::: {.callout-note}
-Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
+No test is perfect, but it still helps eliminate many errors.
 :::
 
 ::: {.notes}
-Déjà tester une fonctionnalité d'un dev dont le cas nominal plante.
+Already testing a feature from a developer whose nominal case crashes.
 :::
 
+### Definition
+A test resembles a scientific experiment.
 
-### Définition
+It examines a hypothesis expressed in terms of three elements:
 
-Un test ressemble à une expérience scientifique. 
+- Input data
+- The object to test
+- Expected results
 
-Il examine une hypothèse exprimée en fonction de trois éléments : 
+This examination is conducted 
 
-- les données en entrée
-- l'objet à tester
-- les résultats attendus
+- under controlled conditions 
+- with the goal to draw conclusions 
+- and ideally, be reproducible.
 
-Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l'idéal, être reproduit.
+### Test Coverage
+- Percentage of functions tested
+- **ONE** quality indicator
+- Trend, rather than a reliable value
 
-
-### Couverture de test
-
-- Pourcentage de fonctions testées
-- Indicateur de qualité
-- Tendance, plutôt qu'une valeur fiable
-
-Préférez faire peu de tests, mais des tests utiles !
+Be lazy : fewer tests, but useful ones!
 
 ::: {.notes}
-Nombre de fonctions testées sur le nombre total de fonctions.  
-
-Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.
+Number of tested functions over the total number of functions.
+Trend because it's easy to test all elementary methods to mechanically increase coverage and set aside tests on more complex methods.
 :::
 
-### Les types de tests {.smaller}
+### Types of Tests {.smaller}
+There are many different types of tests, here are the main ones:
 
-Il existe de très nombreux tests différents, voici les principaux :
-
-- **Test unitaire** : teste une fonction pour vérifier son bon fonctionnement
-- Test fonctionnel : teste les cas d'utilisation du logiciel
-- Test de charge : évaluent la capacité d'un système à gérer un volume élevé de données ou de transactions
-- Test d'intégration : vérifie que différents composants ou modules d'un système interagissent correctement ensemble
-- Test d'intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles
+- **Unit test**
+- Functional test
+- Load test
+- Integration test
+- Penetration test
 - ...
 
-## Les tests unitaires
 
-Nous allons utiliser le package `pytest` pour réaliser nos tests en Python.
-
-### Un bon test unitaire
-
-- Teste une seule fonctionnalité
-- Isolé
-- Reproductible
-- Déterministe
-
-::: {.notes}
-- Isolé : indépendant des autres tests
-  - si vous testez une méthode A, qui elle-même appelle d'autres méthodes B, C, D...
-  - le test ne doit se faire que sur la méthode A
-  - il faut `mocker` le comportement des autres méthodes
-- Déterministe : donne toujours le même résultat
+:::{.notes}
+- **Unit test**: tests a function to verify its proper operation
+- Functional test: tests the use cases of the software
+- Load test: evaluates the system's ability to handle a high volume of data or transactions
+- Integration test: verifies that different components or modules of a system interact correctly together
+- Penetration test: checks the software's security by searching for vulnerabilities and simulating potential attacks
+- ...
 :::
 
+## Unit Testing
+We will use the `pytest` package to perform our tests in Python.
 
-### Méthode à tester
+### A Good Unit Test
+- Tests a single functionality
+- Isolated
+- Reproducible
+- Deterministic
 
+::: {.notes}
+- Isolated: independent of other tests
+  - If you test a method A, which itself calls other methods B, C, D...
+  - The test should only be on method A
+  - You need to `mock` the behavior of other methods
+- Deterministic: always gives the same result
+:::
+
+### Method to Test
 ```{.python filename="operations_mathematiques.py"}
-class OperationsMathematiques:
-    """Opérations Mathématiques"""
-    def diviser_cinq_par(self, nombre) -> float:
-        """Divise le nombre 5 par un nombre donné.
+class MathOperations:
+    """Mathematical Operations"""
+    def divide_five_by(self, nb) -> float:
+        """Divides the number 5 by a given number.
         Parameters
         ----------
-        nombre : float or int
-            Le nombre par lequel 5 sera divisé.
+        nb : float or int
+            The number by which 5 will be divided.
         Returns
         -------
         float or None
-            Le résultat de la division de 5 par le nombre donné.
-            Si le nombre est égal à 0, la méthode retourne None.
+            The result of dividing 5 by the given number.
+            If the number is equal to 0, the method returns None.
         """
-        if nombre != 0:
-            return 5 / nombre
+        if nb != 0:
+            return 5 / nb
         else:
             return None
 ```
 
-### Classe de test
+### Test Class
+Let's create a test class.
 
-Créons une classe de test.
+To test the nominal case (="normal" case), we:
 
-Pour tester le cas nominal, nous : 
+- Choose an input number
+- Call the `divide_five_by()` method
+- Verify that the returned value is equal to the expected value
 
-- choisissons un nombre en entrée
-- appelons la méthode `diviser_cinq_par()`
-- vérifions que la valeur retournée est égale à la valeur attendue
-
-
-### Cas Nominal
-
+### Nominal Case
 ```{.python filename="test_operations_mathematiques.py"}
 import pytest
-from mathematiques.operations_mathematiques import OperationsMathematiques
-
-class TestOperationsMathematiques():
-    def test_diviser_cinq_par_nombre_non_nul(self):
+from mathematiques.operations_mathematiques import MathOperations
+class TestMathOperations():
+    def test_divide_five_by_non_null_nb(self):
         # GIVEN
         nombre = 2
-
         # WHEN
-        resultat = OperationsMathematiques().diviser_cinq_par(nombre)
-
+        resultat = MathOperations().divide_five_by(nombre)
         # THEN
         assert resultat == 2.5
 ```
-
 ::: {.notes}
-Est-ce suffisant ?
+Is this sufficient?
 :::
 
-### Autres cas
+### Other Cases
+But this is not sufficient!
 
-Mais ce n'est pas suffisant !
-
-- La méthode a également un autre retour possible : `None`
-- Il faut aussi tester ce cas
+- The method also has another possible return: `None`
+- We also need to test this case
 
 ```{.python filename="test_operations_mathematiques.py"}
-    def test_diviser_cinq_par_zero(self):
+    def test_divide_five_by_zero(self):
         # GIVEN
         nombre = 0
-
         # WHEN
-        resultat = OperationsMathematiques().diviser_cinq_par(nombre)
-
+        resultat = MathOperations().diviser_cinq_par(nombre)
         # THEN
         assert resultat is None
 ```
 
-### Et si... 
+### What If...
+We call the method with this parameter: `divide_five_by("a")`?
 
-Nous appelons la méthode avec ce paramètre : `diviser_cinq_par("a")` ?
+You can also write a test to verify that your method indeed returns a `TypeError` exception in this case.
 
-Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception `TypeError` dans ce cas.
 
 ```{.python filename="test_operations_mathematiques.py"}
-    def test_diviser_cinq_string(self):
+    def test_divide_five_by_string(self):
         # GIVEN
         nombre = "a"
-
         # WHEN / THEN
         with pytest.raises(TypeError):
-            OperationsMathematiques().diviser_cinq_par(nombre)
+            MathOperations().diviser_cinq_par(nombre)
 ```
-
 ::: {.notes}
-Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n'est pas le cas.
+But it is still preferable to check in your method that the parameter is indeed of a numeric type and decide what to do if it is not.
 :::
 
-### Ce qu'il faut retenir
+### Key Takeaways
+Unit tests:
 
-Les tests unitaires
+- Verify that a method does what it is supposed to do
+- Test nominal cases, but also edge cases and errors
+- A unit test tests ONE and ONLY ONE thing
+- As many unit tests as there are possible returns
 
-- vérifient qu'une méthode fait ce qu'elle doit faire
-- il faut tester les cas nominaux, mais également les cas à la marge et les erreurs
-- un test unitaire teste UNE et UNE seule chose
-- il faut autant de tests unitaires que de retours possibles
-
-:::{.notes}
-
-Vu en 1A : 
-
+::: {.notes}
+Seen in 1st year:
 ```{.python}
 @pytest.mark.parametrize(
 'a, b, resultat_attendu',
@@ -219,19 +203,14 @@ Vu en 1A :
  (3, 4, 7)]
 )
 ```
-
 :::
 
-
 ## Mock
+- Simulated object that replaces a real component during tests
+- Isolating external dependencies = test code independently
+- Simulate complex scenarios like network errors
 
-- Objet simulé qui remplace un composant réel lors des tests
-- Permet de tester une unité de code en isolant ses dépendances externes
-- Simuler des scénarios complexes comme les erreurs de réseau
-
-
-### Mock - exemple
-
+### Mock - Example
 ```{.python filename="joueur_service.py"}
 class JoueurService:
     def creer(self, pseudo, mdp, age, mail, fan_pokemon) -> Joueur:
@@ -245,78 +224,94 @@ class JoueurService:
         creation_ok = JoueurDao().creer(nouveau_joueur)
         if creation_ok:
             return nouveau_joueur
-        else 
+        else:
             return None
 ```
 
-:::{.notes}
-Comment prévoir le comportement de `JoueurDao().creer(nouveau_joueur)` ?
+::: {.notes}
+How to predict the behavior of `JoueurDao().creer(nouveau_joueur)`?
 :::
 
-### Mock - exemple
+### Mock - Example
 
 ```{.python filename="test_joueur_service.py"}
 from unittest.mock import MagicMock
-
 def test_creer_ok():
-    """ "Création de Joueur réussie"""
-
+    """Successful creation of Joueur"""
     # GIVEN
     pseudo, mdp, age, mail, fan_pokemon = "jp", "1234", 15, "z@mail.oo", True
     JoueurDao().creer = MagicMock(return_value=True)
-
     # WHEN
     joueur = JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)
-
     # THEN
     assert joueur.pseudo == pseudo
 ```
 
+## Test-Driven Development (TDD)
 
-## Les Test Driven Development (TDD)
-
-### Quand tester ?
+### When to Test?
 
 ::: {.fragment}
-Au début !
+At the beginning!
 
 ::: {.callout-tip}
-Plus on teste tôt :arrow_right: plus les tests sont efficaces et peu coûteux !
+The earlier you test, the more effective and less costly the tests are!
 :::
 
 :::
 
-### Test Driven Development
+### Test-Driven Development
+The best practice:
 
-La meilleure pratique :
+1. Create the tests
 
-1. Créer les tests 
-2. Coder la fonction
+2. Code the function
 
-### Logique
+### Logic
 
-Cela paraît un peu étrange, mais en fait pas tant que ça. 
+:::{.callout-note}
+It may seem a bit strange/strict
 
-Lorsque vous codez une fonction, vous savez avant de commencer :
+BUT you have done your functional anaylsis and system design
 
-- quels seront les paramètres en entrée
-- quels résultats vous attendez en sortie
-- donc vous savez déjà quoi tester !
+You KNOW what there is and what shape it has!
+:::
 
-### Pratique du TDD
+When you code a function, you know before you start:
 
-- ✅ Amélioration de la qualité du code
-- ✅ Réduction des bugs
-- ❌ puis ✅ Temps
-- ❌ Maintenance des tests
+- What the input parameters will be
+- What results you expect as output
+- So you already know what to test!
+
+### TDD Practice
+- ✅ Improvement of code quality
+- ✅ Reduction of bugs
+- ❌ then ✅ Time
+- ❌ Maintenance of tests
 
 ::: {.callout-important}
-Avantages >>> Incovénients
+Advantages >>> Disadvantages
 :::
 
 
 ::: {.notes}
-La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.
-
-Sinon, si l'on écrit la fonction en premier, une fois que l'on a terminé, il y a 9 chances sur 10 que l'on se dise : "c'est bon ça marche, pas la peine de tester...". Et ça c'est pas bien !!!
+The practice of TDD has the big advantage of forcing us to write tests and take the time to do things well. To adhere to TDD, you really have to force yourself at the beginning, but ultimately this practice is very beneficial.
+Otherwise, if we write the function first, once we're done, there's a 90% chance we'll say to ourselves: "It works, no need to test..." And that's not good!!!
 :::
+
+### Project tip
+
+Designate the Test Police (or the Quality Police)
+
+Why ?
+
+- Ensure all important methods are tested
+- Maintain consistency in testing and documentation
+- Promote the test-first thinking
+
+Benefits on team spirit
+
+- Contribute to code quality without coding A-Z
+- One person has an idea of the whole architecture and the pain points
+- Easier to review when it's not your code
+

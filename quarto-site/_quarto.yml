@@ -35,7 +35,6 @@ website:
             text: Outils de développement
           - href: https://ludo2ne.github.io/Git-tuto/doc/presentation.html
             text: Git
-            target: "_blank"
           - href: doc/cours/analyse-fonctionnelle.qmd
             text: Analyse fonctionnelle
           - href: doc/cours/poo-avancee.qmd
@@ -67,7 +66,6 @@ website:
             text: Sigles
       - icon: github
         href: "{{< meta var.url-repo >}}"
-        target: "_blank"
   page-footer:
     right: |
       Website built with [Quarto](https://quarto.org/){.external target="_blank"} <br>
