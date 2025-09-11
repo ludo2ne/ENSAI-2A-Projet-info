@@ -1,15 +1,15 @@
 ---
-title: "DAO et Sécurité"
+title: "DAO and Security"
 description: "[Slides](dao-securite-slides.html)"
 author: "Ludovic Deneuville, Rémi Pépin"
-format: 
+format:
   html:
     toc: true
     toc-location: left
     toc-depth: 2
   revealjs:
     theme: moon
-    footer: "[Home](../../index.html) --- [DAO et Sécurité](dao-securite.html)"
+    footer: "[Home](../../index.html) --- [DAO and Security](dao-securite.html)"
     slide-number: c/t                    ## collapsed/total
     slide-level: 3
     controls: true
@@ -19,91 +19,83 @@ lightbox: true
 ---
 
 
-## Le plan {.smaller}
-
+## Outline {.smaller}
 - Data Access Object
-  - Pourquoi persister des données ?
-  - C'est quoi une DAO
-  - Exemple de DAO
-- Sécurité Informatique
-  - Définition
-  - Failles de sécurité
-  - Injection SQL
-- Gestion des mots de passe
-  - Authentification avec cypher
-  - Hashage de mots de passe
-  - Exemple
+  - Why persist data?
+  - What is a DAO?
+  - DAO Example
+- Computer Security
+  - Definition
+  - Security vulnerabilities
+  - SQL Injection
+- Password Management
+  - Authentication with cipher
+  - Password hashing
+  - Example
+
 
 ::: {.notes}
-Nous allons commencer par parler Stockage des données
+We will start by talking about data storage.
 :::
 
-## Data access object (DAO)
+## Data Access Object (DAO)
 
-:::::: {.hide-html-render}
+::::::{.hide-html-render}
 <iframe src="https://giphy.com/embed/dIBLtolI6axTGIGopo" width="960" height="540" frameBorder="0" class="giphy-embed no-print" allowFullScreen></iframe>
 ::::::
 
 ::: {.notes}
-Notre objectif va être de stocker des données, mais avant :
+Our goal is to store data, but first:
 :::
 
-### Un ordinateur
-
-Quels sont ses composants (en gros) ?
+### A Computer
+What are its main components?
 
 :::{.fragment}
-- Un processeur (CPU) : fait UNIQUEMENT du calcul
-- La mémoire RAM : mémoire volatile rapide
-- Disque dur (HDD, SSD) : mémoire longue durée
-- Carte graphique : unité de calcul spécialisée
+- A processor (CPU): does ONLY calculations
+- RAM: fast, volatile memory
+- Hard drive (HDD, SSD): long-term memory
+- Graphics card: specialized processing unit
 :::
 
 ::: {.notes}
-Bien insister sur CPU, RAM, disque !
-
-Rendent 3 services différents :
-
-- CPU : processeur
-- DD : disque
-- RAM : barrettes
+Emphasize CPU, RAM, and hard drive!
+They provide three different services:
+- CPU: processor
+- HDD: disk
+- RAM: memory modules
 :::
 
-### Comment résoudre ce problème ?
-
-:::::: {.hide-html-render}
+### How to Solve This Problem?
+::::::{.hide-html-render}
 ![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
 ::::::
 
 ::: {.fragment}
-Quel problème ??
+What problem??
 :::
 
 ::: {.notes}
-Réponse : Conserver les données une fois le programme Python terminé
+Answer: Retaining data after the Python program ends.
 :::
 
-### Une question à se poser
-
+### A Question to Ask
 ```{.python code-line-numbers="false"}
 p = Personnage(prenom="Leia", nom="Organa", age = 35)
 ```
-
-C'est quoi une variable Python ?
+What is a Python variable?
 
 :::{.fragment}
-- Une référence (le nom de la variable)
-- **Un objet associé (sa valeur)**
+- A reference (the variable name)
+- **An associated object (its value)**
 :::
-
 
 ::: {.notes}
-On zappe la notion d'adressage mémoire.  
-Pas besoin de stocker la référence, car elle est dans le code source  
+We skip the concept of memory addressing.
+No need to store the reference, as it is in the source code.
 :::
 
-### Une question qui en découle
-
+### A Follow-Up Question
 ```{.python filename="personnage.py"}
 class Personnage:
     def __init__(self, prenom, nom, age):
@@ -111,101 +103,84 @@ class Personnage:
         self.nom = nom
         self.age = age
         self.vaisseaux = []
-
     def anniversaire(self):
         self.age += 1
 ```
+What is a Python object?
 
-C'est quoi un objet Python ?
 
 :::{.fragment}
-- Des attributs (qui peuvent être eux-mêmes des objets)
-- Des méthodes
+- Attributes (which can themselves be objects)
+- Methods
 :::
-
 
 ::: {.notes}
-Pareil, les méthodes c'est du code, nous on veut juste les attributs
+Same thing, methods are code, we only want the attributes.
 :::
 
-### Pour résumer
-
-- Nous voulons sauvegarder des couples clef-valeur  
-- Avec des valeurs qui peuvent être elles-mêmes constituées de couples clef-valeur
+### In Summary
+- We want to save key-value pairs
+- With values that can themselves consist of key-value pairs
 
 ::: {.callout}
-**Nous voulons sauvegarder un arbre 🌳**
+**We want to save a tree 🌳**
 :::
 
 ::: {.notes}
-Besoin d'un dessin avec Leia et Vaisseaux
-
-Parallèle avec les dict Python / JSON
-
-Arbre car les attributs d'objets sont parfois eux-mêmes des objets
+Need a drawing with Leia and Vaisseaux
+Parallel with Python dicts / JSON
+Tree because object attributes are sometimes themselves objects.
 :::
 
-### Comment faire cela ?
-
-- Écrire nos données sur le disque dur dans un fichier 
+### How to Do This?
+- Write our data to a hard drive in a file
   - csv, parquet, json, xml
-- Utiliser une base de données
+- Use a database
   - SQL tables + relations, NoSQL
 
 ::: {.notes}
-Question : Comment fait une BDD ?
-
-- Elle gère dans des fichiers  
-- On peut faire le parallèle avec les couches  
-- La BDD rend un service, j'ignore comment elle fait  
-- Je sais ce qu'elle attend en entrée et ce qu'elle me donne en sortie !  
+Question: How does a database work?
+- It manages files
+- We can make a parallel with layers
+- The database provides a service, I ignore how it does it
+- I know what it expects as input and what it gives me as output!
 :::
 
-### Lien persistance / application
-
-- Python : Variables volatiles en RAM
-- Système de persistance : Données stockées sur disque
-- Data Access Objects (DAO) en guise de lien
+### Link Between Persistence and Application
+- Python: Volatile variables in RAM
+- Persistence system: Data stored on disk
+- Data Access Objects (DAO) as a link
 
 ::: {.notes}
-Petite pause récap pour essayer de récupérer tout le monde avant la DAO.
-
-Dans la vraie vie, on ne repart pas de 0 quand on relance une appli.
-
-Si vous créez un Personnage, la fois suivante il sera toujours là
+Short recap to try to get everyone back on track before DAO.
+In real life, we don't start from scratch when relaunching an app.
+If you create a Personnage, the next time it will still be there.
 :::
 
-### C'est quoi une DAO ?
-
-:::::: {.hide-html-render}
+### What is a DAO?
+::::::{.hide-html-render}
 ![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
 ::::::
 
 ::: {.notes}
-On vient de dire que l'on va stocker dans une BDD.
-
-Comment y accéder ?
+We just said we will store in a database.
+How to access it?
 :::
 
-### C'est quoi une DAO ?
-
-- Classe technique
-- Une classe DAO par objet métier
-- Expose des méthodes pour communiquer avec la couche de persistance
+### What is a DAO?
+- Technical class
+- One DAO class per business object
+- Exposes methods to communicate with the persistence layer
 
 ::: {.notes}
-C'est une API
-
-Rend un service à des clients
-
-Comment elle fait ? -> osef
-
-Comme vous au restaurant. Vous voulez manger, comment c'est fait vous importe peu tant que le service est rendu (avec un niveau d'exigence)
-
-Des ORM tels SQLAlchemy existent pour faire le lien Objet Python - Table BDD -> pas le sujet ici
+It's an API
+Provides a service to clients
+How it does it? -> Don't care
+Like you in a restaurant. You want to eat, how it's made doesn't matter as long as the service is provided (with a certain level of expectation).
+ORMs like SQLAlchemy exist to link Python Objects - Database Tables -> not the subject here.
 :::
 
-### Quelles méthodes exposer ?
+### Which Methods to Expose?
 
 :::{.fragment}
 - **C**reate
@@ -215,89 +190,72 @@ Des ORM tels SQLAlchemy existent pour faire le lien Objet Python - Table BDD -> 
 :::
 
 ::: {.notes}
-Faire participer  
-
-Essayer de montrer que ces 4 là suffisent.
-
-Après on peut avoir des raffinements en faisant des choses en masse, ou filtrer, etc.
-
-
-Quid de la copie ?
-
-Une copie c'est une lecture + création donc on sait faire
-
-
-Exemple dessin : classe Personne - table personne - dao personneDAO
+Get participation
+Try to show that these four are sufficient.
+Later we can have refinements by doing things in bulk or filtering, etc.
+What about copying?
+A copy is a read + creation, so we know how to do it.
+Example drawing: Person class - person table - personDAO class.
 :::
 
-### L'intérêt d'une classe à part
+### The Benefit of a Separate Class
+Separation of responsibilities
 
-Séparation des responsabilités
+- "Disposable" class 🚮
 
-- Classe "jetable" 🚮
-- Modifiable sans risque 🔨
-- Parallélisation du travail 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+- Modifiable without risk 🔨
+
+- Parallel work 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
 
 ::: {.notes}
-On remet une couche, ça fait pas de mal  
-Dans la vraie vie, si changement de système, plus facile de migrer  
-
-En projet, la couche DAO peut être très facile à faire
+We add another layer, it doesn't hurt.
+In real life, if the system changes, it's easier to migrate.
+In the project, the DAO layer can be very easy to do.
 :::
 
-### Petit recap
-
+### Quick Recap
 ![](img/couche_metier.png)
 
 ::: {.notes}
-Petit exemple pour illustrer.
-
-Exemple : lister toutes les personnes fans de Pokemon
+Small example to illustrate.
+Example: list all people who are fans of Pokemon.
 :::
 
-## Comment se connecter à une DB en python ?
+## How to Connect to a Database in Python?
+Use a dedicated library
 
-Utilisation d'une bibliothèque dédiée
-
-- **PostgreSQL** : [psycopg2](https://www.psycopg.org/docs/){target="_blank"}
-- MySQL : mysql-connector-python
-- Oracle : cx_Oracle
-- MongoDB : pymongo
+- **PostgreSQL**: [psycopg2](https://www.psycopg.org/docs/){target="_blank"}
+- MySQL: mysql-connector-python
+- Oracle: cx_Oracle
+- MongoDB: pymongo
 
 ::: {.notes}
-Vous lirez en entier la doc : psycopg2. 
-
-Il y aura des questions à l'exam !
+You will read the entire psycopg2 documentation.
+There will be questions on the exam!
 :::
 
 ### psycopg2
-
 - `pip install psycopg2-binary`
+- `connection`: Establishes the connection to the database
+  Not super interesting to do, the code is provided
 
-- `connection` : permet d'établir la connexion avec la base  
-  Pas super intéressant à faire, le code est donné
 
-
-### psycopg2 - connection
+### psycopg2 - Connection
 
 ```{.python filename="db_connection.py"}
 import os
 import dotenv
 import psycopg2
-
 from psycopg2.extras import RealDictCursor
 from utils.singleton import Singleton
-
 class DBConnection(metaclass=Singleton):
     """
-    Classe de connexion à la base de données
-    Elle permet de n'ouvrir qu'une seule et unique connexion
+    Database connection class
+    It allows opening only one unique connection
     """
-
     def __init__(self):
-        """Ouverture de la connexion"""
+        """Open the connection"""
         dotenv.load_dotenv()
-
         self.__connection = psycopg2.connect(
             host=os.environ["POSTGRES_HOST"],
             port=os.environ["POSTGRES_PORT"],
@@ -307,7 +265,6 @@ class DBConnection(metaclass=Singleton):
             options=f"-c search_path={os.environ['POSTGRES_SCHEMA']}",
             cursor_factory=RealDictCursor,
         )
-
     @property
     def connection(self):
         return self.__connection
@@ -315,93 +272,80 @@ class DBConnection(metaclass=Singleton):
 
 ::: {.notes}
 Singleton
-::: 
+:::
 
-### psycopg2 - cursor
-
-- `cursor` : encapsule la requête
+### psycopg2 - Cursor
+- `cursor`: Encapsulates the query
   ```{.python}
   from dao.db_connection import DBConnection
-  
+
   with DBConnection().connection as connection:
       with connection.cursor() as cursor:
   ```
-- `cursor.execute("<une requête SQL>")` : permet de faire une requête
-- `cursor.fetchone()/fetchall()/fetchmany()` : Récupération des résultats
+- `cursor.execute("<a SQL query>")`: Executes a query
+- `cursor.fetchone()/fetchall()/fetchmany()`: Retrieves the results
 
-
-
-### Forme de base
+### Basic Form
 
 ```{.python}
 def dao_function(self, arg1, arg2, ...):
-    # Récupération de la connexion à la base
+    # Get the database connection
     with DBConnection().connection as connection:
-    # Création d'un curseur pour faire une requête
+    # Create a cursor to make a query
         with connection.cursor() as cursor:
-            # On envoie au serveur la requête SQL
+            # Send the SQL query to the server
             cursor.execute(
-                "<une_requete_sql_à_trous>",
-                remplisage_des_trous)
-
-            # On récupère le résultat de la requête
-            res = cursor.fetchone()  # ou fetchall()/fetchmany()
-
-    # Si la requête renvoie quelque chose
+                "<a_sql_query_with_placeholders>",
+                fill_in_the_placeholders)
+            # Retrieve the query result
+            res = cursor.fetchone()  # or fetchall()/fetchmany()
+    # If the query returns something
     if res:
-      something = "<res mis en forme>"
-        
-    return something   
+      something = "<res formatted>"
+
+    return something
 ```
-
 ::: {.notes}
-Pourquoi on ne retourne pas directement res ?
-
-res : list[dict]
-
-On préfère retourner un Objet ou une liste[Objet]
+Why don't we return res directly?
+res: list[dict]
+We prefer to return an Object or a list[Object]
 :::
 
-### Un petit exemple : LivreDao
-
+### A Small Example: LivreDao
 ![](img/class_diagram_DAO.png)
 
 ::: {.notes}
-ISBN : International Standard Book Number
+ISBN: International Standard Book Number
 :::
 
-
-### Créer un livre
-
+### Create a Book
 ```{.python}
 def create(self, livre) -> Livre:
-    """Pour créer un livre en base"""
+    """To create a book in the database"""
     with DBConnection().connection as conn:
         with conn.cursor() as cursor:
             cursor.execute(
                 "INSERT INTO livre (isbm, titre, auteur)         "
                 "     VALUES (%(isbm)s, %(titre)s, %(auteur)s)   "
                 "  RETURNING id_livre;                           ",
-                {"isbm": livre.isbm, 
-                 "titre": livre.titre, 
+                {"isbm": livre.isbm,
+                 "titre": livre.titre,
                  "auteur": livre.auteur},
             )
             livre.id = cursor.fetchone()["id_livre"]
     return livre
 ```
-
 ::: {.notes}
-Possible aussi de retourner une booléen :
-
-- true si création réussie
-- false sinon
+It's also possible to return a boolean:
+- true if creation is successful
+- false otherwise
 :::
 
-### Lister les livres
+### List Books
 
 ```{.python}
 def find_all(self) -> list[Livre]:
-    """Pour récupérer tous les livres en base"""
+    """To retrieve all books from the database"""
     with DBConnection().connection as conn:
         with conn.cursor() as cursor:
             cursor.execute(
@@ -412,9 +356,8 @@ def find_all(self) -> list[Livre]:
                 "  FROM livre ;                    "
             )
             livre_bdd = cursor.fetchall()
-            
-    liste_livres = []
 
+    liste_livres = []
     if livre_bdd:
         for livre in livre_bdd:
             liste_livres.append(
@@ -425,7 +368,7 @@ def find_all(self) -> list[Livre]:
                     auteur=livre["auteur"],
                 )
             )
-            
+
     return liste_livres
 ```
 
@@ -435,11 +378,11 @@ def find_all(self) -> list[Livre]:
 - liste_livres = [Livre(1, 123, "Le Schtroumpf hackeur", "Peyo"), Livre(...), ...]
 :::
 
-### Trouver un livre
+### Find a Book
 
 ```{.python}
 def find_by_isbm(self, isbm) -> Livre:
-    """Pour récupérer un livre depuis son isbm"""
+    """To retrieve a book by its isbm"""
     with DBConnection().connection as conn:
         with conn.cursor() as cursor:
             cursor.execute(
@@ -448,7 +391,7 @@ def find_by_isbm(self, isbm) -> Livre:
                 " WHERE isbm = %(isbm)s            ",
                 {"isbm": isbm}
             livre_bdd = cursor.fetchone()
-            
+
     livre = None
     if livre_bdd:
         livre = Livre(
@@ -459,440 +402,426 @@ def find_by_isbm(self, isbm) -> Livre:
         )
     return livre
 ```
-
 :::{.notes}
-livre_bdd : dict
-livre : Livre
-
-Principe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets
+livre_bdd: dict
+livre: Livre
+Principle to remember if you want to understand: in DAOs, we always transform dicts into objects.
 :::
 
 ### Conclusion
+- Python works in RAM (volatile)
+- Need a mechanism for data persistence
+- DAO: centralizes methods for reading/writing our data
+- The business layer calls the DAO without worrying about the persistence system
+- Enables effective teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
 
-- Python travaille en RAM (volatile)
-- Obligation d'avoir un mécanisme de persistance des données
-- DAO : centralise les méthodes pour lire/écrire nos données
-- La couche métier appelle la DAO sans se préoccuper du système de persistance
-- Permet un travail d'équipe efficace 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+## Computer Security
+### CIA Principles
 
-
-## Sécurité informatique
-
-### Principes CAID
-
-::: {.hide-html-render}
+:::{.hide-html-render}
 ![](https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg)
 :::
 
-### 4 piliers de la sécurité info
+### 3 Pillars of Computer Security
 
-- **C**onfidentialité
-- **A**uthentification
-- **I**ntégrité
-- **D**isponibilité
+- **C**onfidentiality, 
+- **I**ntegrity
+- **A**vailability
+
+:::{.hide-html-render}
+![](https://destcert.com/wp-content/uploads/2024/08/the-CIA-triad-768x432.webp)
+:::
 
 ::: {.notes}
-On utilise aussi parfois DICP ou DICPA
-
-Disponibilité, Intégrité, Confidentialité, Preuve
+Sometimes we also use CAID, DICP or DICPA in French
+Availability, Integrity, Confidentiality, Proof
 :::
 
-### Deux bonus
+### Plus 2 
+- Authenticity (or Proof)
+- Non-repudiation
 
-- Traçabilité
-- Non-répudiation
+:::{.hide-html-render}
+![](https://www.open.edu/openlearn/pluginfile.php/2269530/mod_oucontent/oucontent/97012/51fd0797/aa8da63a/cyber_b2_week1_fig4.jpg)
+:::
 
-### Confidentialité
+### Confidentiality
 
 ::: {.callout}
-Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées (notions de droits ou permissions). 
-
-Tout accès indésirable doit être empêché.
+Only authorized individuals should have access to the information intended for them (notions of rights or permissions).
+Any undesirable access must be prevented.
 :::
 
-**Mécanismes associés :** 
+**Associated Mechanisms:**
 
-- gestion des droits (annuaires, rôles ...)
-- cryptographie
+- Rights management (directories, roles, etc.)
+- Cryptography
 
 ::: {.notes}
-On parle plutôt de chiffrement
+We talk more about encryption.
 :::
 
-### Authentification
+### Integrity
 
 ::: {.callout}
-Les utilisateurs doivent prouver leur identité en répondant à un "challenge".
+Data must be as expected and must not be altered accidentally, unlawfully, or maliciously.
 :::
+**Associated Mechanisms:**
 
-**Mécanismes associés :** 
-
-- authentification faible (identifiant, mot de passe)
-- authentification forte (données biométriques, multi-facteurs)
-
-### Intégrité
-
-::: {.callout}
-Les données doivent être celles que l'on attend, et ne doivent pas être altérées de façons fortuites, illicites ou malveillantes.
-:::
-
-**Mécanismes associés :** 
-
-- signature électronique
-- checksum
+- Digital signature
+- Checksum
 
 :::{.notes}
-**Signature électronique :** garantir l'intégrité d'un document, c'est-à-dire s'assurer que le document n'a pas été altéré entre sa signature et sa consultation; authentifier son auteur, c'est-à-dire s'assurer de l'identité de la personne signataire.
-
-**Checksum :** bit de parité.
+**Digital signature:** Ensures the integrity of a document, i.e., ensures that the document has not been altered between its signing and its consultation; authenticates its author, i.e., ensures the identity of the signing person.
+**Checksum:** Parity bit.
 :::
 
-
-### Disponibilité
-
+### Availability
 ::: {.callout}
-L'accès aux ressources du système d'information doit être permanent et sans faille durant les plages d'utilisation prévues.
+Access to the information system's resources must be permanent and flawless during the planned usage periods.
 :::
+**Associated Mechanisms:**
 
-**Mécanismes associés :** 
-
-- redondance des serveurs
-- virtualisation
-- conteneurisation
+- Server redundancy
+- Virtualization
+- Containerization
 
 :::{.notes}
 Backup
-
-Parler de la mise en production avant.
+Talk about deployment beforehand.
 :::
 
-### Traçabilité
-
+### Traceability
 ::: {.callout}
-Garantit que les accès et tentatives d'accès aux éléments considérés sont tracés et que ces traces sont conservées et exploitables.
+Ensures that accesses and access attempts to the considered elements are traced and that these traces are preserved and usable.
 :::
+**Associated Mechanism:**
 
-**Mécanisme associé :** 
-
-- journalisation
+- Logging
 
 :::{.notes}
-Logs (mieux que les prints)
-
-Projet 2024-2025
+Logs (better than prints)
+Project 2024-2025
 :::
 
-### La non-répudiation
+### Authentication
 
 ::: {.callout}
-Aucun utilisateur ne doit pouvoir contester les opérations qu'il a réalisées dans le cadre de ses actions autorisées et aucun tiers ne doit pouvoir s'attribuer les actions d'un autre utilisateur.
+Users must prove their identity by responding to a "challenge."
+:::
+**Associated Mechanisms:**
+
+- Weak authentication (identifier, password)
+- Strong authentication (biometric data, multi-factor)
+
+
+### Non-repudiation
+::: {.callout}
+No user should be able to dispute the operations they have performed within the scope of their authorized actions, and no third party should be able to attribute the actions of one user to another.
 :::
 
-**Mécanismes associés :** 
+**Associated Mechanisms:**
 
-- traçabilité
-- authentification
-- intégrité
+- Traceability
+- Authentication
+- Integrity
+
 
 :::{.notes}
-C'est pas moi
-
-Mais c'est votre nom !
-
-Ne laissez pas vos sessions ouvertes aux pauses (CTRL + ALT + F12)
+It wasn't me
+But it's your name!
+Don't leave your sessions open during breaks (CTRL + ALT + F12)
 :::
 
+## Computer Security Vulnerabilities
 
-## Les failles informatiques
+### Too Many Vulnerabilities!!!
 
-### Trop de failles !!!
-
-- Failles physiques "bas niveau"
-- Failles physiques "haut niveau"
-- **Injection SQL**
-- Injection de données
-- **Faille XSS**
-- Exécution de code
+- Low-level physical vulnerabilities
+- High-level physical vulnerabilities
+- **SQL Injection**
+- Data injection
+- **XSS Vulnerability**
+- Code execution
 - ...
 
+
 :::{.notes}
-- Failles physiques "bas niveau" : coupure électrique, inondation salle serveur
-- Failles physiques "haut niveau" : accès physique à une machine
+- Low-level physical vulnerabilities: power outage, server room flooding
+- High-level physical vulnerabilities: physical access to a machine
 :::
 
+### What Should You Be Wary Of?
 
-### De quoi faut-il se méfier ?
-
-::: {.hide-html-render}
+:::{.hide-html-render}
 ![](https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif)
 :::
 
 :::{.fragment}
-**De vos utilisateurs**
+**Your users**
 :::
 
-## Exemple de failles, les injections SQL
-
+## Example of Vulnerabilities: SQL Injections
 
 ![](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
-: Source : <https://xkcd.com/>{target="_blank"}
+Source: <https://xkcd.com/>{target="_blank"}
 
+### SQL Injection
+Involves entering SQL to execute a different query than intended.
 
-### Injection SQL
+Problems:
 
-Consiste à saisir du SQL pour exécuter une autre requête que celle prévue.
+- Confidentiality
+- Authentication
+- Integrity
+- Availability
 
-Problèmes :
-
-- Confidentialité
-- Authentification
-- Intégrité
-- Disponibilité
-
-### Exemple : s'authentifier sans mot de passe
-
-Requête d'authentification
+### Example: Authenticating Without a Password
+Authentication query
 
 ```{.sql}
-SELECT * 
-  FROM user 
- WHERE name = 'input_name' 
-   AND mdp = 'input_mdp';
+SELECT *
+  FROM user
+ WHERE name = 'input_name'
+   AND password = 'input_password';
 ```
-
 ::::::{.fragment}
-::: {.callout-note title="Vous saisissez"}
+::: {.callout-note title="You Enter"}
 - Gennysson
-- awsome_password
+- awesome_password
 :::
 ::::::
 
 :::{.fragment}
 ```{.sql}
-SELECT * 
-  FROM user 
- WHERE name = 'Gennysson' 
-   AND mdp = 'awsome_password';
+SELECT *
+  FROM user
+ WHERE name = 'Gennysson'
+   AND password = 'awesome_password';
 ```
 :::
-
 :::{.notes}
-Si dans votre cursor.execute vous avez ce code
+If your cursor.execute contains this code
 :::
 
-### Exemple : s'authentifier sans mot de passe
+### Example: Authenticating Without a Password
 
 ```{.sql}
-SELECT * 
-  FROM user 
- WHERE name = 'input_name' 
-   AND mdp = 'input_mdp';
+SELECT *
+  FROM user
+ WHERE name = 'input_name'
+   AND password = 'input_password';
 ```
-
 ::::::{.fragment}
-::: {.callout-warning title="Vous saisissez"}
+::: {.callout-warning title="You Enter"}
 - Gennysson
 - `' OR 1=1; --`
 :::
 ::::::
 
+
 :::{.fragment}
 ```{.sql}
-SELECT * 
-  FROM user 
- WHERE name = 'Gennysson' 
-   AND mdp = '' OR 1=1; --';
+SELECT *
+  FROM user
+ WHERE name = 'Gennysson'
+   AND password = '' OR 1=1; --';
 ```
 :::
 
-### Exemple : supprimer une table
-
+### Example: Deleting a Table
 ```{.sql}
-SELECT * 
-  FROM user 
- WHERE name = 'input_name' 
-   AND mdp = 'input_mdp';
+SELECT *
+  FROM user
+ WHERE name = 'input_name'
+   AND password = 'input_password';
 ```
 
 ::::::{.fragment}
-::: {.callout-warning title="Vous saisissez"}
+::: {.callout-warning title="You Enter"}
 - Gennysson
 - `'; DROP TABLE user CASCADE; --`
 :::
 ::::::
 
+
 :::{.fragment}
 ```{.sql}
-SELECT * 
-  FROM user 
- WHERE name='Gennysson' 
-   AND mdp=''; DROP TABLE user CASCADE; --;
+SELECT *
+  FROM user
+ WHERE name='Gennysson'
+   AND password=''; DROP TABLE user CASCADE; --;
 ```
 :::
 
----
-
+:::{.fragment}
 :::{.hide-html-render}
 ![](https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif){width=50%}
 :::
+:::
 
-### Comment se protéger ?
+### How to Protect Yourself?
+- Escape special characters
+- Use a prepared query
 
-- Échapper les caractères spéciaux
-- Utiliser une requête préparée
 
-**La bibliothèque que vous utiliserez ne fait que de l'échappement de caractères spéciaux 😨**
+**The library you use only escapes special characters 😨**
+
+:::{.fragment}
+
+A prepared query :
+
+![](https://www.securityjourney.com/hubfs/fig1.png)
+:::
 
 :::{.notes}
-La seconde solution est mieux que la première mais psycopg2 ne semble pas la proposer simplement.  
-Donc il faut la connaître, mais savoir que c'est la première solution qui va être faite.
-
-Échapper les caractères spéciaux : par exemple, « ' » sera remplacé par « \' »  
-L'apostrophe ne sera donc pas interprétée comme une fin de chaîne par le SGBD
-
-Instruction "prepare" :  
-1. Envoie la requête à trous à la BDD  
-2. Envoie pour remplir les trous
+The second solution is better than the first, but psycopg2 doesn't seem to offer it simply.
+So you need to know it, but know that it's the first solution that will be used.
+Escaping special characters: for example, " ' " will be replaced by " \' "
+The apostrophe will therefore not be interpreted as an end of string by the DBMS.
+"prepare" instruction:
+1. Sends the query with placeholders to the database
+2. Sends to fill in the placeholders
 :::
 
-### Cross Site Scripting
+### Cross-Site Scripting
+Involves injecting code that causes actions on the browser. This can allow:
 
-Consiste à injecter du code provoquant des actions sur le navigateur. Cela peut permettre :
+- Page redirections (phishing)
+- Information theft
+- Actions on the site
+- Making the site difficult to use
 
-- Des redirections de page (phishing)
-- Du vol d'information
-- Des actions sur le site
-- Rendre le site difficile à utiliser
+### How to Protect Yourself?
 
-### Comment se protéger ?
-
-- Ne jamais insérer des données brutes
-- Échapper les caractères spéciaux
-- Vérifier vos données
-
+- Never insert raw data
+- Escape special characters
+- Verify your data
 
 ::: {.callout-tip}
-Les bibliothèques web le font souvent pour vous !
+Web libraries often do this for you!
 :::
 
+### To Sum Up: Injection
 
+- Never trust user inputs, verify/clean them
+- Never trust user inputs, verify/clean them
+- Never trust user inputs, verify/clean them
+- NEVER TRUST USER INPUTS
 
-### To sum up : injection
+- USERS ARE YOUR N°1 VULNERABILTY
+- USERS ARE THE DEVIL 
 
-- Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs
-- Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs
-- Ne jamais faire confiance aux utilisateurs, vérifier / nettoyer leurs inputs
-
-
-## Gestion des mots de passe
-
-Pour tester la solidité d'un mot de passe :
+## Password Management
+To test the strength of a password:
 
 - <https://ssi.economie.gouv.fr/motdepasse>{target="_blank"}
 
-### Votre application doit-elle stocker des mots de passe en clair?
+### Should Your Application Store Plain Text Passwords?
 
 ::::::{.fragment}
-::: {.hide-html-render}
+:::{.hide-html-render}
 ![](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif){width=100%}
 :::
 ::::::
 
-### Votre application doit-elle connaître le mot de passe d'un utilisateur pour l'authentifier ?
-
+### Does Your Application Need to Know a User's Password to Authenticate Them?
 ::::::{.fragment}
-::: {.hide-html-render}
+:::{.hide-html-render}
 ![](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif){width=50%}
 :::
 ::::::
 
-### Comment on fait ?
-
-::: {.hide-html-render}
+### How Do We Do It?
+:::{.hide-html-render}
 ![](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif){width=100%}
 :::
 
-### Hasher le mot de passe
+### Hashing the Password
+- Hash the password
+- Store the hash in the database
+- When you need to compare, hash the entered password
+- And compare the hashes
 
-- Hashage du mot de passe
-- Stockage du hash en base
-- Quand besoin de comparer on hashe le mdp saisi
-- Et on compare les hashs
+**Authentication without persisting passwords!!!!**
 
-**Authentification sans persister les mots de passe !!!!**
 
 :::{.notes}
-C'est tellement simple et sécurisé !  
-Mais pas tous les sites le font ...  
-Un site qui vous renvoie votre mdp le garde en mémoire (ou du moins le moyen de le déchiffrer)  
-
-Dans la vraie vie, on rajoute un "sel" au mdp avant de le hacher.  
-C'est une valeur aléatoire calculée pour chaque utilisateur que l'on va rajouter au mdp avant de le hacher  
-Cela rend une attaque en force brute plus coûteuse.
+It's so simple and secure!
+But not all sites do it...
+A site that sends you your password keeps it in memory (or at least the means to decrypt it).
+In real life, we add a "salt" to the password before hashing it.
+It's a random value calculated for each user that we add to the password before hashing it.
+This makes a brute force attack more costly.
 :::
 
----
-
-::: {.hide-html-render}
+:::{.hide-html-render}
 ![](https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif)
 :::
 
-### Ajouter du sel pour plus de sécurité
-
-::: {.hide-html-render}
+### Add Salt for More Security
+:::{.hide-html-render}
 ![](https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif)
 :::
 
-### Une base sans sel ajouté
+### A Database Without Added Salt
+- Your email/password database leaks, but the passwords are hashed
+- Attackers must brute-force the passwords
+- They start with the most common passwords and hash them with common hash algorithms 
+- Then they compare with the database
+- High chance of having several matches (cf : USERS ARE THE N°1 VULNERABILITY)
 
-- Votre base mail/mdp fuite mais les mdp sont hachés
-- Les attaquants doivent _bruteforce_ les mdp
-- Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants
-- Puis ils comparent avec la base
-- Forte chance d'avoir plusieurs correspondances
 
 :::{.notes}
-bruteforce : tester toutes les combinaisons possibles
+Brute-force: testing all possible combinations.
 :::
 
+### Salt is Good for Security
+Instead of hashing and storing the password
 
-### Le sel c'est bon pour la sécurité
+Store and hash the password,
 
-Au lieu de hacher et stocker le mdp vous stockez et hachez le mdp 
-ET un élément lié à l'utilisateur de manière déterministe (le sel).
+AND an element linked to the user in a deterministic way (the salt).
 
-Maintenant même si 2 personnes ont le même mdp, elles auront des hash
-différents.
 
-### Le sel c'est bon pour la sécurité
+Now even if two people have the same password, they will have different hashes.
 
-- Votre base mail/mdp fuite mais les mdp sont hachés et salés
-- Les attaquants doivent *bruteforce* les mdp
-- Ils commencent par les mdp les plus courants, et les hachent avec les algo de hash courants
-- Puis ils comparent avec la base.
-- Il y a pas de match car vos mdp sont salés
-- Et trouver un mdp ne permet de trouver les autres
+### Salt is Good for Security
 
----
+- Your email/password database leaks, but the passwords are hashed and salted
+- Attackers must brute-force the passwords
+- They start with the most common passwords and hash them with common hash algorithms
+- Then they compare with the database.
+- There are no matches because your passwords are salted
+- And finding one password doesn't allow finding others
 
-![](https://i.imgflip.com/3acxa9.jpg)
-
-### Exemple de hashage de mdp
+### Example of Password Hashing
 
 ```{.python}
 import hashlib
- 
+
 def hash_password(password, idep):
     salt = idep
     return hashlib.sha256(salt.encode() + password.encode()).hexdigest()
-    
-print(hash_password("awsome_password", "Gennysson"))
+
+print(hash_password("awesome_password", "Gennysson"))
 ```
 
-### To sum up the security part
+### To Sum Up the Security Part
+- Always verify inputs
+- Never trust users
+- Multiple levels of security
+- No need to store plain text passwords
 
-- Toujours vérifier les inputs
-- Ne jamais faire confiance aux utilisateurs
-- Plusieurs niveaux de sécurité
-- Pas besoin de stocker les mots de passe en clair
+::: {.fragment}
+Honest version :
+
+- Always assume your users are either hackers or idiots with no self preservation instincts
+
+- Always know you are less smart than you think : you-proof the system
+
+- Assume your colleagues are as just smart as you : wrap their security in your security
+
+- For the love of all that is good in the world, do NOT store sensitive identifying information in clear (use your data science instincts)
+:::

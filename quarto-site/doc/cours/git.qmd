@@ -1,0 +1,174 @@
+---
+title: "Git Crash Course"
+description: "[Slides](git-crash-course-slides.html)"
+author: "Cyriel Mallart"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 2
+  revealjs:
+    theme: moon
+    footer: "[Home](../../index.html) --- [Git Crash Course](git-crash-course.html)"
+    slide-number: c/t
+    slide-level: 3
+    controls: true
+    output-file: git-crash-course-slides.html
+from: markdown+emoji
+lightbox: true
+---
+
+## Introduction
+- **What is Git?**
+  - Version control system: tracks changes in code, allows collaboration, and helps manage project history.
+- **Why use Git?**
+  - Work on different features simultaneously, revert mistakes, and collaborate efficiently.
+
+---
+
+## How Git Works
+
+### Local vs. Remote Repositories
+  - **Local**: Your personal copy of the project on your machine.
+  - **Remote**: A shared repository hosted on a server (e.g., GitHub, GitLab).
+
+### Basic Workflow
+  1. Make changes locally.
+  2. Stage changes.
+  3. Commit changes to your local repository.
+  4. Push changes to the remote repository (or pull changes from it).
+
+
+### How Git Works
+![Git Workflow Diagram](img/git-commands-and-archi.png)
+
+
+## Setting Up Git
+- **Configure Git** (one-time setup):
+  ```bash
+  git config --global user.name "Your Name"
+  git config --global user.email "your.email@example.com"
+  ```
+- **Initialize a Repository**:
+  ```bash
+  git init
+  ```
+  - This creates a hidden `.git` folder in your project directory.
+
+
+## Basic Git Commands
+
+### Check Status
+- See which files are modified, staged, or untracked:
+  ```bash
+  git status
+  ```
+
+### Stage Changes
+- Add files to the staging area:
+  ```bash
+  git add <file>          # Stage a specific file
+  git add .               # Stage all changes
+  ```
+
+### Commit Changes
+- Save staged changes to your local repository:
+  ```bash
+  git commit -m "Your descriptive commit message"
+  ```
+
+### View History
+- See the commit history:
+  ```bash
+  git log
+  ```
+
+### Connect to a Remote Repository
+- Add a remote repository (e.g., GitHub):
+  ```bash
+  git remote add origin <remote-repository-url>
+  ```
+- Push changes to the remote repository:
+  ```bash
+  git push -u origin main   # Push to the 'main' branch
+  ```
+- Pull changes from the remote repository:
+  ```bash
+  git pull origin main      # Pull the latest changes
+  ```
+
+### Clone a Repository
+- Copy a remote repository to your local machine:
+  ```bash
+  git clone <remote-repository-url>
+  ```
+
+
+## Branching Basics
+**Why use branches?**
+  
+- Work on features or fixes without affecting the main codebase.
+- Best practice for working as a team : 1 branch per "big part"
+
+![Git Branch Diagram](img/git branches.png)
+
+## Branching Basics
+- **Create a Branch**:
+  ```bash
+  git branch <branch-name>          # Create a new branch
+  git checkout <branch-name>       # Switch to the branch
+  git checkout -b <branch-name>    # Create and switch to the branch
+  ```
+- **Merge a Branch**:
+  ```bash
+  git checkout main                 # Switch to the main branch
+  git merge <branch-name>           # Merge the branch into main
+  ```
+
+
+## Common Mistakes and Fixes
+- **Oh no I messed up**:
+  - Step 1 : do not panic
+  - Step 2 : READ the error message / git status and check history
+  - Step 2 : remember you can always go back to a previous version
+  - Step 3 : Google is your friend
+
+## Common Mistakes and Fixes
+**Undo Changes**:
+
+- Undo a commit (keep changes):
+    ```bash
+    git reset --soft HEAD~1
+    ```
+- Discard unstaged changes:
+    ```bash
+    git restore <file>
+    ```
+
+## Common Mistakes and Fixes
+
+**Resolve Merge Conflicts**:
+
+If Git reports conflicts during a merge, manually edit the conflicting files, then:
+
+  ```bash
+  git add <resolved-file>
+  git commit
+  ```
+
+
+## Wrap-Up
+**Recap**:
+
+  - Git tracks changes, allows collaboration, and manages project history.
+  - Use `git add`, `git commit`, `git push`, and `git pull`.
+  - Branches help manage features and fixes separately.
+  
+## Wrap-Up
+**Practice makes perfect**:
+  
+  - Experiment with Git commands during the lab work (do NOT designate 1 "Git expert")
+  - Solve issues by communicating about what happened
+  - Resources :
+    - [GitHub’s guides](https://guides.github.com/)
+    - [Atlassian’s Git tutorials](https://www.atlassian.com/git/tutorials)

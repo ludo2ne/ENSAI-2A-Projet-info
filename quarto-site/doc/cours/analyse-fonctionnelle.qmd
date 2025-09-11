@@ -1,295 +1,260 @@
 ---
-title: "Analyse fonctionnelle"
+title: "Functional Analysis"
 description: "[Slides](analyse-fonctionnelle-slides.html)"
 author: "Ludovic Deneuville, Rémi Pépin"
-format: 
+format:
   html:
     toc: true
     toc-location: left
     toc-depth: 2
   revealjs:
     theme: moon
-    footer: "[Home](../../index.html) --- [Analyse fonctionnelle](analyse-fonctionnelle.html)"
+    footer: "[Home](../../index.html) --- [Functional Analysis](analyse-fonctionnelle.html)"
     slide-number: c/t                    ## collapsed/total
     slide-level: 3
     controls: true
     output-file: analyse-fonctionnelle-slides.html
 from: markdown+emoji
 lightbox: true
+
 ---
 
-## Plan
+## Outline
+1. Functional Analysis
+   - Definition
+   - UML Diagrams
+2. Software Architecture
+   - Definition
+   - Separation of Responsibilities
 
-1. L'analyse fonctionnelle
-    - Définition
-    - Diagrammes UML
-2. L'architecture logicielle
-    - Définition
-    - Séparation des responsabilités
 
+::::::{.hide-html-render}
 
-:::::: {.hide-html-render}
-
-## Analyse fonctionnelle
-
+## Functional Analysis
 <iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameBorder="0" class="giphy-embed no-print" allowFullScreen></iframe>
 
 
 ::: {.notes}
-80 % des projets sont un echec (total ou relatif).
-
-Les questions qu'il faut se poser avant de commencer :
-
-- Qu'est ce qu'on fait ? Qui le fait
-- Besoins du client
-- Fonctionnalités requises / optionnelles / bonus
-- Bien gérer les priorités
-- Répartition des rôles dans l'équipe
-
+Questions to ask before starting:
+- What are we doing? Who is doing it?
+- Client needs
+- Required/optional/bonus features
+- Prioritize effectively
+- Role distribution within the team
 :::
-
 ::::::
 
-### Phases d'un projet
-
-- Analyse des besoins
-- Planification
-- Conception
-- Développements
-- Recette
-- Déploiement
+### Project Phases
+- Analysis of the needs (specifications)
+- Planning
+- Design
+- Development
+- Testing
+- Deployment
 - Maintenance
 
 ::: {.notes}
-Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
+In traditional projects (V-Cycle), these phases were highly segmented.
 :::
 
 ---
 
+
 ![](./img/balancoire_agile.png)
 
-
 ::: {.notes}
-- Important de discuter
-- Reformulez
-- Utilisez des mots simples
-- Imaginez que vous expliquez le projet à vos grands parents
-- parler doc, arrivée sur poste, initiatives
+- Important to discuss
+- Rephrase
+- Use simple words
+- Imagine explaining the project to your grandparents
+- Talk about documentation, onboarding, initiatives
 :::
 
-### C'est quoi l'analyse fonctionnelle ?
+### What is Functional Analysis?
+- First step in all projects
+- Determines the functions and actors of the product to meet client needs
+- Diagrams to communicate with the client
+- Prioritizes tasks
 
-- Première étape de tous les projets
-- Détermine les fonctions, acteurs du produit pour répondre aux besoins du client
-- Diagrammes pour échanger avec le client
-- Priorise les travaux
 
 ::: {.notes}
-- Permet de s'approprier le sujet
-- Ce n'est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué
-- Cette phase sera la première partie du rapport intermédiaire
-
-coût d'ajout d'une fonctionnalité / coût correction bug
-
-Cost of Change Curve:
-
-- Cahier des charges : 1 €
-- Développement : 10 €
-- Tests : 50 €
-- Production : 100 €
+- Helps to take ownership of the subject
+- Not a waste of time, as adding unplanned features is extremely complicated
+- This phase will be the first part of the interim report
 :::
 
+### Questions to Ask
+- What types of users will use my application (administrator, manager, client, etc.)?
+- What are the features? Common features between profiles?
+- How do the application processes work?
+- Which diagrams should be used?
 
-### Les questions à se poser
-
-- Quels sont les types d'utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client...) ?
-- Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?
-- Comment fonctionnent les processus de l'application ?
-- Quels sont les diagrammes à utiliser ?
 
 ::: {.notes}
-- Pour les premières questions diagramme de cas d'utilisation
-- Processus -> diagramme d'activité
-- Pourquoi faire des diagrammes ? D'un coup d'oeil on a toutes les infos
-  - Commentez vos diagrammes
+- Use case diagrams for the first questions
+- Activity diagrams for processes
+- Why create diagrams? At a glance, you have all the information
+  - Comment on your diagrams
 :::
 
+### UML Diagrams
+- First-year course
+- UML 2.5, Pascal Roques, Eyrolles, Memento (ENSAI library)
 
-### Les diagrammes UML
+:::{.callout-note}
+It is **agnostic** of the chosen programmation language !
 
-- Cours de 1A
-- UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)
+A functional analysis UML diagram is **its own language**.
+:::
 
 ::: {.notes}
-- Pas le temps de vous refaire un cours
-- Il y a des ressources à la bibliothèque et sur internet
-- Demandez à votre tuteur ce qu'il attend
+- No time to redo a course
+- Resources are available in the library and online
+- Ask your tutor what they expect
 :::
 
+::::::{.hide-html-render}
 
-:::::: {.hide-html-render}
-### Questions ?
-
+### Questions?
 <iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameBorder="0" class="giphy-embed no-print" allowFullScreen></iframe>
 ::::::
 
-## Architecture logicielle
 
+## Software Architecture
 ![](https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif)
 
 
-::: {.notes}
-Voila pour les grand principes.
+### What is Software Architecture?
+- The technical counterpart of functional analysis
+- Now that we have the who and what, we determine the how
+- We design the code of our application
+- Macro vision of our application (arrangement of major components)
 
-On va maintenant rentrer dans le concret.
-:::
-
-### C'est quoi l'architecture logicielle ?
-
-- Le pendant technique de l'analyse fonctionnelle
-- Maintenant que l'on a le qui et quoi, on détermine le comment
-- On dessine le code de notre application
-- Vision macro de notre application (agencement des grandes pièces)
 
 ::: {.notes}
-Pour le moment on ne fait pas encore de code.
-
-On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).
-
-Par exemple dans votre cas vous allez sûrement avoir :
-
-- Un code python qui tourne sur votre ordinateur
-- Un webservice externe qui vous fournis des données
-- Une base de données postgres.
-
-C'est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer
+For now, we are not yet writing code.
+We will only draft our application with the components it comprises (both logical and physical).
+For example, in your case, you will likely have:
+- Python code running on your computer
+- An external web service providing data
+- A PostgreSQL database.
+These are already 3 components, but quickly there will be many, and we need to know how to arrange them.
 :::
 
-:::::: {.hide-html-render}
-### Pourquoi c'est important : parallèle avec l'architecture
 
+::::::{.hide-html-render}
+
+
+### Why It's Important: Parallel with Architecture
 ![](https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif)
 ::::::
 
-### Pourquoi c'est important : parallèle avec l'architecture
 
-- Pièces, l'installation électrique, l'eau, le gaz, contraintes législatives, s'adapter au terrain...
-- Besoin de réfléchir comment il faut agencer tout ça dès le début
-- Si on construit au fil de l'eau, on risque d'avoir une maison incohérente (au mieux)
-- **Ce n'est pas du temps perdu !**
+### Why It's Important: Parallel with Architecture
+- Rooms, electrical installation, water, gas, legislative constraints, adapting to the terrain...
+- Need to think about how to arrange all this from the beginning
+- If we build as we go, we risk ending up with an inconsistent house (at best)
+- **This is not wasted time!**
 
 ::: {.notes}
-Certaines personnes disent même qu'on devrait passer plus de temps à analyser qu'à coder. 
-
-Sujet à débat, mais cela montre bien que la phase d'analyse (comment je code les fonctions) est super importante !  
-
-Les IAgen peuvent presque coder à notre place.
+Some people even say we should spend more time analyzing than coding. This is debatable, but it shows how important the analysis phase (how to code the functions) is!
+ChatGPT can almost code for us.
 :::
 
-### Un grand principe : separation of concerns
+
+### A Major Principle: Separation of Concerns
 
 ![](img/couches.png)
 
 ::: {.notes}
-Version macro en 3 couches.
-
-- Présentation : tout ce qui se charge de l'affichage
-- Business : c'est le métier de votre application, sa plus-value
-- Data : stockage des données
-
-Chaque couche communique avec celles adjacentes.  
-Une couche a juste à savoir comment elle doit demander une information et ce qu'on lui retourne.  
-Pas évident mais très important !!!
+Macro version in 3 layers.
+- Presentation: everything related to display
+- Business: the core of your application, its added value
+- Data: data storage
+Each layer communicates with adjacent layers.
+A layer only needs to know how to request information and what is returned.
+Not obvious but very important!!!
 :::
 
-### Les principales couches d'une application
 
-- **_Présentation :_** tout ce qui se charge de l'affichage (page web, console, fenêtre)
-- **_Métier :_** c'est le métier de votre application, sa **plus-value**
-- **_Persistance :_** gère la persistance des données. Base de données ou système de fichiers
+### Main Layers of an Application
+- **_Presentation:_** everything related to display (web page, console, window)
+- **_Business:_** the core of your application, its **added value**
+- **_Persistence:_** manages data persistence. Database or file system
+
+
+### For Your Project
+- **_Presentation:_** terminal
+- **_Business:_** your Python code
+- **_Persistence:_** database
 
 ::: {.notes}
-Dans le monde pro :
-
-- Présentation : JavaScript
-- Métier : Java / Python
-- Persistance : PostgreSQL ou MariaDB
+Example: web page
 :::
 
-### Pour votre projet
 
-- **_Présentation :_** terminal
-- **_Métier :_** votre code Python
-- **_Persistance :_** base de données
-
-::: {.notes}
-Exemple page web
-:::
-
-### Zoom sur la couche métier
+### Focus on the Business Layer
 
 ![](img/couche_metier.png)
 
+
 ::: {.notes}
-À l'intérieur de la couche Métier, il y a plusieurs sous-couches.
-
-Dans les TP :
-
-- Couche présentation : View (on navigue entre des vues)
+Within the Business layer, there are several sub-layers.
+In the practical work:
+- Presentation layer: View (navigate between views)
 - DAO, business_object, service
-- Contrôleur (client) : Il reçoit les demandes de l'utilisateur via l'interface utilisateur (par exemple, une requête HTTP dans le cas d'une application Web) et appelle les services appropriés pour exécuter les actions demandées.
+- Controller (client): It receives user requests via the user interface (e.g., an HTTP request in the case of a web application) and calls the appropriate services to execute the requested actions.
 :::
 
-### Les couches de la couche métier 1/2
 
-- **_DAO_ (_Data access object_) :**
-  - C'est la partie de votre code qui communique avec la base de données (CM4/TP4)
-  
-- **_Service :_**
-  - Code métier
-  - Manipule des objets métiers pour créer de l'information ou de la valeur
-  - Demande des objets à la couche DAO (TP4)
-  - Appelle les webservices externes (TP3)
+### Layers of the Business Layer 1/2
+- **_DAO (Data Access Object):_**
+  - The part of your code that communicates with the database (Lecture 4/Practical 4)
 
-### Les couches de la couche métier 2/2
+- **_Service:_**
+  - Business code
+  - Manipulates business objects to create information or value
+  - Requests objects from the DAO layer (Practical 4)
+  - Calls external web services (Practical 3)
 
-- **_Objets métiers :_**
-  - Couche transversale
-  - Représentent des concepts métiers que votre code va manipuler
-  - Objets avec surtout des attributs et peu de méthodes
 
-- **_Contrôleur :_**
-  - Récupère les inputs des utilisateurs
-  - Renvoie les données à afficher
+### Layers of the Business Layer 2/2
+- **_Business Objects:_**
+  - Transversal layer
+  - Represent business concepts that your code will manipulate
+  - Objects with mostly attributes and few methods
+- **_Controller:_**
+  - Retrieves user inputs
+  - Returns data to be displayed
 
 ::: {.notes}
-On découpe les objets :
-
-- Attributs -> Objets métiers (~DTO)
-- Méthodes -> Services
+We break down the objects:
+- Attributes -> Business Objects (~DTO)
+- Methods -> Services
 :::
 
-### Pourquoi séparer en couches ?
 
-- Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
-- Lisibilité du code 📖
-- Débogages 🐞
+### Why Separate into Layers?
+- Teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+- Code readability 📖
+- Debugging 🐞
+> **Limit the risk of errors when modifying code (avoid spaghetti code) 🍝**
 
-> **Limiter les risques d'erreurs quand on modifie le code (éviter l'assiette de spaghetti) 🍝**
 
 ::: {.notes}
-Il faut savoir qu'un code doit être lisible par les autres.  
-Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.  
-Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.  
-Et séparer en couches permet de trouver rapidement la source du problème.
+You should know that code must be readable by others.
+And others can be yourself in 2 months. Joke about re-reading code.
+If we have well-separated code, different teams can work in parallel.
+And separating into layers allows us to quickly find the source of the problem.
 :::
 
-### Informations à retenir
 
-- Passer du temps à réfléchir aux différents modules d'une application n'est pas une perte de temps 🕵️‍♀️
-- Diviser en couches permet de travailler en parallèle 🧪🧫📚
-- Mais il faut encore réfléchir à comment bien coder 🤖
+### Key Takeaways
+- Spending time thinking about the different modules of an application is not a waste of time 🕵️‍♀️
+- Dividing into layers allows parallel work 🧪🧫📚
+- But we still need to think about how to code well 🤖
+
 
 ::: {.notes}
-Possible en projet de se répartir les couches.
+Possible in the project to distribute the layers.
 :::

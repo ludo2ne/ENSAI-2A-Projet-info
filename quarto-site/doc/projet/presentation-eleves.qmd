@@ -1,5 +1,5 @@
 ---
-title: "Présentation du projet info 2A"
+title: "Presentation of the 2nd year IT Project"
 description: "[Slides](presentation-eleves-slides.html)"
 author: "Ludovic Deneuville"
 format:
@@ -9,7 +9,7 @@ format:
     toc-expand: 3
   revealjs:
     theme: solarized
-    footer: "[Home](../../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
+    footer: "[Home](../../index.html) --- [Presentation of the 2nd year IT Project](presentation-eleves.qmd)"
     slide-number: c/t                    # collapsed/total
     slide-level: 3
     controls: true
@@ -18,200 +18,109 @@ from: markdown+emoji
 number-sections: false
 lightbox: true
 ---
-
-
-## Objectifs
-
-- Développer une application en Python
-- Découvrir l'architecture logicielle
-- Communiquer avec une base de données PostgreSQL
-- Utiliser des webservices
-- Concevoir et Modéliser (UML)
+## Objectives
+- Develop a Python application
+- Discover software architecture
+- Communicate with a PostgreSQL database
+- Use web services
+- Design and Model (UML)
 
 :::{.notes}
-- Éléments vus en cours et en TP
-- PostgreSQL OK, SQLite NON
+- Elements covered in lectures and practical work
+- PostgreSQL OK, SQLite NO
 :::
-
-## Planning {.smaller}
-
-::::::{.panel-tabset .nav-pills}
-
-#### Planning
-
-:::{.white-box}
-
-```{mermaid}
-gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2025-08-26,
-    CM                           :milestone, 2025-09-02, 
-    Examen                       :milestone, 2025-09-29,
-    
-    section TP
-    TP1                          :milestone, 2025-08-29,
-    TP2                          :milestone, 2025-09-05,
-    TP3                          :milestone, 2025-09-12,
-    TP4                          :milestone, 2025-09-19,
-    
-    section Projet
-    Suivi 1                      :milestone, 2025-08-29,
-    Suivi 2                      :milestone, 2025-09-05,
-    Suivi 3                      :milestone, 2025-09-12,
-    Suivi 4                      :milestone, 2025-10-03,
-    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d
-    Suivi 7                      :milestone, 2025-11-14,
-    
-    section Échéances
-    WEI                          :crit,      2025-09-19, 3d
-    Dossier Analyse              :milestone, 2025-09-27,
-    Toussaint                    :crit,      2025-10-25, 7d
-    Rapport final et Code        :milestone, 2025-11-22,
-    Soutenance                   :milestone, 2025-12-10,
-```
-
-:::
-
-#### Dates
-
-| Date                        | Topic                                       |
-|-----------------------------|---------------------------------------------|
-| vendredi 29 août            | TP1 et Suivi 1                              |
-| vendredi 5 septembre        | TP2 et Suivi 2                              |
-| vendredi 12 septembre       | TP3 et Suivi 3                              |
-| vendredi 19 septembre       | TP4                                         |
-| vendredi 3 octobre          | Suivi 4 (retour sur les dossiers d'analyse) |
-| mar-jeu 4-6 novembre        | 3 jours d'immersion (Suivi 5 et 6)          |
-| vendredi 14 novembre        | Suivi 7                                     |
-| mercredi 10 décembre        | Soutenances                                 |
-
-
-#### Livrables
-
-| Date                        | Topic                                       |
-|-----------------------------|---------------------------------------------|
-| TOUS les Jeudis             | Point hebdo                                 |
-| Samedi 27 septembre 12h00   | Dossier d'Analyse                           |
-| Samedi 22 novembre 20h00    | Rapport final et Code                       |
-
-
-
-::::::
 
 :::{.notes}
-- 3j d'immersion
-  - capital pour bien avancer le projet
-  - si bien utilisé -> 90 % du travail fait
-- Point hebdo : j'y reviens
-
-:bulb: Prendre de l'avance en septembre
-
-:warning: Absences en projet ou TP -> malus
+- 3-day immersion
+  - Crucial to make significant progress on the project
+  - If used well -> 90% of the work done
+- Weekly Update: I'll come back to this
+:bulb: Get ahead in September
+:warning: Absences in project or practical work -> penalty
 :::
 
-## 2 phases
-
-- Analyse / Conception générale (sept.)
-  - 4 séances de 3h de suivi
-  - mi-octobre : retours sur le dossier d'analyse
-- Implémentation (oct. - nov.)
-  - 3 séances de 3h de suivi
+## 2 Phases
+- Analysis / General Design (Sept.)
+  - 4 follow-up sessions of 3 hours
+  - Mid-October: feedback on the analysis document
+- Implementation (Oct. - Nov.)
+  - 3 follow-up sessions of 3 hours
 
 :::{.notes}
-- Vous avez 1 mois à 5. Un élève de STD a 6h
-
-Si votre dossier d'analyse est nickel mais vous n'avez pas encore dev
-
-:bulb: Conseil :
-
-- l'élève le plus à l'aise fait un POC vers le 20 septembre
-- puis présente l'appli v0 aux autres
-
-Relisez vos rapports !
+- You have 1 month for 5 people. A vocational high school student has 6 hours.
+If your analysis document is perfect but you haven't started development yet:
+:bulb: Advice:
+- The most comfortable student creates a POC by September 20
+- Then presents the v0 app to the others
+Proofread your reports!
 :::
 
-## Travail en groupe
-
-- Éviter de cumuler les rôles de Chef de projet et Tech Lead
-- Esprit d'équipe
-- Prévenir dès que possible si ça ne va pas
+## Group Work
+- Avoid combining the roles of Project Manager and Tech Lead
+- Team spirit
+- Notify as soon as possible if something is wrong
 
 :::{.notes}
-- Avoir un bon comportement
-- Certaines équipes vont mieux fonctionner que d'autres
-- Dans la vie pro, on bosse pas toujours avec ses potes
-- Si vous êtes fort -> ne pas tout faire
-- Prévenir tuteur puis Prof en cas de souci
-
-Pas la peine de dire une fois que le projet est fini : 
-
-- c'est moi qui ait tout fait
-- un autre membre n'a rien fait
+- Have good behavior
+- Some teams will function better than others
+- In professional life, you don't always work with your friends
+- If you are strong -> don't do everything
+- Notify tutor and then professor in case of issues
+No need to say once the project is finished:
+- I did everything
+- Another member did nothing
 :::
 
-## Suivi 
-
-- Point hebdo
-- À remplir chaque semaine
-  - au plus tard le jeudi soir
+## Follow-up
+- Weekly Update
+- To be filled every week
+  - By Thursday evening at the latest
 
 ::: {.callout-note}
-Plus de détails dans la [notice élèves](./notice-eleves.qmd#point-hebdo){target="_blank"}.
+More details in the [student notice](./notice-eleves.qmd#point-hebdo){target="_blank"}.
 :::
 
 :::{.notes}
-- Comme dans la vie pro
-- Obligatoire sinon malus
-- Montrer Modèle
-- ras : si vous n'avez rien fait
+- As in professional life
+- Mandatory, otherwise penalty
+- Show Model
+- "Nothing to report" if you haven't done anything
 :::
 
-## Environnement de travail
-
+## Work Environment
 ::: {.callout-important}
-Vous pouvez coder sur :
 
-- un datalab (recommandé)
-- la VM ENSAI
+You have all the necessary tools to code on the VM or a datalab (better). 
+If you are not very comfortable with IT, it will be almost impossible to code outside the VM/datalab.
+**No help will be provided to install the necessary tools if you are outside the VM.**
 
-Vous pouvez également coder sur votre propre machine mais **vous devrez gérer en totale autonomie les installations nécessaires.** 
 :::
 
-- Nous attendons du code de **[qualité]{.underline}**
-- Documentation obligatoire pour chaque classe, chaque méthode
+- We expect **[quality]{.underline}** code
+- Documentation is mandatory for each class and each method
 
 :::{.notes}
-Respectez les bonnes pratiques de dev Python :
-
-- Noms des classes en CamelCase
-- Fichiers en snake_case
-- noms de variables et de méthodes parlants
+Follow Python development best practices:
+- Class names in CamelCase
+- Files in snake_case
+- Meaningful variable and method names
 :::
 
-
-## Testez votre code
-
-- Tests Unitaires obligatoires
-- Codez par petits bouts
+## Test Your Code
+- Unit tests are mandatory
+- Code in small chunks
 
 :::{.notes}
-- Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas
+- Methods that don't work because they call methods that don't work
 :::
 
 ## Template
-
-- [Exemple de projet simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
-
+- [Example of a simple project](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
 
 :::{.notes}
 - data, doc, src
-- fichiers config : logs, cov, requirements, gitignore
-- README : modop pour installer et lancer
-- .vscode : setup vscode
-- CI : expliquer principe
+- config files: logs, cov, requirements, gitignore
+- README: instructions to install and run
+- .vscode: vscode setup
+- CI: explain the principle
 :::

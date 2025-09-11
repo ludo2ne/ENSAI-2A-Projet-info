@@ -2,7 +2,7 @@
 title: "Introduction"
 description: "[Slides](intro-slides.html)"
 author: "Ludovic Deneuville"
-format: 
+format:
   html:
     toc: true
     toc-location: left
@@ -17,95 +17,79 @@ format:
 from: markdown+emoji
 lightbox: true
 ---
-
-## Cours de Compléments d'info
-
-- 6h CM
-- 12h TP
+## Complementary Computer Science Course
+- 6h Lecture
+- 12h Practical Work
 - `ludovic.deneuville@ensai.fr`
-- bureau 161
-- sur la base des cours de [Rémi Pépin](https://github.com/HealerMikado){target="_blank"}
+- Office 161
+- Based on courses by [Rémi Pépin](https://github.com/HealerMikado){target="_blank"}
+- Translation by Cyriel Mallart
 
 :::{.notes}
-WIN + P : Etendre ou dupliquer
-
-Présentation :
-
-- 15 ans d'info (SQL, Java, Python)
-- INSEE, informatique, Orléans GEOLOC, Lille enquêtes, Nautile
+WIN + P: Extend or duplicate
+Presentation:
+- 15 years in IT (SQL, Java, Python)
+- INSEE, IT, Orléans GEOLOC, Lille surveys, Nautile
 - ENSAI
-- Rémi Pépin, assistant d'enseignement entre 2018 et 2023
-  - Cours de Cloud Computing
+- Rémi Pépin, teaching assistant between 2018 and 2023
+  - Cloud Computing course
 :::
 
-### Le cours
-
-::: {.callout-tip title="But du cours"}
-Vous apporter les connaissances nécessaires pour mener à bien un projet informatique.
+### The Course
+::: {.callout-tip title="Course Objective"}
+To provide you with the knowledge required to successfully complete an IT project.
 :::
-
-- Conduire un projet
-- Dépasser les 50 lignes de code
-- Vivre la vie de développeur
-- Travailler en équipe
+- Managing a project
+- Going beyond 50 lines of code
+- Experiencing the life of a developer
+- Working in a team
 
 :::{.notes}
-- Je reviens ensuite sur le projet
-- Organiser votre code
+- I will come back to the project later
+- Organize your code
 :::
 
-### Notions abordées
-
-- Versionnage avec git
-- Analyse fonctionnelle, Génie logiciel
-- Programmation orientée objet avancée
-- Communication avec une base de données en python
-- Sécurité informatique
-- Communication client-serveur
+### Topics Covered
+- Version control with Git
+- Functional analysis, Software engineering
+- Advanced object-oriented programming
+- Database communication in Python
+- IT security
+- Client-server communication
 
 :::{.notes}
-- Quelques rappels POO en TP
+- Some OOP reminders during practical work
 :::
 
-### Les TP
-
+### Practical Work (TP)
 - 4 x 3h
-- Settings VScode, Formateur, Linter
-- Suivez précisément les consignes, n'allez pas trop vite et ne sautez pas les étapes (:warning: Open Folder)
+- VScode settings, Formatter, Linter
+- Follow the instructions carefully, don't rush, and don't skip steps (:warning: Open Folder)
 
 ::: {.callout-warning}
-- **Vérifiez sur votre EDT si vous êtes en salle info !!!**
-- Si vous faites sur votre machine, utilisez une souris
+- **Check your schedule to see if you are in a computer lab!!!**
+- If you are using your own machine, use a mouse
 :::
-
-
 
 :::{.notes}
-- TP : truc à récup pour le projet
-- Sujets très longs, travail à la maison
-- Si un truc ne marche pas et que vous passez à la suite -> à un moment : BOOM
-- Soyez solidaires
-
+- TP: Things to retrieve for the project
+- Very long topics, work at home
+- If something doesn't work and you move on, at some point: BOOM
+- Be supportive
 :::
 
-### Évaluation
-
-- Lundi 29 Septembre 14h
-- 2h
-- sur papier
-- 1 feuille A4 recto / verso **[manuscrite]{.underline}**
+### Evaluation
+- Monday, September 29th
+- 2 hours
+- On paper
+- 1 A4 sheet (front and back) **[handwritten]{.underline}**
 
 :::{.notes}
-- But : voir si vous avez retenu le principal
-- pas de piège
-- sur papier car TP trop compliqué à organiser, chatGPT
-- MANUSCRITE : pas de photocopie
+- Goal: To see if you have retained the essentials
+- No tricks
+- On paper because organizing practical work is too complicated, ChatGPT
+- HANDWRITTEN: No photocopies
 :::
 
-### Le projet info
-
-[Présentation du projet](../projet/presentation-eleves.html){target="_blank"}
-
-:::{.notes}
-Questions ?
-:::
+### The IT Project
+[Project Presentation](../projet/presentation-eleves.html){target="_blank"}
