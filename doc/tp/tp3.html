@@ -958,6 +958,7 @@ Verify that everything is working
 <section id="my-first-queries-in-python" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="my-first-queries-in-python"><span class="header-section-number">2.5</span> My first queries in Python</h3>
 <ul class="task-list">
+<li><label><input type="checkbox">Edit the <em>.env</em> file to connect to the <a href="#advanced-queries">web service you just used</a></label></li>
 <li><label><input type="checkbox">Open file <code>/src/client/attack_client.py</code></label></li>
 <li><label><input type="checkbox">Complete the <em>get_attack(int)</em> method, which:</label>
 <ul>
@@ -984,10 +985,6 @@ Tip
 <li><label><input type="checkbox">Create the <em>get_all_attacks()</em> method</label>
 <ul>
 <li>Returns the list of all available attacks in the form of a list of <strong>AbstractAttack</strong> objects</li>
-</ul></li>
-<li><label><input type="checkbox">Check that both methods work</label>
-<ul>
-<li>Run the unit tests for the <em>test_client</em> package</li>
 </ul></li>
 </ul>
 </section>
@@ -1028,7 +1025,6 @@ Tip
 <li>takes an <strong>AbstractAttack</strong> as a parameter</li>
 <li>deletes it in the web service</li>
 </ul></li>
-<li><label><input type="checkbox">Test your methods</label></li>
 </ul>
 </section>
 </section>
@@ -1178,6 +1174,7 @@ Tip
 </div>
 <ul class="task-list">
 <li><label><input type="checkbox">Open the <code>app.py</code> file</label></li>
+<li><label><input type="checkbox">Change the launch port to match the one opened on the datalab</label></li>
 <li><label><input type="checkbox">Run this file</label></li>
 <li><label><input type="checkbox">Test the following requests:</label>
 <ul>
