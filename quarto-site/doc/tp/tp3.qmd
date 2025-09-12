@@ -351,6 +351,7 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
 
 ### My first queries in Python
 
+- [ ] Edit the *.env* file to connect to the [web service you just used](#advanced-queries)
 - [ ] Open file `/src/client/attack_client.py`
 - [ ] Complete the *get_attack(int)* method, which:
   - takes an attack ID as a parameter
@@ -365,8 +366,6 @@ See how this method works and use it.
 
 - [ ] Create the *get_all_attacks()* method
   - Returns the list of all available attacks in the form of a list of **AbstractAttack** objects
-- [ ] Check that both methods work
-  - Run the unit tests for the *test_client* package
 
 
 ### More complex requests
@@ -411,7 +410,6 @@ In the `attack_client.py` module, implement the following methods:
 - [ ] *delete_attack(AbstractAttack)*
   - takes an **AbstractAttack** as a parameter
   - deletes it in the web service
-- [ ] Test your methods
 
 ## Code a web service in Python
 
@@ -544,6 +542,7 @@ The web service you will create will be deployed on a specific url. To find this
 :::
 
 - [ ] Open the `app.py` file
+- [ ] Change the launch port to match the one opened on the datalab
 - [ ] Run this file
 - [ ] Test the following requests:
   - `GET hello`
