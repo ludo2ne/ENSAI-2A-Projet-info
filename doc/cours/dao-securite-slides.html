@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Ludovic Deneuville, Rémi Pépin">
   <title>Projet info 2A – DAO et Sécurité</title>
@@ -98,7 +98,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-0c8acc74dca0c2faaedea4940f202713.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
   <link rel="stylesheet" href="none">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -321,7 +321,7 @@ Ludovic Deneuville, Rémi Pépin
 </section>
 <section id="une-question-à-se-poser" class="slide level3">
 <h3>Une question à se poser</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Personnage(prenom<span class="op">=</span><span class="st">"Leia"</span>, nom<span class="op">=</span><span class="st">"Organa"</span>, age <span class="op">=</span> <span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Personnage(prenom<span class="op">=</span><span class="st">"Leia"</span>, nom<span class="op">=</span><span class="st">"Organa"</span>, age <span class="op">=</span> <span class="dv">35</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>C’est quoi une variable Python ?</p>
 <div class="fragment">
 <ul>
@@ -350,7 +350,7 @@ Pas besoin de stocker la référence, car elle est dans le code source</p>
 <div class="code-with-filename-file">
 <pre><strong>personnage.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="personnage.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">class</span> Personnage:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="personnage.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">class</span> Personnage:</span>
 <span id="cb2-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, prenom, nom, age):</span>
 <span id="cb2-3"><a></a>        <span class="va">self</span>.prenom <span class="op">=</span> prenom</span>
 <span id="cb2-4"><a></a>        <span class="va">self</span>.nom <span class="op">=</span> nom</span>
@@ -358,7 +358,7 @@ Pas besoin de stocker la référence, car elle est dans le code source</p>
 <span id="cb2-6"><a></a>        <span class="va">self</span>.vaisseaux <span class="op">=</span> []</span>
 <span id="cb2-7"><a></a></span>
 <span id="cb2-8"><a></a>    <span class="kw">def</span> anniversaire(<span class="va">self</span>):</span>
-<span id="cb2-9"><a></a>        <span class="va">self</span>.age <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a></a>        <span class="va">self</span>.age <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>C’est quoi un objet Python ?</p>
 <div class="fragment">
@@ -625,7 +625,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <div class="code-with-filename-file">
 <pre><strong>db_connection.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="db_connection.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> os</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="db_connection.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> os</span>
 <span id="cb3-2"><a></a><span class="im">import</span> dotenv</span>
 <span id="cb3-3"><a></a><span class="im">import</span> psycopg2</span>
 <span id="cb3-4"><a></a></span>
@@ -654,7 +654,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <span id="cb3-27"><a></a></span>
 <span id="cb3-28"><a></a>    <span class="at">@property</span></span>
 <span id="cb3-29"><a></a>    <span class="kw">def</span> connection(<span class="va">self</span>):</span>
-<span id="cb3-30"><a></a>        <span class="cf">return</span> <span class="va">self</span>.__connection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-30"><a></a>        <span class="cf">return</span> <span class="va">self</span>.__connection</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Singleton</p>
@@ -674,17 +674,17 @@ Pas super intéressant à faire, le code est donné</p></li>
 <h3>psycopg2 - cursor</h3>
 <ul>
 <li><p><code>cursor</code> : encapsule la requête</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> dao.db_connection <span class="im">import</span> DBConnection</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> dao.db_connection <span class="im">import</span> DBConnection</span>
 <span id="cb4-2"><a></a></span>
 <span id="cb4-3"><a></a><span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
-<span id="cb4-4"><a></a>    <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb4-4"><a></a>    <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><code>cursor.execute("&lt;une requête SQL&gt;")</code> : permet de faire une requête</p></li>
 <li><p><code>cursor.fetchone()/fetchall()/fetchmany()</code> : Récupération des résultats</p></li>
 </ul>
 </section>
 <section id="forme-de-base" class="slide level3">
 <h3>Forme de base</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> dao_function(<span class="va">self</span>, arg1, arg2, ...):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> dao_function(<span class="va">self</span>, arg1, arg2, ...):</span>
 <span id="cb5-2"><a></a>    <span class="co"># Récupération de la connexion à la base</span></span>
 <span id="cb5-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
 <span id="cb5-4"><a></a>    <span class="co"># Création d'un curseur pour faire une requête</span></span>
@@ -701,7 +701,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <span id="cb5-15"><a></a>    <span class="cf">if</span> res:</span>
 <span id="cb5-16"><a></a>      something <span class="op">=</span> <span class="st">"&lt;res mis en forme&gt;"</span></span>
 <span id="cb5-17"><a></a>        </span>
-<span id="cb5-18"><a></a>    <span class="cf">return</span> something   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-18"><a></a>    <span class="cf">return</span> something   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>Pourquoi on ne retourne pas directement res ?</p>
 <p>res : list[dict]</p>
@@ -737,7 +737,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="créer-un-livre" class="slide level3">
 <h3>Créer un livre</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> create(<span class="va">self</span>, livre) <span class="op">-&gt;</span> Livre:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> create(<span class="va">self</span>, livre) <span class="op">-&gt;</span> Livre:</span>
 <span id="cb6-2"><a></a>    <span class="co">"""Pour créer un livre en base"""</span></span>
 <span id="cb6-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
 <span id="cb6-4"><a></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
@@ -750,7 +750,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <span id="cb6-11"><a></a>                 <span class="st">"auteur"</span>: livre.auteur},</span>
 <span id="cb6-12"><a></a>            )</span>
 <span id="cb6-13"><a></a>            livre.<span class="bu">id</span> <span class="op">=</span> cursor.fetchone()[<span class="st">"id_livre"</span>]</span>
-<span id="cb6-14"><a></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-14"><a></a>    <span class="cf">return</span> livre</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>Possible aussi de retourner une booléen :</p>
 <ul>
@@ -771,7 +771,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="lister-les-livres" class="slide level3">
 <h3>Lister les livres</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> find_all(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[Livre]:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> find_all(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[Livre]:</span>
 <span id="cb7-2"><a></a>    <span class="co">"""Pour récupérer tous les livres en base"""</span></span>
 <span id="cb7-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
 <span id="cb7-4"><a></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
@@ -797,7 +797,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <span id="cb7-24"><a></a>                )</span>
 <span id="cb7-25"><a></a>            )</span>
 <span id="cb7-26"><a></a>            </span>
-<span id="cb7-27"><a></a>    <span class="cf">return</span> liste_livres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-27"><a></a>    <span class="cf">return</span> liste_livres</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <ul>
 <li>livre_bdd = [{id_livre=1, isbm=123, “Le Schtroumpf hackeur”, “Peyo”}, {…}, …]</li>
@@ -818,7 +818,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="trouver-un-livre" class="slide level3">
 <h3>Trouver un livre</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> find_by_isbm(<span class="va">self</span>, isbm) <span class="op">-&gt;</span> Livre:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="kw">def</span> find_by_isbm(<span class="va">self</span>, isbm) <span class="op">-&gt;</span> Livre:</span>
 <span id="cb8-2"><a></a>    <span class="co">"""Pour récupérer un livre depuis son isbm"""</span></span>
 <span id="cb8-3"><a></a>    <span class="cf">with</span> DBConnection().connection <span class="im">as</span> conn:</span>
 <span id="cb8-4"><a></a>        <span class="cf">with</span> conn.cursor() <span class="im">as</span> cursor:</span>
@@ -837,7 +837,7 @@ Pas super intéressant à faire, le code est donné</p></li>
 <span id="cb8-17"><a></a>            titre<span class="op">=</span>livre_bdd[<span class="st">"titre"</span>],</span>
 <span id="cb8-18"><a></a>            auteur<span class="op">=</span>livre_bdd[<span class="st">"auteur"</span>],</span>
 <span id="cb8-19"><a></a>        )</span>
-<span id="cb8-20"><a></a>    <span class="cf">return</span> livre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-20"><a></a>    <span class="cf">return</span> livre</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>livre_bdd : dict livre : Livre</p>
 <p>Principe à retenir si vous voulez comprendre : nous allons toujours dans les DAO transformer les dict en objets</p>
@@ -1132,10 +1132,10 @@ Pas super intéressant à faire, le code est donné</p></li>
 <section id="exemple-sauthentifier-sans-mot-de-passe" class="slide level3">
 <h3>Exemple : s’authentifier sans mot de passe</h3>
 <p>Requête d’authentification</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb9-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
 <span id="cb9-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
-<span id="cb9-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div title="Vous saisissez">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -1157,10 +1157,10 @@ Pas super intéressant à faire, le code est donné</p></li>
 </div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb10-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
 <span id="cb10-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
-<span id="cb10-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'awsome_password'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'awsome_password'</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Si dans votre cursor.execute vous avez ce code</p>
@@ -1178,10 +1178,10 @@ Pas super intéressant à faire, le code est donné</p></li>
 </section>
 <section id="exemple-sauthentifier-sans-mot-de-passe-1" class="slide level3">
 <h3>Exemple : s’authentifier sans mot de passe</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb11-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
 <span id="cb11-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
-<span id="cb11-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div title="Vous saisissez">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -1203,18 +1203,18 @@ Pas super intéressant à faire, le code est donné</p></li>
 </div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb12-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
 <span id="cb12-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'Gennysson'</span> </span>
-<span id="cb12-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">''</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span>; <span class="co">--';</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="exemple-supprimer-une-table" class="slide level3">
 <h3>Exemple : supprimer une table</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb13-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
 <span id="cb13-3"><a></a> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'input_name'</span> </span>
-<span id="cb13-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a></a>   <span class="kw">AND</span> mdp <span class="op">=</span> <span class="st">'input_mdp'</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <div title="Vous saisissez">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -1236,10 +1236,10 @@ Pas super intéressant à faire, le code est donné</p></li>
 </div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb14-2"><a></a>  <span class="kw">FROM</span> <span class="fu">user</span> </span>
 <span id="cb14-3"><a></a> <span class="kw">WHERE</span> name<span class="op">=</span><span class="st">'Gennysson'</span> </span>
-<span id="cb14-4"><a></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a></a>   <span class="kw">AND</span> mdp<span class="op">=</span><span class="st">''</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="fu">user</span> <span class="kw">CASCADE</span>; <span class="co">--;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level3">
@@ -1429,13 +1429,13 @@ Cela rend une attaque en force brute plus coûteuse.</p>
 </section>
 <section id="exemple-de-hashage-de-mdp" class="slide level3">
 <h3>Exemple de hashage de mdp</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> hashlib</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="im">import</span> hashlib</span>
 <span id="cb15-2"><a></a> </span>
 <span id="cb15-3"><a></a><span class="kw">def</span> hash_password(password, idep):</span>
 <span id="cb15-4"><a></a>    salt <span class="op">=</span> idep</span>
 <span id="cb15-5"><a></a>    <span class="cf">return</span> hashlib.sha256(salt.encode() <span class="op">+</span> password.encode()).hexdigest()</span>
 <span id="cb15-6"><a></a>    </span>
-<span id="cb15-7"><a></a><span class="bu">print</span>(hash_password(<span class="st">"awsome_password"</span>, <span class="st">"Gennysson"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-7"><a></a><span class="bu">print</span>(hash_password(<span class="st">"awsome_password"</span>, <span class="st">"Gennysson"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="to-sum-up-the-security-part" class="slide level3">
 <h3>To sum up the security part</h3>
@@ -1637,7 +1637,7 @@ Cela rend une attaque en force brute plus coûteuse.</p>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1711,13 +1711,14 @@ Cela rend une attaque en force brute plus coûteuse.</p>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
