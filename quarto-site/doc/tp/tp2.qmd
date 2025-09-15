@@ -159,6 +159,8 @@ else:
 :::
 ::: {.column width="95%"}
 - [ ] Create a [fork](https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork){target="_blank"}
+  - :warning: Uncheck `Copy the main branch only`
+  - because you will need other branches
 :::
 ::::::
 

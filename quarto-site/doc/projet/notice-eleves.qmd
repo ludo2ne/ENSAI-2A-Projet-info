@@ -141,7 +141,7 @@ Chaque semaine (jusqu'au rendu du rapport final et sauf pendant les vacances), v
 - **Où** : sur votre dépôt Git, dossier *doc/suivi*
 - **Comment** : créez un fichier nommé `YYYY.MM.DD-semaineN.md` en utilisant le modèle ci-dessous
 - **Qui** : tous les membres de l'équipe
-- **Quoi** : listez les tâches accomplies
+- **Quoi** : listez les tâches accomplies + le temps global estimé
 - **Pourquoi** : il permettra à votre tutrice ou tuteur de suivre l'évolution de votre travail
 
 ::: {.callout-important}
@@ -175,8 +175,13 @@ Semaine n° ...
 > Exemples : `- [x] Tâche 1` ou - `ras`
 
 ### Nom Prénom élève 1
+5h
+- [x] Tâche 1
+- [x] Tâche 2
 
 ### Nom Prénom élève 2
+0h
+- ras
 
 ### Nom Prénom élève 3
 
@@ -206,22 +211,27 @@ Semaine n° 2
 ## Tâches réalisées cette semaine
 
 ### Maud ZARELLA
+5h
 - [x] Création de la classe JoueurDAO et des méthodes
 - [x] Tests unitaires JoueurDAO
 - [x] JoueurService : ajout méthode pour supprimer un joueur
 
 ### Tom ATE
+2h
 - [x] Mise en forme du diagramme de classe avec PlantUML
 - [x] Rapport : présentation des classes WIP
 
 ### Anna NACE
+0h
 - ras
 
 ### Harry COVER
+3h
 - [x] Modification de la base de données : modification de la table *joueur*, création table *arbitre*
 - [x] Refactor : utilisation du package *tabulate* pour avoir de jolis tableaux
 
 ### Éva ZION
+3h
 - [x] Codage de la fonctionnalité *Créer un tournoi* (Vue + Services + Dao)
 - [x] Relecture dossier analyse
 
@@ -353,6 +363,8 @@ Tout au long du développement, vous développerez un ensemble de tests :
 ## Livraisons
 
 ### Dossier d'analyse
+
+Via son rôle de client, votre tutrice ou tuteur vous a exposé son besoin. Le dossier d'analyse explique comment vous allez y répondre.
 
 ::: {.callout-important}
 - **Où** : sur Moodle, dans la section prévue à cet effet
