@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rémi Pépin, Ludovic Deneuville">
-<meta name="description" content="TP 4">
+<meta name="description" content="TP4">
 
 <title>Data Access Objet (DAO) – Projet info 2A</title>
 <style>
@@ -438,25 +438,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#avant-de-commencer" id="toc-avant-de-commencer" class="nav-link active" data-scroll-target="#avant-de-commencer">Avant de commencer</a></li>
-  <li><a href="#mise-à-jour-de-votre-dépôt-local" id="toc-mise-à-jour-de-votre-dépôt-local" class="nav-link" data-scroll-target="#mise-à-jour-de-votre-dépôt-local"><span class="header-section-number">1</span> Mise à jour de votre dépôt local</a>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment"><span class="header-section-number">1</span> Setting Up Your Environment</a>
   <ul class="collapse">
-  <li><a href="#connexion-à-la-bdd" id="toc-connexion-à-la-bdd" class="nav-link" data-scroll-target="#connexion-à-la-bdd"><span class="header-section-number">1.1</span> Connexion à la BDD</a></li>
+  <li><a href="#launch-vscode" id="toc-launch-vscode" class="nav-link" data-scroll-target="#launch-vscode"><span class="header-section-number">1.1</span> Launch VScode</a></li>
+  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository"><span class="header-section-number">1.2</span> Clone the repository</a></li>
+  <li><a href="#database-connection" id="toc-database-connection" class="nav-link" data-scroll-target="#database-connection"><span class="header-section-number">1.3</span> Database connection</a></li>
   </ul></li>
-  <li><a href="#remise-en-jambes-sql" id="toc-remise-en-jambes-sql" class="nav-link" data-scroll-target="#remise-en-jambes-sql"><span class="header-section-number">2</span> Remise en jambes SQL</a></li>
+  <li><a href="#lets-warm-up-with-sql" id="toc-lets-warm-up-with-sql" class="nav-link" data-scroll-target="#lets-warm-up-with-sql"><span class="header-section-number">2</span> Let’s warm up with SQL</a></li>
   <li><a href="#data-access-objet-dao" id="toc-data-access-objet-dao" class="nav-link" data-scroll-target="#data-access-objet-dao"><span class="header-section-number">3</span> Data Access Objet (DAO)</a>
   <ul class="collapse">
-  <li><a href="#modélisation" id="toc-modélisation" class="nav-link" data-scroll-target="#modélisation"><span class="header-section-number">3.1</span> Modélisation</a></li>
-  <li><a href="#gestion-des-connexions-et-patern-singleton" id="toc-gestion-des-connexions-et-patern-singleton" class="nav-link" data-scroll-target="#gestion-des-connexions-et-patern-singleton"><span class="header-section-number">3.2</span> Gestion des connexions et patern singleton</a></li>
-  <li><a href="#dao-et-crud" id="toc-dao-et-crud" class="nav-link" data-scroll-target="#dao-et-crud"><span class="header-section-number">3.3</span> DAO et CRUD</a></li>
+  <li><a href="#modelling" id="toc-modelling" class="nav-link" data-scroll-target="#modelling"><span class="header-section-number">3.1</span> Modelling</a></li>
+  <li><a href="#connection-management-and-singleton-pattern" id="toc-connection-management-and-singleton-pattern" class="nav-link" data-scroll-target="#connection-management-and-singleton-pattern"><span class="header-section-number">3.2</span> Connection management and Singleton pattern</a></li>
+  <li><a href="#dao-and-crud" id="toc-dao-and-crud" class="nav-link" data-scroll-target="#dao-and-crud"><span class="header-section-number">3.3</span> DAO and CRUD</a></li>
   </ul></li>
-  <li><a href="#premières-dao" id="toc-premières-dao" class="nav-link" data-scroll-target="#premières-dao"><span class="header-section-number">4</span> Premières DAO</a>
+  <li><a href="#first-daos" id="toc-first-daos" class="nav-link" data-scroll-target="#first-daos"><span class="header-section-number">4</span> First DAOs</a>
   <ul class="collapse">
-  <li><a href="#dao-avec-des-types-dattaques" id="toc-dao-avec-des-types-dattaques" class="nav-link" data-scroll-target="#dao-avec-des-types-dattaques"><span class="header-section-number">4.1</span> DAO avec des types d’attaques</a></li>
-  <li><a href="#pokémon-dao" id="toc-pokémon-dao" class="nav-link" data-scroll-target="#pokémon-dao"><span class="header-section-number">4.2</span> Pokémon DAO</a></li>
+  <li><a href="#dao-with-attack-types" id="toc-dao-with-attack-types" class="nav-link" data-scroll-target="#dao-with-attack-types"><span class="header-section-number">4.1</span> DAO with Attack Types</a></li>
+  <li><a href="#pokemon-dao" id="toc-pokemon-dao" class="nav-link" data-scroll-target="#pokemon-dao"><span class="header-section-number">4.2</span> Pokemon DAO</a></li>
   </ul></li>
-  <li><a href="#dao-et-webservice" id="toc-dao-et-webservice" class="nav-link" data-scroll-target="#dao-et-webservice"><span class="header-section-number">5</span> DAO et webservice</a></li>
+  <li><a href="#dao-and-webservice" id="toc-dao-and-webservice" class="nav-link" data-scroll-target="#dao-and-webservice"><span class="header-section-number">5</span> DAO and Webservice</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
 </nav>
@@ -475,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    TP 4
+    TP4
   </div>
 </div>
 
@@ -498,129 +501,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span> Translate and adapt to datalab</p>
-<section id="avant-de-commencer" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="avant-de-commencer">Avant de commencer</h2>
-<p><span class="emoji" data-emoji="scream">😱</span> Comme vous pouvez le constater le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. <strong>Vous n’allez surement pas terminer le sujet, ce n’est pas grave. Il est là pour vous aider lors du projet informatique.</strong></p>
-<p>Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code.</p>
-<p>Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Objectifs">
+<section id="before-you-start" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
+<p><span class="emoji" data-emoji="scream">😱</span> As you can see, the subject of this practical assignment is also quite extensive. Don’t let that scare you.</p>
+<p>It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Objectives">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Objectifs
+<span class="screen-reader-only">Note</span>Objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dans ce TP vous allez :</p>
+<p>Last week, you primarily queried web services to retrieve data in JSON format, which you then converted into Python business objects.</p>
+<p>Today, we’ll follow a similar principle. You’ll use the psycopg2 library to query a PostgreSQL database. You’ll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.</p>
+<p>In this lab, you will:</p>
 <ul>
-<li>Revoir des notions de base de données relationnelles</li>
-<li>Implémenter le patron de conception DAO</li>
-<li>Voir si votre programme fonctionne avec des tests unitaires reproductibles</li>
+<li>Review fundamental relational database concepts</li>
+<li>Implement the Data Access Object (DAO) design pattern. This pattern helps separate data persistence logic from your business logic, making your application more modular and easier to maintain</li>
+<li>Test your program’s functionality with reproducible unit tests</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="mise-à-jour-de-votre-dépôt-local" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="mise-à-jour-de-votre-dépôt-local"><span class="header-section-number">1</span> Mise à jour de votre dépôt local</h2>
-<div class="callout callout-style-default callout-caution callout-titled">
+<section id="setting-up-your-environment" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="setting-up-your-environment"><span class="header-section-number">1</span> Setting Up Your Environment</h2>
+<section id="launch-vscode" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="launch-vscode"><span class="header-section-number">1.1</span> Launch VScode</h3>
+<div class="callout callout-style-default callout-important callout-titled" title="Custom VSCode service">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Caution
+<span class="screen-reader-only">Important</span>Custom VSCode service
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si vous n’avez pas le dépôt sur votre machine, créez un clone en suivant la section <em>Clone du dépôt</em> du TP2.</p>
+<p>You <u>should not launch</u> a standard VSCode-python service, but rather a customised version.</p>
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez <strong>Visual Studio Code</strong></label></li>
-<li><label><input type="checkbox">Ouvrez votre dépôt local</label>
+<li><label><input type="checkbox">Login to a Datalab</label>
 <ul>
-<li>File &gt; Open Folder</li>
-<li>Allez dans le dossier <code>P:\Cours2A\UE3-Complements-info\TP2</code></li>
-<li>Cliquez <u>une seule fois</u> sur <span class="emoji" data-emoji="file_folder">📁</span> ENSAI-2A-complement-info-TP</li>
-<li>Puis sur le bouton <span class="grey-button">Sélectionner un dossier</span></li>
+<li><a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
+<li><a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
 </ul></li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul class="task-list">
-<li><label><input type="checkbox">Vérifiez que le dossier parent dans l’Explorer VS Code est <em>ENSAI-2A-complement-info-TP</em></label>
+<li><label><input type="checkbox">Go to the <a href="../../doc/tp/tools.html" target="_blank">Tools page</a></label>
 <ul>
-<li>L’Explorer, à gauche, permet d’explorer l’arborsence des fichiers et dossiers</li>
+<li>It explains why we are going to use a customised service</li>
 </ul></li>
+<li><label><input type="checkbox">Launch a <u><strong>customised</strong></u> VSCode service</label></li>
 </ul>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Si le dossier parent n’est pas le bon, recommencez l’<em>Open Folder</em> où vous aurez de gros soucis par la suite !!!</p>
-</div>
-</div>
+</section>
+<section id="clone-the-repository" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="clone-the-repository"><span class="header-section-number">1.2</span> Clone the repository</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez le <em>Git Bash</em> intégré dans VS Code</label>
+<li><label><input type="checkbox">Clone your fork of repository <em>ENSAI-2A-complement-info-TP</em></label>
 <ul>
-<li>Terminal &gt; New Terminal (ou CTRL + ù)</li>
-<li>Passez sur la branche du TP4 et mettez-là à jour
+<li>refer to previous TP if you have not already created the fork</li>
+</ul></li>
+<li><label><input type="checkbox">Open Folder <em>ENSAI-2A-complement-info-TP</em></label></li>
+<li><label><input type="checkbox">Position yourself on the branch:</label>
 <ul>
-<li>si vous ne l’avez pas fait à la fin du dernier TP, commencez par un <em>add</em> et un <em>commit</em></li>
 <li><code>git switch tp4-base</code></li>
-<li><code>git pull</code></li>
-</ul></li>
+<li>to ensure that everyone starts at the same level</li>
 </ul></li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="If you don't have branch tp4-base">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+<span class="screen-reader-only">Tip</span>If you don’t have branch tp4-base
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Pour pour vérifier que tout fonctionne :</p>
+<p>You will use this repo but you won’t be able to push:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">lancez les tests unitaires du package business_object</label>
-<ul>
-<li>dans le terminal : <code>python -m pytest -v src/tests/test_business_object/</code></li>
-</ul></li>
-<li><label><input type="checkbox">lancez le main : <code>python src/main.py</code></label></li>
+<li><label><input type="checkbox"><code>git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git</code></label></li>
+<li><label><input type="checkbox">Open Folder <em>ENSAI-2A-complement-info-TP</em></label></li>
+<li><label><input type="checkbox"><code>git switch tp4-base</code></label></li>
 </ul>
-<p>S’il vous manque des packages, suivez les instructions du README.</p>
 </div>
 </div>
-<section id="connexion-à-la-bdd" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="connexion-à-la-bdd"><span class="header-section-number">1.1</span> Connexion à la BDD</h3>
+<p>To check that everything is working:</p>
 <ul class="task-list">
-<li><p><label><input type="checkbox">Pour pouvoir vous connecter à votre base de données, renseignez les variables suivantes dans le fichier <code>.env</code> présent à la racine du dépôt :</label></p>
+<li><label><input type="checkbox">Launch the unit tests for the business_object package</label>
+<ul>
+<li><code>pytest -v src/tests/test_business_object/</code></li>
+</ul></li>
+<li><label><input type="checkbox">Launch the main program</label>
+<ul>
+<li><code>python src/__main__.py</code></li>
+</ul></li>
+</ul>
+<p>If you are missing any packages, please follow the instructions in the README file.</p>
+<p>In case of an error, first check that you have opened the correct root folder in your explorer, which should be <em>ENSAI-2A-complement-info-TP</em>.</p>
+</section>
+<section id="database-connection" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="database-connection"><span class="header-section-number">1.3</span> Database connection</h3>
+<p>To connect to a database, you’ll need…, a database!</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Launch a <em>PostgreSQL</em> service</label></li>
+<li><label><input type="checkbox">Copy the README, which contains the connection information</label></li>
+</ul>
+<p>Now, we will store this connection information in the .env file:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create file <code>.env</code> at the root of the repository</label></li>
+<li><label><input type="checkbox">Fill in the values</label></li>
+</ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>.env</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".env"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>POSTGRES_HOST=sgbd-eleves.domensai.ecole</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".env"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>POSTGRES_HOST=</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>POSTGRES_PORT=5432</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>POSTGRES_DATABASE=idxxxx</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>POSTGRES_USER=idxxxx</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>POSTGRES_PASSWORD=idxxxx</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>POSTGRES_DATABASE=</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>POSTGRES_USER=</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>POSTGRES_PASSWORD=</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<ul>
-<li>N’oubliez pas de remplacer <em>xxxx</em> par votre id</li>
-</ul></li>
-</ul>
-<p>Maintenant que la connexion est opérationnelle, initialisez votre base de données :</p>
+<p>These environment variables will be used by the <em>DBConnection</em> class to establish the connection with the database.</p>
+<p>Finally, we’ll create the tables and insert some data:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Lancez le script <code>utils/reset_database.py</code></label></li>
+<li><label><input type="checkbox">Launch script <code>utils/reset_database.py</code></label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -632,55 +639,59 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ce script va exécuter 2 fichiers <em>sql</em> :</p>
+<p>This script will execute two SQL files:</p>
 <ul>
-<li><em>data/init_db.sql</em> pour créer les tables</li>
-<li><em>data/pop_db.sql</em> pour insérer des données</li>
+<li><em>data/init_db.sql</em> to create the tables</li>
+<li><em>data/pop_db.sql</em> to insert data</li>
 </ul>
 </div>
 </div>
 </section>
 </section>
-<section id="remise-en-jambes-sql" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="remise-en-jambes-sql"><span class="header-section-number">2</span> Remise en jambes SQL</h2>
+<section id="lets-warm-up-with-sql" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="lets-warm-up-with-sql"><span class="header-section-number">2</span> Let’s warm up with SQL</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">Ouvrez <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html" target="_blank">DBeaver</a></label></li>
+<li><label><input type="checkbox">Open a <em>cloudBeaver</em> service</label></li>
 </ul>
-<div class="callout callout-style-default callout-caution callout-titled" title="Nombre de connexions limité">
+<p>Write the following three queries (they will be used later in the lab):</p>
+<ul class="task-list">
+<li><label><input type="checkbox">List all Attacks, along with the name of the attack type</label></li>
+<li><label><input type="checkbox">List all Pokemons, along with the name of the Pokemon type</label></li>
+<li><label><input type="checkbox">List all of Pikachu’s attacks</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tips and reminder">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Nombre de connexions limité
+<span class="screen-reader-only">Tip</span>Tips and reminder
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Sur le réseau ENSAI, le nombre de connexions à votre base de données est limité.</p>
-<p>Or par défaut, DBeaver utilise déjà 3 connexions, ce qui risque de vous poser des soucis lorsque vous essaierez de vous connecter depuis votre programme Python.</p>
-<p>La solution :</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Dans DBeaver, allez dans le menu <em>Fenêtre</em> puis <em>Préférences</em></label></li>
-<li><label><input type="checkbox">Recherchez <em>Métadonnées</em> et décochez <code>Ouvrir une connexion séparée pour la lecture des métadonnées</code></label></li>
-<li><label><input type="checkbox">Recherchez <em>Editeur SQL</em> et décochez <code>Ouvrir une connexion séparée pour chaque éditeur</code></label></li>
-<li><label><input type="checkbox">Appliquez</label></li>
+<ul>
+<li>Tables are in the <strong>tp</strong> schema</li>
+<li>Write Beautiful SQL Queries
+<ul>
+<li>Line Breaks: Start each major clause on a new line</li>
+<li>Keyword Alignment: Align your keywords vertically</li>
+<li>Uppercase Keywords: Use uppercase for all SQL keywords</li>
+</ul></li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> tp.pokemon p</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> p.hp <span class="op">&gt;</span> <span class="dv">80</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> <span class="kw">ORDER</span> <span class="kw">BY</span> p.speed <span class="kw">DESC</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p>Écrivez les 3 requêtes suivantes (elle serviront pour la suite du TP) :</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Listez toutes les attaques, ainsi que le nom du type d’attaque</label></li>
-<li><label><input type="checkbox">Listez tous les pokemons, ainsi que le nom du type de Pokemon</label></li>
-<li><label><input type="checkbox">Listez toutes les attaques de Pikachu</label></li>
-</ul>
-<p>Pour vous aider, voici le schéma des tables et leurs relations</p>
-<p><a href="./img/TP3 Schéma de BDD.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/TP3 Schéma de BDD.png" class="img-fluid" style="width:80.0%"></a></p>
+<p>To help you, here is the schema of the tables and their relationships.</p>
+<p><a href="./img/TP4_schema_BDD.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/TP4_schema_BDD.png" class="img-fluid"></a></p>
 </section>
 <section id="data-access-objet-dao" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="data-access-objet-dao"><span class="header-section-number">3</span> Data Access Objet (DAO)</h2>
-<section id="modélisation" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="modélisation"><span class="header-section-number">3.1</span> Modélisation</h3>
-<p>Reprenons le diagramme de classe du TP2. Limitons nous à la partie “attaque” et réfléchissons où mettre une méthode qui permet de persister les attaques.</p>
+<section id="modelling" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="modelling"><span class="header-section-number">3.1</span> Modelling</h3>
+<p>Let’s go back to the class diagram from TP2. Let’s limit ourselves to the “attack” part.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -721,27 +732,29 @@ class AbstractAttack{
     AbstractFormulaAttack--|&gt;AbstractAttack
     SpecialAttack--|&gt;AbstractFormulaAttack
     PhysicalAttack--|&gt;AbstractFormulaAttack
-
-
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Vu que les attributs de nos attaques sont similaires, nous n’allons pas coder cela dans les classes spécifiques des attaques. Nous pourrions mettre les méthodes dans <strong>AbstractAttack</strong>. Ça fonctionnerait bien d’ailleurs. Nous aurions une classe unique avec nos méthodes pour interagir avec la base. Mais nous n’allons pas faire ça !</p>
-<p>Et là vous vous demandez :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Think about where to put a method that allows attacks to persist (save in a table)</label></li>
+</ul>
+<p>Since the attributes of our attacks are similar, we won’t code this functionality into the specific attack classes.</p>
+<p>We could put the methods in <strong>AbstractAttack</strong>. That would actually work fine, as we’d have a single class with our methods to interact with the database. But we’re not going to do that!</p>
+<p>And now you’re asking yourself:</p>
 <blockquote class="blockquote">
-<p><span class="emoji" data-emoji="scream">😱</span> Mais pourquoi ???</p>
+<p><span class="emoji" data-emoji="scream">😱</span> Why ???</p>
 </blockquote>
-<p>Et la réponse est :</p>
+<p>And the answer is:</p>
 <blockquote class="blockquote">
-<p><span class="emoji" data-emoji="stuck_out_tongue">😛</span> Car ça n’a aucun sens !</p>
+<p><span class="emoji" data-emoji="stuck_out_tongue">😛</span> Because it makes no sense!</p>
 </blockquote>
-<p>Revenons sur la phrase : <strong>faible couplage, forte cohésion</strong>. Si nous mettons toutes les méthodes de persistance de nos attaques dans la classe <strong>AbstractAttack</strong>, nous allons avoir une classe qui :</p>
+<p>Let’s go back to the phrase: low coupling, high cohesion. If we put all the persistence methods for our attacks in the <strong>AbstractAttack</strong> class, we’d have a class that:</p>
 <ul>
-<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> Détermine le comportement des attaques. C’est exactement ce que l’on souhaite (<strong>forte cohésion</strong>).</li>
-<li><span class="emoji" data-emoji="x">❌</span> Détermine comment on persiste une attaque.</li>
+<li><span class="emoji" data-emoji="heavy_check_mark">✔️</span> Determines the behavior of attacks. This is exactly what we want (high cohesion).</li>
+<li><span class="emoji" data-emoji="x">❌</span> Determines how an attack is persisted</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -753,11 +766,11 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Mais ça, ce n’est pas de la responsabilité d’une attaque, mais du système de persistance choisi, ou du moins de l’intermédiaire entre nos objets et le système de persistance !</p>
+<p>This is not an attack’s responsibility; it belongs to the chosen persistence system, or at least the intermediary between our objects and that system!</p>
 </div>
 </div>
-<p>Je n’ai personnellement pas envie d’aller modifier ma classe <strong>AbstractAttack</strong> uniquement car j’ai décidé de changer de système de gestion de la persistance. Je risque de modifier quelque chose que je ne devrais pas et créer des régressions (i.e.&nbsp;faire apparaitre des erreurs sur un code qui n’en avait pas avant). Or j’aimerais bien limiter les sources d’erreurs.</p>
-<p>À la place, nous allons créer une classe qui va s’occuper uniquement de cette tâche : une classe DAO (<strong>Data Access Object</strong>). C’est une <u>classe technique</u> qui va faire <strong>l’interface entre nos données stockées et notre application</strong>. Voilà ce que cela donne en terme de diagramme de classe.</p>
+<p>Personally, I don’t want to have to modify my AbstractAttack class just because I’ve decided to change the persistence management system. I risk modifying something I shouldn’t and creating regressions (i.e., making errors appear in code that didn’t have them before). And I’d like to limit the sources of errors.</p>
+<p>Instead, we’re going to create a class that is responsible for only this one task: a <strong>DAO (Data Access Object)</strong> class. This is a technical class that will act as the interface between our stored data and our application. Here’s what that looks like in a class diagram.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -826,10 +839,11 @@ AttackDao..&gt; DBConnection: use
 </div>
 </div>
 </section>
-<section id="gestion-des-connexions-et-patern-singleton" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="gestion-des-connexions-et-patern-singleton"><span class="header-section-number">3.2</span> Gestion des connexions et patern singleton</h3>
-<p>Pour vous connecter à la base de données nous allons utiliser la bibliothèque python <a href="https://www.psycopg.org/docs/index.html" target="_blank"><strong>psycopg2</strong></a>. C’est elle qui va établir la connexion avec la base, envoyer nos requêtes et nous retourner les résultats.</p>
-<p>Mais il faut faire un peu attention à la gestion des connexions. Car nous pourrions nous retrouver à ouvrir des centaines de connexions rapidement et dégrader les performances de notre application. C’est le travail de la classe <strong>DBConnection</strong>. Comme c’est un singleton, il y aura <u>une seule instance</u> de cette classe dans toute notre application, et comme c’est elle qui se connecte à la base, nous nous assurons de l’unicité de la connexion.</p>
+<section id="connection-management-and-singleton-pattern" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="connection-management-and-singleton-pattern"><span class="header-section-number">3.2</span> Connection management and Singleton pattern</h3>
+<p>To connect to the database, we’ll use the Python library <a href="https://www.psycopg.org/docs/index.html" target="_blank"><strong>psycopg2</strong></a>. This library will establish the connection with the database, send our queries, and return the results.</p>
+<p>However, we need to be careful with connection management, as we could quickly open hundreds of connections and degrade our application’s performance.</p>
+<p>This is the job of the <strong>DBConnection</strong> class. Since it’s a singleton, there will be <u>only one instance</u> of this class in our entire application, and since it’s the one that connects to the database, we ensure the connection’s uniqueness.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -840,204 +854,221 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Cette classe est une solution purement technique, alors n’hésitez pas à la réutiliser pour votre projet. Elle introduit un concept avancé de POO, à savoir les méta classes.</p>
-<p>Une <strong>méta classe</strong> permet de modifier le comportement d’une classe à un niveau poussé (par exemple modifier comment les objets sont construits par Python). À moins que vous ayez une appétence toute particulière pour l’informatique, ne passez pas de temps sur ce sujet.</p>
+<p>This class is a purely technical solution, so feel free to reuse it for your project. It introduces an advanced concept in OOP: metaclasses.</p>
+<p>A <strong>metaclass</strong> allows you to modify a class’s behavior at a deep level (for example, altering how objects are constructed by Python). Unless you have a specific passion for computer science, don’t spend time on this topic.</p>
 </div>
 </div>
 </section>
-<section id="dao-et-crud" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="dao-et-crud"><span class="header-section-number">3.3</span> DAO et CRUD</h3>
-<p>Si vous faites attention, les méthodes de notre DAO ressemblent à celles du <em>CRUD</em>. C’est normal car c’est dans ces méthodes que le code SQL va être stocké.</p>
-<p>Les méthodes de base sont généralement :</p>
+<section id="dao-and-crud" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="dao-and-crud"><span class="header-section-number">3.3</span> DAO and CRUD</h3>
+<p>If you look closely, our DAO’s methods resemble those of <strong>CRUD</strong>. This is normal, as these methods will store the SQL code.</p>
+<p>The basic methods are generally:</p>
 <ul>
-<li><code>find_all()</code> : qui va retourner toute la table.</li>
-<li><code>find_by_id()</code> : qui retourne un enregistrement à partir de son id</li>
-<li><code>create()</code> : qui crée un nouvel enregistrement</li>
-<li><code>delete()</code> : qui supprime un enregistrement</li>
-<li><code>update()</code> : qui met à jour un enregistrement</li>
+<li><code>find_all()</code>: which will return the entire table</li>
+<li><code>find_by_id()</code>: which returns a record based on its id</li>
+<li><code>create()</code>: which creates a new record</li>
+<li><code>delete()</code>: which deletes a record</li>
+<li><code>update()</code>: which updates a record</li>
 </ul>
-<p>Ces 5 méthodes suffisent pour communiquer avec votre base de données. Vous pouvez effectuer le reste des traitements dans vos classes <strong>Service</strong> (conseillé). Cependant, rien ne vous empêche de créer des méthodes plus complexes (ex : <em>find_by_type_and_level_order_by_name_desc()</em>)</p>
-<p>Voici la fonctionnement général d’une des méthodes de la DAO :</p>
+<p>These 5 methods are enough to communicate with your database. You can perform the rest of the processing in your <strong>Service</strong> classes (recommended). However, nothing prevents you from creating more complex methods (e.g., <em>find_by_type_and_level_order_by_name_desc()</em>).</p>
+<p>Here is the general operation of one of the DAO methods:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>une_classe_dao.py</strong></pre>
+<pre><strong>a_dao_class.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="une_classe_dao.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dao.db_connection <span class="im">import</span> DBConnection</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UneClasseDAO(metaclass<span class="op">=</span>Singleton):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> une_methode_dao():</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Etape 1 : On récupère la connexion en utilisant la classe DBConnection.</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection :</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Etape 2 : à partir de la connexion on crée un curseur pour la requête </span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor : </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Etape 3 : on exécute notre requête SQL</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                cursor.execute(requete_sql)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Etape 4 : on stocke le résultat de la requête</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                res <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> res:</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Etape 5 : on agence les résultats selon la forme souhaitée (objet, liste...)</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> something</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="a_dao_class.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dao.db_connection <span class="im">import</span> DBConnection</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ADaoClass(metaclass<span class="op">=</span>Singleton):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> a_dao_method(<span class="va">self</span>, optional_param):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 1: We get the connection using the DBConnection class.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Step 2: From the connection, we create a cursor for the query.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor: </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Step 3: We execute our SQL query.</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                cursor.execute(<span class="st">"SQL query using an optional parameter"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Step 4: We store the query result.</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                res <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> res:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Step 5: We format the results into the desired shape (object, list...).</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> something</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>L’objet <em>cursor</em> contient un pointeur vers les résultats de votre requête. Ce résultat n’est pas encore rapatrié sur votre machine, mais est stocké par la base de données. Vous avez 3 méthodes pour récupérer le résultat :</p>
+<p>The <em>cursor</em> object holds a pointer to the results of your query. This result isn’t yet on your machine; it’s still stored by the database. You have three methods to retrieve the results:</p>
 <ul>
-<li><code>cursor.fetchone()</code> : retourne uniquement un enregistrement sous forme de dictionnaire
+<li><code>cursor.fetchone()</code>: Returns a single record as a dictionary.
 <ul>
-<li>Si vous appelez de nouveau <em>fetchone()</em> sur le même curseur vous obtiendrez la ligne suivante</li>
+<li>If you call <em>fetchone()</em> again on the same cursor, you’ll get the next row.</li>
 </ul></li>
-<li><code>cursor.fetchall()</code> : retourne l’intégralité des résultats sous forme d’une liste de dictionnaires
+<li><code>cursor.fetchall()</code>: Returns all results as a list of dictionaries.
 <ul>
-<li>Les dictionnaires sont les lignes de la table récupérée.</li>
-<li>Les clés du dictionnaire sont les colonnes récupérées.</li>
-<li>Cette méthode fonctionne très bien pour avoir tous les résultats en une fois et qu’il y en a peu. Quand on a des millions d’enregistrements cela va poser problème car :
+<li>The dictionaries are the rows from the retrieved table.</li>
+<li>The dictionary keys are the retrieved columns.</li>
+<li>This method works well when you want all results at once and there are only a few of them. When you have millions of records, this will cause problems because:
 <ul>
-<li>Le transfert de données sur internet va prendre du temps et bloquer notre application</li>
-<li>Notre application va devoir gérer une grande quantité de données, et elle en est peut-être incapable</li>
+<li>The data transfer over the internet will take time and block your application.</li>
+<li>Your application may be unable to handle such a large amount of data.</li>
 </ul></li>
 </ul></li>
-<li><code>cursor.fetchmany(size)</code>: retourne autant d’enregistrements que demandé sous forme d’une liste de dictionnaires. Cela permet de contrôler le volume de données que l’on traite. Si vous appelez de nouveau <em>fetchmany(size)</em> sur votre curseur, vous allez récupérer les lignes suivantes (système de pagination)</li>
+<li><code>cursor.fetchmany(size)</code>: Returns the requested number of records as a list of dictionaries. This lets you control the volume of data you’re processing. If you call <em>fetchmany(size)</em> again on your cursor, you’ll retrieve the next set of rows (a pagination system).</li>
 </ul>
-<p>Exemples de données retournées (requête du curseur : <code>SELECT * FROM tp.attack;</code>):</p>
+<p>Examples of returned data (cursor query: <code>SELECT * FROM tp.attack;</code>):</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">fetchone</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">fetchall</a></li></ul>
 <div class="tab-content nav-pills">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Un dictionnaire</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">"id_attack"</span>: <span class="dv">2</span>, <span class="st">"id_attack_type"</span>: <span class="dv">3</span>, <span class="st">"power"</span>: <span class="dv">20</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Grass"</span>, <span class="st">"attack_name"</span>: <span class="st">"Absorb"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A single dictionary</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">"id_attack"</span>: <span class="dv">2</span>, <span class="st">"id_attack_type"</span>: <span class="dv">3</span>, <span class="st">"power"</span>: <span class="dv">20</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Grass"</span>, <span class="st">"attack_name"</span>: <span class="st">"Absorb"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Une liste de dictionnaires</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>[</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id_attack"</span>: <span class="dv">2</span>, <span class="st">"id_attack_type"</span>: <span class="dv">3</span>, <span class="st">"power"</span>: <span class="dv">20</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Grass"</span>, <span class="st">"attack_name"</span>: <span class="st">"Absorb"</span>},</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id_attack"</span>: <span class="dv">3</span>, <span class="st">"id_attack_type"</span>: <span class="dv">2</span>, <span class="st">"power"</span>: <span class="dv">40</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Rock"</span>, <span class="st">"attack_name"</span>: <span class="st">"Accelerock"</span>},</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id_attack"</span>: <span class="dv">4</span>, <span class="st">"id_attack_type"</span>: <span class="dv">3</span>, <span class="st">"power"</span>: <span class="dv">40</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Poison"</span>, <span class="st">"attack_name"</span>: <span class="st">"Acid"</span>},</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A list of dictionaries</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>[</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id_attack"</span>: <span class="dv">2</span>, <span class="st">"id_attack_type"</span>: <span class="dv">3</span>, <span class="st">"power"</span>: <span class="dv">20</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Grass"</span>, <span class="st">"attack_name"</span>: <span class="st">"Absorb"</span>},</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id_attack"</span>: <span class="dv">3</span>, <span class="st">"id_attack_type"</span>: <span class="dv">2</span>, <span class="st">"power"</span>: <span class="dv">40</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Rock"</span>, <span class="st">"attack_name"</span>: <span class="st">"Accelerock"</span>},</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"id_attack"</span>: <span class="dv">4</span>, <span class="st">"id_attack_type"</span>: <span class="dv">3</span>, <span class="st">"power"</span>: <span class="dv">40</span>, <span class="st">"accuracy"</span>: <span class="dv">100</span>, <span class="st">"element"</span>: <span class="st">"Poison"</span>, <span class="st">"attack_name"</span>: <span class="st">"Acid"</span>},</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-<p>Pour plus d’informations : <a href="https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/" target="_blank">article de pynative</a></p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Objectif">
+<p>For more information: <a href="https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/" target="_blank">Pynative article</a></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Goal">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Objectif
+<span class="screen-reader-only">Tip</span>Goal
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Comme pour les données des webservices, l’objectif va être de convertir ces données en objets métiers.</p>
+<p>Just like with data from web services, the goal will be to convert this data into business objects.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="premières-dao" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="premières-dao"><span class="header-section-number">4</span> Premières DAO</h2>
-<section id="dao-avec-des-types-dattaques" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="dao-avec-des-types-dattaques"><span class="header-section-number">4.1</span> DAO avec des types d’attaques</h3>
+<section id="first-daos" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="first-daos"><span class="header-section-number">4</span> First DAOs</h2>
+<section id="dao-with-attack-types" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="dao-with-attack-types"><span class="header-section-number">4.1</span> DAO with Attack Types</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Observez le fonctionnement de la classe <strong>TypeAttackDAO</strong></label>
+<li><label><input type="checkbox">Observe how the <strong>TypeAttackDAO</strong> class works.</label>
 <ul>
-<li>cela va vous être utile pour la suite</li>
+<li>This will be useful for the next steps.</li>
 </ul></li>
 </ul>
-<p>Dans la classe <strong>AttackDao</strong>, créez les méthodes suivantes :</p>
+<p>In the <strong>AttackDao</strong> class, create the following methods:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><em>find_attack_by_id(id:int) -&gt; Optional[AbsractAttack]</em> : retourne l’attaque avec l’id en paramètre ou retourne None si l’attaque n’est pas trouvée.</label></li>
-<li><label><input type="checkbox"><em>find_all_attacks() -&gt; List[AbsractAttack]</em> : retourne la liste de toutes les attaques</label>
+<li><label><input type="checkbox"><em>find_attack_by_id(id:int) -&gt; AbsractAttack</em>: returns the attack with the given ID or <code>None</code> if the attack is not found</label></li>
+<li><label><input type="checkbox"><em>find_all_attacks() -&gt; List[AbsractAttack]</em>: returns a list of all attacks</label>
 <ul>
-<li><u>Bonus</u> : ajoutez à cette méthode les paramètres <em>limit</em> et <em>offset</em></li>
+<li><u>Bonus</u>: add <code>limit</code> and <code>offset</code> parameters to this method</li>
 </ul></li>
-<li><label><input type="checkbox"><em>update_attack(attack : AbstractAttack) -&gt; bool</em> : met à jour les données de l’attaque passée en paramètre et retourne si la modification s’est bien passée</label></li>
+<li><label><input type="checkbox"><em>update_attack(attack : AbstractAttack) -&gt; bool</em>: updates the data of the attack passed as a parameter and returns whether the modification was successful</label></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Quelques conseils">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Quelques conseils
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Dans les 2 méthodes <em>find</em>, pour créer nos objets métier <strong>Attack</strong>
+<li>In the 2 <em>find</em> methods, to create our <strong>Attack</strong> business objects:
 <ul>
-<li>nous avons besoin de connaitre le nom du type d’attaque</li>
-<li>or il n’y a pas cette colonne dans la table <em>attaque</em></li>
-<li>mais peut-être avez-vous déjà une requête qui fait le job ?</li>
+<li>We need to know the attack type’s name.</li>
+<li>However, this column doesn’t exist in the <em>attack</em> table.</li>
+<li>But perhaps you already have a query that does the job?</li>
 </ul></li>
-<li>Utilisez la classe <strong>AttackFactory</strong> pour instancier facilement des objets métier <strong>Attack</strong></li>
-<li>Pensez à faire des tests pour voir si votre code fonctionne</li>
+<li>Use the <strong>AttackFactory</strong> class to easily instantiate <strong>Attack</strong> business objects</li>
+<li>Remember to run tests to see if your code works</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="pokémon-dao" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="pokémon-dao"><span class="header-section-number">4.2</span> Pokémon DAO</h3>
-<p>Créez la classe <strong>PokémonDAO</strong> avec les méthodes suivantes :</p>
+<section id="pokemon-dao" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="pokemon-dao"><span class="header-section-number">4.2</span> Pokemon DAO</h3>
+<p>Create the <strong>PokemonDAO</strong> class with the following methods:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><em>find_all_pokemon()-&gt;List[AbstractPokemon]</em> : retourne tous les pokémons dans la base</label></li>
-<li><label><input type="checkbox"><em>find_pokemon_by_name(name:str)-&gt;AbstractPokemon</em> : retourne un pokémon avec le nom donné</label></li>
-<li><label><input type="checkbox">Complétez la méthode ci-dessus en incorporant la liste des attaques du <em>Pokemon</em> :</label>
+<li><label><input type="checkbox"><em>find_all_pokemon()-&gt;List[AbstractPokemon]</em>: returns all Pokemon in the database</label></li>
+<li><label><input type="checkbox"><em>find_pokemon_by_name(name:str)-&gt;AbstractPokemon</em>: returns a Pokemon with the given name</label></li>
+<li><label><input type="checkbox">Complete the method above by incorporating the list of a <em>Pokemon’s</em> attacks:</label>
 <ul>
-<li>Faites une requête en joignant les tables <code>attack</code> et <code>pokemon_attack</code> en filtrant avec l’id du pokémon</li>
-<li>Générez les attaques à partir de là</li>
+<li>Make a query by joining the <code>attack</code> and <code>pokemon_attack</code> tables, filtering with the Pokemon’s ID</li>
+<li>Generate the attacks from that data</li>
 </ul></li>
 </ul>
 </section>
 </section>
-<section id="dao-et-webservice" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="dao-et-webservice"><span class="header-section-number">5</span> DAO et webservice</h2>
-<p>Vous allez maintenant rendre accessible les données de votre base à d’autres utilisateurs en réalisant un webservice REST.</p>
-<p>Ajoutez dans le fichier <code>app.py</code> les endpoints suivants :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Défintion du endpoint get /attack?limit=100</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/attack/"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_attacks(limit:<span class="bu">int</span>):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: récupérer les attaques en base en utilisant votre DAO</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> attacks</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Défintion du endpoint get /pokemon?limit=100</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_pokemons(limit:<span class="bu">int</span>):</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: récupérer les pokemons en base en utilisant votre DAO</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemons</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Défintion du endpoint get /pokemon`/{name}</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_pokemon_by_name(name:<span class="bu">str</span>):</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: récupérer le pokemon en base en utilisant votre DAO</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="dao-and-webservice" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="dao-and-webservice"><span class="header-section-number">5</span> DAO and Webservice</h2>
+<p>You will now make your database data accessible to other users by creating a REST webservice.</p>
+<p>Add the following endpoints to the <code>app.py</code> file:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>app.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="app.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/attack/"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_attacks():</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""GET /attack/"""</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve attacks from the database using your DAO</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> attacks</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_pokemons(limit:<span class="bu">int</span>):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve pokemons from the database using your DAO</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemons</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_pokemon_by_name(name:<span class="bu">str</span>):</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""GET /pokemon/&lt;name&gt;"""</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve the pokemon from the database using your DAO</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ul>
-<li><code>GET localhost:80/attack?limit=100</code> renverra une liste de 100 attaques par défaut. Il est possible de moduler cette valeur via le paramètre de requête <code>limit</code></li>
-<li><code>GET localhost:80/pokemon?limit=100</code>. Il renverra une liste de 100 <em>Pokemons</em> par défaut, mais peut être modulé avec le paramètre de requête <code>limit</code>.</li>
-<li><code>GET localhost:80/pokemon/{nom}</code>. Il renverra un json représentant un <em>Pokemon</em>.</li>
+<li><code>GET localhost:80/attack?limit=100</code> will return a list of all attacks</li>
+<li><code>GET localhost:80/pokemon?limit=100</code>. It will return a list of 100 <em>Pokemons</em> by default, but can be adjusted with the <code>limit</code> query parameter</li>
+<li><code>GET localhost:80/pokemon/{name}</code>. It will return a JSON representing a <em>Pokemon</em></li>
 </ul>
-<p>Pour retourner des objets, vous allez devoir définir des classes héritant de <code>BaseModel</code>. Vous trouverez toutes les infos dans la documentation de <a href="https://fastapi.tiangolo.com/tutorial/body/" target="_blank">FastAPI</a>.</p>
+<p>To return objects, you will need to define classes inheriting from <code>BaseModel</code>. You’ll find all the information you need in the <a href="https://fastapi.tiangolo.com/tutorial/body/" target="_blank">FastAPI documentation</a>.</p>
 </section>
 <section id="conclusion" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Dans ce TP vous avez implémenté votre première DAO.</p>
-<p>C’est une classe technique qui sert à communiquer avec votre système de persistance de données. L’avantage premier de faire une classe à part est de découpler au maximum la gestion du système de persistance et le code métier de votre application.</p>
-<p>Si vous décidez d’arrêter d’utiliser une base de données relationnelle et préférez désormais une base de données <em>NoSQL</em> vous allez devoir changer uniquement les classes DAO tout en exposant toujours les mêmes méthodes.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>In this lab, you implemented your first DAO.</p>
+<p>It’s a technical class used to communicate with your data persistence system. The primary advantage of creating a separate class is to decouple the management of the persistence system and your application’s business logic as much as possible.</p>
+<p>If you decide to stop using a relational database and switch to a <em>NoSQL</em> database instead, you’ll only need to change the DAO classes while still exposing the same methods.</p>
+</section>
+<section id="end-of-the-lab" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si vous souhaitez voir la version finale, positionnez-vous sur la branche <code>tp5-correction</code> et lancez le main.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Push your code to GitHub</label>
+<ul>
+<li>if your VSCode service dies, your code will not be lost</li>
+<li>on Datalabs, there is no guarantee of the lifespan of your services</li>
+</ul></li>
+<li><label><input type="checkbox">Pause or delete your datalab services</label>
+<ul>
+<li>to free up reserved resources</li>
+</ul></li>
+</ul>
 </div>
 </div>
 
