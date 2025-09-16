@@ -1,6 +1,6 @@
 ---
 title: "Data Access Objet (DAO)"
-description: "TP 4"
+description: "TP4"
 author: "Rémi Pépin, Ludovic Deneuville"
 format:
   html:
@@ -12,120 +12,141 @@ number-sections: true
 lightbox: true
 ---
 
-:construction: Translate and adapt to datalab
 
-## Avant de commencer {.unnumbered}
+## Before you start {.unnumbered}
 
-:scream: Comme vous pouvez le constater le sujet de ce TP est lui aussi long. Cela ne doit pas vous effrayer. Il mélange explications complètes et manipulations pour être au maximum autosuffisant. **Vous n'allez surement pas terminer le sujet, ce n'est pas grave. Il est là pour vous aider lors du projet informatique.**
+:scream: As you can see, the subject of this practical assignment is also quite extensive. Don't let that scare you.
 
-Ce TP mêle explications pour vous faire comprendre ce qui est fait, et phases de manipulation ou code.
+It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.
 
-Les explications de ce TP ne doivent pas prendre le pas sur celles de votre intervenant. Prenez-les comme une base de connaissances pour plus tard, mais préférez toujours les explications orales.
+::: {.callout-note title="Objectives"}
+Last week, you primarily queried web services to retrieve data in JSON format, which you then converted into Python business objects.
 
-::: {.callout-important title="Objectifs"}
-Dans ce TP vous allez :
+Today, we'll follow a similar principle. You'll use the psycopg2 library to query a PostgreSQL database. You'll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.
 
-- Revoir des notions de base de données relationnelles
-- Implémenter le patron de conception DAO
-- Voir si votre programme fonctionne avec des tests unitaires reproductibles
+
+In this lab, you will:
+
+- Review fundamental relational database concepts
+- Implement the Data Access Object (DAO) design pattern. This pattern helps separate data persistence logic from your business logic, making your application more modular and easier to maintain
+- Test your program's functionality with reproducible unit tests
 :::
 
+## Setting Up Your Environment
 
-## Mise à jour de votre dépôt local
+### Launch VScode
 
-::: {.callout-caution}
-Si vous n'avez pas le dépôt sur votre machine, créez un clone en suivant la section *Clone du dépôt* du TP2.
+::: {.callout-important title="Custom VSCode service"}
+You [should not launch]{.underline} a standard VSCode-python service, but rather a customised version.
 :::
 
-- [ ] Ouvrez **Visual Studio Code**
-- [ ] Ouvrez votre dépôt local
-  - File > Open Folder
-  - Allez dans le dossier `P:\Cours2A\UE3-Complements-info\TP2`
-  - Cliquez [une seule fois]{.underline} sur :file_folder: ENSAI-2A-complement-info-TP
-  - Puis sur le bouton [Sélectionner un dossier]{.grey-button}
+- [ ] Login to a Datalab
+  - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+  - <https://datalab.sspcloud.fr/>{target="_blank"} 
+- [ ] Go to the [Tools page](./tools.qmd){target="_blank"}
+  - It explains why we are going to use a customised service
+- [ ] Launch a [**customised**]{.underline} VSCode service
 
-::: {.callout-important}
-- [ ] Vérifiez que le dossier parent dans l'Explorer VS Code est *ENSAI-2A-complement-info-TP*
-  - L'Explorer, à gauche, permet d'explorer l'arborsence des fichiers et dossiers
 
-:warning: Si le dossier parent n'est pas le bon, recommencez l'*Open Folder* où vous aurez de gros soucis par la suite !!! 
+### Clone the repository
+
+- [ ] Clone your fork of repository *ENSAI-2A-complement-info-TP*
+  - refer to previous TP if you have not already created the fork
+- [ ] Open Folder *ENSAI-2A-complement-info-TP*
+- [ ] Position yourself on the branch:
+  - `git switch tp4-base`
+  - to ensure that everyone starts at the same level
+
+::: {.callout-tip title="If you don't have branch tp4-base"}
+You will use this repo but you won't be able to push:
+
+- [ ] `git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
+- [ ] Open Folder *ENSAI-2A-complement-info-TP*
+- [ ] `git switch tp4-base`
 :::
 
-- [ ] Ouvrez le *Git Bash* intégré dans VS Code
-  - Terminal > New Terminal (ou CTRL + ù)
-  - Passez sur la branche du TP4 et mettez-là à jour
-    - si vous ne l'avez pas fait à la fin du dernier TP, commencez par un *add* et un *commit*
-    - `git switch tp4-base`
-    - `git pull`
+To check that everything is working:
+
+- [ ] Launch the unit tests for the business_object package
+  - `pytest -v src/tests/test_business_object/`
+- [ ] Launch the main program
+  - `python src/__main__.py`
+
+If you are missing any packages, please follow the instructions in the README file.
+
+In case of an error, first check that you have opened the correct root folder in your explorer, which should be *ENSAI-2A-complement-info-TP*.
 
 
-::: {.callout-important}
-Pour pour vérifier que tout fonctionne :
+### Database connection
 
-- [ ] lancez les tests unitaires du package business_object
-  - dans le terminal : `python -m pytest -v src/tests/test_business_object/`
-- [ ] lancez le main : `python src/main.py`
+To connect to a database, you'll need..., a database!
 
-S'il vous manque des packages, suivez les instructions du README.
-:::
+- [ ] Launch a *PostgreSQL* service
+- [ ] Copy the README, which contains the connection information 
 
+Now, we will store this connection information in the .env file:
 
-### Connexion à la BDD
+- [ ] Create file `.env` at the root of the repository
+- [ ] Fill in the values
 
-- [ ] Pour pouvoir vous connecter à votre base de données, renseignez les variables suivantes dans le fichier `.env` présent à la racine du dépôt :
-  ```{.txt filename=".env"}
-  POSTGRES_HOST=sgbd-eleves.domensai.ecole
-  POSTGRES_PORT=5432
-  POSTGRES_DATABASE=idxxxx
-  POSTGRES_USER=idxxxx
-  POSTGRES_PASSWORD=idxxxx
-  ```
-  - N'oubliez pas de remplacer *xxxx* par votre id
+```{.txt filename=".env"}
+POSTGRES_HOST=
+POSTGRES_PORT=5432
+POSTGRES_DATABASE=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+```
 
-Maintenant que la connexion est opérationnelle, initialisez votre base de données :
+These environment variables will be used by the *DBConnection* class to establish the connection with the database.
 
-- [ ] Lancez le script `utils/reset_database.py`
+Finally, we'll create the tables and insert some data:
+
+- [ ] Launch script `utils/reset_database.py`
 
 ::: {.callout-tip}
-Ce script va exécuter 2 fichiers *sql* :
+This script will execute two SQL files:
 
-- *data/init_db.sql* pour créer les tables
-- *data/pop_db.sql* pour insérer des données
+- *data/init_db.sql* to create the tables
+- *data/pop_db.sql* to insert data
 :::
 
-## Remise en jambes SQL
 
-- [ ] Ouvrez [DBeaver](https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html){target="_blank"}
 
-::: {.callout-caution title="Nombre de connexions limité"}
-Sur le réseau ENSAI, le nombre de connexions à votre base de données est limité.
+## Let's warm up with SQL
 
-Or par défaut, DBeaver utilise déjà 3 connexions, ce qui risque de vous poser des soucis lorsque vous essaierez de vous connecter depuis votre programme Python.
+- [ ] Open a *cloudBeaver* service
 
-La solution :
+Write the following three queries (they will be used later in the lab):
 
-- [ ] Dans DBeaver, allez dans le menu *Fenêtre* puis *Préférences*
-- [ ] Recherchez *Métadonnées* et décochez `Ouvrir une connexion séparée pour la lecture des métadonnées`
-- [ ] Recherchez *Editeur SQL* et décochez `Ouvrir une connexion séparée pour chaque éditeur`
-- [ ] Appliquez
+- [ ] List all Attacks, along with the name of the attack type
+- [ ] List all Pokemons, along with the name of the Pokemon type
+- [ ] List all of Pikachu's attacks
+
+::: {.callout-tip title="Tips and reminder"}
+- Tables are in the **tp** schema
+- Write Beautiful SQL Queries
+  - Line Breaks: Start each major clause on a new line
+  - Keyword Alignment: Align your keywords vertically
+  - Uppercase Keywords: Use uppercase for all SQL keywords
+
+```{.sql}
+SELECT *
+  FROM tp.pokemon p
+ WHERE p.hp > 80
+ ORDER BY p.speed DESC;
+```
 :::
 
-Écrivez les 3 requêtes suivantes (elle serviront pour la suite du TP) :
+To help you, here is the schema of the tables and their relationships.
 
-- [ ] Listez toutes les attaques, ainsi que le nom du type d'attaque 
-- [ ] Listez tous les pokemons, ainsi que le nom du type de Pokemon
-- [ ] Listez toutes les attaques de Pikachu 
-
-Pour vous aider, voici le schéma des tables et leurs relations
-
-![](./img/TP3 Schéma de BDD.png){width=80%}
+![](./img/TP4_schema_BDD.png)
 
 
 ## Data Access Objet (DAO)
 
-### Modélisation
+### Modelling
 
-Reprenons le diagramme de classe du TP2. Limitons nous à la partie "attaque" et réfléchissons où mettre une méthode qui permet de persister les attaques.
+Let's go back to the class diagram from TP2. Let's limit ourselves to the "attack" part.
 
 ```{mermaid}
 classDiagram
@@ -163,32 +184,35 @@ class AbstractAttack{
 	AbstractFormulaAttack--|>AbstractAttack
 	SpecialAttack--|>AbstractFormulaAttack
 	PhysicalAttack--|>AbstractFormulaAttack
-
-
 ```
 
-Vu que les attributs de nos attaques sont similaires, nous n'allons pas coder cela dans les classes spécifiques des attaques. Nous pourrions mettre les méthodes dans **AbstractAttack**. Ça fonctionnerait bien d'ailleurs. Nous aurions une classe unique avec nos méthodes pour interagir avec la base. Mais nous n'allons pas faire ça !
+- [ ] Think about where to put a method that allows attacks to persist (save in a table)
 
-Et là vous vous demandez : 
+Since the attributes of our attacks are similar, we won't code this functionality into the specific attack classes. 
 
->  :scream: Mais pourquoi ???
+We could put the methods in **AbstractAttack**. That would actually work fine, as we'd have a single class with our methods to interact with the database. But we're not going to do that!
 
-Et la réponse est :
 
-> :stuck_out_tongue: Car ça n'a aucun sens !
+And now you're asking yourself:
 
-Revenons sur la phrase : **faible couplage, forte cohésion**. Si nous mettons toutes les méthodes de persistance de nos attaques dans la classe **AbstractAttack**, nous allons avoir une classe qui :
+>  :scream: Why ???
 
-- :heavy_check_mark: Détermine le comportement des attaques. C'est exactement ce que l'on souhaite (**forte cohésion**).
-- :x: Détermine comment on persiste une attaque.
+And the answer is:
+
+> :stuck_out_tongue: Because it makes no sense!
+
+Let's go back to the phrase: low coupling, high cohesion. If we put all the persistence methods for our attacks in the **AbstractAttack** class, we'd have a class that:
+
+- :heavy_check_mark: Determines the behavior of attacks. This is exactly what we want (high cohesion).
+- :x: Determines how an attack is persisted
 
 ::: {.callout-important}
-Mais ça, ce n'est pas de la responsabilité d'une attaque, mais du système de persistance choisi, ou du moins de l'intermédiaire entre nos objets et le système de persistance ! 
+This is not an attack's responsibility; it belongs to the chosen persistence system, or at least the intermediary between our objects and that system! 
 :::
 
-Je n'ai personnellement pas envie d'aller modifier ma classe **AbstractAttack** uniquement car j'ai décidé de changer de système de gestion de la persistance. Je risque de modifier quelque chose que je ne devrais pas et créer des régressions (i.e. faire apparaitre des erreurs sur un code qui n'en avait pas avant). Or j'aimerais bien limiter les sources d'erreurs.
+Personally, I don't want to have to modify my AbstractAttack class just because I've decided to change the persistence management system. I risk modifying something I shouldn't and creating regressions (i.e., making errors appear in code that didn't have them before). And I'd like to limit the sources of errors.
 
-À la place, nous allons créer une classe qui va s'occuper uniquement de cette tâche : une classe DAO (**Data Access Object**). C'est une [classe technique]{.underline} qui va faire **l'interface entre nos données stockées et notre application**. Voilà ce que cela donne en terme de diagramme de classe.
+Instead, we're going to create a class that is responsible for only this one task: a **DAO (Data Access Object)** class. This is a technical class that will act as the interface between our stored data and our application. Here's what that looks like in a class diagram.
 
 ```{mermaid}
 classDiagram
@@ -249,81 +273,84 @@ AttackDao..> DBConnection: use
 
 ```
 
-### Gestion des connexions et patern singleton
+### Connection management and Singleton pattern
 
-Pour vous connecter à la base de données nous allons utiliser la bibliothèque python [**psycopg2**](https://www.psycopg.org/docs/index.html){target="_blank"}. C'est elle qui va établir la connexion avec la base, envoyer nos requêtes et nous retourner les résultats. 
+To connect to the database, we'll use the Python library [**psycopg2**](https://www.psycopg.org/docs/index.html){target="_blank"}. This library will establish the connection with the database, send our queries, and return the results.
 
-Mais il faut faire un peu attention à la gestion des connexions. Car nous pourrions nous retrouver à ouvrir des centaines de connexions rapidement et dégrader les performances de notre application. C'est le travail de la classe **DBConnection**. Comme c'est un singleton, il y aura [une seule instance]{.underline} de cette classe dans toute notre application, et comme c'est elle qui se connecte à la base, nous nous assurons de l'unicité de la connexion.
+However, we need to be careful with connection management, as we could quickly open hundreds of connections and degrade our application's performance. 
+
+This is the job of the **DBConnection** class. Since it's a singleton, there will be [only one instance]{.underline} of this class in our entire application, and since it's the one that connects to the database, we ensure the connection's uniqueness.
+
 
 ::: {.callout-tip}
-Cette classe est une solution purement technique, alors n'hésitez pas à la réutiliser pour votre projet. Elle introduit un concept avancé de POO, à savoir les méta classes. 
+This class is a purely technical solution, so feel free to reuse it for your project. It introduces an advanced concept in OOP: metaclasses.
 
-Une **méta classe** permet de modifier le comportement d'une classe à un niveau poussé (par exemple modifier comment les objets sont construits par Python). À moins que vous ayez une appétence toute particulière pour l'informatique, ne passez pas de temps sur ce sujet.
+A **metaclass** allows you to modify a class's behavior at a deep level (for example, altering how objects are constructed by Python). Unless you have a specific passion for computer science, don't spend time on this topic.
 :::
 
 
 
-### DAO et CRUD
+### DAO and CRUD
 
-Si vous faites attention, les méthodes de notre DAO ressemblent à celles du *CRUD*. C'est normal car c'est dans ces méthodes que le code SQL va être stocké.
+If you look closely, our DAO's methods resemble those of **CRUD**. This is normal, as these methods will store the SQL code.
 
-Les méthodes de base sont généralement :
+The basic methods are generally:
 
-- `find_all()` : qui va retourner toute la table.
-- `find_by_id()` : qui retourne un enregistrement à partir de son id
-- `create()` : qui crée un nouvel enregistrement
-- `delete()` : qui supprime un enregistrement
-- `update()` : qui met à jour un enregistrement
+- `find_all()`: which will return the entire table
+- `find_by_id()`: which returns a record based on its id
+- `create()`: which creates a new record
+- `delete()`: which deletes a record
+- `update()`: which updates a record
 
-Ces 5 méthodes suffisent pour communiquer avec votre base de données. Vous pouvez effectuer le reste des traitements dans vos classes **Service** (conseillé). Cependant, rien ne vous empêche de créer des méthodes plus complexes (ex : *find_by_type_and_level_order_by_name_desc()*)
+These 5 methods are enough to communicate with your database. You can perform the rest of the processing in your **Service** classes (recommended). However, nothing prevents you from creating more complex methods (e.g., *find_by_type_and_level_order_by_name_desc()*).
 
-Voici la fonctionnement général d'une des méthodes de la DAO :
+Here is the general operation of one of the DAO methods:
 
-```{.python filename="une_classe_dao.py"}
+```{.python filename="a_dao_class.py"}
 from dao.db_connection import DBConnection
 
-class UneClasseDAO(metaclass=Singleton):
+class ADaoClass(metaclass=Singleton):
 
-	def une_methode_dao():
+    def a_dao_method(self, optional_param):
 
-		# Etape 1 : On récupère la connexion en utilisant la classe DBConnection.
-		with DBConnection().connection as connection :
-		
-			# Etape 2 : à partir de la connexion on crée un curseur pour la requête 
-			with connection.cursor() as cursor : 
-			
-		   		# Etape 3 : on exécute notre requête SQL
-		    	cursor.execute(requete_sql)
+        # Step 1: We get the connection using the DBConnection class.
+        with DBConnection().connection as connection:
+        
+            # Step 2: From the connection, we create a cursor for the query.
+            with connection.cursor() as cursor: 
+            
+                # Step 3: We execute our SQL query.
+                cursor.execute("SQL query using an optional parameter")
 
-		    	# Etape 4 : on stocke le résultat de la requête
-		    	res = cursor.fetchall()
+                # Step 4: We store the query result.
+                res = cursor.fetchall()
 
-		if res:
-		    # Etape 5 : on agence les résultats selon la forme souhaitée (objet, liste...)
+        if res:
+            # Step 5: We format the results into the desired shape (object, list...).
 
-		return something
+        return something
 ```
 
-L'objet *cursor* contient un pointeur vers les résultats de votre requête. Ce résultat n'est pas encore rapatrié sur votre machine, mais est stocké par la base de données. Vous avez 3 méthodes pour récupérer le résultat :
+The *cursor* object holds a pointer to the results of your query. This result isn't yet on your machine; it's still stored by the database. You have three methods to retrieve the results:
 
-- `cursor.fetchone()` : retourne uniquement un enregistrement sous forme de dictionnaire
-  - Si vous appelez de nouveau *fetchone()* sur le même curseur vous obtiendrez la ligne suivante
-- `cursor.fetchall()` : retourne l'intégralité des résultats sous forme d'une liste de dictionnaires
-  - Les dictionnaires sont les lignes de la table récupérée. 
-  - Les clés du dictionnaire sont les colonnes récupérées. 
-  - Cette méthode fonctionne très bien pour avoir tous les résultats en une fois et qu'il y en a peu. Quand on a des millions d'enregistrements cela va poser problème car :
-    - Le transfert de données sur internet va prendre du temps et bloquer notre application
-    - Notre application va devoir gérer une grande quantité de données, et elle en est peut-être incapable
-- `cursor.fetchmany(size)`: retourne autant d'enregistrements que demandé sous forme d'une liste de dictionnaires. Cela permet de contrôler le volume de données que l'on traite. Si vous appelez de nouveau *fetchmany(size)* sur votre curseur, vous allez récupérer les lignes suivantes (système de pagination)
+- `cursor.fetchone()`: Returns a single record as a dictionary.
+  - If you call *fetchone()* again on the same cursor, you'll get the next row.
+- `cursor.fetchall()`: Returns all results as a list of dictionaries.
+  - The dictionaries are the rows from the retrieved table.
+  - The dictionary keys are the retrieved columns.
+  - This method works well when you want all results at once and there are only a few of them. When you have millions of records, this will cause problems because:
+    - The data transfer over the internet will take time and block your application.
+    - Your application may be unable to handle such a large amount of data.
+- `cursor.fetchmany(size)`: Returns the requested number of records as a list of dictionaries. This lets you control the volume of data you're processing. If you call *fetchmany(size)* again on your cursor, you'll retrieve the next set of rows (a pagination system).
 
 
-Exemples de données retournées (requête du curseur : `SELECT * FROM tp.attack;`):  
+Examples of returned data (cursor query: `SELECT * FROM tp.attack;`):  
 
 :::{.panel-tabset .nav-pills}
 
 #### fetchone
 
-Un dictionnaire
+A single dictionary
 
 ```{.python}
 {"id_attack": 2, "id_attack_type": 3, "power": 20, "accuracy": 100, "element": "Grass", "attack_name": "Absorb"}
@@ -331,7 +358,7 @@ Un dictionnaire
 
 #### fetchall
 
-Une liste de dictionnaires
+A list of dictionaries
 
 ```{.python}
 [
@@ -345,91 +372,97 @@ Une liste de dictionnaires
 :::
 
 
-Pour plus d'informations : [article de pynative](https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/){target="_blank"}
+For more information: [Pynative article](https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/){target="_blank"}
 
 
-::: {.callout-tip title="Objectif"}
-Comme pour les données des webservices, l'objectif va être de convertir ces données en objets métiers.
+::: {.callout-tip title="Goal"}
+Just like with data from web services, the goal will be to convert this data into business objects.
 :::
 
 
-## Premières DAO
+## First DAOs
 
-### DAO avec des types d'attaques
+### DAO with Attack Types
 
-- [ ] Observez le fonctionnement de la classe **TypeAttackDAO**
-  - cela va vous être utile pour la suite
+- [ ] Observe how the **TypeAttackDAO** class works.
+  - This will be useful for the next steps.
 
-Dans la classe **AttackDao**, créez les méthodes suivantes :
+In the **AttackDao** class, create the following methods:
 
-- [ ] *find_attack_by_id(id:int) -> Optional[AbsractAttack]* : retourne l'attaque avec l'id en paramètre ou retourne None si l'attaque n'est pas trouvée.
-- [ ] *find_all_attacks() -> List[AbsractAttack]* : retourne la liste de toutes les attaques
-  - [Bonus]{.underline} : ajoutez à cette méthode les paramètres *limit* et *offset*
-- [ ] *update_attack(attack : AbstractAttack) -> bool* : met à jour les données de l'attaque passée en paramètre et retourne si la modification s'est bien passée
+- [ ] *find_attack_by_id(id:int) -> AbsractAttack*: returns the attack with the given ID or `None` if the attack is not found
+- [ ] *find_all_attacks() -> List[AbsractAttack]*: returns a list of all attacks
+  - [Bonus]{.underline}: add `limit` and `offset` parameters to this method
+- [ ] *update_attack(attack : AbstractAttack) -> bool*: updates the data of the attack passed as a parameter and returns whether the modification was successful
 
-::: {.callout-tip title="Quelques conseils"}
-- Dans les 2 méthodes *find*, pour créer nos objets métier **Attack**
-  - nous avons besoin de connaitre le nom du type d'attaque
-  - or il n'y a pas cette colonne dans la table *attaque*
-  - mais peut-être avez-vous déjà une requête qui fait le job ?
-- Utilisez la classe **AttackFactory** pour instancier facilement des objets métier **Attack**
-- Pensez à faire des tests pour voir si votre code fonctionne
+::: {.callout-tip}
+- In the 2 *find* methods, to create our **Attack** business objects:
+  - We need to know the attack type's name.
+  - However, this column doesn't exist in the *attack* table.
+  - But perhaps you already have a query that does the job?
+- Use the **AttackFactory** class to easily instantiate **Attack** business objects
+- Remember to run tests to see if your code works
 :::
 
 
-### Pokémon DAO
+### Pokemon DAO
 
 
-Créez la classe **PokémonDAO** avec les méthodes suivantes :
+Create the **PokemonDAO** class with the following methods:
 
-- [ ] *find_all_pokemon()->List[AbstractPokemon]* : retourne tous les pokémons dans la base
-- [ ] *find_pokemon_by_name(name:str)->AbstractPokemon* : retourne un pokémon avec le nom donné
-- [ ] Complétez la méthode ci-dessus en incorporant la liste des attaques du *Pokemon* :
-  - Faites une requête en joignant les tables `attack` et `pokemon_attack` en filtrant avec l'id du pokémon
-  - Générez les attaques à partir de là
+- [ ] *find_all_pokemon()->List[AbstractPokemon]*: returns all Pokemon in the database
+- [ ] *find_pokemon_by_name(name:str)->AbstractPokemon*: returns a Pokemon with the given name
+- [ ] Complete the method above by incorporating the list of a *Pokemon's* attacks:
+  - Make a query by joining the `attack` and `pokemon_attack` tables, filtering with the Pokemon's ID
+  - Generate the attacks from that data
 
 
-## DAO et webservice
+## DAO and Webservice
 
-Vous allez maintenant rendre accessible les données de votre base à d'autres utilisateurs en réalisant un webservice REST. 
+You will now make your database data accessible to other users by creating a REST webservice.
 
-Ajoutez dans le fichier `app.py` les endpoints suivants :
+Add the following endpoints to the `app.py` file:
 
-```{.python}
-# Défintion du endpoint get /attack?limit=100
+```{.python filename="app.py"}
 @app.get("/attack/")
-async def get_all_attacks(limit:int):
-    # TODO: récupérer les attaques en base en utilisant votre DAO
+async def get_all_attacks():
+	"""GET /attack/"""
+    # TODO: retrieve attacks from the database using your DAO
     return attacks
 
-# Défintion du endpoint get /pokemon?limit=100
 @app.get("/pokemon/")
 async def get_all_pokemons(limit:int):
-    # TODO: récupérer les pokemons en base en utilisant votre DAO
+    # TODO: retrieve pokemons from the database using your DAO
     return pokemons
 
-# Défintion du endpoint get /pokemon`/{name}
 @app.get("/pokemon/{name}")
 async def get_pokemon_by_name(name:str):
-    # TODO: récupérer le pokemon en base en utilisant votre DAO
+	"""GET /pokemon/<name>"""
+    # TODO: retrieve the pokemon from the database using your DAO
     return pokemon
 ```
 
-- `GET localhost:80/attack?limit=100` renverra une liste de 100 attaques par défaut. Il est possible de moduler cette valeur via le paramètre de requête `limit`
-- `GET localhost:80/pokemon?limit=100`. Il renverra une liste de 100 *Pokemons* par défaut, mais peut être modulé avec le paramètre de requête `limit`. 
-- `GET localhost:80/pokemon/{nom}`. Il renverra un json représentant un *Pokemon*.
+- `GET localhost:80/attack?limit=100` will return a list of all attacks
+- `GET localhost:80/pokemon?limit=100`. It will return a list of 100 *Pokemons* by default, but can be adjusted with the `limit` query parameter
+- `GET localhost:80/pokemon/{name}`. It will return a JSON representing a *Pokemon*
 
-Pour retourner des objets, vous allez devoir définir des classes héritant de `BaseModel`. Vous trouverez toutes les infos dans la documentation de [FastAPI](https://fastapi.tiangolo.com/tutorial/body/){target="_blank"}.
+To return objects, you will need to define classes inheriting from `BaseModel`. You'll find all the information you need in the [FastAPI documentation](https://fastapi.tiangolo.com/tutorial/body/){target="_blank"}.
 
 
 ## Conclusion {.unnumbered}
 
-Dans ce TP vous avez implémenté votre première DAO. 
+In this lab, you implemented your first DAO.
 
-C'est une classe technique qui sert à communiquer avec votre système de persistance de données. L'avantage premier de faire une classe à part est de découpler au maximum la gestion du système de persistance et le code métier de votre application. 
+It's a technical class used to communicate with your data persistence system. The primary advantage of creating a separate class is to decouple the management of the persistence system and your application's business logic as much as possible.
 
-Si vous décidez d'arrêter d'utiliser une base de données relationnelle et préférez désormais une base de données *NoSQL* vous allez devoir changer uniquement les classes DAO tout en exposant toujours les mêmes méthodes.
+If you decide to stop using a relational database and switch to a *NoSQL* database instead, you'll only need to change the DAO classes while still exposing the same methods.
 
-::: {.callout-note}
-Si vous souhaitez voir la version finale, positionnez-vous sur la branche `tp5-correction` et lancez le main.
+
+## End of the Lab {.unnumbered}
+
+::: {.callout-important}
+- [ ] Push your code to GitHub
+  - if your VSCode service dies, your code will not be lost
+  - on Datalabs, there is no guarantee of the lifespan of your services
+- [ ] Pause or delete your datalab services
+  - to free up reserved resources
 :::

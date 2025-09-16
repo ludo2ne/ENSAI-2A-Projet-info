@@ -420,7 +420,7 @@ To avoid conflicts, get organised with your team to avoid working on the same fi
 A team member :
 
 - [ ] Creates a remote repository on GitHub ([new Repository](https://github.com/new){target="_blank"})
-  - Repository name: for example *ENSAI-Projet-info-2A*.
+  - Repository name: for example `Projet-info-2A-equipe-<team_number>`.
   - Public or Private, as you wish
   - Check *Add a README file*.
   - .gitignore : *Python*
