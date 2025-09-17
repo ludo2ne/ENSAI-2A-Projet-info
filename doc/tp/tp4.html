@@ -460,7 +460,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#first-daos" id="toc-first-daos" class="nav-link" data-scroll-target="#first-daos"><span class="header-section-number">4</span> First DAOs</a>
   <ul class="collapse">
   <li><a href="#dao-with-attack-types" id="toc-dao-with-attack-types" class="nav-link" data-scroll-target="#dao-with-attack-types"><span class="header-section-number">4.1</span> DAO with Attack Types</a></li>
-  <li><a href="#pokemon-dao" id="toc-pokemon-dao" class="nav-link" data-scroll-target="#pokemon-dao"><span class="header-section-number">4.2</span> Pokemon DAO</a></li>
+  <li><a href="#unit-tests" id="toc-unit-tests" class="nav-link" data-scroll-target="#unit-tests"><span class="header-section-number">4.2</span> Unit tests</a></li>
+  <li><a href="#pokemon-dao" id="toc-pokemon-dao" class="nav-link" data-scroll-target="#pokemon-dao"><span class="header-section-number">4.3</span> Pokemon DAO</a></li>
   </ul></li>
   <li><a href="#dao-and-webservice" id="toc-dao-and-webservice" class="nav-link" data-scroll-target="#dao-and-webservice"><span class="header-section-number">5</span> DAO and Webservice</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
@@ -715,22 +716,32 @@ Tip
 <li><label><input type="checkbox">Please note username and password before opening the service</label></li>
 <li><label><input type="checkbox">In the explorer at the top left, click on <code>PostreSQL@postgresql</code> to open the connection</label>
 <ul>
-<li>a small green dot appears <span class="emoji" data-emoji="green_circle">🟢</span></li>
+<li><span class="emoji" data-emoji="green_circle">🟢</span> a small green dot appears</li>
 </ul></li>
 <li><label><input type="checkbox">Open a SQL Editor</label></li>
 </ul>
 <p>Usually, the PostgreSQL database is detected automatically.</p>
-<div class="callout callout-style-default callout-caution callout-empty-content callout-titled" title="If the connection is not established">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-caution callout-titled" title="If the connection is not established">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Caution</span>If the connection is not established
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<ul class="task-list">
+<li><label><input type="checkbox">Click on icon +, then New connection PostgreSQL</label></li>
+<li><label><input type="checkbox">Fill Host, database=defautldb, port=5432, username, password</label>
+<ul>
+<li>See PostgreSQL service README to retrieve values</li>
+</ul></li>
+<li><label><input type="checkbox">Test and Create connection</label></li>
+</ul>
+</div>
 </div>
 </div>
 <p>Write the following three queries (they will be used later in the lab):</p>
@@ -1048,12 +1059,19 @@ Tip
 </ul>
 <p>In the <strong>AttackDao</strong> class, create the following methods:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><em>find_attack_by_id(id:int) -&gt; AbsractAttack</em>: returns the attack with the given ID or <code>None</code> if the attack is not found</label></li>
-<li><label><input type="checkbox"><em>find_all_attacks() -&gt; List[AbsractAttack]</em>: returns a list of all attacks</label>
+<li><label><input type="checkbox"><em>find_attack_by_id(id:int) -&gt; AbsractAttack</em></label>
 <ul>
+<li>returns the attack with the given ID or <code>None</code> if the attack is not found</li>
+</ul></li>
+<li><label><input type="checkbox"><em>find_all_attacks() -&gt; List[AbsractAttack]</em></label>
+<ul>
+<li>returns a list of all attacks</li>
 <li><u>Bonus</u>: add <code>limit</code> and <code>offset</code> parameters to this method</li>
 </ul></li>
-<li><label><input type="checkbox"><em>update_attack(attack : AbstractAttack) -&gt; bool</em>: updates the data of the attack passed as a parameter and returns whether the modification was successful</label></li>
+<li><label><input type="checkbox"><em>update_attack(attack : AbstractAttack) -&gt; bool</em></label>
+<ul>
+<li>updates an attack passed as a parameter and returns whether the modification was successful</li>
+</ul></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1073,17 +1091,54 @@ Tip
 <li>But perhaps you already have a query that does the job?</li>
 </ul></li>
 <li>Use the <strong>AttackFactory</strong> class to easily instantiate <strong>Attack</strong> business objects</li>
-<li>Remember to run tests to see if your code works</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="pokemon-dao" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="pokemon-dao"><span class="header-section-number">4.2</span> Pokemon DAO</h3>
+<section id="unit-tests" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="unit-tests"><span class="header-section-number">4.2</span> Unit tests</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Create class <strong>TestAttackDao</strong> copying this code</label></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_attack_dao.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="test_attack_dao.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dao.attack_dao <span class="im">import</span> AttackDao</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestAttackDao:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_find_attack_by_id_ok(<span class="va">self</span>):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        existing_id_attack <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        attack <span class="op">=</span> AttackDao().find_attack_by_id(existing_id_attack)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> attack <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> attack.<span class="bu">id</span> <span class="op">==</span> existing_id_attack</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a test for method <em>add_attack()</em></label></li>
+<li><label><input type="checkbox">Create a test for method <em>update_attack()</em></label></li>
+<li><label><input type="checkbox">in cloudBeaver, run <code>SELECT * FROM tp.attack ORDER BY id_attack DESC;</code></label></li>
+<li><label><input type="checkbox">What’s wrong?</label>
+<ul>
+<li>any ideas to prevent this behaviour?</li>
+</ul></li>
+</ul>
+</section>
+<section id="pokemon-dao" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="pokemon-dao"><span class="header-section-number">4.3</span> Pokemon DAO</h3>
 <p>Create the <strong>PokemonDAO</strong> class with the following methods:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><em>find_all_pokemon()-&gt;List[AbstractPokemon]</em>: returns all Pokemon in the database</label></li>
-<li><label><input type="checkbox"><em>find_pokemon_by_name(name:str)-&gt;AbstractPokemon</em>: returns a Pokemon with the given name</label></li>
+<li><label><input type="checkbox"><em>find_all_pokemon()-&gt;List[AbstractPokemon]</em></label>
+<ul>
+<li>returns all Pokemon in the database</li>
+</ul></li>
+<li><label><input type="checkbox"><em>find_pokemon_by_name(name:str)-&gt;AbstractPokemon</em></label>
+<ul>
+<li>returns a Pokemon with the given name</li>
+</ul></li>
 <li><label><input type="checkbox">Complete the method above by incorporating the list of a <em>Pokemon’s</em> attacks:</label>
 <ul>
 <li>Make a query by joining the <code>attack</code> and <code>pokemon_attack</code> tables, filtering with the Pokemon’s ID</li>
@@ -1096,33 +1151,37 @@ Tip
 <h2 data-number="5" class="anchored" data-anchor-id="dao-and-webservice"><span class="header-section-number">5</span> DAO and Webservice</h2>
 <p>You will now make your database data accessible to other users by creating a REST webservice.</p>
 <p>Add the following endpoints to the <code>app.py</code> file:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>GET attack?limit=100</code> will return a list of all attacks</label></li>
+<li><label><input type="checkbox"><code>GET pokemon?limit=100</code>. It will return a list of 100 <em>Pokemons</em> by default, but can be adjusted with the <code>limit</code> query parameter</label></li>
+<li><label><input type="checkbox"><code>GET pokemon/{name}</code>. It will return a JSON representing a <em>Pokemon</em></label></li>
+</ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>app.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="app.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/attack/"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_attacks():</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""GET /attack/"""</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve attacks from the database using your DAO</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> attacks</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_pokemons(limit:<span class="bu">int</span>):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve pokemons from the database using your DAO</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemons</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_pokemon_by_name(name:<span class="bu">str</span>):</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""GET /pokemon/&lt;name&gt;"""</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve the pokemon from the database using your DAO</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="app.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/attack/"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_attacks():</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""GET /attack/"""</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve attacks from the database using your DAO</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> attacks</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_all_pokemons(limit:<span class="bu">int</span>):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve pokemons from the database using your DAO</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemons</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/pokemon/</span><span class="sc">{name}</span><span class="st">"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_pokemon_by_name(name:<span class="bu">str</span>):</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""GET /pokemon/&lt;name&gt;"""</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: retrieve the pokemon from the database using your DAO</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pokemon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<ul>
-<li><code>GET localhost:80/attack?limit=100</code> will return a list of all attacks</li>
-<li><code>GET localhost:80/pokemon?limit=100</code>. It will return a list of 100 <em>Pokemons</em> by default, but can be adjusted with the <code>limit</code> query parameter</li>
-<li><code>GET localhost:80/pokemon/{name}</code>. It will return a JSON representing a <em>Pokemon</em></li>
-</ul>
 <p>To return objects, you will need to define classes inheriting from <code>BaseModel</code>. You’ll find all the information you need in the <a href="https://fastapi.tiangolo.com/tutorial/body/" target="_blank">FastAPI documentation</a>.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Launch the app using the port you opened</label></li>
+<li><label><input type="checkbox">Test your web service</label></li>
+</ul>
 </section>
 <section id="conclusion" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
