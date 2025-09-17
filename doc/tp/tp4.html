@@ -110,6 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -438,7 +439,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a>
+  <ul class="collapse">
+  <li><a href="#last-tp" id="toc-last-tp" class="nav-link" data-scroll-target="#last-tp">Last TP</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  </ul></li>
   <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment"><span class="header-section-number">1</span> Setting Up Your Environment</a>
   <ul class="collapse">
   <li><a href="#launch-vscode" id="toc-launch-vscode" class="nav-link" data-scroll-target="#launch-vscode"><span class="header-section-number">1.1</span> Launch VScode</a></li>
@@ -505,26 +510,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
 <p><span class="emoji" data-emoji="scream">😱</span> As you can see, the subject of this practical assignment is also quite extensive. Don’t let that scare you.</p>
 <p>It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Objectives">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="last-tp" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="last-tp">Last TP</h3>
+<p>Last week, you primarily queried web services:</p>
+<ul>
+<li>Your application acted as a client <span class="emoji" data-emoji="arrow_right">➡️</span> it sent HTTP requests to a web service</li>
+<li>The web service responded with JSON payloads</li>
+<li>You then converted that JSON into Python business objects</li>
+</ul>
+<div style="background-color: #d7e5ecff;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant WS as WebService
+    participant Client as AttackClient
+    participant Factory as AttackFactory
+    participant Attack as Attack Business Object
+
+    Note over Client: Method get_attack(id=1) called
+    Note over Attack: FixedDamageAttack or&lt;br/&gt;PhysicalFormulaAttack or&lt;br/&gt;SpecialFormulaAttack
+
+    Client-&gt;&gt;WS: GET /attack/1
+    WS--&gt;&gt;Client: JSON &lt;br/&gt;{id:1,&lt;br/&gt; attack_type:"special attack",&lt;br/&gt; power:195, ...}
+    Client-&gt;&gt;Factory: instantiate_attack(&lt;br/&gt;type="special attack", &lt;br/&gt;id=1, ...)
+    Factory-&gt;&gt;Attack: Create Attack object
+    Attack--&gt;&gt;Client: Attack instance returned
+    Client--&gt;&gt;Client: Returns attack to caller (or None if not found)
+</pre>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Objectives
+<p></p></figure><p></p>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Last week, you primarily queried web services to retrieve data in JSON format, which you then converted into Python business objects.</p>
-<p>Today, we’ll follow a similar principle. You’ll use the psycopg2 library to query a PostgreSQL database. You’ll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.</p>
+</div>
+</div>
+</section>
+<section id="objectives" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="objectives">Objectives</h3>
+<p>Today, we’ll follow a similar principle. You’ll use the <a href="https://pypi.org/project/psycopg2/" target="_blank">psycopg2</a> library to query a PostgreSQL database. You’ll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.</p>
 <p>In this lab, you will:</p>
 <ul>
 <li>Review fundamental relational database concepts</li>
 <li>Implement the Data Access Object (DAO) design pattern. This pattern helps separate data persistence logic from your business logic, making your application more modular and easier to maintain</li>
 <li>Test your program’s functionality with reproducible unit tests</li>
 </ul>
+<div style="background-color: #d7e5ecff;">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Dao as AttackDao
+    participant DB as PostgreSQL Database
+    participant Factory as AttackFactory
+    participant Attack as Attack Business Object
+
+    Note over Dao: method find_attack_by_id(id=1) called
+
+    Dao-&gt;&gt;DB: Connect to database
+    Dao-&gt;&gt;DB: SELECT *&lt;br/&gt; FROM attack&lt;br/&gt; WHERE id_attack=1
+    DB--&gt;&gt;Dao: {id:1,&lt;br/&gt;attack_type:"special attack",&lt;br/&gt;power:195,...}
+    Dao-&gt;&gt;Factory: instantiate_attack(type="special attack", id=1, ...)
+    Factory-&gt;&gt;Attack: Create Attack object
+    Attack--&gt;&gt;Dao: Attack instance returned
+    Dao--&gt;&gt;Dao: Return Attack (or None if not found)
+</pre>
+</div>
+<p></p></figure><p></p>
 </div>
 </div>
+</div>
+</div>
+</section>
 </section>
 <section id="setting-up-your-environment" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="setting-up-your-environment"><span class="header-section-number">1</span> Setting Up Your Environment</h2>
@@ -692,6 +752,7 @@ Tip
 <section id="modelling" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="modelling"><span class="header-section-number">3.1</span> Modelling</h3>
 <p>Let’s go back to the class diagram from TP2. Let’s limit ourselves to the “attack” part.</p>
+<div style="background-color: #d7e5ecff;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -738,6 +799,7 @@ class AbstractAttack{
 </div>
 </div>
 </div>
+</div>
 <ul class="task-list">
 <li><label><input type="checkbox">Think about where to put a method that allows attacks to persist (save in a table)</label></li>
 </ul>
@@ -771,6 +833,7 @@ Important
 </div>
 <p>Personally, I don’t want to have to modify my AbstractAttack class just because I’ve decided to change the persistence management system. I risk modifying something I shouldn’t and creating regressions (i.e., making errors appear in code that didn’t have them before). And I’d like to limit the sources of errors.</p>
 <p>Instead, we’re going to create a class that is responsible for only this one task: a <strong>DAO (Data Access Object)</strong> class. This is a technical class that will act as the interface between our stored data and our application. Here’s what that looks like in a class diagram.</p>
+<div style="background-color: #d7e5ecff;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -829,12 +892,13 @@ class DBConnection{
 +connection() Connection
 }
 
-AbstractAttack&lt;.. AttackDao: create
-AttackDao..&gt; DBConnection: use
+AbstractAttack&lt;.. AttackDao: create/find/update
+AttackDao..&gt; DBConnection: use to connect the database
 
 </pre>
 </div>
 <p></p></figure><p></p>
+</div>
 </div>
 </div>
 </div>
