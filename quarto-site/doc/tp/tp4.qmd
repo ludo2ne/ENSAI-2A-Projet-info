@@ -7,6 +7,8 @@ format:
     toc: true
     toc-location: left
     toc-expand: 3
+    mermaid:
+      theme: default
 from: markdown+emoji
 number-sections: true
 lightbox: true
@@ -19,10 +21,39 @@ lightbox: true
 
 It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.
 
-::: {.callout-note title="Objectives"}
-Last week, you primarily queried web services to retrieve data in JSON format, which you then converted into Python business objects.
+### Last TP {.unnumbered}
 
-Today, we'll follow a similar principle. You'll use the psycopg2 library to query a PostgreSQL database. You'll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.
+Last week, you primarily queried web services:
+
+- Your application acted as a client :arrow_right: it sent HTTP requests to a web service
+- The web service responded with JSON payloads
+- You then converted that JSON into Python business objects
+
+
+:::{style="background-color: #d7e5ecff;"}
+```{mermaid}
+sequenceDiagram
+    participant WS as WebService
+    participant Client as AttackClient
+    participant Factory as AttackFactory
+    participant Attack as Attack Business Object
+
+	Note over Client: Method get_attack(id=1) called
+	Note over Attack: FixedDamageAttack or<br/>PhysicalFormulaAttack or<br/>SpecialFormulaAttack
+
+    Client->>WS: GET /attack/1
+    WS-->>Client: JSON <br/>{id:1,<br/> attack_type:"special attack",<br/> power:195, ...}
+    Client->>Factory: instantiate_attack(<br/>type="special attack", <br/>id=1, ...)
+    Factory->>Attack: Create Attack object
+    Attack-->>Client: Attack instance returned
+    Client-->>Client: Returns attack to caller (or None if not found)
+```
+
+:::
+
+### Objectives {.unnumbered}
+
+Today, we'll follow a similar principle. You'll use the [psycopg2](https://pypi.org/project/psycopg2/){target="_blank"} library to query a PostgreSQL database. You'll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.
 
 
 In this lab, you will:
@@ -30,6 +61,26 @@ In this lab, you will:
 - Review fundamental relational database concepts
 - Implement the Data Access Object (DAO) design pattern. This pattern helps separate data persistence logic from your business logic, making your application more modular and easier to maintain
 - Test your program's functionality with reproducible unit tests
+
+
+:::{style="background-color: #d7e5ecff;"}
+```{mermaid}
+sequenceDiagram
+    participant Dao as AttackDao
+    participant DB as PostgreSQL Database
+    participant Factory as AttackFactory
+    participant Attack as Attack Business Object
+
+    Note over Dao: method find_attack_by_id(id=1) called
+
+    Dao->>DB: Connect to database
+    Dao->>DB: SELECT *<br/> FROM attack<br/> WHERE id_attack=1
+    DB-->>Dao: {id:1,<br/>attack_type:"special attack",<br/>power:195,...}
+    Dao->>Factory: instantiate_attack(type="special attack", id=1, ...)
+    Factory->>Attack: Create Attack object
+    Attack-->>Dao: Attack instance returned
+    Dao-->>Dao: Return Attack (or None if not found)
+```
 :::
 
 ## Setting Up Your Environment
@@ -148,6 +199,7 @@ To help you, here is the schema of the tables and their relationships.
 
 Let's go back to the class diagram from TP2. Let's limit ourselves to the "attack" part.
 
+:::{style="background-color: #d7e5ecff;"}
 ```{mermaid}
 classDiagram
 
@@ -185,6 +237,7 @@ class AbstractAttack{
 	SpecialAttack--|>AbstractFormulaAttack
 	PhysicalAttack--|>AbstractFormulaAttack
 ```
+:::
 
 - [ ] Think about where to put a method that allows attacks to persist (save in a table)
 
@@ -214,6 +267,7 @@ Personally, I don't want to have to modify my AbstractAttack class just because 
 
 Instead, we're going to create a class that is responsible for only this one task: a **DAO (Data Access Object)** class. This is a technical class that will act as the interface between our stored data and our application. Here's what that looks like in a class diagram.
 
+:::{style="background-color: #d7e5ecff;"}
 ```{mermaid}
 classDiagram
 
@@ -268,10 +322,11 @@ class DBConnection{
 +connection() Connection
 }
 
-AbstractAttack<.. AttackDao: create
-AttackDao..> DBConnection: use
+AbstractAttack<.. AttackDao: create/find/update
+AttackDao..> DBConnection: use to connect the database
 
 ```
+:::
 
 ### Connection management and Singleton pattern
 
