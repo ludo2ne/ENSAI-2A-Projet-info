@@ -8,7 +8,7 @@
 
 <meta name="author" content="Ludovic Deneuville">
 
-<title>Tools for labs – Projet info 2A</title>
+<title>Tools for labs and projects – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -404,8 +439,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a>
   <ul class="collapse">
   <li><a href="#open-folder" id="toc-open-folder" class="nav-link" data-scroll-target="#open-folder">Open Folder</a></li>
+  <li><a href="#autocompletion" id="toc-autocompletion" class="nav-link" data-scroll-target="#autocompletion">Autocompletion</a></li>
   </ul></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a>
+  <ul class="collapse">
+  <li><a href="#use-a-token" id="toc-use-a-token" class="nav-link" data-scroll-target="#use-a-token">Use a token</a></li>
+  </ul></li>
   <li><a href="#vm-ensai" id="toc-vm-ensai" class="nav-link" data-scroll-target="#vm-ensai">VM ENSAI</a></li>
   <li><a href="#personal-computer" id="toc-personal-computer" class="nav-link" data-scroll-target="#personal-computer">Personal computer</a></li>
   </ul>
@@ -421,7 +460,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tools for labs</h1>
+<h1 class="title">Tools for labs and projects</h1>
 </div>
 
 
@@ -576,6 +615,89 @@ Caution
 </div>
 </div>
 </section>
+<section id="autocompletion" class="level3">
+<h3 class="anchored" data-anchor-id="autocompletion">Autocompletion</h3>
+<p><em>code-server</em> (VSCode version used by datalabs) does not support Pylance, which normally provides autocompletion. 2 options for adding autocompletion:</p>
+<section id="option-1" class="level4">
+<h4 class="anchored" data-anchor-id="option-1">Option 1</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a virtual environment</label>
+<ul>
+<li><code>python -m venv venv</code></li>
+</ul></li>
+<li><label><input type="checkbox">CTRL + SHIFT + P</label>
+<ul>
+<li>Python: Select interpreter</li>
+<li>choose <em>venv</em></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="venv 101">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>venv 101
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When you install Python packages globally, everything gets mixed together.</p>
+<p>If one project needs Django 3.2 and another needs Django 5.0, they’ll conflict.</p>
+<p>Over time, your global Python also gets messy, with packages you don’t remember installing, and sharing your project becomes painful <span class="emoji" data-emoji="arrow_right">➡️</span> the classic “it works on my machine” problem.</p>
+<p>A <strong>venv</strong> solves this by creating a self-contained environment just for your project.</p>
+<ul>
+<li>create: <code>python -m venv venv</code></li>
+<li>activate: <code>source venv/bin/activate</code></li>
+</ul>
+<p>Inside this bubble, you can install any packages you want in any version you want, completely isolated from other projects.</p>
+<ul>
+<li>save dependencies for sharing: <code>pip freeze &gt; requirements.txt</code></li>
+<li>exit the venv: <code>deactivate</code></li>
+</ul>
+<p>To recreate the environment elsewhere:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="option-2" class="level4">
+<h4 class="anchored" data-anchor-id="option-2">Option 2</h4>
+<ul class="task-list">
+<li><label><input type="checkbox">install extension <strong>BasedPyright</strong></label></li>
+</ul>
+<p>To remove warnings:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a file at the root of your project: <code>pyrightconfig.json</code></label></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pyrightconfig.json</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="pyrightconfig.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"typeCheckingMode"</span><span class="fu">:</span> <span class="st">"off"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportMissingParameterType"</span><span class="fu">:</span> <span class="st">"none"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportImplicitRelativeImport"</span><span class="fu">:</span> <span class="st">"none"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">to hide inlay hints</label></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.vscode/settings.json</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename=".vscode/settings.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.callArgumentNames"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.variableTypes"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.functionReturnTypes"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
 </section>
 <section id="git" class="level2">
 <h2 class="anchored" data-anchor-id="git">Git</h2>
@@ -618,6 +740,25 @@ Caution
 </tr>
 </tbody>
 </table>
+<section id="use-a-token" class="level3">
+<h3 class="anchored" data-anchor-id="use-a-token">Use a token</h3>
+<p>If you don’t want to enter your <strong>GitHub</strong> credentials every time you interact with a repository, you can use a personal access token.</p>
+<p>This is particularly useful as it persists even after you’ve paused and resumed your <strong>VSCode</strong> service.</p>
+<ul>
+<li><strong>Prerequisite:</strong> You must have already created a <strong>Personal Access Token</strong> in GitHub and declared it on the datalab (see Lab 1 for instructions)</li>
+<li><strong>When cloning:</strong> Instead of using the standard clone URL, you embed the token directly into the command
+<ul>
+<li>replace <code>git clone https://github.com/&lt;username&gt;/&lt;reponame&gt;.git</code></li>
+<li>with <code>git clone https://$GIT_PERSONAL_ACCESS_TOKEN@github.com/&lt;username&gt;/&lt;reponame&gt;.git</code></li>
+</ul></li>
+<li><strong>To verify:</strong> After cloning, you can check that the remote URL now includes the token variable using the following command:
+<ul>
+<li><code>git remote -v</code></li>
+<li>GIT_PERSONAL_ACCESS_TOKEN is replaced by its value: <em>ghp_…</em></li>
+</ul></li>
+</ul>
+<p>Now, thanks to the token, you no longer need to enter your GitHub credentials, saving you time and effort.</p>
+</section>
 </section>
 <section id="vm-ensai" class="level2">
 <h2 class="anchored" data-anchor-id="vm-ensai">VM ENSAI</h2>
