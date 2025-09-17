@@ -168,13 +168,16 @@ This script will execute two SQL files:
 - [ ] Launch a *cloudBeaver* service
 - [ ] Please note username and password before opening the service
 - [ ] In the explorer at the top left, click on `PostreSQL@postgresql` to open the connection
-  - a small green dot appears :green_circle:
+  - :green_circle: a small green dot appears 
 - [ ] Open a SQL Editor
 
 Usually, the PostgreSQL database is detected automatically.
 
-::: {.callout-caution title="If the connection is not established"}
-
+::: {.callout-caution title="If the connection is not established" collapse="true"}
+- [ ] Click on icon +, then New connection PostgreSQL
+- [ ] Fill Host, database=defautldb, port=5432, username, password
+  - See PostgreSQL service README to retrieve values
+- [ ] Test and Create connection
 :::
 
 Write the following three queries (they will be used later in the lab):
@@ -454,10 +457,13 @@ Just like with data from web services, the goal will be to convert this data int
 
 In the **AttackDao** class, create the following methods:
 
-- [ ] *find_attack_by_id(id:int) -> AbsractAttack*: returns the attack with the given ID or `None` if the attack is not found
-- [ ] *find_all_attacks() -> List[AbsractAttack]*: returns a list of all attacks
+- [ ] *find_attack_by_id(id:int) -> AbsractAttack*
+  - returns the attack with the given ID or `None` if the attack is not found
+- [ ] *find_all_attacks() -> List[AbsractAttack]*
+  - returns a list of all attacks
   - [Bonus]{.underline}: add `limit` and `offset` parameters to this method
-- [ ] *update_attack(attack : AbstractAttack) -> bool*: updates the data of the attack passed as a parameter and returns whether the modification was successful
+- [ ] *update_attack(attack : AbstractAttack) -> bool*
+  - updates an attack passed as a parameter and returns whether the modification was successful
 
 ::: {.callout-tip}
 - In the 2 *find* methods, to create our **Attack** business objects:
@@ -465,8 +471,32 @@ In the **AttackDao** class, create the following methods:
   - However, this column doesn't exist in the *attack* table.
   - But perhaps you already have a query that does the job?
 - Use the **AttackFactory** class to easily instantiate **Attack** business objects
-- Remember to run tests to see if your code works
 :::
+
+### Unit tests
+
+- [ ] Create class **TestAttackDao** copying this code
+
+```{.python filename="test_attack_dao.py"}
+from dao.attack_dao import AttackDao
+class TestAttackDao:
+    def test_find_attack_by_id_ok(self):
+        # GIVEN
+        existing_id_attack = 1
+
+        # WHEN
+        attack = AttackDao().find_attack_by_id(existing_id_attack)
+
+        # THEN
+		assert attack is not None
+        assert attack.id == existing_id_attack
+```
+
+- [ ] Create a test for method *add_attack()*
+- [ ] Create a test for method *update_attack()*
+- [ ] in cloudBeaver, run `SELECT * FROM tp.attack ORDER BY id_attack DESC;`
+- [ ] What's wrong?
+  - any ideas to prevent this behaviour?
 
 
 ### Pokemon DAO
@@ -474,8 +504,10 @@ In the **AttackDao** class, create the following methods:
 
 Create the **PokemonDAO** class with the following methods:
 
-- [ ] *find_all_pokemon()->List[AbstractPokemon]*: returns all Pokemon in the database
-- [ ] *find_pokemon_by_name(name:str)->AbstractPokemon*: returns a Pokemon with the given name
+- [ ] *find_all_pokemon()->List[AbstractPokemon]*
+  - returns all Pokemon in the database
+- [ ] *find_pokemon_by_name(name:str)->AbstractPokemon*
+  - returns a Pokemon with the given name
 - [ ] Complete the method above by incorporating the list of a *Pokemon's* attacks:
   - Make a query by joining the `attack` and `pokemon_attack` tables, filtering with the Pokemon's ID
   - Generate the attacks from that data
@@ -486,6 +518,10 @@ Create the **PokemonDAO** class with the following methods:
 You will now make your database data accessible to other users by creating a REST webservice.
 
 Add the following endpoints to the `app.py` file:
+
+- [ ] `GET attack?limit=100` will return a list of all attacks
+- [ ] `GET pokemon?limit=100`. It will return a list of 100 *Pokemons* by default, but can be adjusted with the `limit` query parameter
+- [ ] `GET pokemon/{name}`. It will return a JSON representing a *Pokemon*
 
 ```{.python filename="app.py"}
 @app.get("/attack/")
@@ -506,11 +542,10 @@ async def get_pokemon_by_name(name:str):
     return pokemon
 ```
 
-- `GET localhost:80/attack?limit=100` will return a list of all attacks
-- `GET localhost:80/pokemon?limit=100`. It will return a list of 100 *Pokemons* by default, but can be adjusted with the `limit` query parameter
-- `GET localhost:80/pokemon/{name}`. It will return a JSON representing a *Pokemon*
-
 To return objects, you will need to define classes inheriting from `BaseModel`. You'll find all the information you need in the [FastAPI documentation](https://fastapi.tiangolo.com/tutorial/body/){target="_blank"}.
+
+- [ ] Launch the app using the port you opened
+- [ ] Test your web service
 
 
 ## Conclusion {.unnumbered}
