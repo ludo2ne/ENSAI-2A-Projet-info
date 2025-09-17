@@ -1,5 +1,5 @@
 ---
-title: "Tools for labs"
+title: "Tools for labs and projects"
 author: "Ludovic Deneuville"
 format:
   html:
@@ -87,6 +87,72 @@ To find out the current folder, look at the top left of the [explorer]{.underlin
 This choice is very important because imports between Python modules use relative paths.
 :::
 
+### Autocompletion
+
+*code-server* (VSCode version used by datalabs) does not support Pylance, which normally provides autocompletion. 2 options for adding autocompletion:
+
+
+#### Option 1
+
+- [ ] Create a virtual environment
+  - `python -m venv venv`
+- [ ] CTRL + SHIFT + P
+  - Python: Select interpreter
+  - choose *venv*
+
+::: {.callout-tip title="venv 101" collapse="true"}
+When you install Python packages globally, everything gets mixed together. 
+
+If one project needs Django 3.2 and another needs Django 5.0, they'll conflict. 
+
+Over time, your global Python also gets messy, with packages you don't remember installing, and sharing your project becomes painful :arrow_right: the classic "it works on my machine" problem.
+
+A **venv** solves this by creating a self-contained environment just for your project. 
+
+- create: `python -m venv venv`
+- activate: `source venv/bin/activate`
+
+Inside this bubble, you can install any packages you want in any version you want, completely isolated from other projects.
+
+- save dependencies for sharing: `pip freeze > requirements.txt`
+- exit the venv: `deactivate`
+
+To recreate the environment elsewhere:
+
+```{.bash}
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+
+:::
+
+#### Option 2
+
+- [ ] install extension **BasedPyright**
+
+To remove warnings:
+
+- [ ] Create a file at the root of your project: `pyrightconfig.json`
+
+```{.json filename="pyrightconfig.json"}
+{
+  "typeCheckingMode": "off",
+  "reportMissingParameterType": "none",
+  "reportImplicitRelativeImport": "none"
+}
+```
+
+- [ ] to hide inlay hints
+
+```{.json filename=".vscode/settings.json"}
+{
+  "basedpyright.analysis.inlayHints.callArgumentNames": false,
+  "basedpyright.analysis.inlayHints.variableTypes": false,
+  "basedpyright.analysis.inlayHints.functionReturnTypes": false
+}
+```
 
 ## Git
 
@@ -100,6 +166,25 @@ This choice is very important because imports between Python modules use relativ
 | `git push`                                               | Uploads local changes to a remote repository.                        |
 | `git pull`                                               | Merge changes from a remote to the local repository.                 |
 | `git switch <branch>`                                    | Switches to the specified branch.                                    |
+
+
+### Use a token
+
+If you don't want to enter your **GitHub** credentials every time you interact with a repository, you can use a personal access token. 
+
+This is particularly useful as it persists even after you've paused and resumed your **VSCode** service.
+
+
+- **Prerequisite:** You must have already created a **Personal Access Token** in GitHub and declared it on the datalab (see Lab 1 for instructions)
+- **When cloning:** Instead of using the standard clone URL, you embed the token directly into the command
+  - replace `git clone https://github.com/<username>/<reponame>.git`
+  - with `git clone https://$GIT_PERSONAL_ACCESS_TOKEN@github.com/<username>/<reponame>.git`
+- **To verify:** After cloning, you can check that the remote URL now includes the token variable using the following command:
+  - `git remote -v`
+  - GIT_PERSONAL_ACCESS_TOKEN is replaced by its value: *ghp_...*
+
+Now, thanks to the token, you no longer need to enter your GitHub credentials, saving you time and effort.
+
 
 ## VM ENSAI
 

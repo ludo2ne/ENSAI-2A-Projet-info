@@ -108,7 +108,7 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
   - `git switch tp4-base`
   - to ensure that everyone starts at the same level
 
-::: {.callout-tip title="If you don't have branch tp4-base"}
+::: {.callout-warning title="If you don't have branch tp4-base" collapse="true"}
 You will use this repo but you won't be able to push:
 
 - [ ] `git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
@@ -475,6 +475,8 @@ In the **AttackDao** class, create the following methods:
 
 ### Unit tests
 
+You will run unit test using: `pytest src/tests/test_dao/`
+
 - [ ] Create class **TestAttackDao** copying this code
 
 ```{.python filename="test_attack_dao.py"}
@@ -545,7 +547,7 @@ async def get_pokemon_by_name(name:str):
 To return objects, you will need to define classes inheriting from `BaseModel`. You'll find all the information you need in the [FastAPI documentation](https://fastapi.tiangolo.com/tutorial/body/){target="_blank"}.
 
 - [ ] Launch the app using the port you opened
-- [ ] Test your web service
+- [ ] Check your end points
 
 
 ## Conclusion {.unnumbered}
