@@ -165,7 +165,17 @@ This script will execute two SQL files:
 
 ## Let's warm up with SQL
 
-- [ ] Open a *cloudBeaver* service
+- [ ] Launch a *cloudBeaver* service
+- [ ] Please note username and password before opening the service
+- [ ] In the explorer at the top left, click on `PostreSQL@postgresql` to open the connection
+  - a small green dot appears :green_circle:
+- [ ] Open a SQL Editor
+
+Usually, the PostgreSQL database is detected automatically.
+
+::: {.callout-caution title="If the connection is not established"}
+
+:::
 
 Write the following three queries (they will be used later in the lab):
 
