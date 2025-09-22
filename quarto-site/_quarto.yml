@@ -58,6 +58,8 @@ website:
             text: TP 3
           - href: doc/tp/tp4.qmd
             text: TP 4
+          - href: doc/tp/tp5.qmd
+            text: TP 5
     right:
       - text: Divers
         menu:

@@ -1,176 +1,264 @@
 ---
-title: "Git et Création d'une IHM"
-description: "TP 4"
-author: "Rémi Pépin, Ludovic Deneuville"
+title: "Bonus: revise layer programming"
+description: "Lab 5"
+author: "Ludovic Deneuville"
 format:
   html:
     toc: true
     toc-location: left
     toc-expand: 3
+    mermaid:
+      theme: default
 from: markdown+emoji
 number-sections: true
+lightbox: true
 ---
 
-::: callout-note
-Ancien TP4 dont une partie du contenu a été déplacé au TP1.
+
+
+## Objectives{.unnumbered}
+
+For the moment, this application simply contains a list of players.
+
+The aim will be to create a feature that will allow players to register for tournaments.
+
+We will proceed step by step.
+
+
+## Before you start {.unnumbered}
+
+
+You will work on a fork or a copy of the repo [ENSAI-2A-projet-info-template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}.
+
+- [ ] Login to a Datalab
+- [ ] Launch a [**customised**]{.underline} VSCode service
+- [ ] Clone your repo
+- [ ] Open Folder *ENSAI-2A-projet-info-template*
+- [ ] Follow README instructions
+
+
+## Initialisation of views
+
+- [ ] In class **MenuJoueurVue**, add choice "S'inscrire à un tournoi"
+
+If this item is selected, you must now access the list of tournaments in a new view.
+
+- [ ] If this choice is selected redirect to a new view called **InscriptionTournoiVue**
+- [ ] Create view **InscriptionTournoiVue**
+
+It will display the list of tournaments and allow the user to choose which one they want to register for. 
+
+::: {.callout-note title="How to obtain the list of tournaments?"}
+- You will need a service method that returns the list of all tournaments
+  - **TournoiService**.*lister_tous() -> list[Tournoi]*
+- The list of tournaments will be available in the database
+  - a service method should not communicate directly with a database; that is the role of a DAO
+  - The dao method **TournoiDao**.*lister_tous() -> list[Tournoi]* will communicate with the database to transfer the list of tournaments to the service method
+- To transfer tournament lists, you must also create **Tournoi** business object
+:::
+
+Now we are beginning to get an idea of the methods and objects to create. 
+
+## Create the business object
+
+Let us begin by creating the **Tournoi** business object.
+
+Business objects mainly contain attributes and few methods. They are primarily used to transfer information between layers.
+
+- [ ] Create class business object **Tournoi**
+  - attributes: id_tournoi, nom, ville, capacite_max
+  - add a constructor with all attributes
+
+## Map it with a database table
+
+Usually, the business object class and its attributes correspond to the table and columns in the database.
+
+- [ ] Create table *Tournoi* (id_tournoi, nom, ville, capacite_max)
+
+Assuming that a player can participate in several tournaments and that a tournament can have several players, it is therefore necessary to create a table to keep track of which player is participating in which tournament.
+
+- [ ] Create table *inscription* (id_inscription, id_tournoi, id_joueur)
+- [ ] Insert data in these two tables
+
+::: {.callout-tip title="Tables" collapse="true"}
+```{.sql}
+CREATE TABLE tournoi (
+    id_tournoi     SERIAL PRIMARY KEY,
+    nom            VARCHAR(100) NOT NULL,
+    ville          VARCHAR(100) NOT NULL,
+    capacite_max   INT CHECK (capacite_max > 0)
+);
+
+CREATE TABLE inscription (
+    id_inscription SERIAL PRIMARY KEY,
+    id_tournoi     INT NOT NULL REFERENCES tournoi(id_tournoi),
+    id_joueur      INT NOT NULL REFERENCES joueur(id_joueur),
+    UNIQUE(id_tournoi, id_joueur) -- un joueur ne peut pas s inscrire deux fois au meme tournoi
+);
+```
+:::
+
+## DAO
+
+We now need the DAO method, which allows us to retrieve the list of tournaments from the database.
+
+- [ ] Create class **TournoiDao**
+- [ ] Create method *lister_tous() -> list[Tournoi]*
+
+
+## Service
+
+The view does not communicate directly with the DAO. It must request the service class.
+
+Even though in this case, the service method simply flat passes: it receives a tournament list and returns that same list.
+
+- [ ] Create class **TournoiService**
+- [ ] Create method *lister_tous() -> list[Tournoi]*
+
+
+## Back to the view
+
+Great, we now have a service method that allows us to obtain a list of all tournaments. We will display it so that players can choose.
+
+In view **InscriptionTournoiVue**:
+
+- [ ] Display all tournaments
+- [ ] Using [inquirerPy](https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html){target="_blank"}, allow the user to select a tournament using the keypad
+
+If they change their mind, players can also return to the previous menu without registering for any tournament.
+
+- [ ] Add this feature, and in this case, return to the view **MenuJoueurVue**
+
+
+::: {.callout-note title="If a tournament has been selected"}
+You will need to manage the registration:
+
+- **JoueurService**.*s_inscrire_tournoi(tournoi) -> bool*
+- This service must verify that the registration is valid
+- If so, a row will be created in the inscription table
+  - Therefore, the service will need to use the dao method **InscriptionDao**.*creer(joueur, tournoi) -> bool*
 :::
 
 
-## Bilan des trois premiers TP 
+## Methods needed
 
-Si l'on reprend le modèle en couches présenté en cours, voici ce que l'on a fait depuis le début des TP :
+- [ ] Create class **InscriptionDao**
+- [ ] In this class, create method *creer(joueur, tournoi) -> bool*
+- [ ] In class **JoueurService**, create method *s_inscrire_tournoi(tournoi) -> bool*
 
-![](img/TP4_couches.jpg)
+In this method we will call **InscriptionDao**.*creer(joueur, tournoi) -> bool*. 
 
-### La couche service
+This method requires two parameters:
 
-Actuellement notre couche service est bien maigre. En effet notre application n'a aucune logique métier. On a bien des objets métiers que l'on persiste mais aucune réelle application derrière. La raison à ce manque provient du fait que cette couche est la partie la plus longue à développer car elle contient la logique métier de l'application. 
+- *tournoi*: easy to get it, it is a parameter of calling method *s_inscrire_tournoi(tournoi)*
+- *joueur*: how to get it?
 
-Et le but de ces TP n'est pas de vous montrer comment faire une petit application type jeu Pokémon en console. Ils ont pour vocations à vous montrer une architecture de base en couche et vous présenter comment la réaliser. Dans votre projet, il est possible que ce soit la couche service qui vous demande le plus de travail.
+```{.python filename="joueur_service.py"}
+class JoueurService:
+    ...
 
----
+    def s_inscrire_tournoi(self, tournoi) -> bool:
 
-### La couche contrôleur
+        ...
 
-La notion de contrôleur apparait avec le design pattern *MVC* ([Model-View-Controler](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur)). Mais c'est un patron de conception beaucoup trop complexe pour faire un simple affichage en console. 
-
-À la place vous allez utiliser le patron *Model-View-Presenter* qui est plus simple car il reprend le principe de couches qui se succèdent.
-
-Il n'y aura donc pas de couche **Controleur** mais une couche **View** qui fera office d'IHM et appelera directement les services nécessaires.
-
----
-
-### La couche view
-
-Le fonctionnement est le suivant lorsque vous lancez l'application : 
-
-* vous arrivez sur une vue d'accueil qui propose différents choix
-* selon le choix, zéro, un ou plusieurs services sont appelés
-* puis vous arrivez vers une nouvelle vue (ou éventuellement resterez sur la même)
-
-Exemple : 
-
-* Vous êtes sur la **Vue d'accueil** et vous sélectionner `se connecter`
-* Vous basculez vers la **Vue de connexion**
-    * dans cette vue, on vous demande de saisir user et password
-    * une fois la saisie terminée, le **Service des utilisateur** va être appelé
-    * ce service a une méthode `verification_connexion()`
-        * cette méthode va appeler la **DAO Utilisateur** pour vérifier que l'utilisateur et son mot de passe existent bien en base de données
-* si la vérification est ok, vous basculez vers la **Vue Menu utilisateur** où va par exemple s'afficher la liste des actions autorisées
-* ...
-
----
-
-##  Une session pour les gouverner toutes
-
-Là vous pouvez vous dire : 
-
-* ok on va se balader de vues en vues, ça ça va
-* mais imaginons l'exemple suivant :
-    * on passe par la **Vue de connexion** et on se connecte avec l'utilisateur Michel
-    * on arrive sur la **Vue Menu utilisateur** et on se balade dans les différentes vues
-    * un peu plus tard, on arrive sur la **Vue d'ajout de Pokemon**, on sélectionne celui qui nous plait et on valide
-    * cela va aboutir à l'appel d'une méthode **DAO** du type `ajouter_pokemon(utilisateur, pokemon)`
-    * Cette méthode a 2 arguments
-        * pokemon : ok facile à récupérer, on vient juste avant de le sélectionner
-        * utilisateur : là c'est moins facile car la dernière fois qu'on avait l'objet utilisateur à portée c'était dans la Vue de connexion
-* Est-ce que une fois connecté, on doit passer l'utilisateur en paramètre de toutes les méthodes que l'on va appeler ?
-    * Heureusement NON, ce serait trop compliqué
-    * :bulb: c'est ici que l'objet **Session** va nous être utile
-
-Dans notre **Session**, nous allons pouvoir stocker des objets utiles, par exemple l'utilisateur actif. 
-
-Ainsi, une fois connecté, on stocke l'utilisateur en session et on peut se servir de cet objet à tout moment !
-
-Voici les liens entre notre `Session` et nos `Views` :
-
-```{mermaid}
-classDiagram
-
-class Session{
-	<<singleton>>
-	user_name : str
-	selected_pokemon : AbstractPokemon
-}
-
-class AbstractView{
-	<<abstract>>
-	+display_info()* None
-	+make_choice()* AbstractView
-}
-
-class StartView{
-	+display_info() None
-	+make_choice() AbstractView
-}
-
-class ListPokemonView{
-	+display_info() None
-	+make_choice() AbstractView
-}
-
-class ListAttackView{
-	+display_info() None
-	+make_choice() AbstractView
-}
-
-Session <..AbstractView: "use"
-
-AbstractView <|-- StartView
-AbstractView <|-- ListPokemonView
-AbstractView <|-- ListAttackView
+        succes = InscriptionDao.creer(joueur, tournoi)
 ```
 
-Toute nos `Views` vont hériter de la classe `AbstractView`. Cette classe va contenir deux méthodes abstraites :
+This is where the **Session** class comes into play.
 
-- `display_info()` : qui va juste déterminer l'affichage en console
-- `make_choice()` : qui va gérer les choix de l'utilisateur et l'envoyer vers une autre page.
+### Session
 
-En plus de cela nous allons gérer tous les attributs utilisés par les `View` dans un objet `Session` qui sera un singleton ce qui nous assurera que chaque accès à cet objet retourne la même instance et donc les mêmes valeurs stockées.
+When a player is logged in, we must have access to their information at all times.
 
-Cette architecture vous permet de séparer vos différents menu en fichiers séparés et d'avoir un fonctionnement simple car chaque menu retourne un autre menu simplement.
+This is the role of the Session class.
 
-:warning: La création de vos menus peut générer des problèmes de dépendances circulaires. En effet si la page A envoie sur la page B et la page B envoie sur la page A, en fonction de la façon dont vous gérez vos imports vous allez voir un problème de dépendances circulaires. Quand le problème se présentera voici 2 solutions possibles : 
+So we can get the player using **Session()**.*joueur*
 
-* remplacer `from X import Y` en `import Y as name`
-* déplacer vos imports dans la fonction qui en a besoin
+### Back to service method s_inscrire_tournoi()
 
-##  InquirerPy 
+- [ ] use Session class to get the current *Joueur*
 
-Pour nous faciliter la gestion de la console nous allons utiliser la bibliothèque python [InquirerPy](https://inquirerpy.readthedocs.io/en/latest/). Elle permet de créer facilement des applications interactives en console. Le projet est bien documenté avec plusieurs [exemples](https://github.com/kazhala/InquirerPy/tree/master/examples) de code, faciles à transposer.
+```{.python filename="joueur_service.py"}
+from view.session import Session
 
-* [ ] Lancez le `main.py` et testez un peu l'application
-* [ ] Regardez les fichiers du package **view** pour essayer de comprendre comment fonctionnent les vues. Le principe est toujours le même lorsque l'on arrive sur une nouvelle vue : 
-    * on répond aux questions demandées
-    * un traitement est éventuellement fait (appel à des services)
-    * on bascule vers une autre vue
+class JoueurService:
+    ...
 
+    def s_inscrire_tournoi(self, tournoi) -> bool:
 
-### Mes premières `View`
+        ...
 
-**✍Hand on 3**
-
-Répartissez vous le travail entre membre du groupe pour implémenter les `Views` suivantes :
-
-* Affichage Pokémon:
-  * [ ] `PokemonListView` : qui permet de visualiser 30 Pokémons sommairement. Il est possible de sélectionner un pokémon pour aller sur `PokemonDetailsView`.  Vous pouvez permettre un retour arrière sur la `StartView` si vous le souhaitez.
-  * [ ] `PokemonDetailsView` : qui affiche les détails du Pokémon sélectionné comme ses statistiques et ses attaques. Renvoie sur la `StartView` ou `PokemonListeView` en fonction du choix de l'utilisateur.
-* Affichage attaque:
-  * [ ] `AttackListView` :  qui permet de visualiser 50 attaques sommairement et d'en sélectionner une pour aller sur `AttackDetailsView`.  Vous pouvez permettre un retour arrière sur la `StartView`.
-  * [ ] `AttackDetailsView` : qui affiche les détails de l'attaque sélectionnée, comme par exemple ses caractéristiques (name, power, description), mais également quels sont les Pokémons qui peuvent l'apprendre. Renvoie sur la `StartView` ou `AttackListView` en fonction du choix de l'utilisateur.
-* [ ] `CreatePokemonView` : qui permet de créer un Pokémon et le mettre en session. Après validation de l'utilisateur on retourne sur `StartView`
+        joueur = Session().joueur
+        succes = InscriptionDao.creer(joueur, tournoi)
+```
 
 
+Great, we have everything we need to call the dao method to create an Inscription, but aren't there a few things we should check first?
 
-Quelques astuces :
+What if the player is already registered?
 
-- `PokemonService` dispose d'une méthode `get_pokemon_from_webservice(limit:int, offset:int)` pour récupérer des pokémons de la base
-- `AttackService` dispose d'une méthode `get_attacks_from_webservice(limit:int, offset:int)` pour récupérer des attaques de la base
-- de nombreux exemples sont disponibles sur la [doc InquirerPy](https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html)
+- [ ] Create method **InscriptionDao**.*est_inscrit(joueur,tournoi -> bool*
+- [ ] Use it in the service method
 
 
-Quand vous avez terminé une classe, faites un commit, puis poussez sur le dépôt distant.
+Now let's check that the tournament is not already full:
 
----
+- [ ] Create method **TournoiDao**.*est_complet(Tournoi) -> bool*
+- [ ] Use it in the service method
 
-Merci d'avoir participé et Vive les Pokemons !
+
+
+## Let's finish the view
+
+- [ ] Display a message to indicate whether the registration has been validated or not
+- [ ] Finally switch to the view **MenuJoueurVue**
+
+
+## To summarise the flows{.unnumbered}
+
+::: {.callout-tip title="If you have to create a webservice"}
+
+The principle would be broadly the same. You will need the same services, but instead of going through views:
+
+- create a endpoint `GET /tournament` to display the list
+- create a endpoint `POST /registration body: {player_id: ?, tournament_id: ?}`
+:::
+
+:::{style="background-color: #d7e5ecff;"}
+```{mermaid}
+sequenceDiagram
+    participant Vue
+    participant Service
+    participant Dao
+    participant BDD
+
+    Note over Vue: MenuJoueurVue
+    Vue->>Vue: Choice "S'inscrire à un tournoi"
+    Note over Vue: InscriptionTournoiVue
+    Vue->>Service: TournoiService.lister_tous()
+    Note over Service: TournoiService
+    Service->>Dao: TournoiDao.lister_tous()
+    Dao->>BDD: SELECT * FROM tournoi
+    BDD-->>Dao:  tournois JSON
+    Dao-->>Service: list[Tournoi]
+    Service-->>Vue: list[Tournoi]
+    Vue->>Vue: Affiche la liste, option Retour<br> Attend une sélection
+    Vue->>Service: JoueurService.s_inscrire_tournoi(tournoi)
+    Note over Service: JoueurService
+    Service->>Dao: InscriptionDao.est_inscrit(joueur,tournoi)
+    Dao->>BDD: SELECT COUNT(*)<br> FROM inscription<br> WHERE id_joueur=? <br>AND id_tournoi=?
+    BDD-->>Dao: true/false
+    Dao-->>Service: true/false
+    Service-->>Vue: if true, back to MenuJoueurVue
+    Service->>Dao: TournoiDao.est_complet(tournoi)
+    Dao->>BDD: SELECT FROM tournoi, inscription
+    BDD-->>Dao: true/false
+    Dao-->>Service: true/false
+    Service-->>Vue: if false, back to MenuJoueurVue
+    Service-->>Dao: InscriptionDao.creer(tournoi, joueur)
+    Dao->>BDD: INSERT INTO inscription
+    BDD-->>Dao: true/false
+    Dao-->>Service: true/false
+    Service-->>Vue: back to MenuJoueurVue
+```
+:::
