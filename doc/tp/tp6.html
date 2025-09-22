@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ludovic Deneuville, Rémi Pépin">
-<meta name="description" content="Slides">
+<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
+<meta name="description" content="TP 4">
 
-<title>Analyse fonctionnelle – Projet info 2A</title>
+<title>Git et Création d’une IHM – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -45,9 +45,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-3bfab430b3a0f1eddad8a0d61863e953.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-a2bfeeca8d941e7f328a7b92742c06b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,6 +72,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -400,15 +400,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
     <h2 id="toc-title">On this page</h2>
    
+  <ul>
+  <li><a href="#bilan-des-trois-premiers-tp" id="toc-bilan-des-trois-premiers-tp" class="nav-link active" data-scroll-target="#bilan-des-trois-premiers-tp"><span class="header-section-number">1</span> Bilan des trois premiers TP</a>
   <ul class="collapse">
-  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">Plan</a></li>
-  <li><a href="#analyse-fonctionnelle" id="toc-analyse-fonctionnelle" class="nav-link" data-scroll-target="#analyse-fonctionnelle">Analyse fonctionnelle</a></li>
-  <li><a href="#architecture-logicielle" id="toc-architecture-logicielle" class="nav-link" data-scroll-target="#architecture-logicielle">Architecture logicielle</a></li>
+  <li><a href="#la-couche-service" id="toc-la-couche-service" class="nav-link" data-scroll-target="#la-couche-service"><span class="header-section-number">1.1</span> La couche service</a></li>
+  <li><a href="#la-couche-contrôleur" id="toc-la-couche-contrôleur" class="nav-link" data-scroll-target="#la-couche-contrôleur"><span class="header-section-number">1.2</span> La couche contrôleur</a></li>
+  <li><a href="#la-couche-view" id="toc-la-couche-view" class="nav-link" data-scroll-target="#la-couche-view"><span class="header-section-number">1.3</span> La couche view</a></li>
+  </ul></li>
+  <li><a href="#une-session-pour-les-gouverner-toutes" id="toc-une-session-pour-les-gouverner-toutes" class="nav-link" data-scroll-target="#une-session-pour-les-gouverner-toutes"><span class="header-section-number">2</span> Une session pour les gouverner toutes</a></li>
+  <li><a href="#inquirerpy" id="toc-inquirerpy" class="nav-link" data-scroll-target="#inquirerpy"><span class="header-section-number">3</span> InquirerPy</a>
+  <ul class="collapse">
+  <li><a href="#mes-premières-view" id="toc-mes-premières-view" class="nav-link" data-scroll-target="#mes-premières-view"><span class="header-section-number">3.1</span> Mes premières <code>View</code></a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="analyse-fonctionnelle-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -420,12 +428,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analyse fonctionnelle</h1>
+<h1 class="title">Git et Création d’une IHM</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="analyse-fonctionnelle-slides.html">Slides</a>
+    TP 4
   </div>
 </div>
 
@@ -435,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Ludovic Deneuville, Rémi Pépin </p>
+             <p>Rémi Pépin, Ludovic Deneuville </p>
           </div>
   </div>
     
@@ -448,291 +456,184 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="plan" class="level2">
-<h2 class="anchored" data-anchor-id="plan">Plan</h2>
-<ol type="1">
-<li>L’analyse fonctionnelle
-<ul>
-<li>Définition</li>
-<li>Diagrammes UML</li>
-</ul></li>
-<li>L’architecture logicielle
-<ul>
-<li>Définition</li>
-<li>Séparation des responsabilités</li>
-</ul></li>
-</ol>
-</section>
-<section id="analyse-fonctionnelle" class="level2 hide-html-render">
-<h2 class="anchored" data-anchor-id="analyse-fonctionnelle">Analyse fonctionnelle</h2>
-<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-<div class="notes">
-<p>80 % des projets sont un echec (total ou relatif).</p>
-<p>Les questions qu’il faut se poser avant de commencer :</p>
-<ul>
-<li>Qu’est ce qu’on fait ? Qui le fait</li>
-<li>Besoins du client</li>
-<li>Fonctionnalités requises / optionnelles / bonus</li>
-<li>Bien gérer les priorités</li>
-<li>Répartition des rôles dans l’équipe</li>
-</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="phases-dun-projet" class="level3">
-<h3 class="anchored" data-anchor-id="phases-dun-projet">Phases d’un projet</h3>
-<ul>
-<li>Analyse des besoins</li>
-<li>Planification</li>
-<li>Conception</li>
-<li>Développements</li>
-<li>Recette</li>
-<li>Déploiement</li>
-<li>Maintenance</li>
-</ul>
-<div class="notes">
-<p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
+<div class="callout-title-container flex-fill">
+Note
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ancien TP4 dont une partie du contenu a été déplacé au TP1.</p>
+</div>
+</div>
+<section id="bilan-des-trois-premiers-tp" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="bilan-des-trois-premiers-tp"><span class="header-section-number">1</span> Bilan des trois premiers TP</h2>
+<p>Si l’on reprend le modèle en couches présenté en cours, voici ce que l’on a fait depuis le début des TP :</p>
+<p><img src="img/TP4_couches.jpg" class="img-fluid"></p>
+<section id="la-couche-service" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="la-couche-service"><span class="header-section-number">1.1</span> La couche service</h3>
+<p>Actuellement notre couche service est bien maigre. En effet notre application n’a aucune logique métier. On a bien des objets métiers que l’on persiste mais aucune réelle application derrière. La raison à ce manque provient du fait que cette couche est la partie la plus longue à développer car elle contient la logique métier de l’application.</p>
+<p>Et le but de ces TP n’est pas de vous montrer comment faire une petit application type jeu Pokémon en console. Ils ont pour vocations à vous montrer une architecture de base en couche et vous présenter comment la réaliser. Dans votre projet, il est possible que ce soit la couche service qui vous demande le plus de travail.</p>
 <hr>
-<p><a href="./img/balancoire_agile.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/balancoire_agile.png" class="img-fluid"></a></p>
-<div class="notes">
-<ul>
-<li>Important de discuter</li>
-<li>Reformulez</li>
-<li>Utilisez des mots simples</li>
-<li>Imaginez que vous expliquez le projet à vos grands parents</li>
-<li>parler doc, arrivée sur poste, initiatives</li>
-</ul>
-</div>
 </section>
-<section id="cest-quoi-lanalyse-fonctionnelle" class="level3">
-<h3 class="anchored" data-anchor-id="cest-quoi-lanalyse-fonctionnelle">C’est quoi l’analyse fonctionnelle ?</h3>
-<ul>
-<li>Première étape de tous les projets</li>
-<li>Détermine les fonctions, acteurs du produit pour répondre aux besoins du client</li>
-<li>Diagrammes pour échanger avec le client</li>
-<li>Priorise les travaux</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Permet de s’approprier le sujet</li>
-<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
-<li>Cette phase sera la première partie du rapport intermédiaire</li>
-</ul>
-<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
-<p>Cost of Change Curve:</p>
-<ul>
-<li>Cahier des charges : 1 €</li>
-<li>Développement : 10 €</li>
-<li>Tests : 50 €</li>
-<li>Production : 100 €</li>
-</ul>
-</div>
+<section id="la-couche-contrôleur" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="la-couche-contrôleur"><span class="header-section-number">1.2</span> La couche contrôleur</h3>
+<p>La notion de contrôleur apparait avec le design pattern <em>MVC</em> (<a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">Model-View-Controler</a>). Mais c’est un patron de conception beaucoup trop complexe pour faire un simple affichage en console.</p>
+<p>À la place vous allez utiliser le patron <em>Model-View-Presenter</em> qui est plus simple car il reprend le principe de couches qui se succèdent.</p>
+<p>Il n’y aura donc pas de couche <strong>Controleur</strong> mais une couche <strong>View</strong> qui fera office d’IHM et appelera directement les services nécessaires.</p>
+<hr>
 </section>
-<section id="les-questions-à-se-poser" class="level3">
-<h3 class="anchored" data-anchor-id="les-questions-à-se-poser">Les questions à se poser</h3>
+<section id="la-couche-view" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="la-couche-view"><span class="header-section-number">1.3</span> La couche view</h3>
+<p>Le fonctionnement est le suivant lorsque vous lancez l’application :</p>
 <ul>
-<li>Quels sont les types d’utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client…) ?</li>
-<li>Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?</li>
-<li>Comment fonctionnent les processus de l’application ?</li>
-<li>Quels sont les diagrammes à utiliser ?</li>
+<li>vous arrivez sur une vue d’accueil qui propose différents choix</li>
+<li>selon le choix, zéro, un ou plusieurs services sont appelés</li>
+<li>puis vous arrivez vers une nouvelle vue (ou éventuellement resterez sur la même)</li>
 </ul>
-<div class="notes">
+<p>Exemple :</p>
 <ul>
-<li>Pour les premières questions diagramme de cas d’utilisation</li>
-<li>Processus -&gt; diagramme d’activité</li>
-<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
+<li>Vous êtes sur la <strong>Vue d’accueil</strong> et vous sélectionner <code>se connecter</code></li>
+<li>Vous basculez vers la <strong>Vue de connexion</strong>
 <ul>
-<li>Commentez vos diagrammes</li>
+<li>dans cette vue, on vous demande de saisir user et password</li>
+<li>une fois la saisie terminée, le <strong>Service des utilisateur</strong> va être appelé</li>
+<li>ce service a une méthode <code>verification_connexion()</code>
+<ul>
+<li>cette méthode va appeler la <strong>DAO Utilisateur</strong> pour vérifier que l’utilisateur et son mot de passe existent bien en base de données</li>
+</ul></li>
+</ul></li>
+<li>si la vérification est ok, vous basculez vers la <strong>Vue Menu utilisateur</strong> où va par exemple s’afficher la liste des actions autorisées</li>
+<li>…</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="une-session-pour-les-gouverner-toutes" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="une-session-pour-les-gouverner-toutes"><span class="header-section-number">2</span> Une session pour les gouverner toutes</h2>
+<p>Là vous pouvez vous dire :</p>
+<ul>
+<li>ok on va se balader de vues en vues, ça ça va</li>
+<li>mais imaginons l’exemple suivant :
+<ul>
+<li>on passe par la <strong>Vue de connexion</strong> et on se connecte avec l’utilisateur Michel</li>
+<li>on arrive sur la <strong>Vue Menu utilisateur</strong> et on se balade dans les différentes vues</li>
+<li>un peu plus tard, on arrive sur la <strong>Vue d’ajout de Pokemon</strong>, on sélectionne celui qui nous plait et on valide</li>
+<li>cela va aboutir à l’appel d’une méthode <strong>DAO</strong> du type <code>ajouter_pokemon(utilisateur, pokemon)</code></li>
+<li>Cette méthode a 2 arguments
+<ul>
+<li>pokemon : ok facile à récupérer, on vient juste avant de le sélectionner</li>
+<li>utilisateur : là c’est moins facile car la dernière fois qu’on avait l’objet utilisateur à portée c’était dans la Vue de connexion</li>
+</ul></li>
+</ul></li>
+<li>Est-ce que une fois connecté, on doit passer l’utilisateur en paramètre de toutes les méthodes que l’on va appeler ?
+<ul>
+<li>Heureusement NON, ce serait trop compliqué</li>
+<li><span class="emoji" data-emoji="bulb">💡</span> c’est ici que l’objet <strong>Session</strong> va nous être utile</li>
 </ul></li>
 </ul>
+<p>Dans notre <strong>Session</strong>, nous allons pouvoir stocker des objets utiles, par exemple l’utilisateur actif.</p>
+<p>Ainsi, une fois connecté, on stocke l’utilisateur en session et on peut se servir de cet objet à tout moment !</p>
+<p>Voici les liens entre notre <code>Session</code> et nos <code>Views</code> :</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+
+class Session{
+    &lt;&lt;singleton&gt;&gt;
+    user_name : str
+    selected_pokemon : AbstractPokemon
+}
+
+class AbstractView{
+    &lt;&lt;abstract&gt;&gt;
+    +display_info()* None
+    +make_choice()* AbstractView
+}
+
+class StartView{
+    +display_info() None
+    +make_choice() AbstractView
+}
+
+class ListPokemonView{
+    +display_info() None
+    +make_choice() AbstractView
+}
+
+class ListAttackView{
+    +display_info() None
+    +make_choice() AbstractView
+}
+
+Session &lt;..AbstractView: "use"
+
+AbstractView &lt;|-- StartView
+AbstractView &lt;|-- ListPokemonView
+AbstractView &lt;|-- ListAttackView
+</pre>
 </div>
-</section>
-<section id="les-diagrammes-uml" class="level3">
-<h3 class="anchored" data-anchor-id="les-diagrammes-uml">Les diagrammes UML</h3>
-<ul>
-<li>Cours de 1A</li>
-<li>UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Pas le temps de vous refaire un cours</li>
-<li>Il y a des ressources à la bibliothèque et sur internet</li>
-<li>Demandez à votre tuteur ce qu’il attend</li>
-</ul>
+<p></p></figure><p></p>
 </div>
-</section>
-<section id="questions" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="questions">Questions ?</h3>
-<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-</section>
-<section id="architecture-logicielle" class="level2">
-<h2 class="anchored" data-anchor-id="architecture-logicielle">Architecture logicielle</h2>
-<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="img-fluid"></a></p>
-<div class="notes">
-<p>Voila pour les grand principes.</p>
-<p>On va maintenant rentrer dans le concret.</p>
 </div>
-<section id="cest-quoi-larchitecture-logicielle" class="level3">
-<h3 class="anchored" data-anchor-id="cest-quoi-larchitecture-logicielle">C’est quoi l’architecture logicielle ?</h3>
-<ul>
-<li>Le pendant technique de l’analyse fonctionnelle</li>
-<li>Maintenant que l’on a le qui et quoi, on détermine le comment</li>
-<li>On dessine le code de notre application</li>
-<li>Vision macro de notre application (agencement des grandes pièces)</li>
-</ul>
-<div class="notes">
-<p>Pour le moment on ne fait pas encore de code.</p>
-<p>On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).</p>
-<p>Par exemple dans votre cas vous allez sûrement avoir :</p>
-<ul>
-<li>Un code python qui tourne sur votre ordinateur</li>
-<li>Un webservice externe qui vous fournis des données</li>
-<li>Une base de données postgres.</li>
-</ul>
-<p>C’est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer</p>
 </div>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture">Pourquoi c’est important : parallèle avec l’architecture</h3>
-<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="img-fluid"></a></p>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture-1" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture-1">Pourquoi c’est important : parallèle avec l’architecture</h3>
+<p>Toute nos <code>Views</code> vont hériter de la classe <code>AbstractView</code>. Cette classe va contenir deux méthodes abstraites :</p>
 <ul>
-<li>Pièces, l’installation électrique, l’eau, le gaz, contraintes législatives, s’adapter au terrain…</li>
-<li>Besoin de réfléchir comment il faut agencer tout ça dès le début</li>
-<li>Si on construit au fil de l’eau, on risque d’avoir une maison incohérente (au mieux)</li>
-<li><strong>Ce n’est pas du temps perdu !</strong></li>
+<li><code>display_info()</code> : qui va juste déterminer l’affichage en console</li>
+<li><code>make_choice()</code> : qui va gérer les choix de l’utilisateur et l’envoyer vers une autre page.</li>
 </ul>
-<div class="notes">
-<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder.</p>
-<p>Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
-<p>Les IAgen peuvent presque coder à notre place.</p>
-</div>
-</section>
-<section id="un-grand-principe-separation-of-concerns" class="level3">
-<h3 class="anchored" data-anchor-id="un-grand-principe-separation-of-concerns">Un grand principe : separation of concerns</h3>
-<p><a href="img/couches.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/couches.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>Version macro en 3 couches.</p>
+<p>En plus de cela nous allons gérer tous les attributs utilisés par les <code>View</code> dans un objet <code>Session</code> qui sera un singleton ce qui nous assurera que chaque accès à cet objet retourne la même instance et donc les mêmes valeurs stockées.</p>
+<p>Cette architecture vous permet de séparer vos différents menu en fichiers séparés et d’avoir un fonctionnement simple car chaque menu retourne un autre menu simplement.</p>
+<p><span class="emoji" data-emoji="warning">⚠️</span> La création de vos menus peut générer des problèmes de dépendances circulaires. En effet si la page A envoie sur la page B et la page B envoie sur la page A, en fonction de la façon dont vous gérez vos imports vous allez voir un problème de dépendances circulaires. Quand le problème se présentera voici 2 solutions possibles :</p>
 <ul>
-<li>Présentation : tout ce qui se charge de l’affichage</li>
-<li>Business : c’est le métier de votre application, sa plus-value</li>
-<li>Data : stockage des données</li>
+<li>remplacer <code>from X import Y</code> en <code>import Y as name</code></li>
+<li>déplacer vos imports dans la fonction qui en a besoin</li>
 </ul>
-<p>Chaque couche communique avec celles adjacentes.<br>
-Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
-Pas évident mais très important !!!</p>
-</div>
 </section>
-<section id="les-principales-couches-dune-application" class="level3">
-<h3 class="anchored" data-anchor-id="les-principales-couches-dune-application">Les principales couches d’une application</h3>
+<section id="inquirerpy" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="inquirerpy"><span class="header-section-number">3</span> InquirerPy</h2>
+<p>Pour nous faciliter la gestion de la console nous allons utiliser la bibliothèque python <a href="https://inquirerpy.readthedocs.io/en/latest/">InquirerPy</a>. Elle permet de créer facilement des applications interactives en console. Le projet est bien documenté avec plusieurs <a href="https://github.com/kazhala/InquirerPy/tree/master/examples">exemples</a> de code, faciles à transposer.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Lancez le <code>main.py</code> et testez un peu l’application</label></li>
+<li><label><input type="checkbox">Regardez les fichiers du package <strong>view</strong> pour essayer de comprendre comment fonctionnent les vues. Le principe est toujours le même lorsque l’on arrive sur une nouvelle vue :</label>
 <ul>
-<li><strong><em>Présentation :</em></strong> tout ce qui se charge de l’affichage (page web, console, fenêtre)</li>
-<li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
-<li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
-</ul>
-<div class="notes">
-<p>Dans le monde pro :</p>
-<ul>
-<li>Présentation : JavaScript</li>
-<li>Métier : Java / Python</li>
-<li>Persistance : PostgreSQL ou MariaDB</li>
-</ul>
-</div>
-</section>
-<section id="pour-votre-projet" class="level3">
-<h3 class="anchored" data-anchor-id="pour-votre-projet">Pour votre projet</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> terminal</li>
-<li><strong><em>Métier :</em></strong> votre code Python</li>
-<li><strong><em>Persistance :</em></strong> base de données</li>
-</ul>
-<div class="notes">
-<p>Exemple page web</p>
-</div>
-</section>
-<section id="zoom-sur-la-couche-métier" class="level3">
-<h3 class="anchored" data-anchor-id="zoom-sur-la-couche-métier">Zoom sur la couche métier</h3>
-<p><a href="img/couche_metier.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/couche_metier.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
-<p>Dans les TP :</p>
-<ul>
-<li>Couche présentation : View (on navigue entre des vues)</li>
-<li>DAO, business_object, service</li>
-<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
-</ul>
-</div>
-</section>
-<section id="les-couches-de-la-couche-métier-12" class="level3">
-<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-12">Les couches de la couche métier 1/2</h3>
-<ul>
-<li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
-<ul>
-<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
-</ul></li>
-<li><strong><em>Service :</em></strong>
-<ul>
-<li>Code métier</li>
-<li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
-<li>Demande des objets à la couche DAO (TP4)</li>
-<li>Appelle les webservices externes (TP3)</li>
+<li>on répond aux questions demandées</li>
+<li>un traitement est éventuellement fait (appel à des services)</li>
+<li>on bascule vers une autre vue</li>
 </ul></li>
 </ul>
-</section>
-<section id="les-couches-de-la-couche-métier-22" class="level3">
-<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-22">Les couches de la couche métier 2/2</h3>
+<section id="mes-premières-view" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="mes-premières-view"><span class="header-section-number">3.1</span> Mes premières <code>View</code></h3>
+<p><strong>✍Hand on 3</strong></p>
+<p>Répartissez vous le travail entre membre du groupe pour implémenter les <code>Views</code> suivantes :</p>
 <ul>
-<li><strong><em>Objets métiers :</em></strong>
-<ul>
-<li>Couche transversale</li>
-<li>Représentent des concepts métiers que votre code va manipuler</li>
-<li>Objets avec surtout des attributs et peu de méthodes</li>
+<li>Affichage Pokémon:
+<ul class="task-list">
+<li><label><input type="checkbox"><code>PokemonListView</code> : qui permet de visualiser 30 Pokémons sommairement. Il est possible de sélectionner un pokémon pour aller sur <code>PokemonDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code> si vous le souhaitez.</label></li>
+<li><label><input type="checkbox"><code>PokemonDetailsView</code> : qui affiche les détails du Pokémon sélectionné comme ses statistiques et ses attaques. Renvoie sur la <code>StartView</code> ou <code>PokemonListeView</code> en fonction du choix de l’utilisateur.</label></li>
 </ul></li>
-<li><strong><em>Contrôleur :</em></strong>
-<ul>
-<li>Récupère les inputs des utilisateurs</li>
-<li>Renvoie les données à afficher</li>
+<li>Affichage attaque:
+<ul class="task-list">
+<li><label><input type="checkbox"><code>AttackListView</code> : qui permet de visualiser 50 attaques sommairement et d’en sélectionner une pour aller sur <code>AttackDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code>.</label></li>
+<li><label><input type="checkbox"><code>AttackDetailsView</code> : qui affiche les détails de l’attaque sélectionnée, comme par exemple ses caractéristiques (name, power, description), mais également quels sont les Pokémons qui peuvent l’apprendre. Renvoie sur la <code>StartView</code> ou <code>AttackListView</code> en fonction du choix de l’utilisateur.</label></li>
 </ul></li>
+<li><label><input type="checkbox"><code>CreatePokemonView</code> : qui permet de créer un Pokémon et le mettre en session. Après validation de l’utilisateur on retourne sur <code>StartView</code></label></li>
 </ul>
-<div class="notes">
-<p>On découpe les objets :</p>
+<p>Quelques astuces :</p>
 <ul>
-<li>Attributs -&gt; Objets métiers (~DTO)</li>
-<li>Méthodes -&gt; Services</li>
+<li><code>PokemonService</code> dispose d’une méthode <code>get_pokemon_from_webservice(limit:int, offset:int)</code> pour récupérer des pokémons de la base</li>
+<li><code>AttackService</code> dispose d’une méthode <code>get_attacks_from_webservice(limit:int, offset:int)</code> pour récupérer des attaques de la base</li>
+<li>de nombreux exemples sont disponibles sur la <a href="https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html">doc InquirerPy</a></li>
 </ul>
-</div>
-</section>
-<section id="pourquoi-séparer-en-couches" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-séparer-en-couches">Pourquoi séparer en couches ?</h3>
-<ul>
-<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
-<li>Lisibilité du code 📖</li>
-<li>Débogages 🐞</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Limiter les risques d’erreurs quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
-</blockquote>
-<div class="notes">
-<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
-Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
-Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
-Et séparer en couches permet de trouver rapidement la source du problème.</p>
-</div>
-</section>
-<section id="informations-à-retenir" class="level3">
-<h3 class="anchored" data-anchor-id="informations-à-retenir">Informations à retenir</h3>
-<ul>
-<li>Passer du temps à réfléchir aux différents modules d’une application n’est pas une perte de temps 🕵️‍♀️</li>
-<li>Diviser en couches permet de travailler en parallèle 🧪🧫📚</li>
-<li>Mais il faut encore réfléchir à comment bien coder 🤖</li>
-</ul>
-<div class="notes">
-<p>Possible en projet de se répartir les couches.</p>
-</div>
+<p>Quand vous avez terminé une classe, faites un commit, puis poussez sur le dépôt distant.</p>
+<hr>
+<p>Merci d’avoir participé et Vive les Pokemons !</p>
 
 
 </section>
@@ -1166,38 +1067,6 @@ Et séparer en couches permet de trouver rapidement la source du problème.</p>
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

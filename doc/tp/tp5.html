@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
-<meta name="description" content="TP 4">
+<meta name="author" content="Ludovic Deneuville">
+<meta name="description" content="Lab 5">
 
-<title>Git et Création d’une IHM – Projet info 2A</title>
+<title>Bonus: revise layer programming – Projet info 2A</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,6 +107,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -355,6 +391,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../doc/tp/tp4.html">
  <span class="dropdown-text">TP 4</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp5.html">
+ <span class="dropdown-text">TP 5</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -400,17 +440,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bilan-des-trois-premiers-tp" id="toc-bilan-des-trois-premiers-tp" class="nav-link active" data-scroll-target="#bilan-des-trois-premiers-tp"><span class="header-section-number">1</span> Bilan des trois premiers TP</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#initialisation-of-views" id="toc-initialisation-of-views" class="nav-link" data-scroll-target="#initialisation-of-views"><span class="header-section-number">1</span> Initialisation of views</a></li>
+  <li><a href="#create-the-business-object" id="toc-create-the-business-object" class="nav-link" data-scroll-target="#create-the-business-object"><span class="header-section-number">2</span> Create the business object</a></li>
+  <li><a href="#map-it-with-a-database-table" id="toc-map-it-with-a-database-table" class="nav-link" data-scroll-target="#map-it-with-a-database-table"><span class="header-section-number">3</span> Map it with a database table</a></li>
+  <li><a href="#dao" id="toc-dao" class="nav-link" data-scroll-target="#dao"><span class="header-section-number">4</span> DAO</a></li>
+  <li><a href="#service" id="toc-service" class="nav-link" data-scroll-target="#service"><span class="header-section-number">5</span> Service</a></li>
+  <li><a href="#back-to-the-view" id="toc-back-to-the-view" class="nav-link" data-scroll-target="#back-to-the-view"><span class="header-section-number">6</span> Back to the view</a></li>
+  <li><a href="#methods-needed" id="toc-methods-needed" class="nav-link" data-scroll-target="#methods-needed"><span class="header-section-number">7</span> Methods needed</a>
   <ul class="collapse">
-  <li><a href="#la-couche-service" id="toc-la-couche-service" class="nav-link" data-scroll-target="#la-couche-service"><span class="header-section-number">1.1</span> La couche service</a></li>
-  <li><a href="#la-couche-contrôleur" id="toc-la-couche-contrôleur" class="nav-link" data-scroll-target="#la-couche-contrôleur"><span class="header-section-number">1.2</span> La couche contrôleur</a></li>
-  <li><a href="#la-couche-view" id="toc-la-couche-view" class="nav-link" data-scroll-target="#la-couche-view"><span class="header-section-number">1.3</span> La couche view</a></li>
+  <li><a href="#session" id="toc-session" class="nav-link" data-scroll-target="#session"><span class="header-section-number">7.1</span> Session</a></li>
+  <li><a href="#back-to-service-method-s_inscrire_tournoi" id="toc-back-to-service-method-s_inscrire_tournoi" class="nav-link" data-scroll-target="#back-to-service-method-s_inscrire_tournoi"><span class="header-section-number">7.2</span> Back to service method s_inscrire_tournoi()</a></li>
   </ul></li>
-  <li><a href="#une-session-pour-les-gouverner-toutes" id="toc-une-session-pour-les-gouverner-toutes" class="nav-link" data-scroll-target="#une-session-pour-les-gouverner-toutes"><span class="header-section-number">2</span> Une session pour les gouverner toutes</a></li>
-  <li><a href="#inquirerpy" id="toc-inquirerpy" class="nav-link" data-scroll-target="#inquirerpy"><span class="header-section-number">3</span> InquirerPy</a>
-  <ul class="collapse">
-  <li><a href="#mes-premières-view" id="toc-mes-premières-view" class="nav-link" data-scroll-target="#mes-premières-view"><span class="header-section-number">3.1</span> Mes premières <code>View</code></a></li>
-  </ul></li>
+  <li><a href="#lets-finish-the-view" id="toc-lets-finish-the-view" class="nav-link" data-scroll-target="#lets-finish-the-view"><span class="header-section-number">8</span> Let’s finish the view</a></li>
+  <li><a href="#to-summarise-the-flows" id="toc-to-summarise-the-flows" class="nav-link" data-scroll-target="#to-summarise-the-flows">To summarise the flows</a></li>
   </ul>
 </nav>
 </nav>
@@ -424,12 +468,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Git et Création d’une IHM</h1>
+<h1 class="title">Bonus: revise layer programming</h1>
 </div>
 
 <div>
   <div class="description">
-    TP 4
+    Lab 5
   </div>
 </div>
 
@@ -439,7 +483,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Rémi Pépin, Ludovic Deneuville </p>
+             <p>Ludovic Deneuville </p>
           </div>
   </div>
     
@@ -452,187 +496,305 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objectives">Objectives</h2>
+<p>For the moment, this application simply contains a list of players.</p>
+<p>The aim will be to create a feature that will allow players to register for tournaments.</p>
+<p>We will proceed step by step.</p>
+</section>
+<section id="before-you-start" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
+<p>You will work on a fork or a copy of the repo <a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">ENSAI-2A-projet-info-template</a>.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Login to a Datalab</label></li>
+<li><label><input type="checkbox">Launch a <u><strong>customised</strong></u> VSCode service</label></li>
+<li><label><input type="checkbox">Clone your repo</label></li>
+<li><label><input type="checkbox">Open Folder <em>ENSAI-2A-projet-info-template</em></label></li>
+<li><label><input type="checkbox">Follow README instructions</label></li>
+</ul>
+</section>
+<section id="initialisation-of-views" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="initialisation-of-views"><span class="header-section-number">1</span> Initialisation of views</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">In class <strong>MenuJoueurVue</strong>, add choice “S’inscrire à un tournoi”</label></li>
+</ul>
+<p>If this item is selected, you must now access the list of tournaments in a new view.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">If this choice is selected redirect to a new view called <strong>InscriptionTournoiVue</strong></label></li>
+<li><label><input type="checkbox">Create view <strong>InscriptionTournoiVue</strong></label></li>
+</ul>
+<p>It will display the list of tournaments and allow the user to choose which one they want to register for.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="How to obtain the list of tournaments?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>How to obtain the list of tournaments?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ancien TP4 dont une partie du contenu a été déplacé au TP1.</p>
+<ul>
+<li>You will need a service method that returns the list of all tournaments
+<ul>
+<li><strong>TournoiService</strong>.<em>lister_tous() -&gt; list[Tournoi]</em></li>
+</ul></li>
+<li>The list of tournaments will be available in the database
+<ul>
+<li>a service method should not communicate directly with a database; that is the role of a DAO</li>
+<li>The dao method <strong>TournoiDao</strong>.<em>lister_tous() -&gt; list[Tournoi]</em> will communicate with the database to transfer the list of tournaments to the service method</li>
+</ul></li>
+<li>To transfer tournament lists, you must also create <strong>Tournoi</strong> business object</li>
+</ul>
 </div>
 </div>
-<section id="bilan-des-trois-premiers-tp" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="bilan-des-trois-premiers-tp"><span class="header-section-number">1</span> Bilan des trois premiers TP</h2>
-<p>Si l’on reprend le modèle en couches présenté en cours, voici ce que l’on a fait depuis le début des TP :</p>
-<p><img src="img/TP4_couches.jpg" class="img-fluid"></p>
-<section id="la-couche-service" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="la-couche-service"><span class="header-section-number">1.1</span> La couche service</h3>
-<p>Actuellement notre couche service est bien maigre. En effet notre application n’a aucune logique métier. On a bien des objets métiers que l’on persiste mais aucune réelle application derrière. La raison à ce manque provient du fait que cette couche est la partie la plus longue à développer car elle contient la logique métier de l’application.</p>
-<p>Et le but de ces TP n’est pas de vous montrer comment faire une petit application type jeu Pokémon en console. Ils ont pour vocations à vous montrer une architecture de base en couche et vous présenter comment la réaliser. Dans votre projet, il est possible que ce soit la couche service qui vous demande le plus de travail.</p>
-<hr>
+<p>Now we are beginning to get an idea of the methods and objects to create.</p>
 </section>
-<section id="la-couche-contrôleur" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="la-couche-contrôleur"><span class="header-section-number">1.2</span> La couche contrôleur</h3>
-<p>La notion de contrôleur apparait avec le design pattern <em>MVC</em> (<a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">Model-View-Controler</a>). Mais c’est un patron de conception beaucoup trop complexe pour faire un simple affichage en console.</p>
-<p>À la place vous allez utiliser le patron <em>Model-View-Presenter</em> qui est plus simple car il reprend le principe de couches qui se succèdent.</p>
-<p>Il n’y aura donc pas de couche <strong>Controleur</strong> mais une couche <strong>View</strong> qui fera office d’IHM et appelera directement les services nécessaires.</p>
-<hr>
-</section>
-<section id="la-couche-view" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="la-couche-view"><span class="header-section-number">1.3</span> La couche view</h3>
-<p>Le fonctionnement est le suivant lorsque vous lancez l’application :</p>
+<section id="create-the-business-object" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="create-the-business-object"><span class="header-section-number">2</span> Create the business object</h2>
+<p>Let us begin by creating the <strong>Tournoi</strong> business object.</p>
+<p>Business objects mainly contain attributes and few methods. They are primarily used to transfer information between layers.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create class business object <strong>Tournoi</strong></label>
 <ul>
-<li>vous arrivez sur une vue d’accueil qui propose différents choix</li>
-<li>selon le choix, zéro, un ou plusieurs services sont appelés</li>
-<li>puis vous arrivez vers une nouvelle vue (ou éventuellement resterez sur la même)</li>
-</ul>
-<p>Exemple :</p>
-<ul>
-<li>Vous êtes sur la <strong>Vue d’accueil</strong> et vous sélectionner <code>se connecter</code></li>
-<li>Vous basculez vers la <strong>Vue de connexion</strong>
-<ul>
-<li>dans cette vue, on vous demande de saisir user et password</li>
-<li>une fois la saisie terminée, le <strong>Service des utilisateur</strong> va être appelé</li>
-<li>ce service a une méthode <code>verification_connexion()</code>
-<ul>
-<li>cette méthode va appeler la <strong>DAO Utilisateur</strong> pour vérifier que l’utilisateur et son mot de passe existent bien en base de données</li>
-</ul></li>
-</ul></li>
-<li>si la vérification est ok, vous basculez vers la <strong>Vue Menu utilisateur</strong> où va par exemple s’afficher la liste des actions autorisées</li>
-<li>…</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="une-session-pour-les-gouverner-toutes" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="une-session-pour-les-gouverner-toutes"><span class="header-section-number">2</span> Une session pour les gouverner toutes</h2>
-<p>Là vous pouvez vous dire :</p>
-<ul>
-<li>ok on va se balader de vues en vues, ça ça va</li>
-<li>mais imaginons l’exemple suivant :
-<ul>
-<li>on passe par la <strong>Vue de connexion</strong> et on se connecte avec l’utilisateur Michel</li>
-<li>on arrive sur la <strong>Vue Menu utilisateur</strong> et on se balade dans les différentes vues</li>
-<li>un peu plus tard, on arrive sur la <strong>Vue d’ajout de Pokemon</strong>, on sélectionne celui qui nous plait et on valide</li>
-<li>cela va aboutir à l’appel d’une méthode <strong>DAO</strong> du type <code>ajouter_pokemon(utilisateur, pokemon)</code></li>
-<li>Cette méthode a 2 arguments
-<ul>
-<li>pokemon : ok facile à récupérer, on vient juste avant de le sélectionner</li>
-<li>utilisateur : là c’est moins facile car la dernière fois qu’on avait l’objet utilisateur à portée c’était dans la Vue de connexion</li>
-</ul></li>
-</ul></li>
-<li>Est-ce que une fois connecté, on doit passer l’utilisateur en paramètre de toutes les méthodes que l’on va appeler ?
-<ul>
-<li>Heureusement NON, ce serait trop compliqué</li>
-<li><span class="emoji" data-emoji="bulb">💡</span> c’est ici que l’objet <strong>Session</strong> va nous être utile</li>
+<li>attributes: id_tournoi, nom, ville, capacite_max</li>
+<li>add a constructor with all attributes</li>
 </ul></li>
 </ul>
-<p>Dans notre <strong>Session</strong>, nous allons pouvoir stocker des objets utiles, par exemple l’utilisateur actif.</p>
-<p>Ainsi, une fois connecté, on stocke l’utilisateur en session et on peut se servir de cet objet à tout moment !</p>
-<p>Voici les liens entre notre <code>Session</code> et nos <code>Views</code> :</p>
+</section>
+<section id="map-it-with-a-database-table" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="map-it-with-a-database-table"><span class="header-section-number">3</span> Map it with a database table</h2>
+<p>Usually, the business object class and its attributes correspond to the table and columns in the database.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create table <em>Tournoi</em> (id_tournoi, nom, ville, capacite_max)</label></li>
+</ul>
+<p>Assuming that a player can participate in several tournaments and that a tournament can have several players, it is therefore necessary to create a table to keep track of which player is participating in which tournament.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create table <em>inscription</em> (id_inscription, id_tournoi, id_joueur)</label></li>
+<li><label><input type="checkbox">Insert data in these two tables</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tables">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Tables
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> tournoi (</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    id_tournoi     SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    nom            <span class="dt">VARCHAR</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ville          <span class="dt">VARCHAR</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    capacite_max   <span class="dt">INT</span> <span class="kw">CHECK</span> (capacite_max <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> inscription (</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    id_inscription SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    id_tournoi     <span class="dt">INT</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">REFERENCES</span> tournoi(id_tournoi),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    id_joueur      <span class="dt">INT</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">REFERENCES</span> joueur(id_joueur),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">UNIQUE</span>(id_tournoi, id_joueur) <span class="co">-- un joueur ne peut pas s inscrire deux fois au meme tournoi</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dao" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="dao"><span class="header-section-number">4</span> DAO</h2>
+<p>We now need the DAO method, which allows us to retrieve the list of tournaments from the database.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create class <strong>TournoiDao</strong></label></li>
+<li><label><input type="checkbox">Create method <em>lister_tous() -&gt; list[Tournoi]</em></label></li>
+</ul>
+</section>
+<section id="service" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="service"><span class="header-section-number">5</span> Service</h2>
+<p>The view does not communicate directly with the DAO. It must request the service class.</p>
+<p>Even though in this case, the service method simply flat passes: it receives a tournament list and returns that same list.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create class <strong>TournoiService</strong></label></li>
+<li><label><input type="checkbox">Create method <em>lister_tous() -&gt; list[Tournoi]</em></label></li>
+</ul>
+</section>
+<section id="back-to-the-view" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="back-to-the-view"><span class="header-section-number">6</span> Back to the view</h2>
+<p>Great, we now have a service method that allows us to obtain a list of all tournaments. We will display it so that players can choose.</p>
+<p>In view <strong>InscriptionTournoiVue</strong>:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Display all tournaments</label></li>
+<li><label><input type="checkbox">Using <a href="https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html" target="_blank">inquirerPy</a>, allow the user to select a tournament using the keypad</label></li>
+</ul>
+<p>If they change their mind, players can also return to the previous menu without registering for any tournament.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Add this feature, and in this case, return to the view <strong>MenuJoueurVue</strong></label></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="If a tournament has been selected">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>If a tournament has been selected
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will need to manage the registration:</p>
+<ul>
+<li><strong>JoueurService</strong>.<em>s_inscrire_tournoi(tournoi) -&gt; bool</em></li>
+<li>This service must verify that the registration is valid</li>
+<li>If so, a row will be created in the inscription table
+<ul>
+<li>Therefore, the service will need to use the dao method <strong>InscriptionDao</strong>.<em>creer(joueur, tournoi) -&gt; bool</em></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="methods-needed" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="methods-needed"><span class="header-section-number">7</span> Methods needed</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Create class <strong>InscriptionDao</strong></label></li>
+<li><label><input type="checkbox">In this class, create method <em>creer(joueur, tournoi) -&gt; bool</em></label></li>
+<li><label><input type="checkbox">In class <strong>JoueurService</strong>, create method <em>s_inscrire_tournoi(tournoi) -&gt; bool</em></label></li>
+</ul>
+<p>In this method we will call <strong>InscriptionDao</strong>.<em>creer(joueur, tournoi) -&gt; bool</em>.</p>
+<p>This method requires two parameters:</p>
+<ul>
+<li><em>tournoi</em>: easy to get it, it is a parameter of calling method <em>s_inscrire_tournoi(tournoi)</em></li>
+<li><em>joueur</em>: how to get it?</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>joueur_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JoueurService:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> s_inscrire_tournoi(<span class="va">self</span>, tournoi) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        succes <span class="op">=</span> InscriptionDao.creer(joueur, tournoi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This is where the <strong>Session</strong> class comes into play.</p>
+<section id="session" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="session"><span class="header-section-number">7.1</span> Session</h3>
+<p>When a player is logged in, we must have access to their information at all times.</p>
+<p>This is the role of the Session class.</p>
+<p>So we can get the player using <strong>Session()</strong>.<em>joueur</em></p>
+</section>
+<section id="back-to-service-method-s_inscrire_tournoi" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="back-to-service-method-s_inscrire_tournoi"><span class="header-section-number">7.2</span> Back to service method s_inscrire_tournoi()</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">use Session class to get the current <em>Joueur</em></label></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>joueur_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> view.session <span class="im">import</span> Session</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JoueurService:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> s_inscrire_tournoi(<span class="va">self</span>, tournoi) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        joueur <span class="op">=</span> Session().joueur</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        succes <span class="op">=</span> InscriptionDao.creer(joueur, tournoi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Great, we have everything we need to call the dao method to create an Inscription, but aren’t there a few things we should check first?</p>
+<p>What if the player is already registered?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create method <strong>InscriptionDao</strong>.<em>est_inscrit(joueur,tournoi -&gt; bool</em></label></li>
+<li><label><input type="checkbox">Use it in the service method</label></li>
+</ul>
+<p>Now let’s check that the tournament is not already full:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create method <strong>TournoiDao</strong>.<em>est_complet(Tournoi) -&gt; bool</em></label></li>
+<li><label><input type="checkbox">Use it in the service method</label></li>
+</ul>
+</section>
+</section>
+<section id="lets-finish-the-view" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="lets-finish-the-view"><span class="header-section-number">8</span> Let’s finish the view</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Display a message to indicate whether the registration has been validated or not</label></li>
+<li><label><input type="checkbox">Finally switch to the view <strong>MenuJoueurVue</strong></label></li>
+</ul>
+</section>
+<section id="to-summarise-the-flows" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="to-summarise-the-flows">To summarise the flows</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="If you have to create a webservice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>If you have to create a webservice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The principle would be broadly the same. You will need the same services, but instead of going through views:</p>
+<ul>
+<li>create a endpoint <code>GET /tournament</code> to display the list</li>
+<li>create a endpoint <code>POST /registration body: {player_id: ?, tournament_id: ?}</code></li>
+</ul>
+</div>
+</div>
+<div style="background-color: #d7e5ecff;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">classDiagram
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Vue
+    participant Service
+    participant Dao
+    participant BDD
 
-class Session{
-    &lt;&lt;singleton&gt;&gt;
-    user_name : str
-    selected_pokemon : AbstractPokemon
-}
-
-class AbstractView{
-    &lt;&lt;abstract&gt;&gt;
-    +display_info()* None
-    +make_choice()* AbstractView
-}
-
-class StartView{
-    +display_info() None
-    +make_choice() AbstractView
-}
-
-class ListPokemonView{
-    +display_info() None
-    +make_choice() AbstractView
-}
-
-class ListAttackView{
-    +display_info() None
-    +make_choice() AbstractView
-}
-
-Session &lt;..AbstractView: "use"
-
-AbstractView &lt;|-- StartView
-AbstractView &lt;|-- ListPokemonView
-AbstractView &lt;|-- ListAttackView
+    Note over Vue: MenuJoueurVue
+    Vue-&gt;&gt;Vue: Choice "S'inscrire à un tournoi"
+    Note over Vue: InscriptionTournoiVue
+    Vue-&gt;&gt;Service: TournoiService.lister_tous()
+    Note over Service: TournoiService
+    Service-&gt;&gt;Dao: TournoiDao.lister_tous()
+    Dao-&gt;&gt;BDD: SELECT * FROM tournoi
+    BDD--&gt;&gt;Dao:  tournois JSON
+    Dao--&gt;&gt;Service: list[Tournoi]
+    Service--&gt;&gt;Vue: list[Tournoi]
+    Vue-&gt;&gt;Vue: Affiche la liste, option Retour&lt;br&gt; Attend une sélection
+    Vue-&gt;&gt;Service: JoueurService.s_inscrire_tournoi(tournoi)
+    Note over Service: JoueurService
+    Service-&gt;&gt;Dao: InscriptionDao.est_inscrit(joueur,tournoi)
+    Dao-&gt;&gt;BDD: SELECT COUNT(*)&lt;br&gt; FROM inscription&lt;br&gt; WHERE id_joueur=? &lt;br&gt;AND id_tournoi=?
+    BDD--&gt;&gt;Dao: true/false
+    Dao--&gt;&gt;Service: true/false
+    Service--&gt;&gt;Vue: if true, back to MenuJoueurVue
+    Service-&gt;&gt;Dao: TournoiDao.est_complet(tournoi)
+    Dao-&gt;&gt;BDD: SELECT FROM tournoi, inscription
+    BDD--&gt;&gt;Dao: true/false
+    Dao--&gt;&gt;Service: true/false
+    Service--&gt;&gt;Vue: if false, back to MenuJoueurVue
+    Service--&gt;&gt;Dao: InscriptionDao.creer(tournoi, joueur)
+    Dao-&gt;&gt;BDD: INSERT INTO inscription
+    BDD--&gt;&gt;Dao: true/false
+    Dao--&gt;&gt;Service: true/false
+    Service--&gt;&gt;Vue: back to MenuJoueurVue
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Toute nos <code>Views</code> vont hériter de la classe <code>AbstractView</code>. Cette classe va contenir deux méthodes abstraites :</p>
-<ul>
-<li><code>display_info()</code> : qui va juste déterminer l’affichage en console</li>
-<li><code>make_choice()</code> : qui va gérer les choix de l’utilisateur et l’envoyer vers une autre page.</li>
-</ul>
-<p>En plus de cela nous allons gérer tous les attributs utilisés par les <code>View</code> dans un objet <code>Session</code> qui sera un singleton ce qui nous assurera que chaque accès à cet objet retourne la même instance et donc les mêmes valeurs stockées.</p>
-<p>Cette architecture vous permet de séparer vos différents menu en fichiers séparés et d’avoir un fonctionnement simple car chaque menu retourne un autre menu simplement.</p>
-<p><span class="emoji" data-emoji="warning">⚠️</span> La création de vos menus peut générer des problèmes de dépendances circulaires. En effet si la page A envoie sur la page B et la page B envoie sur la page A, en fonction de la façon dont vous gérez vos imports vous allez voir un problème de dépendances circulaires. Quand le problème se présentera voici 2 solutions possibles :</p>
-<ul>
-<li>remplacer <code>from X import Y</code> en <code>import Y as name</code></li>
-<li>déplacer vos imports dans la fonction qui en a besoin</li>
-</ul>
-</section>
-<section id="inquirerpy" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="inquirerpy"><span class="header-section-number">3</span> InquirerPy</h2>
-<p>Pour nous faciliter la gestion de la console nous allons utiliser la bibliothèque python <a href="https://inquirerpy.readthedocs.io/en/latest/">InquirerPy</a>. Elle permet de créer facilement des applications interactives en console. Le projet est bien documenté avec plusieurs <a href="https://github.com/kazhala/InquirerPy/tree/master/examples">exemples</a> de code, faciles à transposer.</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Lancez le <code>main.py</code> et testez un peu l’application</label></li>
-<li><label><input type="checkbox">Regardez les fichiers du package <strong>view</strong> pour essayer de comprendre comment fonctionnent les vues. Le principe est toujours le même lorsque l’on arrive sur une nouvelle vue :</label>
-<ul>
-<li>on répond aux questions demandées</li>
-<li>un traitement est éventuellement fait (appel à des services)</li>
-<li>on bascule vers une autre vue</li>
-</ul></li>
-</ul>
-<section id="mes-premières-view" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="mes-premières-view"><span class="header-section-number">3.1</span> Mes premières <code>View</code></h3>
-<p><strong>✍Hand on 3</strong></p>
-<p>Répartissez vous le travail entre membre du groupe pour implémenter les <code>Views</code> suivantes :</p>
-<ul>
-<li>Affichage Pokémon:
-<ul class="task-list">
-<li><label><input type="checkbox"><code>PokemonListView</code> : qui permet de visualiser 30 Pokémons sommairement. Il est possible de sélectionner un pokémon pour aller sur <code>PokemonDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code> si vous le souhaitez.</label></li>
-<li><label><input type="checkbox"><code>PokemonDetailsView</code> : qui affiche les détails du Pokémon sélectionné comme ses statistiques et ses attaques. Renvoie sur la <code>StartView</code> ou <code>PokemonListeView</code> en fonction du choix de l’utilisateur.</label></li>
-</ul></li>
-<li>Affichage attaque:
-<ul class="task-list">
-<li><label><input type="checkbox"><code>AttackListView</code> : qui permet de visualiser 50 attaques sommairement et d’en sélectionner une pour aller sur <code>AttackDetailsView</code>. Vous pouvez permettre un retour arrière sur la <code>StartView</code>.</label></li>
-<li><label><input type="checkbox"><code>AttackDetailsView</code> : qui affiche les détails de l’attaque sélectionnée, comme par exemple ses caractéristiques (name, power, description), mais également quels sont les Pokémons qui peuvent l’apprendre. Renvoie sur la <code>StartView</code> ou <code>AttackListView</code> en fonction du choix de l’utilisateur.</label></li>
-</ul></li>
-<li><label><input type="checkbox"><code>CreatePokemonView</code> : qui permet de créer un Pokémon et le mettre en session. Après validation de l’utilisateur on retourne sur <code>StartView</code></label></li>
-</ul>
-<p>Quelques astuces :</p>
-<ul>
-<li><code>PokemonService</code> dispose d’une méthode <code>get_pokemon_from_webservice(limit:int, offset:int)</code> pour récupérer des pokémons de la base</li>
-<li><code>AttackService</code> dispose d’une méthode <code>get_attacks_from_webservice(limit:int, offset:int)</code> pour récupérer des attaques de la base</li>
-<li>de nombreux exemples sont disponibles sur la <a href="https://inquirerpy.readthedocs.io/en/latest/pages/prompts/list.html">doc InquirerPy</a></li>
-</ul>
-<p>Quand vous avez terminé une classe, faites un commit, puis poussez sur le dépôt distant.</p>
-<hr>
-<p>Merci d’avoir participé et Vive les Pokemons !</p>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
