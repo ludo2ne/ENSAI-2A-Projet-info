@@ -59,25 +59,39 @@ Un **logiciel gratuit** (freeware) peut être utilisé sans frais mais reste sou
 ### Pour les logiciels
 
 - **MIT** :
-  - Très permissive.
-  - Permet la modification et la réutilisation, même dans des projets commerciaux.
-  - Une simple attribution à l'auteur original est requise.
+  - Très permissive
+  - Permet la modification et la réutilisation, même dans des projets commerciaux
+  - Une simple attribution à l'auteur original est requise
 - **Apache 2.0** :
-  - Similaire à MIT mais inclut des protections contre les brevets.
-  - Recommandée pour des projets industriels.
+  - Similaire à MIT mais inclut des protections contre les brevets
+  - Recommandée pour des projets industriels
 - **GPL (General Public License)** :
-  - Licence copyleft stricte.
-  - Tout projet dérivé doit rester sous GPL.
+  - Licence copyleft stricte
+  - Tout projet dérivé doit rester sous GPL
 
 ### Pour le contenu (textes, images, vidéos)
 
-- [Creative Commons (CC)](https://creativecommons.org/) :
-  - Une famille de licences pour le contenu non logiciel.
-  - Exemples :
-    - **CC BY** : Attribution requise, usage libre.
-    - **CC BY-SA** : Attribution + partage à l'identique.
-    - **CC BY-NC** : Pas d'utilisation commerciale autorisée.
-    - **CC0** : Domaine public.
+[Creative Commons (CC)](https://creativecommons.org/){target="_blank"} : une famille de licences pour le contenu non logiciel
+
+Éléments constitutifs des licences:
+
+- **BY** (Attribution) : Obligation de citer l'auteur original
+- **NC** (Non Commercial) : Interdiction d'utiliser l'œuvre à des fins commerciales
+- **ND** (No Derivatives) : Interdiction de modifier l'œuvre (pas de remixes, traductions, adaptations...)
+- **SA** (Share Alike) : Les œuvres dérivées doivent être partagées avec la même licence
+
+Exemples :
+    
+- **CC0** : Domaine public
+  - L'auteur renonce à tous ses droits sur l'œuvre
+  - L'œuvre est librement réutilisable sans condition
+- **CC BY** : Attribution requise, usage libre
+  - Vous pouvez utiliser, modifier et distribuer l'œuvre, même commercialement, tant que vous créditez l'auteur
+- **CC BY-SA** : Attribution + partage à l'identique
+  - Idem que CC BY, mais les œuvres dérivées doivent conserver la même licence
+- **CC BY-NC** : Pas d'utilisation commerciale autorisée
+  - Utilisation non commerciale seulement. Les modifications sont autorisées, mais toujours avec attribution
+- [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en){target="_blank"}: Attribution, Non commercial, Partage à l'identique
 
 ### Pour les données
 
