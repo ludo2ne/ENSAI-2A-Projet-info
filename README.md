@@ -30,18 +30,19 @@ Pour générer les pages :
 
 ## :construction: Todo
 
-- [ ] Projet et TP sur Datalab
-- [ ] TP simplifiés
-  - from template -> ajouter fonctionnalité "inscription tournoi" ?
+- https://ensae-reproductibilite.github.io/website/chapters/code-quality.html
+- Docker: https://ensae-reproductibilite.github.io/website/chapters/portability.html
 
 ### Projet
 
 - [ ] maj Template
   - pytest + cov
   - CI
+  - https://github.com/ClementValot/Projet2A_Template
 - [ ] Bilan du point hebdo
 - Notice élèves
   - [ ] Compléter section livraison dossier analyse (voir mail)
+  
 
 ### CM
 
@@ -62,11 +63,29 @@ Pour générer les pages :
 
 ### TP
 
-#### TP1 : Git, VSCode, Logs et Template
+Base : une appli avec des joueurs et des matchs
+Objectifs : fonctionnalité pour gérer des tournois
 
+Steps:
+
+- Fournir écran vide: liste des tournois, s'inscrire
+- Créer BO Tournoi
+- Créer table tournoi, inscription
+- Créer TournoiDAO, InscriptionDAO
+- Créer TournoiService, InscriptionService
+- Màj vue
+
+#### TP1 : Environnement de dev, outils
+
+- Rappels Git
+- Format, lint
+- VSCode settings
+- Logs
 - [ ] Nommer repo projet : `Projet-info-2A-equipe-<numéro_equipe>`
 
 #### TP2 : Refresh Python, POO, TU
+
+-
 
 #### TP3 : WS
 

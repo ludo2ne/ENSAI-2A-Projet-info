@@ -93,10 +93,9 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
 
 - [ ] Login to a Datalab
   - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
-  - <https://datalab.sspcloud.fr/>{target="_blank"} 
-- [ ] Go to the [Tools page](./tools.qmd){target="_blank"}
-  - It explains why we are going to use a customised service
+  - <https://datalab.sspcloud.fr/>{target="_blank"}
 - [ ] Launch a [**customised**]{.underline} VSCode service
+  - See [Datalab page](../outils/datalab.qmd){target="_blank"}
 
 
 ### Clone the repository
@@ -109,11 +108,13 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
   - to ensure that everyone starts at the same level
 
 ::: {.callout-warning title="If you don't have branch tp4-base" collapse="true"}
-You will use this repo but you won't be able to push:
+You must connect to the original repository (upstream) to retrieve the branch:
 
-- [ ] `git clone https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
-- [ ] Open Folder *ENSAI-2A-complement-info-TP*
-- [ ] `git switch tp4-base`
+- [ ] `git remote add upstream https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
+- [ ] `git remote -v` to list the remote repositories associated with your local repo
+- [ ] `git fetch upstream` to get all branches
+- [ ] `git switch -c tp4-base upstream/tp4-base` create branch from upstream/tp4-base
+- [ ] `git push origin tp4-base` push to your fork
 :::
 
 To check that everything is working:

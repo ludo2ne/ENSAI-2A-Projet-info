@@ -394,6 +394,11 @@ Ce premier livrable est l'aboutissement de la phase d'étude préalable et de co
 
 Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Il est à déposer sur Moodle et contiendra les éléments ci-dessous.
 
+::: {.callout-important}
+- Respectez les consignes usuelles de mise en forme d'un rapport
+- Précisez votre numéro d'équipe sur la page de garde
+:::
+
 #### Le contexte de votre application
 
 Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de **comprendre l'intérêt de votre travail**. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.

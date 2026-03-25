@@ -1,0 +1,121 @@
+---
+title: "Git Tools"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+from: markdown+emoji
+categories:
+  - Open Folder
+  - Settings
+  - Extensions
+---
+
+
+## Open Folder
+
+::: {.callout-important}
+The **Open Folder** option allows you to define the root directory of your project.
+
+To identify the current root folder, look at the top-left corner of the Explorer panel, where the parent folder is displayed.
+
+This choice is important because Python imports between modules rely on relative paths, which depend on the project’s root structure.
+:::
+
+Two ways to open folder:
+
+- In the top-left corner, click on the three horizontal bars :arrow_right: 
+  - File
+  - Open Folder
+  - `/home/onyxia/work/<repo_name>`
+  - OK
+- In a terminal: `code-server /home/onyxia/work/<repo_name>`
+  - Close previous tab
+
+
+## Settings
+
+:construction:
+
+::: {.callout-tip}
+Visual Studio Code allows you to define settings at different levels: user, workspace, and folder.
+
+Workspace settings apply only to the current project. They are stored in the `.vscode/settings.json` file inside your project folder.
+
+This is useful for ensuring consistency across a team, as everyone working on the project shares the same configuration (e.g., Python interpreter, formatting rules, or linting options).
+:::
+
+## Extensions
+
+:construction:
+
+
+
+## Autocompletion
+
+*code-server* (VSCode version used by datalabs) does not support Pylance, which normally provides autocompletion. 2 options for adding autocompletion:
+
+
+### Option 1
+
+- [ ] Create a virtual environment
+  - `python -m venv venv`
+- [ ] CTRL + SHIFT + P
+  - Python: Select interpreter
+  - choose *venv*
+
+::: {.callout-tip title="venv 101" collapse="true"}
+When you install Python packages globally, everything gets mixed together. 
+
+If one project needs Django 3.2 and another needs Django 5.0, they'll conflict. 
+
+Over time, your global Python also gets messy, with packages you don't remember installing, and sharing your project becomes painful :arrow_right: the classic "it works on my machine" problem.
+
+A **venv** solves this by creating a self-contained environment just for your project. 
+
+- create: `python -m venv venv`
+- activate: `source venv/bin/activate`
+
+Inside this bubble, you can install any packages you want in any version you want, completely isolated from other projects.
+
+- save dependencies for sharing: `pip freeze > requirements.txt`
+- exit the venv: `deactivate`
+
+To recreate the environment elsewhere:
+
+```{.bash}
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+
+:::
+
+### Option 2
+
+- [ ] install extension **BasedPyright**
+
+To remove warnings:
+
+- [ ] Create a file at the root of your project: `pyrightconfig.json`
+
+```{.json filename="pyrightconfig.json"}
+{
+  "typeCheckingMode": "off",
+  "reportMissingParameterType": "none",
+  "reportImplicitRelativeImport": "none"
+}
+```
+
+- [ ] to hide inlay hints
+
+```{.json filename=".vscode/settings.json"}
+{
+  "basedpyright.analysis.inlayHints.callArgumentNames": false,
+  "basedpyright.analysis.inlayHints.variableTypes": false,
+  "basedpyright.analysis.inlayHints.functionReturnTypes": false
+}
+```

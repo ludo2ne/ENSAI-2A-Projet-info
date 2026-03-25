@@ -9,14 +9,23 @@ format:
     toc-expand: 3
 from: markdown+emoji
 number-sections: true
+categories:
+  - Git
 ---
 
+:construction:
+
+:::{.notes}
+- Déplacer config git -> créer dossier tools (Onyxia, VScode, Git)
+- pyproject.toml -> remplace requirements.txt & co
+:::
 
 
-The practical labs will be carried out on one of the two datalabs :
+The practical labs will be carried out on one of the two datalabs:
 
 - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
-- <https://datalab.sspcloud.fr/>{target="_blank"} (create an account using `firstname.lastname@eleve.ensai.fr`)
+- <https://datalab.sspcloud.fr/>{target="_blank"}
+  - create an account using `firstname.lastname@eleve.ensai.fr`
 
 We will be using the following tools:
 
@@ -24,9 +33,7 @@ We will be using the following tools:
 - Visual Studio Code
 - Git
 - PostgreSQL
-- DBeaver
-
-
+- cloudBeaver
 
 
 ## Accounts and Configuration {.unnumbered}
@@ -39,8 +46,8 @@ GitHub is a web-based platform that provides hosting for software development an
 It's widely used by developers to collaborate on projects.
 :::
 
-- [ ] Create a [GitHub](https://github.com/){target="_blank"} account, if you don't already have one
-
+- [ ] Log in to your [GitHub](https://github.com/){target="_blank"} account
+  - or sign up if you don't already have one
 
 
 ### Git Config{.unnumbered}
@@ -420,7 +427,7 @@ To avoid conflicts, get organised with your team to avoid working on the same fi
 A team member :
 
 - [ ] Creates a remote repository on GitHub ([new Repository](https://github.com/new){target="_blank"})
-  - Repository name: for example `Projet-info-2A-equipe-<team_number>`.
+  - Repository name: `Projet-info-2A-equipe-<team_number>`.
   - Public or Private, as you wish
   - Check *Add a README file*.
   - .gitignore : *Python*

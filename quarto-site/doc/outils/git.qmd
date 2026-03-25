@@ -1,0 +1,46 @@
+---
+title: "Git Tools"
+author: "Ludovic Deneuville"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-expand: 3
+from: markdown+emoji
+categories:
+  - Commands
+  - Clone using a Token
+---
+
+## Commands
+
+[Git tuto](https://ludo2ne.github.io/Git-tuto/){target="_blank"}
+
+| Command                                                  | Description                                                          |
+|----------------------------------------------------------|----------------------------------------------------------------------|
+| `git clone https://....git`                              | Creates a copy of a remote repository in your local directory.       |
+| `git add .`                                              | Stages all changes for the next commit.                              |
+| `git commit -m "<explicit message>"`                     | Commits the staged changes to the local repository.                  |
+| `git push`                                               | Uploads local changes to a remote repository.                        |
+| `git pull`                                               | Merge changes from a remote to the local repository.                 |
+| `git switch <branch>`                                    | Switches to the specified branch.                                    |
+
+
+### Use a token
+
+::: {.callout-tip}
+If you don't want to enter your **GitHub** credentials every time you interact with a repository, you can use a personal access token. 
+:::
+
+This is particularly useful as it persists even after you've paused and resumed your **VSCode** service.
+
+
+- **Prerequisite:** You must have already created a **Personal Access Token** in GitHub and declared it on the datalab (see Lab 1 for instructions)
+- **When cloning:** Instead of using the standard clone URL, you embed the token directly into the command
+  - replace `git clone https://github.com/<username>/<reponame>.git`
+  - with `git clone https://$GIT_PERSONAL_ACCESS_TOKEN@github.com/<username>/<reponame>.git`
+- **To verify:** After cloning, you can check that the remote URL now includes the token variable using the following command:
+  - `git remote -v`
+  - GIT_PERSONAL_ACCESS_TOKEN is replaced by its value: *ghp_...*
+
+Now, thanks to the token, you no longer need to enter your GitHub credentials, saving you time and effort.

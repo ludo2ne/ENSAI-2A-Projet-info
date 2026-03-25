@@ -122,9 +122,8 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
 - [ ] Login to a Datalab
   - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
   - <https://datalab.sspcloud.fr/>{target="_blank"} 
-- [ ] Go to the [Tools page](./tools.qmd){target="_blank"}
-  - It explains why we are going to use a customised service
 - [ ] Launch a [**customised**]{.underline} VSCode service
+  - See [Datalab page](../outils/datalab.qmd){target="_blank"}
 
 
 ### Fork or update your forked repo

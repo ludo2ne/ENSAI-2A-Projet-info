@@ -48,8 +48,6 @@ website:
             text: DAO et Sécurité
       - text: TP
         menu:
-          - href: doc/tp/tools.qmd
-            text: Tools
           - href: doc/tp/tp1.qmd
             text: TP 1
           - href: doc/tp/tp2.qmd
@@ -60,6 +58,14 @@ website:
             text: TP 4
           - href: doc/tp/tp5.qmd
             text: TP 5
+      - text: Tools
+        menu:
+          - href: doc/outils/datalab.qmd
+            text: Datalab
+          - href: doc/outils/git.qmd
+            text: Git
+          - href: doc/outils/vscode.qmd
+            text: VS Code
     right:
       - text: Divers
         menu:
