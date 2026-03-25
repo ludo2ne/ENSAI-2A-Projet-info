@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
 
-<title>Tools for labs and projects – Projet info 2A</title>
+<title>Git Tools – Projet info 2A</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -20,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -68,17 +36,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3bfab430b3a0f1eddad8a0d61863e953.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-a2bfeeca8d941e7f328a7b92742c06b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-8ec1fb2740a17410fc6227cc0b93a09a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6fba50ad7caf29492cb2a43abebf4864.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -278,8 +245,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Projet info 2A</span>
     </a>
@@ -367,10 +332,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tools.html">
- <span class="dropdown-text">Tools</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/tp1.html">
  <span class="dropdown-text">TP 1</span></a>
   </li>  
@@ -389,6 +350,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp5.html">
  <span class="dropdown-text">TP 5</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tools</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
+        <li>
+    <a class="dropdown-item" href="../../doc/outils/datalab.html">
+ <span class="dropdown-text">Datalab</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/outils/git.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/outils/vscode.html">
+ <span class="dropdown-text">VS Code</span></a>
   </li>  
     </ul>
   </li>
@@ -435,22 +415,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#datalabs" id="toc-datalabs" class="nav-link" data-scroll-target="#datalabs">Datalabs</a>
-  <ul class="collapse">
-  <li><a href="#custom-service" id="toc-custom-service" class="nav-link" data-scroll-target="#custom-service">Custom service</a></li>
-  </ul></li>
-  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a>
-  <ul class="collapse">
-  <li><a href="#open-folder" id="toc-open-folder" class="nav-link" data-scroll-target="#open-folder">Open Folder</a></li>
-  <li><a href="#autocompletion" id="toc-autocompletion" class="nav-link" data-scroll-target="#autocompletion">Autocompletion</a></li>
-  </ul></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a>
+  <li><a href="#commands" id="toc-commands" class="nav-link active" data-scroll-target="#commands">Commands</a>
   <ul class="collapse">
   <li><a href="#use-a-token" id="toc-use-a-token" class="nav-link" data-scroll-target="#use-a-token">Use a token</a></li>
   </ul></li>
-  <li><a href="#vm-ensai" id="toc-vm-ensai" class="nav-link" data-scroll-target="#vm-ensai">VM ENSAI</a></li>
-  <li><a href="#personal-computer" id="toc-personal-computer" class="nav-link" data-scroll-target="#personal-computer">Personal computer</a></li>
   </ul>
 </nav>
 </nav>
@@ -464,8 +432,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tools for labs and projects</h1>
-</div>
+<h1 class="title">Git Tools</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Commands</div>
+    <div class="quarto-category">Clone using a Token</div>
+  </div>
+  </div>
 
 
 
@@ -487,224 +459,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<ul>
-<li>In the lab instructions, <u><strong>you have to replace</strong></u> <code>&lt;...&gt;</code> with an appropriate value.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Example">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><code>git commit -m "&lt;explicit message&gt;"</code></li>
-<li><span class="emoji" data-emoji="arrow_right">➡️</span> <code>git commit -m "fix: log in error"</code></li>
-</ul>
-</div>
-</div>
-<ul>
-<li>Don’t skip a step that didn’t work, telling yourself that it doesn’t matter
-<ul>
-<li>This may cause problems later on</li>
-</ul></li>
-</ul>
-</section>
-<section id="datalabs" class="level2">
-<h2 class="anchored" data-anchor-id="datalabs">Datalabs</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You require resources to start your services, the datalabs are available for that purpose.</p>
-<p>Once you have completed your tasks, make sure to <u>free up these resources</u> by deleting or pausing your services.</p>
-</div>
-</div>
-<ul>
-<li>SSPCloud (INSEE): <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
-<li>GENES: <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
-</ul>
-<section id="custom-service" class="level3">
-<h3 class="anchored" data-anchor-id="custom-service">Custom service</h3>
-<p>If the catalogue services do not fully meet your needs, you can use customised services.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>URLs to launch custom VSCode-python services for:</p>
-<ul>
-<li><a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.19&amp;s3=region-79669f20&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&amp;networking.user.enabled=true&amp;networking.user.ports%5B0%5D=9876&amp;autoLaunch=true" target="_blank">SSPCloud</a></li>
-<li><a href="https://onyxia.lab.groupe-genes.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.19&amp;s3=region-46d082f3&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&amp;networking.user.enabled=true&amp;networking.user.port=9876&amp;autoLaunch=true" target="_blank">GENES Datalab</a></li>
-</ul>
-</div>
-</div>
-<section id="explanations" class="level4">
-<h4 class="anchored" data-anchor-id="explanations">Explanations</h4>
-<p>In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:</p>
-<ul>
-<li>by installing additional Python packages</li>
-<li>by modifying certain extensions
-<ul>
-<li>using <span class="emoji" data-emoji="heavy_plus_sign">➕</span> Ruff instead of <span class="emoji" data-emoji="heavy_minus_sign">➖</span> Flake8 to format the code</li>
-</ul></li>
-<li>by opening a specific port to deploy an API</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Opening the port to deploy the API must be done before launching the service.</p>
-<p>After that, it is too late, and you will have to delete it and start over.</p>
-</div>
-</div>
-</section>
-<section id="ways-to-customise-a-service" class="level4">
-<h4 class="anchored" data-anchor-id="ways-to-customise-a-service">Ways to customise a service</h4>
-<ul>
-<li>Launch the catalogue service, then modify it by executing commands manually</li>
-<li>Use an initialisation script that will run immediately after the catalogue service is launched
-<ul>
-<li>In the form before Launch: Initialization scripts</li>
-<li><a href="https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh" target="_blank">Example</a></li>
-</ul></li>
-<li>Create and use a Docker image based on the original service
-<ul>
-<li>In the form before Launch: Service &gt; Use a custom image</li>
-</ul></li>
-</ul>
-</section>
-</section>
-</section>
-<section id="vscode" class="level2">
-<h2 class="anchored" data-anchor-id="vscode">VSCode</h2>
-<section id="open-folder" class="level3">
-<h3 class="anchored" data-anchor-id="open-folder">Open Folder</h3>
-<p>File &gt; Open Folder &gt; <code>/home/onyxia/work/&lt;repo_name&gt;</code> &gt; OK</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Open Folder allows you to determine the root folder you are currently in.</p>
-<p>To find out the current folder, look at the top left of the <u>explorer</u> for the parent folder.</p>
-<p>This choice is very important because imports between Python modules use relative paths.</p>
-</div>
-</div>
-</section>
-<section id="autocompletion" class="level3">
-<h3 class="anchored" data-anchor-id="autocompletion">Autocompletion</h3>
-<p><em>code-server</em> (VSCode version used by datalabs) does not support Pylance, which normally provides autocompletion. 2 options for adding autocompletion:</p>
-<section id="option-1" class="level4">
-<h4 class="anchored" data-anchor-id="option-1">Option 1</h4>
-<ul class="task-list">
-<li><label><input type="checkbox">Create a virtual environment</label>
-<ul>
-<li><code>python -m venv venv</code></li>
-</ul></li>
-<li><label><input type="checkbox">CTRL + SHIFT + P</label>
-<ul>
-<li>Python: Select interpreter</li>
-<li>choose <em>venv</em></li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="venv 101">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>venv 101
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>When you install Python packages globally, everything gets mixed together.</p>
-<p>If one project needs Django 3.2 and another needs Django 5.0, they’ll conflict.</p>
-<p>Over time, your global Python also gets messy, with packages you don’t remember installing, and sharing your project becomes painful <span class="emoji" data-emoji="arrow_right">➡️</span> the classic “it works on my machine” problem.</p>
-<p>A <strong>venv</strong> solves this by creating a self-contained environment just for your project.</p>
-<ul>
-<li>create: <code>python -m venv venv</code></li>
-<li>activate: <code>source venv/bin/activate</code></li>
-</ul>
-<p>Inside this bubble, you can install any packages you want in any version you want, completely isolated from other projects.</p>
-<ul>
-<li>save dependencies for sharing: <code>pip freeze &gt; requirements.txt</code></li>
-<li>exit the venv: <code>deactivate</code></li>
-</ul>
-<p>To recreate the environment elsewhere:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="option-2" class="level4">
-<h4 class="anchored" data-anchor-id="option-2">Option 2</h4>
-<ul class="task-list">
-<li><label><input type="checkbox">install extension <strong>BasedPyright</strong></label></li>
-</ul>
-<p>To remove warnings:</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Create a file at the root of your project: <code>pyrightconfig.json</code></label></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>pyrightconfig.json</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="pyrightconfig.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"typeCheckingMode"</span><span class="fu">:</span> <span class="st">"off"</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportMissingParameterType"</span><span class="fu">:</span> <span class="st">"none"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportImplicitRelativeImport"</span><span class="fu">:</span> <span class="st">"none"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">to hide inlay hints</label></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>.vscode/settings.json</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename=".vscode/settings.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.callArgumentNames"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.variableTypes"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.functionReturnTypes"</span><span class="fu">:</span> <span class="kw">false</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-</section>
-<section id="git" class="level2">
-<h2 class="anchored" data-anchor-id="git">Git</h2>
+<section id="commands" class="level2">
+<h2 class="anchored" data-anchor-id="commands">Commands</h2>
 <p><a href="https://ludo2ne.github.io/Git-tuto/" target="_blank">Git tuto</a></p>
 <table class="caption-top table">
 <colgroup>
@@ -746,7 +502,19 @@ Caution
 </table>
 <section id="use-a-token" class="level3">
 <h3 class="anchored" data-anchor-id="use-a-token">Use a token</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If you don’t want to enter your <strong>GitHub</strong> credentials every time you interact with a repository, you can use a personal access token.</p>
+</div>
+</div>
 <p>This is particularly useful as it persists even after you’ve paused and resumed your <strong>VSCode</strong> service.</p>
 <ul>
 <li><strong>Prerequisite:</strong> You must have already created a <strong>Personal Access Token</strong> in GitHub and declared it on the datalab (see Lab 1 for instructions)</li>
@@ -762,58 +530,9 @@ Caution
 </ul></li>
 </ul>
 <p>Now, thanks to the token, you no longer need to enter your GitHub credentials, saving you time and effort.</p>
-</section>
-</section>
-<section id="vm-ensai" class="level2">
-<h2 class="anchored" data-anchor-id="vm-ensai">VM ENSAI</h2>
-<p>In previous years, tutorials and projects were carried out on ENSAI VMs. You can therefore use it as a backup.</p>
-<p>The necessary tools are still available there for development:</p>
-<ul>
-<li>Visual Studio Code</li>
-<li>Python 3.10</li>
-<li>Git</li>
-<li>a PostgreSQL database</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All students have access to a database that can only be accessed from ENSAI VMs. For more information, <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html" target="_blank">click here</a></p>
-</div>
-</div>
-</section>
-<section id="personal-computer" class="level2">
-<h2 class="anchored" data-anchor-id="personal-computer">Personal computer</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The biggest challenge if you want to work on your personal machine will be to <strong>setup a local PostgreSQL database.</strong></p>
-<p>That is why it is strongly advised not to work on your personal computer if you do not feel capable of carrying out these installations completely on your own.</p>
-<p>This could take a lot of time and energy, and it is not the role of project managers to help you with these installations.</p>
-</div>
-</div>
-<p>To complete the practical work and project on your personal computer, you must install:</p>
-<ul>
-<li>Visual Studio Code or another IDE</li>
-<li>Python</li>
-<li>Git</li>
-<li>PostgreSQL</li>
-</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

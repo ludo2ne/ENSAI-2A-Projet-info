@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="description" content="Slides">
 
-<title>Lancement du projet info 2025-2026 – Projet info 2A</title>
+<title>Git Tools – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -416,37 +450,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#merci-bienvenue" id="toc-merci-bienvenue" class="nav-link active" data-scroll-target="#merci-bienvenue">Merci &amp; Bienvenue</a></li>
-  <li><a href="#myensai" id="toc-myensai" class="nav-link" data-scroll-target="#myensai">MyENSAI</a></li>
-  <li><a href="#dossier-administratif" id="toc-dossier-administratif" class="nav-link" data-scroll-target="#dossier-administratif">Dossier Administratif</a>
+  <li><a href="#open-folder" id="toc-open-folder" class="nav-link active" data-scroll-target="#open-folder">Open Folder</a></li>
+  <li><a href="#settings" id="toc-settings" class="nav-link" data-scroll-target="#settings">Settings</a></li>
+  <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions">Extensions</a></li>
+  <li><a href="#autocompletion" id="toc-autocompletion" class="nav-link" data-scroll-target="#autocompletion">Autocompletion</a>
   <ul class="collapse">
-  <li><a href="#paie" id="toc-paie" class="nav-link" data-scroll-target="#paie">Paie</a></li>
-  <li><a href="#scolarité" id="toc-scolarité" class="nav-link" data-scroll-target="#scolarité">Scolarité</a></li>
-  <li><a href="#dossier-frais" id="toc-dossier-frais" class="nav-link" data-scroll-target="#dossier-frais">Dossier frais</a></li>
-  <li><a href="#repas-midi" id="toc-repas-midi" class="nav-link" data-scroll-target="#repas-midi">Repas Midi</a></li>
-  <li><a href="#café" id="toc-café" class="nav-link" data-scroll-target="#café">Café</a></li>
+  <li><a href="#option-1" id="toc-option-1" class="nav-link" data-scroll-target="#option-1">Option 1</a></li>
+  <li><a href="#option-2" id="toc-option-2" class="nav-link" data-scroll-target="#option-2">Option 2</a></li>
   </ul></li>
-  <li><a href="#les-tp" id="toc-les-tp" class="nav-link" data-scroll-target="#les-tp">Les TP</a>
-  <ul class="collapse">
-  <li><a href="#techno-et-outils" id="toc-techno-et-outils" class="nav-link" data-scroll-target="#techno-et-outils">Techno et outils</a></li>
-  <li><a href="#contenu" id="toc-contenu" class="nav-link" data-scroll-target="#contenu">Contenu</a></li>
-  <li><a href="#english" id="toc-english" class="nav-link" data-scroll-target="#english">English</a></li>
-  <li><a href="#datalab" id="toc-datalab" class="nav-link" data-scroll-target="#datalab">Datalab</a></li>
-  <li><a href="#accès-vm" id="toc-accès-vm" class="nav-link" data-scroll-target="#accès-vm">Accès VM</a></li>
-  <li><a href="#machine-perso" id="toc-machine-perso" class="nav-link" data-scroll-target="#machine-perso">Machine perso</a></li>
-  </ul></li>
-  <li><a href="#le-projet" id="toc-le-projet" class="nav-link" data-scroll-target="#le-projet">Le projet</a>
-  <ul class="collapse">
-  <li><a href="#attendus" id="toc-attendus" class="nav-link" data-scroll-target="#attendus">Attendus</a></li>
-  <li><a href="#sujets" id="toc-sujets" class="nav-link" data-scroll-target="#sujets">Sujets</a></li>
-  <li><a href="#ère-séance" id="toc-ère-séance" class="nav-link" data-scroll-target="#ère-séance">1ère séance</a></li>
-  <li><a href="#suivi" id="toc-suivi" class="nav-link" data-scroll-target="#suivi">Suivi</a></li>
-  <li><a href="#évaluations" id="toc-évaluations" class="nav-link" data-scroll-target="#évaluations">Évaluations</a></li>
-  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template">Template</a></li>
-  </ul></li>
-  <li><a href="#communiquer" id="toc-communiquer" class="nav-link" data-scroll-target="#communiquer">Communiquer</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="reunion-lancement-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -458,14 +471,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lancement du projet info 2025-2026</h1>
-</div>
-
-<div>
-  <div class="description">
-    <a href="reunion-lancement-slides.html">Slides</a>
+<h1 class="title">Git Tools</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Open Folder</div>
+    <div class="quarto-category">Settings</div>
+    <div class="quarto-category">Extensions</div>
   </div>
-</div>
+  </div>
+
 
 
 <div class="quarto-title-meta">
@@ -486,347 +499,145 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="merci-bienvenue" class="level2">
-<h2 class="anchored" data-anchor-id="merci-bienvenue">Merci &amp; Bienvenue</h2>
-<div class="notes">
-<p>Rapide tour de table</p>
-<ul>
-<li>1 min chacun (Localisation ? INSEE ? Ancien élève ? Domaine ?)</li>
-<li>Ensuite parlons rapidement Administratif et Logistique</li>
-<li>N’hésitez pas à m’interrompre si questions</li>
-</ul>
-</div>
-</section>
-<section id="myensai" class="level2">
-<h2 class="anchored" data-anchor-id="myensai">MyENSAI</h2>
-<ul>
-<li>Pamplemousse : Scolarité, EDT, Appel</li>
-<li>Moodle : Contenu pédagogique</li>
-<li>Datalab : <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
-<li>VM : <a href="https://view.ensai.fr/" target="_blank">https://view.ensai.fr/</a></li>
-</ul>
-<div class="notes">
-<p>MyENSAI : intranet, compte pour accéder à tout</p>
-<p>Pour créer votre compte : nom, prenom, tel, mail</p>
-</div>
-</section>
-<section id="dossier-administratif" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="dossier-administratif">Dossier Administratif</h2>
-<p>Quelques papiers pour être rémunéré</p>
-<ul>
-<li>Fiche de renseignement</li>
-<li>RIB</li>
-<li>Attestation sécu</li>
-<li>Décision d’engagement à signer</li>
-<li>Fiche de paie + attestation employeur (sauf INSEE)</li>
-<li>Autorisation de cumul (fonctionnaires)</li>
-</ul>
-<p>À envoyer à <code>vacatairesensai@ensai.fr</code></p>
-<div class="notes">
-<p>Vous recevrez un mail avec toutes les infos après la bascule Pamplemousse</p>
-</div>
-<section id="paie" class="level3">
-<h3 class="anchored" data-anchor-id="paie">Paie</h3>
-<p>2-3 mois après la fin de l’intervention</p>
-<ul>
-<li>décembre : TP</li>
-<li>mars : projet</li>
-</ul>
-<p>Fiches de paie sur <a href="https://ensap.gouv.fr/" target="_blank">https://ensap.gouv.fr/</a></p>
-<div class="notes">
-<p>Créez un compte ENSAI avec votre numéro de sécu</p>
-</div>
-</section>
-<section id="scolarité" class="level3">
-<h3 class="anchored" data-anchor-id="scolarité">Scolarité</h3>
-<p>Pour les questions d’emploi du temps</p>
-<ul>
-<li><code>scolarite@ensai.fr</code></li>
-<li><code>isabelle-laure.dang@ensai.fr</code></li>
-</ul>
-<div class="notes">
-<ul>
-<li>Modop pour faire l’appel
-<ul>
-<li>Conseil : faire au début pour pas oublier</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="dossier-frais" class="level3">
-<h3 class="anchored" data-anchor-id="dossier-frais">Dossier frais</h3>
-<p>Si vous habitez <strong>hors aire urbaine de Rennes</strong>, vous êtes remboursés de :</p>
-<ul>
-<li>Billets de train 2e classe, metro, bus
-<ul>
-<li>fournir des scans propres</li>
-</ul></li>
-<li>20€ par repas</li>
-<li>Nuitée si pas possible d’arriver le matin même</li>
-</ul>
-<p><code>mission@ensai.fr</code></p>
-<div class="notes">
-<p>Possible de demander l’achat direct de vos billet :</p>
-<ul>
-<li>Si vous ne voulez pas avancer les frais</li>
-<li>Si fait en avance &gt; 15j</li>
-</ul>
-<p>Note de frais à envoyer indiv ou par lots</p>
-</div>
-</section>
-<section id="repas-midi" class="level3">
-<h3 class="anchored" data-anchor-id="repas-midi">Repas Midi</h3>
-<p>Entre 12h45 et 14h00, plusieurs possibilités :</p>
-<ul>
-<li>MSA ~ 15€</li>
-<li><a href="https://timiam.fr/restaurant" target="_blank">Ti-miam</a> : Menu du jour à 15€</li>
-<li>Popotte personnelle</li>
-</ul>
-<div class="notes">
-<ul>
-<li>ou Subway, McDo</li>
-<li>1h15 : Assez speed, ne pas trop trainer</li>
-<li>Restaurant du Forum : réserver</li>
-<li>Sympa de manger ensemble, après si vous mangez ailleurs n’hésitez pas à prévenir qu’on ne vous attende pas</li>
-<li>Végé ?</li>
-<li>Qui vient en voiture ?</li>
-</ul>
-</div>
-</section>
-<section id="café" class="level3">
-<h3 class="anchored" data-anchor-id="café">Café</h3>
-<ul>
-<li>Machines élèves au foyer (CB)</li>
-<li>Machine salle des permanents (pièces)
-<ul>
-<li>1er étage, au milieu, face aux <span class="emoji" data-emoji="toilet">🚽</span></li>
-</ul></li>
-</ul>
-<div class="notes">
-<ul>
-<li>Aussi fontaine à eau (chaude, froide, normale)</li>
-<li>Si vous manquez de sucre, j’ai de quoi faire</li>
-<li>Pauses : généralement je me balade dans les couloirs</li>
-<li>Pour me reconnaitre -&gt; Linkedin, site GitHub</li>
-<li>Vous pouvez passer bureau 161</li>
-<li>Le 29/08, je suis en TP à 8h</li>
-</ul>
-</div>
-</section>
-</section>
-<section id="les-tp" class="level2">
-<h2 class="anchored" data-anchor-id="les-tp">Les TP</h2>
-<section id="techno-et-outils" class="level3">
-<h3 class="anchored" data-anchor-id="techno-et-outils">Techno et outils</h3>
-<ul>
-<li>VSCode</li>
-<li>Python</li>
-<li>PostgreSQL</li>
-<li>Git</li>
-</ul>
-</section>
-<section id="contenu" class="level3">
-<h3 class="anchored" data-anchor-id="contenu">Contenu</h3>
-<ul>
-<li>TP1 : Rappels Git, exemple d’application</li>
-<li>TP2 : POO, TU, doc</li>
-<li>TP3 : Webservices</li>
-<li>TP4 : DAO</li>
-</ul>
-<div class="notes">
-<p>Appli Pokemon créée par Rémi comme un projet</p>
-<p>Quand vous avez TP + projet, l’ordre importe peu (sauf ATPA)</p>
-</div>
-</section>
-<section id="english" class="level3">
-<h3 class="anchored" data-anchor-id="english">English</h3>
-<ul>
-<li>2 groups</li>
-<li>Full english</li>
-<li>Volunteers?</li>
-</ul>
-</section>
-<section id="datalab" class="level3">
-<h3 class="anchored" data-anchor-id="datalab">Datalab</h3>
-<ul>
-<li><a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
-<li>Connexion avec votre compte ENSAI</li>
-<li>demo</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Lancer services
-<ul>
-<li>paramètres</li>
-<li>open port</li>
-</ul></li>
-<li>suivre README
-<ul>
-<li>.env</li>
-<li>run</li>
-<li>api</li>
-<li>inquirerPy</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="accès-vm" class="level3">
-<h3 class="anchored" data-anchor-id="accès-vm">Accès VM</h3>
-<p>Backup :</p>
-<ul>
-<li><a href="http://view.ensai.fr/" target="_blank">http://view.ensai.fr/</a>
-<ul>
-<li>via navigateur</li>
-<li>ou installer VMWare Horizon Client</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p>VMWare Horizon Client : Désactiver la vérification de Certificat</p>
-<p>CTRL + ALT + F12</p>
-</div>
-</section>
-<section id="machine-perso" class="level3">
-<h3 class="anchored" data-anchor-id="machine-perso">Machine perso</h3>
-<div class="callout callout-style-default callout-warning callout-titled">
+<section id="open-folder" class="level2">
+<h2 class="anchored" data-anchor-id="open-folder">Open Folder</h2>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Élèves qui ne veulent pas travailler sur la VM :</p>
-<ul>
-<li>Installer IDE, Python, Git, BDD</li>
-<li>Manque de maîtrise</li>
-<li>Perte de temps</li>
-<li>TP DAO -&gt; besoin d’une BDD</li>
-</ul>
+<p>The <strong>Open Folder</strong> option allows you to define the root directory of your project.</p>
+<p>To identify the current root folder, look at the top-left corner of the Explorer panel, where the parent folder is displayed.</p>
+<p>This choice is important because Python imports between modules rely on relative paths, which depend on the project’s root structure.</p>
 </div>
 </div>
-<div class="notes">
+<p>Two ways to open folder:</p>
 <ul>
-<li>Ne soyez pas trop gentil</li>
-<li>Ne les aidez pas à installer</li>
-<li>ça ne leur rend pas service</li>
-<li>Surtout si vous voyez qu’ils ne maitrisent pas</li>
-</ul>
-</div>
-</section>
-</section>
-<section id="le-projet" class="level2">
-<h2 class="anchored" data-anchor-id="le-projet">Le projet</h2>
-<section id="attendus" class="level3">
-<h3 class="anchored" data-anchor-id="attendus">Attendus</h3>
+<li>In the top-left corner, click on the three horizontal bars <span class="emoji" data-emoji="arrow_right">➡️</span>
 <ul>
-<li>Développer une application en Python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostgreSQL</li>
-<li>Utiliser et/ou Créer des webservices</li>
-<li>Concevoir et Modéliser</li>
-</ul>
-</section>
-<section id="sujets" class="level3">
-<h3 class="anchored" data-anchor-id="sujets">Sujets</h3>
+<li>File</li>
+<li>Open Folder</li>
+<li><code>/home/onyxia/work/&lt;repo_name&gt;</code></li>
+<li>OK</li>
+</ul></li>
+<li>In a terminal: <code>code-server /home/onyxia/work/&lt;repo_name&gt;</code>
 <ul>
-<li>20 août au plus tard dernier délai</li>
-<li><a href="https://hackmd.io/qpcWPXGiSpi2kXOEJY41SQ" target="_blank">Lien vers la liste</a></li>
-</ul>
-<div class="notes">
-<ul>
-<li>Contraintes EDT</li>
-<li>Sinon : sujet mystère (les élèves n’aiment pas)</li>
-</ul>
-</div>
-</section>
-<section id="ère-séance" class="level3">
-<h3 class="anchored" data-anchor-id="ère-séance">1ère séance</h3>
-<ul>
-<li>Présenter le sujet (diapo)</li>
-<li>Répondre aux questions</li>
-<li>Présenter votre mode de fonctionnement</li>
-<li>Pour les élèves
-<ul>
-<li>Recontrer son équipe</li>
-<li>Lister les compétences</li>
-<li>Répartir les rôles</li>
+<li>Close previous tab</li>
 </ul></li>
 </ul>
-<div class="notes">
-<p>Les étapes pour les élèves :</p>
-<ul>
-<li>lister les fonctionnalités</li>
-<li>modéliser (diag classe)</li>
-<li>créer la base de données</li>
-<li>coder</li>
-</ul>
-<p>Les élèves sont sympas mais doivent être bien cadrés</p>
+</section>
+<section id="settings" class="level2">
+<h2 class="anchored" data-anchor-id="settings">Settings</h2>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visual Studio Code allows you to define settings at different levels: user, workspace, and folder.</p>
+<p>Workspace settings apply only to the current project. They are stored in the <code>.vscode/settings.json</code> file inside your project folder.</p>
+<p>This is useful for ensuring consistency across a team, as everyone working on the project shares the same configuration (e.g., Python interpreter, formatting rules, or linting options).</p>
+</div>
 </div>
 </section>
-<section id="suivi" class="level3">
-<h3 class="anchored" data-anchor-id="suivi">Suivi</h3>
+<section id="extensions" class="level2">
+<h2 class="anchored" data-anchor-id="extensions">Extensions</h2>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+</section>
+<section id="autocompletion" class="level2">
+<h2 class="anchored" data-anchor-id="autocompletion">Autocompletion</h2>
+<p><em>code-server</em> (VSCode version used by datalabs) does not support Pylance, which normally provides autocompletion. 2 options for adding autocompletion:</p>
+<section id="option-1" class="level3">
+<h3 class="anchored" data-anchor-id="option-1">Option 1</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a virtual environment</label>
 <ul>
-<li><a href="../../doc/projet/notice-eleves.html#point-hebdo">Point hebdo</a> jeudi soir</li>
-<li>Diagramme de Gantt</li>
-<li>Bien sonder le groupe si tout va bien
+<li><code>python -m venv venv</code></li>
+</ul></li>
+<li><label><input type="checkbox">CTRL + SHIFT + P</label>
 <ul>
-<li>Prévenir au plus tôt si ça coince</li>
+<li>Python: Select interpreter</li>
+<li>choose <em>venv</em></li>
 </ul></li>
 </ul>
-<div class="notes">
+<div class="callout callout-style-default callout-tip callout-titled" title="venv 101">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>venv 101
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When you install Python packages globally, everything gets mixed together.</p>
+<p>If one project needs Django 3.2 and another needs Django 5.0, they’ll conflict.</p>
+<p>Over time, your global Python also gets messy, with packages you don’t remember installing, and sharing your project becomes painful <span class="emoji" data-emoji="arrow_right">➡️</span> the classic “it works on my machine” problem.</p>
+<p>A <strong>venv</strong> solves this by creating a self-contained environment just for your project.</p>
 <ul>
-<li>Inclure une backlog</li>
-<li>En cas de soucis avec un élève ou une équipe <span class="emoji" data-emoji="arrow_right">➡️</span> me prévenir</li>
+<li>create: <code>python -m venv venv</code></li>
+<li>activate: <code>source venv/bin/activate</code></li>
 </ul>
+<p>Inside this bubble, you can install any packages you want in any version you want, completely isolated from other projects.</p>
+<ul>
+<li>save dependencies for sharing: <code>pip freeze &gt; requirements.txt</code></li>
+<li>exit the venv: <code>deactivate</code></li>
+</ul>
+<p>To recreate the environment elsewhere:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 </div>
 </section>
-<section id="évaluations" class="level3">
-<h3 class="anchored" data-anchor-id="évaluations">Évaluations</h3>
-<ul>
-<li>Dossier d’analyse</li>
-<li>Code</li>
-<li>Esprit d’équipe</li>
+<section id="option-2" class="level3">
+<h3 class="anchored" data-anchor-id="option-2">Option 2</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">install extension <strong>BasedPyright</strong></label></li>
 </ul>
-<div class="notes">
-<ul>
-<li>Dossier d’analyse
-<ul>
-<li>reçu samedi -&gt; retour vendredi suivant</li>
-</ul></li>
-<li>Code -&gt; grille notation</li>
-<li>Rapport -&gt; grille, commun avec jury</li>
+<p>To remove warnings:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a file at the root of your project: <code>pyrightconfig.json</code></label></li>
 </ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pyrightconfig.json</strong></pre>
 </div>
-</section>
-<section id="template" class="level3">
-<h3 class="anchored" data-anchor-id="template">Template</h3>
-<ul>
-<li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Modèle</a> qui peut servir de base <span class="emoji" data-emoji="construction">🚧</span></li>
-<li>Les élèves peuvent utiliser ou non</li>
-<li>Possibilité de fournir votre propre template</li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="pyrightconfig.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"typeCheckingMode"</span><span class="fu">:</span> <span class="st">"off"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportMissingParameterType"</span><span class="fu">:</span> <span class="st">"none"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportImplicitRelativeImport"</span><span class="fu">:</span> <span class="st">"none"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">to hide inlay hints</label></li>
 </ul>
-</section>
-</section>
-<section id="communiquer" class="level2">
-<h2 class="anchored" data-anchor-id="communiquer">Communiquer</h2>
-<ul>
-<li>Mailing list</li>
-<li><a href="https://discord.gg/GXvFUXRJ" target="_blank">Serveur Discord</a>
-<ul>
-<li>l’invitation expire le 10 juillet</li>
-</ul></li>
-<li>Ludo : 06.45.45.40.82 ou 02.99.05.33.19
-<ul>
-<li>bureau 161 (1er étage, 3e gauche après passerelle)</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p>N’hésitez pas à passer à mon bureau</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.vscode/settings.json</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename=".vscode/settings.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.callArgumentNames"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.variableTypes"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"basedpyright.analysis.inlayHints.functionReturnTypes"</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
