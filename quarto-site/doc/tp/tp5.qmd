@@ -1,17 +1,12 @@
 ---
-title: "Bonus: revise layer programming"
-description: "Lab 5"
-author: "Ludovic Deneuville"
+title: Bonus revise layer programming
+description: Lab 5
+author: Ludovic Deneuville
 format:
   html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
     mermaid:
       theme: default
-from: markdown+emoji
 number-sections: true
-lightbox: true
 ---
 
 

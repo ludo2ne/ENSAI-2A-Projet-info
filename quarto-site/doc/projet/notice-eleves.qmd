@@ -1,15 +1,12 @@
 ---
 title: "Notice élèves"
-description: Projet informatique 2A 2024-2025
-author: "Romaric Gaudel, Rémi Pépin, Ludovic Deneuville"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
-from: markdown+emoji
+description: Projet informatique 2A 2025-2026
+author:
+  - Romaric Gaudel
+  - Rémi Pépin
+  - Ludovic Deneuville
+format: html
 number-sections: false
-lightbox: true
 ---
 
 ## Introduction

@@ -1,16 +1,14 @@
 ---
-title: "Git, Example of Application"
-description: "Lab 1"
-author: "Ludovic Deneuville"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
-from: markdown+emoji
+title: Git, Example of Application
+description: Lab 1
+author: Ludovic Deneuville
+format: html
 number-sections: true
 categories:
   - Git
+  - Datalab
+  - VSCode
+  - Python project
 ---
 
 :construction:

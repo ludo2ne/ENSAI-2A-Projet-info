@@ -1,12 +1,7 @@
 ---
-title: "Git Tools"
-author: "Ludovic Deneuville"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
-from: markdown+emoji
+title: Git Tools
+author: Ludovic Deneuville
+format: html
 categories:
   - Open Folder
   - Settings

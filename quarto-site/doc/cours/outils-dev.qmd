@@ -1,21 +1,11 @@
 ---
 title: "Outils de développement"
 description: "[Slides](outils-dev-slides.html)"
-author: "Ludovic Deneuville"
 format: 
-  html:
-    toc: true
-    toc-location: left
-    toc-depth: 2
+  html: default
   revealjs:
-    theme: moon
     footer: "[Home](../../index.html) --- [Outils de développement](outils-dev.html)"
-    slide-number: c/t                    ## collapsed/total
-    slide-level: 3
-    controls: true
     output-file: outils-dev-slides.html
-from: markdown+emoji
-lightbox: true
 ---
 
 ## Environnement de dev
@@ -94,6 +84,8 @@ pylint --output-format=colorized --disable=C0114,C0411,C0415,W0718 $(git ls-file
 :::
 
 ### Aborescence du dépôt {.smaller}
+
+:construction:
 
 ```{.txt code-line-numbers="false"}
 PROJET-INFO-2A

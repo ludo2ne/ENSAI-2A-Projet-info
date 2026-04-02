@@ -1,21 +1,11 @@
 ---
 title: "Programation orientée Objet - Avancée"
 description: "[Slides](poo-avancee-slides.html)"
-author: "Ludovic Deneuville, Rémi Pépin"
 format: 
-  html:
-    toc: true
-    toc-location: left
-    toc-depth: 2
+  html: default
   revealjs:
-    theme: moon
     footer: "[Home](../../index.html) --- [POO Avancée](poo-avancee.html)"
-    slide-number: c/t                    ## collapsed/total
-    slide-level: 3
-    controls: true
     output-file: poo-avancee-slides.html
-from: markdown+emoji
-lightbox: true
 ---
 
 ## Plan
@@ -158,7 +148,7 @@ Retour 2 slides avant : si on fait pareil et qu'on utilise l'héritage pour le f
 Voyez-vous un problème ?
 
 ::: {.notes}
-Cà grossit de manière exponentielle
+Ca grossit de manière exponentielle
 :::
 
 

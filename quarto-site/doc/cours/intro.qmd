@@ -1,21 +1,11 @@
 ---
 title: "Introduction"
 description: "[Slides](intro-slides.html)"
-author: "Ludovic Deneuville"
 format: 
-  html:
-    toc: true
-    toc-location: left
-    toc-depth: 2
+  html: default
   revealjs:
-    theme: moon
     footer: "[Home](../../index.html) --- [Introduction](intro.html)"
-    slide-number: c/t                    ## collapsed/total
-    slide-level: 3
-    controls: true
     output-file: intro-slides.html
-from: markdown+emoji
-lightbox: true
 ---
 
 ## Cours de Compléments d'info

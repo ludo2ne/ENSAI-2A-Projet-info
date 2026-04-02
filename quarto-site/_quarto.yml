@@ -4,18 +4,23 @@ var:
 project:
   type: website
 
+author: 
+  - Cyriel Mallart
+  - Ludovic Deneuville
+  - Rémi Pépin
+
 website:
   title: "Projet info 2A"
   repo-url: "{{< meta var.url-repo >}}"
   repo-branch: main
   reader-mode: true
   navbar:
-    background: "#447099"
+    background: "#23706B"
     left:
       - icon: house
         href: index.qmd
         text: Home
-      - text: Projet
+      - text: Project
         menu:
           - href: doc/projet/presentation-tuteurs.qmd
             text: "Présentation pour les tuteurs"
@@ -25,9 +30,9 @@ website:
             text: "Notice élèves"
           - href: https://github.com/ludo2ne/ENSAI-2A-projet-info-template
             text: "Template"
-          - href: doc/projet/sujets-2025-2026.qmd
-            text: "Sujets 2025-2026"
-      - text: Cours
+          - href: doc/projet/sujets.qmd
+            text: "Sujets"
+      - text: Classes
         menu:
           - href: doc/cours/intro.qmd
             text: Introduction
@@ -46,18 +51,18 @@ website:
             text: Webservices
           - href: doc/cours/dao-securite.qmd
             text: DAO et Sécurité
-      - text: TP
+      - text: Labs
         menu:
           - href: doc/tp/tp1.qmd
-            text: TP 1
+            text: Lab 1
           - href: doc/tp/tp2.qmd
-            text: TP 2
+            text: Lab 2
           - href: doc/tp/tp3.qmd
-            text: TP 3
+            text: Lab 3
           - href: doc/tp/tp4.qmd
-            text: TP 4
+            text: Lab 4
           - href: doc/tp/tp5.qmd
-            text: TP 5
+            text: Lab 5
       - text: Tools
         menu:
           - href: doc/outils/datalab.qmd
@@ -84,8 +89,18 @@ website:
 format:
   html:
     theme:
-      dark: solar
       light: cosmo
+      dark: solar
     css: styles.css
+    toc: true
+    toc-location: left
+    toc-depth: 2
   revealjs:
+    theme: moon
     css: none
+    slide-number: c/t
+    slide-level: 3
+    controls: true
+
+from: markdown+emoji
+lightbox: true

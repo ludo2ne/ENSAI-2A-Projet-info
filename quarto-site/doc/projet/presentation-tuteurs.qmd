@@ -1,22 +1,14 @@
 ---
-title: "Présentation aux tutrices et tuteurs"
+title: Présentation aux tutrices et tuteurs
 description: "[Slides](presentation-tuteurs-slides.html)"
-author: "Ludovic Deneuville"
+author: Ludovic Deneuville
 format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
+  html: default
   revealjs:
     theme: moon
     footer: "[Home](../../index.html) --- [Présentation aux tutrices et tuteurs](presentation-tuteurs.qmd)"
-    slide-number: c/t                    # collapsed/total
-    slide-level: 3
-    controls: true
     output-file: presentation-tuteurs-slides.html
-from: markdown+emoji
 number-sections: false
-lightbox: true
 ---
 
 ## Objectifs
@@ -40,8 +32,8 @@ lightbox: true
 
 Les cours de Compléments d'informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.
 
-- 6h des cours
-- 4 TP de 3h 
+- 6h de cours
+- 5 TP de 3h 
   - dispensés par les tutrices / tuteurs
   - le sujet est fourni 
 
@@ -50,7 +42,8 @@ Les cours de Compléments d'informatique vise à fournir aux élèves les outils
 
 - Utilisation basique de Git
 - Rappels de POO
-- Décomposer une application en couches
+- Découper une application en couches
+- Backend / Frontend
 - Communiquer avec une base de données / une API
 - Tests unitaires
 - Documentation
@@ -59,21 +52,22 @@ Les cours de Compléments d'informatique vise à fournir aux élèves les outils
 ## Cadre général du projet
 
 - 1er semestre de 2A
-- Groupes imposés de 4 ou 5 élèves
-- Les groupes votent pour leurs sujets préférés
-- 4 groupes par tutrice / tuteur
+- Équipes imposées de 4 ou 5 élèves
+- 4 équipes par tutrice / tuteur
 
 
 ## 2 phases
 
 - Analyse / Conception générale (sept)
   - 4 séances de 3h de suivi
-  - la séance de mi-octobre permet de faire un retour aux équipes sur le dossier d'analyse
+  - la séance de fin septembre permet de faire un retour aux équipes sur le dossier d'analyse
 - Implémentation (oct-nov)
   - 3 séances de 3h de suivi
 
 
 ## Livrables
+
+:construction:
 
 - 5 octobre : Dossier d'analyse
 - 23 novembre : Rapport final + code
@@ -116,18 +110,17 @@ Le code du projet comptera pour un tiers de la note du cours de Compléments d'i
 
 ## Planning {background-color="Silver"}
 
-### Dates provisoires 2025 {.smaller}
+### Dates provisoires 2026 {.smaller}
 
 | Date                        | Topic                                       |
 |-----------------------------|---------------------------------------------|
-| vendredi 29 août            | TP1 et Suivi 1                              |
-| vendredi 5 septembre        | TP2 et Suivi 2                              |
-| vendredi 12 septembre       | TP3 et Suivi 3                              |
-| vendredi 19 septembre       | TP4 (matin)                                 |
-| vendredi 3 octobre          | Suivi 4 (retour sur les dossiers d'analyse) |
-| mar-jeu 4-6 novembre        | 3 jours d'immersion (Suivi 5 et 6)          |
-| vendredi 14 novembre        | Suivi 7                                     |
-| mercredi 10 décembre        | Soutenance                                  |
+| vendredi 28 août            | TP1 et Suivi 1                              |
+| vendredi 4 septembre        | TP2 et Suivi 2                              |
+| vendredi 11 septembre       | TP3 et Suivi 3                              |
+| vendredi 25 septembre       | TP4 et Suivi 4                              |
+| vendredi 9 octobre          | TP5 et Suivi 5                              |
+| mar-jeu 3-5 novembre        | 3 jours d'immersion (Suivi 6 et 7)          |
+| mercredi 9 décembre         | Soutenance                                  |
 
 
 ## Sujet
@@ -135,16 +128,22 @@ Le code du projet comptera pour un tiers de la note du cours de Compléments d'i
 À vous de jouer pour trouver une bonne idée !
 
 ::: {.callout-tip}
-- [Liste d'API publiques](https://github.com/public-apis/public-apis){target="_blank"}
+1. Trouver une source de données
+2. Construire un sujet autour
+
+[Liste d'API publiques](https://github.com/public-apis/public-apis){target="_blank"}
 :::
+
+:warning: Limitations du nombre de requêtes
 
 ### Éléments requis 
 
 - Utilisation de la POO
-- Stockage en BDD (sans utiliser d'ORM type SQLAlchemy)
-- Utilisation et / ou Création d'un webservice
-- Pas d'interface graphique
-  - pour les sujets n'impliquant pas de création de WS, [InquirerPy](https://inquirerpy.readthedocs.io/en/latest/){target="_blank"} sera utilisé comme IHM en mode console
+- Stockage en BDD
+- Ne pas utiliser d'ORM type SQLAlchemy
+- Utilisation de données issues d'un webservice
+- Backend FastAPI
+- Frontend optionnel (Streamlit)
 
 ### Exemples de sujets{.smaller}
 
@@ -172,25 +171,25 @@ Liste des [anciens sujets](./anciens-sujets.qmd).
 :::white-box
 
 ```
-### Titre
+## Titre
 
 Tuteur / Tutrice : 
 
-#### Présentation
+### Présentation
 
 contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interactif ?
 
-#### Fonctionnalités de base
+### Fonctionnalités de base
 
 - F1 : 
 - F2 : 
 
-#### Fonctionnalités optionnelles
+### Fonctionnalités optionnelles
 
 - FO1 : 
 - FO2 : 
 
-#### Conseils / Outils ...
+### Conseils / Outils ...
 ```
 
 :::
@@ -198,7 +197,7 @@ contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interact
 
 ## Résumé du travail de tutrice / tuteur {.smaller}
 
-- 4 x 3h de TP de compléments d'informatique
+- 5 x 3h de TP de compléments d'informatique
 - 7 x 3h de suivi de projet
 - Lire et noter les 4 dossiers d'analyse
 - Noter le code
@@ -210,24 +209,5 @@ contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interact
 - Guider les élèves
 - Suivi des équipes (avancement, participation, bonne entente)
 - Maîtrise d'Ouvrage
-- Aide au débogage
-
-## Stack VM
-
-- Python 3.10
-- PostgreSQL (chaque élève a une BDD)
-- Git Bash
-- Visual Studio Code
-
-### Principaux Packages Python {.smaller}
-
-| Nom du package      | Très courte description                                    |
-|---------------------|------------------------------------------------------------|
-| inquirerPy          | Créer des interfaces en ligne de commande interactives     |
-| fastapi             | Créer des webservices                                      |
-| psycopg2-binary     | Communiquer avec PostgreSQL                                |
-| pytest              | Tests unitaires                                            |
-| python-dotenv       | Variables d'environnement à partir d'un fichier .env       |
-| requests            | Requêtes HTTP                                              |
-| uvicorn             | Serveur ASGI                                               |
+- Assistance technique, aide au débogage
 

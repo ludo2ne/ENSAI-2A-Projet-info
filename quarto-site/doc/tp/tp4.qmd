@@ -1,17 +1,16 @@
 ---
-title: "Data Access Objet (DAO)"
-description: "Lab 4"
-author: "Rémi Pépin, Ludovic Deneuville"
+title: Data Access Objet (DAO)
+description: Lab 4
+author:
+  - Ludovic Deneuville
+  - Rémi Pépin
 format:
   html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
     mermaid:
       theme: default
-from: markdown+emoji
 number-sections: true
-lightbox: true
+categories:
+  - DAO
 ---
 
 

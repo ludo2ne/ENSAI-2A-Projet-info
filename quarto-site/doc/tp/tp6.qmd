@@ -1,13 +1,10 @@
 ---
-title: "Git et Création d'une IHM"
-description: "TP 4"
-author: "Rémi Pépin, Ludovic Deneuville"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
-from: markdown+emoji
+title: Git et Création d'une IHM
+description: TP 4
+author:
+  - Ludovic Deneuville
+  - Rémi Pépin
+format: html
 number-sections: true
 ---
 

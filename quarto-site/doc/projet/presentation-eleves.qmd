@@ -3,20 +3,12 @@ title: "Présentation du projet info 2A"
 description: "[Slides](presentation-eleves-slides.html)"
 author: "Ludovic Deneuville"
 format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
+  html: default
   revealjs:
     theme: solarized
     footer: "[Home](../../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
-    slide-number: c/t                    # collapsed/total
-    slide-level: 3
-    controls: true
     output-file: presentation-eleves-slides.html
-from: markdown+emoji
 number-sections: false
-lightbox: true
 ---
 
 

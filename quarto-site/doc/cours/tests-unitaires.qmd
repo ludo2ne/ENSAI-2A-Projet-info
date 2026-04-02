@@ -1,21 +1,11 @@
 ---
 title: "Les tests unitaires"
 description: "[Slides](tests-unitaires-slides.html)"
-author: "Ludovic Deneuville"
 format: 
-  html:
-    toc: true
-    toc-location: left
-    toc-depth: 2
+  html: default
   revealjs:
-    theme: moon
     footer: "[Home](../../index.html) --- [Tests unitaires](tests-unitaires.html)"
-    slide-number: c/t                    ## collapsed/total
-    slide-level: 3
-    controls: true
     output-file: tests-unitaires-slides.html
-from: markdown+emoji
-lightbox: true
 ---
 
 ## Les Tests

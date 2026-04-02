@@ -1,0 +1,33 @@
+---
+title: Sujets de projet informatique 2A
+description: Sujets 2026-2027
+format: html
+---
+
+:construction:
+
+::: {.callout-tip}
+[Anciens sujets](./anciens-sujets.qmd){target="_blank"}
+:::
+
+```
+## Titre
+
+Tuteur / Tutrice : 
+
+### Présentation
+
+contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interactif ?
+
+### Fonctionnalités de base
+
+- F1 : 
+- F2 : 
+
+### Fonctionnalités optionnelles
+
+- FO1 : 
+- FO2 : 
+
+### Conseils / Outils ...
+```

@@ -1,14 +1,15 @@
 ---
-title: "Python, OOP, Unit Tests and Documentation"
-description: "Lab 2"
-author: "Rémi Pépin, Ludovic Deneuville"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
-from: markdown+emoji
+title: Python, OOP, Unit Tests and Documentation
+description: Lab 2
+author:
+  - Ludovic Deneuville
+  - Rémi Pépin
+format: html
 number-sections: true
+categories:
+  - OOP
+  - Business object
+  - Unit tests
 ---
 
 

@@ -1,14 +1,13 @@
 ---
-title: "Webservices et formats de données"
-description: "Lab 3"
-author: "Rémi Pépin, Ludovic Deneuville"
-format:
-  html:
-    toc: true
-    toc-location: left
-    toc-expand: 3
-from: markdown+emoji
+title: Webservices et formats de données
+description: Lab 3
+author:
+  - Ludovic Deneuville
+  - Rémi Pépin
+format: html
 number-sections: true
+categories:
+  - APIs
 ---
 
 

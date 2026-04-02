@@ -1,9 +1,7 @@
 ---
-title: "Projet informatique 2e année"
-description: "Ressources pour le projet informatique de 2e année de l'ENSAI"
-author: "Ludovic Deneuville"
+title: Projet informatique 2e année
+description: Ressources pour le projet informatique de 2e année de l'ENSAI
 format: html
-from: markdown+emoji
 ---
 
 
@@ -34,6 +32,8 @@ Le travail demandé consiste à [construire une application]{.underline} permett
 
 ::: {.callout-note}
 Le but de ce cours est de vous aider à mener à bien le projet informatique en vous apportant les compétences et les outils nécessaires.
+
+Les supports de cours et de TP seront uniquement disponibles en anglais.
 :::
 
 
