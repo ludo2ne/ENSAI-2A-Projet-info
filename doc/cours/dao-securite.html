@@ -6,7 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ludovic Deneuville, Rémi Pépin">
+<meta name="author" content="Cyriel Mallart">
+<meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Rémi Pépin">
 <meta name="description" content="Slides">
 
 <title>DAO et Sécurité – Projet info 2A</title>
@@ -78,10 +80,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8ec1fb2740a17410fc6227cc0b93a09a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-6fba50ad7caf29492cb2a43abebf4864.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d58c9fc64405092d105ca125627416e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -117,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="floating nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -259,8 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         changeGiscusTheme();
       }
     };
-    const authorPrefersDark = true;
+    const authorPrefersDark = false;
     const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -300,10 +306,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Projet</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-projet">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
         <li>
     <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
@@ -321,16 +327,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/sujets-2025-2026.html">
- <span class="dropdown-text">Sujets 2025-2026</span></a>
+    <a class="dropdown-item" href="../../doc/projet/sujets.html">
+ <span class="dropdown-text">Sujets</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cours" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Cours</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classes</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-cours">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
     <a class="dropdown-item" href="../../doc/cours/intro.html">
  <span class="dropdown-text">Introduction</span></a>
@@ -366,29 +372,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">TP</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Labs</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp1.html">
- <span class="dropdown-text">TP 1</span></a>
+ <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp2.html">
- <span class="dropdown-text">TP 2</span></a>
+ <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp3.html">
- <span class="dropdown-text">TP 3</span></a>
+ <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp4.html">
- <span class="dropdown-text">TP 4</span></a>
+ <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp5.html">
- <span class="dropdown-text">TP 5</span></a>
+ <span class="dropdown-text">Lab 5</span></a>
   </li>  
     </ul>
   </li>
@@ -487,9 +493,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Ludovic Deneuville, Rémi Pépin </p>
+             <p>Cyriel Mallart </p>
+             <p>Ludovic Deneuville </p>
+             <p>Rémi Pépin </p>
           </div>
   </div>
     

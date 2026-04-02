@@ -168,8 +168,8 @@ Ludovic Deneuville
 <h2>Cours</h2>
 <p>Les cours de Compléments d’informatique vise à fournir aux élèves les outils pour mener à bien le projet informatique.</p>
 <ul>
-<li>6h des cours</li>
-<li>4 TP de 3h
+<li>6h de cours</li>
+<li>5 TP de 3h
 <ul>
 <li>dispensés par les tutrices / tuteurs</li>
 <li>le sujet est fourni</li>
@@ -181,7 +181,8 @@ Ludovic Deneuville
 <ul>
 <li>Utilisation basique de Git</li>
 <li>Rappels de POO</li>
-<li>Décomposer une application en couches</li>
+<li>Découper une application en couches</li>
+<li>Backend / Frontend</li>
 <li>Communiquer avec une base de données / une API</li>
 <li>Tests unitaires</li>
 <li>Documentation</li>
@@ -191,9 +192,8 @@ Ludovic Deneuville
 <h2>Cadre général du projet</h2>
 <ul>
 <li>1er semestre de 2A</li>
-<li>Groupes imposés de 4 ou 5 élèves</li>
-<li>Les groupes votent pour leurs sujets préférés</li>
-<li>4 groupes par tutrice / tuteur</li>
+<li>Équipes imposées de 4 ou 5 élèves</li>
+<li>4 équipes par tutrice / tuteur</li>
 </ul>
 </section>
 
@@ -203,7 +203,7 @@ Ludovic Deneuville
 <li>Analyse / Conception générale (sept)
 <ul>
 <li>4 séances de 3h de suivi</li>
-<li>la séance de mi-octobre permet de faire un retour aux équipes sur le dossier d’analyse</li>
+<li>la séance de fin septembre permet de faire un retour aux équipes sur le dossier d’analyse</li>
 </ul></li>
 <li>Implémentation (oct-nov)
 <ul>
@@ -215,6 +215,7 @@ Ludovic Deneuville
 <section>
 <section id="livrables" class="title-slide slide level2 center">
 <h2>Livrables</h2>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
 <ul>
 <li>5 octobre : Dossier d’analyse</li>
 <li>23 novembre : Rapport final + code</li>
@@ -291,8 +292,8 @@ Ludovic Deneuville
 <h2>Planning</h2>
 
 </section>
-<section id="dates-provisoires-2025" class="slide level3 smaller">
-<h3>Dates provisoires 2025</h3>
+<section id="dates-provisoires-2026" class="slide level3 smaller">
+<h3>Dates provisoires 2026</h3>
 <table class="caption-top">
 <colgroup>
 <col style="width: 39%">
@@ -306,35 +307,31 @@ Ludovic Deneuville
 </thead>
 <tbody>
 <tr class="odd">
-<td>vendredi 29 août</td>
+<td>vendredi 28 août</td>
 <td>TP1 et Suivi 1</td>
 </tr>
 <tr class="even">
-<td>vendredi 5 septembre</td>
+<td>vendredi 4 septembre</td>
 <td>TP2 et Suivi 2</td>
 </tr>
 <tr class="odd">
-<td>vendredi 12 septembre</td>
+<td>vendredi 11 septembre</td>
 <td>TP3 et Suivi 3</td>
 </tr>
 <tr class="even">
-<td>vendredi 19 septembre</td>
-<td>TP4 (matin)</td>
+<td>vendredi 25 septembre</td>
+<td>TP4 et Suivi 4</td>
 </tr>
 <tr class="odd">
-<td>vendredi 3 octobre</td>
-<td>Suivi 4 (retour sur les dossiers d’analyse)</td>
+<td>vendredi 9 octobre</td>
+<td>TP5 et Suivi 5</td>
 </tr>
 <tr class="even">
-<td>mar-jeu 4-6 novembre</td>
-<td>3 jours d’immersion (Suivi 5 et 6)</td>
+<td>mar-jeu 3-5 novembre</td>
+<td>3 jours d’immersion (Suivi 6 et 7)</td>
 </tr>
 <tr class="odd">
-<td>vendredi 14 novembre</td>
-<td>Suivi 7</td>
-</tr>
-<tr class="even">
-<td>mercredi 10 décembre</td>
+<td>mercredi 9 décembre</td>
 <td>Soutenance</td>
 </tr>
 </tbody>
@@ -353,23 +350,25 @@ Ludovic Deneuville
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<ul>
-<li><a href="https://github.com/public-apis/public-apis" target="_blank">Liste d’API publiques</a></li>
-</ul>
+<ol type="1">
+<li>Trouver une source de données</li>
+<li>Construire un sujet autour</li>
+</ol>
+<p><a href="https://github.com/public-apis/public-apis" target="_blank">Liste d’API publiques</a></p>
 </div>
 </div>
 </div>
+<p><span class="emoji" data-emoji="warning">⚠️</span> Limitations du nombre de requêtes</p>
 </section>
 <section id="éléments-requis" class="slide level3">
 <h3>Éléments requis</h3>
 <ul>
 <li>Utilisation de la POO</li>
-<li>Stockage en BDD (sans utiliser d’ORM type SQLAlchemy)</li>
-<li>Utilisation et / ou Création d’un webservice</li>
-<li>Pas d’interface graphique
-<ul>
-<li>pour les sujets n’impliquant pas de création de WS, <a href="https://inquirerpy.readthedocs.io/en/latest/" target="_blank">InquirerPy</a> sera utilisé comme IHM en mode console</li>
-</ul></li>
+<li>Stockage en BDD</li>
+<li>Ne pas utiliser d’ORM type SQLAlchemy</li>
+<li>Utilisation de données issues d’un webservice</li>
+<li>Backend FastAPI</li>
+<li>Frontend optionnel (Streamlit)</li>
 </ul>
 </section>
 <section id="exemples-de-sujets" class="slide level3 smaller">
@@ -399,31 +398,31 @@ Ludovic Deneuville
 <section id="template" class="slide level3 smaller">
 <h3>Template</h3>
 <div class="white-box">
-<pre><code>### Titre
+<pre><code>## Titre
 
 Tuteur / Tutrice : 
 
-#### Présentation
+### Présentation
 
 contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interactif ?
 
-#### Fonctionnalités de base
+### Fonctionnalités de base
 
 - F1 : 
 - F2 : 
 
-#### Fonctionnalités optionnelles
+### Fonctionnalités optionnelles
 
 - FO1 : 
 - FO2 : 
 
-#### Conseils / Outils ...</code></pre>
+### Conseils / Outils ...</code></pre>
 </div>
 </section></section>
 <section id="résumé-du-travail-de-tutrice-tuteur" class="title-slide slide level2 smaller center">
 <h2>Résumé du travail de tutrice / tuteur</h2>
 <ul>
-<li>4 x 3h de TP de compléments d’informatique</li>
+<li>5 x 3h de TP de compléments d’informatique</li>
 <li>7 x 3h de suivi de projet</li>
 <li>Lire et noter les 4 dossiers d’analyse</li>
 <li>Noter le code</li>
@@ -438,67 +437,11 @@ contexte, objectifs, API utilisée, création d'une API et/ou d'un menu interact
 <li>Guider les élèves</li>
 <li>Suivi des équipes (avancement, participation, bonne entente)</li>
 <li>Maîtrise d’Ouvrage</li>
-<li>Aide au débogage</li>
+<li>Assistance technique, aide au débogage</li>
 </ul>
+
+
 </section>
-
-<section>
-<section id="stack-vm" class="title-slide slide level2 center">
-<h2>Stack VM</h2>
-<ul>
-<li>Python 3.10</li>
-<li>PostgreSQL (chaque élève a une BDD)</li>
-<li>Git Bash</li>
-<li>Visual Studio Code</li>
-</ul>
-</section>
-<section id="principaux-packages-python" class="slide level3 smaller">
-<h3>Principaux Packages Python</h3>
-<table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 74%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Nom du package</th>
-<th>Très courte description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>inquirerPy</td>
-<td>Créer des interfaces en ligne de commande interactives</td>
-</tr>
-<tr class="even">
-<td>fastapi</td>
-<td>Créer des webservices</td>
-</tr>
-<tr class="odd">
-<td>psycopg2-binary</td>
-<td>Communiquer avec PostgreSQL</td>
-</tr>
-<tr class="even">
-<td>pytest</td>
-<td>Tests unitaires</td>
-</tr>
-<tr class="odd">
-<td>python-dotenv</td>
-<td>Variables d’environnement à partir d’un fichier .env</td>
-</tr>
-<tr class="even">
-<td>requests</td>
-<td>Requêtes HTTP</td>
-</tr>
-<tr class="odd">
-<td>uvicorn</td>
-<td>Serveur ASGI</td>
-</tr>
-</tbody>
-</table>
-
-
-</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

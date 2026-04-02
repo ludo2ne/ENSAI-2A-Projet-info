@@ -6,7 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rémi Pépin, Ludovic Deneuville">
+<meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Rémi Pépin">
 <meta name="description" content="Lab 4">
 
 <title>Data Access Objet (DAO) – Projet info 2A</title>
@@ -78,10 +79,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8ec1fb2740a17410fc6227cc0b93a09a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-6fba50ad7caf29492cb2a43abebf4864.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d58c9fc64405092d105ca125627416e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -121,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="floating nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -263,8 +266,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         changeGiscusTheme();
       }
     };
-    const authorPrefersDark = true;
+    const authorPrefersDark = false;
     const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -304,10 +309,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projet" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Projet</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-projet">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
         <li>
     <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
@@ -325,16 +330,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/sujets-2025-2026.html">
- <span class="dropdown-text">Sujets 2025-2026</span></a>
+    <a class="dropdown-item" href="../../doc/projet/sujets.html">
+ <span class="dropdown-text">Sujets</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cours" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Cours</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classes</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-cours">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
     <a class="dropdown-item" href="../../doc/cours/intro.html">
  <span class="dropdown-text">Introduction</span></a>
@@ -370,29 +375,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tp" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">TP</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Labs</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tp">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp1.html">
- <span class="dropdown-text">TP 1</span></a>
+ <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp2.html">
- <span class="dropdown-text">TP 2</span></a>
+ <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp3.html">
- <span class="dropdown-text">TP 3</span></a>
+ <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp4.html">
- <span class="dropdown-text">TP 4</span></a>
+ <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/tp/tp5.html">
- <span class="dropdown-text">TP 5</span></a>
+ <span class="dropdown-text">Lab 5</span></a>
   </li>  
     </ul>
   </li>
@@ -454,34 +459,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a>
   <ul class="collapse">
-  <li><a href="#last-tp" id="toc-last-tp" class="nav-link" data-scroll-target="#last-tp">Last TP</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  </ul></li>
-  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment"><span class="header-section-number">1</span> Setting Up Your Environment</a>
-  <ul class="collapse">
-  <li><a href="#launch-vscode" id="toc-launch-vscode" class="nav-link" data-scroll-target="#launch-vscode"><span class="header-section-number">1.1</span> Launch VScode</a></li>
-  <li><a href="#clone-the-repository" id="toc-clone-the-repository" class="nav-link" data-scroll-target="#clone-the-repository"><span class="header-section-number">1.2</span> Clone the repository</a></li>
-  <li><a href="#database-connection" id="toc-database-connection" class="nav-link" data-scroll-target="#database-connection"><span class="header-section-number">1.3</span> Database connection</a></li>
-  </ul></li>
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment"><span class="header-section-number">1</span> Setting Up Your Environment</a></li>
   <li><a href="#lets-warm-up-with-sql" id="toc-lets-warm-up-with-sql" class="nav-link" data-scroll-target="#lets-warm-up-with-sql"><span class="header-section-number">2</span> Let’s warm up with SQL</a></li>
-  <li><a href="#data-access-objet-dao" id="toc-data-access-objet-dao" class="nav-link" data-scroll-target="#data-access-objet-dao"><span class="header-section-number">3</span> Data Access Objet (DAO)</a>
-  <ul class="collapse">
-  <li><a href="#modelling" id="toc-modelling" class="nav-link" data-scroll-target="#modelling"><span class="header-section-number">3.1</span> Modelling</a></li>
-  <li><a href="#connection-management-and-singleton-pattern" id="toc-connection-management-and-singleton-pattern" class="nav-link" data-scroll-target="#connection-management-and-singleton-pattern"><span class="header-section-number">3.2</span> Connection management and Singleton pattern</a></li>
-  <li><a href="#dao-and-crud" id="toc-dao-and-crud" class="nav-link" data-scroll-target="#dao-and-crud"><span class="header-section-number">3.3</span> DAO and CRUD</a></li>
-  </ul></li>
-  <li><a href="#first-daos" id="toc-first-daos" class="nav-link" data-scroll-target="#first-daos"><span class="header-section-number">4</span> First DAOs</a>
-  <ul class="collapse">
-  <li><a href="#dao-with-attack-types" id="toc-dao-with-attack-types" class="nav-link" data-scroll-target="#dao-with-attack-types"><span class="header-section-number">4.1</span> DAO with Attack Types</a></li>
-  <li><a href="#unit-tests" id="toc-unit-tests" class="nav-link" data-scroll-target="#unit-tests"><span class="header-section-number">4.2</span> Unit tests</a></li>
-  <li><a href="#pokemon-dao" id="toc-pokemon-dao" class="nav-link" data-scroll-target="#pokemon-dao"><span class="header-section-number">4.3</span> Pokemon DAO</a></li>
-  </ul></li>
+  <li><a href="#data-access-objet-dao" id="toc-data-access-objet-dao" class="nav-link" data-scroll-target="#data-access-objet-dao"><span class="header-section-number">3</span> Data Access Objet (DAO)</a></li>
+  <li><a href="#first-daos" id="toc-first-daos" class="nav-link" data-scroll-target="#first-daos"><span class="header-section-number">4</span> First DAOs</a></li>
   <li><a href="#dao-and-webservice" id="toc-dao-and-webservice" class="nav-link" data-scroll-target="#dao-and-webservice"><span class="header-section-number">5</span> DAO and Webservice</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
@@ -499,7 +485,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Data Access Objet (DAO)</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">DAO</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
@@ -511,9 +500,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Rémi Pépin, Ludovic Deneuville </p>
+             <p>Ludovic Deneuville </p>
+             <p>Rémi Pépin </p>
           </div>
   </div>
     
