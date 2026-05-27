@@ -56,7 +56,7 @@ Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées
 
 ---
 
-![](./img/balancoire_agile.png)
+![](./img/agile-tree-swing-cartoon.png)
 
 
 ::: {.notes}
@@ -178,7 +178,7 @@ Les IAgen peuvent presque coder à notre place.
 
 ### Un grand principe : separation of concerns
 
-![](img/couches.png)
+![](img/archi-layers.png)
 
 ::: {.notes}
 Version macro en 3 couches.
@@ -218,7 +218,7 @@ Exemple page web
 
 ### Zoom sur la couche métier
 
-![](img/couche_metier.png)
+![](img/archi-business-layer.png)
 
 ::: {.notes}
 À l'intérieur de la couche Métier, il y a plusieurs sous-couches.

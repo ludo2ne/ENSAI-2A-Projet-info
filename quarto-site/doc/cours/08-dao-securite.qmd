@@ -1,0 +1,900 @@
+---
+title: "DAO and Security"
+description: "[Slides](08-dao-securite-slides.html)"
+format: 
+  html: default
+  revealjs:
+    footer: "[Home](../../index.html) --- [DAO and Security](08-dao-securite.html)"
+    output-file: 08-dao-securite-slides.html
+---
+
+## Outline {.smaller}
+
+- Data Access Object
+  - Why persist data?
+  - What is a DAO?
+  - DAO Example
+- Computer Security
+  - Definition
+  - Security vulnerabilities
+  - SQL Injection
+- Password Management
+  - Authentication with cipher
+  - Password hashing
+  - Example
+
+::: {.notes}
+We will start by talking about data storage.
+:::
+
+
+## Data Access Object (DAO)
+
+::::::{.hide-html-render}
+<iframe src="https://giphy.com/embed/dIBLtolI6axTGIGopo" width="960" height="540" frameBorder="0" class="giphy-embed no-print" allowFullScreen></iframe>
+::::::
+
+::: {.notes}
+Our goal is to store data, but first:
+:::
+
+
+### A Computer
+
+What are its main components?
+
+:::{.fragment}
+- A processor (CPU): does ONLY calculations
+- RAM: fast, volatile memory
+- Hard drive (HDD, SSD): long-term memory
+- Graphics card: specialized processing unit
+:::
+
+::: {.notes}
+Emphasize CPU, RAM, and hard drive!
+They provide three different services:
+- CPU: processor
+- HDD: disk
+- RAM: memory modules
+:::
+
+### How to Solve This Problem?
+
+::::::{.hide-html-render}
+![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
+::::::
+
+::: {.fragment}
+What problem??
+:::
+
+::: {.notes}
+Answer: Retaining data after the Python program ends.
+:::
+
+### A Question to Ask
+
+```{.python code-line-numbers="false"}
+p = Personnage(prenom="Leia", nom="Organa", age = 35)
+```
+What is a Python variable?
+
+:::{.fragment}
+- A reference (the variable name)
+- **An associated object (its value)**
+:::
+
+::: {.notes}
+- We skip the concept of memory addressing.
+- No need to store the reference, as it is in the source code.
+:::
+
+### A Follow-Up Question
+
+```{.python filename="personnage.py"}
+class Personnage:
+    def __init__(self, prenom, nom, age):
+        self.prenom = prenom
+        self.nom = nom
+        self.age = age
+        self.vaisseaux = []
+    def anniversaire(self):
+        self.age += 1
+```
+What is a Python object?
+
+
+:::{.fragment}
+- Attributes (which can themselves be objects)
+- Methods
+:::
+
+::: {.notes}
+Same thing, methods are code, we only want the attributes.
+:::
+
+### In Summary
+
+- We want to save key-value pairs
+- With values that can themselves consist of key-value pairs
+
+::: {.callout}
+**We want to save a tree 🌳**
+:::
+
+::: {.notes}
+- Need a drawing with Leia and Vaisseaux
+- Parallel with Python dicts / JSON
+- Tree because object attributes are sometimes themselves objects.
+:::
+
+### How to Do This?
+
+- Write our data to a hard drive in a file
+  - csv, parquet, json, xml
+- Use a database
+  - SQL tables + relations, NoSQL
+
+::: {.notes}
+Question: How does a database work?
+
+- It manages files
+- We can make a parallel with layers
+- The database provides a service, I ignore how it does it
+- I know what it expects as input and what it gives me as output!
+:::
+
+### Link Between Persistence and Application
+
+- Python: Volatile variables in RAM
+- Persistence system: Data stored on disk
+- Data Access Objects (DAO) as a link
+
+::: {.notes}
+- Short recap to try to get everyone back on track before DAO.
+- In real life, we don't start from scratch when relaunching an app.
+- If you create a Personnage, the next time it will still be there.
+:::
+
+### What is a DAO?
+
+::::::{.hide-html-render}
+![](https://media2.giphy.com/media/a5viI92PAF89q/giphy.gif?cid=790b76119068737928a0a3e1282ee7ff952e04585d31791e&rid=giphy.gif)
+::::::
+
+::: {.notes}
+- We just said we will store in a database.
+- How to access it?
+:::
+
+### What is a DAO?
+
+- Technical class
+- One DAO class per business object
+- Exposes methods to communicate with the persistence layer
+
+::: {.notes}
+It's an API
+
+Provides a service to clients
+
+How it does it? -> Don't care
+
+Like you in a restaurant. You want to eat, how it's made doesn't matter as long as the service is provided (with a certain level of expectation).
+
+ORMs like SQLAlchemy exist to link Python Objects - Database Tables -> not the subject here.
+:::
+
+
+### Which Methods to Expose?
+
+:::{.fragment}
+- **C**reate
+- **R**ead
+- **U**pdate
+- **D**elete
+:::
+
+::: {.notes}
+Get participation
+
+Try to show that these four are sufficient.
+
+Later we can have refinements by doing things in bulk or filtering, etc.
+
+What about copying?
+
+A copy is a read + creation, so we know how to do it.
+
+Example drawing: Person class - person table - personDAO class.
+:::
+
+
+### The Benefit of a Separate Class
+Separation of responsibilities
+
+- "Disposable" class 🚮
+- Modifiable without risk 🔨
+- Parallel work 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+
+::: {.notes}
+- We add another layer, it doesn't hurt.
+- In real life, if the system changes, it's easier to migrate.
+- In the project, the DAO layer can be very easy to do.
+:::
+
+### Quick Recap
+![](img/archi-business-layer.png)
+
+::: {.notes}
+- Small example to illustrate.
+- Example: list all people who are fans of Pokemon.
+:::
+
+## How to Connect to a Database in Python?
+Use a dedicated library
+
+- **PostgreSQL**: [psycopg2](https://www.psycopg.org/docs/){target="_blank"}
+- MySQL: mysql-connector-python
+- Oracle: cx_Oracle
+- MongoDB: pymongo
+
+::: {.notes}
+- You will read the entire psycopg2 documentation.
+- There will be questions on the exam!
+:::
+
+
+### psycopg2
+
+- `pip install psycopg2-binary`
+- `connection`: Establishes the connection to the database
+  Not super interesting to do, the code is provided
+
+
+### psycopg2 - Connection
+
+```{.python filename="db_connection.py"}
+import os
+import dotenv
+import psycopg2
+from psycopg2.extras import RealDictCursor
+from utils.singleton import Singleton
+
+class DBConnection(metaclass=Singleton):
+    """
+    Database connection class
+    It allows opening only one unique connection
+    """
+    def __init__(self):
+        """Open the connection"""
+        dotenv.load_dotenv()
+        self.__connection = psycopg2.connect(
+            host=os.environ["POSTGRES_HOST"],
+            port=os.environ["POSTGRES_PORT"],
+            database=os.environ["POSTGRES_DATABASE"],
+            user=os.environ["POSTGRES_USER"],
+            password=os.environ["POSTGRES_PASSWORD"],
+            options=f"-c search_path={os.environ['POSTGRES_SCHEMA']}",
+            cursor_factory=RealDictCursor,
+        )
+    @property
+    def connection(self):
+        return self.__connection
+```
+
+::: {.notes}
+Singleton
+:::
+
+
+### psycopg2 - Cursor
+
+- `cursor`: Encapsulates the query
+  ```{.python}
+  from dao.db_connection import DBConnection
+
+  with DBConnection().connection as connection:
+      with connection.cursor() as cursor:
+  ```
+- `cursor.execute("<a SQL query>")`: Executes a query
+- `cursor.fetchone()/fetchall()/fetchmany()`: Retrieves the results
+
+
+### Basic Form
+
+```{.python}
+def dao_function(self, arg1, arg2, ...):
+    # Get the database connection
+    with DBConnection().connection as connection:
+    # Create a cursor to make a query
+        with connection.cursor() as cursor:
+            # Send the SQL query to the server
+            cursor.execute(
+                "<a_sql_query_with_placeholders>",
+                fill_in_the_placeholders)
+            # Retrieve the query result
+            res = cursor.fetchone()  # or fetchall()/fetchmany()
+    # If the query returns something
+    if res:
+      something = "<res formatted>"
+
+    return something
+```
+
+::: {.notes}
+- Why don't we return res directly?
+- res: list[dict]
+- We prefer to return an Object or a list[Object]
+:::
+
+
+### A Small Example: LivreDao
+
+![](img/class_diagram_DAO.png)
+
+::: {.notes}
+ISBN: International Standard Book Number
+:::
+
+
+### Create a Book
+
+```{.python}
+def create(self, livre) -> Livre:
+    """To create a book in the database"""
+    with DBConnection().connection as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO livre (isbm, titre, auteur)         "
+                "     VALUES (%(isbm)s, %(titre)s, %(auteur)s)   "
+                "  RETURNING id_livre;                           ",
+                {"isbm": livre.isbm,
+                 "titre": livre.titre,
+                 "auteur": livre.auteur},
+            )
+            livre.id = cursor.fetchone()["id_livre"]
+    return livre
+```
+
+::: {.notes}
+It's also possible to return a boolean:
+
+- true if creation is successful
+- false otherwise
+:::
+
+
+### List Books
+
+```{.python}
+def find_all(self) -> list[Livre]:
+    """To retrieve all books from the database"""
+    with DBConnection().connection as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT id_livre,                  "
+                "       isbm,                      "
+                "       titre,                     "
+                "       auteur                     "
+                "  FROM livre ;                    "
+            )
+            livre_bdd = cursor.fetchall()
+
+    liste_livres = []
+    if livre_bdd:
+        for livre in livre_bdd:
+            liste_livres.append(
+                Livre(
+                    id=livre["id_livre"],
+                    isbm=livre["isbm"],
+                    titre=livre["titre"],
+                    auteur=livre["auteur"],
+                )
+            )
+
+    return liste_livres
+```
+
+:::{.notes}
+- livre_bdd = [{id_livre=1, isbm=123, "Le Schtroumpf hackeur", "Peyo"}, {...}, ...]
+- livre = {id_livre=1, isbm=123, "Le Schtroumpf hackeur", "Peyo"}
+- liste_livres = [Livre(1, 123, "Le Schtroumpf hackeur", "Peyo"), Livre(...), ...]
+:::
+
+
+### Find a Book
+
+```{.python}
+def find_by_isbm(self, isbm) -> Livre:
+    """To retrieve a book by its isbm"""
+    with DBConnection().connection as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT *                          "
+                "  FROM livre                      "
+                " WHERE isbm = %(isbm)s            ",
+                {"isbm": isbm}
+            livre_bdd = cursor.fetchone()
+
+    livre = None
+    if livre_bdd:
+        livre = Livre(
+            id=livre_bdd["id_livre"],
+            isbm=livre_bdd["isbm"],
+            titre=livre_bdd["titre"],
+            auteur=livre_bdd["auteur"],
+        )
+    return livre
+```
+
+:::{.notes}
+- livre_bdd: dict
+- livre: Livre
+- Principle to remember if you want to understand: in DAOs, we always transform dicts into objects.
+:::
+
+
+### Conclusion
+
+- Python works in RAM (volatile)
+- Need a mechanism for data persistence
+- DAO: centralizes methods for reading/writing our data
+- The business layer calls the DAO without worrying about the persistence system
+- Enables effective teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬
+
+
+## Computer Security
+
+### CIA Principles
+
+:::{.hide-html-render}
+![](https://i.kym-cdn.com/entries/icons/original/000/035/843/cover3.jpg)
+:::
+
+
+### 3 Pillars of Computer Security
+
+- **C**onfidentiality, 
+- **I**ntegrity
+- **A**vailability
+
+:::{.hide-html-render}
+![](https://destcert.com/wp-content/uploads/2024/08/the-CIA-triad-768x432.webp)
+:::
+
+::: {.notes}
+Sometimes we also use CAID, DICP or DICPA in French
+Availability, Integrity, Confidentiality, Proof
+:::
+
+
+### Plus 2
+
+- Authenticity (or Proof)
+- Non-repudiation
+
+:::{.hide-html-render}
+![](https://www.open.edu/openlearn/pluginfile.php/2269530/mod_oucontent/oucontent/97012/51fd0797/aa8da63a/cyber_b2_week1_fig4.jpg)
+:::
+
+
+### Confidentiality
+
+::: {.callout}
+Only authorized individuals should have access to the information intended for them (notions of rights or permissions).
+Any undesirable access must be prevented.
+:::
+
+**Associated Mechanisms:**
+
+- Rights management (directories, roles, etc.)
+- Cryptography
+
+::: {.notes}
+We talk more about encryption.
+:::
+
+
+### Integrity
+
+::: {.callout}
+Data must be as expected and must not be altered accidentally, unlawfully, or maliciously.
+:::
+**Associated Mechanisms:**
+
+- Digital signature
+- Checksum
+
+:::{.notes}
+**Digital signature:** Ensures the integrity of a document, i.e., ensures that the document has not been altered between its signing and its consultation; authenticates its author, i.e., ensures the identity of the signing person.
+**Checksum:** Parity bit.
+:::
+
+
+### Availability
+
+::: {.callout}
+Access to the information system's resources must be permanent and flawless during the planned usage periods.
+:::
+**Associated Mechanisms:**
+
+- Server redundancy
+- Virtualization
+- Containerization
+
+:::{.notes}
+Backup
+Talk about deployment beforehand.
+:::
+
+
+### Traceability
+
+::: {.callout}
+Ensures that accesses and access attempts to the considered elements are traced and that these traces are preserved and usable.
+:::
+**Associated Mechanism:**
+
+- Logging
+
+:::{.notes}
+Logs (better than prints)
+Project 2024-2025
+:::
+
+
+### Authentication
+
+::: {.callout}
+Users must prove their identity by responding to a "challenge."
+:::
+**Associated Mechanisms:**
+
+- Weak authentication (identifier, password)
+- Strong authentication (biometric data, multi-factor)
+
+
+### Non-repudiation
+
+::: {.callout}
+No user should be able to dispute the operations they have performed within the scope of their authorized actions, and no third party should be able to attribute the actions of one user to another.
+:::
+
+**Associated Mechanisms:**
+
+- Traceability
+- Authentication
+- Integrity
+
+:::{.notes}
+It wasn't me
+But it's your name!
+Don't leave your sessions open during breaks (CTRL + ALT + F12)
+:::
+
+
+## Computer Security Vulnerabilities
+
+### Too Many Vulnerabilities!!!
+
+- Low-level physical vulnerabilities
+- High-level physical vulnerabilities
+- **SQL Injection**
+- Data injection
+- **XSS Vulnerability**
+- Code execution
+- ...
+
+:::{.notes}
+- Low-level physical vulnerabilities: power outage, server room flooding
+- High-level physical vulnerabilities: physical access to a machine
+:::
+
+
+### What Should You Be Wary Of?
+
+:::{.hide-html-render}
+![](https://66.media.tumblr.com/5fca28d9ff6a46e62aaa6ec391077f26/tumblr_mseaykBEjV1sg0a6co1_500.gif)
+:::
+
+:::{.fragment}
+**Your users**
+:::
+
+
+## Example of Vulnerabilities: SQL Injections
+
+![](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
+Source: <https://xkcd.com/>{target="_blank"}
+
+
+### SQL Injection
+
+Involves entering SQL to execute a different query than intended.
+
+Problems:
+
+- Confidentiality
+- Authentication
+- Integrity
+- Availability
+
+
+### Example: Authenticating Without a Password
+
+Authentication query
+
+```{.sql}
+SELECT *
+  FROM user
+ WHERE name = 'input_name'
+   AND password = 'input_password';
+```
+::::::{.fragment}
+::: {.callout-note title="You Enter"}
+- Gennysson
+- awesome_password
+:::
+::::::
+
+:::{.fragment}
+```{.sql}
+SELECT *
+  FROM user
+ WHERE name = 'Gennysson'
+   AND password = 'awesome_password';
+```
+:::
+
+:::{.notes}
+If your cursor.execute contains this code
+:::
+
+
+### Example: Authenticating Without a Password
+
+```{.sql}
+SELECT *
+  FROM user
+ WHERE name = 'input_name'
+   AND password = 'input_password';
+```
+
+::::::{.fragment}
+::: {.callout-warning title="You Enter"}
+- Gennysson
+- `' OR 1=1; --`
+:::
+::::::
+
+
+:::{.fragment}
+```{.sql}
+SELECT *
+  FROM user
+ WHERE name = 'Gennysson'
+   AND password = '' OR 1=1; --';
+```
+:::
+
+
+### Example: Deleting a Table
+
+```{.sql}
+SELECT *
+  FROM user
+ WHERE name = 'input_name'
+   AND password = 'input_password';
+```
+
+::::::{.fragment}
+::: {.callout-warning title="You Enter"}
+- Gennysson
+- `'; DROP TABLE user CASCADE; --`
+:::
+::::::
+
+:::{.fragment}
+```{.sql}
+SELECT *
+  FROM user
+ WHERE name='Gennysson'
+   AND password=''; DROP TABLE user CASCADE; --;
+```
+:::
+
+::::::{.fragment}
+:::{.hide-html-render}
+![](https://media.giphy.com/media/1Q6K09gcxYWcUxxraT/source.gif){width=50%}
+:::
+::::::
+
+### How to Protect Yourself?
+
+- Escape special characters
+- Use a prepared query
+
+**The library you use only escapes special characters 😨**
+
+:::{.fragment}
+A prepared query :
+
+![](https://www.securityjourney.com/hubfs/fig1.png)
+:::
+
+:::{.notes}
+The second solution is better than the first, but psycopg2 doesn't seem to offer it simply.
+
+So you need to know it, but know that it's the first solution that will be used.
+
+Escaping special characters: for example, " ' " will be replaced by " \' "
+
+The apostrophe will therefore not be interpreted as an end of string by the DBMS.
+"prepare" instruction:
+
+1. Sends the query with placeholders to the database
+2. Sends to fill in the placeholders
+:::
+
+### Cross-Site Scripting
+
+Involves injecting code that causes actions on the browser. This can allow:
+
+- Page redirections (phishing)
+- Information theft
+- Actions on the site
+- Making the site difficult to use
+
+### How to Protect Yourself?
+
+- Never insert raw data
+- Escape special characters
+- Verify your data
+
+::: {.callout-tip}
+Web libraries often do this for you!
+:::
+
+
+### To Sum Up: Injection
+
+- Never trust user inputs, verify/clean them
+- Never trust user inputs, verify/clean them
+- Never trust user inputs, verify/clean them
+- NEVER TRUST USER INPUTS
+
+- USERS ARE YOUR N°1 VULNERABILTY
+- USERS ARE THE DEVIL 
+
+
+## Password Management
+
+To test the strength of a password:
+
+- <https://ssi.economie.gouv.fr/motdepasse>{target="_blank"}
+
+
+### Should Your Application Store Plain Text Passwords?
+
+::::::{.fragment}
+:::{.hide-html-render}
+![](https://media.giphy.com/media/d10dMmzqCYqQ0/source.gif){width=100%}
+:::
+::::::
+
+
+### Does Your Application Need to Know a User's Password to Authenticate Them?
+
+::::::{.fragment}
+:::{.hide-html-render}
+![](https://media.giphy.com/media/Y8hzdgPnZ6Hwk/source.gif){width=50%}
+:::
+::::::
+
+
+### How Do We Do It?
+
+:::{.hide-html-render}
+![](https://media.giphy.com/media/kQOxxwjjuTB7O/source.gif){width=100%}
+:::
+
+
+### Hashing the Password
+
+- Hash the password
+- Store the hash in the database
+- When you need to compare, hash the entered password
+- And compare the hashes
+
+**Authentication without persisting passwords!!!!**
+
+:::{.notes}
+It's so simple and secure!
+
+But not all sites do it...
+
+A site that sends you your password keeps it in memory (or at least the means to decrypt it).
+
+In real life, we add a "salt" to the password before hashing it.
+
+It's a random value calculated for each user that we add to the password before hashing it.
+
+This makes a brute force attack more costly.
+:::
+
+:::{.hide-html-render}
+![](https://media.giphy.com/media/Pk4ldVR0sCHgA/source.gif)
+:::
+
+
+### Add Salt for More Security
+
+:::{.hide-html-render}
+![](https://media.giphy.com/media/3o7P4F86TAI9Kz7XYk/giphy.gif)
+:::
+
+
+### A Database Without Added Salt
+
+- Your email/password database leaks, but the passwords are hashed
+- Attackers must brute-force the passwords
+- They start with the most common passwords and hash them with common hash algorithms 
+- Then they compare with the database
+- High chance of having several matches (cf : USERS ARE THE N°1 VULNERABILITY)
+
+
+:::{.notes}
+Brute-force: testing all possible combinations.
+:::
+
+
+### Salt is Good for Security
+
+Instead of hashing and storing the password
+
+Store and hash the password,
+
+AND an element linked to the user in a deterministic way (the salt).
+
+Now even if two people have the same password, they will have different hashes.
+
+
+### Salt is Good for Security
+
+- Your email/password database leaks, but the passwords are hashed and salted
+- Attackers must brute-force the passwords
+- They start with the most common passwords and hash them with common hash algorithms
+- Then they compare with the database.
+- There are no matches because your passwords are salted
+- And finding one password doesn't allow finding others
+
+
+### Example of Password Hashing
+
+```{.python}
+import hashlib
+
+def hash_password(password, idep):
+    salt = idep
+    return hashlib.sha256(salt.encode() + password.encode()).hexdigest()
+
+print(hash_password("awesome_password", "Gennysson"))
+```
+
+### To Sum Up the Security Part
+
+- Always verify inputs
+- Never trust users
+- Multiple levels of security
+- No need to store plain text passwords
+
+::: {.fragment}
+Honest version :
+
+- Always assume your users are either hackers or idiots with no self preservation instincts
+- Always know you are less smart than you think : you-proof the system
+- Assume your colleagues are as just smart as you : wrap their security in your security
+- For the love of all that is good in the world, do NOT store sensitive identifying information in clear (use your data science instincts)
+:::

@@ -3,3 +3,5 @@ _site/
 _freeze/
 
 quarto-site/.gitignore
+/.quarto/
+**/*.quarto_ipynb

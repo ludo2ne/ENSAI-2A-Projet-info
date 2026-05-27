@@ -1,0 +1,343 @@
+---
+title: "Unit Testing"
+description: "[Slides](06-tests-unitaires-slides.html)"
+format: 
+  html: default
+  revealjs:
+    footer: "[Home](../../index.html) --- [Unit Testing](06-tests-unitaires.html)"
+    output-file: 06-tests-unitaires-slides.html
+---
+
+## Testing
+
+![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](img/commitStrip_tester_ou_non.jpg){.r-stretch}
+
+::: {.notes}
+ça parait évident, et pourtant...
+
+j'ai déjà testé une fonctionnalité d'un dev dont le cas nominal plante.
+:::
+
+### Why Test?
+
+- Car crash tests
+- Compliance tests
+- Quality tests in industry
+- Statistical tests
+
+### In Computer Science
+
+- To verify that your program works
+- To detect errors
+- To avoid regressions (when you modify code)
+
+::: {.callout-note}
+Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
+:::
+
+
+
+
+### Definition {.smaller}
+
+A test resembles a scientific experiment.
+
+It examines a hypothesis expressed in terms of three elements:
+
+- Input data
+- The object to test
+- Expected results
+
+This examination is conducted 
+
+- under controlled conditions 
+- with the goal to draw conclusions 
+- and ideally, be reproducible.
+
+::: {.notes}
+- GIVEN
+- WHEN
+- THEN
+:::
+
+
+### Test Coverage
+
+- Percentage of functions tested
+- **ONE** quality indicator
+- Trend, rather than a reliable value
+
+Be lazy : fewer tests, but useful ones!
+
+::: {.notes}
+Nombre de fonctions testées sur le nombre total de fonctions.  
+
+Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.
+:::
+
+### Types of Tests {.smaller}
+
+There are many different types of tests, here are the main ones:
+
+- **Unit test**
+- Functional test
+- Load test
+- Integration test
+- Penetration test
+
+:::{.notes}
+mutation tests to test unit test quality.
+:::
+
+
+## Unit Testing
+
+We will use the `pytest` package to perform our tests in Python.
+
+
+### A Good Unit Test
+
+- Tests a single functionality
+- Isolated
+- Reproducible
+- Deterministic
+
+::: {.notes}
+- Isolé : indépendant des autres tests
+  - si vous testez une méthode A, qui elle-même appelle d'autres méthodes B, C, D...
+  - le test ne doit se faire que sur la méthode A
+  - il faut `mocker` le comportement des autres méthodes
+- Déterministe : donne toujours le même résultat
+:::
+
+
+### Method to Test
+
+```{.python filename="operations_mathematiques.py"}
+class MathOperations:
+    """Mathematical Operations"""
+    def divide_five_by(self, nb) -> float:
+        """Divides the number 5 by a given number.
+        Parameters
+        ----------
+        nb : float or int
+            The number by which 5 will be divided.
+        Returns
+        -------
+        float or None
+            The result of dividing 5 by the given number.
+            If the number is equal to 0, the method returns None.
+        """
+        if nb != 0:
+            return 5 / nb
+        else:
+            return None
+```
+
+
+### Test Class
+
+Let's create a test class.
+
+To test the nominal case (="normal" case), we:
+
+- Choose an input number
+- Call the `divide_five_by()` method
+- Verify that the returned value is equal to the expected value
+
+
+### Nominal Case
+
+```{.python filename="test_operations_mathematiques.py"}
+import pytest
+from mathematiques.operations_mathematiques import MathOperations
+class TestMathOperations():
+    def test_divide_five_by_non_null_nb(self):
+        # GIVEN
+        nombre = 2
+        # WHEN
+        resultat = MathOperations().divide_five_by(nombre)
+        # THEN
+        assert resultat == 2.5
+```
+
+::: {.notes}
+Est-ce suffisant ?
+:::
+
+
+### Other Cases
+
+But this is not sufficient!
+
+- The method also has another possible return: `None`
+- We also need to test this case
+
+```{.python filename="test_operations_mathematiques.py"}
+    def test_divide_five_by_zero(self):
+        # GIVEN
+        nombre = 0
+        # WHEN
+        resultat = MathOperations().diviser_cinq_par(nombre)
+        # THEN
+        assert resultat is None
+```
+
+
+### What If...
+
+We call the method with this parameter: `divide_five_by("a")`?
+
+You can also write a test to verify that your method indeed returns a `TypeError` exception in this case.
+
+```{.python filename="test_operations_mathematiques.py"}
+    def test_divide_five_by_string(self):
+        # GIVEN
+        nombre = "a"
+        # WHEN / THEN
+        with pytest.raises(TypeError):
+            MathOperations().diviser_cinq_par(nombre)
+```
+
+::: {.notes}
+Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n'est pas le cas.
+:::
+
+
+### Key Takeaways
+
+Unit tests:
+
+- Verify that a method does what it is supposed to do
+- Test nominal cases, but also edge cases and errors
+- A unit test tests ONE and ONLY ONE thing
+- As many unit tests as there are possible returns
+
+:::{.notes}
+Vu en 1A : 
+
+```{.python}
+@pytest.mark.parametrize(
+'a, b, resultat_attendu',
+[(2, 3, 5),
+ (2, 5, 7),
+ (3, 4, 7)]
+)
+```
+:::
+
+
+## Mock
+
+- Simulated object that replaces a real component during tests
+- Isolating external dependencies = test code independently
+- Simulate complex scenarios like network errors
+
+### Mock - Example
+
+```{.python filename="joueur_service.py"}
+class JoueurService:
+    def creer(self, pseudo, mdp, age, mail, fan_pokemon) -> Joueur:
+        nouveau_joueur = Joueur(
+            pseudo=pseudo,
+            mdp=hash_password(mdp, pseudo),
+            age=age,
+            mail=mail,
+            fan_pokemon=fan_pokemon,
+        )
+        creation_ok = JoueurDao().creer(nouveau_joueur)
+        if creation_ok:
+            return nouveau_joueur
+        else:
+            return None
+```
+
+:::{.notes}
+Comment prévoir le comportement de `JoueurDao().creer(nouveau_joueur)` ?
+:::
+
+
+### Mock - Example
+
+```{.python filename="test_joueur_service.py"}
+from unittest.mock import MagicMock
+def test_creer_ok():
+    """Successful creation of Joueur"""
+    # GIVEN
+    pseudo, mdp, age, mail, fan_pokemon = "jp", "1234", 15, "z@mail.oo", True
+    JoueurDao().creer = MagicMock(return_value=True)
+    # WHEN
+    joueur = JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)
+    # THEN
+    assert isinstance(joueur, Joueur)
+    assert joueur.pseudo == pseudo
+```
+
+
+## Test-Driven Development (TDD)
+
+### When to Test?
+
+:::::: {.fragment}
+At the beginning!
+
+::: {.callout-tip}
+The earlier you test, the more effective and less costly the tests are!
+:::
+::::::
+
+
+### Test-Driven Development
+
+The best practice:
+
+1. Create the tests
+2. Code the function
+
+### Logique
+
+It may seem a bit strange !?
+
+But...
+
+When you code a function, you know before you start:
+
+- What the input parameters will be
+- What results you expect as output
+- So you already know what to test!
+
+
+### TDD Practice
+
+- ✅ Improvement of code quality
+- ✅ Reduction of bugs
+- ❌ then ✅ Time
+- ❌ Maintenance of tests
+
+::: {.callout-important}
+Advantages >>> Disadvantages
+:::
+
+
+::: {.notes}
+La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.
+
+Sinon, si l'on écrit la fonction en premier, une fois que l'on a terminé, il y a 9 chances sur 10 que l'on se dise : "c'est bon ça marche, pas la peine de tester...". Et ça c'est pas bien !!!
+:::
+
+
+### Project tip
+
+Designate the Test Police (or the Quality Police)
+
+Why ?
+
+- Ensure all important methods are tested
+- Maintain consistency in testing and documentation
+- Promote the test-first thinking
+
+### Benefits on team spirit
+
+- Contribute to code quality without coding A-Z
+- One person has an idea of the whole architecture and the pain points
+- Easier to review when it's not your code

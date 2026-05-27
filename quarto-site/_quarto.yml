@@ -34,23 +34,22 @@ website:
             text: "Sujets"
       - text: Classes
         menu:
-          - href: doc/cours/intro.qmd
+          - href: doc/cours/01-introduction.qmd
             text: Introduction
-          - href: doc/cours/outils-dev.qmd
-            text: Outils de développement
-          - href: https://ludo2ne.github.io/Git-tuto/doc/presentation.html
+          - href: doc/cours/02-outils-dev.qmd
+            text: Development Tools
+          - href: doc/cours/03-git.qmd
             text: Git
-            target: "_blank"
-          - href: doc/cours/analyse-fonctionnelle.qmd
-            text: Analyse fonctionnelle
-          - href: doc/cours/poo-avancee.qmd
-            text: POO Avancée
-          - href: doc/cours/tests-unitaires.qmd
-            text: Tests unitaires
-          - href: doc/cours/webservices.qmd
+          - href: doc/cours/04-analyse-fonctionnelle.qmd
+            text: Functional Analysis
+          - href: doc/cours/05-poo-avancee.qmd
+            text: Advanced POO
+          - href: doc/cours/06-tests-unitaires.qmd
+            text: Unit Testing
+          - href: doc/cours/07-webservices.qmd
             text: Webservices
-          - href: doc/cours/dao-securite.qmd
-            text: DAO et Sécurité
+          - href: doc/cours/08-dao-securite.qmd
+            text: DAO and Security
       - text: Labs
         menu:
           - href: doc/tp/tp1.qmd
@@ -101,6 +100,9 @@ format:
     slide-number: c/t
     slide-level: 3
     controls: true
+
+execute:
+  freeze: auto
 
 from: markdown+emoji
 lightbox: true

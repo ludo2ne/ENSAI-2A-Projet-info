@@ -1,0 +1,96 @@
+---
+title: Introduction
+description: "[Slides](01-introduction-slides.html)"
+format: 
+  html: default
+  revealjs:
+    footer: "[Home](../../index.html) --- [Introduction](01-introduction.html)"
+    output-file: 01-introduction-slides.html
+---
+
+## Complementary Computer Science Course
+
+- 6h Lecture
+- 12h Practical Work
+- `ludovic.deneuville@ensai.fr`, `mallart.cyriel@gmail.com`
+- Office 161
+- Based on courses by [Rémi Pépin](https://github.com/HealerMikado){target="_blank"}
+
+:::{.notes}
+WIN + P : Etendre
+:::
+
+### The Course
+
+::: {.callout-tip title="Course Objective"}
+To provide you with the knowledge required to successfully complete an IT project.
+:::
+
+- Managing a project
+- Going beyond 50 lines of code
+- Experiencing the life of a developer
+- Working in a team
+
+:::{.notes}
+- Je reviens ensuite sur le projet
+- Organiser votre code
+:::
+
+### Topics Covered
+
+- Version control with Git
+- Functional analysis, Software engineering
+- Advanced object-oriented programming
+- Database communication in Python
+- IT security
+- Client-server communication
+
+:::{.notes}
+- Some OOP reminders during practical work
+:::
+
+### Practicals
+
+- 5 x 3h
+- VScode settings, Formatter, Linter
+- Follow the instructions carefully, don't rush, and don't skip steps (:warning: Open Folder)
+
+::: {.callout-warning}
+- **Check your schedule to see if you are in a computer lab!!!**
+- If you are using your own machine, please use a mouse
+:::
+
+:::{.notes}
+- TP: Things to retrieve for the project
+- Very long topics, work at home
+- If something doesn't work and you move on, at some point: BOOM
+- Be supportive
+:::
+
+### Evaluation
+
+- Monday, September 29th
+- 2 hours
+- On paper
+- 1 A4 sheet (front and back) **[handwritten]{.underline}**
+
+:::{.notes}
+- Goal: To see if you have retained the essentials
+- No tricks
+- On paper because organizing practical work is too complicated, Network issues, IAgen...
+- HANDWRITTEN: No photocopies
+:::
+
+### The IT Project
+
+[Project Presentation](../projet/presentation-eleves.html){target="_blank"}
+
+:::{.notes}
+Questions ?
+:::
+
+
+
+
+
+
