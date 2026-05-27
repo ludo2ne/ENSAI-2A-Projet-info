@@ -6,9 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cyriel Mallart">
 <meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Rémi Pépin">
+<meta name="description" content="Slides">
 
-<title>Datalabs – Projet info 2A</title>
+<title>Introduction – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -419,13 +422,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#datalabs-principle" id="toc-datalabs-principle" class="nav-link" data-scroll-target="#datalabs-principle">Datalabs principle</a></li>
-  <li><a href="#custom-service" id="toc-custom-service" class="nav-link" data-scroll-target="#custom-service">Custom service</a></li>
-  <li><a href="#vm-ensai" id="toc-vm-ensai" class="nav-link" data-scroll-target="#vm-ensai">VM ENSAI</a></li>
-  <li><a href="#personal-computer" id="toc-personal-computer" class="nav-link" data-scroll-target="#personal-computer">Personal computer</a></li>
+  <li><a href="#complementary-computer-science-course" id="toc-complementary-computer-science-course" class="nav-link active" data-scroll-target="#complementary-computer-science-course">Complementary Computer Science Course</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="01-introduction-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -437,21 +436,24 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Datalabs</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Custom service</div>
-    <div class="quarto-category">GitHub Token</div>
-  </div>
-  </div>
+<h1 class="title">Introduction</h1>
+</div>
 
+<div>
+  <div class="description">
+    <a href="01-introduction-slides.html">Slides</a>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
+             <p>Cyriel Mallart </p>
              <p>Ludovic Deneuville </p>
+             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -464,144 +466,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="complementary-computer-science-course" class="level2">
+<h2 class="anchored" data-anchor-id="complementary-computer-science-course">Complementary Computer Science Course</h2>
 <ul>
-<li>In the lab instructions, <u><strong>you have to replace</strong></u> <code>&lt;...&gt;</code> with an appropriate value.</li>
+<li>6h Lecture</li>
+<li>12h Practical Work</li>
+<li><code>ludovic.deneuville@ensai.fr</code>, <code>mallart.cyriel@gmail.com</code></li>
+<li>Office 161</li>
+<li>Based on courses by <a href="https://github.com/HealerMikado" target="_blank">Rémi Pépin</a></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Example">
+<div class="notes">
+<p>WIN + P : Etendre</p>
+</div>
+<section id="the-course" class="level3">
+<h3 class="anchored" data-anchor-id="the-course">The Course</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Course Objective">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example
+<span class="screen-reader-only">Tip</span>Course Objective
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>To provide you with the knowledge required to successfully complete an IT project.</p>
+</div>
+</div>
 <ul>
-<li><code>git commit -m "&lt;explicit message&gt;"</code></li>
-<li><span class="emoji" data-emoji="arrow_right">➡️</span> <code>git commit -m "fix: log in error"</code></li>
+<li>Managing a project</li>
+<li>Going beyond 50 lines of code</li>
+<li>Experiencing the life of a developer</li>
+<li>Working in a team</li>
 </ul>
-</div>
-</div>
+<div class="notes">
 <ul>
-<li>Don’t skip a step that didn’t work, telling yourself that it doesn’t matter
-<ul>
-<li>This may cause problems later on</li>
-</ul></li>
+<li>Je reviens ensuite sur le projet</li>
+<li>Organiser votre code</li>
 </ul>
-</section>
-<section id="datalabs-principle" class="level2">
-<h2 class="anchored" data-anchor-id="datalabs-principle">Datalabs principle</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You require resources to start your services, the datalabs are available for that purpose.</p>
-<p>Once you have completed your tasks, make sure to <u>free up these resources</u> by deleting or pausing your services.</p>
-</div>
-</div>
-<ul>
-<li>SSPCloud (INSEE): <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
-<li>GENES: <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
-</ul>
-</section>
-<section id="custom-service" class="level2">
-<h2 class="anchored" data-anchor-id="custom-service">Custom service</h2>
-<p><span class="emoji" data-emoji="construction">🚧</span> Update service version and script</p>
-<p>If the catalogue services do not fully meet your needs, you can use customised services.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>URLs to launch custom VSCode-python services for:</p>
-<ul>
-<li><a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.3&amp;s3=region-79669f20&amp;persistence.size=«2Gi»&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Fonyxia_setup.sh»&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000&amp;autoLaunch=true" target="_blank">SSPCloud</a></li>
-<li><a href="https://onyxia.lab.groupe-genes.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.19&amp;s3=region-46d082f3&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&amp;networking.user.enabled=true&amp;networking.user.port=9876&amp;autoLaunch=true" target="_blank">GENES Datalab</a></li>
-</ul>
-</div>
-</div>
-<section id="explanations" class="level3">
-<h3 class="anchored" data-anchor-id="explanations">Explanations</h3>
-<p>In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:</p>
-<ul>
-<li>by installing additional Python packages</li>
-<li>by modifying certain extensions
-<ul>
-<li>using <span class="emoji" data-emoji="heavy_plus_sign">➕</span> Ruff instead of <span class="emoji" data-emoji="heavy_minus_sign">➖</span> Flake8 to format the code</li>
-</ul></li>
-<li>by opening a specific port to deploy an API</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Opening the port to deploy the API must be done before launching the service.</p>
-<p>After that, it is too late, and you will have to delete it and start over.</p>
-</div>
 </div>
 </section>
-<section id="ways-to-customise-a-service" class="level3">
-<h3 class="anchored" data-anchor-id="ways-to-customise-a-service">Ways to customise a service</h3>
+<section id="topics-covered" class="level3">
+<h3 class="anchored" data-anchor-id="topics-covered">Topics Covered</h3>
 <ul>
-<li>Launch the catalogue service, then modify it by executing commands manually</li>
-<li>Use an initialisation script that will run immediately after the catalogue service is launched
-<ul>
-<li>In the form before Launch: Initialization scripts</li>
-<li><a href="https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh" target="_blank">Example</a></li>
-</ul></li>
-<li>Create and use a Docker image based on the original service
-<ul>
-<li>In the form before Launch: Service &gt; Use a custom image</li>
-</ul></li>
+<li>Version control with Git</li>
+<li>Functional analysis, Software engineering</li>
+<li>Advanced object-oriented programming</li>
+<li>Database communication in Python</li>
+<li>IT security</li>
+<li>Client-server communication</li>
 </ul>
-</section>
-</section>
-<section id="vm-ensai" class="level2">
-<h2 class="anchored" data-anchor-id="vm-ensai">VM ENSAI</h2>
-<p>In previous years, tutorials and projects were carried out on ENSAI VMs. You can therefore use it as a backup.</p>
-<p>The necessary tools are still available there for development:</p>
+<div class="notes">
 <ul>
-<li>Visual Studio Code</li>
-<li>Python 3.10</li>
-<li>Git</li>
-<li>a PostgreSQL database</li>
+<li>Some OOP reminders during practical work</li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All students have access to a database that can only be accessed from ENSAI VMs. For more information, <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html" target="_blank">click here</a></p>
-</div>
 </div>
 </section>
-<section id="personal-computer" class="level2">
-<h2 class="anchored" data-anchor-id="personal-computer">Personal computer</h2>
+<section id="practicals" class="level3">
+<h3 class="anchored" data-anchor-id="practicals">Practicals</h3>
+<ul>
+<li>5 x 3h</li>
+<li>VScode settings, Formatter, Linter</li>
+<li>Follow the instructions carefully, don’t rush, and don’t skip steps (<span class="emoji" data-emoji="warning">⚠️</span> Open Folder)</li>
+</ul>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -612,20 +539,47 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The biggest challenge if you want to work on your personal machine will be to <strong>setup a local PostgreSQL database.</strong></p>
-<p>That is why it is strongly advised not to work on your personal computer if you do not feel capable of carrying out these installations completely on your own.</p>
-<p>This could take a lot of time and energy, and it is not the role of project managers to help you with these installations.</p>
-</div>
-</div>
-<p>To complete the practical work and project on your personal computer, you must install:</p>
 <ul>
-<li>Visual Studio Code or another IDE</li>
-<li>Python</li>
-<li>Git</li>
-<li>PostgreSQL</li>
+<li><strong>Check your schedule to see if you are in a computer lab!!!</strong></li>
+<li>If you are using your own machine, please use a mouse</li>
 </ul>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>TP: Things to retrieve for the project</li>
+<li>Very long topics, work at home</li>
+<li>If something doesn’t work and you move on, at some point: BOOM</li>
+<li>Be supportive</li>
+</ul>
+</div>
+</section>
+<section id="evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation">Evaluation</h3>
+<ul>
+<li>Monday, September 29th</li>
+<li>2 hours</li>
+<li>On paper</li>
+<li>1 A4 sheet (front and back) <strong><u>handwritten</u></strong></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Goal: To see if you have retained the essentials</li>
+<li>No tricks</li>
+<li>On paper because organizing practical work is too complicated, Network issues, IAgen…</li>
+<li>HANDWRITTEN: No photocopies</li>
+</ul>
+</div>
+</section>
+<section id="the-it-project" class="level3">
+<h3 class="anchored" data-anchor-id="the-it-project">The IT Project</h3>
+<p><a href="../projet/presentation-eleves.html" target="_blank">Project Presentation</a></p>
+<div class="notes">
+<p>Questions ?</p>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

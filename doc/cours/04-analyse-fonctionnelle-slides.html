@@ -6,11 +6,16 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
+  <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
-  <title>Projet info 2A – Présentation du projet info 2A</title>
+  <meta name="author" content="Rémi Pépin">
+  <title>Projet info 2A – Functional Analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +37,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-1a8385bbf955fbb4448938bc10efacf4.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link rel="stylesheet" href="none">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -125,34 +130,122 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Présentation du projet info 2A</h1>
+  <h1 class="title">Functional Analysis</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Cyriel Mallart 
+</div>
+</div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
 Ludovic Deneuville 
 </div>
 </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Rémi Pépin 
+</div>
+</div>
 </div>
 
+</section>
+<section id="outline" class="title-slide slide level2 center">
+<h2>Outline</h2>
+<ol type="1">
+<li>Functional Analysis
+<ul>
+<li>Definition</li>
+<li>UML Diagrams</li>
+</ul></li>
+<li>Software Architecture
+<ul>
+<li>Definition</li>
+<li>Separation of Responsibilities</li>
+</ul></li>
+</ol>
+</section>
+
+<section id="analyse-fonctionnelle" class="title-slide slide level2 hide-html-render center">
+<h2>Analyse fonctionnelle</h2>
+<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+<aside class="notes">
+<p>80 % des projets sont un echec (total ou relatif).</p>
+<p>Les questions qu’il faut se poser avant de commencer :</p>
+<ul>
+<li>Qu’est ce qu’on fait ? Qui le fait</li>
+<li>Besoins du client</li>
+<li>Fonctionnalités requises / optionnelles / bonus</li>
+<li>Bien gérer les priorités</li>
+<li>Répartition des rôles dans l’équipe</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="project-phases" class="slide level3">
+<h3>Project Phases</h3>
+<ul>
+<li>Analysis of the needs (specifications)</li>
+<li>Planning</li>
+<li>Design</li>
+<li>Development</li>
+<li>Testing</li>
+<li>Deployment</li>
+<li>Maintenance</li>
+</ul>
+<aside class="notes">
+<p>In traditional projects (V-Cycle), these phases were highly segmented.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="project-actors" class="slide level3">
+<h3>Project actors</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<ul>
+<li>Fonctionnel - Technique</li>
+<li>Besoin Métier</li>
+<li>MOA - MOE</li>
+<li>Etude préalable, budget, temps, qualité - Cahier des charges - SFD - Spec technique - Dossier test</li>
+<li>SCRUM</li>
+</ul>
 </section>
 <section class="slide level3">
 
+<p><a href="./img/agile-tree-swing-cartoon.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./img/agile-tree-swing-cartoon.png"></a></p>
 <aside class="notes">
 <ul>
-<li>Objectifs Modélisation, Back/Front</li>
-<li>Outils à disposition</li>
-<li>Gestion de projet, travail en groupe, suivi</li>
-<li>Usage de l’IAgen</li>
+<li>Important de discuter</li>
+<li>Reformulez</li>
+<li>Utilisez des mots simples</li>
+<li>Imaginez que vous expliquez le projet à vos grands parents</li>
+<li>parler doc, arrivée sur poste, initiatives</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -166,19 +259,27 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="objectifs" class="title-slide slide level2 center">
-<h2>Objectifs</h2>
+<section id="what-is-functional-analysis" class="slide level3">
+<h3>What is Functional Analysis?</h3>
 <ul>
-<li>Développer une application en Python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostgreSQL</li>
-<li>Utiliser des webservices</li>
-<li>Concevoir et Modéliser (UML)</li>
+<li>First step in all projects</li>
+<li>Determines the functions and actors of the product to meet client needs</li>
+<li>Diagrams to communicate with the client</li>
+<li>Prioritizes tasks</li>
 </ul>
 <aside class="notes">
 <ul>
-<li>Éléments vus en cours et en TP</li>
-<li>PostgreSQL OK, SQLite NON</li>
+<li>Permet de s’approprier le sujet</li>
+<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
+<li>Cette phase sera la première partie du rapport intermédiaire</li>
+</ul>
+<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
+<p>Cost of Change Curve:</p>
+<ul>
+<li>Cahier des charges : 1 €</li>
+<li>Développement : 10 €</li>
+<li>Tests : 50 €</li>
+<li>Production : 100 €</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -192,184 +293,23 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="planning" class="title-slide slide level2 smaller center">
-<h2>Planning</h2>
-<div class="panel-tabset nav-pills">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Planning</a></li><li><a href="#tabset-1-2">Dates</a></li><li><a href="#tabset-1-3">Livrables</a></li></ul>
-<div class="tab-content nav-pills">
-<div id="tabset-1-1">
-<div class="white-box">
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2025-08-26,
-    CM                           :milestone, 2025-09-02, 
-    Examen                       :milestone, 2025-09-29,
-    
-    section TP
-    TP1                          :milestone, 2025-08-29,
-    TP2                          :milestone, 2025-09-05,
-    TP3                          :milestone, 2025-09-12,
-    TP4                          :milestone, 2025-09-19,
-    
-    section Projet
-    Suivi 1                      :milestone, 2025-08-29,
-    Suivi 2                      :milestone, 2025-09-05,
-    Suivi 3                      :milestone, 2025-09-12,
-    Suivi 4                      :milestone, 2025-10-03,
-    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d
-    Suivi 7                      :milestone, 2025-11-14,
-    
-    section Échéances
-    WEI                          :crit,      2025-09-19, 3d
-    Dossier Analyse              :milestone, 2025-09-27,
-    Toussaint                    :crit,      2025-10-25, 7d
-    Rapport final et Code        :milestone, 2025-11-22,
-    Soutenance                   :milestone, 2025-12-10,
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2">
-<table class="caption-top">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>vendredi 29 août</td>
-<td>TP1 et Suivi 1</td>
-</tr>
-<tr class="even">
-<td>vendredi 5 septembre</td>
-<td>TP2 et Suivi 2</td>
-</tr>
-<tr class="odd">
-<td>vendredi 12 septembre</td>
-<td>TP3 et Suivi 3</td>
-</tr>
-<tr class="even">
-<td>vendredi 19 septembre</td>
-<td>TP4</td>
-</tr>
-<tr class="odd">
-<td>vendredi 3 octobre</td>
-<td>Suivi 4 (retour sur les dossiers d’analyse)</td>
-</tr>
-<tr class="even">
-<td>mar-jeu 4-6 novembre</td>
-<td>3 jours d’immersion (Suivi 5 et 6)</td>
-</tr>
-<tr class="odd">
-<td>vendredi 14 novembre</td>
-<td>Suivi 7</td>
-</tr>
-<tr class="even">
-<td>mercredi 10 décembre</td>
-<td>Soutenances</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3">
-<table class="caption-top">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>TOUS les Jeudis</td>
-<td>Point hebdo</td>
-</tr>
-<tr class="even">
-<td>Samedi 27 septembre 12h00</td>
-<td>Dossier d’Analyse</td>
-</tr>
-<tr class="odd">
-<td>Samedi 22 novembre 20h00</td>
-<td>Rapport final et Code</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<section id="questions-to-ask" class="slide level3">
+<h3>Questions to Ask</h3>
+<ul>
+<li>What types of users will use my application (administrator, manager, client, etc.)?</li>
+<li>What are the features? Common features between profiles?</li>
+<li>How do the application processes work?</li>
+<li>Which diagrams should be used?</li>
+</ul>
 <aside class="notes">
 <ul>
-<li>3j d’immersion
+<li>Use case diagrams for the first questions</li>
+<li>Activity diagrams for processes</li>
+<li>Why create diagrams? At a glance, you have all the information
 <ul>
-<li>capital pour bien avancer le projet</li>
-<li>si bien utilisé -&gt; 90 % du travail fait</li>
-</ul></li>
-<li>Point hebdo : j’y reviens</li>
-</ul>
-<p><span class="emoji" data-emoji="bulb">💡</span> Prendre de l’avance en septembre</p>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Absences en projet ou TP -&gt; malus</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section id="phases" class="title-slide slide level2 center">
-<h2>2 phases</h2>
-<ul>
-<li>Analyse / Conception générale (sept.)
-<ul>
-<li>4 séances de 3h de suivi</li>
-<li>mi-octobre : retours sur le dossier d’analyse</li>
-</ul></li>
-<li>Implémentation (oct. - nov.)
-<ul>
-<li>3 séances de 3h de suivi</li>
+<li>Comment on your diagrams</li>
 </ul></li>
 </ul>
-<aside class="notes">
-<ul>
-<li>Vous avez 1 mois à 5. Un élève de STD a 6h</li>
-</ul>
-<p>Si votre dossier d’analyse est nickel mais vous n’avez pas encore dev</p>
-<p><span class="emoji" data-emoji="bulb">💡</span> Conseil :</p>
-<ul>
-<li>l’élève le plus à l’aise fait un POC vers le 20 septembre</li>
-<li>puis présente l’appli v0 aux autres</li>
-</ul>
-<p>Relisez vos rapports !</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -382,48 +322,11 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="travail-en-groupe" class="title-slide slide level2 center">
-<h2>Travail en groupe</h2>
+<section id="uml-diagrams" class="slide level3">
+<h3>UML Diagrams</h3>
 <ul>
-<li>Éviter de cumuler les rôles de Chef de projet et Tech Lead</li>
-<li>Esprit d’équipe</li>
-<li>Prévenir dès que possible si ça ne va pas</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Avoir un bon comportement</li>
-<li>Certaines équipes vont mieux fonctionner que d’autres</li>
-<li>Dans la vie pro, on bosse pas toujours avec ses potes</li>
-<li>Si vous êtes fort -&gt; ne pas tout faire</li>
-<li>Prévenir tuteur puis Prof en cas de souci</li>
-</ul>
-<p>Pas la peine de dire une fois que le projet est fini :</p>
-<ul>
-<li>c’est moi qui ait tout fait</li>
-<li>un autre membre n’a rien fait</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section id="suivi" class="title-slide slide level2 center">
-<h2>Suivi</h2>
-<ul>
-<li>Point hebdo</li>
-<li>À remplir chaque semaine
-<ul>
-<li>au plus tard le jeudi soir</li>
-</ul></li>
+<li>First-year course</li>
+<li>UML 2.5, Pascal Roques, Eyrolles, Memento (ENSAI library)</li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -434,16 +337,16 @@ Ludovic Deneuville
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Plus de détails dans la <a href="../../doc/projet/notice-eleves.html#point-hebdo" target="_blank">notice élèves</a>.</p>
+<p>It is <strong>agnostic</strong> of the chosen programmation language !</p>
+<p>A functional analysis UML diagram is <strong>its own language</strong>.</p>
 </div>
 </div>
 </div>
 <aside class="notes">
 <ul>
-<li>Comme dans la vie pro</li>
-<li>Obligatoire sinon malus</li>
-<li>Montrer Modèle</li>
-<li>ras : si vous n’avez rien fait</li>
+<li>No time to redo a course</li>
+<li>Resources are available in the library and online</li>
+<li>Ask your tutor what they expect</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -457,37 +360,124 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="environnement-de-travail" class="title-slide slide level2 center">
-<h2>Environnement de travail</h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Vous pouvez coder sur :</p>
+<section id="questions" class="slide level3 hide-html-render">
+<h3>Questions?</h3>
+<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+</section>
+<section>
+<section id="software-architecture" class="title-slide slide level2 center">
+<h2>Software Architecture</h2>
+<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif"></a></p>
+<aside class="notes">
+<p>Voila pour les grand principes.</p>
+<p>On va maintenant rentrer dans le concret.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-software-architecture" class="slide level3">
+<h3>What is Software Architecture?</h3>
 <ul>
-<li>un datalab (recommandé)</li>
-<li>la VM ENSAI</li>
-</ul>
-<p>Vous pouvez également coder sur votre propre machine mais <strong>vous devrez gérer en totale autonomie les installations nécessaires.</strong></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Nous attendons du code de <strong><u>qualité</u></strong></li>
-<li>Documentation obligatoire pour chaque classe, chaque méthode</li>
+<li>The technical counterpart of functional analysis</li>
+<li>Now that we have the who and what, we determine the how</li>
+<li>We design the code of our application</li>
+<li>Macro vision of our application (arrangement of major components)</li>
 </ul>
 <aside class="notes">
-<p>Respectez les bonnes pratiques de dev Python :</p>
+<p>For now, we are not yet writing code.</p>
+<p>We will only draft our application with the components it comprises (both logical and physical).</p>
+<p>For example, in your case, you will likely have:</p>
 <ul>
-<li>Noms des classes en CamelCase</li>
-<li>Fichiers en snake_case</li>
-<li>noms de variables et de méthodes parlants</li>
+<li>Python code running on your computer</li>
+<li>An external web service providing data</li>
+<li>A PostgreSQL database.</li>
+</ul>
+<p>These are already 3 components, but quickly there will be many, and we need to know how to arrange them.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-its-important-parallel-with-architecture" class="slide level3 hide-html-render">
+<h3>Why It’s Important: Parallel with Architecture</h3>
+<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif"></a></p>
+</section>
+<section id="why-its-important-parallel-with-architecture-1" class="slide level3">
+<h3>Why It’s Important: Parallel with Architecture</h3>
+<ul>
+<li>Rooms, electrical installation, water, gas, legislative constraints, adapting to the terrain…</li>
+<li>Need to think about how to arrange all this from the beginning</li>
+<li>If we build as we go, we risk ending up with an inconsistent house (at best)</li>
+<li><strong>This is not wasted time!</strong></li>
+</ul>
+<aside class="notes">
+<p>Some people even say we should spend more time analyzing than coding. This is debatable, but it shows how important the analysis phase (how to code the functions) is!</p>
+<p>genAI can almost code for us.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a-major-principle-separation-of-concerns" class="slide level3">
+<h3>A Major Principle: Separation of Concerns</h3>
+<p><a href="img/archi-layers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/archi-layers.png"></a></p>
+<aside class="notes">
+<p>Macro version in 3 layers.</p>
+<ul>
+<li>Presentation: everything related to display</li>
+<li>Business: the core of your application, its added value</li>
+<li>Data: data storage</li>
+</ul>
+<p>Each layer communicates with adjacent layers.</p>
+<p>A layer only needs to know how to request information and what is returned. Not obvious but very important!!!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="main-layers-of-an-application" class="slide level3">
+<h3>Main Layers of an Application</h3>
+<ul>
+<li><strong><em>Presentation:</em></strong> everything related to display (web page, console, window)</li>
+<li><strong><em>Business:</em></strong> the core of your application, its <strong>added value</strong></li>
+<li><strong><em>Persistence:</em></strong> manages data persistence. Database or file system</li>
+</ul>
+<aside class="notes">
+<p>Dans le monde pro :</p>
+<ul>
+<li>Présentation : JavaScript</li>
+<li>Métier : Java / Python</li>
+<li>Persistance : PostgreSQL ou MariaDB</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -501,16 +491,37 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="testez-votre-code" class="title-slide slide level2 center">
-<h2>Testez votre code</h2>
+<section id="for-your-project" class="slide level3">
+<h3>For Your Project</h3>
 <ul>
-<li>Tests Unitaires obligatoires</li>
-<li>Codez par petits bouts</li>
+<li><strong><em>Presentation:</em></strong> Front-end</li>
+<li><strong><em>Business:</em></strong> Back-end</li>
+<li><strong><em>Persistence:</em></strong> Database</li>
 </ul>
 <aside class="notes">
+<p>Exemple page web</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="zoom-sur-la-couche-métier" class="slide level3">
+<h3>Zoom sur la couche métier</h3>
+<p><a href="img/archi-business-layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/archi-business-layer.png"></a></p>
+<aside class="notes">
+<p>Within the Business layer, there are several sub-layers.</p>
+<p>In the practical work:</p>
 <ul>
-<li>Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas</li>
+<li>Presentation layer: View (navigate between views)</li>
+<li>DAO, business_object, service</li>
+<li>Controller: It receives user requests via the user interface (e.g., an HTTP request in the case of a web application) and calls the appropriate services to execute the requested actions.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -524,20 +535,91 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="template" class="title-slide slide level2 center">
-<h2>Template</h2>
+<section id="layers-of-the-business-layer-12" class="slide level3">
+<h3>Layers of the Business Layer 1/2</h3>
 <ul>
-<li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
+<li><strong><em>DAO (Data Access Object):</em></strong>
+<ul>
+<li>The part of your code that communicates with the database (Lecture 4/Practical 4)</li>
+</ul></li>
+<li><strong><em>Service:</em></strong>
+<ul>
+<li>Business code</li>
+<li>Manipulates business objects to create information or value</li>
+<li>Requests objects from the DAO layer (Practical 4)</li>
+<li>Calls external web services (Practical 3)</li>
+</ul></li>
+</ul>
+</section>
+<section id="layers-of-the-business-layer-22" class="slide level3">
+<h3>Layers of the Business Layer 2/2</h3>
+<ul>
+<li><strong><em>Business Objects:</em></strong>
+<ul>
+<li>Transversal layer</li>
+<li>Represent business concepts that your code will manipulate</li>
+<li>Objects with mostly attributes and few methods</li>
+</ul></li>
+<li><strong><em>Controller:</em></strong>
+<ul>
+<li>Retrieves user inputs</li>
+<li>Returns data to be displayed</li>
+</ul></li>
 </ul>
 <aside class="notes">
+<p>We break down the objects:</p>
 <ul>
-<li>data, doc, src</li>
-<li>fichiers config : logs, cov, requirements, gitignore</li>
-<li>README : modop pour installer et lancer</li>
-<li>.vscode : setup vscode</li>
-<li>CI : expliquer principe</li>
+<li>Attributes -&gt; Business Objects (~DTO)</li>
+<li>Methods -&gt; Services</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-separate-into-layers" class="slide level3">
+<h3>Why Separate into Layers?</h3>
+<ul>
+<li>Teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Code readability 📖</li>
+<li>Debugging 🐞</li>
+</ul>
+<blockquote>
+<p><strong>Limit the risk of errors when modifying code (avoid spaghetti code) 🍝</strong></p>
+</blockquote>
+<aside class="notes">
+<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
+Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
+Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
+Et séparer en couches permet de trouver rapidement la source du problème.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="key-takeaways" class="slide level3">
+<h3>Key Takeaways</h3>
+<ul>
+<li>Spending time thinking about the different modules of an application is not a waste of time 🕵️‍♀️</li>
+<li>Dividing into layers allows parallel work 🧪🧫📚</li>
+<li>But we still need to think about how to code well 🤖</li>
+</ul>
+<aside class="notes">
+<p>Possible in the project to distribute the layers.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -551,11 +633,11 @@ Ludovic Deneuville
       }</style></aside>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="../../doc/projet/presentation-eleves.html">Présentation du projet info 2A</a></p>
+<p><a href="../../index.html">Home</a> — <a href="04-analyse-fonctionnelle.html">Functional Analysis</a></p>
 </div>
 </div></div>
 
@@ -935,6 +1017,38 @@ Ludovic Deneuville
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

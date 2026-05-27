@@ -6,9 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cyriel Mallart">
 <meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Rémi Pépin">
+<meta name="description" content="Slides">
 
-<title>Datalabs – Projet info 2A</title>
+<title>Analyse fonctionnelle – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,27 +30,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -249,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Projet info 2A</span>
     </a>
   </div>
@@ -260,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -270,15 +276,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
         <li>
-    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
+    <a class="dropdown-item" href="../../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
   </li>  
         <li>
@@ -286,7 +292,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/sujets.html">
+    <a class="dropdown-item" href="../../../doc/projet/sujets.html">
  <span class="dropdown-text">Sujets</span></a>
   </li>  
     </ul>
@@ -297,35 +303,35 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
-    <a class="dropdown-item" href="../../doc/cours/01-introduction.html">
+    <a class="dropdown-item" href="../../../doc/cours/01-introduction.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/02-outils-dev.html">
+    <a class="dropdown-item" href="../../../doc/cours/02-outils-dev.html">
  <span class="dropdown-text">Development Tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/03-git.html">
+    <a class="dropdown-item" href="../../../doc/cours/03-git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/04-analyse-fonctionnelle.html">
+    <a class="dropdown-item" href="../../../doc/cours/04-analyse-fonctionnelle.html">
  <span class="dropdown-text">Functional Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/05-poo-avancee.html">
+    <a class="dropdown-item" href="../../../doc/cours/05-poo-avancee.html">
  <span class="dropdown-text">Advanced POO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/06-tests-unitaires.html">
+    <a class="dropdown-item" href="../../../doc/cours/06-tests-unitaires.html">
  <span class="dropdown-text">Unit Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/07-webservices.html">
+    <a class="dropdown-item" href="../../../doc/cours/07-webservices.html">
  <span class="dropdown-text">Webservices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/08-dao-securite.html">
+    <a class="dropdown-item" href="../../../doc/cours/08-dao-securite.html">
  <span class="dropdown-text">DAO and Security</span></a>
   </li>  
     </ul>
@@ -336,23 +342,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp1.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp1.html">
  <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp2.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp2.html">
  <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp3.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp3.html">
  <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp4.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp4.html">
  <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp5.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp5.html">
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
     </ul>
@@ -363,15 +369,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
         <li>
-    <a class="dropdown-item" href="../../doc/outils/datalab.html">
+    <a class="dropdown-item" href="../../../doc/outils/datalab.html">
  <span class="dropdown-text">Datalab</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/outils/git.html">
+    <a class="dropdown-item" href="../../../doc/outils/git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/outils/vscode.html">
+    <a class="dropdown-item" href="../../../doc/outils/vscode.html">
  <span class="dropdown-text">VS Code</span></a>
   </li>  
     </ul>
@@ -384,11 +390,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-divers">    
         <li>
-    <a class="dropdown-item" href="../../doc/divers/licences.html">
+    <a class="dropdown-item" href="../../../doc/divers/licences.html">
  <span class="dropdown-text">Licences</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/divers/sigles.html">
+    <a class="dropdown-item" href="../../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
   </li>  
     </ul>
@@ -419,13 +425,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#datalabs-principle" id="toc-datalabs-principle" class="nav-link" data-scroll-target="#datalabs-principle">Datalabs principle</a></li>
-  <li><a href="#custom-service" id="toc-custom-service" class="nav-link" data-scroll-target="#custom-service">Custom service</a></li>
-  <li><a href="#vm-ensai" id="toc-vm-ensai" class="nav-link" data-scroll-target="#vm-ensai">VM ENSAI</a></li>
-  <li><a href="#personal-computer" id="toc-personal-computer" class="nav-link" data-scroll-target="#personal-computer">Personal computer</a></li>
+  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">Plan</a></li>
+  <li><a href="#analyse-fonctionnelle" id="toc-analyse-fonctionnelle" class="nav-link" data-scroll-target="#analyse-fonctionnelle">Analyse fonctionnelle</a></li>
+  <li><a href="#architecture-logicielle" id="toc-architecture-logicielle" class="nav-link" data-scroll-target="#architecture-logicielle">Architecture logicielle</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="analyse-fonctionnelle-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -437,21 +441,24 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Datalabs</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Custom service</div>
-    <div class="quarto-category">GitHub Token</div>
-  </div>
-  </div>
+<h1 class="title">Analyse fonctionnelle</h1>
+</div>
 
+<div>
+  <div class="description">
+    <a href="analyse-fonctionnelle-slides.html">Slides</a>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
+             <p>Cyriel Mallart </p>
              <p>Ludovic Deneuville </p>
+             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -464,168 +471,294 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="plan" class="level2">
+<h2 class="anchored" data-anchor-id="plan">Plan</h2>
+<ol type="1">
+<li>L’analyse fonctionnelle
 <ul>
-<li>In the lab instructions, <u><strong>you have to replace</strong></u> <code>&lt;...&gt;</code> with an appropriate value.</li>
+<li>Définition</li>
+<li>Diagrammes UML</li>
+</ul></li>
+<li>L’architecture logicielle
+<ul>
+<li>Définition</li>
+<li>Séparation des responsabilités</li>
+</ul></li>
+</ol>
+</section>
+<section id="analyse-fonctionnelle" class="level2 hide-html-render">
+<h2 class="anchored" data-anchor-id="analyse-fonctionnelle">Analyse fonctionnelle</h2>
+<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+<div class="notes">
+<p>80 % des projets sont un echec (total ou relatif).</p>
+<p>Les questions qu’il faut se poser avant de commencer :</p>
+<ul>
+<li>Qu’est ce qu’on fait ? Qui le fait</li>
+<li>Besoins du client</li>
+<li>Fonctionnalités requises / optionnelles / bonus</li>
+<li>Bien gérer les priorités</li>
+<li>Répartition des rôles dans l’équipe</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Example">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="phases-dun-projet" class="level3">
+<h3 class="anchored" data-anchor-id="phases-dun-projet">Phases d’un projet</h3>
 <ul>
-<li><code>git commit -m "&lt;explicit message&gt;"</code></li>
-<li><span class="emoji" data-emoji="arrow_right">➡️</span> <code>git commit -m "fix: log in error"</code></li>
+<li>Analyse des besoins</li>
+<li>Planification</li>
+<li>Conception</li>
+<li>Développements</li>
+<li>Recette</li>
+<li>Déploiement</li>
+<li>Maintenance</li>
+</ul>
+<div class="notes">
+<p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
+</div>
+<hr>
+<p><a href="./img/agile-tree-swing-cartoon.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/agile-tree-swing-cartoon.png" class="img-fluid"></a></p>
+<div class="notes">
+<ul>
+<li>Important de discuter</li>
+<li>Reformulez</li>
+<li>Utilisez des mots simples</li>
+<li>Imaginez que vous expliquez le projet à vos grands parents</li>
+<li>parler doc, arrivée sur poste, initiatives</li>
 </ul>
 </div>
+</section>
+<section id="cest-quoi-lanalyse-fonctionnelle" class="level3">
+<h3 class="anchored" data-anchor-id="cest-quoi-lanalyse-fonctionnelle">C’est quoi l’analyse fonctionnelle ?</h3>
+<ul>
+<li>Première étape de tous les projets</li>
+<li>Détermine les fonctions, acteurs du produit pour répondre aux besoins du client</li>
+<li>Diagrammes pour échanger avec le client</li>
+<li>Priorise les travaux</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Permet de s’approprier le sujet</li>
+<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
+<li>Cette phase sera la première partie du rapport intermédiaire</li>
+</ul>
+<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
+<p>Cost of Change Curve:</p>
+<ul>
+<li>Cahier des charges : 1 €</li>
+<li>Développement : 10 €</li>
+<li>Tests : 50 €</li>
+<li>Production : 100 €</li>
+</ul>
 </div>
+</section>
+<section id="les-questions-à-se-poser" class="level3">
+<h3 class="anchored" data-anchor-id="les-questions-à-se-poser">Les questions à se poser</h3>
 <ul>
-<li>Don’t skip a step that didn’t work, telling yourself that it doesn’t matter
+<li>Quels sont les types d’utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client…) ?</li>
+<li>Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?</li>
+<li>Comment fonctionnent les processus de l’application ?</li>
+<li>Quels sont les diagrammes à utiliser ?</li>
+</ul>
+<div class="notes">
 <ul>
-<li>This may cause problems later on</li>
+<li>Pour les premières questions diagramme de cas d’utilisation</li>
+<li>Processus -&gt; diagramme d’activité</li>
+<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
+<ul>
+<li>Commentez vos diagrammes</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="les-diagrammes-uml" class="level3">
+<h3 class="anchored" data-anchor-id="les-diagrammes-uml">Les diagrammes UML</h3>
+<ul>
+<li>Cours de 1A</li>
+<li>UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Pas le temps de vous refaire un cours</li>
+<li>Il y a des ressources à la bibliothèque et sur internet</li>
+<li>Demandez à votre tuteur ce qu’il attend</li>
+</ul>
+</div>
+</section>
+<section id="questions" class="level3 hide-html-render">
+<h3 class="anchored" data-anchor-id="questions">Questions ?</h3>
+<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+</section>
+<section id="architecture-logicielle" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-logicielle">Architecture logicielle</h2>
+<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="img-fluid"></a></p>
+<div class="notes">
+<p>Voila pour les grand principes.</p>
+<p>On va maintenant rentrer dans le concret.</p>
+</div>
+<section id="cest-quoi-larchitecture-logicielle" class="level3">
+<h3 class="anchored" data-anchor-id="cest-quoi-larchitecture-logicielle">C’est quoi l’architecture logicielle ?</h3>
+<ul>
+<li>Le pendant technique de l’analyse fonctionnelle</li>
+<li>Maintenant que l’on a le qui et quoi, on détermine le comment</li>
+<li>On dessine le code de notre application</li>
+<li>Vision macro de notre application (agencement des grandes pièces)</li>
+</ul>
+<div class="notes">
+<p>Pour le moment on ne fait pas encore de code.</p>
+<p>On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).</p>
+<p>Par exemple dans votre cas vous allez sûrement avoir :</p>
+<ul>
+<li>Un code python qui tourne sur votre ordinateur</li>
+<li>Un webservice externe qui vous fournis des données</li>
+<li>Une base de données postgres.</li>
+</ul>
+<p>C’est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer</p>
+</div>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-larchitecture" class="level3 hide-html-render">
+<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture">Pourquoi c’est important : parallèle avec l’architecture</h3>
+<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="img-fluid"></a></p>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-larchitecture-1" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture-1">Pourquoi c’est important : parallèle avec l’architecture</h3>
+<ul>
+<li>Pièces, l’installation électrique, l’eau, le gaz, contraintes législatives, s’adapter au terrain…</li>
+<li>Besoin de réfléchir comment il faut agencer tout ça dès le début</li>
+<li>Si on construit au fil de l’eau, on risque d’avoir une maison incohérente (au mieux)</li>
+<li><strong>Ce n’est pas du temps perdu !</strong></li>
+</ul>
+<div class="notes">
+<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder.</p>
+<p>Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+<p>Les IAgen peuvent presque coder à notre place.</p>
+</div>
+</section>
+<section id="un-grand-principe-separation-of-concerns" class="level3">
+<h3 class="anchored" data-anchor-id="un-grand-principe-separation-of-concerns">Un grand principe : separation of concerns</h3>
+<p><a href="img/archi-layers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/archi-layers.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Version macro en 3 couches.</p>
+<ul>
+<li>Présentation : tout ce qui se charge de l’affichage</li>
+<li>Business : c’est le métier de votre application, sa plus-value</li>
+<li>Data : stockage des données</li>
+</ul>
+<p>Chaque couche communique avec celles adjacentes.<br>
+Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
+Pas évident mais très important !!!</p>
+</div>
+</section>
+<section id="les-principales-couches-dune-application" class="level3">
+<h3 class="anchored" data-anchor-id="les-principales-couches-dune-application">Les principales couches d’une application</h3>
+<ul>
+<li><strong><em>Présentation :</em></strong> tout ce qui se charge de l’affichage (page web, console, fenêtre)</li>
+<li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
+<li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
+</ul>
+<div class="notes">
+<p>Dans le monde pro :</p>
+<ul>
+<li>Présentation : JavaScript</li>
+<li>Métier : Java / Python</li>
+<li>Persistance : PostgreSQL ou MariaDB</li>
+</ul>
+</div>
+</section>
+<section id="pour-votre-projet" class="level3">
+<h3 class="anchored" data-anchor-id="pour-votre-projet">Pour votre projet</h3>
+<ul>
+<li><strong><em>Présentation :</em></strong> terminal</li>
+<li><strong><em>Métier :</em></strong> votre code Python</li>
+<li><strong><em>Persistance :</em></strong> base de données</li>
+</ul>
+<div class="notes">
+<p>Exemple page web</p>
+</div>
+</section>
+<section id="zoom-sur-la-couche-métier" class="level3">
+<h3 class="anchored" data-anchor-id="zoom-sur-la-couche-métier">Zoom sur la couche métier</h3>
+<p><a href="img/archi-business-layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/archi-business-layer.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
+<p>Dans les TP :</p>
+<ul>
+<li>Couche présentation : View (on navigue entre des vues)</li>
+<li>DAO, business_object, service</li>
+<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
+</ul>
+</div>
+</section>
+<section id="les-couches-de-la-couche-métier-12" class="level3">
+<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-12">Les couches de la couche métier 1/2</h3>
+<ul>
+<li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
+<ul>
+<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
+</ul></li>
+<li><strong><em>Service :</em></strong>
+<ul>
+<li>Code métier</li>
+<li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
+<li>Demande des objets à la couche DAO (TP4)</li>
+<li>Appelle les webservices externes (TP3)</li>
 </ul></li>
 </ul>
 </section>
-<section id="datalabs-principle" class="level2">
-<h2 class="anchored" data-anchor-id="datalabs-principle">Datalabs principle</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You require resources to start your services, the datalabs are available for that purpose.</p>
-<p>Once you have completed your tasks, make sure to <u>free up these resources</u> by deleting or pausing your services.</p>
-</div>
-</div>
+<section id="les-couches-de-la-couche-métier-22" class="level3">
+<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-22">Les couches de la couche métier 2/2</h3>
 <ul>
-<li>SSPCloud (INSEE): <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
-<li>GENES: <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
-</ul>
-</section>
-<section id="custom-service" class="level2">
-<h2 class="anchored" data-anchor-id="custom-service">Custom service</h2>
-<p><span class="emoji" data-emoji="construction">🚧</span> Update service version and script</p>
-<p>If the catalogue services do not fully meet your needs, you can use customised services.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>URLs to launch custom VSCode-python services for:</p>
+<li><strong><em>Objets métiers :</em></strong>
 <ul>
-<li><a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.3&amp;s3=region-79669f20&amp;persistence.size=«2Gi»&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Fonyxia_setup.sh»&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000&amp;autoLaunch=true" target="_blank">SSPCloud</a></li>
-<li><a href="https://onyxia.lab.groupe-genes.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.19&amp;s3=region-46d082f3&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&amp;networking.user.enabled=true&amp;networking.user.port=9876&amp;autoLaunch=true" target="_blank">GENES Datalab</a></li>
-</ul>
-</div>
-</div>
-<section id="explanations" class="level3">
-<h3 class="anchored" data-anchor-id="explanations">Explanations</h3>
-<p>In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:</p>
-<ul>
-<li>by installing additional Python packages</li>
-<li>by modifying certain extensions
-<ul>
-<li>using <span class="emoji" data-emoji="heavy_plus_sign">➕</span> Ruff instead of <span class="emoji" data-emoji="heavy_minus_sign">➖</span> Flake8 to format the code</li>
+<li>Couche transversale</li>
+<li>Représentent des concepts métiers que votre code va manipuler</li>
+<li>Objets avec surtout des attributs et peu de méthodes</li>
 </ul></li>
-<li>by opening a specific port to deploy an API</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Opening the port to deploy the API must be done before launching the service.</p>
-<p>After that, it is too late, and you will have to delete it and start over.</p>
-</div>
-</div>
-</section>
-<section id="ways-to-customise-a-service" class="level3">
-<h3 class="anchored" data-anchor-id="ways-to-customise-a-service">Ways to customise a service</h3>
+<li><strong><em>Contrôleur :</em></strong>
 <ul>
-<li>Launch the catalogue service, then modify it by executing commands manually</li>
-<li>Use an initialisation script that will run immediately after the catalogue service is launched
-<ul>
-<li>In the form before Launch: Initialization scripts</li>
-<li><a href="https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh" target="_blank">Example</a></li>
-</ul></li>
-<li>Create and use a Docker image based on the original service
-<ul>
-<li>In the form before Launch: Service &gt; Use a custom image</li>
+<li>Récupère les inputs des utilisateurs</li>
+<li>Renvoie les données à afficher</li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="vm-ensai" class="level2">
-<h2 class="anchored" data-anchor-id="vm-ensai">VM ENSAI</h2>
-<p>In previous years, tutorials and projects were carried out on ENSAI VMs. You can therefore use it as a backup.</p>
-<p>The necessary tools are still available there for development:</p>
+<div class="notes">
+<p>On découpe les objets :</p>
 <ul>
-<li>Visual Studio Code</li>
-<li>Python 3.10</li>
-<li>Git</li>
-<li>a PostgreSQL database</li>
+<li>Attributs -&gt; Objets métiers (~DTO)</li>
+<li>Méthodes -&gt; Services</li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All students have access to a database that can only be accessed from ENSAI VMs. For more information, <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html" target="_blank">click here</a></p>
-</div>
 </div>
 </section>
-<section id="personal-computer" class="level2">
-<h2 class="anchored" data-anchor-id="personal-computer">Personal computer</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The biggest challenge if you want to work on your personal machine will be to <strong>setup a local PostgreSQL database.</strong></p>
-<p>That is why it is strongly advised not to work on your personal computer if you do not feel capable of carrying out these installations completely on your own.</p>
-<p>This could take a lot of time and energy, and it is not the role of project managers to help you with these installations.</p>
-</div>
-</div>
-<p>To complete the practical work and project on your personal computer, you must install:</p>
+<section id="pourquoi-séparer-en-couches" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-séparer-en-couches">Pourquoi séparer en couches ?</h3>
 <ul>
-<li>Visual Studio Code or another IDE</li>
-<li>Python</li>
-<li>Git</li>
-<li>PostgreSQL</li>
+<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Lisibilité du code 📖</li>
+<li>Débogages 🐞</li>
 </ul>
+<blockquote class="blockquote">
+<p><strong>Limiter les risques d’erreurs quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
+</blockquote>
+<div class="notes">
+<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
+Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
+Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
+Et séparer en couches permet de trouver rapidement la source du problème.</p>
+</div>
+</section>
+<section id="informations-à-retenir" class="level3">
+<h3 class="anchored" data-anchor-id="informations-à-retenir">Informations à retenir</h3>
+<ul>
+<li>Passer du temps à réfléchir aux différents modules d’une application n’est pas une perte de temps 🕵️‍♀️</li>
+<li>Diviser en couches permet de travailler en parallèle 🧪🧫📚</li>
+<li>Mais il faut encore réfléchir à comment bien coder 🤖</li>
+</ul>
+<div class="notes">
+<p>Possible en projet de se répartir les couches.</p>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1056,6 +1189,38 @@ Warning
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

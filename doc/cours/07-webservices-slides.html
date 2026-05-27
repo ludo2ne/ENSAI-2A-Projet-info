@@ -6,16 +6,16 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
   <meta name="author" content="Rémi Pépin">
-  <title>Projet info 2A – Programation orientée Objet - Avancée</title>
+  <title>Projet info 2A – Webservices</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -202,7 +202,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Programation orientée Objet - Avancée</h1>
+  <h1 class="title">Webservices</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -223,204 +223,74 @@ Rémi Pépin
 </div>
 
 </section>
-<section id="plan" class="title-slide slide level2 center">
-<h2>Plan</h2>
-<ol type="1">
-<li>Notions avancées de POO
+<section id="the-plan" class="title-slide slide level2 center">
+<h2>The Plan</h2>
 <ul>
-<li>Rappels</li>
-<li>Classes abstraites</li>
-<li>Bridge pattern</li>
-</ul></li>
-<li>Génie logiciel
+<li>API</li>
+<li>Webservice
 <ul>
-<li>Définition</li>
-<li>Single responsibility principle</li>
-<li>Design patterns</li>
+<li>Definition</li>
+<li>Examples</li>
+<li>Microservices Architecture</li>
 </ul></li>
-</ol>
+<li>Hyper Text Transfer Protocol
+<ul>
+<li>Definition</li>
+<li>Examples</li>
+</ul></li>
+</ul>
 </section>
 
 <section>
-<section id="quelques-rappels" class="title-slide slide level2 center">
-<h2>Quelques rappels</h2>
-<p>Les trois principes de l’objet :</p>
-<ul>
-<li><strong>Encapsulation :</strong> un objet va contenir des <strong>attributs</strong> et des <strong>méthodes</strong>.</li>
-<li><strong>Héritage :</strong> un objet peut <strong>hériter</strong> des attributs et méthodes d’une autre classe pour les <strong>redéfinir</strong>. Il peut également ajouter d’autres attributs/méthodes.</li>
-<li><strong>Polymorphisme :</strong> une méthode peut être associée à un <strong>code différent</strong> en fonction des paramètres passés ou de l’objet auquel elle appartient.</li>
-</ul>
-<aside class="notes">
-<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.</p>
-<ul>
-<li>Attribut : ce qu’il est</li>
-<li>Méthode : ce qu’il peut faire</li>
-<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
-<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="api" class="title-slide slide level2 center">
+<h2>API</h2>
+
 </section>
-<section id="un-exemple-pour-illustrer-cela" class="slide level3">
-<h3>Un exemple pour illustrer cela</h3>
-<p>Application de traitements automatiques des données :</p>
+<section id="definition" class="slide level3">
+<h3>Definition</h3>
+<p>API = Application Programming Interface</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Interface</strong> between two computers or two programs.</p>
+<p>It is an application that provides services to other applications.</p>
+<p>The application <strong>implements</strong> an API or <strong>exposes</strong> an API.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level3">
+
+<p>A fairly broad term that covers:</p>
 <ul>
-<li>Plusieurs sources de données : enquêtes, webscraping, fichiers administratifs, …</li>
-<li>Plusieurs formats de données : csv, xml, json, … (<em>on en reparlera</em>)</li>
-<li>Plusieurs algorithmes de traitement : statistique exploratoire, régression, “machine learning”, …</li>
-</ul>
-<aside class="notes">
-<p>Fondamentalement, c’est une application assez simple.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="exemple-de-diagramme-de-classe" class="slide level3">
-<h3>Exemple de diagramme de classe</h3>
-<p><a href="img/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="img/class_diagram_no_poo.png"></a></p>
-<aside class="notes">
-<p>Voyez-vous des choses à corriger ?<br>
-Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
-<span id="cb1-2"><a></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
-<span id="cb1-3"><a></a>    ...</span>
-<span id="cb1-4"><a></a>  <span class="cf">elif</span></span>
-<span id="cb1-5"><a></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="un-exemple-avec-de-lhéritage" class="slide level3">
-<h3>Un exemple avec de l’héritage</h3>
-<p><a href="img/class_diagram_poo1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="img/class_diagram_poo1.png"></a></p>
-<aside class="notes">
-<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
-Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
-<p>Code dans le dossier exemple POO.</p>
-<p>Que pensez-vous de la classe Source ?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-classes-abstraites" class="slide level3">
-<h3>Les classes abstraites</h3>
-<blockquote>
-<p><strong>Classe Abstraite :</strong> classe dont l’implémentation n’est <strong>pas complète</strong> et qui n’est <strong>pas instantiable</strong>. Permet de passer un <strong>contrat</strong>. Les classes filles vont devoir implémenter ce qu’il manque.</p>
-</blockquote>
-<p><strong>Avantages :</strong></p>
+<li>Libraries / frameworks:
 <ul>
-<li>Nous savons ce que les classes filles doivent faire 👍</li>
-<li>Nous pouvons générer du code 🙏</li>
-<li>Limite le risque d’erreur !! 👌</li>
-</ul>
-<aside class="notes">
-<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.</p>
-<p>Rappels : classe, objet, abstrait (Vehicule)</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="par-exemple" class="slide level3">
-<h3>Par exemple</h3>
-<p><a href="img/class_diagram_poo_abstract_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="img/class_diagram_poo_abstract_class.png"></a></p>
-<aside class="notes">
-<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
-<p><code>v = Vehicule("rouge")</code> -&gt; ça marche plus</p>
-<p>Méthode <em>custom_process</em> abstraite</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="et-en-python" class="slide level3">
-<h3>Et en Python ?</h3>
+<li><a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Pandas</a></li>
+<li><a href="https://numpy.org/" target="_blank">Numpy</a></li>
+</ul></li>
+<li>Webservices</li>
+<li>A way to access hardware resources
 <ul>
-<li>Pas de gestion native des classes abstraites 😱</li>
-<li>Module Abstract Base Classes (abc) pour résoudre le problème 🦾</li>
-<li>Déjà inclus dans votre distribution Python 😌
-<ul>
-<li><strong>Step 1 :</strong> Importer le module 🧳</li>
-<li><strong>Step 2 :</strong> Hériter de <code>ABC</code> 👨‍👩‍👧‍👦</li>
-<li><strong>Step 3 :</strong> Définir les méthodes abstraites 📝</li>
-<li><strong>Step 4 :</strong> ???</li>
-<li><strong>Step 5 :</strong> Profit 💰💰</li>
+<li><a href="https://developer.nvidia.com/nvapi" target="_blank">Nvidia API</a></li>
 </ul></li>
 </ul>
-<aside class="notes">
-<p>Step 4 : implémenter les méthodes abstraites dans les classes filles</p>
-<p>L’autre gros défaut de Python est son typage dynamique.</p>
-<p>Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="et-si-on-ajoutait-les-formats-de-données" class="slide level3">
-<h3>Et si on ajoutait les formats de données ?</h3>
-<p>Actuellement, 3 formats de données dans notre application :</p>
+<section id="api-in-a-nutshell" class="slide level3">
+<h3>API in a Nutshell</h3>
 <ul>
-<li><strong>CSV :</strong> Comma Separated Values (tabulaire)</li>
-<li><strong>XML :</strong> eXtended Markup Language (format à balise)</li>
-<li><strong>JSON :</strong> JavaScript Object Notation (format clef-valeur)</li>
+<li>Exposes methods/functions to users</li>
+<li>Reusable</li>
+<li>Black box</li>
+<li>Contract between provider and user on inputs/outputs</li>
 </ul>
 <aside class="notes">
-<p>On reviendra plus en détail sur les différents formats.</p>
-<p>Retour 2 slides avant : si on fait pareil et qu’on utilise l’héritage pour le format</p>
+<p>Pour reprendre l’exemple du dessus, le module d’authentification peut être utilisé aussi bien par les utilisateurs pour la version site marchand, que par les admins pour la partie administration.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -433,54 +303,35 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
           display:block!important;
       }</style></aside>
 </section>
-<section id="par-exemple-1" class="slide level3">
-<h3>Par exemple</h3>
-<p><a href="img/class_diagram_poo_file_format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/class_diagram_poo_file_format.png"></a></p>
-<p>Voyez-vous un problème ?</p>
-<aside class="notes">
-<p>Ca grossit de manière exponentielle</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="la-puissance-de-la-poo" class="slide level3">
-<h3>La puissance de la POO</h3>
-<ul>
-<li>Actuellement 4 * 3 classes “concrètes” à définir 😱</li>
-<li>La lecture du format est dépendante de la source 😵</li>
-</ul>
-<p><strong>MAIS</strong></p>
-<ul>
-<li>On peut externaliser ce traitement ! 😌</li>
-<li>Relation d’agrégation 🤯</li>
-</ul>
-<aside class="notes">
-<p>Il faut bien comprendre</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="le-bridge-pattern" class="slide level3">
-<h3>Le bridge pattern</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/class_diagram_poo_bridge_pattern.png"></a></p>
-<aside class="notes">
+<section class="slide level3">
 
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>An API provides a service to users without them needing to know how it works. They only know what it expects as input and what it produces!</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="webservices" class="title-slide slide level2 center">
+<h2>Webservices</h2>
+<p>A specific type of API.</p>
+<div class="white-box">
+<p><a href="./img/restwebservice.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./img/restwebservice.png" style="width:80.0%"></a></p>
+</div>
+</section>
+<section id="question" class="slide level3">
+<h3>Question</h3>
+<p>In your opinion, does X allow everyone to directly access their databases?</p>
+<aside class="notes">
+<p>Bien sûr non !</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -493,45 +344,512 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
           display:block!important;
       }</style></aside>
 </section>
-<section id="work-smart-not-hard" class="slide level3">
-<h3>Work smart, not hard</h3>
+<section id="wait-what" class="slide level3">
+<h3>Wait what?!</h3>
 <ul>
-<li><strong>Composition + héritage :</strong> 9 classes 😎</li>
-<li><strong>Héritage :</strong> 17 classes 😫</li>
-<li>On peut facilement ajouter des types et des formats 🥳</li>
+<li>But many sites use X’s data!</li>
+<li>How do they do it?</li>
 </ul>
-<div title="Pattern Bridge">
+</section>
+<section id="any-ideas" class="slide level3 hide-html-render">
+<h3>Any ideas?</h3>
+<iframe src="https://giphy.com/embed/8acGIeFnqLA7S" width="600" height="600" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+</section>
+<section id="solution-web-scraper" class="slide level3">
+<h3>Solution: Web Scraper</h3>
+<p>Involves writing an application that:</p>
+<ul>
+<li>Connects to a site</li>
+<li>Reads the page to extract information</li>
+</ul>
+<p><strong>Problems:</strong></p>
+<ul>
+<li>Creates artificial traffic (on the site’s side)</li>
+<li>Any change in the site breaks our application</li>
+<li>Managing JavaScript 😱😱😱😱</li>
+</ul>
+<aside class="notes">
+<p>Dire que derrière un site il y a du HTML.</p>
+<p>Montrer un exemple ?</p>
+<p>Prix SNCF à l’INSEE</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="another-solution-create-an-entry-point-for-machines" class="slide level3">
+<h3>Another Solution: Create an Entry Point for Machines</h3>
+<ul>
+<li>Accessible from the web</li>
+<li>Made for machines</li>
+<li><strong>Controls what is made accessible</strong></li>
+</ul>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Interface between the outside and our system</p>
+</div>
+</div>
+</div>
+</section>
+<section id="démo" class="slide level3">
+<h3>Démo</h3>
+<aside class="notes">
+<ul>
+<li><a href="https://api.gouv.fr/documentation/api_data_gouv">https://api.gouv.fr/documentation/api_data_gouv</a><br>
+</li>
+<li><a href="https://anapioficeandfire.com/">https://anapioficeandfire.com/</a></li>
+<li><a href="https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel">Le trafic à Rennes en temps réel</a></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="webservices-1" class="slide level3">
+<h3>Webservices</h3>
+<ul>
+<li>Web application</li>
+<li><strong>Accessible via HTTP/HTTPS request</strong></li>
+<li>No graphical interface</li>
+<li><strong>Returns data understandable by machines (JSON, XML, etc.)</strong></li>
+</ul>
+<aside class="notes">
+<p>Webservice : une API particulière que nous allons utiliser</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="several-types" class="slide level3">
+<h3>Several Types</h3>
+<ul>
+<li>REST: most common, the type you will handle, JSON</li>
+<li>SOAP: more complete but heavier than REST, XML</li>
+<li>RPC: Remote Procedure Call</li>
+</ul>
+<aside class="notes">
+<p>REST est un style architectural qui définit un ensemble de contraintes et de principes</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="in-summary" class="slide level3">
+<h3>In Summary</h3>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>A web service is an application module, accessible over the HTTP protocol via a URL that will respond to a request</p>
+</div>
+</div>
+</div>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> Like a website, but for machines</p>
+</section>
+<section id="microservices-architecture" class="slide level3">
+<h3>Microservices Architecture</h3>
+<p>E-commerce site:</p>
+<ul>
+<li>Authentication WS</li>
+<li>Account management WS</li>
+<li>Payment WS</li>
+<li>Search WS</li>
+<li>Data analysis WS</li>
+<li>Cart management WS</li>
+</ul>
+</section>
+<section id="microservices-architecture-1" class="slide level3">
+<h3>Microservices Architecture</h3>
+<ul>
+<li>Each module is an independent web service</li>
+<li>It is the client-side application that will contact them</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Useful for large companies with many developers and parallel projects.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Un dessin pourrait peut-être aider</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-does-it-work" class="slide level3 hide-html-render">
+<h3>How Does It Work?</h3>
+<iframe src="https://giphy.com/embed/a5viI92PAF89q" width="900" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+</section>
+<section id="the-client-server-concept" class="slide level3">
+<h3>The Client-Server Concept</h3>
+<ul>
+<li><strong>THE MODEL THAT GOVERNS THE WEB</strong></li>
+<li>Machines waiting for requests: <strong>servers</strong></li>
+<li>Machines making requests: <strong>clients</strong></li>
+<li>The client initiates contact, the server responds</li>
+</ul>
+</section>
+<section id="real-life-comparison" class="slide level3">
+<h3>Real-Life Comparison</h3>
+<ul>
+<li>You are walking down the street and want a Double shot espresso and Cream</li>
+<li>You enter a Starbucks and <strong>order</strong> your coffee</li>
+<li>The <strong>server</strong> processes your request and gives you your coffee</li>
+<li>You leave with your coffee</li>
+</ul>
+<aside class="notes">
+<p>Vous vous moquez de comment à été fait votre café, tant que c’est bon</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="hyper-text-transfer-protocol-http" class="title-slide slide level2 center">
+<h2>Hyper Text Transfer Protocol (HTTP)</h2>
+
+</section>
+<section id="http" class="slide level3">
+<h3>HTTP</h3>
+<p>Client-server communication protocol developed for the World Wide Web</p>
+<p>Not the only one: FTP, SMTP, IRC…</p>
+<p>There are non-client-server protocols: BitTorrent</p>
+<aside class="notes">
+<p>Avez vous une idée de requête HTTP ?</p>
+<ul>
+<li>Internet est l’infrastructure</li>
+<li>Web est un service qui fonctionne dessus</li>
+</ul>
+<p>https : http + SSL</p>
+<p>Le navigateur cache le protocole</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="secure-sockets-layer-ssl" class="slide level3">
+<h3>Secure Sockets Layer (SSL)</h3>
+<p>Secure connection between a client and a server:</p>
+<ul>
+<li>The <strong>client</strong> sends a message to the <strong>server</strong></li>
+<li>The <strong>server</strong> responds and sends its <u>certificate</u></li>
+<li>The <strong>client</strong> verifies the validity of the certificate</li>
+<li>The <strong>client</strong> generates a <u>session</u> key encrypted with the <strong>server’s</strong> public key</li>
+<li>Both parties communicate with the session key</li>
+</ul>
+<aside class="notes">
+<p>Commencer par parler chiffrage :</p>
+<ul>
+<li>Chiffrage symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les données</li>
+<li>Chiffrage asymétrique : une clé publique pour chiffrer les données et une clé privée pour les déchiffrer</li>
+</ul>
+<p>Certificat :</p>
+<ul>
+<li>Clé publique</li>
+<li>Informations sur le propriétaire</li>
+<li>Période de validité</li>
+<li>Autorité de certification</li>
+<li>Signature numérique : message haché puis chiffré avec clé privée</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="video" class="slide level3">
+<h3>Video</h3>
+<iframe data-external="1" src="https://www.youtube.com/embed/7W7WPMX7arI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</section>
+<section id="les-éléments-dune-requête" class="slide level3">
+<h3>Les éléments d’une requête</h3>
+<p><a href="https://mdn.github.io/shared-assets/images/diagrams/http/messages/http-message-anatomy.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://mdn.github.io/shared-assets/images/diagrams/http/messages/http-message-anatomy.svg"></a></p>
+<ul>
+<li>Location of the resource: URL (domain name + path)</li>
+<li>Method used (GET, POST, UPDATE, DELETE…)</li>
+<li>Request parameters</li>
+<li>Request body</li>
+</ul>
+<aside class="notes">
+<p>Les paramètres sont derrière le ?</p>
+<p>Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
+<p>Dans le navigateur, on ne fait que des GET</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="elements-of-a-request" class="slide level3">
+<h3>Elements of a Request</h3>
+<p><code>GET https://pokeapi.co/api/v2/pokemon?limit=10&amp;offset=200</code></p>
+<ul>
+<li>method</li>
+<li>protocol</li>
+<li>ws address</li>
+<li>endpoint</li>
+<li>parameters</li>
+</ul>
+<aside class="notes">
+<p>Pour aller plus loin : IP, DNS</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="http-methods" class="slide level3">
+<h3>HTTP Methods</h3>
+<ul>
+<li>POST</li>
+<li>GET</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Pattern Bridge</strong></p>
+<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
+<p>C’est le CRUD !</p>
 </div>
 </div>
 </div>
-</div>
+<aside class="notes">
+<p>Comme en SQL</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="pour-résumer" class="slide level3">
-<h3>Pour résumer</h3>
+<section id="example" class="slide level3">
+<h3>Example</h3>
 <ul>
-<li>Utiliser la puissance de la POO 💣</li>
-<li>Préférer les objets spécifiques (héritage) au <code>if/elif/else</code> 🐱‍🏍</li>
-<li>Les classes abstraites sont des plans pour les futures classes 👷‍♀️👷‍♂️</li>
-<li>La POO permet de créer des codes plus lisibles, évolutifs et maintenables 👑</li>
+<li>GET http://web-services.domensai.ecole/attack
+<ul>
+<li>retrieve all attacks</li>
+</ul></li>
+<li>GET http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>retrieve an attack by its id</li>
+</ul></li>
+<li>DELETE http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>delete an attack</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level3">
+
+<ul>
+<li>POST http://web-services.domensai.ecole/attack
+<ul>
+<li>add an attack</li>
+</ul></li>
+<li>PUT http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>modify an attack</li>
+</ul></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>body</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="body"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a></a><span class="fu">{</span></span>
+<span id="cb1-2"><a></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"tickle"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a></a>  <span class="dt">"attack_type"</span><span class="fu">:</span> <span class="st">"physical attack"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a></a>  <span class="dt">"power"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb1-5"><a></a>  <span class="dt">"accuracy"</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
+<span id="cb1-6"><a></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"string"</span></span>
+<span id="cb1-7"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<ul>
+<li>PATCH http://web-services.domensai.ecole/attack/2684
+<ul>
+<li>modifier seulement certains attributs d’une attaque</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="in-summary-1" class="slide level3">
+<h3>In Summary</h3>
+<ul>
+<li>HTTP is the protocol of the web</li>
+<li>Method</li>
+<li>URL</li>
+<li>Parameters in URL or body</li>
 </ul>
 </section></section>
 <section>
-<section id="le-génie-logiciel" class="title-slide slide level2 center">
-<h2>Le génie logiciel</h2>
-<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q" width="600" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
-</iframe>
+<section id="contactingcreating-a-webservice" class="title-slide slide level2 center">
+<h2>Contacting/Creating a Webservice</h2>
+
+</section>
+<section id="contacting-a-webservice" class="slide level3">
+<h3>Contacting a Webservice</h3>
+<p>A tool: an HTTP client</p>
+<ul>
+<li>A web browser (quite limited)</li>
+<li>Insomnia/Postman/Bruno</li>
+<li>Vscode with plugins</li>
+<li>Python with the <code>requests</code> plugin</li>
+</ul>
+</section>
+<section id="contacting-a-webservice-in-python" class="slide level3">
+<h3>Contacting a Webservice in Python</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
+<span id="cb2-2"><a></a><span class="co"># Building the request</span></span>
+<span id="cb2-3"><a></a>url <span class="op">=</span> <span class="st">"https://data.rennesmetropole.fr/api/records/1.0/search/"</span></span>
+<span id="cb2-4"><a></a>parameters <span class="op">=</span> {<span class="st">"dataset"</span>: <span class="st">"etat-du-trafic-en-temps-reel"</span>, <span class="st">"rows"</span>: <span class="dv">2</span>}</span>
+<span id="cb2-5"><a></a><span class="co"># Launching the request</span></span>
+<span id="cb2-6"><a></a>res <span class="op">=</span> requests.get(url<span class="op">=</span>url, params<span class="op">=</span>parameters)</span>
+<span id="cb2-7"><a></a><span class="co"># Displaying the result</span></span>
+<span id="cb2-8"><a></a><span class="bu">print</span>(res.json())</span>
+<span id="cb2-9"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Number of rows: "</span>, res.json()[<span class="st">"parameters"</span>][<span class="st">"rows"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level3">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> json</span>
+<span id="cb3-2"><a></a><span class="im">import</span> requests</span>
+<span id="cb3-3"><a></a>url <span class="op">=</span> <span class="st">"https://anapioficeandfire.com/api/"</span></span>
+<span id="cb3-4"><a></a>end_point <span class="op">=</span> <span class="st">"characters"</span></span>
+<span id="cb3-5"><a></a>parameters <span class="op">=</span> {<span class="st">"gender"</span>: <span class="st">"Female"</span>, <span class="st">"isAlive"</span>: <span class="va">True</span>, <span class="st">"culture"</span>: <span class="st">"Braavosi"</span>}</span>
+<span id="cb3-6"><a></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>url <span class="op">+</span> end_point, params<span class="op">=</span>parameters)</span>
+<span id="cb3-7"><a></a><span class="co"># Check if the server responded</span></span>
+<span id="cb3-8"><a></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
+<span id="cb3-9"><a></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-10"><a></a><span class="bu">print</span>(json.dumps(response.json()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level3">
+
+<ul>
+<li>Very easy</li>
+<li><code>res.json()</code> returns a dictionary</li>
+<li><code>get()</code> can become <code>post()</code>, <code>put()</code>, etc.</li>
+</ul>
+</section>
+<section id="creating-a-webservice-in-python" class="slide level3">
+<h3>Creating a Webservice in Python</h3>
+<ul>
+<li>May seem complex 😵</li>
+<li>But there are tools to help us 😎</li>
+<li>No need to be a computer expert! 🐱‍💻</li>
+</ul>
+</section>
+<section id="frameworks" class="slide level3">
+<h3>3 Frameworks</h3>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/" target="_blank">FlaskRESTful</a>: mature, lightweight, flexible</li>
+<li><a href="https://www.djangoproject.com/" target="_blank">Django</a>: mature, robust, complete</li>
+<li><a href="https://fastapi.tiangolo.com/" target="_blank">FastApi</a>: young, lightweight, modern</li>
+</ul>
 <aside class="notes">
-<p>On va aller un cran au-dessus.</p>
+<p>FastApi pour le TP2</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -544,266 +862,32 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
           display:block!important;
       }</style></aside>
 </section>
-<section id="cest-quoi-le-génie-logiciel" class="slide level3">
-<h3>C’est quoi le génie logiciel ?</h3>
+<section id="fastapi-the-basics" class="slide level3">
+<h3>FastApi: The Basics</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb4-2"><a></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb4-3"><a></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
+<span id="cb4-6"><a></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-9"><a></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="fastapi" class="slide level3">
+<h3>FastApi</h3>
 <ul>
-<li>Un constat : coder bêtement ne permet pas de faire une application de qualité.</li>
-<li>Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.</li>
-<li>Besoin de planifier, de documenter, de tester…</li>
+<li>It is easy to code your endpoints</li>
+<li>The <a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank">documentation</a> is extremely well done</li>
+<li>You focus on the essentials</li>
 </ul>
-<aside class="notes">
-<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison" class="slide level3">
-<h3>Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
-<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif"></a></p>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1" class="slide level3">
-<h3>Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
-<ul>
-<li>Vous avez le plan de construction d’une maison (fourni par l’architecte)</li>
-<li>Mais implémenter ce plan demande des connaissances techniques</li>
-<li>Besoin de refaire des schémas pour des zones précises (arches, escaliers, …)</li>
-<li><strong>Ce n’est pas du temps perdu !</strong></li>
-</ul>
-<p><strong>Faire du code de qualité c’est comme faire de l’artisanat de précision, cela demande outils, expérience et méthodes.</strong></p>
-<aside class="notes">
-<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="quelques-principes-de-base" class="slide level3">
-<h3>Quelques principes de base</h3>
-<ul>
-<li>Décomposition d’un programme en modules simples <strong>cohérents</strong></li>
-<li>Les modules <strong>exposent</strong> des méthodes utilisables/surchageables par d’autres modules mais restent protégés aux modifications non prévues</li>
-<li>Chaque module doit être une <strong>boîte noire</strong> pour les autres</li>
-<li>Si on garde les mêmes <strong>entrées/sorties</strong>, on peut changer un module sans risque</li>
-<li>Privilégier abstractions + héritage plutôt que <code>if/elif/else</code></li>
-</ul>
-<aside class="notes">
-<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
-<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke.</p>
-<p>Pareil c’est pas le boulot d’une vue de faire un calcul. Par contre une vue peut demander. Bien insister sur “l’indépendance des couches”. Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d’accord sur comment elles communiquent le travail peut se faire en parallèle.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="un-mantra" class="slide level3">
-<h3>Un mantra</h3>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Faible couplage, forte cohérence</strong></p>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Faible couplage inter-classes :</strong> modifier une classe doit impacter les autres le moins possible.</li>
-<li><strong>Forte cohérence intra-classe :</strong> chaque classe doit être un ensemble cohérent d’attributs et de méthodes.</li>
-</ul>
-<aside class="notes">
-<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="faible-couplage-forte-cohérence-pourquoi-le-respecter" class="slide level3">
-<h3>Faible couplage, forte cohérence : pourquoi le respecter ?</h3>
-<ul>
-<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
-<li>Lisibilité du code 📖</li>
-<li>Débogages 🐞</li>
-</ul>
-<p><strong>Limiter les risques d’erreur quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
-<aside class="notes">
-<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="retour-sur-le-bridge-pattern" class="slide level3">
-<h3>Retour sur le bridge pattern</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="img/class_diagram_poo_bridge_pattern.png"></a></p>
-<aside class="notes">
-<p>Je remontre le schéma quelques secondes</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="retour-sur-le-bridge-pattern-1" class="slide level3">
-<h3>Retour sur le bridge pattern</h3>
-<ul>
-<li>La partie “Source” gère les traitements liés à la source.</li>
-<li>La partie “Fichier” gère la lecture de fichier.</li>
-<li>Seules les entrées/sorties comptent.</li>
-<li>On peut ajouter une partie “Traitement” pour des traitements supplémentaires.</li>
-<li>Pas de <code>if/elif/else</code> inutiles.</li>
-</ul>
-<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
-<aside class="notes">
-<p>Avantages :</p>
-<ul>
-<li>Lecture du code facilitée.</li>
-<li>En cas de bug, facile de trouver le coupable.</li>
-<li>On peut répartir le travail facilement.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-design-patterns-définition" class="slide level3">
-<h3>Les design patterns : définition</h3>
-<blockquote>
-<p>“En informatique, et plus particulièrement en développement logiciel, un patron de conception (souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d’un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.”<br>
-— <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">Source</a></p>
-</blockquote>
-</section>
-<section id="les-design-patterns-in-a-nutshell" class="slide level3">
-<h3>Les design patterns : in a nutshell</h3>
-<ul>
-<li>Bonnes pratiques</li>
-<li>Solutions standards à des problèmes de conception</li>
-<li>Solutions robustes</li>
-<li>Indépendants de la technologie</li>
-<li>Indépendants du métier</li>
-</ul>
-<blockquote>
-<p><strong>Est un outil qui est là pour vous aider</strong></p>
-</blockquote>
-<aside class="notes">
-<p>En plus ils apportent un vocabulaire commun.<br>
-Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-design-patterns-exemple" class="slide level3">
-<h3>Les design patterns : exemple</h3>
-<p><strong>Problème récurent :</strong></p>
-<ul>
-<li>Créer des objets complexes qui sont une composition de caractéristiques indépendantes</li>
-<li>Dit autrement : découpler l’abstraction de son implémentation pour qu’elles puissent varier indépendamment</li>
-</ul>
-</section>
-<section id="les-design-patterns-exemple-1" class="slide level3">
-<h3>Les design patterns : exemple</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="img/class_diagram_poo_bridge_pattern_advanced.png"></a></p>
-<aside class="notes">
-<p>En ajoutant les méthodes stats</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="pour-résumer-1" class="slide level3">
-<h3>Pour résumer</h3>
-<ul>
-<li>Faire une application complexe demande un code complexe 🧩</li>
-<li>Sans phase de conception on va dans le mur 🧱</li>
-<li>Il existe des solutions prêtes à l’emploi à des problèmes courants 🧰</li>
-</ul>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Faible couplage, forte cohérence</p>
-</div>
-</div>
-</div>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="poo-avancee.html">POO Avancée</a></p>
+<p><a href="../../index.html">Home</a> — <a href="07-webservices.html">Webservices</a></p>
 </div>
 </div></div>
 

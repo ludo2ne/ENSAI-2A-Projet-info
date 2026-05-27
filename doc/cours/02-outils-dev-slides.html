@@ -6,11 +6,16 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
+  <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
-  <title>Projet info 2A – Présentation du projet info 2A</title>
+  <meta name="author" content="Rémi Pépin">
+  <title>Projet info 2A – Development Tools</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,8 +36,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-1a8385bbf955fbb4448938bc10efacf4.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link rel="stylesheet" href="none">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -125,251 +196,243 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Présentation du projet info 2A</h1>
+  <h1 class="title">Development Tools</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Cyriel Mallart 
+</div>
+</div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
 Ludovic Deneuville 
 </div>
 </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Rémi Pépin 
+</div>
+</div>
 </div>
 
+</section>
+<section>
+<section id="development-environment" class="title-slide slide level2 center">
+<h2>Development Environment</h2>
+<ul>
+<li>Practical exercises and projects completed on a Datalab</li>
+<li>Can also be done on the VM (backup)</li>
+</ul>
+</section>
+<section id="datalab-stack" class="slide level3">
+<h3>Datalab stack</h3>
+<ul>
+<li><code>Visual Studio Code</code>: your code editor</li>
+<li><code>Python 3.13</code></li>
+<li><code>Git</code>: to manage your repositories</li>
+<li><code>PostgreSQL</code>: a database
+<ul>
+<li><code>cloudBeaver</code>: for viewing and editing this database</li>
+</ul></li>
+</ul>
+</section>
+<section id="whats-on-your-school-vm" class="slide level3">
+<h3>What’s on your school VM?</h3>
+<ul>
+<li><code>Python 3.10</code>: Python version chosen by ENSAI</li>
+<li><code>Visual Studio Code</code></li>
+<li><code>Git</code></li>
+<li><code>PostgreSQL</code>
+<ul>
+<li><code>DBeaver</code>: database administration tool to consult or edit</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="visual-studio-code" class="title-slide slide level2 center">
+<h2>Visual Studio Code</h2>
+<ul>
+<li>Widely used and known code editor</li>
+<li>Includes a file navigator and a terminal</li>
+<li>Many (many many) extensions</li>
+<li>Customization</li>
+</ul>
+</section>
+<section id="focus-on-settings" class="slide level3 smaller">
+<h3>Focus on Settings</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.vscode/settings.json</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".vscode/settings.json"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a></a><span class="fu">{</span></span>
+<span id="cb1-2"><a></a>  <span class="dt">"workbench.colorTheme"</span><span class="fu">:</span> <span class="st">"Dark Modern"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a></a>  <span class="dt">"editor.fontSize"</span><span class="fu">:</span> <span class="dv">16</span><span class="fu">,</span></span>
+<span id="cb1-4"><a></a>  <span class="dt">"[python]"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-5"><a></a>    <span class="dt">"editor.formatOnSave"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-6"><a></a>    <span class="dt">"editor.insertSpaces"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-7"><a></a>    <span class="dt">"editor.tabSize"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb1-8"><a></a>    <span class="dt">"editor.defaultFormatter"</span><span class="fu">:</span> <span class="st">"charliermarsh.ruff"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a></a>  <span class="fu">},</span></span>
+<span id="cb1-10"><a></a>  <span class="dt">"ruff.lint.enable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-11"><a></a>  <span class="dt">"files.exclude"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-12"><a></a>    <span class="dt">"**/__pycache__"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-13"><a></a>    <span class="dt">"**/.pytest_cache"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-14"><a></a>  <span class="fu">}</span></span>
+<span id="cb1-15"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<ul>
+<li>Montrer le fichier settings.json (DEMO)</li>
+<li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
+<li>à priori vous n’avez rien à modifier</li>
+<li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
+<li>Formater et Linter en phase</li>
+</ul>
+<p>Formater :</p>
+<ul>
+<li>Ligne trop longue</li>
+<li>Espaces superflux</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="code-quality" class="title-slide slide level2 center">
+<h2>Code Quality</h2>
+
+</section>
+<section id="what-is-quality-for-code" class="slide level3">
+<h3>What is “quality” for code?</h3>
+<ul>
+<li><strong>Maintenance</strong>: easier to understand, maintain, and change/improve</li>
+<li><strong>Readability</strong>: reduces errors and makes collaboration easier</li>
+<li><strong>Performance</strong>: works better, faster, with fewer resources</li>
+<li><strong>Security</strong>: less vulnerable and susceptible to exploits</li>
+</ul>
+</section>
+<section id="pylint" class="slide level3">
+<h3>Pylint</h3>
+<p>A static analysis tool for Python that:</p>
+<ul>
+<li>Checks code compliance with style standards</li>
+<li>Detects potential errors</li>
+<li>Identifies bad practices</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Commands</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="Commands"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="ex">pylint</span> src</span>
+<span id="cb2-2"><a></a><span class="ex">pylint</span> <span class="at">--output-format</span><span class="op">=</span>colorized <span class="at">--disable</span><span class="op">=</span>C0114,C0411,C0415,W0718 <span class="va">$(</span><span class="fu">git</span> ls-files <span class="st">'*.py'</span><span class="va">)</span> <span class="at">--fail-under</span><span class="op">=</span>7.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<ul>
+<li>You can disable rules that bother you</li>
+<li>Do this regularly</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="repository-structure" class="slide level3 smaller">
+<h3>Repository Structure</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>PROJET-INFO-2A</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>    ├── .vscode/settings.json</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>    ├── data</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>    │   └── init_db.sql</span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>    ├── doc</span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>    │   └── suivi</span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>    │       └── YYYY.MM.DD-semaineN.md</span>
+<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>    ├── src</span>
+<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a>    │   ├── business_object</span>
+<span id="cb3-10"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe.py</span>
+<span id="cb3-11"><a aria-hidden="true" tabindex="-1"></a>    │   ├── dao</span>
+<span id="cb3-12"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_dao.py</span>
+<span id="cb3-13"><a aria-hidden="true" tabindex="-1"></a>    │   ├── service</span>
+<span id="cb3-14"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_service.py</span>
+<span id="cb3-15"><a aria-hidden="true" tabindex="-1"></a>    │   ├── tests</span>
+<span id="cb3-16"><a aria-hidden="true" tabindex="-1"></a>    │   │   ├── dao</span>
+<span id="cb3-17"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── service</span>
+<span id="cb3-18"><a aria-hidden="true" tabindex="-1"></a>    │   ├── utils</span>
+<span id="cb3-19"><a aria-hidden="true" tabindex="-1"></a>    │   └── view</span>
+<span id="cb3-20"><a aria-hidden="true" tabindex="-1"></a>    │       └── accueil_view.py</span>
+<span id="cb3-21"><a aria-hidden="true" tabindex="-1"></a>    ├── .gitignore</span>
+<span id="cb3-22"><a aria-hidden="true" tabindex="-1"></a>    ├── LICENCE</span>
+<span id="cb3-23"><a aria-hidden="true" tabindex="-1"></a>    ├── README.md</span>
+<span id="cb3-24"><a aria-hidden="true" tabindex="-1"></a>    └── requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="documentation" class="slide level3">
+<h3>Documentation</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="img/quality-doc-commitstrip.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Git Branch Diagram"><img data-src="img/quality-doc-commitstrip.jpg" alt="Git Branch Diagram"></a></p>
+<figcaption>Git Branch Diagram</figcaption>
+</figure>
+</div>
 </section>
 <section class="slide level3">
 
-<aside class="notes">
-<ul>
-<li>Objectifs Modélisation, Back/Front</li>
-<li>Outils à disposition</li>
-<li>Gestion de projet, travail en groupe, suivi</li>
-<li>Usage de l’IAgen</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="objectifs" class="title-slide slide level2 center">
-<h2>Objectifs</h2>
-<ul>
-<li>Développer une application en Python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostgreSQL</li>
-<li>Utiliser des webservices</li>
-<li>Concevoir et Modéliser (UML)</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Éléments vus en cours et en TP</li>
-<li>PostgreSQL OK, SQLite NON</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section id="planning" class="title-slide slide level2 smaller center">
-<h2>Planning</h2>
-<div class="panel-tabset nav-pills">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Planning</a></li><li><a href="#tabset-1-2">Dates</a></li><li><a href="#tabset-1-3">Livrables</a></li></ul>
-<div class="tab-content nav-pills">
-<div id="tabset-1-1">
-<div class="white-box">
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2025-08-26,
-    CM                           :milestone, 2025-09-02, 
-    Examen                       :milestone, 2025-09-29,
-    
-    section TP
-    TP1                          :milestone, 2025-08-29,
-    TP2                          :milestone, 2025-09-05,
-    TP3                          :milestone, 2025-09-12,
-    TP4                          :milestone, 2025-09-19,
-    
-    section Projet
-    Suivi 1                      :milestone, 2025-08-29,
-    Suivi 2                      :milestone, 2025-09-05,
-    Suivi 3                      :milestone, 2025-09-12,
-    Suivi 4                      :milestone, 2025-10-03,
-    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d
-    Suivi 7                      :milestone, 2025-11-14,
-    
-    section Échéances
-    WEI                          :crit,      2025-09-19, 3d
-    Dossier Analyse              :milestone, 2025-09-27,
-    Toussaint                    :crit,      2025-10-25, 7d
-    Rapport final et Code        :milestone, 2025-11-22,
-    Soutenance                   :milestone, 2025-12-10,
-</pre>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>mathematical_operations.py</strong></pre>
 </div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2">
-<table class="caption-top">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>vendredi 29 août</td>
-<td>TP1 et Suivi 1</td>
-</tr>
-<tr class="even">
-<td>vendredi 5 septembre</td>
-<td>TP2 et Suivi 2</td>
-</tr>
-<tr class="odd">
-<td>vendredi 12 septembre</td>
-<td>TP3 et Suivi 3</td>
-</tr>
-<tr class="even">
-<td>vendredi 19 septembre</td>
-<td>TP4</td>
-</tr>
-<tr class="odd">
-<td>vendredi 3 octobre</td>
-<td>Suivi 4 (retour sur les dossiers d’analyse)</td>
-</tr>
-<tr class="even">
-<td>mar-jeu 4-6 novembre</td>
-<td>3 jours d’immersion (Suivi 5 et 6)</td>
-</tr>
-<tr class="odd">
-<td>vendredi 14 novembre</td>
-<td>Suivi 7</td>
-</tr>
-<tr class="even">
-<td>mercredi 10 décembre</td>
-<td>Soutenances</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3">
-<table class="caption-top">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>TOUS les Jeudis</td>
-<td>Point hebdo</td>
-</tr>
-<tr class="even">
-<td>Samedi 27 septembre 12h00</td>
-<td>Dossier d’Analyse</td>
-</tr>
-<tr class="odd">
-<td>Samedi 22 novembre 20h00</td>
-<td>Rapport final et Code</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="mathematical_operations.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">class</span> MathematicalOperations:</span>
+<span id="cb4-2"><a></a>    <span class="co">"""Mathematical Operations"""</span></span>
+<span id="cb4-3"><a></a>    <span class="kw">def</span> divide_five_by(<span class="va">self</span>, number) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb4-4"><a></a>        <span class="co">"""Divides the number 5 by a given number.</span></span>
+<span id="cb4-5"><a></a><span class="co">        Parameters</span></span>
+<span id="cb4-6"><a></a><span class="co">        ----------</span></span>
+<span id="cb4-7"><a></a><span class="co">        number : float or int</span></span>
+<span id="cb4-8"><a></a><span class="co">            The number by which 5 will be divided.</span></span>
+<span id="cb4-9"><a></a><span class="co">        Returns</span></span>
+<span id="cb4-10"><a></a><span class="co">        -------</span></span>
+<span id="cb4-11"><a></a><span class="co">        float or None</span></span>
+<span id="cb4-12"><a></a><span class="co">            The result of dividing 5 by the given number.</span></span>
+<span id="cb4-13"><a></a><span class="co">            If the number is equal to 0, the method returns None.</span></span>
+<span id="cb4-14"><a></a><span class="co">        """</span></span>
+<span id="cb4-15"><a></a>        <span class="cf">if</span> number <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb4-16"><a></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> number</span>
+<span id="cb4-17"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb4-18"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <ul>
-<li>3j d’immersion
+<li>Document classes
 <ul>
-<li>capital pour bien avancer le projet</li>
-<li>si bien utilisé -&gt; 90 % du travail fait</li>
+<li>Attributes</li>
 </ul></li>
-<li>Point hebdo : j’y reviens</li>
-</ul>
-<p><span class="emoji" data-emoji="bulb">💡</span> Prendre de l’avance en septembre</p>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Absences en projet ou TP -&gt; malus</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section id="phases" class="title-slide slide level2 center">
-<h2>2 phases</h2>
+<li>Document methods
 <ul>
-<li>Analyse / Conception générale (sept.)
-<ul>
-<li>4 séances de 3h de suivi</li>
-<li>mi-octobre : retours sur le dossier d’analyse</li>
-</ul></li>
-<li>Implémentation (oct. - nov.)
-<ul>
-<li>3 séances de 3h de suivi</li>
+<li>Brief description</li>
+<li>Parameters</li>
+<li>Return</li>
 </ul></li>
 </ul>
-<aside class="notes">
-<ul>
-<li>Vous avez 1 mois à 5. Un élève de STD a 6h</li>
-</ul>
-<p>Si votre dossier d’analyse est nickel mais vous n’avez pas encore dev</p>
-<p><span class="emoji" data-emoji="bulb">💡</span> Conseil :</p>
-<ul>
-<li>l’élève le plus à l’aise fait un POC vers le 20 septembre</li>
-<li>puis présente l’appli v0 aux autres</li>
-</ul>
-<p>Relisez vos rapports !</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -381,50 +444,14 @@ Ludovic Deneuville
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
+</section></section>
+<section>
+<section id="logs" class="title-slide slide level2 center">
+<h2>Logs</h2>
 
-<section id="travail-en-groupe" class="title-slide slide level2 center">
-<h2>Travail en groupe</h2>
-<ul>
-<li>Éviter de cumuler les rôles de Chef de projet et Tech Lead</li>
-<li>Esprit d’équipe</li>
-<li>Prévenir dès que possible si ça ne va pas</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Avoir un bon comportement</li>
-<li>Certaines équipes vont mieux fonctionner que d’autres</li>
-<li>Dans la vie pro, on bosse pas toujours avec ses potes</li>
-<li>Si vous êtes fort -&gt; ne pas tout faire</li>
-<li>Prévenir tuteur puis Prof en cas de souci</li>
-</ul>
-<p>Pas la peine de dire une fois que le projet est fini :</p>
-<ul>
-<li>c’est moi qui ait tout fait</li>
-<li>un autre membre n’a rien fait</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-
-<section id="suivi" class="title-slide slide level2 center">
-<h2>Suivi</h2>
-<ul>
-<li>Point hebdo</li>
-<li>À remplir chaque semaine
-<ul>
-<li>au plus tard le jeudi soir</li>
-</ul></li>
-</ul>
+<section id="what-are-logs" class="slide level3">
+<h3>What are logs?</h3>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -434,16 +461,19 @@ Ludovic Deneuville
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Plus de détails dans la <a href="../../doc/projet/notice-eleves.html#point-hebdo" target="_blank">notice élèves</a>.</p>
+<p>Logging is the process of recording events, errors, and information in an application.</p>
 </div>
 </div>
 </div>
+<p>A log captures information about what happened at a given time:</p>
+<ul>
+<li>Monitoring</li>
+<li>Debugging</li>
+</ul>
 <aside class="notes">
 <ul>
-<li>Comme dans la vie pro</li>
-<li>Obligatoire sinon malus</li>
-<li>Montrer Modèle</li>
-<li>ras : si vous n’avez rien fait</li>
+<li>They allow monitoring the state of a system, unexpected behaviors</li>
+<li>They help identify and resolve issues</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -457,38 +487,15 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="environnement-de-travail" class="title-slide slide level2 center">
-<h2>Environnement de travail</h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Vous pouvez coder sur :</p>
+<section id="level-1---beginner" class="slide level3">
+<h3>Level 1 - Beginner</h3>
 <ul>
-<li>un datalab (recommandé)</li>
-<li>la VM ENSAI</li>
-</ul>
-<p>Vous pouvez également coder sur votre propre machine mais <strong>vous devrez gérer en totale autonomie les installations nécessaires.</strong></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Nous attendons du code de <strong><u>qualité</u></strong></li>
-<li>Documentation obligatoire pour chaque classe, chaque méthode</li>
+<li>You have an error in your code</li>
+<li>But you don’t know exactly where?</li>
+<li>What do you do?</li>
 </ul>
 <aside class="notes">
-<p>Respectez les bonnes pratiques de dev Python :</p>
-<ul>
-<li>Noms des classes en CamelCase</li>
-<li>Fichiers en snake_case</li>
-<li>noms de variables et de méthodes parlants</li>
-</ul>
+<p>You put “prints” everywhere</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -501,17 +508,15 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="testez-votre-code" class="title-slide slide level2 center">
-<h2>Testez votre code</h2>
+<section id="level-2---debug-mode" class="slide level3">
+<h3>Level 2 - Debug Mode</h3>
 <ul>
-<li>Tests Unitaires obligatoires</li>
-<li>Codez par petits bouts</li>
+<li>You add a breakpoint</li>
+<li>You launch in debug mode</li>
+<li>You proceed until the error</li>
 </ul>
 <aside class="notes">
-<ul>
-<li>Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas</li>
-</ul>
+<p>Demo</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -524,20 +529,74 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
+<section id="level-3---logs" class="slide level3">
+<h3>Level 3 - Logs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Import the <em>logging</em> module and configure it</label></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> logging</span>
+<span id="cb5-2"><a></a>logging.basicConfig(</span>
+<span id="cb5-3"><a></a>    filename<span class="op">=</span><span class="st">'logs/example.log'</span>,</span>
+<span id="cb5-4"><a></a>    level<span class="op">=</span>logging.INFO,</span>
+<span id="cb5-5"><a></a>    <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)-8s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">"</span>,</span>
+<span id="cb5-6"><a></a>    datefmt<span class="op">=</span><span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y %H:%M:%S"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is possible to externalize the configuration in a <code>logging_config.yml</code> file</p>
+</section>
+<section class="slide level3">
 
-<section id="template" class="title-slide slide level2 center">
-<h2>Template</h2>
-<ul>
-<li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
+<ul class="task-list">
+<li><label><input type="checkbox">Position your logs</label></li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>logger.debug(<span class="st">"This is a debug message"</span>)</span>
+<span id="cb6-2"><a></a>logger.info(<span class="st">"This is an info message"</span>)</span>
+<span id="cb6-3"><a></a>logger.warning(<span class="st">"This is a warning message"</span>)</span>
+<span id="cb6-4"><a></a>logger.error(<span class="st">"This is an error message"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="log-levels" class="slide level3">
+<h3>Log Levels</h3>
+<ul>
+<li><strong>DEBUG</strong>: useful for debugging during development</li>
+<li><strong>INFO</strong>: tracking executed code</li>
+<li><strong>WARNING</strong>: unusual but non-blocking situation</li>
+<li><strong>ERROR</strong>: affects program logic but doesn’t stop it completely</li>
+<li><strong>CRITICAL</strong>: requires urgent intervention</li>
+</ul>
+</section>
+<section id="a-good-start" class="slide level3">
+<h3>A Good Start</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> logging</span>
+<span id="cb7-2"><a></a><span class="kw">def</span> my_method(a):</span>
+<span id="cb7-3"><a></a>    logging.debug(<span class="st">"my_method - START"</span>)</span>
+<span id="cb7-4"><a></a>    ...</span>
+<span id="cb7-5"><a></a>    logging.debug(<span class="st">"my_method - END"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
+<p>You will have something looks like :</p>
 <ul>
-<li>data, doc, src</li>
-<li>fichiers config : logs, cov, requirements, gitignore</li>
-<li>README : modop pour installer et lancer</li>
-<li>.vscode : setup vscode</li>
-<li>CI : expliquer principe</li>
+<li>Method a <span class="emoji" data-emoji="arrow_right">➡️</span> call method b <span class="emoji" data-emoji="arrow_right">➡️</span> call method c, d …</li>
 </ul>
+<p>It’s good to know where the code crashed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="going-further" class="slide level3">
+<h3>Going Further</h3>
+<p>Use the modules:</p>
+<ul>
+<li>src/utils/log_init.py</li>
+<li>src/utils/log_decorator.py</li>
+</ul>
+<p>And add a <code>@Log</code> decorator before each method</p>
+<aside class="notes">
+<p>Wrapper: will encapsulate the method Demo log_decorator</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -551,11 +610,11 @@ Ludovic Deneuville
       }</style></aside>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="../../doc/projet/presentation-eleves.html">Présentation du projet info 2A</a></p>
+<p><a href="../../index.html">Home</a> — <a href="02-outils-dev.html">Development Tools</a></p>
 </div>
 </div></div>
 
@@ -935,6 +994,38 @@ Ludovic Deneuville
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

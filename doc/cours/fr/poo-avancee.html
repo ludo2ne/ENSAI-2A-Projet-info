@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,7 +11,7 @@
 <meta name="author" content="Rémi Pépin">
 <meta name="description" content="Slides">
 
-<title>Introduction – Projet info 2A</title>
+<title>Programation orientée Objet - Avancée – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,30 +27,68 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d58c9fc64405092d105ca125627416e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -252,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Projet info 2A</span>
     </a>
   </div>
@@ -263,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -273,15 +311,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
         <li>
-    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
+    <a class="dropdown-item" href="../../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
   </li>  
         <li>
@@ -289,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/sujets.html">
+    <a class="dropdown-item" href="../../../doc/projet/sujets.html">
  <span class="dropdown-text">Sujets</span></a>
   </li>  
     </ul>
@@ -300,36 +338,36 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
-    <a class="dropdown-item" href="../../doc/cours/intro.html">
+    <a class="dropdown-item" href="../../../doc/cours/01-introduction.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
+    <a class="dropdown-item" href="../../../doc/cours/02-outils-dev.html">
+ <span class="dropdown-text">Development Tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
+    <a class="dropdown-item" href="../../../doc/cours/03-git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/analyse-fonctionnelle.html">
- <span class="dropdown-text">Analyse fonctionnelle</span></a>
+    <a class="dropdown-item" href="../../../doc/cours/04-analyse-fonctionnelle.html">
+ <span class="dropdown-text">Functional Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
- <span class="dropdown-text">POO Avancée</span></a>
+    <a class="dropdown-item" href="../../../doc/cours/05-poo-avancee.html">
+ <span class="dropdown-text">Advanced POO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
- <span class="dropdown-text">Tests unitaires</span></a>
+    <a class="dropdown-item" href="../../../doc/cours/06-tests-unitaires.html">
+ <span class="dropdown-text">Unit Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/webservices.html">
+    <a class="dropdown-item" href="../../../doc/cours/07-webservices.html">
  <span class="dropdown-text">Webservices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/dao-securite.html">
- <span class="dropdown-text">DAO et Sécurité</span></a>
+    <a class="dropdown-item" href="../../../doc/cours/08-dao-securite.html">
+ <span class="dropdown-text">DAO and Security</span></a>
   </li>  
     </ul>
   </li>
@@ -339,23 +377,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp1.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp1.html">
  <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp2.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp2.html">
  <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp3.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp3.html">
  <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp4.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp4.html">
  <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp5.html">
+    <a class="dropdown-item" href="../../../doc/tp/tp5.html">
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
     </ul>
@@ -366,15 +404,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
         <li>
-    <a class="dropdown-item" href="../../doc/outils/datalab.html">
+    <a class="dropdown-item" href="../../../doc/outils/datalab.html">
  <span class="dropdown-text">Datalab</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/outils/git.html">
+    <a class="dropdown-item" href="../../../doc/outils/git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/outils/vscode.html">
+    <a class="dropdown-item" href="../../../doc/outils/vscode.html">
  <span class="dropdown-text">VS Code</span></a>
   </li>  
     </ul>
@@ -387,11 +425,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-divers">    
         <li>
-    <a class="dropdown-item" href="../../doc/divers/licences.html">
+    <a class="dropdown-item" href="../../../doc/divers/licences.html">
  <span class="dropdown-text">Licences</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/divers/sigles.html">
+    <a class="dropdown-item" href="../../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
   </li>  
     </ul>
@@ -422,9 +460,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#cours-de-compléments-dinfo" id="toc-cours-de-compléments-dinfo" class="nav-link active" data-scroll-target="#cours-de-compléments-dinfo">Cours de Compléments d’info</a></li>
+  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">Plan</a></li>
+  <li><a href="#quelques-rappels" id="toc-quelques-rappels" class="nav-link" data-scroll-target="#quelques-rappels">Quelques rappels</a></li>
+  <li><a href="#le-génie-logiciel" id="toc-le-génie-logiciel" class="nav-link" data-scroll-target="#le-génie-logiciel">Le génie logiciel</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="intro-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="poo-avancee-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -436,12 +476,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title">Programation orientée Objet - Avancée</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="intro-slides.html">Slides</a>
+    <a href="poo-avancee-slides.html">Slides</a>
   </div>
 </div>
 
@@ -466,126 +506,363 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="cours-de-compléments-dinfo" class="level2">
-<h2 class="anchored" data-anchor-id="cours-de-compléments-dinfo">Cours de Compléments d’info</h2>
+<section id="plan" class="level2">
+<h2 class="anchored" data-anchor-id="plan">Plan</h2>
+<ol type="1">
+<li>Notions avancées de POO
 <ul>
-<li>6h CM</li>
-<li>12h TP</li>
-<li><code>ludovic.deneuville@ensai.fr</code></li>
-<li>bureau 161</li>
-<li>sur la base des cours de <a href="https://github.com/HealerMikado" target="_blank">Rémi Pépin</a></li>
+<li>Rappels</li>
+<li>Classes abstraites</li>
+<li>Bridge pattern</li>
+</ul></li>
+<li>Génie logiciel
+<ul>
+<li>Définition</li>
+<li>Single responsibility principle</li>
+<li>Design patterns</li>
+</ul></li>
+</ol>
+</section>
+<section id="quelques-rappels" class="level2">
+<h2 class="anchored" data-anchor-id="quelques-rappels">Quelques rappels</h2>
+<p>Les trois principes de l’objet :</p>
+<ul>
+<li><strong>Encapsulation :</strong> un objet va contenir des <strong>attributs</strong> et des <strong>méthodes</strong>.</li>
+<li><strong>Héritage :</strong> un objet peut <strong>hériter</strong> des attributs et méthodes d’une autre classe pour les <strong>redéfinir</strong>. Il peut également ajouter d’autres attributs/méthodes.</li>
+<li><strong>Polymorphisme :</strong> une méthode peut être associée à un <strong>code différent</strong> en fonction des paramètres passés ou de l’objet auquel elle appartient.</li>
 </ul>
 <div class="notes">
-<p>WIN + P : Etendre ou dupliquer</p>
-<p>Présentation :</p>
+<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.</p>
 <ul>
-<li>15 ans d’info (SQL, Java, Python)</li>
-<li>INSEE, informatique, Orléans GEOLOC, Lille enquêtes, Nautile</li>
-<li>ENSAI</li>
-<li>Rémi Pépin, assistant d’enseignement entre 2018 et 2023
+<li>Attribut : ce qu’il est</li>
+<li>Méthode : ce qu’il peut faire</li>
+<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
+<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
+</ul>
+</div>
+<section id="un-exemple-pour-illustrer-cela" class="level3">
+<h3 class="anchored" data-anchor-id="un-exemple-pour-illustrer-cela">Un exemple pour illustrer cela</h3>
+<p>Application de traitements automatiques des données :</p>
 <ul>
-<li>Cours de Cloud Computing</li>
+<li>Plusieurs sources de données : enquêtes, webscraping, fichiers administratifs, …</li>
+<li>Plusieurs formats de données : csv, xml, json, … (<em>on en reparlera</em>)</li>
+<li>Plusieurs algorithmes de traitement : statistique exploratoire, régression, “machine learning”, …</li>
+</ul>
+<div class="notes">
+<p>Fondamentalement, c’est une application assez simple.</p>
+</div>
+</section>
+<section id="exemple-de-diagramme-de-classe" class="level3">
+<h3 class="anchored" data-anchor-id="exemple-de-diagramme-de-classe">Exemple de diagramme de classe</h3>
+<p><a href="img/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/class_diagram_no_poo.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Voyez-vous des choses à corriger ?<br>
+Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="un-exemple-avec-de-lhéritage" class="level3">
+<h3 class="anchored" data-anchor-id="un-exemple-avec-de-lhéritage">Un exemple avec de l’héritage</h3>
+<p><a href="img/class_diagram_poo1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/class_diagram_poo1.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
+Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
+<p>Code dans le dossier exemple POO.</p>
+<p>Que pensez-vous de la classe Source ?</p>
+</div>
+</section>
+<section id="les-classes-abstraites" class="level3">
+<h3 class="anchored" data-anchor-id="les-classes-abstraites">Les classes abstraites</h3>
+<blockquote class="blockquote">
+<p><strong>Classe Abstraite :</strong> classe dont l’implémentation n’est <strong>pas complète</strong> et qui n’est <strong>pas instantiable</strong>. Permet de passer un <strong>contrat</strong>. Les classes filles vont devoir implémenter ce qu’il manque.</p>
+</blockquote>
+<p><strong>Avantages :</strong></p>
+<ul>
+<li>Nous savons ce que les classes filles doivent faire 👍</li>
+<li>Nous pouvons générer du code 🙏</li>
+<li>Limite le risque d’erreur !! 👌</li>
+</ul>
+<div class="notes">
+<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.</p>
+<p>Rappels : classe, objet, abstrait (Vehicule)</p>
+</div>
+</section>
+<section id="par-exemple" class="level3">
+<h3 class="anchored" data-anchor-id="par-exemple">Par exemple</h3>
+<p><a href="img/class_diagram_poo_abstract_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/class_diagram_poo_abstract_class.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
+<p><code>v = Vehicule("rouge")</code> -&gt; ça marche plus</p>
+<p>Méthode <em>custom_process</em> abstraite</p>
+</div>
+</section>
+<section id="et-en-python" class="level3">
+<h3 class="anchored" data-anchor-id="et-en-python">Et en Python ?</h3>
+<ul>
+<li>Pas de gestion native des classes abstraites 😱</li>
+<li>Module Abstract Base Classes (abc) pour résoudre le problème 🦾</li>
+<li>Déjà inclus dans votre distribution Python 😌
+<ul>
+<li><strong>Step 1 :</strong> Importer le module 🧳</li>
+<li><strong>Step 2 :</strong> Hériter de <code>ABC</code> 👨‍👩‍👧‍👦</li>
+<li><strong>Step 3 :</strong> Définir les méthodes abstraites 📝</li>
+<li><strong>Step 4 :</strong> ???</li>
+<li><strong>Step 5 :</strong> Profit 💰💰</li>
 </ul></li>
 </ul>
+<div class="notes">
+<p>Step 4 : implémenter les méthodes abstraites dans les classes filles</p>
+<p>L’autre gros défaut de Python est son typage dynamique.</p>
+<p>Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
 </div>
-<section id="le-cours" class="level3">
-<h3 class="anchored" data-anchor-id="le-cours">Le cours</h3>
-<div class="callout callout-style-default callout-tip callout-titled" title="But du cours">
+</section>
+<section id="et-si-on-ajoutait-les-formats-de-données" class="level3">
+<h3 class="anchored" data-anchor-id="et-si-on-ajoutait-les-formats-de-données">Et si on ajoutait les formats de données ?</h3>
+<p>Actuellement, 3 formats de données dans notre application :</p>
+<ul>
+<li><strong>CSV :</strong> Comma Separated Values (tabulaire)</li>
+<li><strong>XML :</strong> eXtended Markup Language (format à balise)</li>
+<li><strong>JSON :</strong> JavaScript Object Notation (format clef-valeur)</li>
+</ul>
+<div class="notes">
+<p>On reviendra plus en détail sur les différents formats.</p>
+<p>Retour 2 slides avant : si on fait pareil et qu’on utilise l’héritage pour le format</p>
+</div>
+</section>
+<section id="par-exemple-1" class="level3">
+<h3 class="anchored" data-anchor-id="par-exemple-1">Par exemple</h3>
+<p><a href="img/class_diagram_poo_file_format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/class_diagram_poo_file_format.png" class="img-fluid"></a></p>
+<p>Voyez-vous un problème ?</p>
+<div class="notes">
+<p>Ca grossit de manière exponentielle</p>
+</div>
+</section>
+<section id="la-puissance-de-la-poo" class="level3">
+<h3 class="anchored" data-anchor-id="la-puissance-de-la-poo">La puissance de la POO</h3>
+<ul>
+<li>Actuellement 4 * 3 classes “concrètes” à définir 😱</li>
+<li>La lecture du format est dépendante de la source 😵</li>
+</ul>
+<p><strong>MAIS</strong></p>
+<ul>
+<li>On peut externaliser ce traitement ! 😌</li>
+<li>Relation d’agrégation 🤯</li>
+</ul>
+<div class="notes">
+<p>Il faut bien comprendre</p>
+</div>
+</section>
+<section id="le-bridge-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="le-bridge-pattern">Le bridge pattern</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
+<div class="notes">
+
+</div>
+</section>
+<section id="work-smart-not-hard" class="level3">
+<h3 class="anchored" data-anchor-id="work-smart-not-hard">Work smart, not hard</h3>
+<ul>
+<li><strong>Composition + héritage :</strong> 9 classes 😎</li>
+<li><strong>Héritage :</strong> 17 classes 😫</li>
+<li>On peut facilement ajouter des types et des formats 🥳</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Pattern Bridge">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>But du cours
+<span class="screen-reader-only">Important</span>Pattern Bridge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vous apporter les connaissances nécessaires pour mener à bien un projet informatique.</p>
+<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
 </div>
-</div>
-<ul>
-<li>Conduire un projet</li>
-<li>Dépasser les 50 lignes de code</li>
-<li>Vivre la vie de développeur</li>
-<li>Travailler en équipe</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Je reviens ensuite sur le projet</li>
-<li>Organiser votre code</li>
-</ul>
 </div>
 </section>
-<section id="notions-abordées" class="level3">
-<h3 class="anchored" data-anchor-id="notions-abordées">Notions abordées</h3>
+<section id="pour-résumer" class="level3">
+<h3 class="anchored" data-anchor-id="pour-résumer">Pour résumer</h3>
 <ul>
-<li>Versionnage avec git</li>
-<li>Analyse fonctionnelle, Génie logiciel</li>
-<li>Programmation orientée objet avancée</li>
-<li>Communication avec une base de données en python</li>
-<li>Sécurité informatique</li>
-<li>Communication client-serveur</li>
+<li>Utiliser la puissance de la POO 💣</li>
+<li>Préférer les objets spécifiques (héritage) au <code>if/elif/else</code> 🐱‍🏍</li>
+<li>Les classes abstraites sont des plans pour les futures classes 👷‍♀️👷‍♂️</li>
+<li>La POO permet de créer des codes plus lisibles, évolutifs et maintenables 👑</li>
+</ul>
+</section>
+</section>
+<section id="le-génie-logiciel" class="level2">
+<h2 class="anchored" data-anchor-id="le-génie-logiciel">Le génie logiciel</h2>
+<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q" width="600" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+<div class="notes">
+<p>On va aller un cran au-dessus.</p>
+</div>
+<section id="cest-quoi-le-génie-logiciel" class="level3">
+<h3 class="anchored" data-anchor-id="cest-quoi-le-génie-logiciel">C’est quoi le génie logiciel ?</h3>
+<ul>
+<li>Un constat : coder bêtement ne permet pas de faire une application de qualité.</li>
+<li>Mais empiler des briques bêtement ne permet pas de faire une maison, même si on a un plan.</li>
+<li>Besoin de planifier, de documenter, de tester…</li>
 </ul>
 <div class="notes">
-<ul>
-<li>Quelques rappels POO en TP</li>
-</ul>
+<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
 </div>
 </section>
-<section id="les-tp" class="level3">
-<h3 class="anchored" data-anchor-id="les-tp">Les TP</h3>
+<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison">Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="img-fluid"></a></p>
+</section>
+<section id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-la-construction-dune-maison-1">Pourquoi c’est important : parallèle avec la construction d’une maison</h3>
 <ul>
-<li>4 x 3h</li>
-<li>Settings VScode, Formateur, Linter</li>
-<li>Suivez précisément les consignes, n’allez pas trop vite et ne sautez pas les étapes (<span class="emoji" data-emoji="warning">⚠️</span> Open Folder)</li>
+<li>Vous avez le plan de construction d’une maison (fourni par l’architecte)</li>
+<li>Mais implémenter ce plan demande des connaissances techniques</li>
+<li>Besoin de refaire des schémas pour des zones précises (arches, escaliers, …)</li>
+<li><strong>Ce n’est pas du temps perdu !</strong></li>
 </ul>
-<div class="callout callout-style-default callout-warning callout-titled">
+<p><strong>Faire du code de qualité c’est comme faire de l’artisanat de précision, cela demande outils, expérience et méthodes.</strong></p>
+<div class="notes">
+<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+</div>
+</section>
+<section id="quelques-principes-de-base" class="level3">
+<h3 class="anchored" data-anchor-id="quelques-principes-de-base">Quelques principes de base</h3>
+<ul>
+<li>Décomposition d’un programme en modules simples <strong>cohérents</strong></li>
+<li>Les modules <strong>exposent</strong> des méthodes utilisables/surchageables par d’autres modules mais restent protégés aux modifications non prévues</li>
+<li>Chaque module doit être une <strong>boîte noire</strong> pour les autres</li>
+<li>Si on garde les mêmes <strong>entrées/sorties</strong>, on peut changer un module sans risque</li>
+<li>Privilégier abstractions + héritage plutôt que <code>if/elif/else</code></li>
+</ul>
+<div class="notes">
+<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
+<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke.</p>
+<p>Pareil c’est pas le boulot d’une vue de faire un calcul. Par contre une vue peut demander. Bien insister sur “l’indépendance des couches”. Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d’accord sur comment elles communiquent le travail peut se faire en parallèle.</p>
+</div>
+</section>
+<section id="un-mantra" class="level3">
+<h3 class="anchored" data-anchor-id="un-mantra">Un mantra</h3>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Faible couplage, forte cohérence</strong></p>
+</div>
+</div>
 <ul>
-<li><strong>Vérifiez sur votre EDT si vous êtes en salle info !!!</strong></li>
-<li>Si vous faites sur votre machine, utilisez une souris</li>
+<li><strong>Faible couplage inter-classes :</strong> modifier une classe doit impacter les autres le moins possible.</li>
+<li><strong>Forte cohérence intra-classe :</strong> chaque classe doit être un ensemble cohérent d’attributs et de méthodes.</li>
 </ul>
-</div>
-</div>
 <div class="notes">
+<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
+</div>
+</section>
+<section id="faible-couplage-forte-cohérence-pourquoi-le-respecter" class="level3">
+<h3 class="anchored" data-anchor-id="faible-couplage-forte-cohérence-pourquoi-le-respecter">Faible couplage, forte cohérence : pourquoi le respecter ?</h3>
 <ul>
-<li>TP : truc à récup pour le projet</li>
-<li>Sujets très longs, travail à la maison</li>
-<li>Si un truc ne marche pas et que vous passez à la suite -&gt; à un moment : BOOM</li>
-<li>Soyez solidaires</li>
+<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Lisibilité du code 📖</li>
+<li>Débogages 🐞</li>
+</ul>
+<p><strong>Limiter les risques d’erreur quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
+<div class="notes">
+<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
+</div>
+</section>
+<section id="retour-sur-le-bridge-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="retour-sur-le-bridge-pattern">Retour sur le bridge pattern</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Je remontre le schéma quelques secondes</p>
+</div>
+</section>
+<section id="retour-sur-le-bridge-pattern-1" class="level3">
+<h3 class="anchored" data-anchor-id="retour-sur-le-bridge-pattern-1">Retour sur le bridge pattern</h3>
+<ul>
+<li>La partie “Source” gère les traitements liés à la source.</li>
+<li>La partie “Fichier” gère la lecture de fichier.</li>
+<li>Seules les entrées/sorties comptent.</li>
+<li>On peut ajouter une partie “Traitement” pour des traitements supplémentaires.</li>
+<li>Pas de <code>if/elif/else</code> inutiles.</li>
+</ul>
+<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
+<div class="notes">
+<p>Avantages :</p>
+<ul>
+<li>Lecture du code facilitée.</li>
+<li>En cas de bug, facile de trouver le coupable.</li>
+<li>On peut répartir le travail facilement.</li>
 </ul>
 </div>
 </section>
-<section id="évaluation" class="level3">
-<h3 class="anchored" data-anchor-id="évaluation">Évaluation</h3>
+<section id="les-design-patterns-définition" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-définition">Les design patterns : définition</h3>
+<blockquote class="blockquote">
+<p>“En informatique, et plus particulièrement en développement logiciel, un patron de conception (souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d’un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.”<br>
+— <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">Source</a></p>
+</blockquote>
+</section>
+<section id="les-design-patterns-in-a-nutshell" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-in-a-nutshell">Les design patterns : in a nutshell</h3>
 <ul>
-<li>Lundi 29 Septembre 14h</li>
-<li>2h</li>
-<li>sur papier</li>
-<li>1 feuille A4 recto / verso <strong><u>manuscrite</u></strong></li>
+<li>Bonnes pratiques</li>
+<li>Solutions standards à des problèmes de conception</li>
+<li>Solutions robustes</li>
+<li>Indépendants de la technologie</li>
+<li>Indépendants du métier</li>
 </ul>
+<blockquote class="blockquote">
+<p><strong>Est un outil qui est là pour vous aider</strong></p>
+</blockquote>
 <div class="notes">
-<ul>
-<li>But : voir si vous avez retenu le principal</li>
-<li>pas de piège</li>
-<li>sur papier car TP trop compliqué à organiser, chatGPT</li>
-<li>MANUSCRITE : pas de photocopie</li>
-</ul>
+<p>En plus ils apportent un vocabulaire commun.<br>
+Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
 </div>
 </section>
-<section id="le-projet-info" class="level3">
-<h3 class="anchored" data-anchor-id="le-projet-info">Le projet info</h3>
-<p><a href="../projet/presentation-eleves.html" target="_blank">Présentation du projet</a></p>
+<section id="les-design-patterns-exemple" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-exemple">Les design patterns : exemple</h3>
+<p><strong>Problème récurent :</strong></p>
+<ul>
+<li>Créer des objets complexes qui sont une composition de caractéristiques indépendantes</li>
+<li>Dit autrement : découpler l’abstraction de son implémentation pour qu’elles puissent varier indépendamment</li>
+</ul>
+</section>
+<section id="les-design-patterns-exemple-1" class="level3">
+<h3 class="anchored" data-anchor-id="les-design-patterns-exemple-1">Les design patterns : exemple</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/class_diagram_poo_bridge_pattern_advanced.png" class="img-fluid"></a></p>
 <div class="notes">
-<p>Questions ?</p>
+<p>En ajoutant les méthodes stats</p>
+</div>
+</section>
+<section id="pour-résumer-1" class="level3">
+<h3 class="anchored" data-anchor-id="pour-résumer-1">Pour résumer</h3>
+<ul>
+<li>Faire une application complexe demande un code complexe 🧩</li>
+<li>Sans phase de conception on va dans le mur 🧱</li>
+<li>Il existe des solutions prêtes à l’emploi à des problèmes courants 🧰</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Faible couplage, forte cohérence</p>
+</div>
 </div>
 
 
@@ -1020,6 +1297,38 @@ Warning
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

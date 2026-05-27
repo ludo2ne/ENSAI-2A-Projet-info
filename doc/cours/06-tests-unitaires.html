@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,7 +11,7 @@
 <meta name="author" content="Rémi Pépin">
 <meta name="description" content="Slides">
 
-<title>Les tests unitaires – Projet info 2A</title>
+<title>Unit Testing – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,14 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d58c9fc64405092d105ca125627416e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -338,36 +338,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
-    <a class="dropdown-item" href="../../doc/cours/intro.html">
+    <a class="dropdown-item" href="../../doc/cours/01-introduction.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
+    <a class="dropdown-item" href="../../doc/cours/02-outils-dev.html">
+ <span class="dropdown-text">Development Tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
+    <a class="dropdown-item" href="../../doc/cours/03-git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/analyse-fonctionnelle.html">
- <span class="dropdown-text">Analyse fonctionnelle</span></a>
+    <a class="dropdown-item" href="../../doc/cours/04-analyse-fonctionnelle.html">
+ <span class="dropdown-text">Functional Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
- <span class="dropdown-text">POO Avancée</span></a>
+    <a class="dropdown-item" href="../../doc/cours/05-poo-avancee.html">
+ <span class="dropdown-text">Advanced POO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
- <span class="dropdown-text">Tests unitaires</span></a>
+    <a class="dropdown-item" href="../../doc/cours/06-tests-unitaires.html">
+ <span class="dropdown-text">Unit Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/webservices.html">
+    <a class="dropdown-item" href="../../doc/cours/07-webservices.html">
  <span class="dropdown-text">Webservices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/dao-securite.html">
- <span class="dropdown-text">DAO et Sécurité</span></a>
+    <a class="dropdown-item" href="../../doc/cours/08-dao-securite.html">
+ <span class="dropdown-text">DAO and Security</span></a>
   </li>  
     </ul>
   </li>
@@ -460,12 +460,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#les-tests" id="toc-les-tests" class="nav-link active" data-scroll-target="#les-tests">Les Tests</a></li>
-  <li><a href="#les-tests-unitaires" id="toc-les-tests-unitaires" class="nav-link" data-scroll-target="#les-tests-unitaires">Les tests unitaires</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link active" data-scroll-target="#testing">Testing</a></li>
+  <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link" data-scroll-target="#unit-testing">Unit Testing</a></li>
   <li><a href="#mock" id="toc-mock" class="nav-link" data-scroll-target="#mock">Mock</a></li>
-  <li><a href="#les-test-driven-development-tdd" id="toc-les-test-driven-development-tdd" class="nav-link" data-scroll-target="#les-test-driven-development-tdd">Les Test Driven Development (TDD)</a></li>
+  <li><a href="#test-driven-development-tdd" id="toc-test-driven-development-tdd" class="nav-link" data-scroll-target="#test-driven-development-tdd">Test-Driven Development (TDD)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="06-tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -477,12 +477,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Les tests unitaires</h1>
+<h1 class="title">Unit Testing</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="tests-unitaires-slides.html">Slides</a>
+    <a href="06-tests-unitaires-slides.html">Slides</a>
   </div>
 </div>
 
@@ -507,8 +507,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="les-tests" class="level2">
-<h2 class="anchored" data-anchor-id="les-tests">Les Tests</h2>
+<section id="testing" class="level2">
+<h2 class="anchored" data-anchor-id="testing">Testing</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="img/commitStrip_tester_ou_non.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Source : CommitStrip"><img src="img/commitStrip_tester_ou_non.jpg" class="r-stretch img-fluid figure-img" alt="Source : CommitStrip"></a></p>
@@ -519,21 +519,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ça parait évident, et pourtant…</p>
 <p>j’ai déjà testé une fonctionnalité d’un dev dont le cas nominal plante.</p>
 </div>
-<section id="pourquoi-tester" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-tester">Pourquoi tester ?</h3>
+<section id="why-test" class="level3">
+<h3 class="anchored" data-anchor-id="why-test">Why Test?</h3>
 <ul>
-<li>Crash test de voiture</li>
-<li>Test de conformité</li>
-<li>Test qualité en industrie</li>
-<li>Test statistique</li>
+<li>Car crash tests</li>
+<li>Compliance tests</li>
+<li>Quality tests in industry</li>
+<li>Statistical tests</li>
 </ul>
 </section>
-<section id="en-informatique" class="level3">
-<h3 class="anchored" data-anchor-id="en-informatique">En informatique</h3>
+<section id="in-computer-science" class="level3">
+<h3 class="anchored" data-anchor-id="in-computer-science">In Computer Science</h3>
 <ul>
-<li>Pour vérifier que votre programme fonctionne</li>
-<li>Pour détecter des erreurs</li>
-<li>Pour éviter les régressions (quand vous modifiez du code)</li>
+<li>To verify that your program works</li>
+<li>To detect errors</li>
+<li>To avoid regressions (when you modify code)</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -549,16 +549,21 @@ Note
 </div>
 </div>
 </section>
-<section id="définition" class="level3">
-<h3 class="anchored" data-anchor-id="définition">Définition</h3>
-<p>Un test ressemble à une expérience scientifique.</p>
-<p>Il examine une hypothèse exprimée en fonction de trois éléments :</p>
+<section id="definition" class="level3 smaller">
+<h3 class="smaller anchored" data-anchor-id="definition">Definition</h3>
+<p>A test resembles a scientific experiment.</p>
+<p>It examines a hypothesis expressed in terms of three elements:</p>
 <ul>
-<li>les données en entrée</li>
-<li>l’objet à tester</li>
-<li>les résultats attendus</li>
+<li>Input data</li>
+<li>The object to test</li>
+<li>Expected results</li>
 </ul>
-<p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
+<p>This examination is conducted</p>
+<ul>
+<li>under controlled conditions</li>
+<li>with the goal to draw conclusions</li>
+<li>and ideally, be reproducible.</li>
+</ul>
 <div class="notes">
 <ul>
 <li>GIVEN</li>
@@ -567,42 +572,44 @@ Note
 </ul>
 </div>
 </section>
-<section id="couverture-de-test" class="level3">
-<h3 class="anchored" data-anchor-id="couverture-de-test">Couverture de test</h3>
+<section id="test-coverage" class="level3">
+<h3 class="anchored" data-anchor-id="test-coverage">Test Coverage</h3>
 <ul>
-<li>Pourcentage de fonctions testées</li>
-<li>Indicateur de qualité</li>
-<li>Tendance, plutôt qu’une valeur fiable</li>
+<li>Percentage of functions tested</li>
+<li><strong>ONE</strong> quality indicator</li>
+<li>Trend, rather than a reliable value</li>
 </ul>
-<p>Préférez faire peu de tests, mais des tests utiles !</p>
+<p>Be lazy : fewer tests, but useful ones!</p>
 <div class="notes">
 <p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
 <p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
 </div>
 </section>
-<section id="les-types-de-tests" class="level3 smaller">
-<h3 class="smaller anchored" data-anchor-id="les-types-de-tests">Les types de tests</h3>
-<p>Il existe de très nombreux tests différents, voici les principaux :</p>
+<section id="types-of-tests" class="level3 smaller">
+<h3 class="smaller anchored" data-anchor-id="types-of-tests">Types of Tests</h3>
+<p>There are many different types of tests, here are the main ones:</p>
 <ul>
-<li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
-<li>Test fonctionnel : teste les cas d’utilisation du logiciel</li>
-<li>Test de charge : évaluent la capacité d’un système à gérer un volume élevé de données ou de transactions</li>
-<li>Test d’intégration : vérifie que différents composants ou modules d’un système interagissent correctement ensemble</li>
-<li>Test d’intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles</li>
-<li>…</li>
+<li><strong>Unit test</strong></li>
+<li>Functional test</li>
+<li>Load test</li>
+<li>Integration test</li>
+<li>Penetration test</li>
 </ul>
+<div class="notes">
+<p>mutation tests to test unit test quality.</p>
+</div>
 </section>
 </section>
-<section id="les-tests-unitaires" class="level2">
-<h2 class="anchored" data-anchor-id="les-tests-unitaires">Les tests unitaires</h2>
-<p>Nous allons utiliser le package <code>pytest</code> pour réaliser nos tests en Python.</p>
-<section id="un-bon-test-unitaire" class="level3">
-<h3 class="anchored" data-anchor-id="un-bon-test-unitaire">Un bon test unitaire</h3>
+<section id="unit-testing" class="level2">
+<h2 class="anchored" data-anchor-id="unit-testing">Unit Testing</h2>
+<p>We will use the <code>pytest</code> package to perform our tests in Python.</p>
+<section id="a-good-unit-test" class="level3">
+<h3 class="anchored" data-anchor-id="a-good-unit-test">A Good Unit Test</h3>
 <ul>
-<li>Teste une seule fonctionnalité</li>
-<li>Isolé</li>
-<li>Reproductible</li>
-<li>Déterministe</li>
+<li>Tests a single functionality</li>
+<li>Isolated</li>
+<li>Reproducible</li>
+<li>Deterministic</li>
 </ul>
 <div class="notes">
 <ul>
@@ -616,116 +623,110 @@ Note
 </ul>
 </div>
 </section>
-<section id="méthode-à-tester" class="level3">
-<h3 class="anchored" data-anchor-id="méthode-à-tester">Méthode à tester</h3>
+<section id="method-to-test" class="level3">
+<h3 class="anchored" data-anchor-id="method-to-test">Method to Test</h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>operations_mathematiques.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationsMathematiques:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Opérations Mathématiques"""</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MathOperations:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Mathematical Operations"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> divide_five_by(<span class="va">self</span>, nb) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divides the number 5 by a given number.</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">        nombre : float or int</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">        nb : float or int</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">            The number by which 5 will be divided.</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">        float or None</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">            The result of dividing 5 by the given number.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">            If the number is equal to 0, the method returns None.</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nb <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nb</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="classe-de-test" class="level3">
-<h3 class="anchored" data-anchor-id="classe-de-test">Classe de test</h3>
-<p>Créons une classe de test.</p>
-<p>Pour tester le cas nominal, nous :</p>
+<section id="test-class" class="level3">
+<h3 class="anchored" data-anchor-id="test-class">Test Class</h3>
+<p>Let’s create a test class.</p>
+<p>To test the nominal case (=“normal” case), we:</p>
 <ul>
-<li>choisissons un nombre en entrée</li>
-<li>appelons la méthode <code>diviser_cinq_par()</code></li>
-<li>vérifions que la valeur retournée est égale à la valeur attendue</li>
+<li>Choose an input number</li>
+<li>Call the <code>divide_five_by()</code> method</li>
+<li>Verify that the returned value is equal to the expected value</li>
 </ul>
 </section>
-<section id="cas-nominal" class="level3">
-<h3 class="anchored" data-anchor-id="cas-nominal">Cas Nominal</h3>
+<section id="nominal-case" class="level3">
+<h3 class="anchored" data-anchor-id="nominal-case">Nominal Case</h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>test_operations_mathematiques.py</strong></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operations_mathematiques <span class="im">import</span> OperationsMathematiques</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationsMathematiques():</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operations_mathematiques <span class="im">import</span> MathOperations</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMathOperations():</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_divide_five_by_non_null_nb(<span class="va">self</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> MathOperations().divide_five_by(nombre)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="notes">
 <p>Est-ce suffisant ?</p>
 </div>
 </section>
-<section id="autres-cas" class="level3">
-<h3 class="anchored" data-anchor-id="autres-cas">Autres cas</h3>
-<p>Mais ce n’est pas suffisant !</p>
+<section id="other-cases" class="level3">
+<h3 class="anchored" data-anchor-id="other-cases">Other Cases</h3>
+<p>But this is not sufficient!</p>
 <ul>
-<li>La méthode a également un autre retour possible : <code>None</code></li>
-<li>Il faut aussi tester ce cas</li>
+<li>The method also has another possible return: <code>None</code></li>
+<li>We also need to test this case</li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>test_operations_mathematiques.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_divide_five_by_zero(<span class="va">self</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> MathOperations().diviser_cinq_par(nombre)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="et-si" class="level3">
-<h3 class="anchored" data-anchor-id="et-si">Et si…</h3>
-<p>Nous appelons la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
-<p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
+<section id="what-if" class="level3">
+<h3 class="anchored" data-anchor-id="what-if">What If…</h3>
+<p>We call the method with this parameter: <code>divide_five_by("a")</code>?</p>
+<p>You can also write a test to verify that your method indeed returns a <code>TypeError</code> exception in this case.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>test_operations_mathematiques.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_divide_five_by_string(<span class="va">self</span>):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN / THEN</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            OperationsMathematiques().diviser_cinq_par(nombre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN / THEN</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            MathOperations().diviser_cinq_par(nombre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="notes">
 <p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
 </div>
 </section>
-<section id="ce-quil-faut-retenir" class="level3">
-<h3 class="anchored" data-anchor-id="ce-quil-faut-retenir">Ce qu’il faut retenir</h3>
-<p>Les tests unitaires</p>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<p>Unit tests:</p>
 <ul>
-<li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
-<li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
-<li>un test unitaire teste UNE et UNE seule chose</li>
-<li>il faut autant de tests unitaires que de retours possibles</li>
+<li>Verify that a method does what it is supposed to do</li>
+<li>Test nominal cases, but also edge cases and errors</li>
+<li>A unit test tests ONE and ONLY ONE thing</li>
+<li>As many unit tests as there are possible returns</li>
 </ul>
 <div class="notes">
 <p>Vu en 1A :</p>
@@ -741,12 +742,12 @@ Note
 <section id="mock" class="level2">
 <h2 class="anchored" data-anchor-id="mock">Mock</h2>
 <ul>
-<li>Objet simulé qui remplace un composant réel lors des tests</li>
-<li>Permet de tester une unité de code en isolant ses dépendances externes</li>
-<li>Simuler des scénarios complexes comme les erreurs de réseau</li>
+<li>Simulated object that replaces a real component during tests</li>
+<li>Isolating external dependencies = test code independently</li>
+<li>Simulate complex scenarios like network errors</li>
 </ul>
-<section id="mock---exemple" class="level3">
-<h3 class="anchored" data-anchor-id="mock---exemple">Mock - exemple</h3>
+<section id="mock---example" class="level3">
+<h3 class="anchored" data-anchor-id="mock---example">Mock - Example</h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>joueur_service.py</strong></pre>
@@ -763,43 +764,39 @@ Note
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        creation_ok <span class="op">=</span> JoueurDao().creer(nouveau_joueur)</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> creation_ok:</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> nouveau_joueur</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="notes">
 <p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
 </div>
 </section>
-<section id="mock---exemple-1" class="level3">
-<h3 class="anchored" data-anchor-id="mock---exemple-1">Mock - exemple</h3>
+<section id="mock---example-1" class="level3">
+<h3 class="anchored" data-anchor-id="mock---example-1">Mock - Example</h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>test_joueur_service.py</strong></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="test_joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_creer_ok():</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" "Création de Joueur réussie"""</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GIVEN</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># WHEN</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># THEN</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(joueur, Joueur)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_creer_ok():</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Successful creation of Joueur"""</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GIVEN</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># WHEN</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># THEN</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(joueur, Joueur)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
-<section id="les-test-driven-development-tdd" class="level2">
-<h2 class="anchored" data-anchor-id="les-test-driven-development-tdd">Les Test Driven Development (TDD)</h2>
-<section id="quand-tester" class="level3">
-<h3 class="anchored" data-anchor-id="quand-tester">Quand tester ?</h3>
+<section id="test-driven-development-tdd" class="level2">
+<h2 class="anchored" data-anchor-id="test-driven-development-tdd">Test-Driven Development (TDD)</h2>
+<section id="when-to-test" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-test">When to Test?</h3>
 <div class="fragment">
-<p>Au début !</p>
+<p>At the beginning!</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -810,36 +807,37 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Plus on teste tôt <span class="emoji" data-emoji="arrow_right">➡️</span> plus les tests sont efficaces et peu coûteux !</p>
+<p>The earlier you test, the more effective and less costly the tests are!</p>
 </div>
 </div>
 </div>
 </section>
 <section id="test-driven-development" class="level3">
-<h3 class="anchored" data-anchor-id="test-driven-development">Test Driven Development</h3>
-<p>La meilleure pratique :</p>
+<h3 class="anchored" data-anchor-id="test-driven-development">Test-Driven Development</h3>
+<p>The best practice:</p>
 <ol type="1">
-<li>Créer les tests</li>
-<li>Coder la fonction</li>
+<li>Create the tests</li>
+<li>Code the function</li>
 </ol>
 </section>
 <section id="logique" class="level3">
 <h3 class="anchored" data-anchor-id="logique">Logique</h3>
-<p>Cela paraît un peu étrange, mais en fait pas tant que ça.</p>
-<p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
+<p>It may seem a bit strange !?</p>
+<p>But…</p>
+<p>When you code a function, you know before you start:</p>
 <ul>
-<li>quels seront les paramètres en entrée</li>
-<li>quels résultats vous attendez en sortie</li>
-<li>donc vous savez déjà quoi tester !</li>
+<li>What the input parameters will be</li>
+<li>What results you expect as output</li>
+<li>So you already know what to test!</li>
 </ul>
 </section>
-<section id="pratique-du-tdd" class="level3">
-<h3 class="anchored" data-anchor-id="pratique-du-tdd">Pratique du TDD</h3>
+<section id="tdd-practice" class="level3">
+<h3 class="anchored" data-anchor-id="tdd-practice">TDD Practice</h3>
 <ul>
-<li>✅ Amélioration de la qualité du code</li>
-<li>✅ Réduction des bugs</li>
-<li>❌ puis ✅ Temps</li>
-<li>❌ Maintenance des tests</li>
+<li>✅ Improvement of code quality</li>
+<li>✅ Reduction of bugs</li>
+<li>❌ then ✅ Time</li>
+<li>❌ Maintenance of tests</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -851,13 +849,31 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Avantages &gt;&gt;&gt; Incovénients</p>
+<p>Advantages &gt;&gt;&gt; Disadvantages</p>
 </div>
 </div>
 <div class="notes">
 <p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
 <p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
 </div>
+</section>
+<section id="project-tip" class="level3">
+<h3 class="anchored" data-anchor-id="project-tip">Project tip</h3>
+<p>Designate the Test Police (or the Quality Police)</p>
+<p>Why ?</p>
+<ul>
+<li>Ensure all important methods are tested</li>
+<li>Maintain consistency in testing and documentation</li>
+<li>Promote the test-first thinking</li>
+</ul>
+</section>
+<section id="benefits-on-team-spirit" class="level3">
+<h3 class="anchored" data-anchor-id="benefits-on-team-spirit">Benefits on team spirit</h3>
+<ul>
+<li>Contribute to code quality without coding A-Z</li>
+<li>One person has an idea of the whole architecture and the pain points</li>
+<li>Easier to review when it’s not your code</li>
+</ul>
 
 
 </section>

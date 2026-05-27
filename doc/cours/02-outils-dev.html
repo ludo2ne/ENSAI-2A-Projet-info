@@ -6,9 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cyriel Mallart">
 <meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Rémi Pépin">
+<meta name="description" content="Slides">
 
-<title>Datalabs – Projet info 2A</title>
+<title>Development Tools – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -48,6 +86,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -419,13 +460,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#datalabs-principle" id="toc-datalabs-principle" class="nav-link" data-scroll-target="#datalabs-principle">Datalabs principle</a></li>
-  <li><a href="#custom-service" id="toc-custom-service" class="nav-link" data-scroll-target="#custom-service">Custom service</a></li>
-  <li><a href="#vm-ensai" id="toc-vm-ensai" class="nav-link" data-scroll-target="#vm-ensai">VM ENSAI</a></li>
-  <li><a href="#personal-computer" id="toc-personal-computer" class="nav-link" data-scroll-target="#personal-computer">Personal computer</a></li>
+  <li><a href="#development-environment" id="toc-development-environment" class="nav-link active" data-scroll-target="#development-environment">Development Environment</a></li>
+  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code">Visual Studio Code</a></li>
+  <li><a href="#code-quality" id="toc-code-quality" class="nav-link" data-scroll-target="#code-quality">Code Quality</a></li>
+  <li><a href="#logs" id="toc-logs" class="nav-link" data-scroll-target="#logs">Logs</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="02-outils-dev-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -437,21 +477,24 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Datalabs</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Custom service</div>
-    <div class="quarto-category">GitHub Token</div>
-  </div>
-  </div>
+<h1 class="title">Development Tools</h1>
+</div>
 
+<div>
+  <div class="description">
+    <a href="02-outils-dev-slides.html">Slides</a>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
+             <p>Cyriel Mallart </p>
              <p>Ludovic Deneuville </p>
+             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -464,59 +507,196 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="development-environment" class="level2">
+<h2 class="anchored" data-anchor-id="development-environment">Development Environment</h2>
 <ul>
-<li>In the lab instructions, <u><strong>you have to replace</strong></u> <code>&lt;...&gt;</code> with an appropriate value.</li>
+<li>Practical exercises and projects completed on a Datalab</li>
+<li>Can also be done on the VM (backup)</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Example">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="datalab-stack" class="level3">
+<h3 class="anchored" data-anchor-id="datalab-stack">Datalab stack</h3>
 <ul>
-<li><code>git commit -m "&lt;explicit message&gt;"</code></li>
-<li><span class="emoji" data-emoji="arrow_right">➡️</span> <code>git commit -m "fix: log in error"</code></li>
-</ul>
-</div>
-</div>
+<li><code>Visual Studio Code</code>: your code editor</li>
+<li><code>Python 3.13</code></li>
+<li><code>Git</code>: to manage your repositories</li>
+<li><code>PostgreSQL</code>: a database
 <ul>
-<li>Don’t skip a step that didn’t work, telling yourself that it doesn’t matter
-<ul>
-<li>This may cause problems later on</li>
+<li><code>cloudBeaver</code>: for viewing and editing this database</li>
 </ul></li>
 </ul>
 </section>
-<section id="datalabs-principle" class="level2">
-<h2 class="anchored" data-anchor-id="datalabs-principle">Datalabs principle</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You require resources to start your services, the datalabs are available for that purpose.</p>
-<p>Once you have completed your tasks, make sure to <u>free up these resources</u> by deleting or pausing your services.</p>
-</div>
-</div>
+<section id="whats-on-your-school-vm" class="level3">
+<h3 class="anchored" data-anchor-id="whats-on-your-school-vm">What’s on your school VM?</h3>
 <ul>
-<li>SSPCloud (INSEE): <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
-<li>GENES: <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
+<li><code>Python 3.10</code>: Python version chosen by ENSAI</li>
+<li><code>Visual Studio Code</code></li>
+<li><code>Git</code></li>
+<li><code>PostgreSQL</code>
+<ul>
+<li><code>DBeaver</code>: database administration tool to consult or edit</li>
+</ul></li>
 </ul>
 </section>
-<section id="custom-service" class="level2">
-<h2 class="anchored" data-anchor-id="custom-service">Custom service</h2>
-<p><span class="emoji" data-emoji="construction">🚧</span> Update service version and script</p>
-<p>If the catalogue services do not fully meet your needs, you can use customised services.</p>
+</section>
+<section id="visual-studio-code" class="level2">
+<h2 class="anchored" data-anchor-id="visual-studio-code">Visual Studio Code</h2>
+<ul>
+<li>Widely used and known code editor</li>
+<li>Includes a file navigator and a terminal</li>
+<li>Many (many many) extensions</li>
+<li>Customization</li>
+</ul>
+<section id="focus-on-settings" class="level3 smaller">
+<h3 class="smaller anchored" data-anchor-id="focus-on-settings">Focus on Settings</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.vscode/settings.json</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".vscode/settings.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"workbench.colorTheme"</span><span class="fu">:</span> <span class="st">"Dark Modern"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"editor.fontSize"</span><span class="fu">:</span> <span class="dv">16</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"[python]"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"editor.formatOnSave"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"editor.insertSpaces"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"editor.tabSize"</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"editor.defaultFormatter"</span><span class="fu">:</span> <span class="st">"charliermarsh.ruff"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"ruff.lint.enable"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"files.exclude"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"**/__pycache__"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"**/.pytest_cache"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="notes">
+<ul>
+<li>Montrer le fichier settings.json (DEMO)</li>
+<li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
+<li>à priori vous n’avez rien à modifier</li>
+<li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
+<li>Formater et Linter en phase</li>
+</ul>
+<p>Formater :</p>
+<ul>
+<li>Ligne trop longue</li>
+<li>Espaces superflux</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="code-quality" class="level2">
+<h2 class="anchored" data-anchor-id="code-quality">Code Quality</h2>
+<section id="what-is-quality-for-code" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-quality-for-code">What is “quality” for code?</h3>
+<ul>
+<li><strong>Maintenance</strong>: easier to understand, maintain, and change/improve</li>
+<li><strong>Readability</strong>: reduces errors and makes collaboration easier</li>
+<li><strong>Performance</strong>: works better, faster, with fewer resources</li>
+<li><strong>Security</strong>: less vulnerable and susceptible to exploits</li>
+</ul>
+</section>
+<section id="pylint" class="level3">
+<h3 class="anchored" data-anchor-id="pylint">Pylint</h3>
+<p>A static analysis tool for Python that:</p>
+<ul>
+<li>Checks code compliance with style standards</li>
+<li>Detects potential errors</li>
+<li>Identifies bad practices</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Commands</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="Commands"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pylint</span> src</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pylint</span> <span class="at">--output-format</span><span class="op">=</span>colorized <span class="at">--disable</span><span class="op">=</span>C0114,C0411,C0415,W0718 <span class="va">$(</span><span class="fu">git</span> ls-files <span class="st">'*.py'</span><span class="va">)</span> <span class="at">--fail-under</span><span class="op">=</span>7.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="notes">
+<ul>
+<li>You can disable rules that bother you</li>
+<li>Do this regularly</li>
+</ul>
+</div>
+</section>
+<section id="repository-structure" class="level3 smaller">
+<h3 class="smaller anchored" data-anchor-id="repository-structure">Repository Structure</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PROJET-INFO-2A</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ├── .vscode/settings.json</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ├── data</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    │   └── init_db.sql</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    ├── doc</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    │   └── suivi</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    │       └── YYYY.MM.DD-semaineN.md</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ├── src</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    │   ├── business_object</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe.py</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    │   ├── dao</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_dao.py</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    │   ├── service</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_service.py</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    │   ├── tests</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    │   │   ├── dao</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    │   │   └── service</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    │   ├── utils</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    │   └── view</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    │       └── accueil_view.py</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    ├── .gitignore</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    ├── LICENCE</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    ├── README.md</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    └── requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/quality-doc-commitstrip.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Git Branch Diagram"><img src="img/quality-doc-commitstrip.jpg" class="img-fluid figure-img" alt="Git Branch Diagram"></a></p>
+<figcaption>Git Branch Diagram</figcaption>
+</figure>
+</div>
+<hr>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>mathematical_operations.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="mathematical_operations.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MathematicalOperations:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Mathematical Operations"""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> divide_five_by(<span class="va">self</span>, number) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divides the number 5 by a given number.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">        number : float or int</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">            The number by which 5 will be divided.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">        float or None</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">            The result of dividing 5 by the given number.</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">            If the number is equal to 0, the method returns None.</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> number <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> number</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="notes">
+<ul>
+<li>Document classes
+<ul>
+<li>Attributes</li>
+</ul></li>
+<li>Document methods
+<ul>
+<li>Brief description</li>
+<li>Parameters</li>
+<li>Return</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="logs" class="level2">
+<h2 class="anchored" data-anchor-id="logs">Logs</h2>
+<section id="what-are-logs" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-logs">What are logs?</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -527,105 +707,103 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>URLs to launch custom VSCode-python services for:</p>
+<p>Logging is the process of recording events, errors, and information in an application.</p>
+</div>
+</div>
+<p>A log captures information about what happened at a given time:</p>
 <ul>
-<li><a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.3&amp;s3=region-79669f20&amp;persistence.size=«2Gi»&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Fonyxia_setup.sh»&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000&amp;autoLaunch=true" target="_blank">SSPCloud</a></li>
-<li><a href="https://onyxia.lab.groupe-genes.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.19&amp;s3=region-46d082f3&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&amp;networking.user.enabled=true&amp;networking.user.port=9876&amp;autoLaunch=true" target="_blank">GENES Datalab</a></li>
+<li>Monitoring</li>
+<li>Debugging</li>
 </ul>
-</div>
-</div>
-<section id="explanations" class="level3">
-<h3 class="anchored" data-anchor-id="explanations">Explanations</h3>
-<p>In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:</p>
+<div class="notes">
 <ul>
-<li>by installing additional Python packages</li>
-<li>by modifying certain extensions
-<ul>
-<li>using <span class="emoji" data-emoji="heavy_plus_sign">➕</span> Ruff instead of <span class="emoji" data-emoji="heavy_minus_sign">➖</span> Flake8 to format the code</li>
-</ul></li>
-<li>by opening a specific port to deploy an API</li>
+<li>They allow monitoring the state of a system, unexpected behaviors</li>
+<li>They help identify and resolve issues</li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Opening the port to deploy the API must be done before launching the service.</p>
-<p>After that, it is too late, and you will have to delete it and start over.</p>
-</div>
 </div>
 </section>
-<section id="ways-to-customise-a-service" class="level3">
-<h3 class="anchored" data-anchor-id="ways-to-customise-a-service">Ways to customise a service</h3>
+<section id="level-1---beginner" class="level3">
+<h3 class="anchored" data-anchor-id="level-1---beginner">Level 1 - Beginner</h3>
 <ul>
-<li>Launch the catalogue service, then modify it by executing commands manually</li>
-<li>Use an initialisation script that will run immediately after the catalogue service is launched
-<ul>
-<li>In the form before Launch: Initialization scripts</li>
-<li><a href="https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh" target="_blank">Example</a></li>
-</ul></li>
-<li>Create and use a Docker image based on the original service
-<ul>
-<li>In the form before Launch: Service &gt; Use a custom image</li>
-</ul></li>
+<li>You have an error in your code</li>
+<li>But you don’t know exactly where?</li>
+<li>What do you do?</li>
 </ul>
-</section>
-</section>
-<section id="vm-ensai" class="level2">
-<h2 class="anchored" data-anchor-id="vm-ensai">VM ENSAI</h2>
-<p>In previous years, tutorials and projects were carried out on ENSAI VMs. You can therefore use it as a backup.</p>
-<p>The necessary tools are still available there for development:</p>
-<ul>
-<li>Visual Studio Code</li>
-<li>Python 3.10</li>
-<li>Git</li>
-<li>a PostgreSQL database</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All students have access to a database that can only be accessed from ENSAI VMs. For more information, <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html" target="_blank">click here</a></p>
-</div>
+<div class="notes">
+<p>You put “prints” everywhere</p>
 </div>
 </section>
-<section id="personal-computer" class="level2">
-<h2 class="anchored" data-anchor-id="personal-computer">Personal computer</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The biggest challenge if you want to work on your personal machine will be to <strong>setup a local PostgreSQL database.</strong></p>
-<p>That is why it is strongly advised not to work on your personal computer if you do not feel capable of carrying out these installations completely on your own.</p>
-<p>This could take a lot of time and energy, and it is not the role of project managers to help you with these installations.</p>
-</div>
-</div>
-<p>To complete the practical work and project on your personal computer, you must install:</p>
+<section id="level-2---debug-mode" class="level3">
+<h3 class="anchored" data-anchor-id="level-2---debug-mode">Level 2 - Debug Mode</h3>
 <ul>
-<li>Visual Studio Code or another IDE</li>
-<li>Python</li>
-<li>Git</li>
-<li>PostgreSQL</li>
+<li>You add a breakpoint</li>
+<li>You launch in debug mode</li>
+<li>You proceed until the error</li>
 </ul>
+<div class="notes">
+<p>Demo</p>
+</div>
+</section>
+<section id="level-3---logs" class="level3">
+<h3 class="anchored" data-anchor-id="level-3---logs">Level 3 - Logs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Import the <em>logging</em> module and configure it</label></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    filename<span class="op">=</span><span class="st">'logs/example.log'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    level<span class="op">=</span>logging.INFO,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)-8s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    datefmt<span class="op">=</span><span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y %H:%M:%S"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is possible to externalize the configuration in a <code>logging_config.yml</code> file</p>
+<hr>
+<ul class="task-list">
+<li><label><input type="checkbox">Position your logs</label></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>logger.debug(<span class="st">"This is a debug message"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">"This is an info message"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">"This is a warning message"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>logger.error(<span class="st">"This is an error message"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="log-levels" class="level3">
+<h3 class="anchored" data-anchor-id="log-levels">Log Levels</h3>
+<ul>
+<li><strong>DEBUG</strong>: useful for debugging during development</li>
+<li><strong>INFO</strong>: tracking executed code</li>
+<li><strong>WARNING</strong>: unusual but non-blocking situation</li>
+<li><strong>ERROR</strong>: affects program logic but doesn’t stop it completely</li>
+<li><strong>CRITICAL</strong>: requires urgent intervention</li>
+</ul>
+</section>
+<section id="a-good-start" class="level3">
+<h3 class="anchored" data-anchor-id="a-good-start">A Good Start</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_method(a):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    logging.debug(<span class="st">"my_method - START"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    logging.debug(<span class="st">"my_method - END"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="notes">
+<p>You will have something looks like :</p>
+<ul>
+<li>Method a <span class="emoji" data-emoji="arrow_right">➡️</span> call method b <span class="emoji" data-emoji="arrow_right">➡️</span> call method c, d …</li>
+</ul>
+<p>It’s good to know where the code crashed.</p>
+</div>
+</section>
+<section id="going-further" class="level3">
+<h3 class="anchored" data-anchor-id="going-further">Going Further</h3>
+<p>Use the modules:</p>
+<ul>
+<li>src/utils/log_init.py</li>
+<li>src/utils/log_decorator.py</li>
+</ul>
+<p>And add a <code>@Log</code> decorator before each method</p>
+<div class="notes">
+<p>Wrapper: will encapsulate the method Demo log_decorator</p>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1056,6 +1234,38 @@ Warning
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

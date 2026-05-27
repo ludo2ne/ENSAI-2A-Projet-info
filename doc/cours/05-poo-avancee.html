@@ -6,9 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Cyriel Mallart">
 <meta name="author" content="Ludovic Deneuville">
+<meta name="author" content="Rémi Pépin">
+<meta name="description" content="Slides">
 
-<title>Datalabs – Projet info 2A</title>
+<title>Advanced Object-Oriented Programming – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -48,6 +86,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -419,13 +460,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#datalabs-principle" id="toc-datalabs-principle" class="nav-link" data-scroll-target="#datalabs-principle">Datalabs principle</a></li>
-  <li><a href="#custom-service" id="toc-custom-service" class="nav-link" data-scroll-target="#custom-service">Custom service</a></li>
-  <li><a href="#vm-ensai" id="toc-vm-ensai" class="nav-link" data-scroll-target="#vm-ensai">VM ENSAI</a></li>
-  <li><a href="#personal-computer" id="toc-personal-computer" class="nav-link" data-scroll-target="#personal-computer">Personal computer</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#a-few-reminders" id="toc-a-few-reminders" class="nav-link" data-scroll-target="#a-few-reminders">A Few Reminders</a></li>
+  <li><a href="#software-engineering" id="toc-software-engineering" class="nav-link" data-scroll-target="#software-engineering">Software Engineering</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="05-oo-avancee-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -437,21 +476,24 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Datalabs</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Custom service</div>
-    <div class="quarto-category">GitHub Token</div>
-  </div>
-  </div>
+<h1 class="title">Advanced Object-Oriented Programming</h1>
+</div>
 
+<div>
+  <div class="description">
+    <a href="05-poo-avancee-slides.html">Slides</a>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
+             <p>Cyriel Mallart </p>
              <p>Ludovic Deneuville </p>
+             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -464,36 +506,240 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ol type="1">
+<li>Advanced OOP Concepts
 <ul>
-<li>In the lab instructions, <u><strong>you have to replace</strong></u> <code>&lt;...&gt;</code> with an appropriate value.</li>
+<li>Recap</li>
+<li>Abstract Classes</li>
+<li>Bridge Pattern</li>
+</ul></li>
+<li>Software Engineering
+<ul>
+<li>Definition</li>
+<li>Single Responsibility Principle</li>
+<li>Design Patterns</li>
+</ul></li>
+</ol>
+</section>
+<section id="a-few-reminders" class="level2">
+<h2 class="anchored" data-anchor-id="a-few-reminders">A Few Reminders</h2>
+<p>The three principles of object-oriented programming:</p>
+<ul>
+<li><strong>Encapsulation:</strong> an object contains <strong>attributes</strong> and <strong>methods</strong>.</li>
+<li><strong>Inheritance:</strong> an object can <strong>inherit</strong> attributes and methods from another class to <strong>redefine</strong> them. It can also add other attributes/methods.</li>
+<li><strong>Polymorphism:</strong> a method can be associated with <strong>different code</strong> depending on the parameters passed or the object it belongs to.</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Example">
+<div class="notes">
+<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.</p>
+<ul>
+<li>Attribut : ce qu’il est</li>
+<li>Méthode : ce qu’il peut faire</li>
+<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
+<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
+</ul>
+</div>
+<section id="an-example-to-illustrate" class="level3">
+<h3 class="anchored" data-anchor-id="an-example-to-illustrate">An Example to Illustrate</h3>
+<p>Automatic data processing application:</p>
+<ul>
+<li>Multiple data sources: surveys, web scraping, administrative files, etc.</li>
+<li>Multiple data formats: csv, xml, json, etc. (<em>we’ll come back to this</em>)</li>
+<li>Multiple processing algorithms: exploratory statistics, regression, “machine learning,” etc.</li>
+</ul>
+<div class="notes">
+<p>Fundamentally, it’s a fairly simple application.</p>
+</div>
+</section>
+<section id="example-of-a-class-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="example-of-a-class-diagram">Example of a Class Diagram</h3>
+<p><a href="img/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/class_diagram_no_poo.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Voyez-vous des choses à corriger ?<br>
+Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="an-example-with-inheritance" class="level3">
+<h3 class="anchored" data-anchor-id="an-example-with-inheritance">An Example with Inheritance</h3>
+<p><a href="img/class_diagram_poo1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/class_diagram_poo1.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
+Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
+<p>Code dans le dossier exemple POO.</p>
+<p>Que pensez-vous de la classe Source ?</p>
+</div>
+</section>
+<section id="abstract-classes" class="level3">
+<h3 class="anchored" data-anchor-id="abstract-classes">Abstract Classes</h3>
+<p><strong>Abstract Class:</strong> a class whose implementation is <strong>not complete</strong> and which is <strong>not instantiable</strong>.</p>
+<p>Allows passing a <strong>contract</strong>. Child classes will have to implement what is missing.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>We know what child classes must do 👍</li>
+<li>We can generate code 🙏</li>
+<li>Limits the risk of error!! 👌</li>
+</ul>
+<div class="notes">
+<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.</p>
+<p>Rappels : classe, objet, abstrait (Vehicule)</p>
+</div>
+</section>
+<section id="for-example" class="level3">
+<h3 class="anchored" data-anchor-id="for-example">For Example</h3>
+<p><a href="img/class_diagram_poo_abstract_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/class_diagram_poo_abstract_class.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
+<p><code>v = Vehicule("rouge")</code> -&gt; ça marche plus</p>
+<p>Méthode <em>custom_process</em> abstraite</p>
+</div>
+</section>
+<section id="and-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="and-in-python">And in Python?</h3>
+<ul>
+<li>No native support for abstract classes 😱</li>
+<li>Abstract Base Classes (abc) module to solve the problem 🦾</li>
+<li>Already included in your Python distribution 😌
+<ul>
+<li><strong>Step 1:</strong> Import the module 🧳</li>
+<li><strong>Step 2:</strong> Inherit from <code>ABC</code> 👨‍👩‍👧‍👦</li>
+<li><strong>Step 3:</strong> Define abstract methods 📝</li>
+<li><strong>Step 4:</strong> ???</li>
+<li><strong>Step 5:</strong> Profit 💰💰</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Step 4 : implémenter les méthodes abstraites dans les classes filles</p>
+<p>L’autre gros défaut de Python est son typage dynamique.</p>
+<p>Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
+</div>
+</section>
+<section id="what-if-we-added-data-formats" class="level3">
+<h3 class="anchored" data-anchor-id="what-if-we-added-data-formats">What If We Added Data Formats?</h3>
+<p>Currently, 3 data formats in our application:</p>
+<ul>
+<li><strong>CSV:</strong> Comma Separated Values (tabular)</li>
+<li><strong>XML:</strong> eXtended Markup Language (tag format)</li>
+<li><strong>JSON:</strong> JavaScript Object Notation (key-value format)</li>
+</ul>
+<div class="notes">
+<p>On reviendra plus en détail sur les différents formats.</p>
+<p>Retour 2 slides avant : si on fait pareil et qu’on utilise l’héritage pour le format</p>
+</div>
+</section>
+<section id="for-example-1" class="level3">
+<h3 class="anchored" data-anchor-id="for-example-1">For Example</h3>
+<p><a href="img/class_diagram_poo_file_format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/class_diagram_poo_file_format.png" class="img-fluid"></a></p>
+<p>Do you see a problem?</p>
+<div class="notes">
+<p>Ca grossit de manière exponentielle</p>
+</div>
+</section>
+<section id="the-power-of-oop" class="level3">
+<h3 class="anchored" data-anchor-id="the-power-of-oop">The Power of OOP</h3>
+<ul>
+<li>Currently 4 * 3 “concrete” classes to define 😱</li>
+<li>Reading the format is dependent on the source 😵</li>
+</ul>
+<p><strong>BUT</strong></p>
+<ul>
+<li>We can externalize this processing! 😌</li>
+<li>Aggregation relationship 🤯</li>
+</ul>
+<div class="notes">
+<p>Il faut bien comprendre</p>
+</div>
+</section>
+<section id="le-bridge-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="le-bridge-pattern">Le bridge pattern</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
+</section>
+<section id="work-smart-not-hard" class="level3">
+<h3 class="anchored" data-anchor-id="work-smart-not-hard">Work Smart, Not Hard</h3>
+<ul>
+<li><strong>Composition + inheritance:</strong> 9 classes 😎</li>
+<li><strong>Inheritance:</strong> 17 classes 😫</li>
+<li>We can easily add types and formats 🥳</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Pattern Bridge">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Example
+<span class="screen-reader-only">Important</span>Pattern Bridge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li><code>git commit -m "&lt;explicit message&gt;"</code></li>
-<li><span class="emoji" data-emoji="arrow_right">➡️</span> <code>git commit -m "fix: log in error"</code></li>
-</ul>
+<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
 </div>
 </div>
+</section>
+<section id="in-summary" class="level3">
+<h3 class="anchored" data-anchor-id="in-summary">In Summary</h3>
 <ul>
-<li>Don’t skip a step that didn’t work, telling yourself that it doesn’t matter
-<ul>
-<li>This may cause problems later on</li>
-</ul></li>
+<li>Use the power of OOP 💣</li>
+<li>Prefer specific objects (inheritance) over <code>if/elif/else</code> 🐱‍🏍</li>
+<li>Abstract classes are blueprints for future classes 👷‍♀️👷‍♂️</li>
+<li>OOP allows creating more readable, scalable, and maintainable code 👑</li>
 </ul>
 </section>
-<section id="datalabs-principle" class="level2">
-<h2 class="anchored" data-anchor-id="datalabs-principle">Datalabs principle</h2>
+</section>
+<section id="software-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="software-engineering">Software Engineering</h2>
+<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q" width="600" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+<div class="notes">
+<p>On va aller un cran au-dessus.</p>
+</div>
+<section id="what-is-software-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-software-engineering">What is Software Engineering?</h3>
+<ul>
+<li>Observation: coding blindly does not result in a quality application.</li>
+<li>But stacking bricks blindly does not result in a house, even if you have a plan.</li>
+<li>Need to plan, document, test…</li>
+</ul>
+<div class="notes">
+<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
+</div>
+</section>
+<section id="why-its-important-parallel-with-building-a-house" class="level3">
+<h3 class="anchored" data-anchor-id="why-its-important-parallel-with-building-a-house">Why It’s Important: Parallel with Building a House</h3>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="img-fluid"></a></p>
+<hr>
+<ul>
+<li>You have the construction plan for a house (provided by the architect)</li>
+<li>But implementing this plan requires technical knowledge</li>
+<li>Need to redraw diagrams for specific areas (arches, stairs, etc.)</li>
+<li><strong>This is not wasted time!</strong></li>
+</ul>
+<p><strong>Writing quality code is like doing precision craftsmanship; it requires tools, experience, and methods.</strong></p>
+<div class="notes">
+<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+</div>
+</section>
+<section id="some-basic-principles" class="level3">
+<h3 class="anchored" data-anchor-id="some-basic-principles">Some Basic Principles</h3>
+<ul>
+<li>Decompose a program into simple <strong>coherent</strong> modules</li>
+<li>Modules <strong>expose</strong> methods that can be used/overridden by other modules but remain protected from unintended modifications</li>
+<li>Each module should be a <strong>black box</strong> for others</li>
+<li>If we keep the same <strong>inputs/outputs</strong>, we can change a module without risk</li>
+<li>Prefer abstractions + inheritance over <code>if/elif/else</code></li>
+</ul>
+<div class="notes">
+<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
+<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke.</p>
+<p>Pareil c’est pas le boulot d’une vue de faire un calcul. Par contre une vue peut demander. Bien insister sur “l’indépendance des couches”. Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d’accord sur comment elles communiquent le travail peut se faire en parallèle.</p>
+</div>
+</section>
+<section id="a-mantra" class="level3">
+<h3 class="anchored" data-anchor-id="a-mantra">A Mantra</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -504,46 +750,95 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You require resources to start your services, the datalabs are available for that purpose.</p>
-<p>Once you have completed your tasks, make sure to <u>free up these resources</u> by deleting or pausing your services.</p>
+<p><strong>Low coupling, high cohesion</strong></p>
 </div>
 </div>
 <ul>
-<li>SSPCloud (INSEE): <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
-<li>GENES: <a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
+<li><strong>Low inter-class coupling:</strong> modifying one class should impact others as little as possible.</li>
+<li><strong>High intra-class cohesion:</strong> each class should be a coherent set of attributes and methods.</li>
 </ul>
+<div class="notes">
+<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
+</div>
 </section>
-<section id="custom-service" class="level2">
-<h2 class="anchored" data-anchor-id="custom-service">Custom service</h2>
-<p><span class="emoji" data-emoji="construction">🚧</span> Update service version and script</p>
-<p>If the catalogue services do not fully meet your needs, you can use customised services.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>URLs to launch custom VSCode-python services for:</p>
+<section id="why-respect-low-coupling-high-cohesion" class="level3">
+<h3 class="anchored" data-anchor-id="why-respect-low-coupling-high-cohesion">Why Respect Low Coupling, High Cohesion?</h3>
 <ul>
-<li><a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.3&amp;s3=region-79669f20&amp;persistence.size=«2Gi»&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Fonyxia_setup.sh»&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000&amp;autoLaunch=true" target="_blank">SSPCloud</a></li>
-<li><a href="https://onyxia.lab.groupe-genes.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.3.19&amp;s3=region-46d082f3&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-Projet-info%2Frefs%2Fheads%2Fmain%2Fscripts%2Finit-vscode.sh»&amp;networking.user.enabled=true&amp;networking.user.port=9876&amp;autoLaunch=true" target="_blank">GENES Datalab</a></li>
+<li>Teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Code readability 📖</li>
+<li>Debugging 🐞</li>
+</ul>
+<p><strong>Limit the risk of errors when modifying code (avoid spaghetti code) 🍝</strong></p>
+<div class="notes">
+<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
+</div>
+</section>
+<section id="revisiting-the-bridge-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="revisiting-the-bridge-pattern">Revisiting the Bridge Pattern</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Je remontre le schéma quelques secondes</p>
+</div>
+<hr>
+<ul>
+<li>The “Source” part handles processing related to the source.</li>
+<li>The “File” part handles file reading.</li>
+<li>Only inputs/outputs matter.</li>
+<li>We can add a “Processing” part for additional processing.</li>
+<li>No unnecessary <code>if/elif/else</code>. <strong>Each part of our code handles only one thing</strong></li>
+</ul>
+<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
+<div class="notes">
+<p>Avantages :</p>
+<ul>
+<li>Lecture du code facilitée.</li>
+<li>En cas de bug, facile de trouver le coupable.</li>
+<li>On peut répartir le travail facilement.</li>
 </ul>
 </div>
+</section>
+<section id="design-patterns-definition" class="level3">
+<h3 class="anchored" data-anchor-id="design-patterns-definition">Design Patterns: Definition</h3>
+<blockquote class="blockquote">
+<p>“In computer science, and more specifically in software development, a design pattern is a characteristic arrangement of modules, recognized as a best practice in response to a software design problem. It describes a standard solution, usable in the design of different software.” — <a href="https://en.wikipedia.org/wiki/Software_design_pattern">Source</a></p>
+</blockquote>
+</section>
+<section id="design-patterns-in-a-nutshell" class="level3">
+<h3 class="anchored" data-anchor-id="design-patterns-in-a-nutshell">Design Patterns: In a Nutshell</h3>
+<ul>
+<li>Best practices</li>
+<li>Standard solutions to design problems</li>
+<li>Robust solutions</li>
+<li>Independent of technology</li>
+<li>Independent of the business</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Is a tool that is there to help you</strong></p>
+</blockquote>
+<div class="notes">
+<p>En plus ils apportent un vocabulaire commun.<br>
+Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
 </div>
-<section id="explanations" class="level3">
-<h3 class="anchored" data-anchor-id="explanations">Explanations</h3>
-<p>In these labs, we will need a customised VSCode service, different from the one offered in the catalogue:</p>
+</section>
+<section id="design-patterns-example" class="level3">
+<h3 class="anchored" data-anchor-id="design-patterns-example">Design Patterns: Example</h3>
+<p><strong>Recurring Problem:</strong></p>
 <ul>
-<li>by installing additional Python packages</li>
-<li>by modifying certain extensions
+<li>Creating complex objects that are a composition of independent characteristics</li>
+<li>In other words: decouple abstraction from its implementation so they can vary independently</li>
+</ul>
+<hr>
+<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/class_diagram_poo_bridge_pattern_advanced.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>En ajoutant les méthodes stats</p>
+</div>
+</section>
+<section id="in-summary-1" class="level3">
+<h3 class="anchored" data-anchor-id="in-summary-1">In Summary</h3>
 <ul>
-<li>using <span class="emoji" data-emoji="heavy_plus_sign">➕</span> Ruff instead of <span class="emoji" data-emoji="heavy_minus_sign">➖</span> Flake8 to format the code</li>
-</ul></li>
-<li>by opening a specific port to deploy an API</li>
+<li>Creating a complex application requires complex code 🧩</li>
+<li>Without a design phase, we’re heading for trouble 🧱</li>
+<li>There are ready-made solutions to common problems 🧰</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -555,77 +850,12 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Opening the port to deploy the API must be done before launching the service.</p>
-<p>After that, it is too late, and you will have to delete it and start over.</p>
+<p>Faible couplage, forte cohérence</p>
 </div>
 </div>
-</section>
-<section id="ways-to-customise-a-service" class="level3">
-<h3 class="anchored" data-anchor-id="ways-to-customise-a-service">Ways to customise a service</h3>
-<ul>
-<li>Launch the catalogue service, then modify it by executing commands manually</li>
-<li>Use an initialisation script that will run immediately after the catalogue service is launched
-<ul>
-<li>In the form before Launch: Initialization scripts</li>
-<li><a href="https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-Projet-info/refs/heads/main/scripts/init-vscode.sh" target="_blank">Example</a></li>
-</ul></li>
-<li>Create and use a Docker image based on the original service
-<ul>
-<li>In the form before Launch: Service &gt; Use a custom image</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="vm-ensai" class="level2">
-<h2 class="anchored" data-anchor-id="vm-ensai">VM ENSAI</h2>
-<p>In previous years, tutorials and projects were carried out on ENSAI VMs. You can therefore use it as a backup.</p>
-<p>The necessary tools are still available there for development:</p>
-<ul>
-<li>Visual Studio Code</li>
-<li>Python 3.10</li>
-<li>Git</li>
-<li>a PostgreSQL database</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All students have access to a database that can only be accessed from ENSAI VMs. For more information, <a href="https://ludo2ne.github.io/ENSAI-2A-remise-a-niveau/docs/outils/DBeaver.html" target="_blank">click here</a></p>
-</div>
-</div>
-</section>
-<section id="personal-computer" class="level2">
-<h2 class="anchored" data-anchor-id="personal-computer">Personal computer</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The biggest challenge if you want to work on your personal machine will be to <strong>setup a local PostgreSQL database.</strong></p>
-<p>That is why it is strongly advised not to work on your personal computer if you do not feel capable of carrying out these installations completely on your own.</p>
-<p>This could take a lot of time and energy, and it is not the role of project managers to help you with these installations.</p>
-</div>
-</div>
-<p>To complete the practical work and project on your personal computer, you must install:</p>
-<ul>
-<li>Visual Studio Code or another IDE</li>
-<li>Python</li>
-<li>Git</li>
-<li>PostgreSQL</li>
-</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1056,6 +1286,38 @@ Warning
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

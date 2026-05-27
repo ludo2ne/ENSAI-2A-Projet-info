@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
   <meta name="author" content="Rémi Pépin">
-  <title>Projet info 2A – Les Webservices</title>
+  <title>Projet info 2A – Les tests unitaires</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/reveal.css">
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -100,12 +103,12 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
+  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link rel="stylesheet" href="none">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -199,7 +202,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Les Webservices</h1>
+  <h1 class="title">Les tests unitaires</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -220,189 +223,140 @@ Rémi Pépin
 </div>
 
 </section>
-<section id="le-plan" class="title-slide slide level2 center">
-<h2>Le plan</h2>
+<section>
+<section id="les-tests" class="title-slide slide level2 center">
+<h2>Les Tests</h2>
+
+<img data-src="img/commitStrip_tester_ou_non.jpg" class="r-stretch quarto-figure-center" alt="Source : CommitStrip"><p class="caption">Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></p><aside class="notes">
+<p>ça parait évident, et pourtant…</p>
+<p>j’ai déjà testé une fonctionnalité d’un dev dont le cas nominal plante.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pourquoi-tester" class="slide level3">
+<h3>Pourquoi tester ?</h3>
 <ul>
-<li>API</li>
-<li>Webservice
-<ul>
-<li>Définition</li>
-<li>Exemples</li>
-<li>Architecture microservices</li>
-</ul></li>
-<li>Hyper Text Transfer Protocol
-<ul>
-<li>Définition</li>
-<li>Exemples</li>
-</ul></li>
+<li>Crash test de voiture</li>
+<li>Test de conformité</li>
+<li>Test qualité en industrie</li>
+<li>Test statistique</li>
 </ul>
 </section>
-
-<section>
-<section id="api" class="title-slide slide level2 center">
-<h2>API</h2>
-
+<section id="en-informatique" class="slide level3">
+<h3>En informatique</h3>
+<ul>
+<li>Pour vérifier que votre programme fonctionne</li>
+<li>Pour détecter des erreurs</li>
+<li>Pour éviter les régressions (quand vous modifiez du code)</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="définition" class="slide level3">
 <h3>Définition</h3>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Interface entre deux ordinateurs ou deux programmes.</p>
-<p>C’est une application qui offre des services à d’autres applications.</p>
-<p>L’application implémente une API ou expose une API.</p>
-</div>
-</div>
-</div>
+<p>Un test ressemble à une expérience scientifique.</p>
+<p>Il examine une hypothèse exprimée en fonction de trois éléments :</p>
+<ul>
+<li>les données en entrée</li>
+<li>l’objet à tester</li>
+<li>les résultats attendus</li>
+</ul>
+<p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
+<aside class="notes">
+<ul>
+<li>GIVEN</li>
+<li>WHEN</li>
+<li>THEN</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="couverture-de-test" class="slide level3">
+<h3>Couverture de test</h3>
+<ul>
+<li>Pourcentage de fonctions testées</li>
+<li>Indicateur de qualité</li>
+<li>Tendance, plutôt qu’une valeur fiable</li>
+</ul>
+<p>Préférez faire peu de tests, mais des tests utiles !</p>
+<aside class="notes">
+<p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
+<p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-types-de-tests" class="slide level3 smaller">
+<h3>Les types de tests</h3>
+<p>Il existe de très nombreux tests différents, voici les principaux :</p>
+<ul>
+<li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
+<li>Test fonctionnel : teste les cas d’utilisation du logiciel</li>
+<li>Test de charge : évaluent la capacité d’un système à gérer un volume élevé de données ou de transactions</li>
+<li>Test d’intégration : vérifie que différents composants ou modules d’un système interagissent correctement ensemble</li>
+<li>Test d’intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles</li>
+<li>…</li>
+</ul>
 </section></section>
 <section>
-<section id="définition-1" class="title-slide slide level2 center">
-<h2>Définition</h2>
-<p>Termes assez vaste qui recouvre :</p>
+<section id="les-tests-unitaires" class="title-slide slide level2 center">
+<h2>Les tests unitaires</h2>
+<p>Nous allons utiliser le package <code>pytest</code> pour réaliser nos tests en Python.</p>
+</section>
+<section id="un-bon-test-unitaire" class="slide level3">
+<h3>Un bon test unitaire</h3>
 <ul>
-<li>Les bibliothèques / frameworks :
+<li>Teste une seule fonctionnalité</li>
+<li>Isolé</li>
+<li>Reproductible</li>
+<li>Déterministe</li>
+</ul>
+<aside class="notes">
 <ul>
-<li><a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Pandas</a></li>
-<li><a href="https://numpy.org/" target="_blank">Numpy</a></li>
+<li>Isolé : indépendant des autres tests
+<ul>
+<li>si vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
+<li>le test ne doit se faire que sur la méthode A</li>
+<li>il faut <code>mocker</code> le comportement des autres méthodes</li>
 </ul></li>
-<li>Des webservices</li>
-<li>Un moyen d’accéder aux ressources d’un hardware
-<ul>
-<li><a href="https://developer.nvidia.com/nvapi" target="_blank">Nvidia API</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="api-in-a-nutshell" class="slide level3">
-<h3>API in a nutshell</h3>
-<ul>
-<li>Expose des méthodes/fonctions aux utilisateurs</li>
-<li>Réutilisation</li>
-<li>Contractualisation des inputs/outputs</li>
-<li>Boîte noire</li>
-</ul>
-<aside class="notes">
-<p>Pour reprendre l’exemple du dessus, le module d’authentification peut être utilisé aussi bien par les utilisateurs pour la version site marchand, que par les admins pour la partie administration.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section class="slide level3">
-
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Une API rend un service aux utilisateurs sans qu’ils aient à savoir comment elle fait.</p>
-<p>Ils connaissent juste ce qu’elle attend en entrée et ce qu’elle produit !</p>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="les-webservices" class="title-slide slide level2 center">
-<h2>Les webservices</h2>
-<p>Une API particulière</p>
-</section>
-<section id="question" class="slide level3">
-<h3>Question</h3>
-<p>À votre avis, X permet-il à tout le monde d’accéder à leurs bases de données directement ?</p>
-<aside class="notes">
-<p>Bien sûr non !</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="wait-what" class="slide level3">
-<h3>Wait what ?!</h3>
-<ul>
-<li>Pourtant de nombreux sites utilisent les données de X !</li>
-<li>Comment font-ils ?</li>
-</ul>
-</section>
-<section id="des-idées" class="slide level3 hide-html-render">
-<h3>Des idées ?</h3>
-<iframe src="https://giphy.com/embed/8acGIeFnqLA7S" width="600" height="600" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
-</iframe>
-</section>
-<section id="solution-web-scraper" class="slide level3">
-<h3>Solution : web scraper</h3>
-<p>Consiste à écrire une application qui :</p>
-<ul>
-<li>se connecte à un site</li>
-<li>et va lire la page pour en tirer des informations</li>
-</ul>
-<p><strong>Problèmes</strong></p>
-<ul>
-<li>Crée du trafic artificiel (côté site)</li>
-<li>Chaque changement dans le site casse notre application</li>
-<li>Gérer le JavaScript 😱😱😱😱</li>
-</ul>
-<aside class="notes">
-<p>Dire que derrière un site il y a du HTML.</p>
-<p>Montrer un exemple ?</p>
-<p>Prix SNCF à l’INSEE</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="autre-solution-créer-un-point-dentrée-pour-les-machines" class="slide level3">
-<h3>Autre solution : créer un point d’entrée pour les machines</h3>
-<ul>
-<li>Accessible depuis le web</li>
-<li>Fait pour les machines</li>
-<li><strong>Contrôle ce que l’on rend accessible</strong></li>
-</ul>
-<div class="callout callout-none no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Interface entre l’extérieur et notre système</p>
-</div>
-</div>
-</div>
-</section>
-<section id="démo" class="slide level3">
-<h3>Démo</h3>
-<aside class="notes">
-<ul>
-<li><a href="https://api.gouv.fr/documentation/api_data_gouv">https://api.gouv.fr/documentation/api_data_gouv</a><br>
-</li>
-<li><a href="https://anapioficeandfire.com/">https://anapioficeandfire.com/</a></li>
-<li><a href="https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel">Le trafic à Rennes en temps réel</a></li>
+<li>Déterministe : donne toujours le même résultat</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -416,16 +370,64 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="les-webservices-1" class="slide level3">
-<h3>Les webservices</h3>
+<section id="méthode-à-tester" class="slide level3">
+<h3>Méthode à tester</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="operations_mathematiques.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">class</span> OperationsMathematiques:</span>
+<span id="cb1-2"><a></a>    <span class="co">"""Opérations Mathématiques"""</span></span>
+<span id="cb1-3"><a></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-4"><a></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
+<span id="cb1-5"><a></a><span class="co">        Parameters</span></span>
+<span id="cb1-6"><a></a><span class="co">        ----------</span></span>
+<span id="cb1-7"><a></a><span class="co">        nombre : float or int</span></span>
+<span id="cb1-8"><a></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
+<span id="cb1-9"><a></a><span class="co">        Returns</span></span>
+<span id="cb1-10"><a></a><span class="co">        -------</span></span>
+<span id="cb1-11"><a></a><span class="co">        float or None</span></span>
+<span id="cb1-12"><a></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
+<span id="cb1-13"><a></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
+<span id="cb1-14"><a></a><span class="co">        """</span></span>
+<span id="cb1-15"><a></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb1-16"><a></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
+<span id="cb1-17"><a></a>        <span class="cf">else</span>:</span>
+<span id="cb1-18"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="classe-de-test" class="slide level3">
+<h3>Classe de test</h3>
+<p>Créons une classe de test.</p>
+<p>Pour tester le cas nominal, nous :</p>
 <ul>
-<li>Application web</li>
-<li><strong>Accessible via requête HTTP/HTTPS</strong></li>
-<li>Sans interface graphique</li>
-<li><strong>Renvoie des données compréhensibles par les machines (JSON, XML…)</strong></li>
+<li>choisissons un nombre en entrée</li>
+<li>appelons la méthode <code>diviser_cinq_par()</code></li>
+<li>vérifions que la valeur retournée est égale à la valeur attendue</li>
 </ul>
+</section>
+<section id="cas-nominal" class="slide level3">
+<h3>Cas Nominal</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="test_operations_mathematiques.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> pytest</span>
+<span id="cb2-2"><a></a><span class="im">from</span> mathematiques.operations_mathematiques <span class="im">import</span> OperationsMathematiques</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="kw">class</span> TestOperationsMathematiques():</span>
+<span id="cb2-5"><a></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
+<span id="cb2-6"><a></a>        <span class="co"># GIVEN</span></span>
+<span id="cb2-7"><a></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-8"><a></a></span>
+<span id="cb2-9"><a></a>        <span class="co"># WHEN</span></span>
+<span id="cb2-10"><a></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb2-11"><a></a></span>
+<span id="cb2-12"><a></a>        <span class="co"># THEN</span></span>
+<span id="cb2-13"><a></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-<p>Webservice : une API particulière que nous allons utiliser</p>
+<p>Est-ce suffisant ?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -438,15 +440,46 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="plusieurs-types" class="slide level3">
-<h3>Plusieurs types</h3>
+<section id="autres-cas" class="slide level3">
+<h3>Autres cas</h3>
+<p>Mais ce n’est pas suffisant !</p>
 <ul>
-<li>REST : le plus courant, le type que vous allez manipuler, JSON</li>
-<li>SOAP : plus complet donc plus lourd que le REST, XML</li>
-<li>RPC : Remote Procedure Call</li>
+<li>La méthode a également un autre retour possible : <code>None</code></li>
+<li>Il faut aussi tester ce cas</li>
 </ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="test_operations_mathematiques.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
+<span id="cb3-2"><a></a>        <span class="co"># GIVEN</span></span>
+<span id="cb3-3"><a></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a>        <span class="co"># WHEN</span></span>
+<span id="cb3-6"><a></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a>        <span class="co"># THEN</span></span>
+<span id="cb3-9"><a></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="et-si" class="slide level3">
+<h3>Et si…</h3>
+<p>Nous appelons la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
+<p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="test_operations_mathematiques.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
+<span id="cb4-2"><a></a>        <span class="co"># GIVEN</span></span>
+<span id="cb4-3"><a></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a>        <span class="co"># WHEN / THEN</span></span>
+<span id="cb4-6"><a></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
+<span id="cb4-7"><a></a>            OperationsMathematiques().diviser_cinq_par(nombre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-<p>REST est un style architectural qui définit un ensemble de contraintes et de principes</p>
+<p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -459,92 +492,23 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="en-résumé" class="slide level3">
-<h3>En résumé</h3>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande</p>
-</div>
-</div>
-</div>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> Comme un site web, mais pour les machines</p>
-</section>
-<section id="architecture-microservices" class="slide level3">
-<h3>Architecture microservices</h3>
-<p>Site de e-commerce</p>
+<section id="ce-quil-faut-retenir" class="slide level3">
+<h3>Ce qu’il faut retenir</h3>
+<p>Les tests unitaires</p>
 <ul>
-<li>WS authentification</li>
-<li>WS gestion de compte</li>
-<li>WS paiement</li>
-<li>WS de recherche</li>
-<li>WS analyse des données</li>
-<li>WS gestion panier</li>
-</ul>
-</section>
-<section id="architecture-microservices-1" class="slide level3">
-<h3>Architecture microservices</h3>
-<ul>
-<li>Chaque module est un webservice indépendant</li>
-<li>C’est l’application côté client qui va les contacter</li>
-</ul>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle.</p>
-</div>
-</div>
-</div>
-<aside class="notes">
-<p>Un dessin pourrait peut-être aider</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="comment-ça-fonctionne" class="slide level3 hide-html-render">
-<h3>Comment ça fonctionne ?</h3>
-<iframe src="https://giphy.com/embed/a5viI92PAF89q" width="900" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
-</iframe>
-</section>
-<section id="la-notion-de-client-serveur" class="slide level3">
-<h3>La notion de client-serveur</h3>
-<ul>
-<li><strong>LE MODÈLE QUI RÉGIT LE WEB</strong></li>
-<li>Des machines qui attendent des demandes : <strong>serveurs</strong></li>
-<li>Des machines qui font des demandes : <strong>clients</strong></li>
-<li>Le client initie le contact, le serveur répond</li>
-</ul>
-</section>
-<section id="comparaison-avec-vie-réelle" class="slide level3">
-<h3>Comparaison avec vie réelle</h3>
-<ul>
-<li>Vous marchez dans la rue et vous avez envie d’un café frappé Double shot espresso and Cream</li>
-<li>Vous rentrez dans un Starbucks et <strong>demandez</strong> votre café</li>
-<li>Le <strong>serveur</strong> traite votre demande et vous donne votre café</li>
-<li>Vous partez avec votre café</li>
+<li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
+<li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
+<li>un test unitaire teste UNE et UNE seule chose</li>
+<li>il faut autant de tests unitaires que de retours possibles</li>
 </ul>
 <aside class="notes">
-<p>Vous vous moquez de comment à été fait votre café, tant que c’est bon</p>
+<p>Vu en 1A :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="at">@pytest.mark.parametrize</span>(</span>
+<span id="cb5-2"><a></a><span class="st">'a, b, resultat_attendu'</span>,</span>
+<span id="cb5-3"><a></a>[(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
+<span id="cb5-4"><a></a> (<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>),</span>
+<span id="cb5-5"><a></a> (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>)]</span>
+<span id="cb5-6"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -558,130 +522,121 @@ Rémi Pépin
       }</style></aside>
 </section></section>
 <section>
-<section id="hyper-text-transfer-protocol-http" class="title-slide slide level2 center">
-<h2>Hyper Text Transfer Protocol (HTTP)</h2>
+<section id="mock" class="title-slide slide level2 center">
+<h2>Mock</h2>
+<ul>
+<li>Objet simulé qui remplace un composant réel lors des tests</li>
+<li>Permet de tester une unité de code en isolant ses dépendances externes</li>
+<li>Simuler des scénarios complexes comme les erreurs de réseau</li>
+</ul>
+</section>
+<section id="mock---exemple" class="slide level3">
+<h3>Mock - exemple</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>joueur_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="joueur_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">class</span> JoueurService:</span>
+<span id="cb6-2"><a></a>    <span class="kw">def</span> creer(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Joueur:</span>
+<span id="cb6-3"><a></a>        nouveau_joueur <span class="op">=</span> Joueur(</span>
+<span id="cb6-4"><a></a>            pseudo<span class="op">=</span>pseudo,</span>
+<span id="cb6-5"><a></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
+<span id="cb6-6"><a></a>            age<span class="op">=</span>age,</span>
+<span id="cb6-7"><a></a>            mail<span class="op">=</span>mail,</span>
+<span id="cb6-8"><a></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
+<span id="cb6-9"><a></a>        )</span>
+<span id="cb6-10"><a></a>        creation_ok <span class="op">=</span> JoueurDao().creer(nouveau_joueur)</span>
+<span id="cb6-11"><a></a>        <span class="cf">if</span> creation_ok:</span>
+<span id="cb6-12"><a></a>            <span class="cf">return</span> nouveau_joueur</span>
+<span id="cb6-13"><a></a>        <span class="cf">else</span> </span>
+<span id="cb6-14"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mock---exemple-1" class="slide level3">
+<h3>Mock - exemple</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_joueur_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="test_joueur_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="kw">def</span> test_creer_ok():</span>
+<span id="cb7-4"><a></a>    <span class="co">""" "Création de Joueur réussie"""</span></span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>    <span class="co"># GIVEN</span></span>
+<span id="cb7-7"><a></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
+<span id="cb7-8"><a></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-9"><a></a></span>
+<span id="cb7-10"><a></a>    <span class="co"># WHEN</span></span>
+<span id="cb7-11"><a></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb7-12"><a></a></span>
+<span id="cb7-13"><a></a>    <span class="co"># THEN</span></span>
+<span id="cb7-14"><a></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(joueur, Joueur)</span>
+<span id="cb7-15"><a></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section>
+<section>
+<section id="les-test-driven-development-tdd" class="title-slide slide level2 center">
+<h2>Les Test Driven Development (TDD)</h2>
 
 </section>
-<section id="http" class="slide level3">
-<h3>HTTP</h3>
-<p>Protocole de communication client-serveur développé pour le World Wide Web</p>
-<p>N’est pas le seul : FTP, SMTP, IRC …</p>
-<p>Il existe des protocoles non client-serveur : BitTorrent</p>
-<aside class="notes">
-<p>Avez vous une idée de requête HTTP ?</p>
-<ul>
-<li>Internet est l’infrastructure</li>
-<li>Web est un service qui fonctionne dessus</li>
-</ul>
-<p>https : http + SSL</p>
-<p>Le navigateur cache le protocole</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="quand-tester" class="slide level3">
+<h3>Quand tester ?</h3>
+<div class="fragment">
+<p>Au début !</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Plus on teste tôt <span class="emoji" data-emoji="arrow_right">➡️</span> plus les tests sont efficaces et peu coûteux !</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="secure-sockets-layer-ssl" class="slide level3">
-<h3>Secure Sockets Layer (SSL)</h3>
-<p>Connexion sécurisée entre un client et un serveur :</p>
-<ul>
-<li>Le <strong>client</strong> envoie un message au <strong>serveur</strong></li>
-<li>Le <strong>serveur</strong> répond et envoie son <u>certificat</u></li>
-<li>Le <strong>client</strong> vérifie la validité du certificat</li>
-<li>Le <strong>client</strong> génére une clé de <u>session</u> chiffrée avec la clé publique du <strong>serveur</strong></li>
-<li>Les deux camps communiquent avec la clé de session</li>
-</ul>
-<aside class="notes">
-<p>Commencer par parler chiffrage :</p>
-<ul>
-<li>Chiffrage symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les données</li>
-<li>Chiffrage asymétrique : une clé publique pour chiffrer les données et une clé privée pour les déchiffrer</li>
-</ul>
-<p>Certificat :</p>
-<ul>
-<li>Clé publique</li>
-<li>Informations sur le propriétaire</li>
-<li>Période de validité</li>
-<li>Autorité de certification</li>
-<li>Signature numérique : message haché puis chiffré avec clé privée</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="test-driven-development" class="slide level3">
+<h3>Test Driven Development</h3>
+<p>La meilleure pratique :</p>
+<ol type="1">
+<li>Créer les tests</li>
+<li>Coder la fonction</li>
+</ol>
 </section>
-<section id="video" class="slide level3">
-<h3>Video</h3>
-<iframe data-external="1" src="https://www.youtube.com/embed/7W7WPMX7arI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</section>
-<section id="les-éléments-dune-requête" class="slide level3">
-<h3>Les éléments d’une requête</h3>
+<section id="logique" class="slide level3">
+<h3>Logique</h3>
+<p>Cela paraît un peu étrange, mais en fait pas tant que ça.</p>
+<p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
 <ul>
-<li>La localisation de la ressource : URL (nom de domaine + chemin)</li>
-<li>La méthode employée (GET, POST, UPDATE, DELETE …)</li>
-<li>Les paramètres de la requête</li>
-<li>Le corps de la requête</li>
+<li>quels seront les paramètres en entrée</li>
+<li>quels résultats vous attendez en sortie</li>
+<li>donc vous savez déjà quoi tester !</li>
 </ul>
-<aside class="notes">
-<p>Les paramètres sont derrière le ?</p>
-<p>Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
-<p>Dans le navigateur, on ne fait que des GET</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="les-éléments-dune-requête-1" class="slide level3">
-<h3>Les éléments d’une requête</h3>
-<p><code>GET https://pokeapi.co/api/v2/pokemon?limit=10&amp;offset=200</code></p>
+<section id="pratique-du-tdd" class="slide level3">
+<h3>Pratique du TDD</h3>
 <ul>
-<li>méthode</li>
-<li>protocole</li>
-<li>adresse du ws</li>
-<li>endpoint</li>
-<li>paramètres</li>
-</ul>
-<aside class="notes">
-<p>Pour aller plus loin : IP, DNS</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-méthodes-http" class="slide level3">
-<h3>Les méthodes HTTP</h3>
-<ul>
-<li>POST</li>
-<li>GET</li>
-<li>UPDATE</li>
-<li>DELETE</li>
+<li>✅ Amélioration de la qualité du code</li>
+<li>✅ Réduction des bugs</li>
+<li>❌ puis ✅ Temps</li>
+<li>❌ Maintenance des tests</li>
 </ul>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -692,12 +647,13 @@ Rémi Pépin
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>C’est le CRUD !</p>
+<p>Avantages &gt;&gt;&gt; Incovénients</p>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Comme en SQL</p>
+<p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
+<p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -709,202 +665,30 @@ Rémi Pépin
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="exemple" class="slide level3">
-<h3>Exemple</h3>
-<ul>
-<li>GET http://web-services.domensai.ecole/attack
-<ul>
-<li>récupérer toutes les attaques</li>
-</ul></li>
-<li>GET http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>récupérer une attaque à partir de son id</li>
-</ul></li>
-<li>DELETE http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>supprimer une attaque</li>
-</ul></li>
-</ul>
-</section>
-<section id="exemple-1" class="slide level3">
-<h3>Exemple</h3>
-<ul>
-<li>POST http://web-services.domensai.ecole/attack
-<ul>
-<li>ajouter une attaque</li>
-</ul></li>
-<li>PUT http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>modifier une attaque</li>
-</ul></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>body</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="body"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a></a><span class="fu">{</span></span>
-<span id="cb1-2"><a></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"chatouille"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a></a>  <span class="dt">"attack_type"</span><span class="fu">:</span> <span class="st">"physical attack"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a></a>  <span class="dt">"power"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
-<span id="cb1-5"><a></a>  <span class="dt">"accuracy"</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
-<span id="cb1-6"><a></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"string"</span></span>
-<span id="cb1-7"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<aside class="notes">
-<ul>
-<li>PATCH http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>modifier seulement certains attributs d’une attaque</li>
-</ul></li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="pour-résumer" class="slide level3">
-<h3>Pour résumer</h3>
-<ul>
-<li>Le HTTP est le protocole du web</li>
-<li>Méthode</li>
-<li>URL</li>
-<li>Paramètres dans URL ou corps</li>
-</ul>
-</section></section>
-<section>
-<section id="contacterréaliser-un-webservice" class="title-slide slide level2 center">
-<h2>Contacter/réaliser un webservice</h2>
-
-</section>
-<section id="contacter-un-webservice" class="slide level3">
-<h3>Contacter un webservice</h3>
-<p>Un outil : un client HTTP</p>
-<ul>
-<li>Un navigateur web (assez limité)</li>
-<li>Insomnia/Postman</li>
-<li>Vscode avec des plugins</li>
-<li>Python avec le plugin <code>requests</code></li>
-</ul>
-</section>
-<section id="contacter-un-webservice-en-python" class="slide level3">
-<h3>Contacter un webservice en python</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="co"># Construction de la requête</span></span>
-<span id="cb2-4"><a></a>url <span class="op">=</span> <span class="st">"https://data.rennesmetropole.fr/api/records/1.0/search/"</span></span>
-<span id="cb2-5"><a></a>parametres <span class="op">=</span> {<span class="st">"dataset"</span>: <span class="st">"etat-du-trafic-en-temps-reel"</span>, <span class="st">"rows"</span>: <span class="dv">2</span>}</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="co"># Lancement de la requête</span></span>
-<span id="cb2-8"><a></a>res <span class="op">=</span> requests.get(url<span class="op">=</span>url, params<span class="op">=</span>parametres)</span>
-<span id="cb2-9"><a></a></span>
-<span id="cb2-10"><a></a><span class="co"># Affichage du résultat</span></span>
-<span id="cb2-11"><a></a><span class="bu">print</span>(res.json())</span>
-<span id="cb2-12"><a></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Nombre de lignes : "</span>, res.json()[<span class="st">"parameters"</span>][<span class="st">"rows"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="contacter-un-webservice-en-python-1" class="slide level3">
-<h3>Contacter un webservice en python</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> json</span>
-<span id="cb3-2"><a></a><span class="im">import</span> requests</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>url <span class="op">=</span> <span class="st">"https://anapioficeandfire.com/api/"</span></span>
-<span id="cb3-5"><a></a>end_point <span class="op">=</span> <span class="st">"characters"</span></span>
-<span id="cb3-6"><a></a>parametres <span class="op">=</span> {<span class="st">"gender"</span>: <span class="st">"Female"</span>, <span class="st">"isAlive"</span>: <span class="va">True</span>, <span class="st">"culture"</span>: <span class="st">"Braavosi"</span>}</span>
-<span id="cb3-7"><a></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>url <span class="op">+</span> end_point, params<span class="op">=</span>parametres)</span>
-<span id="cb3-8"><a></a></span>
-<span id="cb3-9"><a></a><span class="co"># Teste si le serveur a répondu</span></span>
-<span id="cb3-10"><a></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
-<span id="cb3-11"><a></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-12"><a></a><span class="bu">print</span>(json.dumps(response.json()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="contacter-un-webservice-en-python-2" class="slide level3">
-<h3>Contacter un webservice en python</h3>
-<ul>
-<li>Très facile</li>
-<li><code>res.json()</code> retourne un dictionnaire</li>
-<li><code>get()</code> peut devenir <code>post()</code>, <code>put()</code>, etc.</li>
-</ul>
-</section>
-<section id="réaliser-un-webservice-en-python" class="slide level3">
-<h3>Réaliser un webservice en python</h3>
-<ul>
-<li>Peut sembler complexe 😵</li>
-<li>Mais il existe des outils pour nous aider 😎</li>
-<li>Pas besoin d’être un expert de l’informatique ! 🐱‍💻</li>
-</ul>
-</section>
-<section id="frameworks" class="slide level3">
-<h3>3 frameworks</h3>
-<ul>
-<li><a href="https://fastapi.tiangolo.com/" target="_blank">FlaskRESTful</a> : mature, léger, flexible</li>
-<li><a href="https://www.djangoproject.com/" target="_blank">Django</a> : mature, robuste, complet</li>
-<li><a href="https://fastapi.tiangolo.com/" target="_blank">FastApi</a> : jeune, léger, moderne</li>
-</ul>
-<aside class="notes">
-<p>FastApi pour le TP2</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="fastapi-les-bases" class="slide level3">
-<h3>FastApi : les bases</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb4-4"><a></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb4-5"><a></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
-<span id="cb4-6"><a></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a></span>
-<span id="cb4-9"><a></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-10"><a></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="fastapi" class="slide level3">
-<h3>FastApi</h3>
-<ul>
-<li>Il est facile de coder vos endpoints</li>
-<li>La <a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank">documentation</a> est extrêmement bien faite</li>
-<li>Vous vous concentrez sur l’essentiel</li>
-</ul>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="webservices.html">Les Webservices</a></p>
+<p><a href="../../index.html">Home</a> — <a href="tests-unitaires.html">Tests unitaires</a></p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../../../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1267,6 +1051,38 @@ Rémi Pépin
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

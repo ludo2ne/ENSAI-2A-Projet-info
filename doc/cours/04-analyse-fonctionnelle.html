@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,7 +11,7 @@
 <meta name="author" content="Rémi Pépin">
 <meta name="description" content="Slides">
 
-<title>Outils de développement – Projet info 2A</title>
+<title>Functional Analysis – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,14 +43,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d58c9fc64405092d105ca125627416e3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5158e29d291ec32a553e13ddb3efdc22.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d8cbafa9d3567b5d215ae4fe7d8f5edc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-88b9d5a626f7b6397f14b069d59cb43d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -335,36 +303,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
-    <a class="dropdown-item" href="../../doc/cours/intro.html">
+    <a class="dropdown-item" href="../../doc/cours/01-introduction.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/outils-dev.html">
- <span class="dropdown-text">Outils de développement</span></a>
+    <a class="dropdown-item" href="../../doc/cours/02-outils-dev.html">
+ <span class="dropdown-text">Development Tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" target="_blank">
+    <a class="dropdown-item" href="../../doc/cours/03-git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/analyse-fonctionnelle.html">
- <span class="dropdown-text">Analyse fonctionnelle</span></a>
+    <a class="dropdown-item" href="../../doc/cours/04-analyse-fonctionnelle.html">
+ <span class="dropdown-text">Functional Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/poo-avancee.html">
- <span class="dropdown-text">POO Avancée</span></a>
+    <a class="dropdown-item" href="../../doc/cours/05-poo-avancee.html">
+ <span class="dropdown-text">Advanced POO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/tests-unitaires.html">
- <span class="dropdown-text">Tests unitaires</span></a>
+    <a class="dropdown-item" href="../../doc/cours/06-tests-unitaires.html">
+ <span class="dropdown-text">Unit Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/webservices.html">
+    <a class="dropdown-item" href="../../doc/cours/07-webservices.html">
  <span class="dropdown-text">Webservices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/cours/dao-securite.html">
- <span class="dropdown-text">DAO et Sécurité</span></a>
+    <a class="dropdown-item" href="../../doc/cours/08-dao-securite.html">
+ <span class="dropdown-text">DAO and Security</span></a>
   </li>  
     </ul>
   </li>
@@ -457,12 +425,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#environnement-de-dev" id="toc-environnement-de-dev" class="nav-link active" data-scroll-target="#environnement-de-dev">Environnement de dev</a></li>
-  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code">Visual Studio Code</a></li>
-  <li><a href="#qualité-du-code" id="toc-qualité-du-code" class="nav-link" data-scroll-target="#qualité-du-code">Qualité du Code</a></li>
-  <li><a href="#logs" id="toc-logs" class="nav-link" data-scroll-target="#logs">Logs</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#analyse-fonctionnelle" id="toc-analyse-fonctionnelle" class="nav-link" data-scroll-target="#analyse-fonctionnelle">Analyse fonctionnelle</a></li>
+  <li><a href="#software-architecture" id="toc-software-architecture" class="nav-link" data-scroll-target="#software-architecture">Software Architecture</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="outils-dev-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="04-analyse-fonctionnelle-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -474,12 +441,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Outils de développement</h1>
+<h1 class="title">Functional Analysis</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="outils-dev-slides.html">Slides</a>
+    <a href="04-analyse-fonctionnelle-slides.html">Slides</a>
   </div>
 </div>
 
@@ -504,174 +471,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="environnement-de-dev" class="level2">
-<h2 class="anchored" data-anchor-id="environnement-de-dev">Environnement de dev</h2>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ol type="1">
+<li>Functional Analysis
 <ul>
-<li>TP et projet réalisés sur un Datalab</li>
-<li>Possible de faire sur la VM (backup)</li>
-</ul>
-<section id="stack-datalab" class="level3">
-<h3 class="anchored" data-anchor-id="stack-datalab">Stack Datalab</h3>
-<ul>
-<li><code>Visual Studio Code</code> : votre éditeur de code</li>
-<li><code>Python 3.13</code></li>
-<li><code>Git</code> : pour versionner votre code</li>
-<li><code>PostgreSQL</code> : une base de données
-<ul>
-<li><code>cloudBeaver</code> : pour consulter, modifier cette base de données</li>
+<li>Definition</li>
+<li>UML Diagrams</li>
 </ul></li>
-</ul>
-</section>
-<section id="stack-vm" class="level3">
-<h3 class="anchored" data-anchor-id="stack-vm">Stack VM</h3>
+<li>Software Architecture
 <ul>
-<li><code>Python 3.10</code> : la version de Python installée à l’ENSAI</li>
-<li><code>Visual Studio Code</code> : votre éditeur de code</li>
-<li><code>Git</code> : pour gérer vos dépôts</li>
-<li><code>PostgreSQL</code> : une base de données
-<ul>
-<li><code>DBeaver</code> : pour consulter, modifier cette base de données</li>
+<li>Definition</li>
+<li>Separation of Responsibilities</li>
 </ul></li>
-</ul>
+</ol>
 </section>
-</section>
-<section id="visual-studio-code" class="level2">
-<h2 class="anchored" data-anchor-id="visual-studio-code">Visual Studio Code</h2>
+<section id="analyse-fonctionnelle" class="level2 hide-html-render">
+<h2 class="anchored" data-anchor-id="analyse-fonctionnelle">Analyse fonctionnelle</h2>
+<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+<div class="notes">
+<p>80 % des projets sont un echec (total ou relatif).</p>
+<p>Les questions qu’il faut se poser avant de commencer :</p>
 <ul>
-<li>Éditeur de code source populaire</li>
-<li>Intégre un explorer et un terminal</li>
-<li>Nombreuses extensions</li>
-<li>Personnalisation avancée</li>
+<li>Qu’est ce qu’on fait ? Qui le fait</li>
+<li>Besoins du client</li>
+<li>Fonctionnalités requises / optionnelles / bonus</li>
+<li>Bien gérer les priorités</li>
+<li>Répartition des rôles dans l’équipe</li>
 </ul>
-<section id="zoom-sur-les-settings" class="level3">
-<h3 class="anchored" data-anchor-id="zoom-sur-les-settings">Zoom sur les Settings</h3>
+</div>
+</section>
+<section id="project-phases" class="level3">
+<h3 class="anchored" data-anchor-id="project-phases">Project Phases</h3>
 <ul>
-<li>fichier <em>.vscode/settings.json</em></li>
-<li>Formater : Ruff</li>
+<li>Analysis of the needs (specifications)</li>
+<li>Planning</li>
+<li>Design</li>
+<li>Development</li>
+<li>Testing</li>
+<li>Deployment</li>
+<li>Maintenance</li>
 </ul>
 <div class="notes">
-<ul>
-<li>Montrer le fichier settings.json (DEMO)</li>
-<li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
-<li>à priori vous n’avez rien à modifier</li>
-<li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
-<li>Formater et Linter en phase</li>
-</ul>
-<p>Formater :</p>
-<ul>
-<li>Ligne trop longue</li>
-<li>Espaces superflux</li>
-</ul>
+<p>In traditional projects (V-Cycle), these phases were highly segmented.</p>
 </div>
 </section>
-</section>
-<section id="qualité-du-code" class="level2">
-<h2 class="anchored" data-anchor-id="qualité-du-code">Qualité du Code</h2>
-<section id="pourquoi-la-qualité" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-la-qualité">Pourquoi la Qualité ?</h3>
-<ul>
-<li><strong>Maintenabilité</strong> : plus facile à comprendre, à maintenir et à modifier</li>
-<li><strong>Lisibilité</strong> : facilite la collaboration et réduit les erreurs</li>
-<li><strong>Performance</strong> : fonctionne mieux et consomme moins de ressources</li>
-<li><strong>Sécurité</strong> : moins susceptible de contenir des vulnérabilités</li>
-</ul>
-</section>
-<section id="pylint" class="level3">
-<h3 class="anchored" data-anchor-id="pylint">Pylint</h3>
-<p>Outil d’analyse statique pour Python qui :</p>
-<ul>
-<li>Vérifie la conformité du code aux normes de style</li>
-<li>Détecte les erreurs potentielles</li>
-<li>Identifie les mauvaises pratiques</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Commandes</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Commandes"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pylint</span> src</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pylint</span> <span class="at">--output-format</span><span class="op">=</span>colorized <span class="at">--disable</span><span class="op">=</span>C0114,C0411,C0415,W0718 <span class="va">$(</span><span class="fu">git</span> ls-files <span class="st">'*.py'</span><span class="va">)</span> <span class="at">--fail-under</span><span class="op">=</span>7.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="notes">
-<ul>
-<li>Vous pouvez disable les règles qui vous ennuient</li>
-<li>À faire régulièrement</li>
-</ul>
-</div>
-</section>
-<section id="aborescence-du-dépôt" class="level3 smaller">
-<h3 class="smaller anchored" data-anchor-id="aborescence-du-dépôt">Aborescence du dépôt</h3>
+<section id="project-actors" class="level3">
+<h3 class="anchored" data-anchor-id="project-actors">Project actors</h3>
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PROJET-INFO-2A</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ├── .vscode</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    │   └── settings.json</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ├── data</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    │   └── init_db.sql</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ├── doc</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    │   └── suivi</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    │       └── YYYY.MM.DD-semaineN.md</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ├── src</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    │   ├── business_object</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe.py</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    │   ├── dao</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_dao.py</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    │   ├── service</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_service.py</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    │   ├── tests</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    │   │   ├── dao</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    │   │   └── service</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    │   ├── utils</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    │   └── view</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    │       └── accueil_view.py</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    ├── .gitignore</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    ├── LICENCE</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    ├── README.md</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    └── requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="documentation" class="level3">
-<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>operations_mathematiques.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationsMathematiques:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Opérations Mathématiques"""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">        nombre : float or int</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">        float or None</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<ul>
+<li>Fonctionnel - Technique</li>
+<li>Besoin Métier</li>
+<li>MOA - MOE</li>
+<li>Etude préalable, budget, temps, qualité - Cahier des charges - SFD - Spec technique - Dossier test</li>
+<li>SCRUM</li>
+</ul>
+<hr>
+<p><a href="./img/agile-tree-swing-cartoon.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/agile-tree-swing-cartoon.png" class="img-fluid"></a></p>
 <div class="notes">
 <ul>
-<li>Doc classes
+<li>Important de discuter</li>
+<li>Reformulez</li>
+<li>Utilisez des mots simples</li>
+<li>Imaginez que vous expliquez le projet à vos grands parents</li>
+<li>parler doc, arrivée sur poste, initiatives</li>
+</ul>
+</div>
+</section>
+<section id="what-is-functional-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-functional-analysis">What is Functional Analysis?</h3>
 <ul>
-<li>Attributs</li>
-</ul></li>
-<li>Doc méthodes
+<li>First step in all projects</li>
+<li>Determines the functions and actors of the product to meet client needs</li>
+<li>Diagrams to communicate with the client</li>
+<li>Prioritizes tasks</li>
+</ul>
+<div class="notes">
 <ul>
-<li>brève description</li>
-<li>paramètres</li>
-<li>retour</li>
+<li>Permet de s’approprier le sujet</li>
+<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
+<li>Cette phase sera la première partie du rapport intermédiaire</li>
+</ul>
+<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
+<p>Cost of Change Curve:</p>
+<ul>
+<li>Cahier des charges : 1 €</li>
+<li>Développement : 10 €</li>
+<li>Tests : 50 €</li>
+<li>Production : 100 €</li>
+</ul>
+</div>
+</section>
+<section id="questions-to-ask" class="level3">
+<h3 class="anchored" data-anchor-id="questions-to-ask">Questions to Ask</h3>
+<ul>
+<li>What types of users will use my application (administrator, manager, client, etc.)?</li>
+<li>What are the features? Common features between profiles?</li>
+<li>How do the application processes work?</li>
+<li>Which diagrams should be used?</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Use case diagrams for the first questions</li>
+<li>Activity diagrams for processes</li>
+<li>Why create diagrams? At a glance, you have all the information
+<ul>
+<li>Comment on your diagrams</li>
 </ul></li>
 </ul>
 </div>
 </section>
-</section>
-<section id="logs" class="level2">
-<h2 class="anchored" data-anchor-id="logs">Logs</h2>
-<section id="quest-ce-que-les-logs" class="level3">
-<h3 class="anchored" data-anchor-id="quest-ce-que-les-logs">Qu’est-ce que les logs</h3>
+<section id="uml-diagrams" class="level3">
+<h3 class="anchored" data-anchor-id="uml-diagrams">UML Diagrams</h3>
+<ul>
+<li>First-year course</li>
+<li>UML 2.5, Pascal Roques, Eyrolles, Memento (ENSAI library)</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -682,99 +598,186 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La journalisation (ou logging) est le processus d’enregistrement des événements, des erreurs, et des informations dans une application.</p>
+<p>It is <strong>agnostic</strong> of the chosen programmation language !</p>
+<p>A functional analysis UML diagram is <strong>its own language</strong>.</p>
 </div>
 </div>
-<p>Un log capture des informations sur ce qui s’est passé à un moment donné :</p>
-<ul>
-<li>Surveillance</li>
-<li>Débogage</li>
-</ul>
 <div class="notes">
 <ul>
-<li>Ils permettent de surveiller l’état d’un système, des comportements inattendus</li>
-<li>Ils aident à identifier et résoudre les problèmes</li>
+<li>No time to redo a course</li>
+<li>Resources are available in the library and online</li>
+<li>Ask your tutor what they expect</li>
 </ul>
 </div>
 </section>
-<section id="level-1---débutant" class="level3">
-<h3 class="anchored" data-anchor-id="level-1---débutant">Level 1 - Débutant</h3>
+<section id="questions" class="level3 hide-html-render">
+<h3 class="anchored" data-anchor-id="questions">Questions?</h3>
+<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
+</iframe>
+</section>
+<section id="software-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="software-architecture">Software Architecture</h2>
+<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="img-fluid"></a></p>
+<div class="notes">
+<p>Voila pour les grand principes.</p>
+<p>On va maintenant rentrer dans le concret.</p>
+</div>
+<section id="what-is-software-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-software-architecture">What is Software Architecture?</h3>
 <ul>
-<li>Vous avez une erreur dans votre code</li>
-<li>Mais vous ne savez pas exactement où ?</li>
-<li>Que faites-vous ?</li>
+<li>The technical counterpart of functional analysis</li>
+<li>Now that we have the who and what, we determine the how</li>
+<li>We design the code of our application</li>
+<li>Macro vision of our application (arrangement of major components)</li>
 </ul>
 <div class="notes">
-<p>Vous mettez des “prints” partout</p>
+<p>For now, we are not yet writing code.</p>
+<p>We will only draft our application with the components it comprises (both logical and physical).</p>
+<p>For example, in your case, you will likely have:</p>
+<ul>
+<li>Python code running on your computer</li>
+<li>An external web service providing data</li>
+<li>A PostgreSQL database.</li>
+</ul>
+<p>These are already 3 components, but quickly there will be many, and we need to know how to arrange them.</p>
 </div>
 </section>
-<section id="level-2---mode-debug" class="level3">
-<h3 class="anchored" data-anchor-id="level-2---mode-debug">Level 2 - Mode Debug</h3>
+<section id="why-its-important-parallel-with-architecture" class="level3 hide-html-render">
+<h3 class="anchored" data-anchor-id="why-its-important-parallel-with-architecture">Why It’s Important: Parallel with Architecture</h3>
+<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="img-fluid"></a></p>
+</section>
+<section id="why-its-important-parallel-with-architecture-1" class="level3">
+<h3 class="anchored" data-anchor-id="why-its-important-parallel-with-architecture-1">Why It’s Important: Parallel with Architecture</h3>
 <ul>
-<li>Vous ajoutez un point d’arrêt</li>
-<li>Vous lancez en mode debug</li>
-<li>Vous avancez jusqu’à l’erreur</li>
+<li>Rooms, electrical installation, water, gas, legislative constraints, adapting to the terrain…</li>
+<li>Need to think about how to arrange all this from the beginning</li>
+<li>If we build as we go, we risk ending up with an inconsistent house (at best)</li>
+<li><strong>This is not wasted time!</strong></li>
 </ul>
 <div class="notes">
-<p>Demo</p>
+<p>Some people even say we should spend more time analyzing than coding. This is debatable, but it shows how important the analysis phase (how to code the functions) is!</p>
+<p>genAI can almost code for us.</p>
 </div>
 </section>
-<section id="level-3---logs" class="level3">
-<h3 class="anchored" data-anchor-id="level-3---logs">Level 3 - Logs</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Importez le module <em>logging</em> et configurez</label></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>logging.basicConfig(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    filename<span class="op">=</span><span class="st">'logs/example.log'</span>,  </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    level<span class="op">=</span>logging.INFO,     </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)-8s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    datefmt<span class="op">=</span><span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y %H:%M:%S"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Possible d’externaliser la config dans un fichier <code>logging_config.yml</code></p>
-</section>
-<section id="level-3---logs-1" class="level3">
-<h3 class="anchored" data-anchor-id="level-3---logs-1">Level 3 - Logs</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Postionnez vos logs</label></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>logger.debug(<span class="st">"Ceci est un message de débogage"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">"Ceci est un message d'information"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">"Ceci est un message d'avertissement"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>logger.error(<span class="st">"Ceci est un message d'erreur"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="les-niveaux-de-logs" class="level3">
-<h3 class="anchored" data-anchor-id="les-niveaux-de-logs">Les niveaux de logs</h3>
-<ul>
-<li><strong>DEBUG</strong> : utile pour le débogage lors du développement</li>
-<li><strong>INFO</strong> : suivi du code exécuté</li>
-<li><strong>WARNING</strong> : situation inhabituelle mais non bloquante</li>
-<li><strong>ERROR</strong> : affecte la logique du programme mais ne l’arrête pas complètement</li>
-<li><strong>CRITICAL</strong> : nécessite une intervention urgente</li>
-</ul>
-</section>
-<section id="un-bon-début" class="level3">
-<h3 class="anchored" data-anchor-id="un-bon-début">Un bon début</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ma_methode(a):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    logging.debug(<span class="st">"ma_methode - DEBUT"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    logging.debug(<span class="st">"ma_methode - FIN"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="aller-plus-loin" class="level3">
-<h3 class="anchored" data-anchor-id="aller-plus-loin">Aller plus loin</h3>
-<p>Utiliser les modules :</p>
-<ul>
-<li>src/utils/log_init.py</li>
-<li>src/utils/log_decorator.py</li>
-</ul>
-<p>Et ajouter un décorateur <code>@Log</code> avant chaque méthode</p>
+<section id="a-major-principle-separation-of-concerns" class="level3">
+<h3 class="anchored" data-anchor-id="a-major-principle-separation-of-concerns">A Major Principle: Separation of Concerns</h3>
+<p><a href="img/archi-layers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/archi-layers.png" class="img-fluid"></a></p>
 <div class="notes">
-<p>Wrapper : va encapsuler la méthode</p>
-<p>Démo log_decorator</p>
+<p>Macro version in 3 layers.</p>
+<ul>
+<li>Presentation: everything related to display</li>
+<li>Business: the core of your application, its added value</li>
+<li>Data: data storage</li>
+</ul>
+<p>Each layer communicates with adjacent layers.</p>
+<p>A layer only needs to know how to request information and what is returned. Not obvious but very important!!!</p>
+</div>
+</section>
+<section id="main-layers-of-an-application" class="level3">
+<h3 class="anchored" data-anchor-id="main-layers-of-an-application">Main Layers of an Application</h3>
+<ul>
+<li><strong><em>Presentation:</em></strong> everything related to display (web page, console, window)</li>
+<li><strong><em>Business:</em></strong> the core of your application, its <strong>added value</strong></li>
+<li><strong><em>Persistence:</em></strong> manages data persistence. Database or file system</li>
+</ul>
+<div class="notes">
+<p>Dans le monde pro :</p>
+<ul>
+<li>Présentation : JavaScript</li>
+<li>Métier : Java / Python</li>
+<li>Persistance : PostgreSQL ou MariaDB</li>
+</ul>
+</div>
+</section>
+<section id="for-your-project" class="level3">
+<h3 class="anchored" data-anchor-id="for-your-project">For Your Project</h3>
+<ul>
+<li><strong><em>Presentation:</em></strong> Front-end</li>
+<li><strong><em>Business:</em></strong> Back-end</li>
+<li><strong><em>Persistence:</em></strong> Database</li>
+</ul>
+<div class="notes">
+<p>Exemple page web</p>
+</div>
+</section>
+<section id="zoom-sur-la-couche-métier" class="level3">
+<h3 class="anchored" data-anchor-id="zoom-sur-la-couche-métier">Zoom sur la couche métier</h3>
+<p><a href="img/archi-business-layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/archi-business-layer.png" class="img-fluid"></a></p>
+<div class="notes">
+<p>Within the Business layer, there are several sub-layers.</p>
+<p>In the practical work:</p>
+<ul>
+<li>Presentation layer: View (navigate between views)</li>
+<li>DAO, business_object, service</li>
+<li>Controller: It receives user requests via the user interface (e.g., an HTTP request in the case of a web application) and calls the appropriate services to execute the requested actions.</li>
+</ul>
+</div>
+</section>
+<section id="layers-of-the-business-layer-12" class="level3">
+<h3 class="anchored" data-anchor-id="layers-of-the-business-layer-12">Layers of the Business Layer 1/2</h3>
+<ul>
+<li><strong><em>DAO (Data Access Object):</em></strong>
+<ul>
+<li>The part of your code that communicates with the database (Lecture 4/Practical 4)</li>
+</ul></li>
+<li><strong><em>Service:</em></strong>
+<ul>
+<li>Business code</li>
+<li>Manipulates business objects to create information or value</li>
+<li>Requests objects from the DAO layer (Practical 4)</li>
+<li>Calls external web services (Practical 3)</li>
+</ul></li>
+</ul>
+</section>
+<section id="layers-of-the-business-layer-22" class="level3">
+<h3 class="anchored" data-anchor-id="layers-of-the-business-layer-22">Layers of the Business Layer 2/2</h3>
+<ul>
+<li><strong><em>Business Objects:</em></strong>
+<ul>
+<li>Transversal layer</li>
+<li>Represent business concepts that your code will manipulate</li>
+<li>Objects with mostly attributes and few methods</li>
+</ul></li>
+<li><strong><em>Controller:</em></strong>
+<ul>
+<li>Retrieves user inputs</li>
+<li>Returns data to be displayed</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>We break down the objects:</p>
+<ul>
+<li>Attributes -&gt; Business Objects (~DTO)</li>
+<li>Methods -&gt; Services</li>
+</ul>
+</div>
+</section>
+<section id="why-separate-into-layers" class="level3">
+<h3 class="anchored" data-anchor-id="why-separate-into-layers">Why Separate into Layers?</h3>
+<ul>
+<li>Teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Code readability 📖</li>
+<li>Debugging 🐞</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Limit the risk of errors when modifying code (avoid spaghetti code) 🍝</strong></p>
+</blockquote>
+<div class="notes">
+<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
+Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
+Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
+Et séparer en couches permet de trouver rapidement la source du problème.</p>
+</div>
+</section>
+<section id="key-takeaways" class="level3">
+<h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li>Spending time thinking about the different modules of an application is not a waste of time 🕵️‍♀️</li>
+<li>Dividing into layers allows parallel work 🧪🧫📚</li>
+<li>But we still need to think about how to code well 🤖</li>
+</ul>
+<div class="notes">
+<p>Possible in the project to distribute the layers.</p>
 </div>
 
 
@@ -1209,6 +1212,38 @@ Note
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

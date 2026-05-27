@@ -6,13 +6,16 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
   <meta name="author" content="Rémi Pépin">
-  <title>Projet info 2A – Outils de développement</title>
+  <title>Projet info 2A – Advanced Object-Oriented Programming</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -199,7 +202,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Outils de développement</h1>
+  <h1 class="title">Advanced Object-Oriented Programming</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -220,233 +223,474 @@ Rémi Pépin
 </div>
 
 </section>
-<section>
-<section id="environnement-de-dev" class="title-slide slide level2 center">
-<h2>Environnement de dev</h2>
+<section id="outline" class="title-slide slide level2 center">
+<h2>Outline</h2>
+<ol type="1">
+<li>Advanced OOP Concepts
 <ul>
-<li>TP et projet réalisés sur un Datalab</li>
-<li>Possible de faire sur la VM (backup)</li>
-</ul>
-</section>
-<section id="stack-datalab" class="slide level3">
-<h3>Stack Datalab</h3>
-<ul>
-<li><code>Visual Studio Code</code> : votre éditeur de code</li>
-<li><code>Python 3.13</code></li>
-<li><code>Git</code> : pour versionner votre code</li>
-<li><code>PostgreSQL</code> : une base de données
-<ul>
-<li><code>cloudBeaver</code> : pour consulter, modifier cette base de données</li>
+<li>Recap</li>
+<li>Abstract Classes</li>
+<li>Bridge Pattern</li>
 </ul></li>
-</ul>
-</section>
-<section id="stack-vm" class="slide level3">
-<h3>Stack VM</h3>
+<li>Software Engineering
 <ul>
-<li><code>Python 3.10</code> : la version de Python installée à l’ENSAI</li>
-<li><code>Visual Studio Code</code> : votre éditeur de code</li>
-<li><code>Git</code> : pour gérer vos dépôts</li>
-<li><code>PostgreSQL</code> : une base de données
-<ul>
-<li><code>DBeaver</code> : pour consulter, modifier cette base de données</li>
+<li>Definition</li>
+<li>Single Responsibility Principle</li>
+<li>Design Patterns</li>
 </ul></li>
-</ul>
-</section></section>
-<section>
-<section id="visual-studio-code" class="title-slide slide level2 center">
-<h2>Visual Studio Code</h2>
-<ul>
-<li>Éditeur de code source populaire</li>
-<li>Intégre un explorer et un terminal</li>
-<li>Nombreuses extensions</li>
-<li>Personnalisation avancée</li>
-</ul>
+</ol>
 </section>
-<section id="zoom-sur-les-settings" class="slide level3">
-<h3>Zoom sur les Settings</h3>
-<ul>
-<li>fichier <em>.vscode/settings.json</em></li>
-<li>Formater : Ruff</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Montrer le fichier settings.json (DEMO)</li>
-<li>icone <span class="emoji" data-emoji="gear">⚙️</span> niveau workspace ou user</li>
-<li>à priori vous n’avez rien à modifier</li>
-<li>vous pouvez intégrer ce fichier dans votre dépôt projet</li>
-<li>Formater et Linter en phase</li>
-</ul>
-<p>Formater :</p>
-<ul>
-<li>Ligne trop longue</li>
-<li>Espaces superflux</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="qualité-du-code" class="title-slide slide level2 center">
-<h2>Qualité du Code</h2>
 
-</section>
-<section id="pourquoi-la-qualité" class="slide level3">
-<h3>Pourquoi la Qualité ?</h3>
-<ul>
-<li><strong>Maintenabilité</strong> : plus facile à comprendre, à maintenir et à modifier</li>
-<li><strong>Lisibilité</strong> : facilite la collaboration et réduit les erreurs</li>
-<li><strong>Performance</strong> : fonctionne mieux et consomme moins de ressources</li>
-<li><strong>Sécurité</strong> : moins susceptible de contenir des vulnérabilités</li>
-</ul>
-</section>
-<section id="pylint" class="slide level3">
-<h3>Pylint</h3>
-<p>Outil d’analyse statique pour Python qui :</p>
-<ul>
-<li>Vérifie la conformité du code aux normes de style</li>
-<li>Détecte les erreurs potentielles</li>
-<li>Identifie les mauvaises pratiques</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Commandes</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Commandes"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">pylint</span> src</span>
-<span id="cb1-2"><a></a><span class="ex">pylint</span> <span class="at">--output-format</span><span class="op">=</span>colorized <span class="at">--disable</span><span class="op">=</span>C0114,C0411,C0415,W0718 <span class="va">$(</span><span class="fu">git</span> ls-files <span class="st">'*.py'</span><span class="va">)</span> <span class="at">--fail-under</span><span class="op">=</span>7.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<aside class="notes">
-<ul>
-<li>Vous pouvez disable les règles qui vous ennuient</li>
-<li>À faire régulièrement</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="aborescence-du-dépôt" class="slide level3 smaller">
-<h3>Aborescence du dépôt</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>PROJET-INFO-2A</span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>    ├── .vscode</span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>    │   └── settings.json</span>
-<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a>    ├── data</span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>    │   └── init_db.sql</span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>    ├── doc</span>
-<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>    │   └── suivi</span>
-<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a>    │       └── YYYY.MM.DD-semaineN.md</span>
-<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a>    ├── src</span>
-<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a>    │   ├── business_object</span>
-<span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe.py</span>
-<span id="cb2-12"><a aria-hidden="true" tabindex="-1"></a>    │   ├── dao</span>
-<span id="cb2-13"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_dao.py</span>
-<span id="cb2-14"><a aria-hidden="true" tabindex="-1"></a>    │   ├── service</span>
-<span id="cb2-15"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── une_classe_service.py</span>
-<span id="cb2-16"><a aria-hidden="true" tabindex="-1"></a>    │   ├── tests</span>
-<span id="cb2-17"><a aria-hidden="true" tabindex="-1"></a>    │   │   ├── dao</span>
-<span id="cb2-18"><a aria-hidden="true" tabindex="-1"></a>    │   │   └── service</span>
-<span id="cb2-19"><a aria-hidden="true" tabindex="-1"></a>    │   ├── utils</span>
-<span id="cb2-20"><a aria-hidden="true" tabindex="-1"></a>    │   └── view</span>
-<span id="cb2-21"><a aria-hidden="true" tabindex="-1"></a>    │       └── accueil_view.py</span>
-<span id="cb2-22"><a aria-hidden="true" tabindex="-1"></a>    ├── .gitignore</span>
-<span id="cb2-23"><a aria-hidden="true" tabindex="-1"></a>    ├── LICENCE</span>
-<span id="cb2-24"><a aria-hidden="true" tabindex="-1"></a>    ├── README.md</span>
-<span id="cb2-25"><a aria-hidden="true" tabindex="-1"></a>    └── requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="documentation" class="slide level3">
-<h3>Documentation</h3>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>operations_mathematiques.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="operations_mathematiques.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">class</span> OperationsMathematiques:</span>
-<span id="cb3-2"><a></a>    <span class="co">"""Opérations Mathématiques"""</span></span>
-<span id="cb3-3"><a></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb3-4"><a></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
-<span id="cb3-5"><a></a><span class="co">        Parameters</span></span>
-<span id="cb3-6"><a></a><span class="co">        ----------</span></span>
-<span id="cb3-7"><a></a><span class="co">        nombre : float or int</span></span>
-<span id="cb3-8"><a></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
-<span id="cb3-9"><a></a><span class="co">        Returns</span></span>
-<span id="cb3-10"><a></a><span class="co">        -------</span></span>
-<span id="cb3-11"><a></a><span class="co">        float or None</span></span>
-<span id="cb3-12"><a></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
-<span id="cb3-13"><a></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
-<span id="cb3-14"><a></a><span class="co">        """</span></span>
-<span id="cb3-15"><a></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
-<span id="cb3-16"><a></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
-<span id="cb3-17"><a></a>        <span class="cf">else</span>:</span>
-<span id="cb3-18"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<aside class="notes">
-<ul>
-<li>Doc classes
-<ul>
-<li>Attributs</li>
-</ul></li>
-<li>Doc méthodes
-<ul>
-<li>brève description</li>
-<li>paramètres</li>
-<li>retour</li>
-</ul></li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
 <section>
-<section id="logs" class="title-slide slide level2 center">
-<h2>Logs</h2>
-
+<section id="a-few-reminders" class="title-slide slide level2 center">
+<h2>A Few Reminders</h2>
+<p>The three principles of object-oriented programming:</p>
+<ul>
+<li><strong>Encapsulation:</strong> an object contains <strong>attributes</strong> and <strong>methods</strong>.</li>
+<li><strong>Inheritance:</strong> an object can <strong>inherit</strong> attributes and methods from another class to <strong>redefine</strong> them. It can also add other attributes/methods.</li>
+<li><strong>Polymorphism:</strong> a method can be associated with <strong>different code</strong> depending on the parameters passed or the object it belongs to.</li>
+</ul>
+<aside class="notes">
+<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.</p>
+<ul>
+<li>Attribut : ce qu’il est</li>
+<li>Méthode : ce qu’il peut faire</li>
+<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
+<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="quest-ce-que-les-logs" class="slide level3">
-<h3>Qu’est-ce que les logs</h3>
-<div class="callout callout-note callout-titled callout-style-default">
+<section id="an-example-to-illustrate" class="slide level3">
+<h3>An Example to Illustrate</h3>
+<p>Automatic data processing application:</p>
+<ul>
+<li>Multiple data sources: surveys, web scraping, administrative files, etc.</li>
+<li>Multiple data formats: csv, xml, json, etc. (<em>we’ll come back to this</em>)</li>
+<li>Multiple processing algorithms: exploratory statistics, regression, “machine learning,” etc.</li>
+</ul>
+<aside class="notes">
+<p>Fundamentally, it’s a fairly simple application.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-of-a-class-diagram" class="slide level3">
+<h3>Example of a Class Diagram</h3>
+<p><a href="img/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="img/class_diagram_no_poo.png"></a></p>
+<aside class="notes">
+<p>Voyez-vous des choses à corriger ?<br>
+Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
+<span id="cb1-2"><a></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
+<span id="cb1-3"><a></a>    ...</span>
+<span id="cb1-4"><a></a>  <span class="cf">elif</span></span>
+<span id="cb1-5"><a></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="an-example-with-inheritance" class="slide level3">
+<h3>An Example with Inheritance</h3>
+<p><a href="img/class_diagram_poo1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="img/class_diagram_poo1.png"></a></p>
+<aside class="notes">
+<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
+Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
+<p>Code dans le dossier exemple POO.</p>
+<p>Que pensez-vous de la classe Source ?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="abstract-classes" class="slide level3">
+<h3>Abstract Classes</h3>
+<p><strong>Abstract Class:</strong> a class whose implementation is <strong>not complete</strong> and which is <strong>not instantiable</strong>.</p>
+<p>Allows passing a <strong>contract</strong>. Child classes will have to implement what is missing.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>We know what child classes must do 👍</li>
+<li>We can generate code 🙏</li>
+<li>Limits the risk of error!! 👌</li>
+</ul>
+<aside class="notes">
+<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.</p>
+<p>Rappels : classe, objet, abstrait (Vehicule)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="for-example" class="slide level3">
+<h3>For Example</h3>
+<p><a href="img/class_diagram_poo_abstract_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="img/class_diagram_poo_abstract_class.png"></a></p>
+<aside class="notes">
+<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
+<p><code>v = Vehicule("rouge")</code> -&gt; ça marche plus</p>
+<p>Méthode <em>custom_process</em> abstraite</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="and-in-python" class="slide level3">
+<h3>And in Python?</h3>
+<ul>
+<li>No native support for abstract classes 😱</li>
+<li>Abstract Base Classes (abc) module to solve the problem 🦾</li>
+<li>Already included in your Python distribution 😌
+<ul>
+<li><strong>Step 1:</strong> Import the module 🧳</li>
+<li><strong>Step 2:</strong> Inherit from <code>ABC</code> 👨‍👩‍👧‍👦</li>
+<li><strong>Step 3:</strong> Define abstract methods 📝</li>
+<li><strong>Step 4:</strong> ???</li>
+<li><strong>Step 5:</strong> Profit 💰💰</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Step 4 : implémenter les méthodes abstraites dans les classes filles</p>
+<p>L’autre gros défaut de Python est son typage dynamique.</p>
+<p>Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-if-we-added-data-formats" class="slide level3">
+<h3>What If We Added Data Formats?</h3>
+<p>Currently, 3 data formats in our application:</p>
+<ul>
+<li><strong>CSV:</strong> Comma Separated Values (tabular)</li>
+<li><strong>XML:</strong> eXtended Markup Language (tag format)</li>
+<li><strong>JSON:</strong> JavaScript Object Notation (key-value format)</li>
+</ul>
+<aside class="notes">
+<p>On reviendra plus en détail sur les différents formats.</p>
+<p>Retour 2 slides avant : si on fait pareil et qu’on utilise l’héritage pour le format</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="for-example-1" class="slide level3">
+<h3>For Example</h3>
+<p><a href="img/class_diagram_poo_file_format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/class_diagram_poo_file_format.png"></a></p>
+<p>Do you see a problem?</p>
+<aside class="notes">
+<p>Ca grossit de manière exponentielle</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-power-of-oop" class="slide level3">
+<h3>The Power of OOP</h3>
+<ul>
+<li>Currently 4 * 3 “concrete” classes to define 😱</li>
+<li>Reading the format is dependent on the source 😵</li>
+</ul>
+<p><strong>BUT</strong></p>
+<ul>
+<li>We can externalize this processing! 😌</li>
+<li>Aggregation relationship 🤯</li>
+</ul>
+<aside class="notes">
+<p>Il faut bien comprendre</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-bridge-pattern" class="slide level3">
+<h3>Le bridge pattern</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/class_diagram_poo_bridge_pattern.png"></a></p>
+</section>
+<section id="work-smart-not-hard" class="slide level3">
+<h3>Work Smart, Not Hard</h3>
+<ul>
+<li><strong>Composition + inheritance:</strong> 9 classes 😎</li>
+<li><strong>Inheritance:</strong> 17 classes 😫</li>
+<li>We can easily add types and formats 🥳</li>
+</ul>
+<div title="Pattern Bridge">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Pattern Bridge</strong></p>
 </div>
 <div class="callout-content">
-<p>La journalisation (ou logging) est le processus d’enregistrement des événements, des erreurs, et des informations dans une application.</p>
+<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
 </div>
 </div>
 </div>
-<p>Un log capture des informations sur ce qui s’est passé à un moment donné :</p>
+</div>
+</section>
+<section id="in-summary" class="slide level3">
+<h3>In Summary</h3>
 <ul>
-<li>Surveillance</li>
-<li>Débogage</li>
+<li>Use the power of OOP 💣</li>
+<li>Prefer specific objects (inheritance) over <code>if/elif/else</code> 🐱‍🏍</li>
+<li>Abstract classes are blueprints for future classes 👷‍♀️👷‍♂️</li>
+<li>OOP allows creating more readable, scalable, and maintainable code 👑</li>
+</ul>
+</section></section>
+<section>
+<section id="software-engineering" class="title-slide slide level2 center">
+<h2>Software Engineering</h2>
+<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q" width="600" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
+</iframe>
+<aside class="notes">
+<p>On va aller un cran au-dessus.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-software-engineering" class="slide level3">
+<h3>What is Software Engineering?</h3>
+<ul>
+<li>Observation: coding blindly does not result in a quality application.</li>
+<li>But stacking bricks blindly does not result in a house, even if you have a plan.</li>
+<li>Need to plan, document, test…</li>
 </ul>
 <aside class="notes">
+<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-its-important-parallel-with-building-a-house" class="slide level3">
+<h3>Why It’s Important: Parallel with Building a House</h3>
+<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif"></a></p>
+</section>
+<section class="slide level3">
+
 <ul>
-<li>Ils permettent de surveiller l’état d’un système, des comportements inattendus</li>
-<li>Ils aident à identifier et résoudre les problèmes</li>
+<li>You have the construction plan for a house (provided by the architect)</li>
+<li>But implementing this plan requires technical knowledge</li>
+<li>Need to redraw diagrams for specific areas (arches, stairs, etc.)</li>
+<li><strong>This is not wasted time!</strong></li>
+</ul>
+<p><strong>Writing quality code is like doing precision craftsmanship; it requires tools, experience, and methods.</strong></p>
+<aside class="notes">
+<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="some-basic-principles" class="slide level3">
+<h3>Some Basic Principles</h3>
+<ul>
+<li>Decompose a program into simple <strong>coherent</strong> modules</li>
+<li>Modules <strong>expose</strong> methods that can be used/overridden by other modules but remain protected from unintended modifications</li>
+<li>Each module should be a <strong>black box</strong> for others</li>
+<li>If we keep the same <strong>inputs/outputs</strong>, we can change a module without risk</li>
+<li>Prefer abstractions + inheritance over <code>if/elif/else</code></li>
+</ul>
+<aside class="notes">
+<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
+<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke.</p>
+<p>Pareil c’est pas le boulot d’une vue de faire un calcul. Par contre une vue peut demander. Bien insister sur “l’indépendance des couches”. Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d’accord sur comment elles communiquent le travail peut se faire en parallèle.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="a-mantra" class="slide level3">
+<h3>A Mantra</h3>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Low coupling, high cohesion</strong></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Low inter-class coupling:</strong> modifying one class should impact others as little as possible.</li>
+<li><strong>High intra-class cohesion:</strong> each class should be a coherent set of attributes and methods.</li>
+</ul>
+<aside class="notes">
+<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-respect-low-coupling-high-cohesion" class="slide level3">
+<h3>Why Respect Low Coupling, High Cohesion?</h3>
+<ul>
+<li>Teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
+<li>Code readability 📖</li>
+<li>Debugging 🐞</li>
+</ul>
+<p><strong>Limit the risk of errors when modifying code (avoid spaghetti code) 🍝</strong></p>
+<aside class="notes">
+<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="revisiting-the-bridge-pattern" class="slide level3">
+<h3>Revisiting the Bridge Pattern</h3>
+<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="img/class_diagram_poo_bridge_pattern.png"></a></p>
+<aside class="notes">
+<p>Je remontre le schéma quelques secondes</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level3">
+
+<ul>
+<li>The “Source” part handles processing related to the source.</li>
+<li>The “File” part handles file reading.</li>
+<li>Only inputs/outputs matter.</li>
+<li>We can add a “Processing” part for additional processing.</li>
+<li>No unnecessary <code>if/elif/else</code>. <strong>Each part of our code handles only one thing</strong></li>
+</ul>
+<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
+<aside class="notes">
+<p>Avantages :</p>
+<ul>
+<li>Lecture du code facilitée.</li>
+<li>En cas de bug, facile de trouver le coupable.</li>
+<li>On peut répartir le travail facilement.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -460,15 +704,27 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="level-1---débutant" class="slide level3">
-<h3>Level 1 - Débutant</h3>
+<section id="design-patterns-definition" class="slide level3">
+<h3>Design Patterns: Definition</h3>
+<blockquote>
+<p>“In computer science, and more specifically in software development, a design pattern is a characteristic arrangement of modules, recognized as a best practice in response to a software design problem. It describes a standard solution, usable in the design of different software.” — <a href="https://en.wikipedia.org/wiki/Software_design_pattern">Source</a></p>
+</blockquote>
+</section>
+<section id="design-patterns-in-a-nutshell" class="slide level3">
+<h3>Design Patterns: In a Nutshell</h3>
 <ul>
-<li>Vous avez une erreur dans votre code</li>
-<li>Mais vous ne savez pas exactement où ?</li>
-<li>Que faites-vous ?</li>
+<li>Best practices</li>
+<li>Standard solutions to design problems</li>
+<li>Robust solutions</li>
+<li>Independent of technology</li>
+<li>Independent of the business</li>
 </ul>
+<blockquote>
+<p><strong>Is a tool that is there to help you</strong></p>
+</blockquote>
 <aside class="notes">
-<p>Vous mettez des “prints” partout</p>
+<p>En plus ils apportent un vocabulaire commun.<br>
+Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -481,15 +737,19 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="level-2---mode-debug" class="slide level3">
-<h3>Level 2 - Mode Debug</h3>
+<section id="design-patterns-example" class="slide level3">
+<h3>Design Patterns: Example</h3>
+<p><strong>Recurring Problem:</strong></p>
 <ul>
-<li>Vous ajoutez un point d’arrêt</li>
-<li>Vous lancez en mode debug</li>
-<li>Vous avancez jusqu’à l’erreur</li>
+<li>Creating complex objects that are a composition of independent characteristics</li>
+<li>In other words: decouple abstraction from its implementation so they can vary independently</li>
 </ul>
+</section>
+<section class="slide level3">
+
+<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="img/class_diagram_poo_bridge_pattern_advanced.png"></a></p>
 <aside class="notes">
-<p>Demo</p>
+<p>En ajoutant les méthodes stats</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -502,80 +762,33 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="level-3---logs" class="slide level3">
-<h3>Level 3 - Logs</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Importez le module <em>logging</em> et configurez</label></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> logging</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>logging.basicConfig(</span>
-<span id="cb4-4"><a></a>    filename<span class="op">=</span><span class="st">'logs/example.log'</span>,  </span>
-<span id="cb4-5"><a></a>    level<span class="op">=</span>logging.INFO,     </span>
-<span id="cb4-6"><a></a>    <span class="bu">format</span><span class="op">=</span><span class="st">"</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(levelname)-8s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st">"</span>,</span>
-<span id="cb4-7"><a></a>    datefmt<span class="op">=</span><span class="st">"</span><span class="sc">%d</span><span class="st">/%m/%Y %H:%M:%S"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Possible d’externaliser la config dans un fichier <code>logging_config.yml</code></p>
-</section>
-<section id="level-3---logs-1" class="slide level3">
-<h3>Level 3 - Logs</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Postionnez vos logs</label></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>logger.debug(<span class="st">"Ceci est un message de débogage"</span>)</span>
-<span id="cb5-2"><a></a>logger.info(<span class="st">"Ceci est un message d'information"</span>)</span>
-<span id="cb5-3"><a></a>logger.warning(<span class="st">"Ceci est un message d'avertissement"</span>)</span>
-<span id="cb5-4"><a></a>logger.error(<span class="st">"Ceci est un message d'erreur"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="les-niveaux-de-logs" class="slide level3">
-<h3>Les niveaux de logs</h3>
+<section id="in-summary-1" class="slide level3">
+<h3>In Summary</h3>
 <ul>
-<li><strong>DEBUG</strong> : utile pour le débogage lors du développement</li>
-<li><strong>INFO</strong> : suivi du code exécuté</li>
-<li><strong>WARNING</strong> : situation inhabituelle mais non bloquante</li>
-<li><strong>ERROR</strong> : affecte la logique du programme mais ne l’arrête pas complètement</li>
-<li><strong>CRITICAL</strong> : nécessite une intervention urgente</li>
+<li>Creating a complex application requires complex code 🧩</li>
+<li>Without a design phase, we’re heading for trouble 🧱</li>
+<li>There are ready-made solutions to common problems 🧰</li>
 </ul>
-</section>
-<section id="un-bon-début" class="slide level3">
-<h3>Un bon début</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> logging</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="kw">def</span> ma_methode(a):</span>
-<span id="cb6-4"><a></a>    logging.debug(<span class="st">"ma_methode - DEBUT"</span>)</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a>    ...</span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a>    logging.debug(<span class="st">"ma_methode - FIN"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="aller-plus-loin" class="slide level3">
-<h3>Aller plus loin</h3>
-<p>Utiliser les modules :</p>
-<ul>
-<li>src/utils/log_init.py</li>
-<li>src/utils/log_decorator.py</li>
-</ul>
-<p>Et ajouter un décorateur <code>@Log</code> avant chaque méthode</p>
-<aside class="notes">
-<p>Wrapper : va encapsuler la méthode</p>
-<p>Démo log_decorator</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Faible couplage, forte cohérence</p>
+</div>
+</div>
+</div>
 
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="outils-dev.html">Outils de développement</a></p>
+<p><a href="../../index.html">Home</a> — <a href="05-poo-avancee.html">Advanced OOP</a></p>
 </div>
 </div></div>
 
@@ -955,6 +1168,38 @@ Rémi Pépin
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>
