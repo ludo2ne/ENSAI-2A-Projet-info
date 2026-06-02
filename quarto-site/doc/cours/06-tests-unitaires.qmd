@@ -10,7 +10,7 @@ format:
 
 ## Testing
 
-![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](img/commitStrip_tester_ou_non.jpg){.r-stretch}
+![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](./img/quality-test-or-not-commitstrip.jpg){.r-stretch}
 
 ::: {.notes}
 ça parait évident, et pourtant...
@@ -32,7 +32,7 @@ j'ai déjà testé une fonctionnalité d'un dev dont le cas nominal plante.
 - To avoid regressions (when you modify code)
 
 ::: {.callout-note}
-Aucun test n'est parfait, mais cela permet quand même d'écarter de nombreuses erreurs.
+No test is perfect, but it still helps eliminate many errors.
 :::
 
 
@@ -235,19 +235,19 @@ Vu en 1A :
 
 ### Mock - Example
 
-```{.python filename="joueur_service.py"}
-class JoueurService:
-    def creer(self, pseudo, mdp, age, mail, fan_pokemon) -> Joueur:
-        nouveau_joueur = Joueur(
+```{.python filename="player_service.py"}
+class PlayerService:
+    def create(self, pseudo, mdp, age, mail, fan_pokemon) -> Player:
+        new_player = Player(
             pseudo=pseudo,
             mdp=hash_password(mdp, pseudo),
             age=age,
             mail=mail,
             fan_pokemon=fan_pokemon,
         )
-        creation_ok = JoueurDao().creer(nouveau_joueur)
-        if creation_ok:
-            return nouveau_joueur
+        create_ok = PlayerDao().creer(new_player)
+        if create_ok:
+            return new_player
         else:
             return None
 ```
@@ -259,18 +259,18 @@ Comment prévoir le comportement de `JoueurDao().creer(nouveau_joueur)` ?
 
 ### Mock - Example
 
-```{.python filename="test_joueur_service.py"}
+```{.python filename="test_player_service.py"}
 from unittest.mock import MagicMock
-def test_creer_ok():
-    """Successful creation of Joueur"""
+def test_create_ok():
+    """Successful creation of Player"""
     # GIVEN
     pseudo, mdp, age, mail, fan_pokemon = "jp", "1234", 15, "z@mail.oo", True
-    JoueurDao().creer = MagicMock(return_value=True)
+    PlayerDao().creer = MagicMock(return_value=True)
     # WHEN
-    joueur = JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)
+    player = PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)
     # THEN
-    assert isinstance(joueur, Joueur)
-    assert joueur.pseudo == pseudo
+    assert isinstance(player, Player)
+    assert player.pseudo == pseudo
 ```
 
 
@@ -294,7 +294,7 @@ The best practice:
 1. Create the tests
 2. Code the function
 
-### Logique
+### Logic
 
 It may seem a bit strange !?
 

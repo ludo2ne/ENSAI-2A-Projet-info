@@ -19,13 +19,19 @@ categories:
 :::
 
 
-The practical labs will be carried out on one of the two datalabs:
+The practical labs will be carried out on Datalab SSPCloud: <https://datalab.sspcloud.fr/>{target="_blank"}
 
-- <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
-- <https://datalab.sspcloud.fr/>{target="_blank"}
-  - create an account using `firstname.lastname@eleve.ensai.fr`
+- [ ] If you don't have one, create an account using `firstname.lastname@eleve.ensai.fr`
 
-We will be using the following tools:
+
+::: {.callout-note}
+You can also work on the GENES one, but you'll have to perform certain steps manually.
+
+<https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+:::
+
+
+You will be using the following tools:
 
 - Python 3.13
 - Visual Studio Code
@@ -48,49 +54,47 @@ It's widely used by developers to collaborate on projects.
   - or sign up if you don't already have one
 
 
-### Git Config{.unnumbered}
+### GitHub Token{.unnumbered}
 
-::: {.callout-tip}
-To avoid having to identify yourself every time you want to push code onto GitHub, we're going to:
+To avoid having to identify yourself every time you want to push code onto GitHub from a Datalab service, you will to generate a Token.
 
-- create a token on GitHub
-- declare this token on the datalab
-
-See this [tutorial](https://docs.sspcloud.fr/en/content/version-control.html){target="_blank"} for more information.
+::: {.callout-note}
+If you're sure your token is still active, you can skip this step. If not, create a new one.
 :::
 
-- [ ] Log on to the datalab of your choice
-- [ ] Go to `My account` > `Git` tab
+Follow instructions on [ENSAI-tools](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/basics.html#git){target="_blank"} to:
 
-You must have an active [Personal Access Token](https://github.com/settings/tokens){target="_blank"}
+- [ ] Create a classic token on GitHub
+- [ ] Declare this token on the Datalab
 
-If not:
+### AI agent
 
-- [ ] In GitHub, Generate a new token (classic)
-  - Expiration: 90 days
-  - tick repo and workflow
-  - [Generate token]{.green-button}
-- [ ] Copy the token (ghp_xxxxxxxxxx)
-- [ ] Paste it in the datalab
+::: {.callout-caution}
+AI is a force multiplier, not a substitute for expertise. If you know your subject, it will elevate your work; if you don't, it will simply help you make mistakes faster. Using AI without a solid foundation is like driving a high-speed car without knowing how to steer: you'll get somewhere quickly, but you might crash along the way.
+:::
+
+Using an AI agent directly within VSCode transforms your editor from a simple text tool into an intelligent collaborator. By having full access to your local files and project structure, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.
+
+- [ ] Follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia){target="_blank"} to use AI agent in VSCode.
+  - You can stop at the "Launch a VSCode service" step
 
 
 ## Objectives {.unnumbered}
 
 The objectives of this first tutorial are as follows:
 
-- Use of *Git*
-- Getting to grips with *VS Code*
-- Understand how an application works
+- Reminders on using *Git*
+- Getting to grips with *VS Code* and its settings
+- Understand how an application works (Backend/Frontend)
 
 This tutorial combines explanations and code phases.
 
 The explanations in this tutorial should not take precedence over those of your instructor. Use them as a knowledge base for later, but always prefer oral explanations.
 
 
-
 ## Repositories creation
 
-::: {.callout-caution}
+::: {.callout-note}
 For this first tutorial, you will [**work with your project team**]{.underline} on a single remote repository.
 
 One member of the team will create a repository on GitHub and then all the members (including the creator of the GitHub repository) will create their local repositories by cloning this remote repository.
@@ -100,56 +104,94 @@ One member of the team will create a repository on GitHub and then all the membe
 
 ::: {.callout-warning}
 A single team member creates this remote repository.
+
+This is the repository that is shared among all project members and to which all clones are connected
 :::
 
 - [ ] Connect on [GitHub](https://github.com/){target="_blank"}
-- [ ] Create a *fork* of the repository [ENSAI-2A-projet-info-template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
-  - A fork is a copy of a repository, allowing a user to develop independently without affecting the original
+- [ ] Create a new repository using [ENSAI-2A-projet-info-template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"} as a template
+  - Button [Use this template](https://github.com/new?template_name=ENSAI-2A-projet-info-template&template_owner=ludo2ne){.green-button target="_blank"}
 - [ ] Add your team members
   - On the repository page > :gear: Settings > Collaborators > [Add people]{.green-button}
-- [ ] Send the address of the remote repository to your team
+- [ ] Send the address of the remote repository to your teamates
+
+### Datalab service
+
+Before creating your local repositories, you will launch a VSCode-python service.
+
+But you will not launch directly the catalog service. You will custom it first:
+
+- adding/removing some extensions
+- installing needed packages
+- by opening ports to the internet
+
+Let's do this manually:
+
+- [ ] In the catalog, select **VSCode-python** and click **Launch** once
+- [ ] Initialization script (URL): `https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh` 
+
+
+::: {.callout-note}
+This script:
+
+- install packages
+- install/uninstall VSCode extensions
+
+[More about initialization script](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/advanced.html){target="_blank"}
+:::
+
+- [ ] Fill **Git repository url** using https url of your remote repository
+- [ ] Expose ports 5000 and 8000
+- [ ] Enable AI Assistant
+- [ ] **Lanch** and Open the service
+
+::: {.callout-important}
+If you don't expose both ports, you will have no choice but to start over with creating your VScode-python service and everything that follows.
+:::
+
+:construction: Direct link
 
 
 ### Local repositories
 
-All team members will now create a local repository on a VSCode service in the datalab.
+Once the VSCode service is up and running, your local clone should already be created.
 
-- [ ] Launch a VSCode-python service
-  - In tab *Network access*, enable Port **9876**
-  - It will be usefull later to expose your webservice
+Let's check it using a terminal:
 
-::: {.callout-important}
-If you don't enable port 9876, you will have no choice but to start over with creating your VScode-python service and everything that follows.
-:::
-
-- [ ] Once VSCode has been launched, open a new terminal
+- [ ] Open a new terminal
   - Top left, icon with 3 horizontal bars > Terminal > New
   - or use shortcut CTRL + SHIFT + C
-- [ ] Clone the remote repository using the token
-  - `git clone https://github.com/<user_name>/<repo_name>.git`
-- [ ] Position yourself in your repo
-  - File > Open Folder > `/home/onyxia/work/<repo_name>` > OK
+- [ ] List all files and directories in the current folder
+  - You should see your cloned repository
 
-:::{.callout-note title="Environment Variables" collapse="true"}
-
-In principle, there is no longer any need to specify the token when cloning.
-
-Old way of doing things using environment variable `GIT_PERSONAL_ACCESS_TOKEN`:
-
-- `git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/<user_name>/<repo_name>.git`
-
-An environment variable is a system-defined value used to configure how applications run or to securely store information like file paths, keys, or access tokens.
-
-It is like a key-value pair in a dictionary. For example, `GIT_PERSONAL_ACCESS_TOKEN` is a variable whose value stores your GitHub personal access token.
-
-```{.bash}
-export MY_VAR_KEY=my_var_value   # Create or replace
-echo $MY_VAR_KEY                 # Display
-printenv                         # Display all
-printenv | grep GIT              # Display all containing the word GIT
-```
+::: {.callout-caution title="If the clone creation failed"}
+- [ ] You will have to [create the clone manually using the token](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/basics.html#la-m%C3%A9thode-pas-compliqu%C3%A9e){target="_blank"}
 :::
 
+- [ ] Position yourself in your repo
+  - Manually: File > **Open Folder** > `/home/onyxia/work/<repo_name>` > OK
+  - Or command: `code-server /home/onyxia/work/ENSAI-2A-projet-info-template`
+
+
+This opens a new tab with your project set as the root of your file explorer.
+
+- [ ] In the new tab, open a terminal
+  - Close the previous tab
+- [ ] Check which repository your clone is connected to:
+  - `git remote -v`
+
+
+::: {.callout-important}
+You should be connected via push and fetch (pull) to the URL of your remote repository, [including the token]{.underline}:
+
+```{.bash}
+$ git remote -v
+origin  https://ghp_dadadirladada@github.com/ludo2ne/ENSAI-2A-projet-info-template.git (fetch)
+origin  https://ghp_dadadirladada@github.com/ludo2ne/ENSAI-2A-projet-info-template.git (push)
+```
+
+Otherwise, check the same link as above ("If the clone creation failed") to connect your repository properly.
+:::
 
 
 ## Repository content
@@ -160,95 +202,193 @@ Focus on some files.
 
 ### README
 
-The README file is essential for every project. It contains all the information needed to **describe, install and use** the application.
+The **[README file is essential]{.underline}** for every project. It contains all the information needed to describe, install and use the application.
 
-You will now follow the README instructions to :
+Follow instructions to :
 
 - [ ] Install required packages
 - [ ] Fill in the environment variables 
 
 ::: {.callout-tip}
-You notice that you need to connect to a PostgreSQL database.
+You will notice that you need to connect to a PostgreSQL database.
+:::
 
 - [ ] In the datalab, launch a new PostgreSQL service
   - Ressources tab > Persistent volume size: 1Gi
-- [ ] While the service is starting, copy the properties and fill in the .env file
-:::
+- [ ] While the service is starting, copy the properties and fill in the *.env* file
+
 
 ### VSCode settings
+
+::: {.callout-note}
+The *.vscode/settings.json* file is the central configuration file for VS Code, allowing you to customize the editor through code instead of menus. 
+
+You use it to control everything from themes and fonts to code formatting, auto-completion behaviors, and extension settings.
+:::
 
 Most of these settings concern the automatic formatting of code when you save a file:
 
 - Formatter: [Ruff](https://docs.astral.sh/ruff/formatter/){target="_blank"}
 - `"editor.formatOnSave": true`: apply format when you save a file
-- `"editor.insertSpaces": true,: replace tabulation by spaces
-
-Another important property :
-
-- `"PYTHONPATH": "${workspaceFolder}/src"`: Python code is in folder *src*
-
+- `"editor.insertSpaces": true`: replace tabulation by spaces
 
 
 ## Application example
 
-You may be asked to design 2 types of application:
+You might design a Web services (mandatory) and/or a Menu-driven interface (optional):
 
-- A CLI application
-  - the user navigates through menus
-- A webservice
-  - the application exposes endpoints
-  - the user can query these endpoints and retrieve the results
+- **Web services**: User interaction via API endpoints to retrieve data
+- **Menu-driven apps**: User interaction via navigation menus
 
 
-### CLI application
+### Web services vs Menu-driven
 
-- [ ] Follow README instructions to run the application
+To understand the difference, let's look at how you access data from the same source (Star Wars API):
+
+
+#### The API (Webservice)
+
+Target: Machines/Software :robot:
+
+- URL: <https://swapi.info/api/people/35>{target="_blank"}
+- Experience: You receive a raw, structured data format (usually JSON). There is no design, no colors, just the "pure" information.
+- Goal: Efficiency and integration (so another program can read the data easily).
+
+
+#### The Web Interface (Menu-driven)
+
+Target: Humans :bust_in_silhouette:
+
+- URL: <https://swapi.info/people/padme-amidala>{target="_blank"}
+- Experience: You click on links, navigate through menus, and see a beautifully formatted webpage with images, colors, and buttons.
+- Goal: Ease of use and visual presentation.
+
+
+### A webservice
+
+We will discuss webservices in more detail in Lab 3.
+
+- [ ] Following the instructions in the README, lanch the backend application
+  - Once it starts, **don't click on the pop-up**. It won't work!
+
+::: {.callout-tip title="How to query it"}
+- **Internal**: Use [curl](https://curl.se/){target="_blank"} within the service environment.
+- **External**: Use the public URL to access the service through the exposed port (5000).
+:::
+
+Let's start by querying the web service from the inside:
+
+- [ ] Open a new terminal
+- [ ] Launch `curl http://localhost:5000/hello/Chewbacca | jq .`
+
+Then from the outside:
+
+- [ ] Go back to [My service](https://datalab.sspcloud.fr/my-services){target="_blank"} page
+- [ ] Click on **Open** button of the service
+- [ ] Click on *Port 5000* link
+
+::: {.callout-note}
+Using this link, even your neighbor can access it.
+:::
+
+You are being redirected to the */docs* endpoint, the Swagger API.
+
+- [ ] List all players (Try it out :arrow_right: Execute)
+
+If the request was successful, you will receive an HTTP 200 code and a response body.
+
+::: {.callout-tip title="HTTP Status codes" collapse="true"}
+| Code Range | Type | Category | Brief Description |
+| :--- | :--- | :--- | :--- |
+| **2xx** | **Success** | Success | The action was successfully received, understood, and accepted. |
+| **4xx** | **Client Error** | Client Error | The request contains bad syntax or cannot be fulfilled by the client. |
+| **5xx** | **Server Error** | Server Error | The server failed to fulfill an apparently valid request. |
+
+| Code | Type | Description |
+| :--- | :--- | :--- |
+| **200** | Success | **OK**: The request succeeded. |
+| **201** | Success | **Created**: Request fulfilled and a new resource was created. |
+| **400** | Client Error | **Bad Request**: The server cannot process the request due to client error. |
+| **401** | Client Error | **Unauthorized**: Authentication is required and has failed or not been provided. |
+| **403** | Client Error | **Forbidden**: The client does not have access rights to the content. |
+| **404** | Client Error | **Not Found**: The server cannot find the requested resource. |
+| **405** | Client Error | **Method Not Allowed**: The request method (GET, POST, etc.) is not supported. |
+| **500** | Server Error | **Internal Server Error**: A generic error message when an unexpected condition was encountered. |
+| **502** | Server Error | **Bad Gateway**: The server received an invalid response from an upstream server. |
+| **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
+:::
+
+- [ ] In your opinion, is it normal to see the hashed passwords of all the players?
+- [ ] Find and fix the service method that needs to be corrected
+- [ ] To verify this, you need to stop and restart the web service
+
+Feel free to test **GET** requests using curl and/or the Swagger
+
+- [ ] Check the logs to see the methods called
+
+::: {.callout-caution}
+For other types of http request (PUT, POST, DELETE), you will see how to make these requests in a later tutorial.
+:::
+
+This diagram shows how a request to fetch a player travels through the application layers, from the API router to the database.
+
+:::{style="background-color: #d7e2df;"}
+```{mermaid}
+sequenceDiagram
+    participant Client as Client
+    participant Router as API Router (main)
+    participant WS as PlayerController
+    participant Service as PlayerService
+    participant DAO as PlayerDao
+
+    Client->>Router: GET /player/1
+    Note right of Router: Route matching /player
+    Router->>WS: player_by_id(id_player=1)
+    
+    WS->>Service: find_by_id(1)
+        
+    Service->>DAO: find_by_id(1)
+    DAO-->>DAO: Database request <br/>SELECT *<br/>FROM player<br/> WHERE id =...
+    DAO-->>Service: Player instance (or None)
+    Service-->>WS: Player instance (or None)
+
+    alt Player found
+        WS-->>Client: 200 OK <br/> JSON {id_player: 1, username: "...", ...}
+    else Player not found
+        WS-->>Client: 404 Not Found <br/> {"detail": "Player not found"}
+    end
+```
+:::
+
+- [ ] Open the backend log file to see the same behavior
+
+Now that our API is up and running, it’s quite satisfying to see it working. However, interacting with raw JSON isn't exactly a luxury—this is where a proper user interface comes in.
+
+
+### Menu application
+
+- [ ] Follow README instructions to run the menu application
+  - **Don't click on the pop-up!**
+- [ ] Open the application (the same way you did before, clicking on *Port 8000* link)
 
 You arrive at the home menu. The principle of this type of application is to let you navigate from one view to another. If necessary, the view will call up *services* in the background.
 
 - [ ] Create a new account
 
-
-::: {.callout-note}
-Below is a sequence diagram explaining the process.
-
-You will find the same information in the log file.
-
-```{mermaid}
-sequenceDiagram
-    participant CLI
-    participant Vue as InscriptionVue
-    participant Service as JoueurService
-    participant Dao as JoueurDao
-
-    CLI->>Vue: Enter pseudo
-    Vue->>Service: pseudo_deja_utilise()
-    Service->>Dao: lister_tous()
-    Dao-->>Service: All players
-    Service-->>Vue: True or False
-    Vue->>CLI: continue if True
-
-    CLI->>Vue: Enter pwd, mail...
-    Vue->>Service: creer()
-    Service->>Dao: creer()
-    Dao-->>Service: True
-    Service-->>Vue: Joueur object
-    Vue->>CLI: Success
-```
-
-:::
-
-
-
 You'll notice that the application asks for a password that's a little too long. 
 
-- [ ] Quit the application
-  - Each time you make a change, you will need to close and restart the application
 - [ ] Find and change the password required length to 16 characters
-  - You will find it in one of the classes above
-- [ ] Read the [inquirerPy](https://inquirerpy.readthedocs.io/en/latest/pages/validator.html){target="_blank"} documentation to add a special character
 
-::: {.callout-tip title="You can do better"}
+::: {.callout-tip collapse="true"}
+This requirement appears at two levels to balance Security and UX:
+
+- **Frontend** (The Guide): Provides real-time feedback in Streamlit. This improves User Experience by preventing frustration and reducing unnecessary API calls.
+- **Backend** (The Guard): Enforces strict validation via Pydantic. This ensures Security, as the backend is the final authority that cannot be bypassed by malicious actors or direct API calls.
+:::
+
+- [ ] Test it manually
+
+::: {.callout-note title="You can do better"}
 In software development, hardcoding fixed values is discouraged because it reduces flexibility and security. 
 
 Instead, using variables or configuration settings allows for easier adjustments and better adaptability across different environments.
@@ -256,74 +396,33 @@ Instead, using variables or configuration settings allows for easier adjustments
 
 - [ ] Create an environment variable called `PASSWORD_MIN_LENGTH`
 - [ ] Use it ! :rugby_football:
-  - with this code `os.environ["PASSWORD_MIN_LENGTH"]` after importing os
+  - with this code `os.environ["PASSWORD_MIN_LENGTH"]` after importing *os*
 
-
-
-::: {.callout-tip}
-There are many ways of restricting user input.
-
-It is also possible to create custom rules.
+::: {.callout-important}
+The file containing the environment variables must not be committed to the remote repository!
 :::
 
+Now it's time to login:
 
-- [ ] After returning to the home page, choose `Se connecter`
+- [ ] After returning to the home page, choose `Login`
   - You will arrive at a new *view* with a new *menu*
   - :bulb: to go faster, you can use user "a", password "a"
 - [ ] Display the players
-- [ ] Open the log file in the `logs` folder
-
+- [ ] Open the frontend log file and check what happened before
 
 ::: {.callout-note}
-In the logs, you can see the flow of operations:
-
-- You navigate from view to view
-- Some views call *services*, which in turn call *DAOs*
+In the logs, you can see the flow of operations.
 :::
-
 
 - [ ] Log out and stop the application
 
-
-### A webservice
-
-We'll come back to webservices in more detail in TP3.
-
-- [ ] Following the instructions in the README, run the webservice
-
-::: {.callout-tip title="How to query it"}
-Inside the Datalab VSCode service, You can query your webservice by running this command in another terminal: `curl http://localhost:9876/hello/Alice`
-
-However, you may remember that at the beginning we opened port 9876 to the outside world, i.e. the whole Internet.
-
-So anyone who knows the address can query this web service from any machine.
-
-To get the address:
-
-- [ ] In the Datalab, go to *My Services* tab
-- [ ] Open once again the VSCode service
-- [ ] You will find a link
-:::
-
-
-
-- [ ] In your browser, test the *GET* (read) requests
-- [ ] Check the logs to see the methods called
-- [ ] Stop the webservice
-
-::: {.callout-caution}
-For other types of http request (PUT, POST, DELETE), the browser is not enough.
-
-You will see how to make these requests in a later tutorial.
-:::
-
-
+In the upcoming lab sessions, we'll be coding additional features.
 
 
 ## Git
 
 ::: {.callout-note}
-You're now going to do a few basic things with Git :
+You're going to do a few basic things with Git :
 
 - Add files to the repository
 - Create save points
@@ -333,101 +432,83 @@ You're now going to do a few basic things with Git :
 
 ### Git routine
 
+You modified some files, it's time to update the remote repository:
 
-- [ ] Create a new file in the *src* folder using your own first name and paste this code
-  ```{.python filename="<firstname>.py"}
-  a, b = 0, 5
-
-  for i in range(b):
-      print(" " * a, end="")
-      a += 1
-      print("Hello <firstname>")
-  ```
 - [ ] In Git Bash, use the *status*, *add*, *commit*, *push* and *pull* commands to send your changes to the remote repository.
 
-::: {.callout-tip collapse="true" title="Help"}
-[The sequence of Git commands](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target=‘_blank’} should become automatic.
-
-If you get this message when you *push*, you need to start with *pull*.
-```{.txt}
-To https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git
-Merge branch 'main' of https://github.com/ludo2ne/ENSAI-2A-complement-info-TP
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first merge the remote changes (e.g.,
-hint: 'git pull') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-```
-:::
-
-### Creating conflict
-
-::: {.callout-important}
-Only one team member will do it!
-:::
-
-- [ ] For all `<firstname.py>` files, first name in the code.
-  - do not change the file names, only the code inside
-    - `print("Hello <firstname>")` :arrow_right: `print("Hello Mary-<firstname>")`
-  - And it *add*, *commit* and *push*
-
-### Solve conflits
-
-- [ ] Then the other members each modify their own file
-  - `print("Hello <firstname>")` :arrow_right: `print("Hello Anna-<firstname>")`
-  - And they *add*, *commit*, *pull* and *push*.
-
-Normally a conflict arises during *pull*. This is because there is a version conflict
-
-
-| Version                      | Code                                     |
-|------------------------------|------------------------------------------|
-| Original version             | `print("Hello <firstname>")`             |
-| Your modification            | `print("Hello Anne-<firstname>")`        |
-| Version on remote repository | `print("Hello Marie-<firstname>")`       |
-
-
 ```{.python}
-<<<<<<< HEAD
-print("Bonjour Anna-<firstname>")         # Your code - current change
-=======
-print("Bonjour Mary-<firstname>")         # Code in the remote repository - incoming change
->>>>>>>
+if "you're the first teamate to push the code":
+  everything_is_fine = True
+else:
+  action = "you have to pull first"
+  conflict_probability = 0.95
 ```
 
-- [ ] You can choose to impose your version
-  - either by clicking on *Accept Current Change*
-  - Or by deleting `print(‘Hello Mary-<firstname>’)`, as well as `<<<<<<<`, `=======` and `>>>>>>>`.
-- [ ] *add*, *commit* *pull* and *push*
+::: {.callout-tip collapse="true" title="Help"}
+[The sequence of Git commands](https://ludo2ne.github.io/ENSAI-tools/doc/git/presentation.html#la-routine-git){target="_blank"} should become automatic.
+
+Read the Git messages carefully! 
+:::
+
+If you need to simulate a conflict, ask a teammate to edit the first line of the README, then *add, commit, and push.*
+
+On your end, do the same thing; it will prompt you to *pull*, and that's it.
 
 
-::: {.callout-important}
+### Handling conflicts
+
+If a teammate has already pushed changes to the same file you are working on, Git will block your `push` and ask you to `pull` first. During this process, you might encounter a **Merge Conflict**.
+
+**Don't panic!** A conflict just means Git doesn't know which version of the code to keep. Follow these steps:
+
+- [ ] Open one by one files having conflicts
+- [ ] Look for the conflict markers *>>>>>>>* and *<<<<<<<* in the code
+
+```{.text}
+<<<<<<< HEAD
+Your local changes (the ones you just wrote)
+=======
+The remote changes (the ones your teammate pushed)
+>>>>>>> [commit_hash_or_branch_name]
+```
+
+- [ ] Decide what the final code should look like. You have three choices:
+  - Keep **only your** code: Accept Current Change
+  - Keep **only the teammate's** code: Accept incoming change
+  - **Combine both**: manually edit the code, then delete all markers
+- [ ] Test your program, and once again, *add, commit and push*
+
+
+::: {.callout-important"}
 Having a conflict isn't a big deal!
 
 Having a conflict isn't a big deal!
 
 Having a conflict isn't a big deal!
 
-Conflict ≠ Error
+**Conflict ≠ Error**
 
 This simply happens when Git encounters 2 versions and it doesn't have a :crystal_ball: or a :game_die: to choose which is the right one.
 
 To avoid conflicts, get organised with your team to avoid working on the same files at the same time as much as possible.
 :::
 
-
-
+Now that you've seen what an application looks like and you're up and running with Git, let's create your real project repository.
 
 ## Create your project repository
+
+
+::: {.callout-tip}
+You can start from scratch, or use a template.
+:::
+
 
 A team member :
 
 - [ ] Creates a remote repository on GitHub ([new Repository](https://github.com/new){target="_blank"})
-  - Repository name: `Projet-info-2A-equipe-<team_number>`.
-  - Public or Private, as you wish
-  - Check *Add a README file*.
+  - Repository name: `ensai-it-project-2a-team<N>`.
+  - Public (recommended) or Private
+  - Check *Add a README file*
   - .gitignore : *Python*
   - Choose a license : Apache, GNU, MIT...
 - [ ] Invite your teammates
@@ -439,10 +520,10 @@ A team member :
 Next, each team member :
 
 - [ ] Creates a local clone of the repository
-- [ ] Does a test to check that they can push code, for example by creating:
-  - *doc/suivi/2025.09.04-week1.md*: the first weekly point
-  - *src/main.py*: the file to launch your application
-  - *requirements.txt*: the file listing the packages
+- [ ] Does a test to check that they can push code, for example by creating or modifiying:
+  - *doc/tracking/2025.09.04-week1.md*: the first weekly point
+  - *README.md*
+  - *main.py*
 
 ::: {.callout-caution}
 Afterwards, you'll make sure that your depot is "tidy", in the same way as described in the previous section.
@@ -454,9 +535,27 @@ This file will contain environment variables that will be used, for example, to 
 
 - [ ] Make sure that this file remains in your local repository and is never sent to GitHub.
 
-::: {.callout-tip collapse="true"}
-Just one member of the team needs to modify the appropriate file, push, and then the others pull.
+
+### PostgreSQL database
+
+You can either:
+
+- Each set up your own PostgreSQL service and connect your application to it
+- Set up and share a single database and have everyone connect to it
+
+| Approach | Pros | Cons |
+| --- | --- | --- |
+| Shared DB | **Zero setup:** Everyone connects to the same URL. <br> **Data Sync:** Everyone sees the same rows. | **High Risk:** One accidental `DROP TABLE` or `DELETE` breaks the project for everyone. <br> **Conflict:** You can't test "deleting a user" if your teammate is currently using that user. |
+| Isolated DB | **Safety:** You can break your local table without consequences. <br> **Independence:** You can test different data states simultaneously. | **Sync Effort:** You must remember to `git commit` the `.sql` file every time you change a column. <br> **Drift:** If someone forgets to commit, the team's environments will diverge. |
+
+: {tbl-colwidths="[16,42,42]"}
+
+::: {.callout-caution}
+In any case, be sure to version one or more SQL files so that you can rebuild your database and data from scratch.
 :::
+
+
+
 
 ## End of the Lab {.unnumbered}
 
