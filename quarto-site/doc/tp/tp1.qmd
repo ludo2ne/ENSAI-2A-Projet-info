@@ -11,11 +11,9 @@ categories:
   - Python project
 ---
 
-:construction:
-
 :::{.notes}
-- Déplacer config git -> créer dossier tools (Onyxia, VScode, Git)
 - pyproject.toml -> remplace requirements.txt & co
+- typst
 :::
 
 
@@ -196,9 +194,25 @@ Otherwise, check the same link as above ("If the clone creation failed") to conn
 
 ## Repository content
 
-::: {.callout-note}
-Focus on some files.
-:::
+| Folder         | Description |
+| -------------- | ----------- |
+| backend/       | The heart of your application, following a Layered Architecture |
+| frontend/      | The user interface code (Streamlit application). |
+| doc/           | Stores project documentation, diagrams, tracking and report |
+| data/          | Used for storing persistent data, such as database files or datasets. |
+| .github/       | Contains CI/CD workflows (GitHub Actions) and automation scripts. |
+| .vscode/       | Stores editor settings, extensions, and debugger configurations. |
+
+In both *backend* and *frontend* folders, you will find these files :
+
+| File           | Description |
+| -------------- | ----------- |
+| pyproject.toml | Defines project metadata, dependencies, and build configurations. |
+| uv.lock        | A lockfile that ensures exact, reproducible dependency versions. |
+| logging.yaml   | Configuration file defining how the application logs information. |
+
+Let's focus on some files.
+
 
 ### README
 
@@ -231,6 +245,35 @@ Most of these settings concern the automatic formatting of code when you save a 
 - Formatter: [Ruff](https://docs.astral.sh/ruff/formatter/){target="_blank"}
 - `"editor.formatOnSave": true`: apply format when you save a file
 - `"editor.insertSpaces": true`: replace tabulation by spaces
+
+
+### pyproject.toml
+
+A `pyproject.toml` file centralizes project configuration. Here is what it contains:
+
+- **Project Metadata:** Name, version, description, authors, etc.
+- **Dependencies:** Core libraries required to run the app 
+  - including dev libraries (only for development)
+- **Build System:** Instructions for Python tools on how to install and build your package.
+- **Tool Configuration:** Settings for various tools (e.g., `pytest`, `ruff`, etc.) to avoid having multiple config files.
+
+
+### uv.lock
+
+Here is a brief overview of **uv** and the **uv.lock** file:
+
+`uv` is an extremely fast Python package and project manager, written in Rust. It is designed to replace multiple tools at once (like `pip`, `pip-tools`, `venv`, and even `pyenv`).
+
+- It is significantly faster than `pip` for installing dependencies
+- It manages Python versions, virtual environments, and package dependencies all in one tool.
+
+The `uv.lock` file is a "lockfile" that records the **exact** state of your project's dependency tree.
+
+- **Deterministic Installs:** While `pyproject.toml` might say "I need FastAPI version 0.100 or higher," the `uv.lock` file records that you are using **exactly** `FastAPI 0.109.2` and specifies the exact versions of every sub-dependency (like `pydantic` or `starlette`) that it pulled in.
+- **Reproducibility:** It ensures that if a teammate clones your repo or if you deploy to a server, they get the **identical** environment you have. It eliminates the "it works on my machine" problem.
+- **Integrity:** It contains hashes for every package, ensuring that the files downloaded are exactly what was expected and haven't been tamelred with.
+
+`uv` is the **engine** that manages your project, and `uv.lock` is the **snapshot** that guarantees everyone uses the exact same setup.
 
 
 ## Application example
