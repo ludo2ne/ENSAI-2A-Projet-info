@@ -227,7 +227,7 @@ Rémi Pépin
 <section id="testing" class="title-slide slide level2 center">
 <h2>Testing</h2>
 
-<img data-src="img/commitStrip_tester_ou_non.jpg" class="r-stretch quarto-figure-center" alt="Source : CommitStrip"><p class="caption">Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></p><aside class="notes">
+<img data-src="./img/quality-test-or-not-commitstrip.jpg" class="r-stretch quarto-figure-center" alt="Source : CommitStrip"><p class="caption">Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></p><aside class="notes">
 <p>ça parait évident, et pourtant…</p>
 <p>j’ai déjà testé une fonctionnalité d’un dev dont le cas nominal plante.</p>
 <style type="text/css">
@@ -267,7 +267,7 @@ Rémi Pépin
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
+<p>No test is perfect, but it still helps eliminate many errors.</p>
 </div>
 </div>
 </div>
@@ -545,20 +545,20 @@ Rémi Pépin
 <h3>Mock - Example</h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>joueur_service.py</strong></pre>
+<pre><strong>player_service.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="joueur_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">class</span> JoueurService:</span>
-<span id="cb6-2"><a></a>    <span class="kw">def</span> creer(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Joueur:</span>
-<span id="cb6-3"><a></a>        nouveau_joueur <span class="op">=</span> Joueur(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="player_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">class</span> PlayerService:</span>
+<span id="cb6-2"><a></a>    <span class="kw">def</span> create(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Player:</span>
+<span id="cb6-3"><a></a>        new_player <span class="op">=</span> Player(</span>
 <span id="cb6-4"><a></a>            pseudo<span class="op">=</span>pseudo,</span>
 <span id="cb6-5"><a></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
 <span id="cb6-6"><a></a>            age<span class="op">=</span>age,</span>
 <span id="cb6-7"><a></a>            mail<span class="op">=</span>mail,</span>
 <span id="cb6-8"><a></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
 <span id="cb6-9"><a></a>        )</span>
-<span id="cb6-10"><a></a>        creation_ok <span class="op">=</span> JoueurDao().creer(nouveau_joueur)</span>
-<span id="cb6-11"><a></a>        <span class="cf">if</span> creation_ok:</span>
-<span id="cb6-12"><a></a>            <span class="cf">return</span> nouveau_joueur</span>
+<span id="cb6-10"><a></a>        create_ok <span class="op">=</span> PlayerDao().creer(new_player)</span>
+<span id="cb6-11"><a></a>        <span class="cf">if</span> create_ok:</span>
+<span id="cb6-12"><a></a>            <span class="cf">return</span> new_player</span>
 <span id="cb6-13"><a></a>        <span class="cf">else</span>:</span>
 <span id="cb6-14"><a></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -580,19 +580,19 @@ Rémi Pépin
 <h3>Mock - Example</h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>test_joueur_service.py</strong></pre>
+<pre><strong>test_player_service.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="test_joueur_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
-<span id="cb7-2"><a></a><span class="kw">def</span> test_creer_ok():</span>
-<span id="cb7-3"><a></a>    <span class="co">"""Successful creation of Joueur"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="test_player_service.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
+<span id="cb7-2"><a></a><span class="kw">def</span> test_create_ok():</span>
+<span id="cb7-3"><a></a>    <span class="co">"""Successful creation of Player"""</span></span>
 <span id="cb7-4"><a></a>    <span class="co"># GIVEN</span></span>
 <span id="cb7-5"><a></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
-<span id="cb7-6"><a></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-6"><a></a>    PlayerDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb7-7"><a></a>    <span class="co"># WHEN</span></span>
-<span id="cb7-8"><a></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb7-8"><a></a>    player <span class="op">=</span> PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
 <span id="cb7-9"><a></a>    <span class="co"># THEN</span></span>
-<span id="cb7-10"><a></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(joueur, Joueur)</span>
-<span id="cb7-11"><a></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-10"><a></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(player, Player)</span>
+<span id="cb7-11"><a></a>    <span class="cf">assert</span> player.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
 <section>
@@ -627,8 +627,8 @@ Rémi Pépin
 <li>Code the function</li>
 </ol>
 </section>
-<section id="logique" class="slide level3">
-<h3>Logique</h3>
+<section id="logic" class="slide level3">
+<h3>Logic</h3>
 <p>It may seem a bit strange !?</p>
 <p>But…</p>
 <p>When you code a function, you know before you start:</p>
