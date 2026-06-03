@@ -458,13 +458,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#accounts-and-configuration" id="toc-accounts-and-configuration" class="nav-link active" data-scroll-target="#accounts-and-configuration">Accounts and Configuration</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#repositories-creation" id="toc-repositories-creation" class="nav-link" data-scroll-target="#repositories-creation"><span class="header-section-number">1</span> Repositories creation</a></li>
-  <li><a href="#repository-content" id="toc-repository-content" class="nav-link" data-scroll-target="#repository-content"><span class="header-section-number">2</span> Repository content</a></li>
-  <li><a href="#application-example" id="toc-application-example" class="nav-link" data-scroll-target="#application-example"><span class="header-section-number">3</span> Application example</a></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">4</span> Git</a></li>
-  <li><a href="#create-your-project-repository" id="toc-create-your-project-repository" class="nav-link" data-scroll-target="#create-your-project-repository"><span class="header-section-number">5</span> Create your project repository</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#accounts-and-configuration" id="toc-accounts-and-configuration" class="nav-link" data-scroll-target="#accounts-and-configuration"><span class="header-section-number">1</span> Accounts and Configuration</a></li>
+  <li><a href="#repositories-creation" id="toc-repositories-creation" class="nav-link" data-scroll-target="#repositories-creation"><span class="header-section-number">2</span> Repositories creation</a></li>
+  <li><a href="#repository-content" id="toc-repository-content" class="nav-link" data-scroll-target="#repository-content"><span class="header-section-number">3</span> Repository content</a></li>
+  <li><a href="#application-example" id="toc-application-example" class="nav-link" data-scroll-target="#application-example"><span class="header-section-number">4</span> Application example</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">5</span> Git</a></li>
+  <li><a href="#create-your-project-repository" id="toc-create-your-project-repository" class="nav-link" data-scroll-target="#create-your-project-repository"><span class="header-section-number">6</span> Create your project repository</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
@@ -513,31 +513,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
 <div class="notes">
 <ul>
-<li>Déplacer config git -&gt; créer dossier tools (Onyxia, VScode, Git)</li>
 <li>pyproject.toml -&gt; remplace requirements.txt &amp; co</li>
+<li>typst</li>
 </ul>
 </div>
-<p>The practical labs will be carried out on Datalab SSPCloud: <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></p>
-<ul class="task-list">
-<li><label><input type="checkbox">If you don’t have one, create an account using <code>firstname.lastname@eleve.ensai.fr</code></label></li>
+<section id="objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="objectives">Objectives</h2>
+<p>The objectives of this first tutorial are as follows:</p>
+<ul>
+<li>Overview of the structure of a backend/frontend application</li>
+<li>Getting to grips with <em>VS Code</em> and its settings</li>
+<li>Reminders on using <em>Git</em></li>
+<li>Init your projet tools</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can also work on the GENES one, but you’ll have to perform certain steps manually.</p>
-<p><a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></p>
-</div>
-</div>
+<p>This tutorial combines explanations and code phases.</p>
+<p>The explanations in this tutorial should not take precedence over those of your instructor. Use them as a knowledge base for later, but always prefer oral explanations.</p>
 <p>You will be using the following tools:</p>
 <ul>
 <li>Python 3.13</li>
@@ -546,10 +538,29 @@ Note
 <li>PostgreSQL</li>
 <li>cloudBeaver</li>
 </ul>
-<section id="accounts-and-configuration" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="accounts-and-configuration">Accounts and Configuration</h2>
-<section id="github-account" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="github-account">GitHub account</h3>
+</section>
+<section id="accounts-and-configuration" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="accounts-and-configuration"><span class="header-section-number">1</span> Accounts and Configuration</h2>
+<p>The practical labs will be carried out on Datalab SSPCloud: <a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></p>
+<ul class="task-list">
+<li><label><input type="checkbox">If you don’t have one, create an account using <code>firstname.lastname@eleve.ensai.fr</code></label></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can also work on the GENES Datalab, but you’ll have to perform certain steps manually.</p>
+<p><a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></p>
+</div>
+</div>
+<section id="github-account" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="github-account"><span class="header-section-number">1.1</span> GitHub account</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -571,16 +582,16 @@ Note
 </ul></li>
 </ul>
 </section>
-<section id="github-token" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="github-token">GitHub Token</h3>
+<section id="github-token" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="github-token"><span class="header-section-number">1.2</span> GitHub Token</h3>
 <p>To avoid having to identify yourself every time you want to push code onto GitHub from a Datalab service, you will to generate a Token.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -593,43 +604,32 @@ Note
 <li><label><input type="checkbox">Declare this token on the Datalab</label></li>
 </ul>
 </section>
-<section id="ai-agent" class="level3" data-number="0.1">
-<h3 data-number="0.1" class="anchored" data-anchor-id="ai-agent"><span class="header-section-number">0.1</span> AI agent</h3>
-<div class="callout callout-style-default callout-caution callout-titled">
+<section id="ai-agent" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="ai-agent"><span class="header-section-number">1.3</span> AI agent</h3>
+<div class="callout callout-style-default callout-warning callout-titled" title="READ IT carefully">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Caution
+<span class="screen-reader-only">Warning</span>READ IT carefully
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>AI is a force multiplier, not a substitute for expertise. If you know your subject, it will elevate your work; if you don’t, it will simply help you make mistakes faster. Using AI without a solid foundation is like driving a high-speed car without knowing how to steer: you’ll get somewhere quickly, but you might crash along the way.</p>
+<p>AI is a force multiplier, not a substitute for expertise. If you know your subject, it will elevate your work; if you don’t, it will simply help you make mistakes faster.</p>
+<p>Using AI without a solid foundation is like driving a high-speed car without knowing how to steer: you’ll get somewhere quickly, but you might crash along the way.</p>
 </div>
 </div>
-<p>Using an AI agent directly within VSCode transforms your editor from a simple text tool into an intelligent collaborator. By having full access to your local files and project structure, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.</p>
+<p>Using an AI agent directly within VSCode transforms your editor from a simple text tool into an intelligent collaborator.</p>
+<p>By having <u>full access to your local files and project structure</u>, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.</p>
+<p>To use it in VS Code, there are a few steps you need to take first:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Follow these <a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia" target="_blank">instructions</a> to use AI agent in VSCode.</label>
-<ul>
-<li>You can stop at the “Launch a VSCode service” step</li>
-</ul></li>
+<li><label><input type="checkbox">Follow these <a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia" target="_blank">instructions</a> to <strong>set up</strong> AI agent.</label></li>
 </ul>
 </section>
 </section>
-<section id="objectives" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="objectives">Objectives</h2>
-<p>The objectives of this first tutorial are as follows:</p>
-<ul>
-<li>Reminders on using <em>Git</em></li>
-<li>Getting to grips with <em>VS Code</em> and its settings</li>
-<li>Understand how an application works (Backend/Frontend)</li>
-</ul>
-<p>This tutorial combines explanations and code phases.</p>
-<p>The explanations in this tutorial should not take precedence over those of your instructor. Use them as a knowledge base for later, but always prefer oral explanations.</p>
-</section>
-<section id="repositories-creation" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="repositories-creation"><span class="header-section-number">1</span> Repositories creation</h2>
+<section id="repositories-creation" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="repositories-creation"><span class="header-section-number">2</span> Repositories creation</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -644,8 +644,8 @@ Note
 <p>One member of the team will create a repository on GitHub and then all the members (including the creator of the GitHub repository) will create their local repositories by cloning this remote repository.</p>
 </div>
 </div>
-<section id="remote-repository" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="remote-repository"><span class="header-section-number">1.1</span> Remote repository</h3>
+<section id="remote-repository" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="remote-repository"><span class="header-section-number">2.1</span> Remote repository</h3>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -656,8 +656,8 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A single team member creates this remote repository.</p>
-<p>This is the repository that is shared among all project members and to which all clones are connected</p>
+<p>A <strong>single team member</strong> creates this remote repository.</p>
+<p>This is the shared central repository for all project members to synchronize their work during labs.</p>
 </div>
 </div>
 <ul class="task-list">
@@ -670,17 +670,17 @@ Warning
 <ul>
 <li>On the repository page &gt; <span class="emoji" data-emoji="gear">⚙️</span> Settings &gt; Collaborators &gt; <span class="green-button">Add people</span></li>
 </ul></li>
-<li><label><input type="checkbox">Send the address of the remote repository to your teamates</label></li>
+<li><label><input type="checkbox">Send the address of the remote repository to your teammates</label></li>
 </ul>
 </section>
-<section id="datalab-service" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="datalab-service"><span class="header-section-number">1.2</span> Datalab service</h3>
+<section id="datalab-service" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="datalab-service"><span class="header-section-number">2.2</span> Datalab service</h3>
 <p>Before creating your local repositories, you will launch a VSCode-python service.</p>
-<p>But you will not launch directly the catalog service. You will custom it first:</p>
+<p>But you will not launch directly the catalog service. You will custom it first by:</p>
 <ul>
 <li>adding/removing some extensions</li>
 <li>installing needed packages</li>
-<li>by opening ports to the internet</li>
+<li>opening ports to the internet</li>
 </ul>
 <p>Let’s do this manually:</p>
 <ul class="task-list">
@@ -724,11 +724,18 @@ Important
 <p>If you don’t expose both ports, you will have no choice but to start over with creating your VScode-python service and everything that follows.</p>
 </div>
 </div>
-<p><span class="emoji" data-emoji="construction">🚧</span> Direct link</p>
+<p>When you change the default settings for starting a service, you can:</p>
+<ul>
+<li>save that configuration</li>
+<li>also generate a link that starts the service using that configuration</li>
+</ul>
+<blockquote class="blockquote">
+<p>Example of link: <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.6&amp;s3=default&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&amp;git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000" target="_blank">https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.6&amp;s3=default&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&amp;git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&amp;networking.user.enabled=true&amp;networking.user.ports[1]=8000</a></p>
+</blockquote>
 </section>
-<section id="local-repositories" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="local-repositories"><span class="header-section-number">1.3</span> Local repositories</h3>
-<p>Once the VSCode service is up and running, your local clone should already be created.</p>
+<section id="local-repositories" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="local-repositories"><span class="header-section-number">2.3</span> Local repositories</h3>
+<p>Once the VSCode service is up and running, your local clone should already be created. <span class="emoji" data-emoji="magic_wand">🪄</span></p>
 <p>Let’s check it using a terminal:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Open a new terminal</label>
@@ -793,24 +800,77 @@ Important
 </div>
 </section>
 </section>
-<section id="repository-content" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="repository-content"><span class="header-section-number">2</span> Repository content</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Focus on some files.</p>
-</div>
-</div>
-<section id="readme" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="readme"><span class="header-section-number">2.1</span> README</h3>
-<p>The <strong><u>README file is essential</u></strong> for every project. It contains all the information needed to describe, install and use the application.</p>
+<section id="repository-content" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="repository-content"><span class="header-section-number">3</span> Repository content</h2>
+<table class="table-striped table-hover table-secondary caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Folder</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>backend/</td>
+<td>The heart of your application, following a Layered Architecture</td>
+</tr>
+<tr class="even">
+<td>frontend/</td>
+<td>The user interface code (Streamlit application).</td>
+</tr>
+<tr class="odd">
+<td>doc/</td>
+<td>Stores project documentation, diagrams, tracking and report</td>
+</tr>
+<tr class="even">
+<td>data/</td>
+<td>Used for storing persistent data, such as database files or datasets.</td>
+</tr>
+<tr class="odd">
+<td>.github/</td>
+<td>Contains CI/CD workflows (GitHub Actions) and automation scripts.</td>
+</tr>
+<tr class="even">
+<td>.vscode/</td>
+<td>Stores editor settings, extensions, and debugger configurations.</td>
+</tr>
+</tbody>
+</table>
+<p>In both <em>backend</em> and <em>frontend</em> folders, you will find these files :</p>
+<table class="table-striped table-hover table-secondary caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pyproject.toml</td>
+<td>Defines project metadata, dependencies, and build configurations.</td>
+</tr>
+<tr class="even">
+<td>uv.lock</td>
+<td>A lockfile that ensures exact, reproducible dependency versions.</td>
+</tr>
+<tr class="odd">
+<td>logging.yaml</td>
+<td>Configuration file defining how the application logs information.</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s focus on some files.</p>
+<section id="readme" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="readme"><span class="header-section-number">3.1</span> README</h3>
+<p>The README file is <strong><u>essential</u></strong> for every project. It contains all the information needed to describe, install and use the application.</p>
 <p>Follow instructions to :</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Install required packages</label></li>
@@ -837,8 +897,8 @@ Tip
 <li><label><input type="checkbox">While the service is starting, copy the properties and fill in the <em>.env</em> file</label></li>
 </ul>
 </section>
-<section id="vscode-settings" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="vscode-settings"><span class="header-section-number">2.2</span> VSCode settings</h3>
+<section id="vscode-settings" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="vscode-settings"><span class="header-section-number">3.2</span> VSCode settings</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -860,19 +920,59 @@ Note
 <li><code>"editor.insertSpaces": true</code>: replace tabulation by spaces</li>
 </ul>
 </section>
+<section id="pyproject.toml" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="pyproject.toml"><span class="header-section-number">3.3</span> pyproject.toml</h3>
+<p>A <code>pyproject.toml</code> file centralizes project configuration. Here is what it contains:</p>
+<ul>
+<li><strong>Project Metadata:</strong> Name, version, description, authors, etc.</li>
+<li><strong>Dependencies:</strong> Core libraries required to run the app
+<ul>
+<li>including dev libraries (only for development)</li>
+</ul></li>
+<li><strong>Build System:</strong> Instructions for Python tools on how to install and build your package.</li>
+<li><strong>Tool Configuration:</strong> Settings for various tools (e.g., <code>pytest</code>, <code>ruff</code>, etc.) to avoid having multiple config files.</li>
+</ul>
 </section>
-<section id="application-example" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="application-example"><span class="header-section-number">3</span> Application example</h2>
+<section id="uv.lock" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="uv.lock"><span class="header-section-number">3.4</span> uv.lock</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>uv</em> is the <strong>engine</strong> that manages your project, and <em>uv.lock</em> is the <strong>snapshot</strong> that guarantees everyone uses the exact same setup.</p>
+</div>
+</div>
+<p><a href="https://docs.astral.sh/uv/" target="_blank">uv</a> is an extremely fast Python package and project manager, written in Rust. It is designed to replace multiple tools at once (like <em>pip</em> and <em>venv</em>).</p>
+<ul>
+<li>It is significantly faster than <code>pip</code> for installing dependencies</li>
+<li>It manages Python versions, virtual environments, and package dependencies</li>
+</ul>
+<p>The <code>uv.lock</code> file is a “lockfile” that records the <strong>exact state</strong> of your project’s dependency tree.</p>
+<ul>
+<li><strong>Deterministic Installs:</strong> While <code>pyproject.toml</code> might say “I need FastAPI version 0.100 or higher,” the <code>uv.lock</code> file records that you are using <strong>exactly</strong> <code>FastAPI 0.109.2</code> and specifies the exact versions of every sub-dependency</li>
+<li><strong>Reproducibility:</strong> It ensures that if a teammate clones your repo or if you deploy to a server, they get the identical environment you have. It eliminates the “it works on my machine” problem</li>
+<li><strong>Integrity:</strong> It contains hashes for every package, ensuring that the files downloaded are exactly what was expected and haven’t been tamelred with</li>
+</ul>
+</section>
+</section>
+<section id="application-example" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="application-example"><span class="header-section-number">4</span> Application example</h2>
 <p>You might design a Web services (mandatory) and/or a Menu-driven interface (optional):</p>
 <ul>
 <li><strong>Web services</strong>: User interaction via API endpoints to retrieve data</li>
 <li><strong>Menu-driven apps</strong>: User interaction via navigation menus</li>
 </ul>
-<section id="web-services-vs-menu-driven" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="web-services-vs-menu-driven"><span class="header-section-number">3.1</span> Web services vs Menu-driven</h3>
+<section id="web-services-vs-menu-driven" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="web-services-vs-menu-driven"><span class="header-section-number">4.1</span> Web services vs Menu-driven</h3>
 <p>To understand the difference, let’s look at how you access data from the same source (Star Wars API):</p>
-<section id="the-api-webservice" class="level4" data-number="3.1.1">
-<h4 data-number="3.1.1" class="anchored" data-anchor-id="the-api-webservice"><span class="header-section-number">3.1.1</span> The API (Webservice)</h4>
+<section id="the-api-webservice" class="level4" data-number="4.1.1">
+<h4 data-number="4.1.1" class="anchored" data-anchor-id="the-api-webservice"><span class="header-section-number">4.1.1</span> The API (Webservice)</h4>
 <p>Target: Machines/Software <span class="emoji" data-emoji="robot">🤖</span></p>
 <ul>
 <li>URL: <a href="https://swapi.info/api/people/35" target="_blank">https://swapi.info/api/people/35</a></li>
@@ -880,8 +980,8 @@ Note
 <li>Goal: Efficiency and integration (so another program can read the data easily).</li>
 </ul>
 </section>
-<section id="the-web-interface-menu-driven" class="level4" data-number="3.1.2">
-<h4 data-number="3.1.2" class="anchored" data-anchor-id="the-web-interface-menu-driven"><span class="header-section-number">3.1.2</span> The Web Interface (Menu-driven)</h4>
+<section id="the-web-interface-menu-driven" class="level4" data-number="4.1.2">
+<h4 data-number="4.1.2" class="anchored" data-anchor-id="the-web-interface-menu-driven"><span class="header-section-number">4.1.2</span> The Web Interface (Menu-driven)</h4>
 <p>Target: Humans <span class="emoji" data-emoji="bust_in_silhouette">👤</span></p>
 <ul>
 <li>URL: <a href="https://swapi.info/people/padme-amidala" target="_blank">https://swapi.info/people/padme-amidala</a></li>
@@ -890,8 +990,8 @@ Note
 </ul>
 </section>
 </section>
-<section id="a-webservice" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="a-webservice"><span class="header-section-number">3.2</span> A webservice</h3>
+<section id="a-webservice" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="a-webservice"><span class="header-section-number">4.2</span> A webservice</h3>
 <p>We will discuss webservices in more detail in Lab 3.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Following the instructions in the README, lanch the backend application</label>
@@ -1104,7 +1204,7 @@ Caution
     WS-&gt;&gt;Service: find_by_id(1)
         
     Service-&gt;&gt;DAO: find_by_id(1)
-    DAO--&gt;&gt;DAO: Database request &lt;br/&gt;SELECT *&lt;br/&gt;FROM player&lt;br/&gt; WHERE id =...
+    DAO--&gt;&gt;DAO: Database request &lt;br/&gt;SELECT *&lt;br/&gt;FROM player&lt;br/&gt; WHERE id = 1
     DAO--&gt;&gt;Service: Player instance (or None)
     Service--&gt;&gt;WS: Player instance (or None)
 
@@ -1125,8 +1225,8 @@ Caution
 </ul>
 <p>Now that our API is up and running, it’s quite satisfying to see it working. However, interacting with raw JSON isn’t exactly a luxury—this is where a proper user interface comes in.</p>
 </section>
-<section id="menu-application" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="menu-application"><span class="header-section-number">3.3</span> Menu application</h3>
+<section id="menu-application" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="menu-application"><span class="header-section-number">4.3</span> Menu application</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Follow README instructions to run the menu application</label>
 <ul>
@@ -1140,7 +1240,11 @@ Caution
 </ul>
 <p>You’ll notice that the application asks for a password that’s a little too long.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Find and change the password required length to 16 characters</label></li>
+<li><label><input type="checkbox">Find and change the password required length to 16 characters</label>
+<ul>
+<li>first search through the code on your own <span class="emoji" data-emoji="mag">🔍</span></li>
+<li>then ask the AI agent <span class="emoji" data-emoji="robot">🤖</span></li>
+</ul></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
@@ -1228,8 +1332,8 @@ Note
 <p>In the upcoming lab sessions, we’ll be coding additional features.</p>
 </section>
 </section>
-<section id="git" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="git"><span class="header-section-number">4</span> Git</h2>
+<section id="git" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="git"><span class="header-section-number">5</span> Git</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1249,13 +1353,13 @@ Note
 </ul>
 </div>
 </div>
-<section id="git-routine" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="git-routine"><span class="header-section-number">4.1</span> Git routine</h3>
+<section id="git-routine" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="git-routine"><span class="header-section-number">5.1</span> Git routine</h3>
 <p>You modified some files, it’s time to update the remote repository:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">In Git Bash, use the <em>status</em>, <em>add</em>, <em>commit</em>, <em>push</em> and <em>pull</em> commands to send your changes to the remote repository.</label></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"you're the first teamate to push the code"</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">"you're the first teammate to push the code"</span>:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  everything_is_fine <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  action <span class="op">=</span> <span class="st">"you have to pull first"</span></span>
@@ -1280,8 +1384,8 @@ Note
 <p>If you need to simulate a conflict, ask a teammate to edit the first line of the README, then <em>add, commit, and push.</em></p>
 <p>On your end, do the same thing; it will prompt you to <em>pull</em>, and that’s it.</p>
 </section>
-<section id="handling-conflicts" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="handling-conflicts"><span class="header-section-number">4.2</span> Handling conflicts</h3>
+<section id="handling-conflicts" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="handling-conflicts"><span class="header-section-number">5.2</span> Handling conflicts</h3>
 <p>If a teammate has already pushed changes to the same file you are working on, Git will block your <code>push</code> and ask you to <code>pull</code> first. During this process, you might encounter a <strong>Merge Conflict</strong>.</p>
 <p><strong>Don’t panic!</strong> A conflict just means Git doesn’t know which version of the code to keep. Follow these steps:</p>
 <ul class="task-list">
@@ -1313,8 +1417,8 @@ The remote changes (the ones your teammate pushed)
 <p>Now that you’ve seen what an application looks like and you’re up and running with Git, let’s create your real project repository.</p>
 </section>
 </section>
-<section id="create-your-project-repository" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="create-your-project-repository"><span class="header-section-number">5</span> Create your project repository</h2>
+<section id="create-your-project-repository" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="create-your-project-repository"><span class="header-section-number">6</span> Create your project repository</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1357,10 +1461,13 @@ Tip
 </div>
 <p>Next, each team member :</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Creates a local clone of the repository</label></li>
+<li><label><input type="checkbox">Creates a local clone of the repository</label>
+<ul>
+<li>In the same VSCode service (<span class="emoji" data-emoji="warning">⚠️</span> use your token) or in a new one</li>
+</ul></li>
 <li><label><input type="checkbox">Does a test to check that they can push code, for example by creating or modifiying:</label>
 <ul>
-<li><em>doc/tracking/2025.09.04-week1.md</em>: the first weekly point</li>
+<li><em>doc/tracking/2025.09.03-week1.md</em>: the first weekly point</li>
 <li><em>README.md</em></li>
 <li><em>main.py</em></li>
 </ul></li>
@@ -1378,21 +1485,21 @@ Caution
 <p>Afterwards, you’ll make sure that your depot is “tidy”, in the same way as described in the previous section.</p>
 </div>
 </div>
-<section id="env-file" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="env-file"><span class="header-section-number">5.1</span> .env file</h3>
+<section id="env-file" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="env-file"><span class="header-section-number">6.1</span> .env file</h3>
 <p>This file will contain environment variables that will be used, for example, to connect to the PostgreSQL database.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Make sure that this file remains in your local repository and is never sent to GitHub.</label></li>
 </ul>
 </section>
-<section id="postgresql-database" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="postgresql-database"><span class="header-section-number">5.2</span> PostgreSQL database</h3>
+<section id="postgresql-database" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="postgresql-database"><span class="header-section-number">6.2</span> PostgreSQL database</h3>
 <p>You can either:</p>
 <ul>
 <li>Each set up your own PostgreSQL service and connect your application to it</li>
 <li>Set up and share a single database and have everyone connect to it</li>
 </ul>
-<table class="caption-top table">
+<table class="table-striped table-hover table-secondary caption-top table">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 42%">
