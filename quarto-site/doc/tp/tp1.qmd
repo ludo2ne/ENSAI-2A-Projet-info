@@ -16,18 +16,18 @@ categories:
 - typst
 :::
 
+## Objectives {.unnumbered}
 
-The practical labs will be carried out on Datalab SSPCloud: <https://datalab.sspcloud.fr/>{target="_blank"}
+The objectives of this first tutorial are as follows:
 
-- [ ] If you don't have one, create an account using `firstname.lastname@eleve.ensai.fr`
+- Overview of the structure of a backend/frontend application
+- Getting to grips with *VS Code* and its settings
+- Reminders on using *Git*
+- Init your projet tools
 
+This tutorial combines explanations and code phases.
 
-::: {.callout-note}
-You can also work on the GENES one, but you'll have to perform certain steps manually.
-
-<https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
-:::
-
+The explanations in this tutorial should not take precedence over those of your instructor. Use them as a knowledge base for later, but always prefer oral explanations.
 
 You will be using the following tools:
 
@@ -38,9 +38,19 @@ You will be using the following tools:
 - cloudBeaver
 
 
-## Accounts and Configuration {.unnumbered}
+## Accounts and Configuration
 
-### GitHub account {.unnumbered}
+The practical labs will be carried out on Datalab SSPCloud: <https://datalab.sspcloud.fr/>{target="_blank"}
+
+- [ ] If you don't have one, create an account using `firstname.lastname@eleve.ensai.fr`
+
+::: {.callout-caution}
+You can also work on the GENES Datalab, but you'll have to perform certain steps manually.
+
+<https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
+:::
+
+### GitHub account
 
 ::: {.callout-note}
 GitHub is a web-based platform that provides hosting for software development and version control using Git. 
@@ -52,11 +62,11 @@ It's widely used by developers to collaborate on projects.
   - or sign up if you don't already have one
 
 
-### GitHub Token{.unnumbered}
+### GitHub Token
 
 To avoid having to identify yourself every time you want to push code onto GitHub from a Datalab service, you will to generate a Token.
 
-::: {.callout-note}
+::: {.callout-caution}
 If you're sure your token is still active, you can skip this step. If not, create a new one.
 :::
 
@@ -67,27 +77,19 @@ Follow instructions on [ENSAI-tools](https://ludo2ne.github.io/ENSAI-tools/doc/d
 
 ### AI agent
 
-::: {.callout-caution}
-AI is a force multiplier, not a substitute for expertise. If you know your subject, it will elevate your work; if you don't, it will simply help you make mistakes faster. Using AI without a solid foundation is like driving a high-speed car without knowing how to steer: you'll get somewhere quickly, but you might crash along the way.
+::: {.callout-warning title="READ IT carefully"}
+AI is a force multiplier, not a substitute for expertise. If you know your subject, it will elevate your work; if you don't, it will simply help you make mistakes faster. 
+
+Using AI without a solid foundation is like driving a high-speed car without knowing how to steer: you'll get somewhere quickly, but you might crash along the way.
 :::
 
-Using an AI agent directly within VSCode transforms your editor from a simple text tool into an intelligent collaborator. By having full access to your local files and project structure, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.
+Using an AI agent directly within VSCode transforms your editor from a simple text tool into an intelligent collaborator. 
 
-- [ ] Follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia){target="_blank"} to use AI agent in VSCode.
-  - You can stop at the "Launch a VSCode service" step
+By having [full access to your local files and project structure]{.underline}, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.
 
+To use it in VS Code, there are a few steps you need to take first:
 
-## Objectives {.unnumbered}
-
-The objectives of this first tutorial are as follows:
-
-- Reminders on using *Git*
-- Getting to grips with *VS Code* and its settings
-- Understand how an application works (Backend/Frontend)
-
-This tutorial combines explanations and code phases.
-
-The explanations in this tutorial should not take precedence over those of your instructor. Use them as a knowledge base for later, but always prefer oral explanations.
+- [ ] Follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia){target="_blank"} to **set up** AI agent.
 
 
 ## Repositories creation
@@ -101,9 +103,9 @@ One member of the team will create a repository on GitHub and then all the membe
 ### Remote repository
 
 ::: {.callout-warning}
-A single team member creates this remote repository.
+A **single team member** creates this remote repository.
 
-This is the repository that is shared among all project members and to which all clones are connected
+This is the shared central repository for all project members to synchronize their work during labs.
 :::
 
 - [ ] Connect on [GitHub](https://github.com/){target="_blank"}
@@ -111,17 +113,17 @@ This is the repository that is shared among all project members and to which all
   - Button [Use this template](https://github.com/new?template_name=ENSAI-2A-projet-info-template&template_owner=ludo2ne){.green-button target="_blank"}
 - [ ] Add your team members
   - On the repository page > :gear: Settings > Collaborators > [Add people]{.green-button}
-- [ ] Send the address of the remote repository to your teamates
+- [ ] Send the address of the remote repository to your teammates
 
 ### Datalab service
 
 Before creating your local repositories, you will launch a VSCode-python service.
 
-But you will not launch directly the catalog service. You will custom it first:
+But you will not launch directly the catalog service. You will custom it first by:
 
 - adding/removing some extensions
 - installing needed packages
-- by opening ports to the internet
+- opening ports to the internet
 
 Let's do this manually:
 
@@ -147,12 +149,17 @@ This script:
 If you don't expose both ports, you will have no choice but to start over with creating your VScode-python service and everything that follows.
 :::
 
-:construction: Direct link
+When you change the default settings for starting a service, you can:
+
+- save that configuration 
+- also generate a link that starts the service using that configuration
+
+> Example of link: <https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.5.6&s3=default&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&networking.user.enabled=true&networking.user.ports[1]=8000>{target="_blank"}
 
 
 ### Local repositories
 
-Once the VSCode service is up and running, your local clone should already be created.
+Once the VSCode service is up and running, your local clone should already be created. :magic_wand:
 
 Let's check it using a terminal:
 
@@ -203,6 +210,8 @@ Otherwise, check the same link as above ("If the clone creation failed") to conn
 | .github/       | Contains CI/CD workflows (GitHub Actions) and automation scripts. |
 | .vscode/       | Stores editor settings, extensions, and debugger configurations. |
 
+: {tbl-colwidths="[20,80]" .striped .hover .secondary}
+
 In both *backend* and *frontend* folders, you will find these files :
 
 | File           | Description |
@@ -211,12 +220,14 @@ In both *backend* and *frontend* folders, you will find these files :
 | uv.lock        | A lockfile that ensures exact, reproducible dependency versions. |
 | logging.yaml   | Configuration file defining how the application logs information. |
 
+: {tbl-colwidths="[20,80]" .striped .hover .secondary}
+
 Let's focus on some files.
 
 
 ### README
 
-The **[README file is essential]{.underline}** for every project. It contains all the information needed to describe, install and use the application.
+The README file is **[essential]{.underline}** for every project. It contains all the information needed to describe, install and use the application.
 
 Follow instructions to :
 
@@ -260,20 +271,20 @@ A `pyproject.toml` file centralizes project configuration. Here is what it conta
 
 ### uv.lock
 
-Here is a brief overview of **uv** and the **uv.lock** file:
+::: {.callout-note}
+*uv* is the **engine** that manages your project, and *uv.lock* is the **snapshot** that guarantees everyone uses the exact same setup.
+:::
 
-`uv` is an extremely fast Python package and project manager, written in Rust. It is designed to replace multiple tools at once (like `pip`, `pip-tools`, `venv`, and even `pyenv`).
+[uv](https://docs.astral.sh/uv/){target="_blank"} is an extremely fast Python package and project manager, written in Rust. It is designed to replace multiple tools at once (like *pip* and *venv*).
 
 - It is significantly faster than `pip` for installing dependencies
-- It manages Python versions, virtual environments, and package dependencies all in one tool.
+- It manages Python versions, virtual environments, and package dependencies
 
-The `uv.lock` file is a "lockfile" that records the **exact** state of your project's dependency tree.
+The `uv.lock` file is a "lockfile" that records the **exact state** of your project's dependency tree.
 
-- **Deterministic Installs:** While `pyproject.toml` might say "I need FastAPI version 0.100 or higher," the `uv.lock` file records that you are using **exactly** `FastAPI 0.109.2` and specifies the exact versions of every sub-dependency (like `pydantic` or `starlette`) that it pulled in.
-- **Reproducibility:** It ensures that if a teammate clones your repo or if you deploy to a server, they get the **identical** environment you have. It eliminates the "it works on my machine" problem.
-- **Integrity:** It contains hashes for every package, ensuring that the files downloaded are exactly what was expected and haven't been tamelred with.
-
-`uv` is the **engine** that manages your project, and `uv.lock` is the **snapshot** that guarantees everyone uses the exact same setup.
+- **Deterministic Installs:** While `pyproject.toml` might say "I need FastAPI version 0.100 or higher," the `uv.lock` file records that you are using **exactly** `FastAPI 0.109.2` and specifies the exact versions of every sub-dependency
+- **Reproducibility:** It ensures that if a teammate clones your repo or if you deploy to a server, they get the identical environment you have. It eliminates the "it works on my machine" problem
+- **Integrity:** It contains hashes for every package, ensuring that the files downloaded are exactly what was expected and haven't been tamelred with
 
 
 ## Application example
@@ -391,7 +402,7 @@ sequenceDiagram
     WS->>Service: find_by_id(1)
         
     Service->>DAO: find_by_id(1)
-    DAO-->>DAO: Database request <br/>SELECT *<br/>FROM player<br/> WHERE id =...
+    DAO-->>DAO: Database request <br/>SELECT *<br/>FROM player<br/> WHERE id = 1
     DAO-->>Service: Player instance (or None)
     Service-->>WS: Player instance (or None)
 
@@ -421,6 +432,8 @@ You arrive at the home menu. The principle of this type of application is to let
 You'll notice that the application asks for a password that's a little too long. 
 
 - [ ] Find and change the password required length to 16 characters
+  - first search through the code on your own :mag:
+  - then ask the AI agent :robot:
 
 ::: {.callout-tip collapse="true"}
 This requirement appears at two levels to balance Security and UX:
@@ -480,7 +493,7 @@ You modified some files, it's time to update the remote repository:
 - [ ] In Git Bash, use the *status*, *add*, *commit*, *push* and *pull* commands to send your changes to the remote repository.
 
 ```{.python}
-if "you're the first teamate to push the code":
+if "you're the first teammate to push the code":
   everything_is_fine = True
 else:
   action = "you have to pull first"
@@ -563,8 +576,9 @@ A team member :
 Next, each team member :
 
 - [ ] Creates a local clone of the repository
+  - In the same VSCode service (:warning: use your token) or in a new one
 - [ ] Does a test to check that they can push code, for example by creating or modifiying:
-  - *doc/tracking/2025.09.04-week1.md*: the first weekly point
+  - *doc/tracking/2025.09.03-week1.md*: the first weekly point
   - *README.md*
   - *main.py*
 
@@ -591,7 +605,7 @@ You can either:
 | Shared DB | **Zero setup:** Everyone connects to the same URL. <br> **Data Sync:** Everyone sees the same rows. | **High Risk:** One accidental `DROP TABLE` or `DELETE` breaks the project for everyone. <br> **Conflict:** You can't test "deleting a user" if your teammate is currently using that user. |
 | Isolated DB | **Safety:** You can break your local table without consequences. <br> **Independence:** You can test different data states simultaneously. | **Sync Effort:** You must remember to `git commit` the `.sql` file every time you change a column. <br> **Drift:** If someone forgets to commit, the team's environments will diverge. |
 
-: {tbl-colwidths="[16,42,42]"}
+: {tbl-colwidths="[16,42,42]" .striped .hover .secondary}
 
 ::: {.callout-caution}
 In any case, be sure to version one or more SQL files so that you can rebuild your database and data from scratch.
