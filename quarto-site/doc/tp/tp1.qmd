@@ -38,6 +38,13 @@ You will be using the following tools:
 - cloudBeaver
 
 
+::: {.callout-caution}
+Don't skip a step that didn’t work, telling yourself that it doesn’t matter.
+
+This may cause problems later.
+:::
+
+
 ## Accounts and Configuration
 
 The practical labs will be carried out on Datalab SSPCloud: <https://datalab.sspcloud.fr/>{target="_blank"}
@@ -611,21 +618,7 @@ You can either:
 In any case, be sure to version one or more SQL files so that you can rebuild your database and data from scratch.
 :::
 
-
-
-
-## End of the Lab {.unnumbered}
-
 The aim of this tutorial was to get you up to speed on using Git, and to help you discover and understand how a layered application works.
 
 
-::: {.callout-important title="The same goes for all labs"}
-When you have finished coding, don't forget to:
-
-- Push your code to GitHub
-- Pause or delete your datalab services
-
-It is very important to **push your code** to the remote repository because there is no guarantee regarding the lifespan of Datalab services.
-
-If your service is terminated, all unpushed code is lost...
-:::
+{{< include _end-lab.qmd >}}

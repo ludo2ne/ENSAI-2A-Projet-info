@@ -62,17 +62,12 @@ website:
             text: Lab 4
           - href: doc/tp/tp5.qmd
             text: Lab 5
-      - text: Tools
-        menu:
-          - href: doc/outils/datalab.qmd
-            text: Datalab
-          - href: doc/outils/git.qmd
-            text: Git
-          - href: doc/outils/vscode.qmd
-            text: VS Code
     right:
-      - text: Divers
+      - text: Various
         menu:
+          - href: https://ludo2ne.github.io/ENSAI-tools/
+            text: ENSAI-tools
+            target: "_blank"
           - href: doc/divers/licences.qmd
             text: Licences
           - href: doc/divers/sigles.qmd
