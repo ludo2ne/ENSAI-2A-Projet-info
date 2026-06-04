@@ -7,10 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="author" content="Rémi Pépin">
-<meta name="description" content="Lab 2">
+<meta name="description" content="Lab 2 - Refactoring a Monolithic Service">
 
-<title>Python, OOP, Unit Tests and Documentation – Projet info 2A</title>
+<title>Python, OOP, Unit Tests and Design Patterns – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +24,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -426,32 +390,17 @@ window.Quarto = {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Tools</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-tools">    
-        <li>
-    <a class="dropdown-item" href="../../doc/outils/datalab.html">
- <span class="dropdown-text">Datalab</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/outils/git.html">
- <span class="dropdown-text">Git</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/outils/vscode.html">
- <span class="dropdown-text">VS Code</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-divers" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Divers</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-various" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Various</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-divers">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-various">    
+        <li>
+    <a class="dropdown-item" href="https://ludo2ne.github.io/ENSAI-tools/" target="_blank">
+ <span class="dropdown-text">ENSAI-tools</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="../../doc/divers/licences.html">
  <span class="dropdown-text">Licences</span></a>
@@ -489,11 +438,9 @@ window.Quarto = {
    
   <ul class="collapse">
   <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
-  <li><a href="#what-you-will-be-coding" id="toc-what-you-will-be-coding" class="nav-link" data-scroll-target="#what-you-will-be-coding"><span class="header-section-number">1</span> What you will be coding</a></li>
-  <li><a href="#get-the-code" id="toc-get-the-code" class="nav-link" data-scroll-target="#get-the-code"><span class="header-section-number">2</span> Get the code</a></li>
-  <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">3</span> Modelling and implementation</a></li>
-  <li><a href="#aggregation-the-other-way-of-adding-flexibility-to-code" id="toc-aggregation-the-other-way-of-adding-flexibility-to-code" class="nav-link" data-scroll-target="#aggregation-the-other-way-of-adding-flexibility-to-code"><span class="header-section-number">4</span> Aggregation, the other way of adding flexibility to code</a></li>
-  <li><a href="#final-architecture" id="toc-final-architecture" class="nav-link" data-scroll-target="#final-architecture"><span class="header-section-number">5</span> Final architecture</a></li>
+  <li><a href="#the-mission" id="toc-the-mission" class="nav-link" data-scroll-target="#the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></a></li>
+  <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</a></li>
+  <li><a href="#testing-validation" id="toc-testing-validation" class="nav-link" data-scroll-target="#testing-validation"><span class="header-section-number">3</span> Testing &amp; Validation</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
@@ -508,17 +455,17 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python, OOP, Unit Tests and Documentation</h1>
+<h1 class="title">Python, OOP, Unit Tests and Design Patterns</h1>
   <div class="quarto-categories">
     <div class="quarto-category">OOP</div>
-    <div class="quarto-category">Business object</div>
-    <div class="quarto-category">Unit tests</div>
+    <div class="quarto-category">Design Patterns</div>
+    <div class="quarto-category">Refactoring</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Lab 2
+    Lab 2 - Refactoring a Monolithic Service
   </div>
 </div>
 
@@ -526,10 +473,9 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Ludovic Deneuville </p>
-             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -544,8 +490,7 @@ window.Quarto = {
 
 <section id="before-you-start" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
-<p>This tutorial combines explanations and code phases.</p>
-<p>The explanations in this tutorial should not take precedence over those of your teacher. Take them as a knowledge base for later, but always prefer oral explanations.</p>
+<p>This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Concepts covered">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -557,106 +502,91 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>OOP reminder</li>
-<li>Unit tests</li>
-<li>Business objects</li>
-<li>Strategy design pattern</li>
+<li>Refactoring existing code</li>
+<li>Design Patterns: Factory Pattern &amp; Strategy Pattern</li>
+<li>Dependency Injection</li>
+<li>Data Persistence (History tracking)</li>
+<li>Advanced Unit Testing</li>
 </ul>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>You might be thinking: “All this architecture just for a simple coin flip?” … You’re right. And don’t get too comfortable, because we’re about to add a dozen more classes just for fun!” 🙃</p>
+</blockquote>
 </section>
-<section id="what-you-will-be-coding" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="what-you-will-be-coding"><span class="header-section-number">1</span> What you will be coding</h2>
-<p>Our game will be inspired by <em>Pokémon Unite</em> (no knowledge of the game or <em>Pokémon</em> is necessary).</p>
-<p>In a nutshell, there will be <em>Pokemons</em> competing in <em>Battles</em> by throwing <em>Attacks</em>.</p>
-<section id="business-objects" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="business-objects"><span class="header-section-number">1.1</span> Business objects</h3>
-<p>You’re going to create <strong>business objects</strong> for a <em>Pokémon</em> game.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Business object">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Business object
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A business object is a representation of a specific entity in the context of a business application. It encapsulates the data and behaviour associated with that entity and is often used to model real-world concepts in the application domain.</p>
-<p>This leads to objects containing mainly attributes and very few methods other than <em>getter</em> and <em>setter</em>.</p>
-</div>
-</div>
-<p>Another example, here are the business objects for a simple application that manages bike hire:</p>
+<section id="the-mission" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></h2>
+<p>Currently, our gaming engine only supports a single game mode: Coin Flip.</p>
+<p>Our goal is to refactor the system to easily integrate new games, such as Dice, and more complex betting mechanics.</p>
+<section id="current-state-a-god-service" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="current-state-a-god-service"><span class="header-section-number">1.1</span> Current State: A “God Service”</h3>
+<p>Currently, the <code>GameService</code> class is a <strong>Monolith</strong>.</p>
+<p>It is too heavy because it handles too many responsibilities:</p>
 <ul>
-<li><strong>Bike</strong>: Represents a bike (id, type, model…)</li>
-<li><strong>Customer</strong>: Represents a person (id, surname, first name, etc.)</li>
-<li><strong>Rental</strong>: Represents a rental transaction (id, Client, Bike, start, end, amount, etc.)</li>
+<li><strong>Game Logic:</strong> It decides the outcome (e.g., random coin flip)</li>
+<li><strong>Scoring Logic:</strong> It manages the mathematical Elo calculation</li>
+<li><strong>Data Management:</strong> It directly interacts with <code>PlayerDao</code> to update scores</li>
+<li><strong>No History:</strong> Once a game is played, the result is lost. It lacks any way to track match history</li>
 </ul>
+<p>This design violates the <strong>Open/Closed Principle</strong>: adding a new game (like “Dice”) or a new scoring rule (like “Flat points”) requires modifying the core <code>GameService</code> code, making it fragile and hard to test.</p>
 </section>
-<section id="the-applications-business-objects" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="the-applications-business-objects"><span class="header-section-number">1.2</span> The application’s business objects</h3>
+<section id="target-architecture-a-modular-engine" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="target-architecture-a-modular-engine"><span class="header-section-number">1.2</span> Target Architecture: A Modular Engine</h3>
+<p>Our goal is to transform this monolith into a decoupled system where:</p>
 <ul>
-<li><code>Pokemon</code>: which have various characteristics and statistics
-<ul>
-<li>a name</li>
-<li>a level</li>
-<li><a href="https://www.nationhive.com/fr/jeux/pokemon-unite/guide/roles-des-pokemon" target="_blank">a type</a>
-<ul>
-<li>here the types are : Attacker, Defender, Versatile, Helper and Fast (and not: Fire, Water, Plant…)</li>
-</ul></li>
-<li>statistics contained in a <em>Statistic</em> object defined below</li>
-</ul></li>
-<li><code>Statistic</code>: to avoid overloading the Pokemon class, their stats are stored in an object of the Statistic class.
-<ul>
-<li>hp: health points</li>
-<li>attack, defense, speed… which are used to determine the strength of its attacks</li>
-</ul></li>
-<li><code>Attack</code>: different types of attack available to Pokemons (part 3)</li>
-<li><code>Battle</code>: used to confront 2 Pokemons to determine the outcome of the battle (part 4)</li>
+<li><strong>The Service</strong> is an <strong>Orchestrator</strong> (it tells others what to do, but doesn’t know how they do it)</li>
+<li><strong>The Rules</strong> are interchangeable (<strong>Strategy Pattern</strong>)</li>
+<li><strong>The Creation</strong> is automated (<strong>Factory Pattern</strong>)</li>
+<li><strong>The History</strong> is permanent (<strong>Persistence</strong>)</li>
 </ul>
-</section>
-<section id="class-diagram" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="class-diagram"><span class="header-section-number">1.3</span> Class diagram</h3>
-<p>Here is a very simplified class diagram of the main classes to be coded during these practical sessions.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">classDiagram
-  class Pokemon {
-    # _name : str
-    # _level : int
-    # _type : str
-    # _current_stat : Statistic
-    + get_pokemon_attack_coef() float
-  }
- 
-  class Statistic {
-    - __hp : int
-    - __attack : int
-    - __defense : int
-    - __sp_atk : int
-    - __sp_def : int
-    - __speed : int
+  class GameService {
+    - _scoring_strategy : ScoringStrategy
+    + play(player_id, opponent_id, game_type) MatchResult
   }
 
-  class Attack{
-    # _name : str
-    # _power : int
-    # _description : str
-    + compute_damage(Pokemon, Pokemon) int
+  class GameFactory {
+    + get_rules(game_type) GameRules
   }
 
-  class Battle{
-    - first_monstie : Pokemon
-    - second_monstie : Pokemon
-    - winner : Pokemon
+  class GameRules {
+    &lt;&lt;interface&gt;&gt;
+    + play(p1, p2) MatchResult
   }
 
-  Pokemon o-- Statistic : possesses
-  Pokemon o-- Attack : uses
-  Battle o.."2" Pokemon : call
+  class ScoringStrategy {
+    &lt;&lt;interface&gt;&gt;
+    + compute(p1, p2, winner) tuple
+  }
+
+  class CoinFlipRules {
+    + play(p1, p2) MatchResult
+  }
+
+  class DiceRules {
+    + play(p1, p2) MatchResult
+  }
+
+  class EloScoring {
+    + compute(p1, p2, winner) tuple
+  }
+
+  class FlatScoring {
+    + compute(p1, p2, winner) tuple
+  }
+
+  GameService o-- ScoringStrategy : uses
+  GameService --&gt; GameFactory : asks for
+  GameFactory ..&gt; GameRules : creates
+  GameRules &lt;|-- CoinFlipRules
+  GameRules &lt;|-- DiceRules
+  ScoringStrategy &lt;|-- EloScoring
+  ScoringStrategy &lt;|-- FlatScoring
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -665,580 +595,100 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="get-the-code" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="get-the-code"><span class="header-section-number">2</span> Get the code</h2>
-<p>At the end of the course, don’t forget to:</p>
+<section id="modelling-and-implementation" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</h2>
+<section id="decoupling-game-logic-factory-pattern" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="decoupling-game-logic-factory-pattern"><span class="header-section-number">2.1</span> Decoupling Game Logic (Factory Pattern)</h3>
+<p>We want to move away from <code>if/else</code> blocks to manage different games.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Open <code>backend/src/service/game_service.py</code>.</label></li>
+<li><label><input type="checkbox"><strong>Task 1: Implement the Rules Interface.</strong></label>
 <ul>
-<li>Save your work using Git</li>
-<li>Delete or pause your VSCode service</li>
+<li>Create an abstract base class <code>GameRules</code> with a method <code>play(p1, p2) -&gt; MatchResult</code>.</li>
+<li>Implement <code>CoinFlipRules</code> (using the existing logic).</li>
+<li>Implement <code>DiceRules</code> (new logic: roll two dice; if different, one wins; if equal, it’s a <strong>draw</strong>).</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Task 2: Implement the Factory.</strong></label>
+<ul>
+<li>Create a <code>GameFactory</code> class with a method <code>get_rules(game_type: str) -&gt; GameRules</code>.</li>
+</ul></li>
 </ul>
-<section id="launch-vscode" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="launch-vscode"><span class="header-section-number">2.1</span> Launch VScode</h3>
-<div class="callout callout-style-default callout-important callout-titled" title="Custom VSCode service">
+</section>
+<section id="decoupling-scoring-strategy-pattern" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="decoupling-scoring-strategy-pattern"><span class="header-section-number">2.2</span> Decoupling Scoring (Strategy Pattern)</h3>
+<p>Currently, Elo is hardcoded. We want to be able to switch between “Elo” and “Flat” scoring.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Task 3: Implement Scoring Strategies.</strong></label>
+<ul>
+<li>Create an abstract class <code>ScoringStrategy</code> with a method <code>compute(p1, p2, winner)</code>.</li>
+<li>Implement <code>EloScoring</code> (move the existing math here).</li>
+<li>Implement <code>FlatScoring</code> (a simple <span class="math inline">\(+10 / -10\)</span> points rule).</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Task 4: Refactor GameService (Dependency Injection).</strong></label>
+<ul>
+<li>Modify <code>GameService.__init__</code> to accept a <code>ScoringStrategy</code>.</li>
+<li>Update <code>play()</code> to use <code>self.scoring_strategy.compute(...)</code>.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Concept: Dependency Injection">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Custom VSCode service
+<span class="screen-reader-only">Tip</span>Concept: Dependency Injection
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You <u>should not launch</u> a standard VSCode-python service, but rather a customised version.</p>
+<p>By passing the strategy in the constructor, the <code>GameService</code> no longer decides <em>how</em> to score; it is <em>given</em> a tool to do it. This makes the code much easier to test!</p>
 </div>
 </div>
+</section>
+<section id="data-persistence-history-tracking" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="data-persistence-history-tracking"><span class="header-section-number">2.3</span> Data Persistence (History Tracking)</h3>
+<p>A game is an event that must be recorded.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Login to a Datalab</label>
+<li><label><input type="checkbox"><strong>Task 5: Create the Match History.</strong></label>
 <ul>
-<li><a href="https://onyxia.lab.groupe-genes.fr/" target="_blank">https://onyxia.lab.groupe-genes.fr/</a></li>
-<li><a href="https://datalab.sspcloud.fr/" target="_blank">https://datalab.sspcloud.fr/</a></li>
+<li>Create a new Business Object <code>GameResult</code> (containing: <code>player1_id</code>, <code>player2_id</code>, <code>game_type</code>, <code>winner_id</code>, <code>timestamp</code>).</li>
+<li>Create a <code>GameDao</code> to persist these results in a <code>games</code> table.</li>
 </ul></li>
-<li><label><input type="checkbox">Launch a <u><strong>customised</strong></u> VSCode service</label>
+<li><label><input type="checkbox"><strong>Task 6: Update the Orchestrator.</strong></label>
 <ul>
-<li>See <a href="../../doc/outils/datalab.html" target="_blank">Datalab page</a></li>
+<li>Modify <code>GameService.play()</code> to call <code>GameDao.save(match_result)</code> at the end of the process.</li>
 </ul></li>
 </ul>
 </section>
-<section id="fork-or-update-your-forked-repo" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="fork-or-update-your-forked-repo"><span class="header-section-number">2.2</span> Fork or update your forked repo</h3>
-<p>The TP code can be found on this GitHub repository: <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP" target="_blank">ENSAI-2A-complement-info-TP</a>.</p>
+</section>
+<section id="testing-validation" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="testing-validation"><span class="header-section-number">3</span> Testing &amp; Validation</h2>
+<p>Your refactoring is successful only if the code is easier to extend and still works perfectly.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Login to <a href="https://github.com/" target="_blank">GitHub</a></label></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>repository_already_forked <span class="op">=</span> <span class="st">"Did you fork it on TP1?"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> repository_already_forked:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="columns">
-<div class="column" style="width:5%;">
-
-</div><div class="column" style="width:95%;">
-<ul class="task-list">
-<li><label><input type="checkbox">Go to the GitHub repository page of your fork</label>
+<li><label><input type="checkbox"><strong>Unit Tests:</strong></label>
 <ul>
-<li><code>https://github.com/&lt;username&gt;/ENSAI-2A-complement-info-TP</code></li>
+<li>Test that <code>GameFactory</code> returns the correct rules.</li>
+<li>Test that <code>DiceRules</code> correctly handles a tie (<code>winner = None</code>).</li>
+<li>Test that <code>GameService</code> correctly uses the injected <code>ScoringStrategy</code>.</li>
 </ul></li>
-<li><label><input type="checkbox">Click on the button <span class="grey-button">Sync fork</span></label></li>
+<li><label><input type="checkbox"><strong>Run all tests</strong> using <code>pytest -v</code>.</label></li>
 </ul>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="columns">
-<div class="column" style="width:5%;">
-
-</div><div class="column" style="width:95%;">
-<ul class="task-list">
-<li><label><input type="checkbox">Create a <a href="https://github.com/ludo2ne/ENSAI-2A-complement-info-TP/fork" target="_blank">fork</a></label>
-<ul>
-<li><span class="emoji" data-emoji="warning">⚠️</span> Uncheck <code>Copy the main branch only</code></li>
-<li>because you will need other branches</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Fork a repository">
+<div class="callout callout-style-default callout-important callout-titled" title="Final Checklist">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Fork a repository
+<span class="screen-reader-only">Important</span>Final Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A fork is a personal copy of another user’s repository.</p>
-<p>This allows you to freely experiment with changes without affecting the original project, and then propose your modifications back to the original repository via a pull request if desired.</p>
+<ol type="1">
+<li>Is <code>GameService.play()</code> free of <code>if/else</code> regarding the game type?</li>
+<li>Can I change the scoring mode just by changing the object passed to <code>GameService</code>?</li>
+<li>Does the system correctly handle a <strong>Draw</strong> (no Elo change, but history recorded)?</li>
+</ol>
 </div>
 </div>
-</section>
-<section id="clone" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="clone"><span class="header-section-number">2.3</span> Clone</h3>
-<p>In your VSCode service:</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Open a <strong>Git Bash</strong> terminal</label></li>
-<li><label><input type="checkbox">Clone with <em>https</em> your forked repository</label></li>
-<li><label><input type="checkbox">Open Folder</label>
-<ul>
-<li>File &gt; Open Folder &gt; <code>/home/onyxia/work/&lt;repo_name&gt;</code> &gt; OK</li>
-<li>Or using command: <code>code-server ENSAI-2A-complement-info-TP</code></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="modelling-and-implementation" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="modelling-and-implementation"><span class="header-section-number">3</span> Modelling and implementation</h2>
-<p>Initially, we’re going to work only on the <code>Pokemons</code> (the <code>Statistic</code> class has already been coded).</p>
-<p>Before writing any code, we’re going to think about the best possible design for our Pokémons. Our design will try as far as possible to respect the following rule: <strong>low coupling, high cohesion</strong>.</p>
-<p>In other words, we will try to make :</p>
-<ul>
-<li>classes that are <strong>as disjoint as possible</strong> (<em>low coupling</em>) so that a modification to one class does not require us to modify the others</li>
-<li>while trying to have in each class <strong>tasks that are as linked as possible</strong> (<em>strong cohesion</em>).</li>
-</ul>
-<section id="first-approach-ifelifelse" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="first-approach-ifelifelse"><span class="header-section-number">3.1</span> First approach: if/elif/else</h3>
-<ul class="task-list">
-<li><label><input type="checkbox">Open the <code>Pokemon</code> class</label></li>
-</ul>
-<p>We’re interested in the <em>get_pokemon_attack_coef()</em> method, which will be used to determine the power of the attack according to the type of <em>Pokemon</em>.</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Explain why an implementation based on <code>if/elif/else</code> for types is a bad idea?</label>
-<ul>
-<li>Imagine if there were several similar blocks of code in our application, and we had to add a new type</li>
-</ul></li>
-</ul>
-</section>
-<section id="the-power-of-oop" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="the-power-of-oop"><span class="header-section-number">3.2</span> The power of OOP</h3>
-<p>Instead of externalising the behaviour of our <em>Pokemons</em>, we’re going to put all their specific behaviour into child classes of a <code>Pokemon</code> superclass. This is made possible by two properties of OOP objects:</p>
-<ul>
-<li><strong>inheritance</strong>: it’s possible to specialise an existing class by modifying its behaviour, or by adding new ones.</li>
-<li><strong>polymorphism</strong>: two functions can have the same name but different behaviours</li>
-</ul>
-<p>Furthermore, as each of our <em>Pokemons</em> will necessarily be of a type, none of them will simply be of the <code>Pokemon</code> class, which allows us to make this class <em>abstract</em>. By clearly defining our abstract class, we’ll have :</p>
-<ul>
-<li>A blueprint for all the classes that inherit from it. This has the following advantages:
-<ul>
-<li>Provides information on how the code is structured</li>
-<li>Automatically generate the methods to be defined</li>
-<li>Limits bugs. If a method is forgotten, the code crashes on start-up, which prevents unexpected behaviour that is difficult to detect.</li>
-</ul></li>
-<li>A single <strong>interface</strong> for all <em>Pokemon</em> types. Whatever the type of <em>Pokemon</em>, it will be considered as an <code>AbstractPokemon</code> everywhere in the code.</li>
-</ul>
-<hr>
-<ul class="task-list">
-<li><label><input type="checkbox">Transform the <code>Pokemon</code> class into an abstract class <code>AbstractPokemon</code></label>
-<ul>
-<li>rename the file to <em>abstract_pokemon.py</em> as well</li>
-</ul></li>
-<li><label><input type="checkbox">Turn the <em>get_pokemon_attack_coef()</em> method into an abstract method</label></li>
-<li><label><input type="checkbox">Create the <code>AttackerPokemon</code>, <code>DefenderPokemon</code> and <code>AllRounderPokemon</code> classes, which inherit from <code>AbstractPokemon</code></label></li>
-<li><label><input type="checkbox">In these 3 classes, implement the required method</label></li>
-</ul>
-<p>You should end up with a tree structure similar to this one:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        └── business_object</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            ├── pokemon</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            │   ├── abstract_pokemon.py</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            │   ├── attacker_pokemon.py</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            │   ├── defender_pokemon.py</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            │   └── all_rounder_pokemon.py</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            └── statistic.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Help">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Help
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>To make an abstract class, use the <code>abc</code> package.</p>
-<p>Here’s an example of what’s expected:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>abstract_personnage.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="abstract_personnage.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC, abstractmethod</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractPersonnage(ABC):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, phrase_attaque:<span class="bu">str</span>, phrase_defense:<span class="bu">str</span>):</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_attaque <span class="op">=</span> phrase_attaque</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._phrase_defense <span class="op">=</span> phrase_defense</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@abstractmethod</span>  <span class="co"># decorator that defines a method as abstract</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> damages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>magicien.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="magicien.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abstract_personnage <span class="im">import</span> AbstractPersonnage</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Magicien(AbstractPersonnage):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="st">"Throw a fireball"</span>, <span class="st">"Use a magic barrier"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> damages(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-<p>To help you, here is the target class diagram:</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-  class AbstractPokemon {
-    &lt;&lt;abstract&gt;&gt;
-    # _name : str
-    # _level : int
-    # _type : str
-    # _current_stat : Statistic
-    + get_pokemon_attack_coef() float
-  }
- 
-  class Statistic {
-    - __hp : int
-    - __attack : int
-    - __defense : int
-    - __sp_atk : int
-    - __sp_def : int
-    - __speed : int
-  }
- 
-  AbstractPokemon &lt;|-- AttackerPokemon
-  AbstractPokemon &lt;|-- DefenderPokemon
-  AbstractPokemon &lt;|-- AllRounderPokemon
-  AbstractPokemon o-- Statistic
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="test-your-code" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="test-your-code"><span class="header-section-number">3.3</span> Test your code</h3>
-<p>You are going to test the method <em>get_pokemon_attack_coef()</em>.</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Create unit tests in classes <code>AttackerPokemon</code> and <code>AllRounderPokemon</code> classes.</label></li>
-<li><label><input type="checkbox">Run unit tests</label></li>
-</ul>
-<p>To do this, you will use the <a href="https://docs.pytest.org/en/stable/" target="_blank">pytest</a> package in python.</p>
-<p>Examples of commands to run unit tests:</p>
-<ul>
-<li><code>pytest</code></li>
-<li><code>pytest --tb=short</code> to display a short, summarised trace</li>
-<li><code>pytest --maxfail=1</code> to stop at the first failure</li>
-<li><code>pytest -v</code> v: verbose, for more details</li>
-</ul>
-<p>An example of a test is given in the <code>TestDefenderPokemon</code> class. As a reminder, a test breaks down into 3 parts:</p>
-<ul>
-<li><strong>GIVEN</strong>: create the objects needed to run the test</li>
-<li><strong>WHEN</strong>: call the method to be tested</li>
-<li><strong>THEN</strong>: check the result</li>
-</ul>
-<p>The test classes will be organised as follows, reproducing the architecture of your application:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ENSAI-2A-COMPLEMENTS-INFO-TP</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    └── src</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        ├── business_object</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        │   ├── pokemon</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        │   │   ├── abstract_pokemon.py</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        │   │   ├── attacker_pokemon.py</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        │   │   ├── defender_pokemon.py</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        │   │   └── all_rounder_pokemon.py</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        │   └── statistic.py</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        └── test</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            └── test_business_object</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                └── test_pokemon</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                    ├── test_attacker_pokemon.py</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                    ├── test_defender_pokemon.py</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                    └── test_all_rounder_pokemon.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-caution callout-titled" title="If you encounter import issues">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>If you encounter import issues
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Check that the parent folder in the VSCode explorer is : <strong>ENSAI-2A-complement-info-TP</strong></li>
-<li>Use full import paths rather than relative paths
-<ul>
-<li>the path root is set in the <code>src</code> folder</li>
-<li>example: <code>from business_object.pokemon.abstract_pokemon import AbstractPokemon</code></li>
-</ul></li>
-<li>Create <code>__init__.py</code> files (empty)
-<ul>
-<li>in ALL the folders you create</li>
-<li>it’s a bit of a pain but it can unblock the situation</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">Can you test the <em>level_up()</em> method directly on an <code>AbstractPokemon</code>?</label></li>
-<li><label><input type="checkbox">Create a commit and push your code</label></li>
-</ul>
-</section>
-</section>
-<section id="aggregation-the-other-way-of-adding-flexibility-to-code" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="aggregation-the-other-way-of-adding-flexibility-to-code"><span class="header-section-number">4</span> Aggregation, the other way of adding flexibility to code</h2>
-<p>Now that our Pokémons are done, we’re going to add the attacks.</p>
-<p>Our system will have to respect certain constraints:</p>
-<ul>
-<li>Several types of attack will co-exist, each with a different way of calculating damage:
-<ul>
-<li>Variable damage attacks divided into 2 types:
-<ul>
-<li><strong>Physical attacks</strong>, which use the Pokémon’s attack and defence</li>
-<li><strong>Special attacks</strong>, which use the Pokémon’s special attack and special defence</li>
-</ul></li>
-<li><strong>Fixed damage attacks</strong>, which do a fixed amount of damage.</li>
-</ul></li>
-<li>A Pokémon can have several attacks, and the type of attack must be transparent to the Pokémon.</li>
-</ul>
-<section id="fixed-damage-attacks" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="fixed-damage-attacks"><span class="header-section-number">4.1</span> Fixed damage attacks</h3>
-<p>We’ll start with fixed damage attacks. As there will be another type of attack, all attacks will inherit from the <code>AbstractAttack</code> class. This class has the abstract method <em>compute_damage()</em> which will need to be implemented in the child classes.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-
-  class AbstractAttack{
-    &lt;&lt;abstract&gt;&gt;
-    # _power : int
-    # _name : str
-    # _description : str
-    + compute_damage(APkm, APkm)$  int
-  }
-
-   class FixedDamageAttack{
-    + compute_damage(APkm,APkm)  int
-   }
- 
-   AbstractAttack &lt;|-- FixedDamageAttack
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">Create class <code>AbstractAttack</code></label></li>
-<li><label><input type="checkbox">Implement the <code>FixedDamageAttack</code> class</label>
-<ul>
-<li>class and its <em>compute_damage()</em> method, which will simply return the <em>power</em> of the attack.</li>
-</ul></li>
-<li><label><input type="checkbox">Create unit tests to check that everything is working correctly</label></li>
-</ul>
-</section>
-<section id="variable-damage-attacks" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="variable-damage-attacks"><span class="header-section-number">4.2</span> Variable damage attacks</h3>
-<p>Next we’re going to code the variable damage attacks. They use the following formula:</p>
-<p><span class="math display">\[Damage = \biggl( \frac{(\frac{2 \times Level}{5}+2) \times Power \times Att}{Def \times 50} +2\biggl) \times random\]</span></p>
-<p>with:</p>
-<ul>
-<li><span class="math inline">\(Att\)</span>: equal to either the attack or special attack of the attacking Pokemon</li>
-<li><span class="math inline">\(Def\)</span>: equal to either the defence or special defence of the defending Pokemon</li>
-<li><span class="math inline">\(Power\)</span>: the attack’s power value</li>
-<li><span class="math inline">\(random\)</span> : a value in the range [0.85; 1]</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The only difference between physical and special attacks is the coefficients <span class="math inline">\(Att\)</span> and <span class="math inline">\(Def\)</span>.</p>
-<p>The rest of the damage formula is identical. So we’re going to use the <em>template method</em> design pattern, the UML model of which is as follows.</p>
-</div>
-</div>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-
-  class AbstractAttack{
-    &lt;&lt;abstract&gt;&gt;
-    # _power : int
-    # _name : str
-    # _description : str
-    + compute_damage(APkm, APkm)$  int
-  }
-
-   class FixedDamageAttack{
-    + compute_damage(APkm,APkm )  int
-   }
-
-  class AbstractFormulaAttack{
-    &lt;&lt;abstract&gt;&gt;
-    -get_attack_stat(APkm)$  float
-    -get_defense_stat(APkm)$  float
-    +compute_damage(APkm,APkm)  int
-  }
- 
-  class PhysicalFormulaAttack{
-    -get_attack_stat(APkm)  float
-    -get_defense_stat(APkm)  float
-  }
- 
-  class SpecialFormulaAttack{
-    -get_attack_stat(APkm)  float
-    -get_defense_stat(APkm)  float
-  }
- 
-   AbstractAttack &lt;|-- FixedDamageAttack
-   AbstractAttack &lt;|-- AbstractFormulaAttack
-   AbstractFormulaAttack &lt;|-- SpecialFormulaAttack
-   AbstractFormulaAttack &lt;|-- PhysicalFormulaAttack
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>The <code>AbstractFormulaAttack</code> class will contain the methods :</p>
-<ul>
-<li><strong>compute_damage()</strong>
-<ul>
-<li>This method will contain the formula for calculating damage</li>
-<li>It will call the <em>get_attack_stat()</em> and <em>get_defense_stat()</em> methods to find out which statistics to use</li>
-</ul></li>
-<li><strong>get_attack_stat()</strong> and <strong>get_defense_stat()</strong> (abstract).
-<ul>
-<li>These methods will need to be implemented in the child classes to determine which statistics to use</li>
-</ul></li>
-</ul>
-<hr>
-<ul class="task-list">
-<li><label><input type="checkbox">Implement the 3 new classes</label></li>
-<li><label><input type="checkbox">Create unit tests to check that everything is working properly</label></li>
-</ul>
-</section>
-</section>
-<section id="final-architecture" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="final-architecture"><span class="header-section-number">5</span> Final architecture</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="Bonus">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Bonus
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you have time!</p>
-</div>
-</div>
-<p>We are now going to reattach the ends to create our final architecture:</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">classDiagram
-  class AbstractPokemon {
-    &lt;&lt;abstract&gt;&gt;
-    # _current_stat : Statistique
-    # _level : int
-    # _name : str
-    # _attack_list : List~AbstractAttack~
-    +get_pokemon_attack_coef()$  float
-    +level_up() None
-  }
- 
-  class Statistique {
-    - hp : int
-    - attaque : int
-    - defense : int
-    - spe_atk : int
-    - spe_def : int
-    - vitesse : int
-  }
-   
-  class BattleService {
-    + resolve_battle(APkm, APkm) : Battle
-    + get_order(APkm, APkm)
-    + choose_attack(APkm) : AAttack
-  }  
-  
-  class Battle{
-    - first_monstie : APkm
-    - second_monstie : APkm
-    - winner : APkm
-    - rounds : List&lt;Round&gt;
-  }
-
-  class Round{
-    attacker: APkm
-    defender: APkm
-    dealt_damage: int
-    attack_description: str
-  }
-  BattleService ..&gt;"2" AbstractPokemon : use
-  AbstractPokemon &lt;|-- Attacker
-  AbstractPokemon &lt;|-- Defender
-  AbstractPokemon &lt;|-- AllRounder
-  Statistique --* AbstractPokemon
-
-  Battle .. BattleService
-  Battle .. Round
- 
-  class AbstractAttack{
-    &lt;&lt;abstract&gt;&gt;
-    # _power : int
-    # _name : str
-    # _description : str
-    +compute_damage(APkm, APkm)$ int
-  }
-
-  class FixedDamageAttack{
-    + compute_damage(APkm,APkm )  int
-  }
-
-  class AbstractFormulaAttack{
-    &lt;&lt;abstract&gt;&gt;
-    -get_attack_stat(APkm)$  float
-    -get_defense_stat(APkm)$  float
-    + compute_damage(APkm,APkm ) int
-  }
- 
-  class PhysicalFormulaAttack{
-   -get_attack_stat(APkm)$  float
-   -get_defense_stat(APkm)$  float
-  }
- 
-  class SpecialFormulaAttack{
-    -get_attack_stat(APkm)  float
-    -get_defense_stat(APkm)  float
-  }
- 
-  AbstractAttack &lt;|-- FixedDamageAttack
-  AbstractAttack &lt;|-- AbstractFormulaAttack
-  AbstractFormulaAttack &lt;|-- SpecialFormulaAttack
-  AbstractFormulaAttack &lt;|-- PhysicalFormulaAttack
-  BattleService &gt;.. AbstractAttack  : use
-  AbstractPokemon o--&gt;"0..*" AbstractAttack
-
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">Implement the class diagram above</label></li>
-<li><label><input type="checkbox">Test your code by writing new unit tests</label></li>
-</ul>
-<p>This architecture makes it possible to decorrelate pokemon attacks and specify the behaviour of attacks as they are inherited. The advantages are:</p>
-<ul>
-<li>For the <code>AbstractPokemon</code> class, all attacks are <code>AbstractAttacks</code>. As long as they expose the <em>compute_damage()</em> method, our program will work. This makes it easy to add new types of attack.</li>
-<li>A <em>Pokémon</em> can have any type of attack.</li>
-<li>We can add a status system such as paralysis or poison quite easily. To do this, we need to modify the <code>AbstractAttack</code> class and the classes that inherit from it. This is potentially time-consuming, but doesn’t require any changes to the “Pokémon” part of our architecture.</li>
-<li>One person could concentrate on creating <em>Pokémons</em>, while another could concentrate on creating attacks without difficulty. The two parts of the code are relatively independent, the only area of coupling being the <code>AbstractPokemon</code> and <code>AbstractAttack</code> classes, which are used above all to define what must be done by the daughter classes and what is accessible to the outside.</li>
-</ul>
-<p>Externalizing the behaviour of attacks into specific classes and then linking them to Pokémon via a fairly flexible aggregation relationship that allows a Pokémon’s attacks to be changed dynamically is the <em>strategy</em> design pattern.</p>
 </section>
 <section id="end-of-the-lab" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
@@ -1252,11 +702,11 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>When you have finished coding, don’t forget to:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Push your code to GitHub</label>
 <ul>
-<li>if your VSCode service dies, your code will not be lost</li>
-<li>on Datalabs, there is no guarantee of the lifespan of your services</li>
+<li>If your service is terminated, all unpushed code is lost…</li>
 </ul></li>
 <li><label><input type="checkbox">Pause or delete your datalab services</label>
 <ul>
