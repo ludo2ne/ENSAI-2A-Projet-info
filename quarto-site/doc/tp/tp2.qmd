@@ -11,6 +11,12 @@ categories:
   - Refactoring
 ---
 
+:construction:
+
+:::{.notes}
+- [ ] TODO : Unit tests
+:::
+
 ## Before you start {.unnumbered}
 
 This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
@@ -26,11 +32,16 @@ This tutorial combines explanations and code phases. The explanations should not
 > You might be thinking: "All this architecture just for a simple coin flip?" ... You're right. And don't get too comfortable, because we're about to add a dozen more classes just for fun!" 🙃
 
 
+### Work on a branch
+
+:construction: Each member of the team works on its own branch
+
+
 ## The Mission :dart:
 
 Currently, our gaming engine only supports a single game mode: Coin Flip. 
 
-Our goal is to refactor the system to easily integrate new games, such as Dice, and more complex betting mechanics. 
+Our goal is to refactor the system to easily integrate new games, such as Dice :game_die:, and more complex betting mechanics. 
 
 ### Current State: A "God Service"
 
@@ -58,106 +69,212 @@ Our goal is to transform this monolith into a decoupled system where:
 ```{mermaid}
 classDiagram
   class GameService {
-    - _scoring_strategy : ScoringStrategy
-    + play(player_id, opponent_id, game_type) MatchResult
+    - scoring_strategy : ScoringStrategy
+    + play(player_id, opponent_id, mode) Game
   }
 
-  class GameFactory {
-    + get_rules(game_type) GameRules
+  class GameModeFactory {
+    + get_mode(mode) GameMode
   }
 
-  class GameRules {
+  class GameMode {
     <<interface>>
-    + play(p1, p2) MatchResult
+    + play(p1, p2) Game
   }
 
   class ScoringStrategy {
-    <<interface>>
     + compute(p1, p2, winner) tuple
   }
 
-  class CoinFlipRules {
-    + play(p1, p2) MatchResult
+  class CoinFlipMode {
+    + p1_choice : str
+    + play(p1, p2) Game
   }
 
-  class DiceRules {
-    + play(p1, p2) MatchResult
+  class DiceMode {
+    + play(p1, p2) Game
   }
 
-  class EloScoring {
-    + compute(p1, p2, winner) tuple
-  }
-
-  class FlatScoring {
-    + compute(p1, p2, winner) tuple
+  class Game {
+    <<Business Object>>
+    + id_game : int
+    + player1 : Player
+    + player2 : Player
+    + mode : str
+    + winner : Player
+    + str: detail
+    + timestamp : datetime
   }
 
   GameService o-- ScoringStrategy : uses
-  GameService --> GameFactory : asks for
-  GameFactory ..> GameRules : creates
-  GameRules <|-- CoinFlipRules
-  GameRules <|-- DiceRules
-  ScoringStrategy <|-- EloScoring
-  ScoringStrategy <|-- FlatScoring
+  GameService --> GameModeFactory : asks for
+  GameModeFactory ..> GameMode : creates
+  GameMode <|-- CoinFlipMode
+  GameMode <|-- DiceMode
+  GameService ..> Game : creates
 ```
 
 
 ## Modelling and Implementation
 
-### Decoupling Game Logic (Factory Pattern)
+### Game business object
 
-We want to move away from `if/else` blocks to manage different games.
+We want to keep a record of each game. Let's start by creating a `Game` business object to store the necessary information after each game is played.
 
-- [ ] Open `backend/src/service/game_service.py`.
-- [ ] **Task 1: Implement the Rules Interface.**
-    - Create an abstract base class `GameRules` with a method `play(p1, p2) -> MatchResult`.
-    - Implement `CoinFlipRules` (using the existing logic).
-    - Implement `DiceRules` (new logic: roll two dice; if different, one wins; if equal, it's a **draw**).
-- [ ] **Task 2: Implement the Factory.**
-    - Create a `GameFactory` class with a method `get_rules(game_type: str) -> GameRules`.
+```{mermaid}
+classDiagram
+  class Game {
+    + id_game : int
+    + player1 : Player
+    + player2 : Player
+    + mode : str
+    + winner : Player
+    + str: detail
+    + timestamp : datetime
+  }
 
-### Decoupling Scoring (Strategy Pattern)
+  class Player {
+    + id : int
+    + username : str
+    + elo : int
+  }
 
-Currently, Elo is hardcoded. We want to be able to switch between "Elo" and "Flat" scoring.
+  Game o-- Player : involves
+```
 
-- [ ] **Task 3: Implement Scoring Strategies.**
-    - Create an abstract class `ScoringStrategy` with a method `compute(p1, p2, winner)`.
-    - Implement `EloScoring` (move the existing math here).
-    - Implement `FlatScoring` (a simple $+10 / -10$ points rule).
-- [ ] **Task 4: Refactor GameService (Dependency Injection).**
-    - Modify `GameService.__init__` to accept a `ScoringStrategy`.
-    - Update `play()` to use `self.scoring_strategy.compute(...)`.
+- [ ] Create file *game.py* in the appropriate folder
 
-::: {.callout-tip title="Concept: Dependency Injection"}
-By passing the strategy in the constructor, the `GameService` no longer decides *how* to score; it is *given* a tool to do it. This makes the code much easier to test!
+::: {.callout-important}
+Whenever you are asked to create a new class, this implicitly means you must also create a new file.
 :::
 
-### Data Persistence (History Tracking)
+- [ ] Create class `Game`
+- [ ] Implement the constructor with all attributes as parameters except *id*
+  - Set `id = None` it will be filled later when the object is persisted in the database
+  - *winner*: Player or None if it is a draw
+  - *mode*: The type of game played ("coinflip" or "dice")
+  - *detail*: To store more details about the game
+- [ ] Add *__str__()* method returning for example:
 
-A game is an event that must be recorded.
+> *coinflip* between Jacky and Jackie. Winner: Jackie
 
-- [ ] **Task 5: Create the Match History.**
-    - Create a new Business Object `GameResult` (containing: `player1_id`, `player2_id`, `game_type`, `winner_id`, `timestamp`).
-    - Create a `GameDao` to persist these results in a `games` table.
-- [ ] **Task 6: Update the Orchestrator.**
-    - Modify `GameService.play()` to call `GameDao.save(match_result)` at the end of the process.
+We now have an object to store the results. We'll see later how to insert them into the database.
 
 
-## Testing & Validation
+### Polymorphic Game Modes
 
-Your refactoring is successful only if the code is easier to extend and still works perfectly.
+Let's focus on the different game modes and their rules.
 
-- [ ] **Unit Tests:**
-    - Test that `GameFactory` returns the correct rules.
-    - Test that `DiceRules` correctly handles a tie (`winner = None`).
-    - Test that `GameService` correctly uses the injected `ScoringStrategy`.
-- [ ] **Run all tests** using `pytest -v`.
+**The Problem:** Currently, we have this code below in the play method.
 
-::: {.callout-important title="Final Checklist"}
-1. Is `GameService.play()` free of `if/else` regarding the game type?
-2. Can I change the scoring mode just by changing the object passed to `GameService`?
-3. Does the system correctly handle a **Draw** (no Elo change, but history recorded)?
+```{.python filename="game_service.py"}
+class GameService:
+    def play(self, player_id, opponent_id, choice="heads"):
+        ...
+        result = secrets.choice(["heads", "tails"])
+        winner = p1 if result == choice else p2
+        ...
+```
+
+If we want to add the ability to roll dice, we'll end up with something like:
+
+```{.python}
+        if mode == "coinflip":
+            result = secrets.choice(["heads", "tails"])
+            winner = p1 if result == choice else p2
+        elif mode == "dice":
+            d1 = secrets.choice(range(1, 7))
+            d2 = secrets.choice(range(1, 7))
+            if d1 > d2:
+              winner = p1
+            elif d1 < d2:
+              winner = p2
+            else:
+              winner = None              
+```
+
+This is a violation of the **Open/Closed Principle**. Every time we want to add a new game (e.g., Blackjack, Poker heads up, Pokemon battle, etc.), we have to modify the core `GameService`.
+
+
+::: {.callout-note title="Goal"}
+Refactor the system so that the `GameService` doesn't care which game is being played. 
+
+It should simply ask a "provider" to give it the correct rules.
 :::
+
+- [ ] Create an abstract base class `GameMode` that defines a standard *play(p1, p2)* abstract method
+  - in a folder called *game_mode* in *business_object*
+- [ ] Implement `DiceMode` 
+  - including method *play(p1, p2)*
+  - both players roll a die, and the one with the highest roll wins
+- [ ] Implement `CoinFlipMode`
+  - The choice (heads/tails) must be passed to the constructor when the mode is created.
+  - then use it in method *play()*
+
+
+Fine, we'll also need a way to generate either a *CoinFlipMode* object or a *DiceMode* object based on a *mode* (str) parameter. To do this, let's create a factory class:
+
+- [ ] Create a `GameModeFactory` class 
+- [ ] Add static method called `get_mode(mode: str, **kwargs) -> GameMode`
+  - that takes the mode (str) as parameter
+  - and returns the corresponding `GameModeFactory` object
+
+
+::: {.callout-tip}
+In Python, `**kwargs` (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name="Alice").
+
+When you use `**kwargs` in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument's value.
+
+`**kwargs` will allow passing specific arguments (like choice) to the modes.
+:::
+
+
+```{mermaid}
+stateDiagram
+    direction LR
+    [*] --> GameModeFactory : mode (str)
+    GameModeFactory --> CoinFlipMode : if "mode=coinflip"
+    GameModeFactory --> DiceMode : if "mode=dice"
+```
+
+::: {.callout-important}
+With this new architecture, you can add a new game mode with very few changes to the existing code (almost exclusively additions):
+
+- by creating this mode (inheriting from GameMode)
+- and simply modifying the factory class
+:::
+
+
+### Decoupling Scoring
+
+We want to extract the methods used to calculate the Elo rating in GameService.
+
+- [ ] Let's start by simply creating a business class `ScoringStrategy`
+- [ ] Implement method *compute(p1, p2, winner)*
+  - it updates elo of both players
+
+
+### GameService refactor
+
+Let's finally put the pieces of the puzzle together in the `GameService` class
+
+- [ ] Get players (nothing to change)
+- [ ] Get the game mode using the factory
+- [ ] Play the game
+- [ ] Update elo of both players
+
+
+We should return a Game object, but for now, let's leave it as is.
+
+
+## Conclusion
+
+In this lab, we formalized the business logic and created an object to store the games.
+
+However, without database storage, all the games created will be lost when the application is closed.
+
+Next time, we’ll focus on storing these games in a database.
+
 
 
 {{< include _end-lab.qmd >}}

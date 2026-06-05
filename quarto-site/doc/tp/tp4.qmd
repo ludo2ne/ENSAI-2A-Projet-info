@@ -13,6 +13,8 @@ categories:
   - DAO
 ---
 
+:construction:
+
 
 ## Before you start {.unnumbered}
 
@@ -94,7 +96,6 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
   - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
   - <https://datalab.sspcloud.fr/>{target="_blank"}
 - [ ] Launch a [**customised**]{.underline} VSCode service
-  - See [Datalab page](../outils/datalab.qmd){target="_blank"}
 
 
 ### Clone the repository
