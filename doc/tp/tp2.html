@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -80,35 +115,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -440,7 +446,7 @@ window.Quarto = {
   <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
   <li><a href="#the-mission" id="toc-the-mission" class="nav-link" data-scroll-target="#the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></a></li>
   <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</a></li>
-  <li><a href="#testing-validation" id="toc-testing-validation" class="nav-link" data-scroll-target="#testing-validation"><span class="header-section-number">3</span> Testing &amp; Validation</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
@@ -488,6 +494,12 @@ window.Quarto = {
 </header>
 
 
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="notes">
+<ul class="task-list">
+<li><label><input type="checkbox">TODO : Unit tests</label></li>
+</ul>
+</div>
 <section id="before-you-start" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
 <p>This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.</p>
@@ -513,11 +525,15 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p>You might be thinking: “All this architecture just for a simple coin flip?” … You’re right. And don’t get too comfortable, because we’re about to add a dozen more classes just for fun!” 🙃</p>
 </blockquote>
+<section id="work-on-a-branch" class="level3" data-number="0.1">
+<h3 data-number="0.1" class="anchored" data-anchor-id="work-on-a-branch"><span class="header-section-number">0.1</span> Work on a branch</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span> Each member of the team works on its own branch</p>
+</section>
 </section>
 <section id="the-mission" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></h2>
 <p>Currently, our gaming engine only supports a single game mode: Coin Flip.</p>
-<p>Our goal is to refactor the system to easily integrate new games, such as Dice, and more complex betting mechanics.</p>
+<p>Our goal is to refactor the system to easily integrate new games, such as Dice <span class="emoji" data-emoji="game_die">🎲</span>, and more complex betting mechanics.</p>
 <section id="current-state-a-god-service" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="current-state-a-god-service"><span class="header-section-number">1.1</span> Current State: A “God Service”</h3>
 <p>Currently, the <code>GameService</code> class is a <strong>Monolith</strong>.</p>
@@ -546,47 +562,49 @@ window.Quarto = {
 <div>
 <pre class="mermaid mermaid-js">classDiagram
   class GameService {
-    - _scoring_strategy : ScoringStrategy
-    + play(player_id, opponent_id, game_type) MatchResult
+    - scoring_strategy : ScoringStrategy
+    + play(player_id, opponent_id, mode) Game
   }
 
-  class GameFactory {
-    + get_rules(game_type) GameRules
+  class GameModeFactory {
+    + get_mode(mode) GameMode
   }
 
-  class GameRules {
+  class GameMode {
     &lt;&lt;interface&gt;&gt;
-    + play(p1, p2) MatchResult
+    + play(p1, p2) Game
   }
 
   class ScoringStrategy {
-    &lt;&lt;interface&gt;&gt;
     + compute(p1, p2, winner) tuple
   }
 
-  class CoinFlipRules {
-    + play(p1, p2) MatchResult
+  class CoinFlipMode {
+    + p1_choice : str
+    + play(p1, p2) Game
   }
 
-  class DiceRules {
-    + play(p1, p2) MatchResult
+  class DiceMode {
+    + play(p1, p2) Game
   }
 
-  class EloScoring {
-    + compute(p1, p2, winner) tuple
-  }
-
-  class FlatScoring {
-    + compute(p1, p2, winner) tuple
+  class Game {
+    &lt;&lt;Business Object&gt;&gt;
+    + id_game : int
+    + player1 : Player
+    + player2 : Player
+    + mode : str
+    + winner : Player
+    + str: detail
+    + timestamp : datetime
   }
 
   GameService o-- ScoringStrategy : uses
-  GameService --&gt; GameFactory : asks for
-  GameFactory ..&gt; GameRules : creates
-  GameRules &lt;|-- CoinFlipRules
-  GameRules &lt;|-- DiceRules
-  ScoringStrategy &lt;|-- EloScoring
-  ScoringStrategy &lt;|-- FlatScoring
+  GameService --&gt; GameModeFactory : asks for
+  GameModeFactory ..&gt; GameMode : creates
+  GameMode &lt;|-- CoinFlipMode
+  GameMode &lt;|-- DiceMode
+  GameService ..&gt; Game : creates
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -597,98 +615,215 @@ window.Quarto = {
 </section>
 <section id="modelling-and-implementation" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</h2>
-<section id="decoupling-game-logic-factory-pattern" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="decoupling-game-logic-factory-pattern"><span class="header-section-number">2.1</span> Decoupling Game Logic (Factory Pattern)</h3>
-<p>We want to move away from <code>if/else</code> blocks to manage different games.</p>
+<section id="game-business-object" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="game-business-object"><span class="header-section-number">2.1</span> Game business object</h3>
+<p>We want to keep a record of each game. Let’s start by creating a <code>Game</code> business object to store the necessary information after each game is played.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">classDiagram
+  class Game {
+    + id_game : int
+    + player1 : Player
+    + player2 : Player
+    + mode : str
+    + winner : Player
+    + str: detail
+    + timestamp : datetime
+  }
+
+  class Player {
+    + id : int
+    + username : str
+    + elo : int
+  }
+
+  Game o-- Player : involves
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <ul class="task-list">
-<li><label><input type="checkbox">Open <code>backend/src/service/game_service.py</code>.</label></li>
-<li><label><input type="checkbox"><strong>Task 1: Implement the Rules Interface.</strong></label>
-<ul>
-<li>Create an abstract base class <code>GameRules</code> with a method <code>play(p1, p2) -&gt; MatchResult</code>.</li>
-<li>Implement <code>CoinFlipRules</code> (using the existing logic).</li>
-<li>Implement <code>DiceRules</code> (new logic: roll two dice; if different, one wins; if equal, it’s a <strong>draw</strong>).</li>
-</ul></li>
-<li><label><input type="checkbox"><strong>Task 2: Implement the Factory.</strong></label>
-<ul>
-<li>Create a <code>GameFactory</code> class with a method <code>get_rules(game_type: str) -&gt; GameRules</code>.</li>
-</ul></li>
+<li><label><input type="checkbox">Create file <em>game.py</em> in the appropriate folder</label></li>
 </ul>
-</section>
-<section id="decoupling-scoring-strategy-pattern" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="decoupling-scoring-strategy-pattern"><span class="header-section-number">2.2</span> Decoupling Scoring (Strategy Pattern)</h3>
-<p>Currently, Elo is hardcoded. We want to be able to switch between “Elo” and “Flat” scoring.</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><strong>Task 3: Implement Scoring Strategies.</strong></label>
-<ul>
-<li>Create an abstract class <code>ScoringStrategy</code> with a method <code>compute(p1, p2, winner)</code>.</li>
-<li>Implement <code>EloScoring</code> (move the existing math here).</li>
-<li>Implement <code>FlatScoring</code> (a simple <span class="math inline">\(+10 / -10\)</span> points rule).</li>
-</ul></li>
-<li><label><input type="checkbox"><strong>Task 4: Refactor GameService (Dependency Injection).</strong></label>
-<ul>
-<li>Modify <code>GameService.__init__</code> to accept a <code>ScoringStrategy</code>.</li>
-<li>Update <code>play()</code> to use <code>self.scoring_strategy.compute(...)</code>.</li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Concept: Dependency Injection">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Concept: Dependency Injection
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By passing the strategy in the constructor, the <code>GameService</code> no longer decides <em>how</em> to score; it is <em>given</em> a tool to do it. This makes the code much easier to test!</p>
+<p>Whenever you are asked to create a new class, this implicitly means you must also create a new file.</p>
 </div>
 </div>
-</section>
-<section id="data-persistence-history-tracking" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="data-persistence-history-tracking"><span class="header-section-number">2.3</span> Data Persistence (History Tracking)</h3>
-<p>A game is an event that must be recorded.</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>Task 5: Create the Match History.</strong></label>
+<li><label><input type="checkbox">Create class <code>Game</code></label></li>
+<li><label><input type="checkbox">Implement the constructor with all attributes as parameters except <em>id</em></label>
 <ul>
-<li>Create a new Business Object <code>GameResult</code> (containing: <code>player1_id</code>, <code>player2_id</code>, <code>game_type</code>, <code>winner_id</code>, <code>timestamp</code>).</li>
-<li>Create a <code>GameDao</code> to persist these results in a <code>games</code> table.</li>
+<li>Set <code>id = None</code> it will be filled later when the object is persisted in the database</li>
+<li><em>winner</em>: Player or None if it is a draw</li>
+<li><em>mode</em>: The type of game played (“coinflip” or “dice”)</li>
+<li><em>detail</em>: To store more details about the game</li>
 </ul></li>
-<li><label><input type="checkbox"><strong>Task 6: Update the Orchestrator.</strong></label>
-<ul>
-<li>Modify <code>GameService.play()</code> to call <code>GameDao.save(match_result)</code> at the end of the process.</li>
-</ul></li>
+<li><label><input type="checkbox">Add <em><strong>str</strong>()</em> method returning for example:</label></li>
 </ul>
+<blockquote class="blockquote">
+<p><em>coinflip</em> between Jacky and Jackie. Winner: Jackie</p>
+</blockquote>
+<p>We now have an object to store the results. We’ll see later how to insert them into the database.</p>
 </section>
-</section>
-<section id="testing-validation" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="testing-validation"><span class="header-section-number">3</span> Testing &amp; Validation</h2>
-<p>Your refactoring is successful only if the code is easier to extend and still works perfectly.</p>
-<ul class="task-list">
-<li><label><input type="checkbox"><strong>Unit Tests:</strong></label>
-<ul>
-<li>Test that <code>GameFactory</code> returns the correct rules.</li>
-<li>Test that <code>DiceRules</code> correctly handles a tie (<code>winner = None</code>).</li>
-<li>Test that <code>GameService</code> correctly uses the injected <code>ScoringStrategy</code>.</li>
-</ul></li>
-<li><label><input type="checkbox"><strong>Run all tests</strong> using <code>pytest -v</code>.</label></li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled" title="Final Checklist">
+<section id="polymorphic-game-modes" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="polymorphic-game-modes"><span class="header-section-number">2.2</span> Polymorphic Game Modes</h3>
+<p>Let’s focus on the different game modes and their rules.</p>
+<p><strong>The Problem:</strong> Currently, we have this code below in the play method.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>game_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="game_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, choice<span class="op">=</span><span class="st">"heads"</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If we want to add the ability to roll dice, we’ll end up with something like:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mode <span class="op">==</span> <span class="st">"coinflip"</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"dice"</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            d1 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            d2 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> d1 <span class="op">&gt;</span> d2:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> p1</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> d1 <span class="op">&lt;</span> d2:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> p2</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> <span class="va">None</span>              </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This is a violation of the <strong>Open/Closed Principle</strong>. Every time we want to add a new game (e.g., Blackjack, Poker heads up, Pokemon battle, etc.), we have to modify the core <code>GameService</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Goal">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Final Checklist
+<span class="screen-reader-only">Note</span>Goal
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>Is <code>GameService.play()</code> free of <code>if/else</code> regarding the game type?</li>
-<li>Can I change the scoring mode just by changing the object passed to <code>GameService</code>?</li>
-<li>Does the system correctly handle a <strong>Draw</strong> (no Elo change, but history recorded)?</li>
-</ol>
+<p>Refactor the system so that the <code>GameService</code> doesn’t care which game is being played.</p>
+<p>It should simply ask a “provider” to give it the correct rules.</p>
 </div>
 </div>
+<ul class="task-list">
+<li><label><input type="checkbox">Create an abstract base class <code>GameMode</code> that defines a standard <em>play(p1, p2)</em> abstract method</label>
+<ul>
+<li>in a folder called <em>game_mode</em> in <em>business_object</em></li>
+</ul></li>
+<li><label><input type="checkbox">Implement <code>DiceMode</code></label>
+<ul>
+<li>including method <em>play(p1, p2)</em></li>
+<li>both players roll a die, and the one with the highest roll wins</li>
+</ul></li>
+<li><label><input type="checkbox">Implement <code>CoinFlipMode</code></label>
+<ul>
+<li>The choice (heads/tails) must be passed to the constructor when the mode is created.</li>
+<li>then use it in method <em>play()</em></li>
+</ul></li>
+</ul>
+<p>Fine, we’ll also need a way to generate either a <em>CoinFlipMode</em> object or a <em>DiceMode</em> object based on a <em>mode</em> (str) parameter. To do this, let’s create a factory class:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a <code>GameModeFactory</code> class</label></li>
+<li><label><input type="checkbox">Add static method called <code>get_mode(mode: str, **kwargs) -&gt; GameMode</code></label>
+<ul>
+<li>that takes the mode (str) as parameter</li>
+<li>and returns the corresponding <code>GameModeFactory</code> object</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Python, <code>**kwargs</code> (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name=“Alice”).</p>
+<p>When you use <code>**kwargs</code> in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument’s value.</p>
+<p><code>**kwargs</code> will allow passing specific arguments (like choice) to the modes.</p>
+</div>
+</div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">stateDiagram
+    direction LR
+    [*] --&gt; GameModeFactory : mode (str)
+    GameModeFactory --&gt; CoinFlipMode : if "mode=coinflip"
+    GameModeFactory --&gt; DiceMode : if "mode=dice"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With this new architecture, you can add a new game mode with very few changes to the existing code (almost exclusively additions):</p>
+<ul>
+<li>by creating this mode (inheriting from GameMode)</li>
+<li>and simply modifying the factory class</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="decoupling-scoring" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="decoupling-scoring"><span class="header-section-number">2.3</span> Decoupling Scoring</h3>
+<p>We want to extract the methods used to calculate the Elo rating in GameService.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Let’s start by simply creating a business class <code>ScoringStrategy</code></label></li>
+<li><label><input type="checkbox">Implement method <em>compute(p1, p2, winner)</em></label>
+<ul>
+<li>it updates elo of both players</li>
+</ul></li>
+</ul>
+</section>
+<section id="gameservice-refactor" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="gameservice-refactor"><span class="header-section-number">2.4</span> GameService refactor</h3>
+<p>Let’s finally put the pieces of the puzzle together in the <code>GameService</code> class</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Get players (nothing to change)</label></li>
+<li><label><input type="checkbox">Get the game mode using the factory</label></li>
+<li><label><input type="checkbox">Play the game</label></li>
+<li><label><input type="checkbox">Update elo of both players</label></li>
+</ul>
+<p>We should return a Game object, but for now, let’s leave it as is.</p>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3</span> Conclusion</h2>
+<p>In this lab, we formalized the business logic and created an object to store the games.</p>
+<p>However, without database storage, all the games created will be lost when the application is closed.</p>
+<p>Next time, we’ll focus on storing these games in a database.</p>
 </section>
 <section id="end-of-the-lab" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
