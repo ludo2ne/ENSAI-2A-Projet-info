@@ -394,6 +394,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../doc/tp/tp5.html">
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/tp/tp6.html">
+ <span class="dropdown-text">Lab 6 - Bonus</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -446,7 +450,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
   <li><a href="#the-mission" id="toc-the-mission" class="nav-link" data-scroll-target="#the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></a></li>
   <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
+  <li><a href="#unit-tests" id="toc-unit-tests" class="nav-link" data-scroll-target="#unit-tests"><span class="header-section-number">3</span> Unit tests</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4</span> Conclusion</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
@@ -497,7 +502,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
 <div class="notes">
 <ul class="task-list">
-<li><label><input type="checkbox">TODO : Unit tests</label></li>
+<li><label><input type="checkbox">TODO : Unit tests</label>
+<ul>
+<li>for GameService.play()</li>
+<li>or maybe on next lab mocking dao call</li>
+</ul></li>
 </ul>
 </div>
 <section id="before-you-start" class="level2 unnumbered">
@@ -522,16 +531,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>You might be thinking: “All this architecture just for a simple coin flip?” … You’re right. And don’t get too comfortable, because we’re about to add a dozen more classes just for fun!” 🙃</p>
-</blockquote>
-<section id="work-on-a-branch" class="level3" data-number="0.1">
-<h3 data-number="0.1" class="anchored" data-anchor-id="work-on-a-branch"><span class="header-section-number">0.1</span> Work on a branch</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> Each member of the team works on its own branch</p>
+<section id="work-on-a-branch" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="work-on-a-branch">Work on a branch</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p>Each member of the team works on its own branch</p>
 </section>
 </section>
 <section id="the-mission" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></h2>
+<blockquote class="blockquote">
+<p>You might be thinking: “All this architecture just for a simple coin flip?” … You’re right. And don’t get too comfortable, because we’re about to add a dozen more classes just for fun!” 🙃</p>
+</blockquote>
 <p>Currently, our gaming engine only supports a single game mode: Coin Flip.</p>
 <p>Our goal is to refactor the system to easily integrate new games, such as Dice <span class="emoji" data-emoji="game_die">🎲</span>, and more complex betting mechanics.</p>
 <section id="current-state-a-god-service" class="level3" data-number="1.1">
@@ -563,11 +573,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="mermaid mermaid-js">classDiagram
   class GameService {
     - scoring_strategy : ScoringStrategy
-    + play(player_id, opponent_id, mode) Game
+    + play(player_id, opponent_id, game_mode) Game
   }
 
   class GameModeFactory {
-    + get_mode(mode) GameMode
+    + get_mode(game_mode) GameMode
   }
 
   class GameMode {
@@ -593,7 +603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     + id_game : int
     + player1 : Player
     + player2 : Player
-    + mode : str
+    + game_mode : str
     + winner : Player
     + str: detail
     + timestamp : datetime
@@ -628,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     + id_game : int
     + player1 : Player
     + player2 : Player
-    + mode : str
+    + game_mode : str
     + winner : Player
     + str: detail
     + timestamp : datetime
@@ -669,7 +679,7 @@ Important
 <ul>
 <li>Set <code>id = None</code> it will be filled later when the object is persisted in the database</li>
 <li><em>winner</em>: Player or None if it is a draw</li>
-<li><em>mode</em>: The type of game played (“coinflip” or “dice”)</li>
+<li><em>game_mode</em>: The type of game played (“coinflip” or “dice”)</li>
 <li><em>detail</em>: To store more details about the game</li>
 </ul></li>
 <li><label><input type="checkbox">Add <em><strong>str</strong>()</em> method returning for example:</label></li>
@@ -695,10 +705,10 @@ Important
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If we want to add the ability to roll dice, we’ll end up with something like:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mode <span class="op">==</span> <span class="st">"coinflip"</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> game_mode <span class="op">==</span> <span class="st">"coinflip"</span>:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> mode <span class="op">==</span> <span class="st">"dice"</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> game_mode <span class="op">==</span> <span class="st">"dice"</span>:</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            d1 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            d2 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> d1 <span class="op">&gt;</span> d2:</span>
@@ -738,12 +748,12 @@ Important
 <li>then use it in method <em>play()</em></li>
 </ul></li>
 </ul>
-<p>Fine, we’ll also need a way to generate either a <em>CoinFlipMode</em> object or a <em>DiceMode</em> object based on a <em>mode</em> (str) parameter. To do this, let’s create a factory class:</p>
+<p>Fine, we’ll also need a way to generate either a <em>CoinFlipMode</em> object or a <em>DiceMode</em> object based on a <em>game_mode</em> (str) parameter. To do this, let’s create a factory class:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Create a <code>GameModeFactory</code> class</label></li>
-<li><label><input type="checkbox">Add static method called <code>get_mode(mode: str, **kwargs) -&gt; GameMode</code></label>
+<li><label><input type="checkbox">Add static method called <code>get_mode(game_mode: str, **kwargs) -&gt; GameMode</code></label>
 <ul>
-<li>that takes the mode (str) as parameter</li>
+<li>that takes the game_mode (str) as parameter</li>
 <li>and returns the corresponding <code>GameModeFactory</code> object</li>
 </ul></li>
 </ul>
@@ -769,9 +779,9 @@ Tip
 <div>
 <pre class="mermaid mermaid-js">stateDiagram
     direction LR
-    [*] --&gt; GameModeFactory : mode (str)
-    GameModeFactory --&gt; CoinFlipMode : if "mode=coinflip"
-    GameModeFactory --&gt; DiceMode : if "mode=dice"
+    [*] --&gt; GameModeFactory : game_mode (str)
+    GameModeFactory --&gt; CoinFlipMode : if "game_mode=coinflip"
+    GameModeFactory --&gt; DiceMode : if "game_mode=dice"
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -819,8 +829,16 @@ Important
 <p>We should return a Game object, but for now, let’s leave it as is.</p>
 </section>
 </section>
-<section id="conclusion" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3</span> Conclusion</h2>
+<section id="unit-tests" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="unit-tests"><span class="header-section-number">3</span> Unit tests</h2>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<ul>
+<li>Explain mocking</li>
+<li>Few easy tests</li>
+</ul>
+</section>
+<section id="conclusion" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
 <p>In this lab, we formalized the business logic and created an object to store the games.</p>
 <p>However, without database storage, all the games created will be lost when the application is closed.</p>
 <p>Next time, we’ll focus on storing these games in a database.</p>
