@@ -62,6 +62,8 @@ website:
             text: Lab 4
           - href: doc/tp/tp5.qmd
             text: Lab 5
+          - href: doc/tp/tp6.qmd
+            text: Lab 6 - Bonus
     right:
       - text: Various
         menu:

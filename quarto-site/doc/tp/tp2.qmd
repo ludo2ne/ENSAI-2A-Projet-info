@@ -15,6 +15,8 @@ categories:
 
 :::{.notes}
 - [ ] TODO : Unit tests
+  - for GameService.play()
+  - or maybe on next lab mocking dao call
 :::
 
 ## Before you start {.unnumbered}
@@ -29,15 +31,17 @@ This tutorial combines explanations and code phases. The explanations should not
 - Advanced Unit Testing
 :::
 
-> You might be thinking: "All this architecture just for a simple coin flip?" ... You're right. And don't get too comfortable, because we're about to add a dozen more classes just for fun!" 🙃
+### Work on a branch {.unnumbered}
 
+:construction: 
 
-### Work on a branch
-
-:construction: Each member of the team works on its own branch
+Each member of the team works on its own branch
 
 
 ## The Mission :dart:
+
+> You might be thinking: "All this architecture just for a simple coin flip?" ... You're right. And don't get too comfortable, because we're about to add a dozen more classes just for fun!" 🙃
+
 
 Currently, our gaming engine only supports a single game mode: Coin Flip. 
 
@@ -70,11 +74,11 @@ Our goal is to transform this monolith into a decoupled system where:
 classDiagram
   class GameService {
     - scoring_strategy : ScoringStrategy
-    + play(player_id, opponent_id, mode) Game
+    + play(player_id, opponent_id, game_mode) Game
   }
 
   class GameModeFactory {
-    + get_mode(mode) GameMode
+    + get_mode(game_mode) GameMode
   }
 
   class GameMode {
@@ -100,7 +104,7 @@ classDiagram
     + id_game : int
     + player1 : Player
     + player2 : Player
-    + mode : str
+    + game_mode : str
     + winner : Player
     + str: detail
     + timestamp : datetime
@@ -127,7 +131,7 @@ classDiagram
     + id_game : int
     + player1 : Player
     + player2 : Player
-    + mode : str
+    + game_mode : str
     + winner : Player
     + str: detail
     + timestamp : datetime
@@ -152,7 +156,7 @@ Whenever you are asked to create a new class, this implicitly means you must als
 - [ ] Implement the constructor with all attributes as parameters except *id*
   - Set `id = None` it will be filled later when the object is persisted in the database
   - *winner*: Player or None if it is a draw
-  - *mode*: The type of game played ("coinflip" or "dice")
+  - *game_mode*: The type of game played ("coinflip" or "dice")
   - *detail*: To store more details about the game
 - [ ] Add *__str__()* method returning for example:
 
@@ -179,10 +183,10 @@ class GameService:
 If we want to add the ability to roll dice, we'll end up with something like:
 
 ```{.python}
-        if mode == "coinflip":
+        if game_mode == "coinflip":
             result = secrets.choice(["heads", "tails"])
             winner = p1 if result == choice else p2
-        elif mode == "dice":
+        elif game_mode == "dice":
             d1 = secrets.choice(range(1, 7))
             d2 = secrets.choice(range(1, 7))
             if d1 > d2:
@@ -212,11 +216,11 @@ It should simply ask a "provider" to give it the correct rules.
   - then use it in method *play()*
 
 
-Fine, we'll also need a way to generate either a *CoinFlipMode* object or a *DiceMode* object based on a *mode* (str) parameter. To do this, let's create a factory class:
+Fine, we'll also need a way to generate either a *CoinFlipMode* object or a *DiceMode* object based on a *game_mode* (str) parameter. To do this, let's create a factory class:
 
 - [ ] Create a `GameModeFactory` class 
-- [ ] Add static method called `get_mode(mode: str, **kwargs) -> GameMode`
-  - that takes the mode (str) as parameter
+- [ ] Add static method called `get_mode(game_mode: str, **kwargs) -> GameMode`
+  - that takes the game_mode (str) as parameter
   - and returns the corresponding `GameModeFactory` object
 
 
@@ -232,9 +236,9 @@ When you use `**kwargs` in a function definition, Python collects all the extra 
 ```{mermaid}
 stateDiagram
     direction LR
-    [*] --> GameModeFactory : mode (str)
-    GameModeFactory --> CoinFlipMode : if "mode=coinflip"
-    GameModeFactory --> DiceMode : if "mode=dice"
+    [*] --> GameModeFactory : game_mode (str)
+    GameModeFactory --> CoinFlipMode : if "game_mode=coinflip"
+    GameModeFactory --> DiceMode : if "game_mode=dice"
 ```
 
 ::: {.callout-important}
@@ -263,8 +267,15 @@ Let's finally put the pieces of the puzzle together in the `GameService` class
 - [ ] Play the game
 - [ ] Update elo of both players
 
-
 We should return a Game object, but for now, let's leave it as is.
+
+
+## Unit tests
+
+:construction:
+
+- Explain mocking
+- Few easy tests
 
 
 ## Conclusion
@@ -274,7 +285,6 @@ In this lab, we formalized the business logic and created an object to store the
 However, without database storage, all the games created will be lost when the application is closed.
 
 Next time, we’ll focus on storing these games in a database.
-
 
 
 {{< include _end-lab.qmd >}}

@@ -1,19 +1,146 @@
 ---
-title: Data Access Objet (DAO)
-description: Lab 4
+title: Web APIs & Data formats
+description: Lab 4 - web service
 author:
   - Ludovic Deneuville
   - Rémi Pépin
-format:
-  html:
-    mermaid:
-      theme: default
+format: html
 number-sections: true
 categories:
-  - DAO
+  - APIs
 ---
 
 :construction:
+
+## Before you start {.unnumbered}
+
+This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
+
+::: {.callout-note title="Concepts covered"}
+- Explore existing web services (Manual & Swagger)
+- Build a Data Mapper to consume an external API with a different schema
+- Create your own REST API using **FastAPI**
+- Implement security via **Tokens** and data validation via **Pydantic**
+:::
+
+
+
+## Exploring the Web (The Manual Way)
+
+Before writing code, you must understand how to "talk" to a server. A web service is just an application waiting for HTTP requests.
+
+### Quick Browser Check
+The simplest way to interact with an API is via your browser. However, browsers are limited to **GET** requests.
+
+- [ ] Open your browser and go to: `https://api.zippopotam.us/us/90210`
+- [ ] Observe the response. It is in **JSON** format.
+- [ ] **Question:** Can you use the address bar to send a `POST` request to create a new user? (Answer: No, browsers are primarily GET clients).
+
+### Professional API Clients
+To perform more complex actions (`POST`, `PUT`, `DELETE`), you need a specialized tool.
+**Task:** Use [Hoppscotch](https://hoppscotch.io/), [Insomnia](https://insomnia.rest/), or [Bruno](https://www.usebruno.com/) to test the following:
+
+- [ ] **GET** `https://api.carbonintensity.org.uk/intensity`
+- [ ] **GET** `https://api.carbonintensity.org.uk/intensity/date/2023-05-01` (Replace with a real date).
+- [ ] **Analyze the Status Code:** If you request a date in the future, what code do you receive? (e.g., 400, 404, or 500?)
+
+---
+
+## Using Swagger (The Documentation)
+
+Modern APIs provide a "manual" that is interactive: **Swagger (OpenAPI)**.
+
+### Exploring your project's API
+Your current application already has a web service running. 
+1.  Launch your backend.
+2.  Go to: `http://localhost:8000/docs` (or your specific port).
+
+**Task:** Use the Swagger interface to:
+- [ ] Find a player by ID.
+- [ ] Create a new player.
+- [ ] Observe how Swagger automatically generates the **JSON Body** for you.
+
+
+## The Client Challenge (Data Mapping)
+
+Now, we will move to a more advanced task. You are going to act as a **Client**. You need to fetch game data from an external source and integrate it into your engine.
+
+::: {.callout-warning title="The Schema Mismatch"}
+The external API does **not** use your internal names. It is a common real-world problem. You must bridge the gap!
+:::
+
+### The Mission
+Your task is to create a utility in `backend/src/utils/external_game_client.py`. This client must fetch data from our external mock API and transform it into your `business_object.Game` objects.
+
+**The Data Gap:**
+| External API Field (JSON) | Your `Game` Object Field |
+| :--- | :--- |
+| `match_uuid` | `id_game` |
+| `players_list` (array) | `player1` and `player2` (Objects) |
+| `winner_name` | `winner` (Object) |
+| `location_name` | `location` (String) |
+| `duration_seconds` | `duration` (Integer) |
+
+**Tasks:**
+- [ ] Implement `get_remote_games() -> list[Game]`.
+- [ ] **The Mapper:** Inside your client, write the logic to convert the "ugly" external JSON into your "clean" `Game` objects.
+- [ ] **Error Handling:** If the external API returns a `500` or `404`, your client should catch it and return an empty list instead of crashing the whole app.
+
+
+## Building your own API (The Provider)
+
+Finally, you will become the **Server**. You will expose your `Game` data via a professional REST API using **FastAPI**.
+
+### Data Validation with Pydantic
+To ensure your API doesn't receive "garbage" data, you must define **Schemas**. This is where **Pydantic** shines.
+
+::: {.callout-tip title="Pydantic Models"}
+A `BaseModel` defines the "Contract". If a client sends a `string` where an `int` is expected, FastAPI will automatically return a `422 Unprocessable Entity` error.
+:::
+
+```python
+from pydantic import BaseModel
+
+class GameCreate(BaseModel):
+    game_mode: str
+    player1_id: int
+    player2_id: int
+    # ... other fields
+```
+
+### Security with Tokens
+A professional API is rarely wide open. We will implement a simple **Token-based authentication**.
+
+::: {.callout-important title="Headers & Tokens"}
+The client must include a specific key in the **HTTP Headers** to prove they are authorized.
+- **Header Key:** `X-Auth-Token`
+- **Valid Value:** `secret-key-123`
+:::
+
+### Implementation Tasks
+
+Create `backend/src/api/game_api.py` and implement the following endpoints:
+
+- [ ] **`GET /games`**: Returns all games.
+- [ ] **`GET /games/{id}`**: Returns a specific game. 
+  - *Requirement:* Return `404 Not Found` if the ID is invalid.
+- [ ] **`POST /games`**: Creates a new game.
+  - *Requirement:* Must use `GameCreate` (Pydantic) for validation.
+  - *Security:* **Must** require the `X-Auth-Token`. If missing or wrong, return `401 Unauthorized`.
+- [ ] **`DELETE /games/{id}`**: Deletes a game.
+  - *Security:* **Must** require the `X-Auth-Token`.
+
+**Success Criteria:**
+1. Your API is documented in `/docs`.
+2. You can create a game via Swagger using the correct Header.
+3. Trying to create a game without the token results in a `401` error.
+
+
+{{< include _end-lab.qmd >}}
+
+
+
+---
 
 
 ## Before you start {.unnumbered}
@@ -22,69 +149,306 @@ categories:
 
 It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.
 
-### Last TP {.unnumbered}
+**You probably won't finish the whole subject, but that's okay. It's there to help you with your IT project.**
 
-Last week, you primarily queried web services:
-
-- Your application acted as a client :arrow_right: it sent HTTP requests to a web service
-- The web service responded with JSON payloads
-- You then converted that JSON into Python business objects
-
-
-:::{style="background-color: #d7e5ecff;"}
-```{mermaid}
-sequenceDiagram
-    participant WS as WebService
-    participant Client as AttackClient
-    participant Factory as AttackFactory
-    participant Attack as Attack Business Object
-
-	Note over Client: Method get_attack(id=1) called
-	Note over Attack: FixedDamageAttack or<br/>PhysicalFormulaAttack or<br/>SpecialFormulaAttack
-
-    Client->>WS: GET /attack/1
-    WS-->>Client: JSON <br/>{id:1,<br/> attack_type:"special attack",<br/> power:195, ...}
-    Client->>Factory: instantiate_attack(<br/>type="special attack", <br/>id=1, ...)
-    Factory->>Attack: Create Attack object
-    Attack-->>Client: Attack instance returned
-    Client-->>Client: Returns attack to caller (or None if not found)
-```
-
-:::
-
-### Objectives {.unnumbered}
-
-Today, we'll follow a similar principle. You'll use the [psycopg2](https://pypi.org/project/psycopg2/){target="_blank"} library to query a PostgreSQL database. You'll execute SQL queries on the database, retrieve data in a format similar to JSON, and then convert it into Python business objects.
-
-
+::: {.callout-note title="Objectives"}
 In this lab, you will:
 
-- Review fundamental relational database concepts
-- Implement the Data Access Object (DAO) design pattern. This pattern helps separate data persistence logic from your business logic, making your application more modular and easier to maintain
-- Test your program's functionality with reproducible unit tests
+- Manually call a web service using an API Client
+- Call a web service using the Python library *requests*
+- Discover the Swagger page of a web service
+- Manipulate different data formats
+- Create a web service using the Python framework [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
+:::
 
 
-:::{style="background-color: #d7e5ecff;"}
-```{mermaid}
-sequenceDiagram
-    participant Dao as AttackDao
-    participant DB as PostgreSQL Database
-    participant Factory as AttackFactory
-    participant Attack as Attack Business Object
 
-    Note over Dao: method find_attack_by_id(id=1) called
+## Calling manually a web service 
 
-    Dao->>DB: Connect to database
-    Dao->>DB: SELECT *<br/> FROM attack<br/> WHERE id_attack=1
-    DB-->>Dao: {id:1,<br/>attack_type:"special attack",<br/>power:195,...}
-    Dao->>Factory: instantiate_attack(type="special attack", id=1, ...)
-    Factory->>Attack: Create Attack object
-    Attack-->>Dao: Attack instance returned
-    Dao-->>Dao: Return Attack (or None if not found)
+The first part of this practical assignment does not require you to write any code, but only to make requests to a web service using an API client.
+
+### Webservices
+
+::: {.callout-note title="Web service"}
+**Web service**: The term web service is a broad one, and it would be difficult to provide a concise definition ([Wikipedia article](https://en.wikipedia.org/wiki/Web_service){target="_blank"}).
+
+Within the scope of the project, a web service refers to an application accessible via the HTTP (Hypertext Transfer Protocol) protocol, which generally complies with the REST (Representational State Transfer) architecture.
+
+But there are others, such as SOAP (Simple Object Access Protocol) and RPC (Remote Procedure Call).
+::: 
+
+In other words, a web service is an application accessible via the web that can be queried either:
+
+- to obtain resources
+- to modify accessible resources
+
+A web service can simply be a **single, standardised access point** to data (such as a database interface), but it can also be a **way of controlling an information system** (launching jobs, putting them on hold, retrieving results, etc.).
+
+Web services use the HTTP protocol, which is the web protocol (not the internet protocol). It is the one you use without knowing it with your web browser. Requesting a web service is almost like requesting a web page.
+
+To do this, you need:
+
+- the address of the resource, its Uniform Resource Identifier (URI) 
+  - this is a more general concept than Uniform Resource Locator (URL)
+- a method (GET, POST, PUT, DELETE, [list of methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods){target="_blank"})
+- and potentially some data
+
+### First GET requests
+
+::: {.callout-tip}
+In this example, we will use a GET request to read data from a web service.
+A GET request is like asking a question: "Do you have this information?"
+
+If the data exists, the web service responds with it, usually in JSON format. If not, it may return an error like 404 Not Found.
+:::
+
+
+Several ways to make GET requests to web services (choose one):
+
+- <https://hoppscotch.io/>{target="_blank"}  (Online client)
+- [Bruno](https://www.usebruno.com/downloads){target="_blank"} (download and install)
+- [Insomnia](https://insomnia.rest/){target="_blank"} (already installed on ENSAI VMs)
+- Entering the URL in the address bar of your web browser (Chrome, Firefox...)
+- command-line cURL : `curl -X GET "https://swapi.info/api/people/35"`
+
+
+
+Test the web service requests below:
+
+- Look at the response on the right side of your screen
+- What are the similarities between the responses?
+
+
+#### Carbon intensity
+
+Web service on carbon emissions in the United Kingdom
+
+- [Documentation](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0){target="_blank"}
+  - [Endpoints](https://carbon-intensity.github.io/api-definitions/#intensity){target="_blank"}
+  - [Schemas](https://carbon-intensity.github.io/api-definitions/#schemas){target="_blank"}
+
+Requests to test:
+
+- [ ] `api.carbonintensity.org.uk/intensity`
+- [ ] `api.carbonintensity.org.uk/intensity/date/{date}` 
+  - replacing *{date}* with the date of your choice in the format *YYYY-MM-DD*
+
+#### Rennes Métropole open data
+
+[Data Rennes Métropole](https://data.rennesmetropole.fr/explore/){target="_blank"}
+
+Retrieve data from various datasets: `https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/<dataset_id>/records`
+
+Replace `<dataset_id>` with one of the following values:
+
+- [ ] *menus-cantines*
+- [ ] *arbre*
+- [ ] *aire_jeu*
+- [ ] *jeux_aires_de_jeux*
+
+
+To vary the number of rows you receive:
+
+- simply add to the end of the URI `?rows=N` , where N is the number of rows
+
+
+#### Your project's web service
+
+- [ ] Explore some useful methods of your IT project's web service (discuss this with your tutor).
+
+
+### Advanced queries
+
+You will use a web service created with FastAPI specifically for this purpose : **<https://user-ludo2ne-450102-user.user.lab.sspcloud.fr/docs>{target="_blank"}**
+
+::: {.callout-tip title="If you want to create this web service yourself"}
+use this code : <https://github.com/ludo2ne/ENSAI-2A-WS-TP3/>{target="_blank"}
+
+- Create a PostgreSQL service
+- Using cloudBeaver create and pop table (data/init_db.sql)
+- Create a Vscode-python service
+  - Network access : For example, open port 5000
+  - Clone the repo
+  - Create *.env* file to connect your PostgreSQL database
+  - install required packages
+- `python main.py`
+  - to run in the background: `nohup python src/main.py &`
+  - `kill -9 <PID>` to stop
+
+```{.txt filename=".env"}
+PASSWORD=
+HOST=
+PORT=5432
+DATABASE=
+USER=
 ```
 :::
 
-## Setting Up Your Environment
+
+
+
+After exploring a few external web services, you will work with a web service created specifically for these practical exercises.
+
+Still using your API Client, query the following endpoints:
+
+- [ ] `GET /attack`
+- [ ] `GET /attack/<attack_name_or_id>`
+- [ ] `GET /attack?type_attack_id=<id_type>`
+  -  replacing *id_type* with an integer between 1 and 4
+- [ ] `GET /attack?type_attack_name=<type attack>&limit=8`
+  - type attack: *special attack*, *physical attack*, *fixed damage* or *status attack*
+- [ ] Use parameters *limit* and *offset* to get attacks id between 11 and 15
+
+::: {.callout-warning}
+If you have any issues with the API Client, you can connect directly to Swagger (see instructions below) to execute requests.
+:::
+
+Let's create an attack:
+
+- [ ] `POST /attack`
+  - Click on **Body**, then **application/json**
+  - Paste the text below
+  - Custom your own attack replacing attribute values
+  - attack_type: *physical attack* / "special attack" / "fixed damage" / "status attack"
+
+```{.json filename="application/body"}
+{
+  "name": "<An awesome name>",
+  "attack_type": "<An awesome type>",
+  "power": 0,
+  "accuracy": 0,
+  "element": "<An awesome element>",
+  "description": "<An awesome description>"
+}
+```
+
+- [ ] Check your attack has been created successfully.
+  - `GET /attack/<attack_name>`
+
+
+### Swagger
+
+In your web browser, go to the endpoint `/docs`.
+
+This will take you to the webservice's swagger page. This page lists all the webservice endpoints and how to use them. Try using the interface to:
+
+- modify an attack
+- delete an attack
+- display a list of Pokémon
+- add a Pokémon
+
+Further documentation is available at the `/redoc` endpoint.
+
+
+
+## Python Webservice
+
+Today, the biggest consumers of web services are machines. We will see how to automate calls to a web service in Python.
+
+::: {.callout-note}
+Today, many web applications (e.g. Facebook, Netflix, Dailymotion, Uber) use what are known as "micro services" architectures. 
+
+Communication between their application components (e.g. between their human-machine interface (HMI) and their internal services) is carried out via single-purpose web services. This allows modules to be decoupled from one another, as they communicate solely via HTTP requests or event management systems. They only need to know how to communicate with one another, not the internal workings of other modules. 
+
+This requires thorough documentation of web services and the management of a HUGE number of applications in parallel. Amazon, Google and Facebook can afford to do this, but a small company with 10 employees cannot.
+:::
+
+### Requests Library
+
+The principle remains the same as making a request manually with an API client. You will use the [**requests**](https://requests.readthedocs.io/en/master/){target="_blank"} library so that you only have to fill in the relevant parts of your requests.
+
+To make a **GET** request, simply do the following:
+
+```{.python}
+import requests
+
+response = requests.get("http://my-webservice.com") 
+```
+
+Executing this line of code will:
+
+1. Send the *GET* request to the server you are contacting
+2. Store the result in the *response* variable
+
+This *response* variable is an object, and like any object, it has attributes and methods, for example:
+
+- `response.text`: the body of the result in string form, letting *requests* infer the encoding (this often works)
+  - Problem: you have a string, and this is not the best data format to work with
+- **`response.json()`**: the body of the result as a dictionary. 
+  - This is what you will do most often because the JSON format is easy to manipulate
+- `response.encoding`: the encoding of your request (useful in case of encoding problems)
+- **`response.status_code`**: the status of the request. The main ones are:
+
+
+| Code | Description                                              |
+|------|----------------------------------------------------------|
+| 200  | General return to say that everything went well          |
+| 201  | Resource created successfully                            |
+| 202  | Accepted, with no guarantee of the result (asynchronous system) |
+| 400  | Bad request (Syntax error)                               |
+| 401  | Error, authentication required                           |
+| 403  | Resource prohibited (insufficient rights)                |
+| 404  | Resource not found                                       |
+| 405  | Method Not Allowed                                       |
+| 500  | Server-side error                                        |
+| 503  | Service temporarily unavailable                          |
+
+To summarise, the results:
+
+- :white_check_mark: *2xx* (success): the client's request was successfully received, understood, and accepted
+- :x: *4xx* (Client Errors): this could be due to incorrect syntax, unauthorized access, or the resource not being found
+- :x: *5xx* (Server Errors): the server failed to fulfill a valid request
+
+
+### Examples of use
+
+The principle will always be the same:
+
+1. You launch the query
+2. You check if the status is OK
+3. You retrieve the JSON and process the result (display, conversion to dataframe, etc.)
+
+:::{.panel-tabset .nav-pills}
+
+#### Template
+
+```{.python}
+import requests
+import json
+
+response = requests.get("http://my-webservice.com")
+
+if response.status_code != 200:
+    raise Exception(
+        f"Cannot reach (HTTP {response.status_code}): {response.text}"
+    )
+else:    
+    print(json.dumps(response.json(), indent=2))       # JSON Pretty print
+```
+
+#### Menus-cantines
+
+```{.python}
+import requests
+import pandas as pd
+
+url = "https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/menus-cantines/records?limit=20"
+req = requests.get(url)
+
+if req.status_code == 200:
+    raw_menus = req.json()
+    records = raw_menus.get("results")
+
+    if records:
+        menus = pd.DataFrame(records)
+        print(menus)
+    else:
+        print("No records found.")
+else:
+    print(f"Failed to retrieve data. Status code: {req.status_code}.\n{req.text}")
+```
+
+:::
 
 ### Launch VScode
 
@@ -102,462 +466,235 @@ You [should not launch]{.underline} a standard VSCode-python service, but rather
 
 - [ ] Clone your fork of repository *ENSAI-2A-complement-info-TP*
   - refer to previous TP if you have not already created the fork
-- [ ] Open Folder *ENSAI-2A-complement-info-TP*
-- [ ] Position yourself on the branch:
-  - `git switch tp4-base`
+- [ ] Position yourself on the branch *tp3-base*
+  - `git switch tp3-base`
   - to ensure that everyone starts at the same level
 
-::: {.callout-warning title="If you don't have branch tp4-base" collapse="true"}
-You must connect to the original repository (upstream) to retrieve the branch:
-
-- [ ] `git remote add upstream https://github.com/ludo2ne/ENSAI-2A-complement-info-TP.git`
-- [ ] `git remote -v` to list the remote repositories associated with your local repo
-- [ ] `git fetch upstream` to get all branches
-- [ ] `git switch -c tp4-base upstream/tp4-base` create branch from upstream/tp4-base
-- [ ] `git push origin tp4-base` push to your fork
-:::
-
-To check that everything is working:
-
-- [ ] Launch the unit tests for the business_object package
+::: {.callout-important title="Verify that everything is working"}
+- [ ] Install required packages
+- [ ] Run the unit tests for the business_object package
   - `pytest -v src/tests/test_business_object/`
-- [ ] Launch the main program
-  - `python src/__main__.py`
-
-If you are missing any packages, please follow the instructions in the README file.
-
-In case of an error, first check that you have opened the correct root folder in your explorer, which should be *ENSAI-2A-complement-info-TP*.
+- [ ] Run the main program : `python src/__main__.py`
+:::
 
 
-### Database connection
+### My first queries in Python
 
-To connect to a database, you'll need..., a database!
-
-- [ ] Launch a *PostgreSQL* service
-- [ ] Copy the README, which contains the connection information 
-
-Now, we will store this connection information in the .env file:
-
-- [ ] Create file `.env` at the root of the repository
-- [ ] Fill in the values
-
-```{.txt filename=".env"}
-POSTGRES_HOST=
-POSTGRES_PORT=5432
-POSTGRES_DATABASE=
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-```
-
-These environment variables will be used by the *DBConnection* class to establish the connection with the database.
-
-Finally, we'll create the tables and insert some data:
-
-- [ ] Launch script `utils/reset_database.py`
+- [ ] Edit the *.env* file to connect to the [web service you just used](#advanced-queries)
+- [ ] Open file `/src/client/attack_client.py`
+- [ ] Complete the *get_attack(int)* method, which:
+  - takes an attack ID as a parameter
+  - retrieves all available information about this attack
+  - returns an object of type **AbstractAttack**
 
 ::: {.callout-tip}
-This script will execute two SQL files:
+To help you, take a look at the *instantiate_attack()* method of the **AttackFactory** class (business_object).
 
-- *data/init_db.sql* to create the tables
-- *data/pop_db.sql* to insert data
+See how this method works and use it.
 :::
 
+- [ ] Create the *get_all_attacks()* method
+  - Returns the list of all available attacks in the form of a list of **AbstractAttack** objects
 
 
-## Let's warm up with SQL
+### More complex requests
 
-- [ ] Launch a *cloudBeaver* service
-- [ ] Please note username and password before opening the service
-- [ ] In the explorer at the top left, click on `PostreSQL@postgresql` to open the connection
-  - :green_circle: a small green dot appears 
-- [ ] Open a SQL Editor
+So far, we have focused on **GET** queries (simple data reading). 
 
-Usually, the PostgreSQL database is detected automatically.
+But it is possible to do others. For example, **POST**, **PUT** or **DELETE** queries.
 
-::: {.callout-caution title="If the connection is not established" collapse="true"}
-- [ ] Click on icon +, then New connection PostgreSQL
-- [ ] Fill Host, database=defautldb, port=5432, username, password
-  - See PostgreSQL service README to retrieve values
-- [ ] Test and Create connection
-:::
-
-Write the following three queries (they will be used later in the lab):
-
-- [ ] List all Attacks, along with the name of the attack type
-- [ ] List all Pokemons, along with the name of the Pokemon type
-- [ ] List all of Pikachu's attacks
-
-::: {.callout-tip title="Tips and reminder"}
-- Tables are in the **tp** schema
-- Write Beautiful SQL Queries
-  - Line Breaks: Start each major clause on a new line
-  - Keyword Alignment: Align your keywords vertically
-  - Uppercase Keywords: Use uppercase for all SQL keywords
-
-```{.sql}
-SELECT *
-  FROM tp.pokemon p
- WHERE p.hp > 80
- ORDER BY p.speed DESC;
-```
-:::
-
-To help you, here is the schema of the tables and their relationships.
-
-![](./img/TP4_schema_BDD.png)
-
-
-## Data Access Objet (DAO)
-
-### Modelling
-
-Let's go back to the class diagram from TP2. Let's limit ourselves to the "attack" part.
-
-:::{style="background-color: #d7e5ecff;"}
-```{mermaid}
-classDiagram
-
-class AbstractAttack{
-	<<abstract>>
-	+ DATABASE_TYPE_LABEL : str
-	# _id : int
-	# _power : int
-	# _name : str
-	# _description : str
-	+compute_damage(APkm, APkm)$  int
-	}
-	class FixedDamageAttack{
-		+ compute_damage(APkm,APkm )  int
-	}
-    class AbstractFormulaAttack{
-    <<abstract>>
-		-get_attack_stat(APkm)$  float
-		-get_defense_stat(APkm)$  float
-		+compute_damage(APkm,APkm)  int
-	}
-	
-    class PhysicalAttack{
-		-get_attack_stat(APkm)  float
-		-get_defense_stat(APkm)  float
-	}
-	
-    class SpecialAttack{
-		-get_attack_stat(APkm)  float
-		-get_defense_stat(APkm)  float
-	}
-	
-	FixedDamageAttack--|>AbstractAttack
-	AbstractFormulaAttack--|>AbstractAttack
-	SpecialAttack--|>AbstractFormulaAttack
-	PhysicalAttack--|>AbstractFormulaAttack
-```
-:::
-
-- [ ] Think about where to put a method that allows attacks to persist (save in a table)
-
-Since the attributes of our attacks are similar, we won't code this functionality into the specific attack classes. 
-
-We could put the methods in **AbstractAttack**. That would actually work fine, as we'd have a single class with our methods to interact with the database. But we're not going to do that!
-
-
-And now you're asking yourself:
-
->  :scream: Why ???
-
-And the answer is:
-
-> :stuck_out_tongue: Because it makes no sense!
-
-Let's go back to the phrase: low coupling, high cohesion. If we put all the persistence methods for our attacks in the **AbstractAttack** class, we'd have a class that:
-
-- :heavy_check_mark: Determines the behavior of attacks. This is exactly what we want (high cohesion).
-- :x: Determines how an attack is persisted
-
-::: {.callout-important}
-This is not an attack's responsibility; it belongs to the chosen persistence system, or at least the intermediary between our objects and that system! 
-:::
-
-Personally, I don't want to have to modify my AbstractAttack class just because I've decided to change the persistence management system. I risk modifying something I shouldn't and creating regressions (i.e., making errors appear in code that didn't have them before). And I'd like to limit the sources of errors.
-
-Instead, we're going to create a class that is responsible for only this one task: a **DAO (Data Access Object)** class. This is a technical class that will act as the interface between our stored data and our application. Here's what that looks like in a class diagram.
-
-:::{style="background-color: #d7e5ecff;"}
-```{mermaid}
-classDiagram
-
-class AbstractAttack{
-	<<abstract>>
-	+ DATABASE_TYPE_LABEL : str
-	# _id : int
-	# _power : int
-	# _name : str
-	# _description : str
-	+compute_damage(APkm, APkm)$  int
-	}
-	class FixedDamageAttack{
-		+ compute_damage(APkm,APkm )  int
-	}
-    class AbstractFormulaAttack{
-    <<abstract>>
-		-get_attack_stat(APkm)$  float
-		-get_defense_stat(APkm)$  float
-		+compute_damage(APkm,APkm)  int
-	}
-	
-    class PhysicalAttack{
-		-get_attack_stat(APkm)  float
-		-get_defense_stat(APkm)  float
-	}
-	
-    class SpecialAttack{
-		-get_attack_stat(APkm)  float
-		-get_defense_stat(APkm)  float
-	}
-	
-	FixedDamageAttack--|>AbstractAttack
-	AbstractFormulaAttack--|>AbstractAttack
-	SpecialAttack--|>AbstractFormulaAttack
-	PhysicalAttack--|>AbstractFormulaAttack
-
-
-class AttackDao{
-<<Singleton>>
- +create(AbstractAttack) AbstractAttack
- +find_by_id(int) AbstractAttack
- +find_all() List[AbstractAttack]
- +update(AbstractAttack) AbstractAttack
- +delete(AbstractAttack) bool
-}
-
-class DBConnection{
-<<Singleton>>
--__connection : Connection
-
-+connection() Connection
-}
-
-AbstractAttack<.. AttackDao: create/find/update
-AttackDao..> DBConnection: use to connect the database
-
-```
-:::
-
-### Connection management and Singleton pattern
-
-To connect to the database, we'll use the Python library [**psycopg2**](https://www.psycopg.org/docs/index.html){target="_blank"}. This library will establish the connection with the database, send our queries, and return the results.
-
-However, we need to be careful with connection management, as we could quickly open hundreds of connections and degrade our application's performance. 
-
-This is the job of the **DBConnection** class. Since it's a singleton, there will be [only one instance]{.underline} of this class in our entire application, and since it's the one that connects to the database, we ensure the connection's uniqueness.
-
-
-::: {.callout-tip}
-This class is a purely technical solution, so feel free to reuse it for your project. It introduces an advanced concept in OOP: metaclasses.
-
-A **metaclass** allows you to modify a class's behavior at a deep level (for example, altering how objects are constructed by Python). Unless you have a specific passion for computer science, don't spend time on this topic.
-:::
-
-
-
-### DAO and CRUD
-
-If you look closely, our DAO's methods resemble those of **CRUD**. This is normal, as these methods will store the SQL code.
-
-The basic methods are generally:
-
-- `find_all()`: which will return the entire table
-- `find_by_id()`: which returns a record based on its id
-- `create()`: which creates a new record
-- `delete()`: which deletes a record
-- `update()`: which updates a record
-
-These 5 methods are enough to communicate with your database. You can perform the rest of the processing in your **Service** classes (recommended). However, nothing prevents you from creating more complex methods (e.g., *find_by_type_and_level_order_by_name_desc()*).
-
-Here is the general operation of one of the DAO methods:
-
-```{.python filename="a_dao_class.py"}
-from dao.db_connection import DBConnection
-
-class ADaoClass(metaclass=Singleton):
-
-    def a_dao_method(self, optional_param):
-
-        # Step 1: We get the connection using the DBConnection class.
-        with DBConnection().connection as connection:
-        
-            # Step 2: From the connection, we create a cursor for the query.
-            with connection.cursor() as cursor: 
-            
-                # Step 3: We execute our SQL query.
-                cursor.execute("SQL query using an optional parameter")
-
-                # Step 4: We store the query result.
-                res = cursor.fetchall()
-
-        if res:
-            # Step 5: We format the results into the desired shape (object, list...).
-
-        return something
-```
-
-The *cursor* object holds a pointer to the results of your query. This result isn't yet on your machine; it's still stored by the database. You have three methods to retrieve the results:
-
-- `cursor.fetchone()`: Returns a single record as a dictionary.
-  - If you call *fetchone()* again on the same cursor, you'll get the next row.
-- `cursor.fetchall()`: Returns all results as a list of dictionaries.
-  - The dictionaries are the rows from the retrieved table.
-  - The dictionary keys are the retrieved columns.
-  - This method works well when you want all results at once and there are only a few of them. When you have millions of records, this will cause problems because:
-    - The data transfer over the internet will take time and block your application.
-    - Your application may be unable to handle such a large amount of data.
-- `cursor.fetchmany(size)`: Returns the requested number of records as a list of dictionaries. This lets you control the volume of data you're processing. If you call *fetchmany(size)* again on your cursor, you'll retrieve the next set of rows (a pagination system).
-
-
-Examples of returned data (cursor query: `SELECT * FROM tp.attack;`):  
-
-:::{.panel-tabset .nav-pills}
-
-#### fetchone
-
-A single dictionary
+Here is the syntax:
 
 ```{.python}
-{"id_attack": 2, "id_attack_type": 3, "power": 20, "accuracy": 100, "element": "Grass", "attack_name": "Absorb"}
+post = requests.post("http://example.org", json = {'key':'value'})
+put = requests.put("http://example.org", json = {'key':'value'})
+delete = requests.delete("http://example.org")
 ```
 
-#### fetchall
-
-A list of dictionaries
+As you can see, syntaxes are very similar to the syntax of the **GET** method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, We recommend using this type of syntax:
 
 ```{.python}
-[
-    {"id_attack": 2, "id_attack_type": 3, "power": 20, "accuracy": 100, "element": "Grass", "attack_name": "Absorb"},
-    {"id_attack": 3, "id_attack_type": 2, "power": 40, "accuracy": 100, "element": "Rock", "attack_name": "Accelerock"},
-    {"id_attack": 4, "id_attack_type": 3, "power": 40, "accuracy": 100, "element": "Poison", "attack_name": "Acid"},
-	...
-]
+# Prepare Arguments
+url = "http://example.org"
+headers = {'accept': 'application/json'}
+data = {'key1':'value1', 'key2':'value2'}
+
+# Launch Request
+post = requests.post(url, headers=headers, json = data)
 ```
 
+Functionally, it's the same thing, but it's better to define the elements outside the query so you don't get lost.
+
+
+### Advanced requests in Python
+
+In the `attack_client.py` module, implement the following methods:
+
+- [ ] *create_attack(AbstractAttack)*
+  - takes an **AbstractAttack** as a parameter
+  - creates a new attack calling the web service
+- [ ] *update_attack(AbstractAttack)*
+  - takes an **AbstractAttack** as a parameter
+  - modifies it in the web service
+- [ ] *delete_attack(AbstractAttack)*
+  - takes an **AbstractAttack** as a parameter
+  - deletes it in the web service
+
+## Code a web service in Python
+
+::: {.callout-note}
+Until now, you have been using existing web services. 
+
+Now you are going to create your own web service.
 :::
 
+With the tools available today, it is easy to create a web service yourself.
 
-For more information: [Pynative article](https://pynative.com/python-cursor-fetchall-fetchmany-fetchone-to-read-rows-from-table/){target="_blank"}
+There are currently three market leaders for creating a REST web service in Python:
 
+- [Django REST](https://www.django-rest-framework.org/){target="_blank"}
+- [FlaskRESTful](https://flask-restful.readthedocs.io/en/latest/){target="_blank"}
+- [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
 
-::: {.callout-tip title="Goal"}
-Just like with data from web services, the goal will be to convert this data into business objects.
-:::
+Each has its advantages and disadvantages. Django is certainly the most comprehensive but also the heaviest, while Flask and FastApi are lighter and quicker to set up. The big advantage of **FastApi** is the simplicity with which you can create a Swagger documentation page.
 
-
-## First DAOs
-
-### DAO with Attack Types
-
-- [ ] Observe how the **TypeAttackDAO** class works.
-  - This will be useful for the next steps.
-
-In the **AttackDao** class, create the following methods:
-
-- [ ] *find_attack_by_id(id:int) -> AbsractAttack*
-  - returns the attack with the given ID or `None` if the attack is not found
-- [ ] *find_all_attacks() -> List[AbsractAttack]*
-  - returns a list of all attacks
-  - [Bonus]{.underline}: add `limit` and `offset` parameters to this method
-- [ ] *update_attack(attack : AbstractAttack) -> bool*
-  - updates an attack passed as a parameter and returns whether the modification was successful
-
-::: {.callout-tip}
-- In the 2 *find* methods, to create our **Attack** business objects:
-  - We need to know the attack type's name.
-  - However, this column doesn't exist in the *attack* table.
-  - But perhaps you already have a query that does the job?
-- Use the **AttackFactory** class to easily instantiate **Attack** business objects
-:::
-
-### Unit tests
-
-You will run unit test using: `pytest src/tests/test_dao/`
-
-- [ ] Create class **TestAttackDao** copying this code
-
-```{.python filename="test_attack_dao.py"}
-from dao.attack_dao import AttackDao
-class TestAttackDao:
-    def test_find_attack_by_id_ok(self):
-        # GIVEN
-        existing_id_attack = 1
-
-        # WHEN
-        attack = AttackDao().find_attack_by_id(existing_id_attack)
-
-        # THEN
-		assert attack is not None
-        assert attack.id == existing_id_attack
-```
-
-- [ ] Create a test for method *add_attack()*
-- [ ] Create a test for method *update_attack()*
-- [ ] in cloudBeaver, run `SELECT * FROM tp.attack ORDER BY id_attack DESC;`
-- [ ] What's wrong?
-  - any ideas to prevent this behaviour?
-
-
-### Pokemon DAO
-
-
-Create the **PokemonDAO** class with the following methods:
-
-- [ ] *find_all_pokemon()->List[AbstractPokemon]*
-  - returns all Pokemon in the database
-- [ ] *find_pokemon_by_name(name:str)->AbstractPokemon*
-  - returns a Pokemon with the given name
-- [ ] Complete the method above by incorporating the list of a *Pokemon's* attacks:
-  - Make a query by joining the `attack` and `pokemon_attack` tables, filtering with the Pokemon's ID
-  - Generate the attacks from that data
-
-
-## DAO and Webservice
-
-You will now make your database data accessible to other users by creating a REST webservice.
-
-Add the following endpoints to the `app.py` file:
-
-- [ ] `GET attack?limit=100` will return a list of all attacks
-- [ ] `GET pokemon?limit=100`. It will return a list of 100 *Pokemons* by default, but can be adjusted with the `limit` query parameter
-- [ ] `GET pokemon/{name}`. It will return a JSON representing a *Pokemon*
+Here is the minimal code for a REST web service with FastAPI ([official documentation](https://fastapi.tiangolo.com/tutorial/first-steps/){target="_blank"})
 
 ```{.python filename="app.py"}
-@app.get("/attack/")
-async def get_all_attacks():
-	"""GET /attack/"""
-    # TODO: retrieve attacks from the database using your DAO
-    return attacks
+from fastapi import FastAPI
 
-@app.get("/pokemon/")
-async def get_all_pokemons(limit:int):
-    # TODO: retrieve pokemons from the database using your DAO
-    return pokemons
+# Instantiate the web service
+app = FastAPI()
 
-@app.get("/pokemon/{name}")
-async def get_pokemon_by_name(name:str):
-	"""GET /pokemon/<name>"""
-    # TODO: retrieve the pokemon from the database using your DAO
-    return pokemon
+# Create an endpoint that responds to the GET method at the address "/" and returns the message "Hello World".
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+# Launching the application on port 5000
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=5000)
 ```
 
-To return objects, you will need to define classes inheriting from `BaseModel`. You'll find all the information you need in the [FastAPI documentation](https://fastapi.tiangolo.com/tutorial/body/){target="_blank"}.
+Calling the "/" resource of the web service will return the JSON:  `{"message": "Hello World"}`
 
-- [ ] Launch the app using the port you opened
-- [ ] Check your end points
+Here is a more complete example inspired by the [official documentation](https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing){target="_blank"} (you want to create a web service to expose your **todos**)
+
+```{.python code-line-numbers="true"}
+from fastapi import FastAPI
+from pydantic import BaseModel
+from starlette import status
+import uvicorn
+
+# On instancie le webservice
+app = FastAPI()
+
+class Todo(BaseModel):
+    id : int
+    content : str
+
+todos = {1 : Todo(1,"Step 1 : Learn python")
+        , 2 : Todo(2,"Step 2 : Work on the IT project")
+        , 3 : Todo(3,"Step 3 : ???")
+        , 4 : Todo(4,"Step 4 : Profit")}
+
+# Endpoint GET /todo
+@app.get("/todo")
+async def get_all_todo():
+    return todos.values()
+
+# Endpoint GET /todo/{id_doto}
+@app.get("/todo/{id_toto}")
+async def get_todo_by_id(id_toto : int = Path(..., description = "The `id` of the todo you want to get")):
+    if todos.get[id_toto] :
+    	return todos.get[id_toto]
+    else :
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND)
+
+# Endpoint POST /todo
+@app.post("/todo", todo, status_code=201)
+async def post_todo(todo:Todo):
+    if not todos.get(todo.id):
+    	return JSONResponse(status_code=status.HTTP_409_CONFLICT)
+    else :
+        todos[todo.id] = todo
+        return todo
+
+# Launch the web service
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=5000)
+```
+
+This code will create a web service that will respond to the following requests:
+
+- `GET host/todo`: returns all tasks to be done
+- `GET host/todo/{todo_id}`: returns the task behind the ID in the parameter
+- `POST host/todo/`: adds the task passed in the body of the request
+
+FastAPI serialises the objects you return for you. So there's no need to format your data. However, for clarity, you can use `BaseModel` classes. These are classes that will only contain attributes that you can declare without a constructor:
+
+```{.python}
+class Todo(BaseModel):
+    id : int
+    content : str
+```
+
+These classes can be used as output from your web service, as well as input (line 33). FastApi will perform a series of checks on the variable types and return an error to the client if their request is not formatted correctly.
+
+Basically, a web service is an application like any other, but instead of having a graphical interface as we humans are used to, the interface is an HTTP interface that will accept requests and send results. Thus, the sequence diagram of the different layers that will be involved in a GET request to retrieve a resource will look like this. Let's go back to the 3-layer model we saw in class.
+
+```{mermaid}
+sequenceDiagram
+    participant U as User
+    participant R as Webservice
+    participant S as Service
+    participant D as DAO
+    participant B as Database
+    U ->> R: HTTP request
+    R ->> S: get_by_id()
+    S ->> D: find_by_id()
+    D ->> B: SQL query (psycopg)
+    B ->> D: SQL cursor (psycopg)
+    D ->> S: business object instance
+    S ->> R: business object instance
+    Note over S,R: the object is potentially altered
+    R ->> U: HTTP response
+```
+
+### My first web service
+
+::: {.callout-tip}
+The web service you will create will be deployed on a specific url. To find this url:
+
+- In the datalab > My services
+- VScode-python > Open > your will find a link
+:::
+
+- [ ] Open the `app.py` file
+- [ ] Change the launch port to match the one opened on the datalab
+- [ ] Run this file
+- [ ] Test the following requests:
+  - `GET hello`
+  - `GET hello/everybody`
+- [ ] Stop the web service
+  - Click in the VSCode terminal, then press CTRL + C
 
 
-## Conclusion {.unnumbered}
 
-In this lab, you implemented your first DAO.
+Using the list of characters defined in the *app.py* file, add the following endpoints:
 
-It's a technical class used to communicate with your data persistence system. The primary advantage of creating a separate class is to decouple the management of the persistence system and your application's business logic as much as possible.
+- [ ] `GET character`: will return a JSON containing a list of characters
+- [ ] `PUT character/{id}`, which will modify the name of the character at index `{id}` from a body
+- [ ] `DELETE character/{id}`, which will delete the item at index `{id}`
 
-If you decide to stop using a relational database and switch to a *NoSQL* database instead, you'll only need to change the DAO classes while still exposing the same methods.
+To test endpoints requiring a JSON body, you can use:
+
+```{.json}
+{
+  "nom":"Agneta",
+  "age": 30
+}
+```
 
 
 ## End of the Lab {.unnumbered}
