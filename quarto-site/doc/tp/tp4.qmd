@@ -12,6 +12,21 @@ categories:
 
 :construction:
 
+
+:::{.notes}
+https://www.insee.fr/fr/metadonnees/geographie/commune/35047-bruz
+
+https://portail-api.insee.fr/catalog/api/5029cf12-e930-4d24-a9cf-12e9307d241d/doc?page=36a0f1a5-af70-4662-a0f1-a5af709662f4
+  curl -X 'GET' \
+  'https://api.insee.fr/metadonnees/geo/commune/35047/ascendants' \
+  -H 'accept: application/json'
+
+  curl -X 'GET' \
+  'https://api.insee.fr/metadonnees/geo/canton/3504/communes' \
+  -H 'accept: application/json'
+
+:::
+
 ## Before you start {.unnumbered}
 
 This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
@@ -29,69 +44,250 @@ This tutorial combines explanations and code phases. The explanations should not
 
 Before writing code, you must understand how to "talk" to a server. A web service is just an application waiting for HTTP requests.
 
-### Quick Browser Check
-The simplest way to interact with an API is via your browser. However, browsers are limited to **GET** requests.
+### Reminder
 
-- [ ] Open your browser and go to: `https://api.zippopotam.us/us/90210`
-- [ ] Observe the response. It is in **JSON** format.
-- [ ] **Question:** Can you use the address bar to send a `POST` request to create a new user? (Answer: No, browsers are primarily GET clients).
+In the first lab, we explained [the difference between an API and an interface](./tp1.qmd#web-services-vs-menu-driven){target="_blank"}.
+
+The **Front-end** is the "face" running on the user's device, while the **Back-end** is the "brain" running on a remote server.
+
+The **UI** is what the user sees; user actions are sent to the back-end via the **API**.
+
+| Concept | Primary User | Synonyms | Main Role |
+| ------- | ------------ | -------- | --------- |
+| **API** | Machines / Software | *Webservice, Endpoint* | Enables two software systems to communicate |
+| **Back-end** | Server / Database | *Server-side* | The server-side logic, API implementation. |
+| **UI** (User Interface) | Human | *Graphical Interface* | The visual elements (buttons, menus) that a user interacts with |
+| **Front-end** | Human | *Client* | The client-side. Code running in the browser that renders and manages the UI |
+
+: {tbl-colwidths="[20, 20, 15, 45]" .striped .hover .secondary}
+
+### Quick Browser Check
+
+The simplest way to interact with an API is via your browser (Firefox, Chrome, etc.). However, browsers are limited to **GET** requests (read data).
+
+Lets explore <https://swapi.info/api/>{target="_blank"}
+
+- [ ] What URL displays all the characters?
+  - What is the data structure?
+- [ ] What URL displays only the character Maxe Windu?
+  - What is the data structure?
+- [ ] What is Mace Windu's home planet?
+- [ ] Find all planets visited in "The Empire Strikes Back"
+
+:construction: example with parameters ?limit...
 
 ### Professional API Clients
-To perform more complex actions (`POST`, `PUT`, `DELETE`), you need a specialized tool.
-**Task:** Use [Hoppscotch](https://hoppscotch.io/), [Insomnia](https://insomnia.rest/), or [Bruno](https://www.usebruno.com/) to test the following:
 
-- [ ] **GET** `https://api.carbonintensity.org.uk/intensity`
-- [ ] **GET** `https://api.carbonintensity.org.uk/intensity/date/2023-05-01` (Replace with a real date).
-- [ ] **Analyze the Status Code:** If you request a date in the future, what code do you receive? (e.g., 400, 404, or 500?)
+To perform more complex actions (such as `POST`, `PUT`, or `DELETE`), a web browser is not enough. You will need a specialized tool to build your requests and inspect the responses.
 
----
+Depending on your preference, you can use one of the following methods:
 
-## Using Swagger (The Documentation)
+#### Desktop Applications
+
+These are powerful tools that you download and install:
+
+- [Bruno](https://www.usebruno.com/){target="_blank"}
+- [Insomnia](https://insomnia.rest/){target="_blank"}
+
+#### Online Tools
+
+No installation required. Perfect for a quick test directly in your browser.
+
+- <https://hoppscotch.io/>{target="_blank"}
+- <https://reqbin.com/>{target="_blank"}
+- <https://httpie.io/app>{target="_blank"}
+
+#### Command Line
+
+If you prefer staying in the terminal, you can use [**cURL**](https://curl.se/){target="_blank"}. 
+
+It is available on almost all operating systems.
+
+#### Interactive Documentation (Swagger)
+
+If the web service provides it, always check the **Swagger/OpenAPI** page (usually at the `/docs` endpoint). 
+
+It is the best way to see the available endpoints, the required parameters, and even test them directly through a web interface.
+
+
+## Exploring your project's API
 
 Modern APIs provide a "manual" that is interactive: **Swagger (OpenAPI)**.
 
-### Exploring your project's API
-Your current application already has a web service running. 
-1.  Launch your backend.
-2.  Go to: `http://localhost:8000/docs` (or your specific port).
+### Using Swagger
 
-**Task:** Use the Swagger interface to:
-- [ ] Find a player by ID.
-- [ ] Create a new player.
-- [ ] Observe how Swagger automatically generates the **JSON Body** for you.
+Your current application already has a web service running. 
+
+- [ ] Launch the Back-end
+- [ ] Find the url of the swagger
+
+::: {.callout-tip collapse="true"}
+You've already done this in the first Lab.
+:::
+
+- [ ] List all players
+  - Select the endpoint :arrow_right: Try it out :arrow_right: Execute
+- [ ] Delete the player with the highest ID
+
+Up until now, you have used `GET` requests to *ask* for information (the same goes for `DELETE`). But to *create* or *modify* data, you must provide information. This is called the **Request Body**.
+
+When using `POST` or `PUT`, you don't just send a URL; you send a **JSON object** containing the details of the resource.
+
+```{.json}
+{
+  "username": "new_player",
+  "email": "new@player.com",
+  "elo": 1200
+}
+```
+
+- [ ] Create a new player
+- [ ] Update player *junior*
+  - add 100 points to its elo, change suffix mail from *io* to *fr*
+- [ ] Play a coin flip between *batricia* and *gilbert*
+
+
+::: {.callout-note}
+With each request, you'll notice the curl command if you want to run it from the service's terminal. 
+:::
+
+It's all well and good to marvel at all that JSON code, but it's usually machines and programs that consume it.
 
 
 ## The Client Challenge (Data Mapping)
 
-Now, we will move to a more advanced task. You are going to act as a **Client**. You need to fetch game data from an external source and integrate it into your engine.
+Now, we will move to a more advanced task. Your Back-end are going to act as a **Client**. You need to fetch game data from an external source and integrate it into your engine.
 
 ::: {.callout-warning title="The Schema Mismatch"}
-The external API does **not** use your internal names. It is a common real-world problem. You must bridge the gap!
+The external API does not use your internal names. It is a common real-world problem. You must bridge the gap!
 :::
 
 ### The Mission
-Your task is to create a utility in `backend/src/utils/external_game_client.py`. This client must fetch data from our external mock API and transform it into your `business_object.Game` objects.
 
-**The Data Gap:**
-| External API Field (JSON) | Your `Game` Object Field |
-| :--- | :--- |
-| `match_uuid` | `id_game` |
-| `players_list` (array) | `player1` and `player2` (Objects) |
-| `winner_name` | `winner` (Object) |
-| `location_name` | `location` (String) |
-| `duration_seconds` | `duration` (Integer) |
+> Example to retrieve peoples from star wars API.
 
-**Tasks:**
-- [ ] Implement `get_remote_games() -> list[Game]`.
-- [ ] **The Mapper:** Inside your client, write the logic to convert the "ugly" external JSON into your "clean" `Game` objects.
-- [ ] **Error Handling:** If the external API returns a `500` or `404`, your client should catch it and return an empty list instead of crashing the whole app.
+We will use package [requests](https://requests.readthedocs.io/en/latest/user/quickstart/){target="_blank"}.
+
+#### Step1: Call the web service
+
+```{.python}
+import requests
+
+# Call
+response = requests.get(url="https://swapi.info/api/people/")
+```
+
+#### Step2: Check response
+
+```{.python}
+if response.status_code != 200:
+    raise Exception(f"Cannot reach (HTTP {response.status_code}): {response.text}")
+else:
+    raw_json = response.json()
+    print(json.dumps(raw_json, indent=2))  # Pretty print
+```
+
+If everything goes well, you can retrieve the JSON content
+
+#### Step3: Convert into business objects
+
+Imagine you have a *People* (name, birth, hair, bmi) business object.
+
+You won't find directly BMI (Body Mass Index), you have to compute it.
+
+You will have to iterate among all elements to create *People*:
+
+```{.python}
+peoples = []       # init a list to store People objects
+
+for elt in raw_json:
+    # Compute BMI 
+    bmi = None
+    try:
+        mass = float(elt["mass"])
+        height = float(elt["height"]) / 100
+        bmi = round(mass / (height**2), 2)
+    except (ValueError, TypeError, ZeroDivisionError, KeyError):
+        bmi = None
+
+    # Create an object and if it succeed, add to the list
+    p = People(
+        name=elt["name"],
+        birth=elt["birth_year"],
+        hair=elt["hair_color"],
+        bmi=bmi
+    )
+    if p:
+      peoples.append(p)
+```
+
+:tada: You have converted a dictionary list into a list of business objects that can be used directly by your methods.
+
+
+### Your turn
+
+- [ ] Create a *client* folder and create file *game_client.py*
+
+This client must fetch data from an external API and transform it into your Game business objects.
+
+
+Below is the data available on this external API:
+
+```{.json filename="/games"}
+[
+  {
+    "id": "1",
+    "players_list": ["Alice", "Bob"],
+    "winner_name": "Alice",
+    "location_name": "Arena 1",
+    "duration_seconds": 120,
+    "mode_type": "coinflip"
+  },
+  {
+    "id": "2",
+    "players_list": ["Eve", "Frank"],
+    "winner_name": "Eve",
+    "location_name": "Secret Cave",
+    "duration_seconds": 300,
+    "mode_type": "dice"
+  }
+]
+```
+
+This is a list `[element1, element2]` of dictionaries `{key1: value1, key2: value2}`.
+
+::: {.callout-important}
+The goal is to convert this dictionary list into a Game list by:
+
+- iterating through each element of the list one by one
+- creating a Game object from the available data in the dictionary
+
+:warning: A dictionary is not an object, so attributes are not required for every element.
+:::
+
+- [ ] Create a function `get_games() -> list[Game]`
+- [ ] Call the endpoint
+- [ ] Check response
+- [ ] Convert JSON response into a list of Game
+
+In this section, you were a client of an API; next you'll become the provider by creating your own endpoints.
 
 
 ## Building your own API (The Provider)
 
-Finally, you will become the **Server**. You will expose your `Game` data via a professional REST API using **FastAPI**.
+Finally, you will become the **Server**. You will expose your `Game` data via a professional REST API using [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}.
+
+
+
+
+
+
+
+
+
 
 ### Data Validation with Pydantic
+
 To ensure your API doesn't receive "garbage" data, you must define **Schemas**. This is where **Pydantic** shines.
 
 ::: {.callout-tip title="Pydantic Models"}
