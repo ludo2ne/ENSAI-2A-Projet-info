@@ -379,6 +379,12 @@ If the request was successful, you will receive an HTTP 200 code and a response 
 | **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
 :::
 
+:construction: 
+
+:::{.notes}
+TODO Pas la bonne manière de faire, il faut utiliser un PlayerReadModel sans pwd et token
+:::
+
 - [ ] In your opinion, is it normal to see the hashed passwords of all the players?
 - [ ] Find and fix the service method that needs to be corrected
 - [ ] To verify this, you need to stop and restart the web service

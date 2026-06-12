@@ -273,60 +273,154 @@ The goal is to convert this dictionary list into a Game list by:
 In this section, you were a client of an API; next you'll become the provider by creating your own endpoints.
 
 
-## Building your own API (The Provider)
+## Building your own API
 
 Finally, you will become the **Server**. You will expose your `Game` data via a professional REST API using [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}.
 
 
+### Data Validation
 
+When your API receives data, you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this "garbage" from entering your system, we use **Pydantic models**.
 
+A Pydantic model acts as a **Data Contract**: it defines exactly what the data should look like. If the incoming JSON doesn't match the contract, FastAPI will automatically reject the request with a "422 Unprocessable Entity" error.
 
+#### Define a Model
 
+Example: in the *player_model.py* file, we define how a Player should look when communicating with the API:
 
+```{.python}
+from pydantic import BaseModel, EmailStr, Field
 
-
-
-### Data Validation with Pydantic
-
-To ensure your API doesn't receive "garbage" data, you must define **Schemas**. This is where **Pydantic** shines.
-
-::: {.callout-tip title="Pydantic Models"}
-A `BaseModel` defines the "Contract". If a client sends a `string` where an `int` is expected, FastAPI will automatically return a `422 Unprocessable Entity` error.
-:::
-
-```python
-from pydantic import BaseModel
-
-class GameCreate(BaseModel):
-    game_mode: str
-    player1_id: int
-    player2_id: int
-    # ... other fields
+class PlayerModel(BaseModel):
+    id_player: int | None = None
+    username: str
+    password: str = Field(..., min_length=35)
+    elo: int
+    email: EmailStr
+    pokemon_fan: bool
 ```
 
-### Security with Tokens
-A professional API is rarely wide open. We will implement a simple **Token-based authentication**.
 
-::: {.callout-important title="Headers & Tokens"}
-The client must include a specific key in the **HTTP Headers** to prove they are authorized.
+#### Use it in the Controller
+
+Let's look at the *create_player()* method in *player_controller.py*. 
+
+```{.python}
+@router.post("/", tags=["Players"])
+async def create_player(p: PlayerModel, player_service=Depends(get_player_service)):
+    # ...
+    player = player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)
+```
+
+**Here is the magic happening behind the scenes:**
+
+1. The Request: a client sends request to the endpoint with a JSON body: `{"username": "bob", "email": "bob@email.com", ...}`.
+2. Validation: FastAPI looks at your `PlayerModel`. It checks:
+  - Is *username* a string?
+  - Is elo an integer?
+  - Is *email* a valid email format?
+  - Are all mandatory fields present?
+3. Conversion: If everything is correct, FastAPI automatically transforms that JSON into a Python object named `p`. 
+4. Execution: You can then access the data easily using dot notation (`p.username`, `p.email`) to pass it to your *PlayerService*.
+
+If the client sends an invalid email or forgets the *elo*, FastAPI will stop the request immediately and return a "422 Unprocessable Entity" error. **Your service code is never even executed, protecting your business logic from bad data.**
+
+
+
+Voici ma réponse Maitre Vico
+
+### 🧩 Multiple Models
+
+A common mistake is to use the same model for every single operation. However, in a professional **API**, the data you receive is often different from the data you send or the data you use for specific actions.
+
+Think about the `Player` logic. Using only one model creates several issues:
+
+- **During Registration:** You need the *password*, but you do not have an *id_player* yet (the database generates it).
+- **During Login:** You only need the *username* and *password*. Including the *email* or the *elo* is a waste of bandwidth and a security risk.
+
+To solve this, we use **different models for different contexts**. This is called **Separation of Concerns**.
+
+In **player_model.py**, we define two specialized contracts to match the specific needs of our API endpoints:
+
+1. `PlayerModel`: The "Full" version. It contains all player attributes (*email*, *elo*, *pokemon_fan*, etc.).
+  - Usage: It is used in **player_controller.py** within the *create_player* and *update_player* methods to ensure that all required profile information is validated.
+2. `PlayerLoginModel`: The "Minimal" version. It is stripped down to only the essential fields required for authentication (*username* and *password*).
+  - Usage: It is used in **login_controller.py** within the *login* method. This prevents the API from requiring or exposing unnecessary data like *email* or *elo* during a simple login attempt.
+
+::: {.callout-tip title="Going Further" collapse="true"}
+While using two models is a great start, professional **APIs** often use even more granular models to handle different stages of a resource's lifecycle. You could further optimize this by implementing:
+
+- `PlayerCreate` vs `PlayerUpdate`: Currently, `PlayerModel` is used for both. However, when *creating* a player, you might want to require an *email*, but when *updating* a player, you might want to allow them to change only their *elo* without re-sending their *username*.
+- `PlayerResponse`: A model for sending data *back* to the client that explicitly **excludes** the *password* field, ensuring sensitive information never leaves the server.
+- `PlayerSearch`: A specialized model for filtering players (e.g., searching only by *username* or *pokemon_fan* status).
+:::
+
+
+
+
+
+
+
+
+
+
+### Security: Token-based Authentication
+
+A professional API is rarely wide open. To protect your data, you will implement **Token-based authentication**.
+
+Instead of asking for a username and password on every single request, the client sends a "secret key" (the **Token**) in the **HTTP Headers**. If the token is missing or incorrect, the server rejects the request immediately.
+
+::: {.callout-warning title="How to implement it"}
+You will implement a dependency that checks for a specific header. If the header is invalid, you must raise an `HTTPException` with a `401 Unauthorized` status code.
+:::
+
+**The Security Contract:**
 - **Header Key:** `X-Auth-Token`
 - **Valid Value:** `secret-key-123`
-:::
+
+**Example of a protected endpoint in your controller:**
+
+```python
+@router.post("/", tags=["Games"])
+async def create_game(
+    game: GameCreate, 
+    service=Depends(get_game_service),
+    token: str = Header(None) # 1. Capture the header
+):
+    # 2. Validate the token
+    if token != "secret-key-123":
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
+    # 3. Proceed with the logic
+    return service.create(game)
+```
+
+---
+
+### 🛠️ Implementation Checklist
+
+- [ ] **Create Models**: Define `GameCreate` and `GameResponse` in `game_model.py`.
+- [ ] **Implement Controller**: Create `game_controller.py` using the `GameService`.
+- [ ] **Apply Validation**: Use your Pydantic models in the function arguments.
+- [ ] **Add Security**: Protect your `POST` and `DELETE` routes with the `X-Auth-Token` check.
+- [ ] **Test with Swagger**: Verify that a request without the token returns a `401`.
+
 
 ### Implementation Tasks
 
 Create `backend/src/api/game_api.py` and implement the following endpoints:
 
-- [ ] **`GET /games`**: Returns all games.
-- [ ] **`GET /games/{id}`**: Returns a specific game. 
+- [ ] `GET /games`: Returns all games.
+- [ ] `GET /games/{id}`: Returns a specific game. 
   - *Requirement:* Return `404 Not Found` if the ID is invalid.
-- [ ] **`POST /games`**: Creates a new game.
+- [ ] `POST /games`: Creates a new game.
   - *Requirement:* Must use `GameCreate` (Pydantic) for validation.
   - *Security:* **Must** require the `X-Auth-Token`. If missing or wrong, return `401 Unauthorized`.
-- [ ] **`DELETE /games/{id}`**: Deletes a game.
+- [ ] `DELETE /games/{id}`: Deletes a game.
   - *Security:* **Must** require the `X-Auth-Token`.
 
 **Success Criteria:**
+
 1. Your API is documented in `/docs`.
 2. You can create a game via Swagger using the correct Header.
 3. Trying to create a game without the token results in a `401` error.
