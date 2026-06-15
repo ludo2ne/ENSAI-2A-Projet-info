@@ -64,6 +64,8 @@ website:
             text: Lab 5
           - href: doc/tp/tp6.qmd
             text: Lab 6 - Bonus
+          - href: doc/tp/2025/tp1.qmd
+            text: Old Labs
     right:
       - text: Various
         menu:
@@ -74,6 +76,8 @@ website:
             text: Licences
           - href: doc/divers/sigles.qmd
             text: Sigles
+          - href: doc/divers/json-server.qmd
+            text: Json-server
       - icon: github
         href: "{{< meta var.url-repo >}}"
         target: "_blank"

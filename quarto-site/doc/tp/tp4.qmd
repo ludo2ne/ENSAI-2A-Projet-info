@@ -170,14 +170,19 @@ We will use package [requests](https://requests.readthedocs.io/en/latest/user/qu
 
 #### Step1: Call the web service
 
+Run the query as you would with another tool and store the response in a variable.
+
 ```{.python}
 import requests
 
-# Call
 response = requests.get(url="https://swapi.info/api/people/")
 ```
 
 #### Step2: Check response
+
+Then, see if the answer is useful.
+
+If everything goes well, you can retrieve the JSON content.
 
 ```{.python}
 if response.status_code != 200:
@@ -187,49 +192,54 @@ else:
     print(json.dumps(raw_json, indent=2))  # Pretty print
 ```
 
-If everything goes well, you can retrieve the JSON content
 
 #### Step3: Convert into business objects
 
 Imagine you have a *People* (name, birth, hair, bmi) business object.
 
-You won't find directly BMI (Body Mass Index), you have to compute it.
-
 You will have to iterate among all elements to create *People*:
 
 ```{.python}
-peoples = []       # init a list to store People objects
+peoples = []
 
 for elt in raw_json:
-    # Compute BMI 
-    bmi = None
-    try:
-        mass = float(elt["mass"])
-        height = float(elt["height"]) / 100
-        bmi = round(mass / (height**2), 2)
-    except (ValueError, TypeError, ZeroDivisionError, KeyError):
-        bmi = None
-
-    # Create an object and if it succeed, add to the list
+    # Create an object
     p = People(
         name=elt["name"],
         birth=elt["birth_year"],
         hair=elt["hair_color"],
-        bmi=bmi
+        bmi=compute_bmi(elt.get("mass"), elt.get("height"))
     )
+
+    # If it succeed, add to the list
     if p:
       peoples.append(p)
+
+def compute_bmi(mass_raw, height_raw) -> float:
+    """Calculates BMI based on weight and height in centimeters."""
+    try:
+        mass = float(mass_raw)
+        height = float(height_raw) / 100
+        return round(mass / (height**2), 2)
+    except (ValueError, TypeError, ZeroDivisionError):
+        return None
 ```
+
+::: {.callout-note}
+You can use some fields directly as attributes, and others as BMI (Body Mass Index) you won't find it directly, you have to compute it.
+:::
+
 
 :tada: You have converted a dictionary list into a list of business objects that can be used directly by your methods.
 
 
 ### Your turn
 
+:construction: TODO: Give a link, and simple procedure 
+
 - [ ] Create a *client* folder and create file *game_client.py*
 
 This client must fetch data from an external API and transform it into your Game business objects.
-
 
 Below is the data available on this external API:
 
@@ -303,7 +313,7 @@ class PlayerModel(BaseModel):
 
 #### Use it in the Controller
 
-Let's look at the *create_player()* method in *player_controller.py*. 
+Let's look at the *create_player()* method in **player_controller.py**. 
 
 ```{.python}
 @router.post("/", tags=["Players"])
@@ -323,13 +333,23 @@ async def create_player(p: PlayerModel, player_service=Depends(get_player_servic
 3. Conversion: If everything is correct, FastAPI automatically transforms that JSON into a Python object named `p`. 
 4. Execution: You can then access the data easily using dot notation (`p.username`, `p.email`) to pass it to your *PlayerService*.
 
-If the client sends an invalid email or forgets the *elo*, FastAPI will stop the request immediately and return a "422 Unprocessable Entity" error. **Your service code is never even executed, protecting your business logic from bad data.**
+If the client sends an invalid *email* or forgets the *elo*, FastAPI will stop the request immediately and return a "422 Unprocessable Entity" error. **Your service code is never even executed, protecting your business logic from bad data.**
 
 
+- [ ] Open file **game_model.py** in folder **schema**
 
-Voici ma réponse Maitre Vico
+There's already a model. Let's see how it's used.
 
-### 🧩 Multiple Models
+- [ ] Open file **game_controller.py**, and check parameters of method *play_games()*
+  - to find out who the current player is, it use the Token
+  - the opponent and the choice (heads or tails) are provided by the GameModel
+
+OK, cool. We already have a model for Game, but let's say we want to create an endpoint that returns all the games. If we use this model, the games returned will just be a list of opponents and options. Some information is missing.
+
+
+### Multiple Models
+
+> The more, the better.
 
 A common mistake is to use the same model for every single operation. However, in a professional **API**, the data you receive is often different from the data you send or the data you use for specific actions.
 
@@ -338,7 +358,7 @@ Think about the `Player` logic. Using only one model creates several issues:
 - **During Registration:** You need the *password*, but you do not have an *id_player* yet (the database generates it).
 - **During Login:** You only need the *username* and *password*. Including the *email* or the *elo* is a waste of bandwidth and a security risk.
 
-To solve this, we use **different models for different contexts**. This is called **Separation of Concerns**.
+To solve this, we use different models for different contexts. This is called **Separation of Concerns**.
 
 In **player_model.py**, we define two specialized contracts to match the specific needs of our API endpoints:
 
@@ -346,6 +366,42 @@ In **player_model.py**, we define two specialized contracts to match the specifi
   - Usage: It is used in **player_controller.py** within the *create_player* and *update_player* methods to ensure that all required profile information is validated.
 2. `PlayerLoginModel`: The "Minimal" version. It is stripped down to only the essential fields required for authentication (*username* and *password*).
   - Usage: It is used in **login_controller.py** within the *login* method. This prevents the API from requiring or exposing unnecessary data like *email* or *elo* during a simple login attempt.
+
+Let's get back to the Games.
+
+The goal will be to create an endpoint to display a player's games.
+
+- [ ] Create a GameModel with these fields:
+  - id_game, game_mode, detail, timestamp
+  - for player1, player2 and winner: use another Model (`player1: aPlayerModel`)
+- [ ] Create endpoint to get list of games for a specific player
+  - the best way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player
+
+```{.python filename="player_controller.py"}
+# GET /player/{id_player}/games
+@app.get("/players/{id_player}/games", response_model=list[GameModel])
+def get_games(id_player, service: game_service=Depends(get_game_service)):
+    if ... # Player don't exists
+        raise ...
+    return ... # Call a service
+```
+
+::: {.callout-note title="Alternative"}
+Call it from **GameController** using a parameter to filter *id_player*:
+
+```{.python filename="game_controller.py"}
+# GET /game?id_player={id_player}
+@app.get("/game", response_model=list[GameRead])
+def get_games(id_player, game_service=Depends(get_game_service)):
+    return ...
+```
+:::
+
+- [ ] Do you have a service that provides a list of games by player?
+  - If not, implement one.
+- [ ] Do you have a DAO that provides a list of games by player?
+  - If not, implement one.
+
 
 ::: {.callout-tip title="Going Further" collapse="true"}
 While using two models is a great start, professional **APIs** often use even more granular models to handle different stages of a resource's lifecycle. You could further optimize this by implementing:
@@ -356,15 +412,9 @@ While using two models is a great start, professional **APIs** often use even mo
 :::
 
 
-
-
-
-
-
-
-
-
 ### Security: Token-based Authentication
+
+> Bonus
 
 A professional API is rarely wide open. To protect your data, you will implement **Token-based authentication**.
 
@@ -385,614 +435,20 @@ You will implement a dependency that checks for a specific header. If the header
 async def create_game(
     game: GameCreate, 
     service=Depends(get_game_service),
-    token: str = Header(None) # 1. Capture the header
+    token: str = Header(None)
 ):
-    # 2. Validate the token
+    # Validate the token
     if token != "secret-key-123":
         raise HTTPException(status_code=401, detail="Invalid token")
     
-    # 3. Proceed with the logic
     return service.create(game)
 ```
 
----
-
-### 🛠️ Implementation Checklist
-
-- [ ] **Create Models**: Define `GameCreate` and `GameResponse` in `game_model.py`.
-- [ ] **Implement Controller**: Create `game_controller.py` using the `GameService`.
-- [ ] **Apply Validation**: Use your Pydantic models in the function arguments.
 - [ ] **Add Security**: Protect your `POST` and `DELETE` routes with the `X-Auth-Token` check.
 - [ ] **Test with Swagger**: Verify that a request without the token returns a `401`.
 
-
-### Implementation Tasks
-
-Create `backend/src/api/game_api.py` and implement the following endpoints:
-
-- [ ] `GET /games`: Returns all games.
-- [ ] `GET /games/{id}`: Returns a specific game. 
-  - *Requirement:* Return `404 Not Found` if the ID is invalid.
-- [ ] `POST /games`: Creates a new game.
-  - *Requirement:* Must use `GameCreate` (Pydantic) for validation.
-  - *Security:* **Must** require the `X-Auth-Token`. If missing or wrong, return `401 Unauthorized`.
-- [ ] `DELETE /games/{id}`: Deletes a game.
-  - *Security:* **Must** require the `X-Auth-Token`.
-
-**Success Criteria:**
-
-1. Your API is documented in `/docs`.
-2. You can create a game via Swagger using the correct Header.
-3. Trying to create a game without the token results in a `401` error.
 
 
 {{< include _end-lab.qmd >}}
 
 
-
----
-
-
-## Before you start {.unnumbered}
-
-:scream: As you can see, the subject of this practical assignment is also quite extensive. Don't let that scare you.
-
-It combines comprehensive explanations and practical exercises to ensure maximum self-sufficiency.
-
-**You probably won't finish the whole subject, but that's okay. It's there to help you with your IT project.**
-
-::: {.callout-note title="Objectives"}
-In this lab, you will:
-
-- Manually call a web service using an API Client
-- Call a web service using the Python library *requests*
-- Discover the Swagger page of a web service
-- Manipulate different data formats
-- Create a web service using the Python framework [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
-:::
-
-
-
-## Calling manually a web service 
-
-The first part of this practical assignment does not require you to write any code, but only to make requests to a web service using an API client.
-
-### Webservices
-
-::: {.callout-note title="Web service"}
-**Web service**: The term web service is a broad one, and it would be difficult to provide a concise definition ([Wikipedia article](https://en.wikipedia.org/wiki/Web_service){target="_blank"}).
-
-Within the scope of the project, a web service refers to an application accessible via the HTTP (Hypertext Transfer Protocol) protocol, which generally complies with the REST (Representational State Transfer) architecture.
-
-But there are others, such as SOAP (Simple Object Access Protocol) and RPC (Remote Procedure Call).
-::: 
-
-In other words, a web service is an application accessible via the web that can be queried either:
-
-- to obtain resources
-- to modify accessible resources
-
-A web service can simply be a **single, standardised access point** to data (such as a database interface), but it can also be a **way of controlling an information system** (launching jobs, putting them on hold, retrieving results, etc.).
-
-Web services use the HTTP protocol, which is the web protocol (not the internet protocol). It is the one you use without knowing it with your web browser. Requesting a web service is almost like requesting a web page.
-
-To do this, you need:
-
-- the address of the resource, its Uniform Resource Identifier (URI) 
-  - this is a more general concept than Uniform Resource Locator (URL)
-- a method (GET, POST, PUT, DELETE, [list of methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods){target="_blank"})
-- and potentially some data
-
-### First GET requests
-
-::: {.callout-tip}
-In this example, we will use a GET request to read data from a web service.
-A GET request is like asking a question: "Do you have this information?"
-
-If the data exists, the web service responds with it, usually in JSON format. If not, it may return an error like 404 Not Found.
-:::
-
-
-Several ways to make GET requests to web services (choose one):
-
-- <https://hoppscotch.io/>{target="_blank"}  (Online client)
-- [Bruno](https://www.usebruno.com/downloads){target="_blank"} (download and install)
-- [Insomnia](https://insomnia.rest/){target="_blank"} (already installed on ENSAI VMs)
-- Entering the URL in the address bar of your web browser (Chrome, Firefox...)
-- command-line cURL : `curl -X GET "https://swapi.info/api/people/35"`
-
-
-
-Test the web service requests below:
-
-- Look at the response on the right side of your screen
-- What are the similarities between the responses?
-
-
-#### Carbon intensity
-
-Web service on carbon emissions in the United Kingdom
-
-- [Documentation](https://carbon-intensity.github.io/api-definitions/#carbon-intensity-api-v2-0-0){target="_blank"}
-  - [Endpoints](https://carbon-intensity.github.io/api-definitions/#intensity){target="_blank"}
-  - [Schemas](https://carbon-intensity.github.io/api-definitions/#schemas){target="_blank"}
-
-Requests to test:
-
-- [ ] `api.carbonintensity.org.uk/intensity`
-- [ ] `api.carbonintensity.org.uk/intensity/date/{date}` 
-  - replacing *{date}* with the date of your choice in the format *YYYY-MM-DD*
-
-#### Rennes Métropole open data
-
-[Data Rennes Métropole](https://data.rennesmetropole.fr/explore/){target="_blank"}
-
-Retrieve data from various datasets: `https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/<dataset_id>/records`
-
-Replace `<dataset_id>` with one of the following values:
-
-- [ ] *menus-cantines*
-- [ ] *arbre*
-- [ ] *aire_jeu*
-- [ ] *jeux_aires_de_jeux*
-
-
-To vary the number of rows you receive:
-
-- simply add to the end of the URI `?rows=N` , where N is the number of rows
-
-
-#### Your project's web service
-
-- [ ] Explore some useful methods of your IT project's web service (discuss this with your tutor).
-
-
-### Advanced queries
-
-You will use a web service created with FastAPI specifically for this purpose : **<https://user-ludo2ne-450102-user.user.lab.sspcloud.fr/docs>{target="_blank"}**
-
-::: {.callout-tip title="If you want to create this web service yourself"}
-use this code : <https://github.com/ludo2ne/ENSAI-2A-WS-TP3/>{target="_blank"}
-
-- Create a PostgreSQL service
-- Using cloudBeaver create and pop table (data/init_db.sql)
-- Create a Vscode-python service
-  - Network access : For example, open port 5000
-  - Clone the repo
-  - Create *.env* file to connect your PostgreSQL database
-  - install required packages
-- `python main.py`
-  - to run in the background: `nohup python src/main.py &`
-  - `kill -9 <PID>` to stop
-
-```{.txt filename=".env"}
-PASSWORD=
-HOST=
-PORT=5432
-DATABASE=
-USER=
-```
-:::
-
-
-
-
-After exploring a few external web services, you will work with a web service created specifically for these practical exercises.
-
-Still using your API Client, query the following endpoints:
-
-- [ ] `GET /attack`
-- [ ] `GET /attack/<attack_name_or_id>`
-- [ ] `GET /attack?type_attack_id=<id_type>`
-  -  replacing *id_type* with an integer between 1 and 4
-- [ ] `GET /attack?type_attack_name=<type attack>&limit=8`
-  - type attack: *special attack*, *physical attack*, *fixed damage* or *status attack*
-- [ ] Use parameters *limit* and *offset* to get attacks id between 11 and 15
-
-::: {.callout-warning}
-If you have any issues with the API Client, you can connect directly to Swagger (see instructions below) to execute requests.
-:::
-
-Let's create an attack:
-
-- [ ] `POST /attack`
-  - Click on **Body**, then **application/json**
-  - Paste the text below
-  - Custom your own attack replacing attribute values
-  - attack_type: *physical attack* / "special attack" / "fixed damage" / "status attack"
-
-```{.json filename="application/body"}
-{
-  "name": "<An awesome name>",
-  "attack_type": "<An awesome type>",
-  "power": 0,
-  "accuracy": 0,
-  "element": "<An awesome element>",
-  "description": "<An awesome description>"
-}
-```
-
-- [ ] Check your attack has been created successfully.
-  - `GET /attack/<attack_name>`
-
-
-### Swagger
-
-In your web browser, go to the endpoint `/docs`.
-
-This will take you to the webservice's swagger page. This page lists all the webservice endpoints and how to use them. Try using the interface to:
-
-- modify an attack
-- delete an attack
-- display a list of Pokémon
-- add a Pokémon
-
-Further documentation is available at the `/redoc` endpoint.
-
-
-
-## Python Webservice
-
-Today, the biggest consumers of web services are machines. We will see how to automate calls to a web service in Python.
-
-::: {.callout-note}
-Today, many web applications (e.g. Facebook, Netflix, Dailymotion, Uber) use what are known as "micro services" architectures. 
-
-Communication between their application components (e.g. between their human-machine interface (HMI) and their internal services) is carried out via single-purpose web services. This allows modules to be decoupled from one another, as they communicate solely via HTTP requests or event management systems. They only need to know how to communicate with one another, not the internal workings of other modules. 
-
-This requires thorough documentation of web services and the management of a HUGE number of applications in parallel. Amazon, Google and Facebook can afford to do this, but a small company with 10 employees cannot.
-:::
-
-### Requests Library
-
-The principle remains the same as making a request manually with an API client. You will use the [**requests**](https://requests.readthedocs.io/en/master/){target="_blank"} library so that you only have to fill in the relevant parts of your requests.
-
-To make a **GET** request, simply do the following:
-
-```{.python}
-import requests
-
-response = requests.get("http://my-webservice.com") 
-```
-
-Executing this line of code will:
-
-1. Send the *GET* request to the server you are contacting
-2. Store the result in the *response* variable
-
-This *response* variable is an object, and like any object, it has attributes and methods, for example:
-
-- `response.text`: the body of the result in string form, letting *requests* infer the encoding (this often works)
-  - Problem: you have a string, and this is not the best data format to work with
-- **`response.json()`**: the body of the result as a dictionary. 
-  - This is what you will do most often because the JSON format is easy to manipulate
-- `response.encoding`: the encoding of your request (useful in case of encoding problems)
-- **`response.status_code`**: the status of the request. The main ones are:
-
-
-| Code | Description                                              |
-|------|----------------------------------------------------------|
-| 200  | General return to say that everything went well          |
-| 201  | Resource created successfully                            |
-| 202  | Accepted, with no guarantee of the result (asynchronous system) |
-| 400  | Bad request (Syntax error)                               |
-| 401  | Error, authentication required                           |
-| 403  | Resource prohibited (insufficient rights)                |
-| 404  | Resource not found                                       |
-| 405  | Method Not Allowed                                       |
-| 500  | Server-side error                                        |
-| 503  | Service temporarily unavailable                          |
-
-To summarise, the results:
-
-- :white_check_mark: *2xx* (success): the client's request was successfully received, understood, and accepted
-- :x: *4xx* (Client Errors): this could be due to incorrect syntax, unauthorized access, or the resource not being found
-- :x: *5xx* (Server Errors): the server failed to fulfill a valid request
-
-
-### Examples of use
-
-The principle will always be the same:
-
-1. You launch the query
-2. You check if the status is OK
-3. You retrieve the JSON and process the result (display, conversion to dataframe, etc.)
-
-:::{.panel-tabset .nav-pills}
-
-#### Template
-
-```{.python}
-import requests
-import json
-
-response = requests.get("http://my-webservice.com")
-
-if response.status_code != 200:
-    raise Exception(
-        f"Cannot reach (HTTP {response.status_code}): {response.text}"
-    )
-else:    
-    print(json.dumps(response.json(), indent=2))       # JSON Pretty print
-```
-
-#### Menus-cantines
-
-```{.python}
-import requests
-import pandas as pd
-
-url = "https://data.rennesmetropole.fr/api/explore/v2.1/catalog/datasets/menus-cantines/records?limit=20"
-req = requests.get(url)
-
-if req.status_code == 200:
-    raw_menus = req.json()
-    records = raw_menus.get("results")
-
-    if records:
-        menus = pd.DataFrame(records)
-        print(menus)
-    else:
-        print("No records found.")
-else:
-    print(f"Failed to retrieve data. Status code: {req.status_code}.\n{req.text}")
-```
-
-:::
-
-### Launch VScode
-
-::: {.callout-important title="Custom VSCode service"}
-You [should not launch]{.underline} a standard VSCode-python service, but rather a customised version.
-:::
-
-- [ ] Login to a Datalab
-  - <https://onyxia.lab.groupe-genes.fr/>{target="_blank"}
-  - <https://datalab.sspcloud.fr/>{target="_blank"}
-- [ ] Launch a [**customised**]{.underline} VSCode service
-
-
-### Clone the repository
-
-- [ ] Clone your fork of repository *ENSAI-2A-complement-info-TP*
-  - refer to previous TP if you have not already created the fork
-- [ ] Position yourself on the branch *tp3-base*
-  - `git switch tp3-base`
-  - to ensure that everyone starts at the same level
-
-::: {.callout-important title="Verify that everything is working"}
-- [ ] Install required packages
-- [ ] Run the unit tests for the business_object package
-  - `pytest -v src/tests/test_business_object/`
-- [ ] Run the main program : `python src/__main__.py`
-:::
-
-
-### My first queries in Python
-
-- [ ] Edit the *.env* file to connect to the [web service you just used](#advanced-queries)
-- [ ] Open file `/src/client/attack_client.py`
-- [ ] Complete the *get_attack(int)* method, which:
-  - takes an attack ID as a parameter
-  - retrieves all available information about this attack
-  - returns an object of type **AbstractAttack**
-
-::: {.callout-tip}
-To help you, take a look at the *instantiate_attack()* method of the **AttackFactory** class (business_object).
-
-See how this method works and use it.
-:::
-
-- [ ] Create the *get_all_attacks()* method
-  - Returns the list of all available attacks in the form of a list of **AbstractAttack** objects
-
-
-### More complex requests
-
-So far, we have focused on **GET** queries (simple data reading). 
-
-But it is possible to do others. For example, **POST**, **PUT** or **DELETE** queries.
-
-Here is the syntax:
-
-```{.python}
-post = requests.post("http://example.org", json = {'key':'value'})
-put = requests.put("http://example.org", json = {'key':'value'})
-delete = requests.delete("http://example.org")
-```
-
-As you can see, syntaxes are very similar to the syntax of the **GET** method. We have only added data for certain requests. This is what you did earlier with the API Client. To pass parameters to your request, We recommend using this type of syntax:
-
-```{.python}
-# Prepare Arguments
-url = "http://example.org"
-headers = {'accept': 'application/json'}
-data = {'key1':'value1', 'key2':'value2'}
-
-# Launch Request
-post = requests.post(url, headers=headers, json = data)
-```
-
-Functionally, it's the same thing, but it's better to define the elements outside the query so you don't get lost.
-
-
-### Advanced requests in Python
-
-In the `attack_client.py` module, implement the following methods:
-
-- [ ] *create_attack(AbstractAttack)*
-  - takes an **AbstractAttack** as a parameter
-  - creates a new attack calling the web service
-- [ ] *update_attack(AbstractAttack)*
-  - takes an **AbstractAttack** as a parameter
-  - modifies it in the web service
-- [ ] *delete_attack(AbstractAttack)*
-  - takes an **AbstractAttack** as a parameter
-  - deletes it in the web service
-
-## Code a web service in Python
-
-::: {.callout-note}
-Until now, you have been using existing web services. 
-
-Now you are going to create your own web service.
-:::
-
-With the tools available today, it is easy to create a web service yourself.
-
-There are currently three market leaders for creating a REST web service in Python:
-
-- [Django REST](https://www.django-rest-framework.org/){target="_blank"}
-- [FlaskRESTful](https://flask-restful.readthedocs.io/en/latest/){target="_blank"}
-- [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}
-
-Each has its advantages and disadvantages. Django is certainly the most comprehensive but also the heaviest, while Flask and FastApi are lighter and quicker to set up. The big advantage of **FastApi** is the simplicity with which you can create a Swagger documentation page.
-
-Here is the minimal code for a REST web service with FastAPI ([official documentation](https://fastapi.tiangolo.com/tutorial/first-steps/){target="_blank"})
-
-```{.python filename="app.py"}
-from fastapi import FastAPI
-
-# Instantiate the web service
-app = FastAPI()
-
-# Create an endpoint that responds to the GET method at the address "/" and returns the message "Hello World".
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-# Launching the application on port 5000
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5000)
-```
-
-Calling the "/" resource of the web service will return the JSON:  `{"message": "Hello World"}`
-
-Here is a more complete example inspired by the [official documentation](https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing){target="_blank"} (you want to create a web service to expose your **todos**)
-
-```{.python code-line-numbers="true"}
-from fastapi import FastAPI
-from pydantic import BaseModel
-from starlette import status
-import uvicorn
-
-# On instancie le webservice
-app = FastAPI()
-
-class Todo(BaseModel):
-    id : int
-    content : str
-
-todos = {1 : Todo(1,"Step 1 : Learn python")
-        , 2 : Todo(2,"Step 2 : Work on the IT project")
-        , 3 : Todo(3,"Step 3 : ???")
-        , 4 : Todo(4,"Step 4 : Profit")}
-
-# Endpoint GET /todo
-@app.get("/todo")
-async def get_all_todo():
-    return todos.values()
-
-# Endpoint GET /todo/{id_doto}
-@app.get("/todo/{id_toto}")
-async def get_todo_by_id(id_toto : int = Path(..., description = "The `id` of the todo you want to get")):
-    if todos.get[id_toto] :
-    	return todos.get[id_toto]
-    else :
-        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND)
-
-# Endpoint POST /todo
-@app.post("/todo", todo, status_code=201)
-async def post_todo(todo:Todo):
-    if not todos.get(todo.id):
-    	return JSONResponse(status_code=status.HTTP_409_CONFLICT)
-    else :
-        todos[todo.id] = todo
-        return todo
-
-# Launch the web service
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5000)
-```
-
-This code will create a web service that will respond to the following requests:
-
-- `GET host/todo`: returns all tasks to be done
-- `GET host/todo/{todo_id}`: returns the task behind the ID in the parameter
-- `POST host/todo/`: adds the task passed in the body of the request
-
-FastAPI serialises the objects you return for you. So there's no need to format your data. However, for clarity, you can use `BaseModel` classes. These are classes that will only contain attributes that you can declare without a constructor:
-
-```{.python}
-class Todo(BaseModel):
-    id : int
-    content : str
-```
-
-These classes can be used as output from your web service, as well as input (line 33). FastApi will perform a series of checks on the variable types and return an error to the client if their request is not formatted correctly.
-
-Basically, a web service is an application like any other, but instead of having a graphical interface as we humans are used to, the interface is an HTTP interface that will accept requests and send results. Thus, the sequence diagram of the different layers that will be involved in a GET request to retrieve a resource will look like this. Let's go back to the 3-layer model we saw in class.
-
-```{mermaid}
-sequenceDiagram
-    participant U as User
-    participant R as Webservice
-    participant S as Service
-    participant D as DAO
-    participant B as Database
-    U ->> R: HTTP request
-    R ->> S: get_by_id()
-    S ->> D: find_by_id()
-    D ->> B: SQL query (psycopg)
-    B ->> D: SQL cursor (psycopg)
-    D ->> S: business object instance
-    S ->> R: business object instance
-    Note over S,R: the object is potentially altered
-    R ->> U: HTTP response
-```
-
-### My first web service
-
-::: {.callout-tip}
-The web service you will create will be deployed on a specific url. To find this url:
-
-- In the datalab > My services
-- VScode-python > Open > your will find a link
-:::
-
-- [ ] Open the `app.py` file
-- [ ] Change the launch port to match the one opened on the datalab
-- [ ] Run this file
-- [ ] Test the following requests:
-  - `GET hello`
-  - `GET hello/everybody`
-- [ ] Stop the web service
-  - Click in the VSCode terminal, then press CTRL + C
-
-
-
-Using the list of characters defined in the *app.py* file, add the following endpoints:
-
-- [ ] `GET character`: will return a JSON containing a list of characters
-- [ ] `PUT character/{id}`, which will modify the name of the character at index `{id}` from a body
-- [ ] `DELETE character/{id}`, which will delete the item at index `{id}`
-
-To test endpoints requiring a JSON body, you can use:
-
-```{.json}
-{
-  "nom":"Agneta",
-  "age": 30
-}
-```
-
-
-## End of the Lab {.unnumbered}
-
-::: {.callout-important}
-- [ ] Push your code to GitHub
-  - if your VSCode service dies, your code will not be lost
-  - on Datalabs, there is no guarantee of the lifespan of your services
-- [ ] Pause or delete your datalab services
-  - to free up reserved resources
-:::
