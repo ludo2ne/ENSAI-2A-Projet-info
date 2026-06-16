@@ -1,0 +1,200 @@
+---
+title: "Json-server"
+description: "A rapid tool to expose JSON data as a RESTful API"
+author: "Ludovic Deneuville"
+format: html
+---
+
+When developing a Front-end or testing a Client, you often need a working API before the actual Back-end is ready. Waiting for the full database and server logic to be implemented can stall your progress.
+
+To solve this, we use **json-server**. It is a lightweight tool that turns a simple JSON file into a fully functional REST API in seconds, supporting all standard HTTP methods.
+
+## Installation
+
+First, ensure you have **Node.js** and **npm** installed on your system. Then, install `json-server` globally.
+
+```bash
+sudo apt update
+sudo apt install nodejs npm
+npm install -g json-server
+```
+
+## Setting Up the Mock Data
+
+The behavior of the API is entirely determined by a local **JSON** file. This file acts as your "database."
+
+- [ ] In directory **data**, create a file named **db.json**
+
+```{.json filename="data/db.json"}
+{
+  "games": [
+    {
+      "id": "1",
+      "players_list": ["Alice", "Bob"],
+      "winner_name": "Alice",
+      "location_name": "Arena 1",
+      "duration_seconds": 120,
+      "mode_type": "coinflip"
+    },
+    {
+      "id": "2",
+      "players_list": ["Eve", "Frank"],
+      "winner_name": "Eve",
+      "location_name": "Secret Cave",
+      "duration_seconds": 300,
+      "mode_type": "dice"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
+```
+
+::: {.callout title="Games data" collapse="true"}
+```{.json}
+{
+  "games": [
+    {
+      "id": "1",
+      "players_list": [
+        "Alice",
+        "Bob"
+      ],
+      "winner_name": "Alice",
+      "location_name": "Arena 1",
+      "duration_seconds": 120,
+      "mode_type": "coinflip"
+    },
+    {
+      "id": "2",
+      "players_list": [
+        "Eve",
+        "Frank"
+      ],
+      "winner_name": "Eve",
+      "location_name": "Secret Cave",
+      "duration_seconds": 300,
+      "mode_type": "dice"
+    },
+    {
+      "id": "3",
+      "players_list": [
+        "Eve",
+        "Boris"
+      ],
+      "winner_name": "Eve",
+      "location_name": "Secret Cave",
+      "duration_seconds": 300,
+      "mode_type": "dice"
+    },
+    {
+      "id": "4",
+      "players_list": [
+        "Eve",
+        "Boris"
+      ],
+      "winner_name": "Eve",
+      "location_name": "Secret Cave",
+      "duration_seconds": 300,
+      "mode_type": "dice"
+    },
+    {
+      "uuid_match": 103,
+      "players_list": [
+        "Eve",
+        "Boris"
+      ],
+      "winner_name": "Eve",
+      "location_name": "Secret Cave",
+      "duration_seconds": 300,
+      "mode_type": "dice",
+      "id": "FIWBuFDQqUQ"
+    },
+    {
+      "uuid_match": 103,
+      "players_list": [
+        "Eve",
+        "Boris"
+      ],
+      "winner_name": "Eve",
+      "location_name": "Secret Cave",
+      "duration_seconds": 300,
+      "mode_type": "dice",
+      "id": "jSIh2DO8Be4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
+```
+:::
+
+
+## Launching the Server
+
+To start the API, run the following command in your terminal. The `--watch` flag ensures that any changes you make to **db.json** are immediately reflected in the API.
+
+```bash
+json-server --watch data/db.json --port 5000
+```
+
+::: {.callout-note title="Endpoint URL"}
+Your API is now live at `http://localhost:5000`. The keys in your JSON file (e.g., `"games"`) become the resource endpoints (e.g., `/games`).
+:::
+
+
+## Testing the API
+
+You can interact with your new server using **cURL** or any professional API client like **Bruno** or **Insomnia**.
+
+### READ Operations
+
+To retrieve the list of all games:
+
+```bash
+curl -X GET http://localhost:5000/games
+```
+
+### WRITE Operations
+
+To create a new game entry, send a `POST` request with a **JSON** body. `json-server` will automatically generate a unique *id* for the new entry.
+
+```bash
+curl -X POST http://localhost:5000/games \
+     -H "Content-Type: application/json" \
+     -d '{
+           "uuid_match": 103,
+           "players_list": ["Eve", "Boris"],
+           "winner_name": "Eve",
+           "location_name": "Secret Cave",
+           "duration_seconds": 300,
+           "mode_type": "dice"
+         }'
+```
+
+### UPDATE Operations
+
+To modify an existing resource, use `PUT`. You must specify the *id* of the resource in the URL path.
+
+```bash
+curl -X PUT http://localhost:5000/games/1 \
+     -H "Content-Type: application/json" \
+     -d '{
+           "uuid_match": 101,
+           "players_list": ["Alice", "Bob"],
+           "winner_name": "Bob",
+           "location_name": "Arena 1 (Updated)",
+           "duration_seconds": 150,
+           "mode_type": "coinflip"
+         }'
+```
+
+### DELETE Operations
+
+To remove a resource from your mock database:
+
+```bash
+curl -X DELETE http://localhost:5000/games/2
+```
+
+::: {.callout-warning title="Data Persistence"}
+Because `json-server` is a mock tool, it writes changes directly to your **db.json** file. Be careful when performing `DELETE` or `PUT` operations, as they will permanently alter your local file.
+:::

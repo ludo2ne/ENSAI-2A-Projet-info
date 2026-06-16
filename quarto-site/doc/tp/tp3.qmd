@@ -10,10 +10,11 @@ format:
 number-sections: true
 categories:
   - DAO
+  - CRUD
+  - SQL
+  - Data Mapping
   - Mocking
 ---
-
-:construction:
 
 ## Before you start {.unnumbered}
 
@@ -146,7 +147,8 @@ Instead, we use the **DAO (Data Access Object) Pattern**.
 
 We separate the **What** (Business Logic) from the **How** (Persistence).
 
-::: {.mermaid}
+:::{.white-box}
+```{mermaid}
 sequenceDiagram
     participant GS as GameService
     participant GD as GameDao
@@ -159,8 +161,8 @@ sequenceDiagram
     GD->>SQL: INSERT INTO game (...)
     SQL-->>GD: success (id)
     GD-->>GS: True
+```
 :::
-
 
 ### Connection management and Singleton pattern
 

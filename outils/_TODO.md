@@ -1,4 +1,10 @@
 
+# Template
+
+- [ ] back/main: obligé d'appeler 2 fois load_env, workarround ? uvicorn reload mode ?
+
+
+
 # TP
 
 ## TP1 Back/Front, Couches, Git

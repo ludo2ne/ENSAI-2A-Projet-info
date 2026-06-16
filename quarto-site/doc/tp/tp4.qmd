@@ -3,11 +3,16 @@ title: Web APIs & Data formats
 description: Lab 4 - web service
 author:
   - Ludovic Deneuville
-  - Rémi Pépin
-format: html
+format: 
+  html:
+    mermaid:
+      theme: default
 number-sections: true
 categories:
+  - Client-Server Model
   - APIs
+  - Pydantic Model
+  - Data Mapping
 ---
 
 :construction:
@@ -39,6 +44,80 @@ This tutorial combines explanations and code phases. The explanations should not
 :::
 
 
+## Client-Server principle
+
+To understand how software systems communicate, let's step out of the terminal and into a clothing store. Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.
+
+:::{.white-box}
+```{mermaid}
+sequenceDiagram
+    participant Client as Customer (Client)
+    participant API as Shop Assistant (API)
+    participant Server as Warehouse (Server)
+
+    Note over Client, Server: READ Operations (Filtering)
+    
+    Client->>API: "Show me all underwear" (GET /underwear)
+    API->>Server: Query all items
+    Server-->>API: [Boxer, Briefs, Panties]
+    API-->>Client: 200 OK (List of items)
+
+    Client->>API: "I want pink briefs" (GET /underwear?type=briefs&color=pink)
+    API->>Server: Filter collection
+    Server-->>API: Not Found
+    API-->>Client: 404 Not Found: "We don't carry pink briefs!"
+```
+:::
+
+But wait! A shop is not just for looking. If you want to actually do something-like adding new stock or changing prices-you need more than just a "viewing" request. You need to perform Write Operations.
+
+:::{.white-box}
+```{mermaid}
+sequenceDiagram
+    participant Client as Customer (Client)
+    participant API as Shop Assistant (API)
+    participant Server as Warehouse (Server)
+
+    Note over Client, Server: WRITE Operations (Targeting specific IDs)
+
+    Client->>API: "Add a Rainbow Panties" (POST /underwear)
+    Note right of Client: Body: {"type": "panties", "color": "rainbow"}
+    API->>Server: Insert new record
+    Server-->>API: Created (ID: 101)
+    API-->>Client: 201 Created: "Added to catalog!"
+
+    Client->>API: "Update Gold Boxer price" (PUT /underwear/99)
+    Note right of Client: Body: {"price": 999.99}
+    API->>Server: Update item 101
+    Server-->>API: Success
+    API-->>Client: 200 OK: "Price updated. French quality!"
+
+    Client->>API: "Delete green briefs" (DELETE /underwear/42)
+    API->>Server: Remove item 42
+    Server-->>API: Deleted
+    API-->>Client: 204 No Content: "Bye bye green briefs."
+```
+:::
+
+Now that anyone can add or delete items, our shop is a mess! We can't just let anyone walk in and change everything. We need to implement **Security and Permissions** to protect our inventory.
+
+:::{.white-box}
+```{mermaid}
+sequenceDiagram
+    participant Client as Customer (Client)
+    participant API as Shop Assistant (API)
+    participant Server as Warehouse (Server)
+    Note over Client, Server: Security & Permissions
+
+    Client->>API: "Get VIP items" (GET /vip-items)
+    Note right of Client: Missing Token
+    API-->>Client: 401 Unauthorized: "Reserved for members!"
+
+    Client->>API: "Delete an item" (DELETE /underwear/101)
+    Note right of Client: x-auth-token: r2D2c3Po Valid, but wrong Role
+    API-->>Client: 403 Forbidden: "You are a customer, not the manager!"
+```
+:::
 
 ## Exploring the Web (The Manual Way)
 
@@ -164,11 +243,11 @@ The external API does not use your internal names. It is a common real-world pro
 
 ### The Mission
 
-> Example to retrieve peoples from star wars API.
+> This part is an example to retrieve peoples from star wars API. No questions.
 
 We will use package [requests](https://requests.readthedocs.io/en/latest/user/quickstart/){target="_blank"}.
 
-#### Step1: Call the web service
+:arrow_right: **Step1: Call the web service**
 
 Run the query as you would with another tool and store the response in a variable.
 
@@ -178,7 +257,7 @@ import requests
 response = requests.get(url="https://swapi.info/api/people/")
 ```
 
-#### Step2: Check response
+:arrow_right: **Step2: Check response**
 
 Then, see if the answer is useful.
 
@@ -192,8 +271,7 @@ else:
     print(json.dumps(raw_json, indent=2))  # Pretty print
 ```
 
-
-#### Step3: Convert into business objects
+:arrow_right: **Step3: Convert into business objects**
 
 Imagine you have a *People* (name, birth, hair, bmi) business object.
 
@@ -287,10 +365,141 @@ In this section, you were a client of an API; next you'll become the provider by
 
 Finally, you will become the **Server**. You will expose your `Game` data via a professional REST API using [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}.
 
+### The most simple API
+
+> Example, no question.
+
+Below is the code and command to create and launch the simplest possible API using FastAPI:
+
+:arrow_right: **Step1: Create the API**
+
+```{.python filename="main.py"}
+from fastapi import FastAPI
+
+app = FastAPI()                                 # 1. Create the application instance
+
+@app.get("/")                                   # 2. Define a root endpoint
+async def read_root():
+    return {"message": "Hello World"}
+```
+
+:arrow_right: **Step2: Launch the Server**
+
+Launch it with command: `uvicorn main:app --host 0.0.0.0 --port 5000 --reload`
+
+::: {.callout-note}
+- uvicorn: The ASGI server that runs your application
+- main:app: Refers to your file **main.py** and the FastAPI instance inside it *app*
+- --host 0.0.0.0: Makes the server accessible on your local network
+- --port 5000: Sets the port the API will listen on
+- --reload: it automatically restarts the server whenever you save a file
+:::
+
+:arrow_right: **Step3: Query the API**
+
+Using `curl -X GET http://127.0.0.1:5000/` or another client.
+
+Expected output:
+
+```{.json}
+{"message": "Hello World"}
+```
+
+A production-ready API does much more than just return a single message; it uses various HTTP methods, handles query parameters, and navigates structured URL paths to interact with complex data.
+
+
+### Your First Endpoint
+
+- [ ] Open file **main.py**
+
+::: {.callout-note title="The Application Entry Point"}
+What's in this file? It is the Orchestrator of your application:
+
+- Routing Assembly: It connects modular Routers (Controllers) to the main FastAPI instance
+- Utility Management: It provides administrative endpoints like database resets or documentation redirects
+- Server Execution: It launches the ASGI server (Uvicorn) to handle incoming HTTP requests
+:::
+
+You'll notice that every endpoint prefixed with */game* will be handled in the **game_controller.py** file.
+
+- [ ] Open file **game_controller.py**
+- [ ] Add this endpoint below and test it in the swagger:
+
+```{.python}
+@router.get("/", tags=["Games"])
+async def get_mock_games():
+    return [
+        {"id_game": 1, "mode": "coinflip", "winner": "Miguel"},
+        {"id_game": 2, "mode": "dice", "winner": "Batricia"}
+    ]
+```
+
+OK, that's a start. Now, let's aim to display all `Games` played by a specific `Player`. We'll proceed step by step modifying the previous method.
+
+- [ ] Add parameter *id_player* to the method
+  - to have this endpont: `GET /game?id_player=?`
+  - for your first try, just add this ID into the returned JSON (new key)
+
+If you want this parameter to be optional, you must specify a default value for it in the method signature (e.g., None).
+
+::: {.callout-tip}
+A better way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player.
+
+```{.python filename="player_controller.py"}
+# GET /player/{id_player}/games
+@app.get("/players/{id_player}/games", response_model=list[GameModel])
+def get_games(id_player, service: game_service=Depends(get_game_service)):
+    if ... # Player don't exists
+        raise ...
+    return ... # Call a service
+```
+:::
+
+Finally, instead of returning raw JSON data, let's now retrieve the actual list of games played by the player with that ID.
+
+- [ ] Do you have a DAO that provides a list of games by player?
+  - If not, implement one.
+- [ ] Do you have a service that provides a list of games by player?
+  - If not, implement one.
+- [ ] Since it's no longer a mock, rename the controller method
+
+Here is the route:
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant Controller as GameController
+    participant Service as GameService
+    participant DAO as GameDAO
+    participant DB as Database
+
+    Client->>Controller: GET /game?id_player=1
+    Note over Controller: Validates request & params
+    Controller->>Service: find_all_by_player(1)
+    Service->>DAO: find_all_by_player(1)
+    DAO->>DB: SELECT * <br> FROM game <br> WHERE id_player = 1
+    DB-->>DAO: Returns rows
+    DAO-->>Service: list[Game]
+    Service-->>Controller: list[Game]
+    Controller-->>Client: 200 OK (JSON list)
+```
+
+Great, it works.
+
+But do you notice anything that seems wrong?
+
+What if our Game table contained confidential information?
+
+How can we ensure that it isn't exposed?
+
+Fortunately, there is a solution for managing data input and output!
+
 
 ### Data Validation
 
-When your API receives data, you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this "garbage" from entering your system, we use **Pydantic models**.
+When you expose an endpoint, you don't have to reveal all the data you have. It may be a good idea to hide passwords, tokens, and so on...
+
+Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this "garbage" from entering your system, we use **Pydantic models**.
 
 A Pydantic model acts as a **Data Contract**: it defines exactly what the data should look like. If the incoming JSON doesn't match the contract, FastAPI will automatically reject the request with a "422 Unprocessable Entity" error.
 
@@ -309,7 +518,6 @@ class PlayerModel(BaseModel):
     email: EmailStr
     pokemon_fan: bool
 ```
-
 
 #### Use it in the Controller
 
@@ -374,34 +582,7 @@ The goal will be to create an endpoint to display a player's games.
 - [ ] Create a GameModel with these fields:
   - id_game, game_mode, detail, timestamp
   - for player1, player2 and winner: use another Model (`player1: aPlayerModel`)
-- [ ] Create endpoint to get list of games for a specific player
-  - the best way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player
-
-```{.python filename="player_controller.py"}
-# GET /player/{id_player}/games
-@app.get("/players/{id_player}/games", response_model=list[GameModel])
-def get_games(id_player, service: game_service=Depends(get_game_service)):
-    if ... # Player don't exists
-        raise ...
-    return ... # Call a service
-```
-
-::: {.callout-note title="Alternative"}
-Call it from **GameController** using a parameter to filter *id_player*:
-
-```{.python filename="game_controller.py"}
-# GET /game?id_player={id_player}
-@app.get("/game", response_model=list[GameRead])
-def get_games(id_player, game_service=Depends(get_game_service)):
-    return ...
-```
-:::
-
-- [ ] Do you have a service that provides a list of games by player?
-  - If not, implement one.
-- [ ] Do you have a DAO that provides a list of games by player?
-  - If not, implement one.
-
+- [ ] Modify endpoint `GET /game?id_player=?` to use this model
 
 ::: {.callout-tip title="Going Further" collapse="true"}
 While using two models is a great start, professional **APIs** often use even more granular models to handle different stages of a resource's lifecycle. You could further optimize this by implementing:
@@ -448,7 +629,13 @@ async def create_game(
 - [ ] **Test with Swagger**: Verify that a request without the token returns a `401`.
 
 
+## Conclusion{.unnumbered}
+
+This tutorial guided you through the complete lifecycle of building a professional web service. You progressed from understanding the Client-Server principle to implementing a robust REST API:
+
+- Being client of an external API
+- Creating your own API and own endpoints
+- Using Pydantic models to enforce strict data contracts and prevent "garbage" data
+- Implementing Token-based authentication to protect sensitive routes.
 
 {{< include _end-lab.qmd >}}
-
-
