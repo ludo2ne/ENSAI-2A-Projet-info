@@ -6,12 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Cyriel Mallart">
 <meta name="author" content="Ludovic Deneuville">
-<meta name="author" content="Rémi Pépin">
-<meta name="description" content="Slides">
+<meta name="description" content="A rapid tool to expose JSON data as a RESTful API">
 
-<title>Les Webservices – Projet info 2A</title>
+<title>Json-server – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -65,27 +63,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-705fb07ed9cede36e80cd8644b78c8fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-705fb07ed9cede36e80cd8644b78c8fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -115,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -287,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Projet info 2A</span>
     </a>
   </div>
@@ -298,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -308,15 +306,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/presentation-tuteurs.html">
+    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
   </li>  
         <li>
@@ -324,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/sujets.html">
+    <a class="dropdown-item" href="../../doc/projet/sujets.html">
  <span class="dropdown-text">Sujets</span></a>
   </li>  
     </ul>
@@ -335,35 +333,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/01-introduction.html">
+    <a class="dropdown-item" href="../../doc/cours/01-introduction.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/02-outils-dev.html">
+    <a class="dropdown-item" href="../../doc/cours/02-outils-dev.html">
  <span class="dropdown-text">Development Tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/03-git.html">
+    <a class="dropdown-item" href="../../doc/cours/03-git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/04-analyse-fonctionnelle.html">
+    <a class="dropdown-item" href="../../doc/cours/04-analyse-fonctionnelle.html">
  <span class="dropdown-text">Functional Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/05-poo-avancee.html">
+    <a class="dropdown-item" href="../../doc/cours/05-poo-avancee.html">
  <span class="dropdown-text">Advanced POO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/06-tests-unitaires.html">
+    <a class="dropdown-item" href="../../doc/cours/06-tests-unitaires.html">
  <span class="dropdown-text">Unit Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/07-webservices.html">
+    <a class="dropdown-item" href="../../doc/cours/07-webservices.html">
  <span class="dropdown-text">Webservices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/08-dao-securite.html">
+    <a class="dropdown-item" href="../../doc/cours/08-dao-securite.html">
  <span class="dropdown-text">DAO and Security</span></a>
   </li>  
     </ul>
@@ -374,31 +372,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp1.html">
+    <a class="dropdown-item" href="../../doc/tp/tp1.html">
  <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp2.html">
+    <a class="dropdown-item" href="../../doc/tp/tp2.html">
  <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp3.html">
+    <a class="dropdown-item" href="../../doc/tp/tp3.html">
  <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp4.html">
+    <a class="dropdown-item" href="../../doc/tp/tp4.html">
  <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp5.html">
+    <a class="dropdown-item" href="../../doc/tp/tp5.html">
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp6.html">
+    <a class="dropdown-item" href="../../doc/tp/tp6.html">
  <span class="dropdown-text">Lab 6 - Bonus</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/2025/tp1.html">
+    <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
     </ul>
@@ -415,15 +413,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">ENSAI-tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/divers/licences.html">
+    <a class="dropdown-item" href="../../doc/divers/licences.html">
  <span class="dropdown-text">Licences</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/divers/sigles.html">
+    <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/divers/json-server.html">
+    <a class="dropdown-item" href="../../doc/divers/json-server.html">
  <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
@@ -454,14 +452,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#le-plan" id="toc-le-plan" class="nav-link active" data-scroll-target="#le-plan">Le plan</a></li>
-  <li><a href="#api" id="toc-api" class="nav-link" data-scroll-target="#api">API</a></li>
-  <li><a href="#définition-1" id="toc-définition-1" class="nav-link" data-scroll-target="#définition-1">Définition</a></li>
-  <li><a href="#les-webservices" id="toc-les-webservices" class="nav-link" data-scroll-target="#les-webservices">Les webservices</a></li>
-  <li><a href="#hyper-text-transfer-protocol-http" id="toc-hyper-text-transfer-protocol-http" class="nav-link" data-scroll-target="#hyper-text-transfer-protocol-http">Hyper Text Transfer Protocol (HTTP)</a></li>
-  <li><a href="#contacterréaliser-un-webservice" id="toc-contacterréaliser-un-webservice" class="nav-link" data-scroll-target="#contacterréaliser-un-webservice">Contacter/réaliser un webservice</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#setting-up-the-mock-data" id="toc-setting-up-the-mock-data" class="nav-link" data-scroll-target="#setting-up-the-mock-data">Setting Up the Mock Data</a></li>
+  <li><a href="#launching-the-server" id="toc-launching-the-server" class="nav-link" data-scroll-target="#launching-the-server">Launching the Server</a></li>
+  <li><a href="#testing-the-api" id="toc-testing-the-api" class="nav-link" data-scroll-target="#testing-the-api">Testing the API</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="webservices-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -473,12 +469,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Les Webservices</h1>
+<h1 class="title">Json-server</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="webservices-slides.html">Slides</a>
+    A rapid tool to expose JSON data as a RESTful API
   </div>
 </div>
 
@@ -486,11 +482,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Cyriel Mallart </p>
              <p>Ludovic Deneuville </p>
-             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -503,508 +497,207 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="le-plan" class="level2">
-<h2 class="anchored" data-anchor-id="le-plan">Le plan</h2>
-<ul>
-<li>API</li>
-<li>Webservice
-<ul>
-<li>Définition</li>
-<li>Exemples</li>
-<li>Architecture microservices</li>
-</ul></li>
-<li>Hyper Text Transfer Protocol
-<ul>
-<li>Définition</li>
-<li>Exemples</li>
-</ul></li>
-</ul>
+<p>When developing a Front-end or testing a Client, you often need a working API before the actual Back-end is ready. Waiting for the full database and server logic to be implemented can stall your progress.</p>
+<p>To solve this, we use <strong>json-server</strong>. It is a lightweight tool that turns a simple JSON file into a fully functional REST API in seconds, supporting all standard HTTP methods.</p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>First, ensure you have <strong>Node.js</strong> and <strong>npm</strong> installed on your system. Then, install <code>json-server</code> globally.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nodejs npm</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> json-server</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="api" class="level2">
-<h2 class="anchored" data-anchor-id="api">API</h2>
-<section id="définition" class="level3">
-<h3 class="anchored" data-anchor-id="définition">Définition</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interface entre deux ordinateurs ou deux programmes.</p>
-<p>C’est une application qui offre des services à d’autres applications.</p>
-<p>L’application implémente une API ou expose une API.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="définition-1" class="level2">
-<h2 class="anchored" data-anchor-id="définition-1">Définition</h2>
-<p>Termes assez vaste qui recouvre :</p>
-<ul>
-<li>Les bibliothèques / frameworks :
-<ul>
-<li><a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank">Pandas</a></li>
-<li><a href="https://numpy.org/" target="_blank">Numpy</a></li>
-</ul></li>
-<li>Des webservices</li>
-<li>Un moyen d’accéder aux ressources d’un hardware
-<ul>
-<li><a href="https://developer.nvidia.com/nvapi" target="_blank">Nvidia API</a></li>
-</ul></li>
-</ul>
-<section id="api-in-a-nutshell" class="level3">
-<h3 class="anchored" data-anchor-id="api-in-a-nutshell">API in a nutshell</h3>
-<ul>
-<li>Expose des méthodes/fonctions aux utilisateurs</li>
-<li>Réutilisation</li>
-<li>Contractualisation des inputs/outputs</li>
-<li>Boîte noire</li>
-</ul>
-<div class="notes">
-<p>Pour reprendre l’exemple du dessus, le module d’authentification peut être utilisé aussi bien par les utilisateurs pour la version site marchand, que par les admins pour la partie administration.</p>
-</div>
-<hr>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Une API rend un service aux utilisateurs sans qu’ils aient à savoir comment elle fait.</p>
-<p>Ils connaissent juste ce qu’elle attend en entrée et ce qu’elle produit !</p>
-</div>
-</div>
-</section>
-</section>
-<section id="les-webservices" class="level2">
-<h2 class="anchored" data-anchor-id="les-webservices">Les webservices</h2>
-<p>Une API particulière</p>
-<section id="question" class="level3">
-<h3 class="anchored" data-anchor-id="question">Question</h3>
-<p>À votre avis, X permet-il à tout le monde d’accéder à leurs bases de données directement ?</p>
-<div class="notes">
-<p>Bien sûr non !</p>
-</div>
-</section>
-<section id="wait-what" class="level3">
-<h3 class="anchored" data-anchor-id="wait-what">Wait what ?!</h3>
-<ul>
-<li>Pourtant de nombreux sites utilisent les données de X !</li>
-<li>Comment font-ils ?</li>
-</ul>
-</section>
-<section id="des-idées" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="des-idées">Des idées ?</h3>
-<iframe src="https://giphy.com/embed/8acGIeFnqLA7S" width="600" height="600" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
-</iframe>
-</section>
-<section id="solution-web-scraper" class="level3">
-<h3 class="anchored" data-anchor-id="solution-web-scraper">Solution : web scraper</h3>
-<p>Consiste à écrire une application qui :</p>
-<ul>
-<li>se connecte à un site</li>
-<li>et va lire la page pour en tirer des informations</li>
-</ul>
-<p><strong>Problèmes</strong></p>
-<ul>
-<li>Crée du trafic artificiel (côté site)</li>
-<li>Chaque changement dans le site casse notre application</li>
-<li>Gérer le JavaScript 😱😱😱😱</li>
-</ul>
-<div class="notes">
-<p>Dire que derrière un site il y a du HTML.</p>
-<p>Montrer un exemple ?</p>
-<p>Prix SNCF à l’INSEE</p>
-</div>
-</section>
-<section id="autre-solution-créer-un-point-dentrée-pour-les-machines" class="level3">
-<h3 class="anchored" data-anchor-id="autre-solution-créer-un-point-dentrée-pour-les-machines">Autre solution : créer un point d’entrée pour les machines</h3>
-<ul>
-<li>Accessible depuis le web</li>
-<li>Fait pour les machines</li>
-<li><strong>Contrôle ce que l’on rend accessible</strong></li>
-</ul>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Interface entre l’extérieur et notre système</p>
-</div>
-</div>
-</div>
-</section>
-<section id="démo" class="level3">
-<h3 class="anchored" data-anchor-id="démo">Démo</h3>
-<div class="notes">
-<ul>
-<li><a href="https://api.gouv.fr/documentation/api_data_gouv">https://api.gouv.fr/documentation/api_data_gouv</a><br>
-</li>
-<li><a href="https://anapioficeandfire.com/">https://anapioficeandfire.com/</a></li>
-<li><a href="https://data.rennesmetropole.fr/api/records/1.0/search/?dataset=etat-du-trafic-en-temps-reel">Le trafic à Rennes en temps réel</a></li>
-</ul>
-</div>
-</section>
-<section id="les-webservices-1" class="level3">
-<h3 class="anchored" data-anchor-id="les-webservices-1">Les webservices</h3>
-<ul>
-<li>Application web</li>
-<li><strong>Accessible via requête HTTP/HTTPS</strong></li>
-<li>Sans interface graphique</li>
-<li><strong>Renvoie des données compréhensibles par les machines (JSON, XML…)</strong></li>
-</ul>
-<div class="notes">
-<p>Webservice : une API particulière que nous allons utiliser</p>
-</div>
-</section>
-<section id="plusieurs-types" class="level3">
-<h3 class="anchored" data-anchor-id="plusieurs-types">Plusieurs types</h3>
-<ul>
-<li>REST : le plus courant, le type que vous allez manipuler, JSON</li>
-<li>SOAP : plus complet donc plus lourd que le REST, XML</li>
-<li>RPC : Remote Procedure Call</li>
-</ul>
-<div class="notes">
-<p>REST est un style architectural qui définit un ensemble de contraintes et de principes</p>
-</div>
-</section>
-<section id="en-résumé" class="level3">
-<h3 class="anchored" data-anchor-id="en-résumé">En résumé</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande</p>
-</div>
-</div>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> Comme un site web, mais pour les machines</p>
-</section>
-<section id="architecture-microservices" class="level3">
-<h3 class="anchored" data-anchor-id="architecture-microservices">Architecture microservices</h3>
-<p>Site de e-commerce</p>
-<ul>
-<li>WS authentification</li>
-<li>WS gestion de compte</li>
-<li>WS paiement</li>
-<li>WS de recherche</li>
-<li>WS analyse des données</li>
-<li>WS gestion panier</li>
-</ul>
-</section>
-<section id="architecture-microservices-1" class="level3">
-<h3 class="anchored" data-anchor-id="architecture-microservices-1">Architecture microservices</h3>
-<ul>
-<li>Chaque module est un webservice indépendant</li>
-<li>C’est l’application côté client qui va les contacter</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Utile pour les grandes entreprises avec beaucoup de dev et de projets en parallèle.</p>
-</div>
-</div>
-<div class="notes">
-<p>Un dessin pourrait peut-être aider</p>
-</div>
-</section>
-<section id="comment-ça-fonctionne" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="comment-ça-fonctionne">Comment ça fonctionne ?</h3>
-<iframe src="https://giphy.com/embed/a5viI92PAF89q" width="900" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
-</iframe>
-</section>
-<section id="la-notion-de-client-serveur" class="level3">
-<h3 class="anchored" data-anchor-id="la-notion-de-client-serveur">La notion de client-serveur</h3>
-<ul>
-<li><strong>LE MODÈLE QUI RÉGIT LE WEB</strong></li>
-<li>Des machines qui attendent des demandes : <strong>serveurs</strong></li>
-<li>Des machines qui font des demandes : <strong>clients</strong></li>
-<li>Le client initie le contact, le serveur répond</li>
-</ul>
-</section>
-<section id="comparaison-avec-vie-réelle" class="level3">
-<h3 class="anchored" data-anchor-id="comparaison-avec-vie-réelle">Comparaison avec vie réelle</h3>
-<ul>
-<li>Vous marchez dans la rue et vous avez envie d’un café frappé Double shot espresso and Cream</li>
-<li>Vous rentrez dans un Starbucks et <strong>demandez</strong> votre café</li>
-<li>Le <strong>serveur</strong> traite votre demande et vous donne votre café</li>
-<li>Vous partez avec votre café</li>
-</ul>
-<div class="notes">
-<p>Vous vous moquez de comment à été fait votre café, tant que c’est bon</p>
-</div>
-</section>
-</section>
-<section id="hyper-text-transfer-protocol-http" class="level2">
-<h2 class="anchored" data-anchor-id="hyper-text-transfer-protocol-http">Hyper Text Transfer Protocol (HTTP)</h2>
-<section id="http" class="level3">
-<h3 class="anchored" data-anchor-id="http">HTTP</h3>
-<p>Protocole de communication client-serveur développé pour le World Wide Web</p>
-<p>N’est pas le seul : FTP, SMTP, IRC …</p>
-<p>Il existe des protocoles non client-serveur : BitTorrent</p>
-<div class="notes">
-<p>Avez vous une idée de requête HTTP ?</p>
-<ul>
-<li>Internet est l’infrastructure</li>
-<li>Web est un service qui fonctionne dessus</li>
-</ul>
-<p>https : http + SSL</p>
-<p>Le navigateur cache le protocole</p>
-</div>
-</section>
-<section id="secure-sockets-layer-ssl" class="level3">
-<h3 class="anchored" data-anchor-id="secure-sockets-layer-ssl">Secure Sockets Layer (SSL)</h3>
-<p>Connexion sécurisée entre un client et un serveur :</p>
-<ul>
-<li>Le <strong>client</strong> envoie un message au <strong>serveur</strong></li>
-<li>Le <strong>serveur</strong> répond et envoie son <u>certificat</u></li>
-<li>Le <strong>client</strong> vérifie la validité du certificat</li>
-<li>Le <strong>client</strong> génére une clé de <u>session</u> chiffrée avec la clé publique du <strong>serveur</strong></li>
-<li>Les deux camps communiquent avec la clé de session</li>
-</ul>
-<div class="notes">
-<p>Commencer par parler chiffrage :</p>
-<ul>
-<li>Chiffrage symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les données</li>
-<li>Chiffrage asymétrique : une clé publique pour chiffrer les données et une clé privée pour les déchiffrer</li>
-</ul>
-<p>Certificat :</p>
-<ul>
-<li>Clé publique</li>
-<li>Informations sur le propriétaire</li>
-<li>Période de validité</li>
-<li>Autorité de certification</li>
-<li>Signature numérique : message haché puis chiffré avec clé privée</li>
-</ul>
-</div>
-</section>
-<section id="video" class="level3">
-<h3 class="anchored" data-anchor-id="video">Video</h3>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/7W7WPMX7arI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
-<section id="les-éléments-dune-requête" class="level3">
-<h3 class="anchored" data-anchor-id="les-éléments-dune-requête">Les éléments d’une requête</h3>
-<ul>
-<li>La localisation de la ressource : URL (nom de domaine + chemin)</li>
-<li>La méthode employée (GET, POST, UPDATE, DELETE …)</li>
-<li>Les paramètres de la requête</li>
-<li>Le corps de la requête</li>
-</ul>
-<div class="notes">
-<p>Les paramètres sont derrière le ?</p>
-<p>Le corps vous ne le voyez pas, mais il est possible de le voir.</p>
-<p>Dans le navigateur, on ne fait que des GET</p>
-</div>
-</section>
-<section id="les-éléments-dune-requête-1" class="level3">
-<h3 class="anchored" data-anchor-id="les-éléments-dune-requête-1">Les éléments d’une requête</h3>
-<p><code>GET https://pokeapi.co/api/v2/pokemon?limit=10&amp;offset=200</code></p>
-<ul>
-<li>méthode</li>
-<li>protocole</li>
-<li>adresse du ws</li>
-<li>endpoint</li>
-<li>paramètres</li>
-</ul>
-<div class="notes">
-<p>Pour aller plus loin : IP, DNS</p>
-</div>
-</section>
-<section id="les-méthodes-http" class="level3">
-<h3 class="anchored" data-anchor-id="les-méthodes-http">Les méthodes HTTP</h3>
-<ul>
-<li>POST</li>
-<li>GET</li>
-<li>UPDATE</li>
-<li>DELETE</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>C’est le CRUD !</p>
-</div>
-</div>
-<div class="notes">
-<p>Comme en SQL</p>
-</div>
-</section>
-<section id="exemple" class="level3">
-<h3 class="anchored" data-anchor-id="exemple">Exemple</h3>
-<ul>
-<li>GET http://web-services.domensai.ecole/attack
-<ul>
-<li>récupérer toutes les attaques</li>
-</ul></li>
-<li>GET http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>récupérer une attaque à partir de son id</li>
-</ul></li>
-<li>DELETE http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>supprimer une attaque</li>
-</ul></li>
-</ul>
-</section>
-<section id="exemple-1" class="level3">
-<h3 class="anchored" data-anchor-id="exemple-1">Exemple</h3>
-<ul>
-<li>POST http://web-services.domensai.ecole/attack
-<ul>
-<li>ajouter une attaque</li>
-</ul></li>
-<li>PUT http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>modifier une attaque</li>
-</ul></li>
+<section id="setting-up-the-mock-data" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-mock-data">Setting Up the Mock Data</h2>
+<p>The behavior of the API is entirely determined by a local <strong>JSON</strong> file. This file acts as your “database.”</p>
+<ul class="task-list">
+<li><label><input type="checkbox">In directory <strong>data</strong>, create a file named <strong>db.json</strong></label></li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>body</strong></pre>
+<pre><strong>data/db.json</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="body"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"chatouille"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"attack_type"</span><span class="fu">:</span> <span class="st">"physical attack"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"power"</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accuracy"</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"string"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="data/db.json"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"games"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"1"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Alice"</span><span class="ot">,</span> <span class="st">"Bob"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Alice"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Arena 1"</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"coinflip"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"2"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Eve"</span><span class="ot">,</span> <span class="st">"Frank"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"$schema"</span><span class="fu">:</span> <span class="st">"./node_modules/json-server/schema.json"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="notes">
-<ul>
-<li>PATCH http://web-services.domensai.ecole/attack/2684
-<ul>
-<li>modifier seulement certains attributs d’une attaque</li>
-</ul></li>
-</ul>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Games data">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>Games data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"games"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"1"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Alice"</span><span class="ot">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bob"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Alice"</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Arena 1"</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"coinflip"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"2"</span><span class="fu">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Eve"</span><span class="ot">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Frank"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"3"</span><span class="fu">,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Eve"</span><span class="ot">,</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Boris"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"4"</span><span class="fu">,</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Eve"</span><span class="ot">,</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Boris"</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uuid_match"</span><span class="fu">:</span> <span class="dv">103</span><span class="fu">,</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Eve"</span><span class="ot">,</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Boris"</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span><span class="fu">,</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"FIWBuFDQqUQ"</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uuid_match"</span><span class="fu">:</span> <span class="dv">103</span><span class="fu">,</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Eve"</span><span class="ot">,</span></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Boris"</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span><span class="fu">,</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"jSIh2DO8Be4"</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"$schema"</span><span class="fu">:</span> <span class="st">"./node_modules/json-server/schema.json"</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 </div>
 </section>
-<section id="pour-résumer" class="level3">
-<h3 class="anchored" data-anchor-id="pour-résumer">Pour résumer</h3>
-<ul>
-<li>Le HTTP est le protocole du web</li>
-<li>Méthode</li>
-<li>URL</li>
-<li>Paramètres dans URL ou corps</li>
-</ul>
-</section>
-</section>
-<section id="contacterréaliser-un-webservice" class="level2">
-<h2 class="anchored" data-anchor-id="contacterréaliser-un-webservice">Contacter/réaliser un webservice</h2>
-<section id="contacter-un-webservice" class="level3">
-<h3 class="anchored" data-anchor-id="contacter-un-webservice">Contacter un webservice</h3>
-<p>Un outil : un client HTTP</p>
-<ul>
-<li>Un navigateur web (assez limité)</li>
-<li>Insomnia/Postman</li>
-<li>Vscode avec des plugins</li>
-<li>Python avec le plugin <code>requests</code></li>
-</ul>
-</section>
-<section id="contacter-un-webservice-en-python" class="level3">
-<h3 class="anchored" data-anchor-id="contacter-un-webservice-en-python">Contacter un webservice en python</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Construction de la requête</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://data.rennesmetropole.fr/api/records/1.0/search/"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>parametres <span class="op">=</span> {<span class="st">"dataset"</span>: <span class="st">"etat-du-trafic-en-temps-reel"</span>, <span class="st">"rows"</span>: <span class="dv">2</span>}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Lancement de la requête</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> requests.get(url<span class="op">=</span>url, params<span class="op">=</span>parametres)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage du résultat</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(res.json())</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Nombre de lignes : "</span>, res.json()[<span class="st">"parameters"</span>][<span class="st">"rows"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="contacter-un-webservice-en-python-1" class="level3">
-<h3 class="anchored" data-anchor-id="contacter-un-webservice-en-python-1">Contacter un webservice en python</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://anapioficeandfire.com/api/"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>end_point <span class="op">=</span> <span class="st">"characters"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>parametres <span class="op">=</span> {<span class="st">"gender"</span>: <span class="st">"Female"</span>, <span class="st">"isAlive"</span>: <span class="va">True</span>, <span class="st">"culture"</span>: <span class="st">"Braavosi"</span>}</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span>url <span class="op">+</span> end_point, params<span class="op">=</span>parametres)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste si le serveur a répondu</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response.json()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="contacter-un-webservice-en-python-2" class="level3">
-<h3 class="anchored" data-anchor-id="contacter-un-webservice-en-python-2">Contacter un webservice en python</h3>
-<ul>
-<li>Très facile</li>
-<li><code>res.json()</code> retourne un dictionnaire</li>
-<li><code>get()</code> peut devenir <code>post()</code>, <code>put()</code>, etc.</li>
-</ul>
-</section>
-<section id="réaliser-un-webservice-en-python" class="level3">
-<h3 class="anchored" data-anchor-id="réaliser-un-webservice-en-python">Réaliser un webservice en python</h3>
-<ul>
-<li>Peut sembler complexe 😵</li>
-<li>Mais il existe des outils pour nous aider 😎</li>
-<li>Pas besoin d’être un expert de l’informatique ! 🐱‍💻</li>
-</ul>
-</section>
-<section id="frameworks" class="level3">
-<h3 class="anchored" data-anchor-id="frameworks">3 frameworks</h3>
-<ul>
-<li><a href="https://fastapi.tiangolo.com/" target="_blank">FlaskRESTful</a> : mature, léger, flexible</li>
-<li><a href="https://www.djangoproject.com/" target="_blank">Django</a> : mature, robuste, complet</li>
-<li><a href="https://fastapi.tiangolo.com/" target="_blank">FastApi</a> : jeune, léger, moderne</li>
-</ul>
-<div class="notes">
-<p>FastApi pour le TP2</p>
+<section id="launching-the-server" class="level2">
+<h2 class="anchored" data-anchor-id="launching-the-server">Launching the Server</h2>
+<p>To start the API, run the following command in your terminal. The <code>--watch</code> flag ensures that any changes you make to <strong>db.json</strong> are immediately reflected in the API.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">json-server</span> <span class="at">--watch</span> data/db.json <span class="at">--port</span> 5000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Endpoint URL">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Endpoint URL
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your API is now live at <code>http://localhost:5000</code>. The keys in your JSON file (e.g., <code>"games"</code>) become the resource endpoints (e.g., <code>/games</code>).</p>
+</div>
 </div>
 </section>
-<section id="fastapi-les-bases" class="level3">
-<h3 class="anchored" data-anchor-id="fastapi-les-bases">FastApi : les bases</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">8000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="testing-the-api" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-api">Testing the API</h2>
+<p>You can interact with your new server using <strong>cURL</strong> or any professional API client like <strong>Bruno</strong> or <strong>Insomnia</strong>.</p>
+<section id="read-operations" class="level3">
+<h3 class="anchored" data-anchor-id="read-operations">READ Operations</h3>
+<p>To retrieve the list of all games:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> GET http://localhost:5000/games</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="fastapi" class="level3">
-<h3 class="anchored" data-anchor-id="fastapi">FastApi</h3>
-<ul>
-<li>Il est facile de coder vos endpoints</li>
-<li>La <a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank">documentation</a> est extrêmement bien faite</li>
-<li>Vous vous concentrez sur l’essentiel</li>
-</ul>
+<section id="write-operations" class="level3">
+<h3 class="anchored" data-anchor-id="write-operations">WRITE Operations</h3>
+<p>To create a new game entry, send a <code>POST</code> request with a <strong>JSON</strong> body. <code>json-server</code> will automatically generate a unique <em>id</em> for the new entry.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST http://localhost:5000/games <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">-d</span> <span class="st">'{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">           "uuid_match": 103,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">           "players_list": ["Eve", "Boris"],</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">           "winner_name": "Eve",</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">           "location_name": "Secret Cave",</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">           "duration_seconds": 300,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">           "mode_type": "dice"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">         }'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="update-operations" class="level3">
+<h3 class="anchored" data-anchor-id="update-operations">UPDATE Operations</h3>
+<p>To modify an existing resource, use <code>PUT</code>. You must specify the <em>id</em> of the resource in the URL path.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> PUT http://localhost:5000/games/1 <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">-d</span> <span class="st">'{</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">           "uuid_match": 101,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">           "players_list": ["Alice", "Bob"],</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">           "winner_name": "Bob",</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">           "location_name": "Arena 1 (Updated)",</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">           "duration_seconds": 150,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">           "mode_type": "coinflip"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">         }'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="delete-operations" class="level3">
+<h3 class="anchored" data-anchor-id="delete-operations">DELETE Operations</h3>
+<p>To remove a resource from your mock database:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> DELETE http://localhost:5000/games/2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Data Persistence">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Data Persistence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because <code>json-server</code> is a mock tool, it writes changes directly to your <strong>db.json</strong> file. Be careful when performing <code>DELETE</code> or <code>PUT</code> operations, as they will permanently alter your local file.</p>
+</div>
+</div>
 
 
 </section>

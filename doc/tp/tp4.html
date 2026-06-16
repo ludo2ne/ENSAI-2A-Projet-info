@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="author" content="Rémi Pépin">
 <meta name="description" content="Lab 4 - web service">
 
 <title>Web APIs &amp; Data formats – Projet info 2A</title>
@@ -112,6 +111,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -422,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Sigles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.qmd">
+    <a class="dropdown-item" href="../../doc/divers/json-server.html">
  <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
@@ -454,10 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
-  <li><a href="#exploring-the-web-the-manual-way" id="toc-exploring-the-web-the-manual-way" class="nav-link" data-scroll-target="#exploring-the-web-the-manual-way"><span class="header-section-number">1</span> Exploring the Web (The Manual Way)</a></li>
-  <li><a href="#exploring-your-projects-api" id="toc-exploring-your-projects-api" class="nav-link" data-scroll-target="#exploring-your-projects-api"><span class="header-section-number">2</span> Exploring your project’s API</a></li>
-  <li><a href="#the-client-challenge-data-mapping" id="toc-the-client-challenge-data-mapping" class="nav-link" data-scroll-target="#the-client-challenge-data-mapping"><span class="header-section-number">3</span> The Client Challenge (Data Mapping)</a></li>
-  <li><a href="#building-your-own-api" id="toc-building-your-own-api" class="nav-link" data-scroll-target="#building-your-own-api"><span class="header-section-number">4</span> Building your own API</a></li>
+  <li><a href="#client-server-principle" id="toc-client-server-principle" class="nav-link" data-scroll-target="#client-server-principle"><span class="header-section-number">1</span> Client-Server principle</a></li>
+  <li><a href="#exploring-the-web-the-manual-way" id="toc-exploring-the-web-the-manual-way" class="nav-link" data-scroll-target="#exploring-the-web-the-manual-way"><span class="header-section-number">2</span> Exploring the Web (The Manual Way)</a></li>
+  <li><a href="#exploring-your-projects-api" id="toc-exploring-your-projects-api" class="nav-link" data-scroll-target="#exploring-your-projects-api"><span class="header-section-number">3</span> Exploring your project’s API</a></li>
+  <li><a href="#the-client-challenge-data-mapping" id="toc-the-client-challenge-data-mapping" class="nav-link" data-scroll-target="#the-client-challenge-data-mapping"><span class="header-section-number">4</span> The Client Challenge (Data Mapping)</a></li>
+  <li><a href="#building-your-own-api" id="toc-building-your-own-api" class="nav-link" data-scroll-target="#building-your-own-api"><span class="header-section-number">5</span> Building your own API</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
@@ -474,7 +479,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title">
 <h1 class="title">Web APIs &amp; Data formats</h1>
   <div class="quarto-categories">
+    <div class="quarto-category">Client-Server Model</div>
     <div class="quarto-category">APIs</div>
+    <div class="quarto-category">Pydantic Model</div>
+    <div class="quarto-category">Data Mapping</div>
   </div>
   </div>
 
@@ -488,10 +496,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Ludovic Deneuville </p>
-             <p>Rémi Pépin </p>
           </div>
   </div>
     
@@ -536,11 +543,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exploring-the-web-the-manual-way" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="exploring-the-web-the-manual-way"><span class="header-section-number">1</span> Exploring the Web (The Manual Way)</h2>
+<section id="client-server-principle" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="client-server-principle"><span class="header-section-number">1</span> Client-Server principle</h2>
+<p>To understand how software systems communicate, let’s step out of the terminal and into a clothing store. Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.</p>
+<div class="white-box">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Client as Customer (Client)
+    participant API as Shop Assistant (API)
+    participant Server as Warehouse (Server)
+
+    Note over Client, Server: READ Operations (Filtering)
+    
+    Client-&gt;&gt;API: "Show me all underwear" (GET /underwear)
+    API-&gt;&gt;Server: Query all items
+    Server--&gt;&gt;API: [Boxer, Briefs, Panties]
+    API--&gt;&gt;Client: 200 OK (List of items)
+
+    Client-&gt;&gt;API: "I want pink briefs" (GET /underwear?type=briefs&amp;color=pink)
+    API-&gt;&gt;Server: Filter collection
+    Server--&gt;&gt;API: Not Found
+    API--&gt;&gt;Client: 404 Not Found: "We don't carry pink briefs!"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p>But wait! A shop is not just for looking. If you want to actually do something-like adding new stock or changing prices-you need more than just a “viewing” request. You need to perform Write Operations.</p>
+<div class="white-box">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Client as Customer (Client)
+    participant API as Shop Assistant (API)
+    participant Server as Warehouse (Server)
+
+    Note over Client, Server: WRITE Operations (Targeting specific IDs)
+
+    Client-&gt;&gt;API: "Add a Rainbow Panties" (POST /underwear)
+    Note right of Client: Body: {"type": "panties", "color": "rainbow"}
+    API-&gt;&gt;Server: Insert new record
+    Server--&gt;&gt;API: Created (ID: 101)
+    API--&gt;&gt;Client: 201 Created: "Added to catalog!"
+
+    Client-&gt;&gt;API: "Update Gold Boxer price" (PUT /underwear/99)
+    Note right of Client: Body: {"price": 999.99}
+    API-&gt;&gt;Server: Update item 101
+    Server--&gt;&gt;API: Success
+    API--&gt;&gt;Client: 200 OK: "Price updated. French quality!"
+
+    Client-&gt;&gt;API: "Delete green briefs" (DELETE /underwear/42)
+    API-&gt;&gt;Server: Remove item 42
+    Server--&gt;&gt;API: Deleted
+    API--&gt;&gt;Client: 204 No Content: "Bye bye green briefs."
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p>Now that anyone can add or delete items, our shop is a mess! We can’t just let anyone walk in and change everything. We need to implement <strong>Security and Permissions</strong> to protect our inventory.</p>
+<div class="white-box">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Client as Customer (Client)
+    participant API as Shop Assistant (API)
+    participant Server as Warehouse (Server)
+    Note over Client, Server: Security &amp; Permissions
+
+    Client-&gt;&gt;API: "Get VIP items" (GET /vip-items)
+    Note right of Client: Missing Token
+    API--&gt;&gt;Client: 401 Unauthorized: "Reserved for members!"
+
+    Client-&gt;&gt;API: "Delete an item" (DELETE /underwear/101)
+    Note right of Client: x-auth-token: r2D2c3Po Valid, but wrong Role
+    API--&gt;&gt;Client: 403 Forbidden: "You are a customer, not the manager!"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploring-the-web-the-manual-way" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="exploring-the-web-the-manual-way"><span class="header-section-number">2</span> Exploring the Web (The Manual Way)</h2>
 <p>Before writing code, you must understand how to “talk” to a server. A web service is just an application waiting for HTTP requests.</p>
-<section id="reminder" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="reminder"><span class="header-section-number">1.1</span> Reminder</h3>
+<section id="reminder" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="reminder"><span class="header-section-number">2.1</span> Reminder</h3>
 <p>In the first lab, we explained <a href="../../doc/tp/tp1.html#web-services-vs-menu-driven" target="_blank">the difference between an API and an interface</a>.</p>
 <p>The <strong>Front-end</strong> is the “face” running on the user’s device, while the <strong>Back-end</strong> is the “brain” running on a remote server.</p>
 <p>The <strong>UI</strong> is what the user sees; user actions are sent to the back-end via the <strong>API</strong>.</p>
@@ -587,8 +691,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="quick-browser-check" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="quick-browser-check"><span class="header-section-number">1.2</span> Quick Browser Check</h3>
+<section id="quick-browser-check" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="quick-browser-check"><span class="header-section-number">2.2</span> Quick Browser Check</h3>
 <p>The simplest way to interact with an API is via your browser (Firefox, Chrome, etc.). However, browsers are limited to <strong>GET</strong> requests (read data).</p>
 <p>Lets explore <a href="https://swapi.info/api/" target="_blank">https://swapi.info/api/</a></p>
 <ul class="task-list">
@@ -605,20 +709,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><span class="emoji" data-emoji="construction">🚧</span> example with parameters ?limit…</p>
 </section>
-<section id="professional-api-clients" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="professional-api-clients"><span class="header-section-number">1.3</span> Professional API Clients</h3>
+<section id="professional-api-clients" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="professional-api-clients"><span class="header-section-number">2.3</span> Professional API Clients</h3>
 <p>To perform more complex actions (such as <code>POST</code>, <code>PUT</code>, or <code>DELETE</code>), a web browser is not enough. You will need a specialized tool to build your requests and inspect the responses.</p>
 <p>Depending on your preference, you can use one of the following methods:</p>
-<section id="desktop-applications" class="level4" data-number="1.3.1">
-<h4 data-number="1.3.1" class="anchored" data-anchor-id="desktop-applications"><span class="header-section-number">1.3.1</span> Desktop Applications</h4>
+<section id="desktop-applications" class="level4" data-number="2.3.1">
+<h4 data-number="2.3.1" class="anchored" data-anchor-id="desktop-applications"><span class="header-section-number">2.3.1</span> Desktop Applications</h4>
 <p>These are powerful tools that you download and install:</p>
 <ul>
 <li><a href="https://www.usebruno.com/" target="_blank">Bruno</a></li>
 <li><a href="https://insomnia.rest/" target="_blank">Insomnia</a></li>
 </ul>
 </section>
-<section id="online-tools" class="level4" data-number="1.3.2">
-<h4 data-number="1.3.2" class="anchored" data-anchor-id="online-tools"><span class="header-section-number">1.3.2</span> Online Tools</h4>
+<section id="online-tools" class="level4" data-number="2.3.2">
+<h4 data-number="2.3.2" class="anchored" data-anchor-id="online-tools"><span class="header-section-number">2.3.2</span> Online Tools</h4>
 <p>No installation required. Perfect for a quick test directly in your browser.</p>
 <ul>
 <li><a href="https://hoppscotch.io/" target="_blank">https://hoppscotch.io/</a></li>
@@ -626,23 +730,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://httpie.io/app" target="_blank">https://httpie.io/app</a></li>
 </ul>
 </section>
-<section id="command-line" class="level4" data-number="1.3.3">
-<h4 data-number="1.3.3" class="anchored" data-anchor-id="command-line"><span class="header-section-number">1.3.3</span> Command Line</h4>
+<section id="command-line" class="level4" data-number="2.3.3">
+<h4 data-number="2.3.3" class="anchored" data-anchor-id="command-line"><span class="header-section-number">2.3.3</span> Command Line</h4>
 <p>If you prefer staying in the terminal, you can use <a href="https://curl.se/" target="_blank"><strong>cURL</strong></a>.</p>
 <p>It is available on almost all operating systems.</p>
 </section>
-<section id="interactive-documentation-swagger" class="level4" data-number="1.3.4">
-<h4 data-number="1.3.4" class="anchored" data-anchor-id="interactive-documentation-swagger"><span class="header-section-number">1.3.4</span> Interactive Documentation (Swagger)</h4>
+<section id="interactive-documentation-swagger" class="level4" data-number="2.3.4">
+<h4 data-number="2.3.4" class="anchored" data-anchor-id="interactive-documentation-swagger"><span class="header-section-number">2.3.4</span> Interactive Documentation (Swagger)</h4>
 <p>If the web service provides it, always check the <strong>Swagger/OpenAPI</strong> page (usually at the <code>/docs</code> endpoint).</p>
 <p>It is the best way to see the available endpoints, the required parameters, and even test them directly through a web interface.</p>
 </section>
 </section>
 </section>
-<section id="exploring-your-projects-api" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="exploring-your-projects-api"><span class="header-section-number">2</span> Exploring your project’s API</h2>
+<section id="exploring-your-projects-api" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="exploring-your-projects-api"><span class="header-section-number">3</span> Exploring your project’s API</h2>
 <p>Modern APIs provide a “manual” that is interactive: <strong>Swagger (OpenAPI)</strong>.</p>
-<section id="using-swagger" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="using-swagger"><span class="header-section-number">2.1</span> Using Swagger</h3>
+<section id="using-swagger" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="using-swagger"><span class="header-section-number">3.1</span> Using Swagger</h3>
 <p>Your current application already has a web service running.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Launch the Back-end</label></li>
@@ -702,8 +806,8 @@ Note
 <p>It’s all well and good to marvel at all that JSON code, but it’s usually machines and programs that consume it.</p>
 </section>
 </section>
-<section id="the-client-challenge-data-mapping" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="the-client-challenge-data-mapping"><span class="header-section-number">3</span> The Client Challenge (Data Mapping)</h2>
+<section id="the-client-challenge-data-mapping" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="the-client-challenge-data-mapping"><span class="header-section-number">4</span> The Client Challenge (Data Mapping)</h2>
 <p>Now, we will move to a more advanced task. Your Back-end are going to act as a <strong>Client</strong>. You need to fetch game data from an external source and integrate it into your engine.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="The Schema Mismatch">
 <div class="callout-header d-flex align-content-center">
@@ -718,21 +822,18 @@ Note
 <p>The external API does not use your internal names. It is a common real-world problem. You must bridge the gap!</p>
 </div>
 </div>
-<section id="the-mission" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">3.1</span> The Mission</h3>
+<section id="the-mission" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">4.1</span> The Mission</h3>
 <blockquote class="blockquote">
-<p>Example to retrieve peoples from star wars API.</p>
+<p>This part is an example to retrieve peoples from star wars API. No questions.</p>
 </blockquote>
 <p>We will use package <a href="https://requests.readthedocs.io/en/latest/user/quickstart/" target="_blank">requests</a>.</p>
-<section id="step1-call-the-web-service" class="level4" data-number="3.1.1">
-<h4 data-number="3.1.1" class="anchored" data-anchor-id="step1-call-the-web-service"><span class="header-section-number">3.1.1</span> Step1: Call the web service</h4>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step1: Call the web service</strong></p>
 <p>Run the query as you would with another tool and store the response in a variable.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="st">"https://swapi.info/api/people/"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="step2-check-response" class="level4" data-number="3.1.2">
-<h4 data-number="3.1.2" class="anchored" data-anchor-id="step2-check-response"><span class="header-section-number">3.1.2</span> Step2: Check response</h4>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step2: Check response</strong></p>
 <p>Then, see if the answer is useful.</p>
 <p>If everything goes well, you can retrieve the JSON content.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
@@ -740,9 +841,7 @@ Note
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    raw_json <span class="op">=</span> response.json()</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(raw_json, indent<span class="op">=</span><span class="dv">2</span>))  <span class="co"># Pretty print</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="step3-convert-into-business-objects" class="level4" data-number="3.1.3">
-<h4 data-number="3.1.3" class="anchored" data-anchor-id="step3-convert-into-business-objects"><span class="header-section-number">3.1.3</span> Step3: Convert into business objects</h4>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step3: Convert into business objects</strong></p>
 <p>Imagine you have a <em>People</em> (name, birth, hair, bmi) business object.</p>
 <p>You will have to iterate among all elements to create <em>People</em>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>peoples <span class="op">=</span> []</span>
@@ -783,9 +882,8 @@ Note
 </div>
 <p><span class="emoji" data-emoji="tada">🎉</span> You have converted a dictionary list into a list of business objects that can be used directly by your methods.</p>
 </section>
-</section>
-<section id="your-turn" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">3.2</span> Your turn</h3>
+<section id="your-turn" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">4.2</span> Your turn</h3>
 <p><span class="emoji" data-emoji="construction">🚧</span> TODO: Give a link, and simple procedure</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Create a <em>client</em> folder and create file <em>game_client.py</em></label></li>
@@ -843,33 +941,193 @@ Important
 <p>In this section, you were a client of an API; next you’ll become the provider by creating your own endpoints.</p>
 </section>
 </section>
-<section id="building-your-own-api" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="building-your-own-api"><span class="header-section-number">4</span> Building your own API</h2>
+<section id="building-your-own-api" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="building-your-own-api"><span class="header-section-number">5</span> Building your own API</h2>
 <p>Finally, you will become the <strong>Server</strong>. You will expose your <code>Game</code> data via a professional REST API using <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>.</p>
-<section id="data-validation" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="data-validation"><span class="header-section-number">4.1</span> Data Validation</h3>
-<p>When your API receives data, you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this “garbage” from entering your system, we use <strong>Pydantic models</strong>.</p>
-<p>A Pydantic model acts as a <strong>Data Contract</strong>: it defines exactly what the data should look like. If the incoming JSON doesn’t match the contract, FastAPI will automatically reject the request with a “422 Unprocessable Entity” error.</p>
-<section id="define-a-model" class="level4" data-number="4.1.1">
-<h4 data-number="4.1.1" class="anchored" data-anchor-id="define-a-model"><span class="header-section-number">4.1.1</span> Define a Model</h4>
-<p>Example: in the <em>player_model.py</em> file, we define how a Player should look when communicating with the API:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, Field</span>
+<section id="the-most-simple-api" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="the-most-simple-api"><span class="header-section-number">5.1</span> The most simple API</h3>
+<blockquote class="blockquote">
+<p>Example, no question.</p>
+</blockquote>
+<p>Below is the code and command to create and launch the simplest possible API using FastAPI:</p>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step1: Create the API</strong></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>main.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="main.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerModel(BaseModel):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    id_player: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    username: <span class="bu">str</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    password: <span class="bu">str</span> <span class="op">=</span> Field(..., min_length<span class="op">=</span><span class="dv">35</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()                                 <span class="co"># 1. Create the application instance</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)                                   <span class="co"># 2. Define a root endpoint</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_root():</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step2: Launch the Server</strong></p>
+<p>Launch it with command: <code>uvicorn main:app --host 0.0.0.0 --port 5000 --reload</code></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>uvicorn: The ASGI server that runs your application</li>
+<li>main:app: Refers to your file <strong>main.py</strong> and the FastAPI instance inside it <em>app</em></li>
+<li>–host 0.0.0.0: Makes the server accessible on your local network</li>
+<li>–port 5000: Sets the port the API will listen on</li>
+<li>–reload: it automatically restarts the server whenever you save a file</li>
+</ul>
+</div>
+</div>
+<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step3: Query the API</strong></p>
+<p>Using <code>curl -X GET http://127.0.0.1:5000/</code> or another client.</p>
+<p>Expected output:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"message"</span><span class="fu">:</span> <span class="st">"Hello World"</span><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A production-ready API does much more than just return a single message; it uses various HTTP methods, handles query parameters, and navigates structured URL paths to interact with complex data.</p>
 </section>
-<section id="use-it-in-the-controller" class="level4" data-number="4.1.2">
-<h4 data-number="4.1.2" class="anchored" data-anchor-id="use-it-in-the-controller"><span class="header-section-number">4.1.2</span> Use it in the Controller</h4>
+<section id="your-first-endpoint" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="your-first-endpoint"><span class="header-section-number">5.2</span> Your First Endpoint</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Open file <strong>main.py</strong></label></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="The Application Entry Point">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>The Application Entry Point
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What’s in this file? It is the Orchestrator of your application:</p>
+<ul>
+<li>Routing Assembly: It connects modular Routers (Controllers) to the main FastAPI instance</li>
+<li>Utility Management: It provides administrative endpoints like database resets or documentation redirects</li>
+<li>Server Execution: It launches the ASGI server (Uvicorn) to handle incoming HTTP requests</li>
+</ul>
+</div>
+</div>
+<p>You’ll notice that every endpoint prefixed with <em>/game</em> will be handled in the <strong>game_controller.py</strong> file.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Open file <strong>game_controller.py</strong></label></li>
+<li><label><input type="checkbox">Add this endpoint below and test it in the swagger:</label></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_mock_games():</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">1</span>, <span class="st">"mode"</span>: <span class="st">"coinflip"</span>, <span class="st">"winner"</span>: <span class="st">"Miguel"</span>},</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">2</span>, <span class="st">"mode"</span>: <span class="st">"dice"</span>, <span class="st">"winner"</span>: <span class="st">"Batricia"</span>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>OK, that’s a start. Now, let’s aim to display all <code>Games</code> played by a specific <code>Player</code>. We’ll proceed step by step modifying the previous method.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Add parameter <em>id_player</em> to the method</label>
+<ul>
+<li>to have this endpont: <code>GET /game?id_player=?</code></li>
+<li>for your first try, just add this ID into the returned JSON (new key)</li>
+</ul></li>
+</ul>
+<p>If you want this parameter to be optional, you must specify a default value for it in the method signature (e.g., None).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A better way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>player_controller.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="player_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /player/{id_player}/games</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/players/</span><span class="sc">{id_player}</span><span class="st">/games"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameModel])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, service: game_service<span class="op">=</span>Depends(get_game_service)):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ... <span class="co"># Player don't exists</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> ...</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ... <span class="co"># Call a service</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Finally, instead of returning raw JSON data, let’s now retrieve the actual list of games played by the player with that ID.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Do you have a DAO that provides a list of games by player?</label>
+<ul>
+<li>If not, implement one.</li>
+</ul></li>
+<li><label><input type="checkbox">Do you have a service that provides a list of games by player?</label>
+<ul>
+<li>If not, implement one.</li>
+</ul></li>
+<li><label><input type="checkbox">Since it’s no longer a mock, rename the controller method</label></li>
+</ul>
+<p>Here is the route:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Client
+    participant Controller as GameController
+    participant Service as GameService
+    participant DAO as GameDAO
+    participant DB as Database
+
+    Client-&gt;&gt;Controller: GET /game?id_player=1
+    Note over Controller: Validates request &amp; params
+    Controller-&gt;&gt;Service: find_all_by_player(1)
+    Service-&gt;&gt;DAO: find_all_by_player(1)
+    DAO-&gt;&gt;DB: SELECT * &lt;br&gt; FROM game &lt;br&gt; WHERE id_player = 1
+    DB--&gt;&gt;DAO: Returns rows
+    DAO--&gt;&gt;Service: list[Game]
+    Service--&gt;&gt;Controller: list[Game]
+    Controller--&gt;&gt;Client: 200 OK (JSON list)
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Great, it works.</p>
+<p>But do you notice anything that seems wrong?</p>
+<p>What if our Game table contained confidential information?</p>
+<p>How can we ensure that it isn’t exposed?</p>
+<p>Fortunately, there is a solution for managing data input and output!</p>
+</section>
+<section id="data-validation" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="data-validation"><span class="header-section-number">5.3</span> Data Validation</h3>
+<p>When you expose an endpoint, you don’t have to reveal all the data you have. It may be a good idea to hide passwords, tokens, and so on…</p>
+<p>Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this “garbage” from entering your system, we use <strong>Pydantic models</strong>.</p>
+<p>A Pydantic model acts as a <strong>Data Contract</strong>: it defines exactly what the data should look like. If the incoming JSON doesn’t match the contract, FastAPI will automatically reject the request with a “422 Unprocessable Entity” error.</p>
+<section id="define-a-model" class="level4" data-number="5.3.1">
+<h4 data-number="5.3.1" class="anchored" data-anchor-id="define-a-model"><span class="header-section-number">5.3.1</span> Define a Model</h4>
+<p>Example: in the <em>player_model.py</em> file, we define how a Player should look when communicating with the API:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, Field</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerModel(BaseModel):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    id_player: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    username: <span class="bu">str</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    password: <span class="bu">str</span> <span class="op">=</span> Field(..., min_length<span class="op">=</span><span class="dv">35</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="use-it-in-the-controller" class="level4" data-number="5.3.2">
+<h4 data-number="5.3.2" class="anchored" data-anchor-id="use-it-in-the-controller"><span class="header-section-number">5.3.2</span> Use it in the Controller</h4>
 <p>Let’s look at the <em>create_player()</em> method in <strong>player_controller.py</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Players"</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Players"</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Here is the magic happening behind the scenes:</strong></p>
 <ol type="1">
 <li>The Request: a client sends request to the endpoint with a JSON body: <code>{"username": "bob", "email": "bob@email.com", ...}</code>.</li>
@@ -900,8 +1158,8 @@ Important
 <p>OK, cool. We already have a model for Game, but let’s say we want to create an endpoint that returns all the games. If we use this model, the games returned will just be a list of opponents and options. Some information is missing.</p>
 </section>
 </section>
-<section id="multiple-models" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="multiple-models"><span class="header-section-number">4.2</span> Multiple Models</h3>
+<section id="multiple-models" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="multiple-models"><span class="header-section-number">5.4</span> Multiple Models</h3>
 <blockquote class="blockquote">
 <p>The more, the better.</p>
 </blockquote>
@@ -933,56 +1191,10 @@ Important
 <li>id_game, game_mode, detail, timestamp</li>
 <li>for player1, player2 and winner: use another Model (<code>player1: aPlayerModel</code>)</li>
 </ul></li>
-<li><label><input type="checkbox">Create endpoint to get list of games for a specific player</label>
-<ul>
-<li>the best way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player</li>
-</ul></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>player_controller.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="player_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /player/{id_player}/games</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/players/</span><span class="sc">{id_player}</span><span class="st">/games"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameModel])</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, service: game_service<span class="op">=</span>Depends(get_game_service)):</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ... <span class="co"># Player don't exists</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> ...</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ... <span class="co"># Call a service</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Alternative">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Alternative
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Call it from <strong>GameController</strong> using a parameter to filter <em>id_player</em>:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>game_controller.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="game_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /game?id_player={id_player}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/game"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameRead])</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, game_service<span class="op">=</span>Depends(get_game_service)):</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">Do you have a service that provides a list of games by player?</label>
-<ul>
-<li>If not, implement one.</li>
-</ul></li>
-<li><label><input type="checkbox">Do you have a DAO that provides a list of games by player?</label>
-<ul>
-<li>If not, implement one.</li>
-</ul></li>
+<li><label><input type="checkbox">Modify endpoint <code>GET /game?id_player=?</code> to use this model</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Going Further">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -991,7 +1203,7 @@ Important
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>While using two models is a great start, professional <strong>APIs</strong> often use even more granular models to handle different stages of a resource’s lifecycle. You could further optimize this by implementing:</p>
 <ul>
@@ -1003,8 +1215,8 @@ Important
 </div>
 </div>
 </section>
-<section id="security-token-based-authentication" class="level3" data-number="4.3">
-<h3 data-number="4.3" class="anchored" data-anchor-id="security-token-based-authentication"><span class="header-section-number">4.3</span> Security: Token-based Authentication</h3>
+<section id="security-token-based-authentication" class="level3" data-number="5.5">
+<h3 data-number="5.5" class="anchored" data-anchor-id="security-token-based-authentication"><span class="header-section-number">5.5</span> Security: Token-based Authentication</h3>
 <blockquote class="blockquote">
 <p>Bonus</p>
 </blockquote>
@@ -1025,22 +1237,32 @@ Important
 </div>
 <p><strong>The Security Contract:</strong> - <strong>Header Key:</strong> <code>X-Auth-Token</code> - <strong>Valid Value:</strong> <code>secret-key-123</code></p>
 <p><strong>Example of a protected endpoint in your controller:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul class="task-list">
 <li><label><input type="checkbox"><strong>Add Security</strong>: Protect your <code>POST</code> and <code>DELETE</code> routes with the <code>X-Auth-Token</code> check.</label></li>
 <li><label><input type="checkbox"><strong>Test with Swagger</strong>: Verify that a request without the token returns a <code>401</code>.</label></li>
 </ul>
 </section>
+</section>
+<section id="conclusion" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This tutorial guided you through the complete lifecycle of building a professional web service. You progressed from understanding the Client-Server principle to implementing a robust REST API:</p>
+<ul>
+<li>Being client of an external API</li>
+<li>Creating your own API and own endpoints</li>
+<li>Using Pydantic models to enforce strict data contracts and prevent “garbage” data</li>
+<li>Implementing Token-based authentication to protect sensitive routes.</li>
+</ul>
 </section>
 <section id="end-of-the-lab" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
