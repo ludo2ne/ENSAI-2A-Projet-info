@@ -19,6 +19,10 @@ categories:
 
 
 :::{.notes}
+- [ ] Move parts without questions to ENSAI-tools
+  - API client (convert into list[Object], df), API create (python, json-tools)
+
+
 https://www.insee.fr/fr/metadonnees/geographie/commune/35047-bruz
 
 https://portail-api.insee.fr/catalog/api/5029cf12-e930-4d24-a9cf-12e9307d241d/doc?page=36a0f1a5-af70-4662-a0f1-a5af709662f4
@@ -43,6 +47,7 @@ This tutorial combines explanations and code phases. The explanations should not
 - Implement security via **Tokens** and data validation via **Pydantic**
 :::
 
+{{< include _start-lab.qmd >}}
 
 ## Client-Server principle
 
@@ -313,7 +318,7 @@ You can use some fields directly as attributes, and others as BMI (Body Mass Ind
 
 ### Your turn
 
-:construction: TODO: Give a link, and simple procedure 
+:construction: TODO: Launch an APi, Give a link, and simple workarround procedure.
 
 - [ ] Create a *client* folder and create file *game_client.py*
 

@@ -1,6 +1,6 @@
 ---
 title: Front end
-description: Lab 5
+description: Lab 5 - Transforming raw data into actionable player insights
 author:
   - Ludovic Deneuville
 format: html
@@ -11,7 +11,98 @@ categories:
 
 :construction:
 
+:::{.notes}
 - [ ] New pages : Players stats
   - API call 
 - [ ] Vibe coding
 - Security
+:::
+
+## Before you start {.unnumbered}
+
+This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
+
+::: {.callout-note title="Concepts covered"}
+- Front-end development
+- Navigation between pages
+- Connection to the Back End
+- Vibe coding
+:::
+
+{{< include _start-lab.qmd >}}
+
+## The goal
+
+From the beginning, we've focused solely on back-end development. Today, we're going to focus on front-end development.
+
+Last time, we created an endpoint to retrieve a player's games.
+
+Let's use it to create a new page that displays some stats for each player.
+
+
+::: {.callout-note title="Vibe Coding Mode"}
+For this lab, you are encouraged to use **LLMs** (ChatGPT, Claude, etc.) to assist your development. However, do not simply copy-paste. Your role is to act as an architect: define the requirements, guide the AI through the implementation, and rigorously verify the logic.
+:::
+
+## Create a new page
+
+### Contextual Navigation
+
+Currently, your application displays a list of players, but there is no way to "drill down" into a specific player's profile. We need to implement **Contextual Navigation**.
+
+- [ ] **Frontend**: In **src/pages/list_players.py**, modify the player list so that clicking on a player's name redirects the user to a dedicated statistics page.
+- [ ] **Frontend**: Create a new page **src/pages/player_stats.py**.
+- [ ] **Frontend**: This page must capture the `id_player` from the URL query parameters and display a greeting: *"Statistics for player: [Username]"*.
+
+::: {.callout-tip title="Pro-tip: Query Parameters"}
+In Streamlit, you can access URL parameters using `st.query_params`. This allows you to maintain state (which player is selected) across different page loads.
+:::
+
+
+### Match History Retrieval
+
+A dashboard is useless without data. The first step is to retrieve the recent activity of the selected player.
+
+- [ ] **Backend**: Verify that your `GameService` contains a method to fetch the latest matches for a specific player.
+- [ ] **Backend**: Ensure the endpoint `GET /game?id_player={id}` is active and returns the correct data.
+- [ ] **Frontend**: In **src/pages/player_stats.py**, call your API to fetch the player's recent matches.
+- [ ] **Frontend**: Display these matches in a structured format (using `st.dataframe` or `st.table`) including the following columns: *Mode*, *Opponent*, *Result*, and *Date*.
+
+
+## Dashboard items
+
+### Win/Loss Aggregation
+
+Displaying a list of games is helpful, but a professional dashboard provides high-level **KPIs** (Key Performance Indicators). We need to calculate the player's win/loss record.
+
+**The Problem**: The client (Frontend) should not perform mathematical calculations on a list of games. Doing so increases bandwidth usage and violates the principle of **Separation of Concerns**.
+
+**The Solution**: The **Service** must perform the aggregation and return a simplified summary.
+
+- [ ] **Backend**: Implement a method *get_win_loss_stats(id_player)* in `GameService`.
+  - It must return a dictionary containing the count of wins, losses, and draws.
+- [ ] **Backend**: Create a new endpoint `GET /players/{id_player}/win-loss` in **src/controller/player_controller.py**.
+- [ ] **Frontend**: In **src/pages/player_stats.py**, use `st.metric()` to display the number of wins and losses prominently.
+
+::: {.callout-important title="Design Principle: Logic Placement"}
+Always perform data aggregation (counting, summing, averaging) on the **Back-end**. The **Front-end** should only be responsible for rendering the final values.
+:::
+
+
+### Elo Rating Progression
+
+To understand if a player is improving, we need to visualize their **Elo** rating over time.
+
+- [ ] **Backend**: Implement a method in your `GameDao` to retrieve the historical Elo values of a player.
+- [ ] **Backend**: Create a corresponding endpoint `GET /players/{id_player}/elo-history`.
+- [ ] **Frontend**: In **src/pages/player_stats.py**, use `st.line_chart()` to visualize the player's rating evolution.
+
+## Conclusion
+
+You have successfully transformed a transactional system into an analytical one. You have mastered:
+
+- **Contextual Routing**: Navigating between resources using unique identifiers.
+- **Data Aggregation**: Moving from raw records to meaningful statistics.
+- **Data Visualization**: Turning abstract numbers into intuitive charts.
+
+{{< include _end-lab.qmd >}}

@@ -1,11 +1,54 @@
 
 # Template
 
+- [ ] Clean README
 - [ ] back/main: obligé d'appeler 2 fois load_env, workarround ? uvicorn reload mode ?
+- [ ] Dockerise
 
+
+:::info
+#### Projet info améliorations
+
+- CM à part de 30min pour présentation du projet
+- Suivi hebdo
+    - [ ] Dire de détailler plus
+    - [ ] Note de suivi coef 1/4 ? Rajoute du travail aux tuteurs...
+- Rapport
+  - [ ] intégrer suivi hebdo au rapport final en annexe ?
+  - [ ] 20-25 pages hors annexe
+  - [ ] Parties : Métier, implémentation Technique (ciblage), Organisation d'équipe, Qualité
+  - [ ] Grille notation format excel, imprimer une dizaine
+- Soutenance
+  - parler du projet sous un autre angle que le rapport
+  - mais ne pas aller trop loin quand même
+  - Petite mise en scéne bien sans aller trop loin
+- Code
+  - [ ] pas de .env sur GitHub, encore moins avec mdp
+  - [ ] présence .gitignore
+  - [ ] Insister sur Ruff
+  - [ ] README façon Quick Launch, ensuite blabla
+  - [ ] IHM Streamlit
+    - Demandée mais code non noté
+    - Aide IA recommandée
+  - [ ] Demander à mettre repo public aprés rendu final
+- Logistique
+  - Le presta récupére sa machine café quand il vient déposer les plateaux
+  - [ ] Midi : Demander cafetiere et sac poubelle à la logistique
+  - [ ] Donner Modop connexion Wifi
+- TP
+  - [ ] TP sur les design pattern
+  - [ ] Remettre un peu de POO (héritage, polymorphisme)
+    - Variantes de puissance4
+:::
 
 
 # TP
+
+- [ ] Uniformiser format -> prompt quarto
+- [ ] Faire relire
+- [ ] Branche start
+  - [ ] Modop to switch (refer to ENSAI-tools)
+- [ ] API example client mode (external url)
 
 ## TP1 Back/Front, Couches, Git
 
@@ -13,12 +56,18 @@
 ## TP2 Business_object
 
 
-## TP3 API
 
-
-## TP4 DAO
+## TP3 DAO
 
 PlayerService.username_already_used() -> PlayerDAO.find_by_username()
+
+
+## TP4 API
+
+- [ ] elo: int en passant par le front (entre 1000 et 3000)
+  - et par l'api on peut mettre ce qu'on veut
+
+
 
 
 ## TP IHM et Sécurité
@@ -43,8 +92,7 @@ class PlayerResponse(BaseModel):
     elo: int
 ```
 
-- [ ] elo: int en passant par le front (entre 1000 et 3000)
-  - et par l'api on peut mettre ce qu'on veut
+
 
 
 
@@ -177,79 +225,3 @@ def play(self, player_id, opponent_id, game_type):
     *   Le **GameEngine** décide du résultat (le joueur).
     *   Le **ScoringService** calcule les points (l'arbitre).
     *   Le **DAO** enregistre tout (le secrétaire).
-
-
-
-
-
----
-
-## Json-server
-
-
-
-sudo apt update
-sudo apt install nodejs npm
-npm install -g json-server
-
-Create file data/db.json
-
-```json
-{
-  "games": [
-    {
-      "id": "1",
-      "players_list": [
-        "Alice",
-        "Bob"
-      ],
-      "winner_name": "Alice",
-      "location_name": "Arena 1",
-      "duration_seconds": 120,
-      "mode_type": "coinflip"
-    },
-    {
-      "id": "2",
-      "players_list": [
-        "Eve",
-        "Frank"
-      ],
-      "winner_name": "Eve",
-      "location_name": "Secret Cave",
-      "duration_seconds": 300,
-      "mode_type": "dice"
-    }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
-}
-```
-
-json-server --watch data/db.json --port 5000
-
-
-curl -X GET http://localhost:5000/games
-
-curl -X POST http://localhost:5000/games \
-     -H "Content-Type: application/json" \
-     -d '{
-           "uuid_match": 103,
-           "players_list": ["Eve", "Boris"],
-           "winner_name": "Eve",
-           "location_name": "Secret Cave",
-           "duration_seconds": 300,
-           "mode_type": "dice"
-         }'
-		 
-		 
-curl -X PUT http://localhost:5000/games/1 \
-     -H "Content-Type: application/json" \
-     -d '{
-           "uuid_match": 101,
-           "players_list": ["Alice", "Bob"],
-           "winner_name": "Bob",
-           "location_name": "Arena 1 (Updated)",
-           "duration_seconds": 150,
-           "mode_type": "coinflip"
-         }'
-		 
-curl -X DELETE http://localhost:5000/games/2

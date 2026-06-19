@@ -62,8 +62,6 @@ website:
             text: Lab 4
           - href: doc/tp/tp5.qmd
             text: Lab 5
-          - href: doc/tp/tp6.qmd
-            text: Lab 6 - Bonus
           - href: doc/tp/2025/tp1.qmd
             text: Old Labs
     right:

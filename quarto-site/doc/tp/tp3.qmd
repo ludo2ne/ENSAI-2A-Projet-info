@@ -27,17 +27,11 @@ This tutorial combines explanations and code phases. The explanations should not
 - Test DAO methods using data from another schema
 :::
 
-### Work on a branch {.unnumbered}
-
-:construction: 
-
-Each member of the team works on its own branch:
-
-- [ ] Create a branch from tp3-start
-  - or stick with the one from TP2 if you've finished everything
-- [ ] verify that the application starts up and that the tests pass
+{{< include _start-lab.qmd >}}
 
 ## The Mission
+
+> Your mission, should you choose to accept it!
 
 In the previous lab, our gaming engine became modular and powerful. We can play different games (Coin Flip, Dice) and calculate scores using different strategies.
 
@@ -94,10 +88,10 @@ Great, now you have a table where you can store your games.
 - Always keep a record of your database changes
 - Save them in SQL files (data folder)
 - These files will be versioned by Git, so any loss can be recovered
-- You can automate this by using, for example, the *reset_database.py* script or by creating a button in your UI
+- You can automate this by using, for example, the **reset_database.py** script or by creating a button in your UI
 :::
 
-- [ ] Open file *reset_database.py* and see how it works
+- [ ] Open file **reset_database.py** and see how it works
   - you can ask the AI agent to analyze and explain it
 
 ::: {.callout-note}
@@ -112,7 +106,7 @@ In this script, the schema is managed via an environment variable, so there's no
 > Since all of you have reviewed your relational database course this summer :book:
 
 - [ ] Why certain fields aren't specified in the insert?
-- [ ] What would be the risk if we hard-coded a game ID equal to 1?
+- [ ] What would be the risk if we hard-coded a *game ID* equal to 1?
   - Any idea if you want to do it anyway?
 - [ ] Why the table *game* doesn't adhere to the 3NF?
   - don't fix it
@@ -132,9 +126,9 @@ To finish these reviews, enter the following queries:
 
 Now we're going to map the business objects to the database tables.
 
-In Lab2, we created Business Objects (`Player`, `Game`). These objects represent the **logic** of our game.
+In Lab2, we created Business Objects (`Player`, `Game`). These objects represent the logic of our game.
 
-Should we add a method `game.save_to_db()` inside the `Game` class? 
+Should we add a method *game.save_to_db()* inside the `Game` class? 
 
 **The answer is a loud NO! ❌**
 
@@ -185,11 +179,11 @@ If you look closely, our DAO's methods resemble those of **CRUD**. This is norma
 
 The basic methods are generally:
 
-- `find_all()`: which will return the entire table
-- `find_by_id()`: which returns a record based on its id
-- `create()`: which creates a new record
-- `delete()`: which deletes a record
-- `update()`: which updates a record
+- *find_all()*: which will return the entire table
+- *find_by_id()*: which returns a record based on its id
+- *create()*: which creates a new record
+- *delete()*: which deletes a record
+- *update()*: which updates a record
 
 These 5 methods are enough to communicate with your database. You can perform the rest of the processing in your **Service** classes (recommended). However, nothing prevents you from creating more complex methods (e.g., *find_by_type_and_level_order_by_name_desc()*).
 
@@ -262,27 +256,27 @@ A list of dictionaries
 ## The GameDao
 
 ::: {.callout-tip}
-Feel free to use the PlayerDao class as a reference when writing the *GameDao* methods.
+Feel free to use the PlayerDao class as a reference when writing the `GameDao` methods.
 
 The advantage of DAO classes is that once you understand the concept, the process is always the same.
 :::
 
-Your main task is to create the *GameDao* class. This class will be the only one allowed to talk to the *game* table.
+Your main task is to create the `GameDao` class. This class will be the only one allowed to talk to the *game* table.
 
-- [ ] Create file *backend/src/dao/game_dao.py*
-- [ ] Implement the class *GameDao* using the *Singleton* metaclass.
-- [ ] Implement method `create(game: Game) -> bool`:
+- [ ] Create file **backend/src/dao/game_dao.py**
+- [ ] Implement the class `GameDao` using the `Singleton` metaclass.
+- [ ] Implement method *create(game: Game) -> bool*:
   - Inserts a new game record
-  - After the insertion, update the *game.id_game* with the ID returned by the database
-- [ ] Implement method `find_by_id(id: int) -> Game`:
-  - Retrieves a specific game and converts the database row into a *Game* object
+  - After the insertion, update the *id_game* with the ID returned by the database
+- [ ] Implement method *find_by_id(id: int) -> Game*:
+  - Retrieves a specific game and converts the database row into a `Game` object
 
 ::: {.callout-important title="The Conversion Step"}
-When you fetch data using `cursor.fetchone()`, you get a dictionary.
+When you fetch data using *cursor.fetchone()*, you get a dictionary.
 
 You **[must not]{.underline}** return this dictionary as it is!
 
-You have to use this dictionary to instantiate a *Game* object.
+You have to use this dictionary to instantiate a `Game` object.
 :::
 
 Below an example of how to convert a row to an object:
@@ -322,7 +316,7 @@ In a real production app, you would solve this using a SQL JOIN to fetch the gam
 
 For the next method, you won't be getting just one recording, but several:
 
-- [ ] Implement method `find_all_by_player(id_player: int) -> list[Game]`:
+- [ ] Implement method *find_all_by_player(id_player: int) -> list[Game]*:
   - Returns all games involving a specific player
 
 
@@ -330,7 +324,7 @@ For the next method, you won't be getting just one recording, but several:
 
 Now that we have a way to save games, let's use it!
 
-The service creates a *Game* object and calls the appropriate method to persist the result.
+The service creates a `Game` object and calls the appropriate method to persist the result.
 
 - [ ] Refactor method *GameService.play()*
 - [ ] Launch the application
@@ -345,7 +339,7 @@ Testing a DAO is different because you are touching a real database. This create
 
 ### The Naive Approach
 
-"I want to test the `delete()` method. I'll create a game, then delete it. Easy!"
+"I want to test the *delete()* method. I'll create a game, then delete it. Easy!"
 
 Imagine you run your test:
 
@@ -373,14 +367,14 @@ By using a **dedicated test schema**, you can delete everything, crash everythin
 ### Hands on
 
 - [ ] Ask the AI agent to explain code in `@File test_player_dao.py`
-- [ ] Write unit test with pytest for all methods of *GameDao*
+- [ ] Write unit test with pytest for all methods of `GameDao`
 
 
 ## Conclusion
 
 Congratulations! You have successfully transitioned the engine from a "volatile" state to a "persistent" state. 
 
-By implementing the **DAO pattern**, you have ensured that the business logic remains pure and decoupled from the technical details of storage. Even if we switched from PostgreSQL to MongoDB tomorrow, our *Game* and *GameService* classes wouldn't need a single line of code changed!
+By implementing the **DAO pattern**, you have ensured that the business logic remains pure and decoupled from the technical details of storage. Even if we switched from PostgreSQL to MongoDB tomorrow, our `Game` and `GameService` classes wouldn't need a single line of code changed!
 
 
 {{< include _end-lab.qmd >}}

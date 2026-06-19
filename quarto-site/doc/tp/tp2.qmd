@@ -31,17 +31,11 @@ This tutorial combines explanations and code phases. The explanations should not
 - Advanced Unit Testing
 :::
 
-### Work on a branch {.unnumbered}
+{{< include _start-lab.qmd >}}
 
-:construction: 
-
-Each member of the team works on its own branch
-
-
-## The Mission :dart:
+## The Mission 🎯
 
 > You might be thinking: "All this architecture just for a simple coin flip?" ... You're right. And don't get too comfortable, because we're about to add a dozen more classes just for fun!" 🙃
-
 
 Currently, our gaming engine only supports a single game mode: Coin Flip. 
 
@@ -53,10 +47,10 @@ Currently, the `GameService` class is a **Monolith**.
 
 It is too heavy because it handles too many responsibilities:
 
-- **Game Logic:** It decides the outcome (e.g., random coin flip)
-- **Scoring Logic:** It manages the mathematical Elo calculation
-- **Data Management:** It directly interacts with `PlayerDao` to update scores
-- **No History:** Once a game is played, the result is lost. It lacks any way to track match history
+- 🎲 **Game Logic:** It decides the outcome (e.g., random coin flip)
+- 📈 **Scoring Logic:** It manages the mathematical Elo calculation
+- 💾 **Data Management:** It directly interacts with `PlayerDao` to update scores
+- 🪦 **No History:** Once a game is played, the result is lost. It lacks any way to track match history 
 
 This design violates the **Open/Closed Principle**: adding a new game (like "Dice") or a new scoring rule (like "Flat points") requires modifying the core `GameService` code, making it fragile and hard to test.
 
@@ -146,7 +140,7 @@ classDiagram
   Game o-- Player : involves
 ```
 
-- [ ] Create file *game.py* in the appropriate folder
+- [ ] Create file **game.py** in the appropriate folder
 
 ::: {.callout-important}
 Whenever you are asked to create a new class, this implicitly means you must also create a new file.
@@ -216,20 +210,20 @@ It should simply ask a "provider" to give it the correct rules.
   - then use it in method *play()*
 
 
-Fine, we'll also need a way to generate either a *CoinFlipMode* object or a *DiceMode* object based on a *game_mode* (str) parameter. To do this, let's create a factory class:
+Fine, we'll also need a way to generate either a `CoinFlipMode` object or a `DiceMode` object based on a *game_mode* (str) parameter. To do this, let's create a factory class:
 
 - [ ] Create a `GameModeFactory` class 
-- [ ] Add static method called `get_mode(game_mode: str, **kwargs) -> GameMode`
-  - that takes the game_mode (str) as parameter
-  - and returns the corresponding `GameModeFactory` object
+- [ ] Add static method called *get_mode(game_mode: str, \*\*kwargs) -> GameMode*
+  - that takes the *game_mode* (str) as parameter
+  - and returns the corresponding `GameMode` object
 
 
 ::: {.callout-tip}
-In Python, `**kwargs` (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name="Alice").
+In Python, **\*\*kwargs** (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name="Alice").
 
-When you use `**kwargs` in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument's value.
+When you use **\*\*kwargs** in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument's value.
 
-`**kwargs` will allow passing specific arguments (like choice) to the modes.
+**\*\*kwargs** will allow passing specific arguments (like choice) to the modes.
 :::
 
 
@@ -274,9 +268,10 @@ We should return a Game object, but for now, let's leave it as is.
 
 :construction:
 
+:::{.notes}
 - Explain mocking
 - Few easy tests
-
+:::
 
 ## Conclusion
 
