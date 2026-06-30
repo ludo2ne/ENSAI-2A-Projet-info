@@ -112,6 +112,8 @@ Le code du projet comptera pour un tiers de la note du cours de Compléments d'i
 
 ### Dates provisoires 2026 {.smaller}
 
+:construction:
+
 | Date                        | Topic                                       |
 |-----------------------------|---------------------------------------------|
 | vendredi 28 août            | TP1 et Suivi 1                              |
@@ -135,6 +137,10 @@ Le code du projet comptera pour un tiers de la note du cours de Compléments d'i
 :::
 
 :warning: Limitations du nombre de requêtes
+
+:::{.notes}
+- En backup, sauvez des fichiers json.
+:::
 
 ### Éléments requis 
 

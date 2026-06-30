@@ -11,6 +11,10 @@ categories:
 
 :construction:
 
+Sales <span class="chart">{l:20,40,70,50,90}</span> are up.
+
+[p:73]{.chart}
+
 :::{.notes}
 - [ ] New pages : Players stats
   - API call 

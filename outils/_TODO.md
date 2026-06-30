@@ -26,7 +26,6 @@
   - [ ] pas de .env sur GitHub, encore moins avec mdp
   - [ ] présence .gitignore
   - [ ] Insister sur Ruff
-  - [ ] README façon Quick Launch, ensuite blabla
   - [ ] IHM Streamlit
     - Demandée mais code non noté
     - Aide IA recommandée

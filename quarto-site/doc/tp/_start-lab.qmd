@@ -1,0 +1,14 @@
+### Create your branch{.unnumbered}
+
+For each practical session, the teacher provides a starting branch: `tpN-start`.
+
+You will have to create a personal branch: `<username>-tpN` (e.g. *camille-tp2*) and work on your own branch.
+
+To start with a clean and up-to-date codebase:
+
+- [ ] `git fetch origin` to retrieve the latest remote information  
+  - Use this if the `tpN-start` branch was updated after you cloned the repository
+- [ ] Create (and switch to) your branch: `git switch -c <username>-tp2 origin/tp2-start`
+- [ ] `git push -u origin <username>-tp2` to publish your branch on the remote
+
+Then use the standard Git cycle: add, commit, push after each part.

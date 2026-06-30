@@ -1,5 +1,5 @@
 ---
-title: Git, Example of Application
+title: Git reminder, Example of Application
 description: Lab 1
 author: Ludovic Deneuville
 format: html
@@ -96,7 +96,7 @@ By having [full access to your local files and project structure]{.underline}, t
 
 To use it in VS Code, there are a few steps you need to take first:
 
-- [ ] Follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia){target="_blank"} to **set up** AI agent.
+- [ ] Follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#ia-agent){target="_blank"} to **set up** AI agent.
 
 
 ## Repositories creation
@@ -134,23 +134,19 @@ But you will not launch directly the catalog service. You will custom it first b
 
 Let's do this manually:
 
-- [ ] In the catalog, select **VSCode-python** and click **Launch** once
-- [ ] Initialization script (URL): `https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh` 
-
+- [ ] In the catalog, select **VSCode-python** and click [Launch]{.blue-button} **[once]{.underline}**
+- [ ] Initialization script (URL): `https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh`
+  - This script will install/uninstall VSCode extensions
 
 ::: {.callout-note}
-This script:
-
-- install packages
-- install/uninstall VSCode extensions
-
 [More about initialization script](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/advanced.html){target="_blank"}
 :::
 
 - [ ] Fill **Git repository url** using https url of your remote repository
-- [ ] Expose ports 5000 and 8000
+- [ ] Select *Open the service in the clone folder*
+- [ ] Network: expose ports 5000 and 8000
 - [ ] Enable AI Assistant
-- [ ] **Lanch** and Open the service
+- [ ] [Launch]{.blue-button} and [Open]{.blue-button} the service
 
 ::: {.callout-important}
 If you don't expose both ports, you will have no choice but to start over with creating your VScode-python service and everything that follows.
@@ -161,7 +157,7 @@ When you change the default settings for starting a service, you can:
 - save that configuration 
 - also generate a link that starts the service using that configuration
 
-> Example of link: <https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.5.6&s3=default&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&networking.user.enabled=true&networking.user.ports[1]=8000>{target="_blank"}
+> Example of link: <https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.5.7&s3=default&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh%C2%BB&git.repository=%C2%ABhttps%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git%C2%BB&networking.user.enabled=true&networking.user.ports[1]=8000>{target="_blank"}
 
 
 ### Local repositories
@@ -172,7 +168,7 @@ Let's check it using a terminal:
 
 - [ ] Open a new terminal
   - Top left, icon with 3 horizontal bars > Terminal > New
-  - or use shortcut CTRL + SHIFT + C
+  - or use shortcut (CTRL + ù or CTRL + SHIFT + C)
 - [ ] List all files and directories in the current folder
   - You should see your cloned repository
 
@@ -180,10 +176,11 @@ Let's check it using a terminal:
 - [ ] You will have to [create the clone manually using the token](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/basics.html#la-m%C3%A9thode-pas-compliqu%C3%A9e){target="_blank"}
 :::
 
-- [ ] Position yourself in your repo
+Normally, the root folder of your file explorer is your repository (since you checked option *Open the service in the clone folder*).
+
+- [ ] If not, position yourself in your repo
   - Manually: File > **Open Folder** > `/home/onyxia/work/<repo_name>` > OK
   - Or command: `code-server /home/onyxia/work/ENSAI-2A-projet-info-template`
-
 
 This opens a new tab with your project set as the root of your file explorer.
 
@@ -194,7 +191,7 @@ This opens a new tab with your project set as the root of your file explorer.
 
 
 ::: {.callout-important}
-You should be connected via push and fetch (pull) to the URL of your remote repository, [including the token]{.underline}:
+You should be connected via push and fetch (pull) to the URL of your remote repository, **[including the token]{.underline}**:
 
 ```{.bash}
 $ git remote -v
@@ -210,22 +207,23 @@ Otherwise, check the same link as above ("If the clone creation failed") to conn
 
 | Folder         | Description |
 | -------------- | ----------- |
-| backend/       | The heart of your application, following a Layered Architecture |
-| frontend/      | The user interface code (Streamlit application). |
-| doc/           | Stores project documentation, diagrams, tracking and report |
+| backend/       | The heart of your application, following a Layered Architecture       |
+| frontend/      | The user interface code (Streamlit application).                      |
+| doc/           | Stores project documentation, diagrams, tracking and report           |
 | data/          | Used for storing persistent data, such as database files or datasets. |
-| .github/       | Contains CI/CD workflows (GitHub Actions) and automation scripts. |
-| .vscode/       | Stores editor settings, extensions, and debugger configurations. |
+| .github/       | Contains CI/CD workflows (GitHub Actions) and automation scripts.     |
+| .vscode/       | Editor settings, extensions, and debugger configurations.             |
 
 : {tbl-colwidths="[20,80]" .striped .hover .secondary}
 
 In both *backend* and *frontend* folders, you will find these files :
 
-| File           | Description |
-| -------------- | ----------- |
-| pyproject.toml | Defines project metadata, dependencies, and build configurations. |
-| uv.lock        | A lockfile that ensures exact, reproducible dependency versions. |
-| logging.yaml   | Configuration file defining how the application logs information. |
+| File                | Description |
+| ------------------- | ----------- |
+| README.md           | To explain the architecture and development tools.                |
+| pyproject.toml      | Defines project metadata, dependencies, and build configurations. |
+| uv.lock             | A lockfile that ensures exact, reproducible dependency versions.  |
+| logging_config.yml  | Configuration file defining how the application logs information. |
 
 : {tbl-colwidths="[20,80]" .striped .hover .secondary}
 
@@ -234,7 +232,9 @@ Let's focus on some files.
 
 ### README
 
-The README file is **[essential]{.underline}** for every project. It contains all the information needed to describe, install and use the application.
+::: {.callout-important}
+The root README provides high-level instructions for users to launch the application, while the README files located in the backend/ and frontend/ directories contain technical documentation intended for developers."
+:::
 
 Follow instructions to :
 
@@ -264,6 +264,10 @@ Most of these settings concern the automatic formatting of code when you save a 
 - `"editor.formatOnSave": true`: apply format when you save a file
 - `"editor.insertSpaces": true`: replace tabulation by spaces
 
+---
+
+- [ ] Feel free to modify for example the theme or the font size
+  - CTRL + SPACE to autocomplete
 
 ### pyproject.toml
 
@@ -271,10 +275,11 @@ A `pyproject.toml` file centralizes project configuration. Here is what it conta
 
 - **Project Metadata:** Name, version, description, authors, etc.
 - **Dependencies:** Core libraries required to run the app 
-  - including dev libraries (only for development)
+  - including dev libraries (needed only for development, not for running the application)
 - **Build System:** Instructions for Python tools on how to install and build your package.
 - **Tool Configuration:** Settings for various tools (e.g., `pytest`, `ruff`, etc.) to avoid having multiple config files.
 
+As part of your project, you will need to fill out this file.
 
 ### uv.lock
 
@@ -329,7 +334,7 @@ Target: Humans :bust_in_silhouette:
 
 We will discuss webservices in more detail in Lab 3.
 
-- [ ] Following the instructions in the README, lanch the backend application
+- [ ] Following the instructions in the README, lanch the *backend* application
   - Once it starts, **don't click on the pop-up**. It won't work!
 
 ::: {.callout-tip title="How to query it"}
@@ -340,16 +345,18 @@ We will discuss webservices in more detail in Lab 3.
 Let's start by querying the web service from the inside:
 
 - [ ] Open a new terminal
-- [ ] Launch `curl http://localhost:5000/hello/Chewbacca | jq .`
+- [ ] Launch `curl http://localhost:5000/hello/Chewbacca`
+  - add ` | jq .` at the end for pretty print
+  - add option `-v` after *curl*: verbose mode
 
 Then from the outside:
 
 - [ ] Go back to [My service](https://datalab.sspcloud.fr/my-services){target="_blank"} page
-- [ ] Click on **Open** button of the service
+- [ ] Click on [Open]{.blue-button} button of the service
 - [ ] Click on *Port 5000* link
 
 ::: {.callout-note}
-Using this link, even your neighbor can access it.
+Using this link, even your neighbour can access it.
 :::
 
 You are being redirected to the */docs* endpoint, the Swagger API.
@@ -357,6 +364,17 @@ You are being redirected to the */docs* endpoint, the Swagger API.
 - [ ] List all players (Try it out :arrow_right: Execute)
 
 If the request was successful, you will receive an HTTP 200 code and a response body.
+
+If not, check the terminal in which you launched the application. Perhaps you forgot to reset the database.
+
+- [ ] Search for players by their ID
+  - Try IDs 6 and 99
+
+:construction: 
+
+:::{.notes}
+TODO simplement parler de code 200, 400 ou 500 et détailler au TP4
+:::
 
 ::: {.callout-tip title="HTTP Status codes" collapse="true"}
 | Code Range | Type | Category | Brief Description |
@@ -379,15 +397,7 @@ If the request was successful, you will receive an HTTP 200 code and a response 
 | **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
 :::
 
-:construction: 
 
-:::{.notes}
-TODO Pas la bonne manière de faire, il faut utiliser un PlayerReadModel sans pwd et token
-:::
-
-- [ ] In your opinion, is it normal to see the hashed passwords of all the players?
-- [ ] Find and fix the service method that needs to be corrected
-- [ ] To verify this, you need to stop and restart the web service
 
 Feel free to test **GET** requests using curl and/or the Swagger
 
@@ -397,7 +407,9 @@ Feel free to test **GET** requests using curl and/or the Swagger
 For other types of http request (PUT, POST, DELETE), you will see how to make these requests in a later tutorial.
 :::
 
-This diagram shows how a request to fetch a player travels through the application layers, from the API router to the database.
+The diagram below shows how a request to fetch a player travels through the application layers, from the API router to the database.
+
+- [ ] Open the backend log file to see the same behavior
 
 :::{style="background-color: #d7e2df;"}
 ```{mermaid}
@@ -427,14 +439,14 @@ sequenceDiagram
 ```
 :::
 
-- [ ] Open the backend log file to see the same behavior
-
 Now that our API is up and running, it’s quite satisfying to see it working. However, interacting with raw JSON isn't exactly a luxury—this is where a proper user interface comes in.
 
 
 ### Menu application
 
-- [ ] Follow README instructions to run the menu application
+- [ ] Open a new terminal
+  - :bulb: F2 or Right click to rename terminals
+- [ ] Follow frontend README instructions to run the menu application
   - **Don't click on the pop-up!**
 - [ ] Open the application (the same way you did before, clicking on *Port 8000* link)
 
@@ -447,6 +459,8 @@ You'll notice that the application asks for a password that's a little too long.
 - [ ] Find and change the password required length to 16 characters
   - first search through the code on your own :mag:
   - then ask the AI agent :robot:
+
+:construction: make it simpler
 
 ::: {.callout-tip collapse="true"}
 This requirement appears at two levels to balance Security and UX:
@@ -548,7 +562,7 @@ The remote changes (the ones your teammate pushed)
 - [ ] Test your program, and once again, *add, commit and push*
 
 
-::: {.callout-important"}
+::: {.callout-important}
 Having a conflict isn't a big deal!
 
 Having a conflict isn't a big deal!

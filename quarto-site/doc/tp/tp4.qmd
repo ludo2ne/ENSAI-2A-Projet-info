@@ -160,39 +160,6 @@ Lets explore <https://swapi.info/api/>{target="_blank"}
 
 :construction: example with parameters ?limit...
 
-### Professional API Clients
-
-To perform more complex actions (such as `POST`, `PUT`, or `DELETE`), a web browser is not enough. You will need a specialized tool to build your requests and inspect the responses.
-
-Depending on your preference, you can use one of the following methods:
-
-#### Desktop Applications
-
-These are powerful tools that you download and install:
-
-- [Bruno](https://www.usebruno.com/){target="_blank"}
-- [Insomnia](https://insomnia.rest/){target="_blank"}
-
-#### Online Tools
-
-No installation required. Perfect for a quick test directly in your browser.
-
-- <https://hoppscotch.io/>{target="_blank"}
-- <https://reqbin.com/>{target="_blank"}
-- <https://httpie.io/app>{target="_blank"}
-
-#### Command Line
-
-If you prefer staying in the terminal, you can use [**cURL**](https://curl.se/){target="_blank"}. 
-
-It is available on almost all operating systems.
-
-#### Interactive Documentation (Swagger)
-
-If the web service provides it, always check the **Swagger/OpenAPI** page (usually at the `/docs` endpoint). 
-
-It is the best way to see the available endpoints, the required parameters, and even test them directly through a web interface.
-
 
 ## Exploring your project's API
 
@@ -237,6 +204,15 @@ With each request, you'll notice the curl command if you want to run it from the
 
 It's all well and good to marvel at all that JSON code, but it's usually machines and programs that consume it.
 
+### API Clients
+
+Having a Swagger is very convenient and easy to use. However, if one isn't available, there are [other ways](https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#more-complete-requests){target="_blank"} to communicate with a web service.
+
+Create a new player using:
+
+- [ ] an APi Client
+- [ ] a curl command
+
 
 ## The Client Challenge (Data Mapping)
 
@@ -248,77 +224,32 @@ The external API does not use your internal names. It is a common real-world pro
 
 ### The Mission
 
-> This part is an example to retrieve peoples from star wars API. No questions.
+Your application needs to retrieve a **list of games** from a web service.
 
-We will use package [requests](https://requests.readthedocs.io/en/latest/user/quickstart/){target="_blank"}.
+Your task is to retrieve this data and then convert it into a suitable format. [Here is an example](https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#consuming-an-api-with-python){target="_blank"}
 
-:arrow_right: **Step1: Call the web service**
+1. Call the web service
+2. Check the response
+3. Convert JSON response into a list of Games
 
-Run the query as you would with another tool and store the response in a variable.
 
-```{.python}
-import requests
+### The server
 
-response = requests.get(url="https://swapi.info/api/people/")
-```
+:construction: 
 
-:arrow_right: **Step2: Check response**
+TODO: Launch an API, Give a link.
 
-Then, see if the answer is useful.
 
-If everything goes well, you can retrieve the JSON content.
 
-```{.python}
-if response.status_code != 200:
-    raise Exception(f"Cannot reach (HTTP {response.status_code}): {response.text}")
-else:
-    raw_json = response.json()
-    print(json.dumps(raw_json, indent=2))  # Pretty print
-```
+::: {.callout-note title="Workarround" collapse="true"}
+If the server is not available, simply:
 
-:arrow_right: **Step3: Convert into business objects**
-
-Imagine you have a *People* (name, birth, hair, bmi) business object.
-
-You will have to iterate among all elements to create *People*:
-
-```{.python}
-peoples = []
-
-for elt in raw_json:
-    # Create an object
-    p = People(
-        name=elt["name"],
-        birth=elt["birth_year"],
-        hair=elt["hair_color"],
-        bmi=compute_bmi(elt.get("mass"), elt.get("height"))
-    )
-
-    # If it succeed, add to the list
-    if p:
-      peoples.append(p)
-
-def compute_bmi(mass_raw, height_raw) -> float:
-    """Calculates BMI based on weight and height in centimeters."""
-    try:
-        mass = float(mass_raw)
-        height = float(height_raw) / 100
-        return round(mass / (height**2), 2)
-    except (ValueError, TypeError, ZeroDivisionError):
-        return None
-```
-
-::: {.callout-note}
-You can use some fields directly as attributes, and others as BMI (Body Mass Index) you won't find it directly, you have to compute it.
+- Create a file *games.json*
+- Import data from this file instead of the API
 :::
 
 
-:tada: You have converted a dictionary list into a list of business objects that can be used directly by your methods.
-
-
 ### Your turn
-
-:construction: TODO: Launch an APi, Give a link, and simple workarround procedure.
 
 - [ ] Create a *client* folder and create file *game_client.py*
 
@@ -370,47 +301,7 @@ In this section, you were a client of an API; next you'll become the provider by
 
 Finally, you will become the **Server**. You will expose your `Game` data via a professional REST API using [FastAPI](https://fastapi.tiangolo.com/){target="_blank"}.
 
-### The most simple API
-
-> Example, no question.
-
-Below is the code and command to create and launch the simplest possible API using FastAPI:
-
-:arrow_right: **Step1: Create the API**
-
-```{.python filename="main.py"}
-from fastapi import FastAPI
-
-app = FastAPI()                                 # 1. Create the application instance
-
-@app.get("/")                                   # 2. Define a root endpoint
-async def read_root():
-    return {"message": "Hello World"}
-```
-
-:arrow_right: **Step2: Launch the Server**
-
-Launch it with command: `uvicorn main:app --host 0.0.0.0 --port 5000 --reload`
-
-::: {.callout-note}
-- uvicorn: The ASGI server that runs your application
-- main:app: Refers to your file **main.py** and the FastAPI instance inside it *app*
-- --host 0.0.0.0: Makes the server accessible on your local network
-- --port 5000: Sets the port the API will listen on
-- --reload: it automatically restarts the server whenever you save a file
-:::
-
-:arrow_right: **Step3: Query the API**
-
-Using `curl -X GET http://127.0.0.1:5000/` or another client.
-
-Expected output:
-
-```{.json}
-{"message": "Hello World"}
-```
-
-A production-ready API does much more than just return a single message; it uses various HTTP methods, handles query parameters, and navigates structured URL paths to interact with complex data.
+It's pretty easy to [create your own API with FastAPI](https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#creating-simple-apis){target="_blank"}.
 
 
 ### Your First Endpoint

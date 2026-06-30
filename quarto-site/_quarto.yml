@@ -74,8 +74,6 @@ website:
             text: Licences
           - href: doc/divers/sigles.qmd
             text: Sigles
-          - href: doc/divers/json-server.qmd
-            text: Json-server
       - icon: github
         href: "{{< meta var.url-repo >}}"
         target: "_blank"
