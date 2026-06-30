@@ -396,10 +396,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp6.html">
- <span class="dropdown-text">Lab 6 - Bonus</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
@@ -423,10 +419,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.html">
- <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
   </li>
@@ -534,21 +526,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<section id="work-on-a-branch" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="work-on-a-branch">Work on a branch</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p>Each member of the team works on its own branch:</p>
+<section id="create-your-branch" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
+<p>For each practical session, the teacher provides a starting branch: <code>tpN-start</code>.</p>
+<p>You will have to create a personal branch: <code>&lt;username&gt;-tpN</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>To start with a clean and up-to-date codebase:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Create a branch from tp3-start</label>
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest remote information</label>
 <ul>
-<li>or stick with the one from TP2 if you’ve finished everything</li>
+<li>Use this if the <code>tpN-start</code> branch was updated after you cloned the repository</li>
 </ul></li>
-<li><label><input type="checkbox">verify that the application starts up and that the tests pass</label></li>
+<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp2 origin/tp2-start</code></label></li>
+<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp2</code> to publish your branch on the remote</label></li>
 </ul>
+<p>Then use the standard Git cycle: add, commit, push after each part.</p>
 </section>
 </section>
 <section id="the-mission" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">1</span> The Mission</h2>
+<blockquote class="blockquote">
+<p>Your mission, should you choose to accept it!</p>
+</blockquote>
 <p>In the previous lab, our gaming engine became modular and powerful. We can play different games (Coin Flip, Dice) and calculate scores using different strategies.</p>
 <p><strong>But there is a huge problem:</strong> As soon as the application stops, everything is forgotten. Every victory, every loss, and every Elo change disappears into the void.</p>
 <p>Our mission for this TP is to <strong>give our engine a long-term memory</strong> by implementing a persistence layer using a Relational Database (PostgreSQL).</p>
@@ -616,12 +614,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Always keep a record of your database changes</li>
 <li>Save them in SQL files (data folder)</li>
 <li>These files will be versioned by Git, so any loss can be recovered</li>
-<li>You can automate this by using, for example, the <em>reset_database.py</em> script or by creating a button in your UI</li>
+<li>You can automate this by using, for example, the <strong>reset_database.py</strong> script or by creating a button in your UI</li>
 </ul>
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Open file <em>reset_database.py</em> and see how it works</label>
+<li><label><input type="checkbox">Open file <strong>reset_database.py</strong> and see how it works</label>
 <ul>
 <li>you can ask the AI agent to analyze and explain it</li>
 </ul></li>
@@ -648,7 +646,7 @@ Note
 </blockquote>
 <ul class="task-list">
 <li><label><input type="checkbox">Why certain fields aren’t specified in the insert?</label></li>
-<li><label><input type="checkbox">What would be the risk if we hard-coded a game ID equal to 1?</label>
+<li><label><input type="checkbox">What would be the risk if we hard-coded a <em>game ID</em> equal to 1?</label>
 <ul>
 <li>Any idea if you want to do it anyway?</li>
 </ul></li>
@@ -674,8 +672,8 @@ Note
 <section id="architecture-the-dao-pattern" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="architecture-the-dao-pattern"><span class="header-section-number">3</span> Architecture: The DAO Pattern</h2>
 <p>Now we’re going to map the business objects to the database tables.</p>
-<p>In Lab2, we created Business Objects (<code>Player</code>, <code>Game</code>). These objects represent the <strong>logic</strong> of our game.</p>
-<p>Should we add a method <code>game.save_to_db()</code> inside the <code>Game</code> class?</p>
+<p>In Lab2, we created Business Objects (<code>Player</code>, <code>Game</code>). These objects represent the logic of our game.</p>
+<p>Should we add a method <em>game.save_to_db()</em> inside the <code>Game</code> class?</p>
 <p><strong>The answer is a loud NO! ❌</strong></p>
 <p>If we do that, our <code>Game</code> class will suddenly need to know about database connections, SQL queries, and connection strings. This violates the principle of <strong>High Cohesion</strong>: a class should do one thing. A <code>Game</code> should represent a match, not manage a database connection.</p>
 <p>Instead, we use the <strong>DAO (Data Access Object) Pattern</strong>.</p>
@@ -733,11 +731,11 @@ Tip
 <p>If you look closely, our DAO’s methods resemble those of <strong>CRUD</strong>. This is normal, as these methods will store the SQL code.</p>
 <p>The basic methods are generally:</p>
 <ul>
-<li><code>find_all()</code>: which will return the entire table</li>
-<li><code>find_by_id()</code>: which returns a record based on its id</li>
-<li><code>create()</code>: which creates a new record</li>
-<li><code>delete()</code>: which deletes a record</li>
-<li><code>update()</code>: which updates a record</li>
+<li><em>find_all()</em>: which will return the entire table</li>
+<li><em>find_by_id()</em>: which returns a record based on its id</li>
+<li><em>create()</em>: which creates a new record</li>
+<li><em>delete()</em>: which deletes a record</li>
+<li><em>update()</em>: which updates a record</li>
 </ul>
 <p>These 5 methods are enough to communicate with your database. You can perform the rest of the processing in your <strong>Service</strong> classes (recommended). However, nothing prevents you from creating more complex methods (e.g., <em>find_by_type_and_level_order_by_name_desc()</em>).</p>
 <p>Here is the general operation of one of the DAO methods:</p>
@@ -819,22 +817,22 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Feel free to use the PlayerDao class as a reference when writing the <em>GameDao</em> methods.</p>
+<p>Feel free to use the PlayerDao class as a reference when writing the <code>GameDao</code> methods.</p>
 <p>The advantage of DAO classes is that once you understand the concept, the process is always the same.</p>
 </div>
 </div>
-<p>Your main task is to create the <em>GameDao</em> class. This class will be the only one allowed to talk to the <em>game</em> table.</p>
+<p>Your main task is to create the <code>GameDao</code> class. This class will be the only one allowed to talk to the <em>game</em> table.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Create file <em>backend/src/dao/game_dao.py</em></label></li>
-<li><label><input type="checkbox">Implement the class <em>GameDao</em> using the <em>Singleton</em> metaclass.</label></li>
-<li><label><input type="checkbox">Implement method <code>create(game: Game) -&gt; bool</code>:</label>
+<li><label><input type="checkbox">Create file <strong>backend/src/dao/game_dao.py</strong></label></li>
+<li><label><input type="checkbox">Implement the class <code>GameDao</code> using the <code>Singleton</code> metaclass.</label></li>
+<li><label><input type="checkbox">Implement method <em>create(game: Game) -&gt; bool</em>:</label>
 <ul>
 <li>Inserts a new game record</li>
-<li>After the insertion, update the <em>game.id_game</em> with the ID returned by the database</li>
+<li>After the insertion, update the <em>id_game</em> with the ID returned by the database</li>
 </ul></li>
-<li><label><input type="checkbox">Implement method <code>find_by_id(id: int) -&gt; Game</code>:</label>
+<li><label><input type="checkbox">Implement method <em>find_by_id(id: int) -&gt; Game</em>:</label>
 <ul>
-<li>Retrieves a specific game and converts the database row into a <em>Game</em> object</li>
+<li>Retrieves a specific game and converts the database row into a <code>Game</code> object</li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled" title="The Conversion Step">
@@ -847,9 +845,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you fetch data using <code>cursor.fetchone()</code>, you get a dictionary.</p>
+<p>When you fetch data using <em>cursor.fetchone()</em>, you get a dictionary.</p>
 <p>You <strong><u>must not</u></strong> return this dictionary as it is!</p>
-<p>You have to use this dictionary to instantiate a <em>Game</em> object.</p>
+<p>You have to use this dictionary to instantiate a <code>Game</code> object.</p>
 </div>
 </div>
 <p>Below an example of how to convert a row to an object:</p>
@@ -896,7 +894,7 @@ Caution
 </div>
 <p>For the next method, you won’t be getting just one recording, but several:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Implement method <code>find_all_by_player(id_player: int) -&gt; list[Game]</code>:</label>
+<li><label><input type="checkbox">Implement method <em>find_all_by_player(id_player: int) -&gt; list[Game]</em>:</label>
 <ul>
 <li>Returns all games involving a specific player</li>
 </ul></li>
@@ -905,7 +903,7 @@ Caution
 <section id="use-it-in-the-service" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="use-it-in-the-service"><span class="header-section-number">5</span> Use it in the service</h2>
 <p>Now that we have a way to save games, let’s use it!</p>
-<p>The service creates a <em>Game</em> object and calls the appropriate method to persist the result.</p>
+<p>The service creates a <code>Game</code> object and calls the appropriate method to persist the result.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Refactor method <em>GameService.play()</em></label></li>
 <li><label><input type="checkbox">Launch the application</label></li>
@@ -920,7 +918,7 @@ Caution
 <p>Testing a DAO is different because you are touching a real database. This creates two major problems.</p>
 <section id="the-naive-approach" class="level3" data-number="6.1">
 <h3 data-number="6.1" class="anchored" data-anchor-id="the-naive-approach"><span class="header-section-number">6.1</span> The Naive Approach</h3>
-<p>“I want to test the <code>delete()</code> method. I’ll create a game, then delete it. Easy!”</p>
+<p>“I want to test the <em>delete()</em> method. I’ll create a game, then delete it. Easy!”</p>
 <p>Imagine you run your test:</p>
 <ul>
 <li><strong>First run:</strong> You create a game (ID: 5), you delete it. <strong>Success!</strong> ✅</li>
@@ -964,14 +962,14 @@ Caution
 <h3 data-number="6.3" class="anchored" data-anchor-id="hands-on"><span class="header-section-number">6.3</span> Hands on</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Ask the AI agent to explain code in <code>@File test_player_dao.py</code></label></li>
-<li><label><input type="checkbox">Write unit test with pytest for all methods of <em>GameDao</em></label></li>
+<li><label><input type="checkbox">Write unit test with pytest for all methods of <code>GameDao</code></label></li>
 </ul>
 </section>
 </section>
 <section id="conclusion" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7</span> Conclusion</h2>
 <p>Congratulations! You have successfully transitioned the engine from a “volatile” state to a “persistent” state.</p>
-<p>By implementing the <strong>DAO pattern</strong>, you have ensured that the business logic remains pure and decoupled from the technical details of storage. Even if we switched from PostgreSQL to MongoDB tomorrow, our <em>Game</em> and <em>GameService</em> classes wouldn’t need a single line of code changed!</p>
+<p>By implementing the <strong>DAO pattern</strong>, you have ensured that the business logic remains pure and decoupled from the technical details of storage. Even if we switched from PostgreSQL to MongoDB tomorrow, our <code>Game</code> and <code>GameService</code> classes wouldn’t need a single line of code changed!</p>
 </section>
 <section id="end-of-the-lab" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>

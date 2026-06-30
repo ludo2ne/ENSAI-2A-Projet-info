@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="description" content="Lab 5">
+<meta name="description" content="Lab 5 - Transforming raw data into actionable player insights">
 
 <title>Front end – Projet info 2A</title>
 <style>
@@ -357,10 +357,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp6.html">
- <span class="dropdown-text">Lab 6 - Bonus</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
@@ -384,10 +380,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.html">
- <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
   </li>
@@ -413,7 +405,18 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
+  <li><a href="#the-goal" id="toc-the-goal" class="nav-link" data-scroll-target="#the-goal"><span class="header-section-number">1</span> The goal</a></li>
+  <li><a href="#create-a-new-page" id="toc-create-a-new-page" class="nav-link" data-scroll-target="#create-a-new-page"><span class="header-section-number">2</span> Create a new page</a></li>
+  <li><a href="#dashboard-items" id="toc-dashboard-items" class="nav-link" data-scroll-target="#dashboard-items"><span class="header-section-number">3</span> Dashboard items</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4</span> Conclusion</a></li>
+  <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -433,7 +436,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Lab 5
+    Lab 5 - Transforming raw data into actionable player insights
   </div>
 </div>
 
@@ -457,6 +460,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p>Sales <span class="chart">{l:20,40,70,50,90}</span> are up.</p>
+<p><span class="chart">p:73</span></p>
+<div class="notes">
 <ul>
 <li><label><input type="checkbox">New pages : Players stats</label>
 <ul>
@@ -465,8 +471,174 @@ ul.task-list li input[type="checkbox"] {
 <li><label><input type="checkbox">Vibe coding</label></li>
 <li>Security</li>
 </ul>
+</div>
+<section id="before-you-start" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
+<p>This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Concepts covered">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Concepts covered
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Front-end development</li>
+<li>Navigation between pages</li>
+<li>Connection to the Back End</li>
+<li>Vibe coding</li>
+</ul>
+</div>
+</div>
+<section id="create-your-branch" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
+<p>For each practical session, the teacher provides a starting branch: <code>tpN-start</code>.</p>
+<p>You will have to create a personal branch: <code>&lt;username&gt;-tpN</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>To start with a clean and up-to-date codebase:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest remote information</label>
+<ul>
+<li>Use this if the <code>tpN-start</code> branch was updated after you cloned the repository</li>
+</ul></li>
+<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp2 origin/tp2-start</code></label></li>
+<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp2</code> to publish your branch on the remote</label></li>
+</ul>
+<p>Then use the standard Git cycle: add, commit, push after each part.</p>
+</section>
+</section>
+<section id="the-goal" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="the-goal"><span class="header-section-number">1</span> The goal</h2>
+<p>From the beginning, we’ve focused solely on back-end development. Today, we’re going to focus on front-end development.</p>
+<p>Last time, we created an endpoint to retrieve a player’s games.</p>
+<p>Let’s use it to create a new page that displays some stats for each player.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Vibe Coding Mode">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Vibe Coding Mode
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For this lab, you are encouraged to use <strong>LLMs</strong> (ChatGPT, Claude, etc.) to assist your development. However, do not simply copy-paste. Your role is to act as an architect: define the requirements, guide the AI through the implementation, and rigorously verify the logic.</p>
+</div>
+</div>
+</section>
+<section id="create-a-new-page" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="create-a-new-page"><span class="header-section-number">2</span> Create a new page</h2>
+<section id="contextual-navigation" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="contextual-navigation"><span class="header-section-number">2.1</span> Contextual Navigation</h3>
+<p>Currently, your application displays a list of players, but there is no way to “drill down” into a specific player’s profile. We need to implement <strong>Contextual Navigation</strong>.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Frontend</strong>: In <strong>src/pages/list_players.py</strong>, modify the player list so that clicking on a player’s name redirects the user to a dedicated statistics page.</label></li>
+<li><label><input type="checkbox"><strong>Frontend</strong>: Create a new page <strong>src/pages/player_stats.py</strong>.</label></li>
+<li><label><input type="checkbox"><strong>Frontend</strong>: This page must capture the <code>id_player</code> from the URL query parameters and display a greeting: <em>“Statistics for player: [Username]”</em>.</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Pro-tip: Query Parameters">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pro-tip: Query Parameters
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Streamlit, you can access URL parameters using <code>st.query_params</code>. This allows you to maintain state (which player is selected) across different page loads.</p>
+</div>
+</div>
+</section>
+<section id="match-history-retrieval" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="match-history-retrieval"><span class="header-section-number">2.2</span> Match History Retrieval</h3>
+<p>A dashboard is useless without data. The first step is to retrieve the recent activity of the selected player.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Backend</strong>: Verify that your <code>GameService</code> contains a method to fetch the latest matches for a specific player.</label></li>
+<li><label><input type="checkbox"><strong>Backend</strong>: Ensure the endpoint <code>GET /game?id_player={id}</code> is active and returns the correct data.</label></li>
+<li><label><input type="checkbox"><strong>Frontend</strong>: In <strong>src/pages/player_stats.py</strong>, call your API to fetch the player’s recent matches.</label></li>
+<li><label><input type="checkbox"><strong>Frontend</strong>: Display these matches in a structured format (using <code>st.dataframe</code> or <code>st.table</code>) including the following columns: <em>Mode</em>, <em>Opponent</em>, <em>Result</em>, and <em>Date</em>.</label></li>
+</ul>
+</section>
+</section>
+<section id="dashboard-items" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="dashboard-items"><span class="header-section-number">3</span> Dashboard items</h2>
+<section id="winloss-aggregation" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="winloss-aggregation"><span class="header-section-number">3.1</span> Win/Loss Aggregation</h3>
+<p>Displaying a list of games is helpful, but a professional dashboard provides high-level <strong>KPIs</strong> (Key Performance Indicators). We need to calculate the player’s win/loss record.</p>
+<p><strong>The Problem</strong>: The client (Frontend) should not perform mathematical calculations on a list of games. Doing so increases bandwidth usage and violates the principle of <strong>Separation of Concerns</strong>.</p>
+<p><strong>The Solution</strong>: The <strong>Service</strong> must perform the aggregation and return a simplified summary.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Backend</strong>: Implement a method <em>get_win_loss_stats(id_player)</em> in <code>GameService</code>.</label>
+<ul>
+<li>It must return a dictionary containing the count of wins, losses, and draws.</li>
+</ul></li>
+<li><label><input type="checkbox"><strong>Backend</strong>: Create a new endpoint <code>GET /players/{id_player}/win-loss</code> in <strong>src/controller/player_controller.py</strong>.</label></li>
+<li><label><input type="checkbox"><strong>Frontend</strong>: In <strong>src/pages/player_stats.py</strong>, use <code>st.metric()</code> to display the number of wins and losses prominently.</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Design Principle: Logic Placement">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Design Principle: Logic Placement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always perform data aggregation (counting, summing, averaging) on the <strong>Back-end</strong>. The <strong>Front-end</strong> should only be responsible for rendering the final values.</p>
+</div>
+</div>
+</section>
+<section id="elo-rating-progression" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="elo-rating-progression"><span class="header-section-number">3.2</span> Elo Rating Progression</h3>
+<p>To understand if a player is improving, we need to visualize their <strong>Elo</strong> rating over time.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><strong>Backend</strong>: Implement a method in your <code>GameDao</code> to retrieve the historical Elo values of a player.</label></li>
+<li><label><input type="checkbox"><strong>Backend</strong>: Create a corresponding endpoint <code>GET /players/{id_player}/elo-history</code>.</label></li>
+<li><label><input type="checkbox"><strong>Frontend</strong>: In <strong>src/pages/player_stats.py</strong>, use <code>st.line_chart()</code> to visualize the player’s rating evolution.</label></li>
+</ul>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
+<p>You have successfully transformed a transactional system into an analytical one. You have mastered:</p>
+<ul>
+<li><strong>Contextual Routing</strong>: Navigating between resources using unique identifiers.</li>
+<li><strong>Data Aggregation</strong>: Moving from raw records to meaningful statistics.</li>
+<li><strong>Data Visualization</strong>: Turning abstract numbers into intuitive charts.</li>
+</ul>
+</section>
+<section id="end-of-the-lab" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="end-of-the-lab">End of the Lab</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you have finished coding, don’t forget to:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Push your code to GitHub</label>
+<ul>
+<li>If your service is terminated, all unpushed code is lost…</li>
+</ul></li>
+<li><label><input type="checkbox">Pause or delete your datalab services</label>
+<ul>
+<li>to free up reserved resources</li>
+</ul></li>
+</ul>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

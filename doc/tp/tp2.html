@@ -395,10 +395,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp6.html">
- <span class="dropdown-text">Lab 6 - Bonus</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
@@ -422,10 +418,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.html">
- <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
   </li>
@@ -456,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
-  <li><a href="#the-mission" id="toc-the-mission" class="nav-link" data-scroll-target="#the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></a></li>
+  <li><a href="#the-mission" id="toc-the-mission" class="nav-link" data-scroll-target="#the-mission"><span class="header-section-number">1</span> The Mission 🎯</a></li>
   <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</a></li>
   <li><a href="#unit-tests" id="toc-unit-tests" class="nav-link" data-scroll-target="#unit-tests"><span class="header-section-number">3</span> Unit tests</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4</span> Conclusion</a></li>
@@ -539,14 +531,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<section id="work-on-a-branch" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="work-on-a-branch">Work on a branch</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p>Each member of the team works on its own branch</p>
+<section id="create-your-branch" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
+<p>For each practical session, the teacher provides a starting branch: <code>tpN-start</code>.</p>
+<p>You will have to create a personal branch: <code>&lt;username&gt;-tpN</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>To start with a clean and up-to-date codebase:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest remote information</label>
+<ul>
+<li>Use this if the <code>tpN-start</code> branch was updated after you cloned the repository</li>
+</ul></li>
+<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp2 origin/tp2-start</code></label></li>
+<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp2</code> to publish your branch on the remote</label></li>
+</ul>
+<p>Then use the standard Git cycle: add, commit, push after each part.</p>
 </section>
 </section>
 <section id="the-mission" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">1</span> The Mission <span class="emoji" data-emoji="dart">🎯</span></h2>
+<h2 data-number="1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">1</span> The Mission 🎯</h2>
 <blockquote class="blockquote">
 <p>You might be thinking: “All this architecture just for a simple coin flip?” … You’re right. And don’t get too comfortable, because we’re about to add a dozen more classes just for fun!” 🙃</p>
 </blockquote>
@@ -557,10 +559,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Currently, the <code>GameService</code> class is a <strong>Monolith</strong>.</p>
 <p>It is too heavy because it handles too many responsibilities:</p>
 <ul>
-<li><strong>Game Logic:</strong> It decides the outcome (e.g., random coin flip)</li>
-<li><strong>Scoring Logic:</strong> It manages the mathematical Elo calculation</li>
-<li><strong>Data Management:</strong> It directly interacts with <code>PlayerDao</code> to update scores</li>
-<li><strong>No History:</strong> Once a game is played, the result is lost. It lacks any way to track match history</li>
+<li>🎲 <strong>Game Logic:</strong> It decides the outcome (e.g., random coin flip)</li>
+<li>📈 <strong>Scoring Logic:</strong> It manages the mathematical Elo calculation</li>
+<li>💾 <strong>Data Management:</strong> It directly interacts with <code>PlayerDao</code> to update scores</li>
+<li>🪦 <strong>No History:</strong> Once a game is played, the result is lost. It lacks any way to track match history</li>
 </ul>
 <p>This design violates the <strong>Open/Closed Principle</strong>: adding a new game (like “Dice”) or a new scoring rule (like “Flat points”) requires modifying the core <code>GameService</code> code, making it fragile and hard to test.</p>
 </section>
@@ -666,7 +668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Create file <em>game.py</em> in the appropriate folder</label></li>
+<li><label><input type="checkbox">Create file <strong>game.py</strong> in the appropriate folder</label></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -756,13 +758,13 @@ Important
 <li>then use it in method <em>play()</em></li>
 </ul></li>
 </ul>
-<p>Fine, we’ll also need a way to generate either a <em>CoinFlipMode</em> object or a <em>DiceMode</em> object based on a <em>game_mode</em> (str) parameter. To do this, let’s create a factory class:</p>
+<p>Fine, we’ll also need a way to generate either a <code>CoinFlipMode</code> object or a <code>DiceMode</code> object based on a <em>game_mode</em> (str) parameter. To do this, let’s create a factory class:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Create a <code>GameModeFactory</code> class</label></li>
-<li><label><input type="checkbox">Add static method called <code>get_mode(game_mode: str, **kwargs) -&gt; GameMode</code></label>
+<li><label><input type="checkbox">Add static method called <em>get_mode(game_mode: str, **kwargs) -&gt; GameMode</em></label>
 <ul>
-<li>that takes the game_mode (str) as parameter</li>
-<li>and returns the corresponding <code>GameModeFactory</code> object</li>
+<li>that takes the <em>game_mode</em> (str) as parameter</li>
+<li>and returns the corresponding <code>GameMode</code> object</li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -775,9 +777,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In Python, <code>**kwargs</code> (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name=“Alice”).</p>
-<p>When you use <code>**kwargs</code> in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument’s value.</p>
-<p><code>**kwargs</code> will allow passing specific arguments (like choice) to the modes.</p>
+<p>In Python, <strong>**kwargs</strong> (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name=“Alice”).</p>
+<p>When you use <strong>**kwargs</strong> in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument’s value.</p>
+<p><strong>**kwargs</strong> will allow passing specific arguments (like choice) to the modes.</p>
 </div>
 </div>
 <div class="cell" data-layout-align="default">
@@ -840,10 +842,12 @@ Important
 <section id="unit-tests" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="unit-tests"><span class="header-section-number">3</span> Unit tests</h2>
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="notes">
 <ul>
 <li>Explain mocking</li>
 <li>Few easy tests</li>
 </ul>
+</div>
 </section>
 <section id="conclusion" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>

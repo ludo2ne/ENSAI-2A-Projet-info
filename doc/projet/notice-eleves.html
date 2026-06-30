@@ -394,10 +394,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp6.html">
- <span class="dropdown-text">Lab 6 - Bonus</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
@@ -421,10 +417,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.html">
- <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
   </li>
@@ -507,27 +499,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Tous les élèves de deuxième année (exceptés ceux suivant le parcours recherche ATPA), participent à la réalisation du projet informatique. Ils sont répartis en groupes de 4 à 5 élèves. Ce projet permet d’effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année. La composition des groupes est définie par le département d’enseignement informatique.</p>
-<p>Le travail demandé consiste à construire une application permettant de répondre à la problématique du sujet proposé. Ce travail se décompose en 3 grandes phases :</p>
+<p>Le travail demandé consiste à construire une application permettant de répondre à la problématique du sujet proposé. Ce travail se décompose en 2 grandes phases :</p>
 <ol type="1">
-<li>Étude préalable</li>
+<li>Étude préalable et conception générale</li>
 </ol>
 <ul>
+<li>expliquer le besoin</li>
 <li>décrire la solution envisagée</li>
-<li>planifier les grandes phases de la réalisation (diagramme de cas d’utilisation et diagramme de Gantt)</li>
-</ul>
-<ol start="2" type="1">
-<li>Conception générale de l’application</li>
-</ol>
-<ul>
-<li>décrire les exigences fonctionnelles générales par la modélisation (diagramme d’activité ou d’états, diagramme de classes, modèle de données…)</li>
+<li>planifier les grandes phases de la réalisation</li>
+<li>décrire les exigences fonctionnelles par la modélisation (diagrammes UML)</li>
 <li>planifier la mise en place des fonctionnalités (dépendances, priorités…)</li>
 </ul>
-<ol start="3" type="1">
-<li>Réalisation :</li>
+<ol start="2" type="1">
+<li>Réalisation</li>
 </ol>
 <ul>
 <li>mise en place de la base de données</li>
-<li>développement continu du système en python3 accompagné d’une description graphique du ou des modèles choisis (le modèle d’implémentation)</li>
+<li>développement de l’application en Python</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Travaux à rendre">
 <div class="callout-header d-flex align-content-center">
@@ -539,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>À mi-projet, vous livrerez le dossier d’analyse correspondant au travail réalisé lors des 2 premières phases.</p>
+<p>À mi-projet, vous livrerez le dossier d’analyse correspondant au travail réalisé lors de la première phase.</p>
 <p>En fin de projet, vous devrez rendre un dossier complet, ainsi que votre code.</p>
 <p>Vous présenterez vos travaux lors d’une soutenance orale.</p>
 </div>
@@ -549,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="lancement-du-projet">Lancement du projet</h2>
 <section id="les-équipes-de-projet" class="level3">
 <h3 class="anchored" data-anchor-id="les-équipes-de-projet">Les équipes de projet</h3>
-<p>Les équipes sont composées par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis sur titre. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des équipes.</p>
+<p>Les équipes sont composées par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis directement en 2e année. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des équipes.</p>
 <ul>
 <li>Une moyenne pondérée est calculée pour chaque élève à partir des notes de 1A dans les matières informatiques
 <ul>
@@ -560,40 +548,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>La composition des équipes n’est pas modifiable !</strong></p>
 </section>
-<section id="choix-du-sujet" class="level3">
-<h3 class="anchored" data-anchor-id="choix-du-sujet">Choix du sujet</h3>
-<p>Chacun des 8 intervenants de projet a proposé un sujet qui devra permettre l’application de l’ensemble des enseignements informatiques dispensés en 1ère année :</p>
+<section id="le-sujet" class="level3">
+<h3 class="anchored" data-anchor-id="le-sujet">Le sujet</h3>
+<p>Vous serez encadré par une tutrice ou un tuteur qui suivra 4 équipes tout le long du projet.</p>
+<p>Chacun des 9 encadrants a proposé un sujet qui devra permettre l’application de l’ensemble des enseignements informatiques dispensés en 1ère année :</p>
 <ul>
 <li>Conception d’applications avec UML</li>
 <li>Algorithmique</li>
 <li>Programmation orientée objet avec Python</li>
 <li>Bases de données relationnelles</li>
 </ul>
-<p>Chaque intervenant prendra en charge 4 équipes d’élèves qui traiteront le sujet qu’il a proposé.</p>
-<p>Vous devrez choisir votre sujet dans la liste accessible sur la plateforme d’enseignement Moodle, suivant la procédure détaillée ci-dessous&nbsp;:</p>
-<ol type="1">
-<li>Prenez connaissance des sujets présentés sur la plateforme d’enseignement</li>
-<li>Concertez-vous entre membres d’un même groupe</li>
-<li>Ordonnez les sujets par ordre de préférence sur l’application en ligne accessible via un lien sur la page Moodle du projet</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled" title="Remarque">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Remarque
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>L’attribution des sujets se fait par une procédure automatique en essayant de respecter au maximum la préférence des équipes.</p>
-<p>Une fois attribués, les sujets ne peuvent pas être modifiés.</p>
-</div>
-</div>
+<p>Les sujets sont affectés aléatoirement aux équipes. La diversité des parcours (Anglais, Dauphine…), les délais restreints et les contraintes associées, font qu’il n’est pas possible de vous laisser faire des voeux.</p>
 </section>
 <section id="première-séance" class="level3">
 <h3 class="anchored" data-anchor-id="première-séance">Première séance</h3>
-<p>De retour d’étudiants, la première rencontre entre membres d’une même équipe est importante. C’est l’occasion pour vous de faire connaissance et d’échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les équipes qui ont un bon fonctionnement sont celles qui réussissent le mieux. Comme il n’y a pas de recette magique, chaque équipe doit se mettre d’accord sur son fonctionnement.</p>
+<p>De retour d’étudiants, la première rencontre entre membres d’une même équipe est importante. C’est l’occasion pour vous de faire connaissance et d’échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les équipes solidaires qui ont un bon fonctionnement sont celles qui réussissent le mieux. Il n’y a pas de recette magique, chaque équipe doit se mettre d’accord sur son fonctionnement.</p>
 </section>
 </section>
 <section id="organisation-et-suivi" class="level2">
@@ -630,8 +599,7 @@ Caution
 <p>Pour éviter toute surchage de travail, il est fortement déconseillé de cumuler les roles de tech lead et chef de projet.</p>
 </div>
 </div>
-<hr>
-<p>Il peut bien sûr y avoir d’autres rôles dans l’équipe. L’important est de prendre des initiatives sur un sujet qui vous plait et d’être acteur du projet.</p>
+<p>Il peut bien sûr y avoir d’autres rôles dans l’équipe. L’important est de <strong>prendre des initiatives</strong> sur un sujet qui vous plait et d’<strong>être acteur du projet</strong>.</p>
 <p>Vous êtes des ingénieurs, vous avez des idées, vous devez prendre des initiatives. Cela sera un vrai plus lorsque vous serez en poste !</p>
 </section>
 <section id="crise" class="level3">
@@ -640,17 +608,17 @@ Caution
 </section>
 <section id="gestion-de-projet-et-de-communication" class="level3">
 <h3 class="anchored" data-anchor-id="gestion-de-projet-et-de-communication">Gestion de projet et de communication</h3>
-<p>il est recommandé d’utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d’une conversation pour le groupe semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :</p>
+<p>Il est recommandé d’utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d’une conversation pour le groupe semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :</p>
 <ul>
-<li>Trello : pour avoir un kanban collaboratif ;</li>
-<li>Priority Matrix : pour prioriser vos tâches ;</li>
+<li>Trello : pour avoir un kanban collaboratif</li>
+<li>Priority Matrix : pour prioriser vos tâches</li>
 </ul>
 <p>Vous pouvez également utiliser d’autres logiciels pour communiquer, comme Slack ou Discord (qui sont propriétaires comme Teams). Utiliser Facebook Messenger ou autres applications liées à un réseau social est déconseillé car elles ne sont pas utilisées pour gérer un projet en entreprise. La limite de ces logiciels de messagerie est qu’ils ne proposent pas de salon de discussions thématiques pour segmenter vos échanges. Cela entraine de la perte d’informations quand plusieurs discussions se mélangent.</p>
 <p>Pour les personnes qui ont du mal à s’organiser mais qui sont sensible à la <em>gamification</em> vous pouvez également utiliser Habitica (https://habitica.com/static/home) pour vous aider à travailler régulièrement.</p>
 </section>
 <section id="point-hebdo" class="level3">
 <h3 class="anchored" data-anchor-id="point-hebdo">Point hebdo</h3>
-<p>Chaque semaine (jusqu’au rendu du rapport final et sauf pendant les vacances), vous devrez remplir votre point hebdomadaire de suivi de projet :</p>
+<p>Chaque semaine (jusqu’au rendu du rapport final et sauf pendant les vacances scolaires), vous devrez remplir votre point hebdomadaire de suivi de projet :</p>
 <ul>
 <li><strong>Quand</strong> : le <u>Jeudi soir</u> au plus tard</li>
 <li><strong>Où</strong> : sur votre dépôt Git, dossier <em>doc/suivi</em></li>
@@ -669,14 +637,14 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Le point hebdomadaire est <strong>obligatoire</strong>. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.</p>
+<p>Le point hebdomadaire est <strong><u>obligatoire</u></strong>. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.</p>
 <ul>
 <li>Si vous n’avez pas travaillé sur le projet depuis une semaine (et vous avez le droit) <span class="emoji" data-emoji="arrow_right">➡️</span> mettez simplement <em>ras</em> (rien à signaler)</li>
 <li>Si une tâche n’est pas terminée, vous pouvez ajouter le suffixe <em>WIP</em> (Work In Progress)</li>
 </ul>
+</div>
+</div>
 <p>Pour information, le projet informatique vous permet d’obtenir 4 ECTS, ce qui représente un investissement d’environ 100h (séances en présentiel comprises) par élève.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -784,12 +752,20 @@ Tip
 </div>
 </div>
 </div>
+</section>
+<section id="suivi-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="suivi-de-projet">Suivi de projet</h3>
 <p>L’encadrement de l’avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque équipe fera le bilan avec son intervenant :</p>
 <ul>
 <li>du travail qui a été réalisé au cours de la semaine</li>
 <li>des difficultés rencontrées</li>
 <li>de ce qui doit encore être fait</li>
 </ul>
+<p>Dans l’équipe vous devez toutes et tous avoir une vision macro de l’avancement du projet et ce que vous avez prévu de faire.</p>
+<p><strong>Une séance de suivi, ça se prépare !!!</strong></p>
+<blockquote class="blockquote">
+<p>C’est valable pour les autres projets, les suivi de stage, les réunions… Si vous arrivez les mains dans les poches, vous allez perdre un temps précieux pour vous remettre dans le bain.</p>
+</blockquote>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -803,21 +779,23 @@ Caution
 <p>À chaque séance, l’encadrant notera si un travail sérieux a été réalisé depuis la semaine dernière. Un travail régulier tout le long du projet sera récompensé, tandis qu’un travail fait uniquement avant les rendus sera pénalisé.</p>
 </div>
 </div>
-<p><strong>Les séances de suivi sont obligatoires.</strong> L’appel sera effectué en début et en fin de séance. Votre intervenant pourra demander à tout moment à parler avec la totalité des élèves qu’il encadre.</p>
+<p><strong>Les séances de suivi sont obligatoires.</strong> L’appel sera effectué. Votre intervenant pourra demander à tout moment à parler avec la totalité des élèves qu’il encadre.</p>
 </section>
 </section>
 <section id="outils-et-cours" class="level2">
 <h2 class="anchored" data-anchor-id="outils-et-cours">Outils et Cours</h2>
-<section id="lien-avec-le-module-de-compléments-dinformatique" class="level3">
-<h3 class="anchored" data-anchor-id="lien-avec-le-module-de-compléments-dinformatique">Lien avec le module de Compléments d’informatique</h3>
-<p>Pour vous aider à mener à bien votre projet, un cours de 6h, et quatre TP de 3h sont mis en place dans le module de <strong>Compléments d’informatique</strong>. Lors du cours, vous seront présentés l’organisation générale du projet et quelques concepts nouveaux mis en œuvre lors des TP :</p>
+<section id="module-de-compléments-dinformatique" class="level3">
+<h3 class="anchored" data-anchor-id="module-de-compléments-dinformatique">Module de Compléments d’informatique</h3>
+<p>Pour vous aider à mener à bien votre projet, un cours de 6h, et cinq TP de 3h sont mis en place dans le module de <strong>Compléments d’informatique</strong>. Lors du cours, vous seront présentés l’organisation générale du projet et quelques concepts nouveaux mis en œuvre lors des TP :</p>
 <ul>
+<li>séparation back-end / front-end,</li>
 <li>programmation en couches,</li>
 <li>systèmes de versionnement (git),</li>
 <li>appel à un webservice,</li>
-<li>liens entre données dans un programme et dans une base de données</li>
+<li>communication avec une base de données</li>
 </ul>
 <p>Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre projet, il a également pour but final de vous donner des connaissances supplémentaires en informatique pour que vous puissiez évoluer facilement dans le milieu professionnel et en particulier dans le monde de la <em>data science.</em></p>
+<p>Sauf retour à l’âge de Pierre, vous allez inévitablement utiliser des applications informatiques dans votre vie professionnelle. Même si vous ne travaillez jamais côté informatique, avoir une première approche sur le fonctionnement d’un projet informatique vous sera précieux.</p>
 </section>
 <section id="outils-de-développement" class="level3">
 <h3 class="anchored" data-anchor-id="outils-de-développement">Outils de développement</h3>
@@ -852,6 +830,13 @@ Caution
 </div>
 </div>
 </section>
+<section id="usage-de-liagen" class="level3">
+<h3 class="anchored" data-anchor-id="usage-de-liagen">Usage de l’IAgen</h3>
+<p>L’IA générative peut être un excellent accélérateur de développement lorsqu’elle est utilisée avec discernement. Si vous comprenez votre architecture, vos technologies et vos besoins, elle peut vous aider à produire du code plus rapidement, explorer des pistes ou résoudre des problèmes ponctuels.</p>
+<p>Elle peut également vous aider à comprendre les principes évoqués en cours et en TP.</p>
+<p>À l’inverse, lui demander de développer des fonctionnalités mal définies ou copier du code sans le comprendre risque de vous faire perdre beaucoup de temps. L’IA peut produire des solutions incorrectes, inadaptées à votre projet ou génératrices de bugs.</p>
+<p>Considérez l’IA comme un assistant technique, pas comme un développeur autonome. Plus vos demandes sont précises et plus vous comprenez ce qu’elle propose, plus elle sera utile.</p>
+</section>
 </section>
 <section id="travail-attendu" class="level2">
 <h2 class="anchored" data-anchor-id="travail-attendu">Travail attendu</h2>
@@ -870,7 +855,7 @@ Caution
 </section>
 <section id="conception-générale" class="level3">
 <h3 class="anchored" data-anchor-id="conception-générale">Conception générale</h3>
-<p>Cette 2e phase d’analyse aboutira à un modèle de conception pour répondre aux objectifs fixés par le cahier des charges. Le choix des diagrammes est fait par chaque groupe après validation de leur intervenant. Nous y trouverons cependant au minimum :</p>
+<p>Cette 2e phase d’analyse aboutira à un modèle de conception pour répondre aux objectifs fixés par le cahier des charges. Le choix des diagrammes est fait par chaque équipe après validation de leur intervenant. Nous y trouverons cependant au minimum :</p>
 <ul>
 <li>Un diagramme de cas d’utilisation</li>
 <li>Un diagramme de classes</li>
@@ -912,11 +897,7 @@ Tip
 </section>
 <section id="validation-du-logiciel" class="level4">
 <h4 class="anchored" data-anchor-id="validation-du-logiciel">Validation du logiciel</h4>
-<p>Tout au long du développement, vous développerez un ensemble de tests :</p>
-<ul>
-<li>Tests unitaires</li>
-<li>Tests utilisateurs pour chaque cas d’utilisation important.</li>
-</ul>
+<p>Tout au long du développement, vous développerez un ensemble de tests unitaires.</p>
 </section>
 </section>
 </section>
@@ -1008,13 +989,13 @@ Important
 <ul>
 <li>Le fonctionnement votre application :
 <ul>
-<li>Zoom sur un processus central en le détaillant complètement pour que le jury comprenne la logique que vous avez mis en place. Qu’est-ce que l’utilisateur fait ? Qu’est-ce que votre produit fait&nbsp;? Comment interagit-il avec les autres composants&nbsp;? Quelles sont les classes utilisées&nbsp;? Il n’est pas utile de préciser les méthodes appelées, sauf si vous pensez que cela a un intérêt. Pour aider le lecteur, vous pouvez ajouter des diagrammes de cas d’utilisations, mais aussi des schémas divers&nbsp;;</li>
-<li>Explication <em>rapide</em> pour les autres. Votre rapport ne doit pas être un listing des fonctions pythons de votre application&nbsp;;</li>
+<li>Zoom sur un processus central en le détaillant complètement pour que le jury comprenne la logique que vous avez mise en place. Qu’est-ce que l’utilisateur fait ? Qu’est-ce que votre produit fait&nbsp;? Comment interagit-il avec les autres composants&nbsp;? Quelles sont les classes utilisées&nbsp;? Il n’est pas utile de préciser les méthodes appelées, sauf si vous pensez que cela a un intérêt. Pour aider le lecteur, vous pouvez ajouter des diagrammes de cas d’utilisations, mais aussi des schémas divers&nbsp;;</li>
+<li>Explication <em>rapide</em> pour les autres. Votre rapport ne doit pas être un listing des fonctions Python de votre application&nbsp;;</li>
 </ul></li>
 </ul>
 <p>Privilégiez la qualité des explications à la quantité. Si vous décrivez sérieusement une fonctionnalité centrale intéressante, le jury supposera que vous êtes capable de faire la même chose pour les autres. Vous pouvez illustrer vos propos en utilisant votre diagramme de classe. Cela vous permet&nbsp;:</p>
 <ul>
-<li>D’expliquer les héritages/associations utilisés</li>
+<li>D’expliquer les héritages / associations utilisés</li>
 <li>De présenter les objets métiers et comment ils sont utilisés par l’application</li>
 <li>De mettre en avant une décomposition en couche, un découplage entre les objets</li>
 </ul>
@@ -1043,13 +1024,13 @@ Important
 <p>Les outils mis en place pour réaliser le projet&nbsp;:</p>
 <ul>
 <li>L’organisation que vous avez choisie dans votre groupe&nbsp;;</li>
-<li>Les outils mis en place et leur utilisation&nbsp;;</li>
+<li>Les outils et leur utilisation&nbsp;;</li>
 <li>La démarche d’assurance qualité. Le but de cette partie est de montrer que vous avez pris en compte les évènements extérieurs qui peuvent impacter votre application.
 <ul>
 <li>Avez-vous fait des tests&nbsp;? Pourquoi&nbsp;avez-vous testé ces classes en particulier&nbsp;? Qu’est-ce que cela vous a apporté&nbsp;?</li>
 <li>Avez-vous rencontré des temps de traitement longs&nbsp;? D’où viennent-ils&nbsp;? Les avez-vous surmontés&nbsp;?</li>
 <li>Si votre source de données venait à disparaitre mais qu’une nouvelle source similaire existait, comment cela impacterait-il votre application&nbsp;?</li>
-<li>Si vous avez mis de côté des fonctionnalités au cours de votre développement, comment peuvent-elles être mis en place dans le futur&nbsp;?</li>
+<li>Si vous avez mis de côté des fonctionnalités au cours de votre développement, comment peuvent-elles être mise en place dans le futur&nbsp;?</li>
 </ul></li>
 </ul>
 </section>
@@ -1065,21 +1046,10 @@ Important
 <p>Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre de l’équipe, ami, famille) pour limiter les fautes et ainsi vous assurer qu’elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, <strong>faites-la sérieusement et honnêtement</strong>.</p>
 <hr>
 <p>Bien entendu, <strong>cette liste ne définit que les composantes minimales de votre rendu</strong>. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être&nbsp;: expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou toute autre information qui vous permet de valoriser votre travail. Vous avez le droit d’illustrer vos propos avec des figures pour aider le lecteur. Les images qui n’apportent rien à votre propos sont à proscrire.</p>
-<p>L’ordre de présentation des différents points, et de leur classement en annexe est libre. <strong>La taille optimale de ce rapport est de 25 pages hors annexe</strong>. Vous pouvez faire plus long mais dans ce cas posez-vous la question&nbsp;:&nbsp;«&nbsp;Ce que j’ajoute est-il nécessaire&nbsp;?&nbsp;». Il n’est pas obligatoire de le rédiger en LaTeX. Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Un nombre limité de coquilles dans votre production est toléré, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Remarque">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Remarque
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Dans le cas où vous rédigez votre rapport en LaTeX, faites attention au placement des images. Certains d’entre vous usent et abusent du package float et l’option [H] pour fixer les images.</p>
-<p>Cela entraine de gros espaces laissés blancs dans vos rapports et donne une mauvaise impression au lecteur. Privilégier l’option [htb]. Le placement sera moins précis, mais limitera ces zones blanches.</p>
-</div>
-</div>
+<p>L’ordre de présentation des différents points, et de leur classement en annexe est libre. <strong>La taille optimale de ce rapport est de 25 pages hors annexe</strong>. Vous pouvez faire plus long mais dans ce cas posez-vous la question&nbsp;:&nbsp;«&nbsp;Ce que j’ajoute est-il nécessaire&nbsp;?&nbsp;».</p>
+<p>le format final attendu est le pdf.</p>
+<p>Pour rédiger, il est vivement conseillé d’utilier les template Typst fourni dans le template de projet pour rédiger.</p>
+<p>Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Cela arrive de laisser passer une ou deux coquilles, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.</p>
 </section>
 </section>
 <section id="le-code" class="level3">
@@ -1101,16 +1071,35 @@ Important
 </div>
 <p>Le code source complet de l’application contenant à minima :</p>
 <ul>
-<li>Un fichier <code>README.md</code> à la racine du projet présentant votre projet. Cette page sera rédigée <u>en anglais</u> et devra&nbsp;:
+<li>Un fichier <code>README.md</code> à la racine du dépot <u>rédigé en anglais</u> à destination d’un utilisateur et devra&nbsp;contenir :
 <ul>
-<li>Présenter rapidement votre application (fonctionnalités, besoins auquels elle répond)</li>
-<li>Expliquer comment l’installer</li>
+<li>une présentation rapide de votre application (principales fonctionnalités, besoins auquels elle répond)</li>
+<li>un mode opératoire d’installation et de lancement rapide</li>
 </ul></li>
-<li>Un fichier <code>requirements.txt</code> avec tous les modules pythons à installer pour faire fonctionner votre application</li>
-<li>un dossier <code>src</code> contenant votre code source et un fichier <code>main.py</code> ou <code>__main__.py</code> qui permet de lancer votre application</li>
+<li>Un fichier <code>README.md</code> dans le dossier <em>backend</em> destiné aux personnes souhaitant continuer le développement de l’application :
+<ul>
+<li>Présentation de l’architecture en couches</li>
+<li>Outils de développement (tests, logs, qualité…)</li>
+</ul></li>
+<li>Un fichier <code>backend/pyproject.toml</code> avec tous les modules pythons à installer pour faire fonctionner votre application</li>
+<li>un dossier <code>backend/src</code> contenant votre code source et un fichier <code>main.py</code> ou <code>__main__.py</code> qui permet de lancer votre application</li>
 <li>un fichier <code>data/init_db.sql</code> permettant la création des tables et des données</li>
 </ul>
 <p>Entre ce rendu de code et la soutenance, vous avez le droit de modifier votre code. Cependant, ces modifications ne serviront qu’à améliorer la qualité de la démonstration car ce nouveau code ne comptera pas pour la notation.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seul le code de la partie <em>backend</em> sera noté !</p>
+<p>Si vous développez un <em>frontend</em>, vous pouvez donc le coder avec un peu moins de rigueur.</p>
+</div>
+</div>
 </section>
 <section id="la-soutenance" class="level3">
 <h3 class="anchored" data-anchor-id="la-soutenance">La soutenance</h3>

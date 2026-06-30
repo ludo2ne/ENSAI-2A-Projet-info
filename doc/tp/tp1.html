@@ -9,7 +9,7 @@
 <meta name="author" content="Ludovic Deneuville">
 <meta name="description" content="Lab 1">
 
-<title>Git, Example of Application – Projet info 2A</title>
+<title>Git reminder, Example of Application – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -395,10 +395,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp6.html">
- <span class="dropdown-text">Lab 6 - Bonus</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
@@ -422,10 +418,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.html">
- <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
   </li>
@@ -476,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Git, Example of Application</h1>
+<h1 class="title">Git reminder, Example of Application</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Git</div>
     <div class="quarto-category">Datalab</div>
@@ -635,7 +627,7 @@ Caution
 <p>By having <u>full access to your local files and project structure</u>, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.</p>
 <p>To use it in VS Code, there are a few steps you need to take first:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Follow these <a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#assistant-ia" target="_blank">instructions</a> to <strong>set up</strong> AI agent.</label></li>
+<li><label><input type="checkbox">Follow these <a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#ia-agent" target="_blank">instructions</a> to <strong>set up</strong> AI agent.</label></li>
 </ul>
 </section>
 </section>
@@ -695,8 +687,11 @@ Warning
 </ul>
 <p>Let’s do this manually:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">In the catalog, select <strong>VSCode-python</strong> and click <strong>Launch</strong> once</label></li>
-<li><label><input type="checkbox">Initialization script (URL): <code>https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh</code></label></li>
+<li><label><input type="checkbox">In the catalog, select <strong>VSCode-python</strong> and click <span class="blue-button">Launch</span> <strong><u>once</u></strong></label></li>
+<li><label><input type="checkbox">Initialization script (URL): <code>https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh</code></label>
+<ul>
+<li>This script will install/uninstall VSCode extensions</li>
+</ul></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -708,19 +703,15 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This script:</p>
-<ul>
-<li>install packages</li>
-<li>install/uninstall VSCode extensions</li>
-</ul>
 <p><a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/advanced.html" target="_blank">More about initialization script</a></p>
 </div>
 </div>
 <ul class="task-list">
 <li><label><input type="checkbox">Fill <strong>Git repository url</strong> using https url of your remote repository</label></li>
-<li><label><input type="checkbox">Expose ports 5000 and 8000</label></li>
+<li><label><input type="checkbox">Select <em>Open the service in the clone folder</em></label></li>
+<li><label><input type="checkbox">Network: expose ports 5000 and 8000</label></li>
 <li><label><input type="checkbox">Enable AI Assistant</label></li>
-<li><label><input type="checkbox"><strong>Lanch</strong> and Open the service</label></li>
+<li><label><input type="checkbox"><span class="blue-button">Launch</span> and <span class="blue-button">Open</span> the service</label></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -741,7 +732,7 @@ Important
 <li>also generate a link that starts the service using that configuration</li>
 </ul>
 <blockquote class="blockquote">
-<p>Example of link: <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.6&amp;s3=default&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&amp;git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000" target="_blank">https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.6&amp;s3=default&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&amp;git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&amp;networking.user.enabled=true&amp;networking.user.ports[1]=8000</a></p>
+<p>Example of link: <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.7&amp;s3=default&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh%C2%BB&amp;git.repository=%C2%ABhttps%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git%C2%BB&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000" target="_blank">https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.7&amp;s3=default&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh%C2%BB&amp;git.repository=%C2%ABhttps%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git%C2%BB&amp;networking.user.enabled=true&amp;networking.user.ports[1]=8000</a></p>
 </blockquote>
 </section>
 <section id="local-repositories" class="level3" data-number="2.3">
@@ -752,7 +743,7 @@ Important
 <li><label><input type="checkbox">Open a new terminal</label>
 <ul>
 <li>Top left, icon with 3 horizontal bars &gt; Terminal &gt; New</li>
-<li>or use shortcut CTRL + SHIFT + C</li>
+<li>or use shortcut (CTRL + ù or CTRL + SHIFT + C)</li>
 </ul></li>
 <li><label><input type="checkbox">List all files and directories in the current folder</label>
 <ul>
@@ -774,8 +765,9 @@ Important
 </ul>
 </div>
 </div>
+<p>Normally, the root folder of your file explorer is your repository (since you checked option <em>Open the service in the clone folder</em>).</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Position yourself in your repo</label>
+<li><label><input type="checkbox">If not, position yourself in your repo</label>
 <ul>
 <li>Manually: File &gt; <strong>Open Folder</strong> &gt; <code>/home/onyxia/work/&lt;repo_name&gt;</code> &gt; OK</li>
 <li>Or command: <code>code-server /home/onyxia/work/ENSAI-2A-projet-info-template</code></li>
@@ -802,7 +794,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You should be connected via push and fetch (pull) to the URL of your remote repository, <u>including the token</u>:</p>
+<p>You should be connected via push and fetch (pull) to the URL of your remote repository, <strong><u>including the token</u></strong>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">-v</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://ghp_dadadirladada@github.com/ludo2ne/ENSAI-2A-projet-info-template.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://ghp_dadadirladada@github.com/ludo2ne/ENSAI-2A-projet-info-template.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -847,7 +839,7 @@ Important
 </tr>
 <tr class="even">
 <td>.vscode/</td>
-<td>Stores editor settings, extensions, and debugger configurations.</td>
+<td>Editor settings, extensions, and debugger configurations.</td>
 </tr>
 </tbody>
 </table>
@@ -865,15 +857,19 @@ Important
 </thead>
 <tbody>
 <tr class="odd">
+<td>README.md</td>
+<td>To explain the architecture and development tools.</td>
+</tr>
+<tr class="even">
 <td>pyproject.toml</td>
 <td>Defines project metadata, dependencies, and build configurations.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>uv.lock</td>
 <td>A lockfile that ensures exact, reproducible dependency versions.</td>
 </tr>
-<tr class="odd">
-<td>logging.yaml</td>
+<tr class="even">
+<td>logging_config.yml</td>
 <td>Configuration file defining how the application logs information.</td>
 </tr>
 </tbody>
@@ -881,7 +877,19 @@ Important
 <p>Let’s focus on some files.</p>
 <section id="readme" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="readme"><span class="header-section-number">3.1</span> README</h3>
-<p>The README file is <strong><u>essential</u></strong> for every project. It contains all the information needed to describe, install and use the application.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The root README provides high-level instructions for users to launch the application, while the README files located in the backend/ and frontend/ directories contain technical documentation intended for developers.”</p>
+</div>
+</div>
 <p>Follow instructions to :</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Install required packages</label></li>
@@ -930,6 +938,13 @@ Note
 <li><code>"editor.formatOnSave": true</code>: apply format when you save a file</li>
 <li><code>"editor.insertSpaces": true</code>: replace tabulation by spaces</li>
 </ul>
+<hr>
+<ul class="task-list">
+<li><label><input type="checkbox">Feel free to modify for example the theme or the font size</label>
+<ul>
+<li>CTRL + SPACE to autocomplete</li>
+</ul></li>
+</ul>
 </section>
 <section id="pyproject.toml" class="level3" data-number="3.3">
 <h3 data-number="3.3" class="anchored" data-anchor-id="pyproject.toml"><span class="header-section-number">3.3</span> pyproject.toml</h3>
@@ -938,11 +953,12 @@ Note
 <li><strong>Project Metadata:</strong> Name, version, description, authors, etc.</li>
 <li><strong>Dependencies:</strong> Core libraries required to run the app
 <ul>
-<li>including dev libraries (only for development)</li>
+<li>including dev libraries (needed only for development, not for running the application)</li>
 </ul></li>
 <li><strong>Build System:</strong> Instructions for Python tools on how to install and build your package.</li>
 <li><strong>Tool Configuration:</strong> Settings for various tools (e.g., <code>pytest</code>, <code>ruff</code>, etc.) to avoid having multiple config files.</li>
 </ul>
+<p>As part of your project, you will need to fill out this file.</p>
 </section>
 <section id="uv.lock" class="level3" data-number="3.4">
 <h3 data-number="3.4" class="anchored" data-anchor-id="uv.lock"><span class="header-section-number">3.4</span> uv.lock</h3>
@@ -1005,7 +1021,7 @@ Note
 <h3 data-number="4.2" class="anchored" data-anchor-id="a-webservice"><span class="header-section-number">4.2</span> A webservice</h3>
 <p>We will discuss webservices in more detail in Lab 3.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Following the instructions in the README, lanch the backend application</label>
+<li><label><input type="checkbox">Following the instructions in the README, lanch the <em>backend</em> application</label>
 <ul>
 <li>Once it starts, <strong>don’t click on the pop-up</strong>. It won’t work!</li>
 </ul></li>
@@ -1029,12 +1045,16 @@ Note
 <p>Let’s start by querying the web service from the inside:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Open a new terminal</label></li>
-<li><label><input type="checkbox">Launch <code>curl http://localhost:5000/hello/Chewbacca | jq .</code></label></li>
+<li><label><input type="checkbox">Launch <code>curl http://localhost:5000/hello/Chewbacca</code></label>
+<ul>
+<li>add <code>| jq .</code> at the end for pretty print</li>
+<li>add option <code>-v</code> after <em>curl</em>: verbose mode</li>
+</ul></li>
 </ul>
 <p>Then from the outside:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Go back to <a href="https://datalab.sspcloud.fr/my-services" target="_blank">My service</a> page</label></li>
-<li><label><input type="checkbox">Click on <strong>Open</strong> button of the service</label></li>
+<li><label><input type="checkbox">Click on <span class="blue-button">Open</span> button of the service</label></li>
 <li><label><input type="checkbox">Click on <em>Port 5000</em> link</label></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1047,7 +1067,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using this link, even your neighbor can access it.</p>
+<p>Using this link, even your neighbour can access it.</p>
 </div>
 </div>
 <p>You are being redirected to the <em>/docs</em> endpoint, the Swagger API.</p>
@@ -1055,8 +1075,19 @@ Note
 <li><label><input type="checkbox">List all players (Try it out <span class="emoji" data-emoji="arrow_right">➡️</span> Execute)</label></li>
 </ul>
 <p>If the request was successful, you will receive an HTTP 200 code and a response body.</p>
+<p>If not, check the terminal in which you launched the application. Perhaps you forgot to reset the database.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Search for players by their ID</label>
+<ul>
+<li>Try IDs 6 and 99</li>
+</ul></li>
+</ul>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<div class="notes">
+<p>TODO simplement parler de code 200, 400 ou 500 et détailler au TP4</p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="HTTP Status codes">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1065,7 +1096,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
@@ -1172,15 +1203,6 @@ Note
 </div>
 </div>
 </div>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="notes">
-<p>TODO Pas la bonne manière de faire, il faut utiliser un PlayerReadModel sans pwd et token</p>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">In your opinion, is it normal to see the hashed passwords of all the players?</label></li>
-<li><label><input type="checkbox">Find and fix the service method that needs to be corrected</label></li>
-<li><label><input type="checkbox">To verify this, you need to stop and restart the web service</label></li>
-</ul>
 <p>Feel free to test <strong>GET</strong> requests using curl and/or the Swagger</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Check the logs to see the methods called</label></li>
@@ -1198,7 +1220,10 @@ Caution
 <p>For other types of http request (PUT, POST, DELETE), you will see how to make these requests in a later tutorial.</p>
 </div>
 </div>
-<p>This diagram shows how a request to fetch a player travels through the application layers, from the API router to the database.</p>
+<p>The diagram below shows how a request to fetch a player travels through the application layers, from the API router to the database.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Open the backend log file to see the same behavior</label></li>
+</ul>
 <div style="background-color: #d7e2df;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -1235,15 +1260,16 @@ Caution
 </div>
 </div>
 </div>
-<ul class="task-list">
-<li><label><input type="checkbox">Open the backend log file to see the same behavior</label></li>
-</ul>
 <p>Now that our API is up and running, it’s quite satisfying to see it working. However, interacting with raw JSON isn’t exactly a luxury—this is where a proper user interface comes in.</p>
 </section>
 <section id="menu-application" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="menu-application"><span class="header-section-number">4.3</span> Menu application</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Follow README instructions to run the menu application</label>
+<li><label><input type="checkbox">Open a new terminal</label>
+<ul>
+<li><span class="emoji" data-emoji="bulb">💡</span> F2 or Right click to rename terminals</li>
+</ul></li>
+<li><label><input type="checkbox">Follow frontend README instructions to run the menu application</label>
 <ul>
 <li><strong>Don’t click on the pop-up!</strong></li>
 </ul></li>
@@ -1261,8 +1287,9 @@ Caution
 <li>then ask the AI agent <span class="emoji" data-emoji="robot">🤖</span></li>
 </ul></li>
 </ul>
+<p><span class="emoji" data-emoji="construction">🚧</span> make it simpler</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1271,7 +1298,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This requirement appears at two levels to balance Security and UX:</p>
 <ul>
@@ -1380,7 +1407,7 @@ Note
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  action <span class="op">=</span> <span class="st">"you have to pull first"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  conflict_probability <span class="op">=</span> <span class="fl">0.95</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Help">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1389,7 +1416,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><a href="https://ludo2ne.github.io/ENSAI-tools/doc/git/presentation.html#la-routine-git" target="_blank">The sequence of Git commands</a> should become automatic.</p>
 <p>Read the Git messages carefully!</p>
@@ -1421,13 +1448,23 @@ The remote changes (the ones your teammate pushed)
 </ul></li>
 <li><label><input type="checkbox">Test your program, and once again, <em>add, commit and push</em></label></li>
 </ul>
-<div class="{.callout-important&quot;}">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Having a conflict isn’t a big deal!</p>
 <p>Having a conflict isn’t a big deal!</p>
 <p>Having a conflict isn’t a big deal!</p>
 <p><strong>Conflict ≠ Error</strong></p>
 <p>This simply happens when Git encounters 2 versions and it doesn’t have a <span class="emoji" data-emoji="crystal_ball">🔮</span> or a <span class="emoji" data-emoji="game_die">🎲</span> to choose which is the right one.</p>
 <p>To avoid conflicts, get organised with your team to avoid working on the same files at the same time as much as possible.</p>
+</div>
 </div>
 <p>Now that you’ve seen what an application looks like and you’re up and running with Git, let’s create your real project repository.</p>
 </section>

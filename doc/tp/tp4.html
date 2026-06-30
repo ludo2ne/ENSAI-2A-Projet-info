@@ -396,10 +396,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/tp/tp6.html">
- <span class="dropdown-text">Lab 6 - Bonus</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
@@ -423,10 +419,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/divers/json-server.html">
- <span class="dropdown-text">Json-server</span></a>
   </li>  
     </ul>
   </li>
@@ -513,6 +505,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><span class="emoji" data-emoji="construction">🚧</span></p>
 <div class="notes">
+<ul class="task-list">
+<li><label><input type="checkbox">Move parts without questions to ENSAI-tools</label>
+<ul>
+<li>API client (convert into list[Object], df), API create (python, json-tools)</li>
+</ul></li>
+</ul>
 <p>https://www.insee.fr/fr/metadonnees/geographie/commune/35047-bruz</p>
 <p>https://portail-api.insee.fr/catalog/api/5029cf12-e930-4d24-a9cf-12e9307d241d/doc?page=36a0f1a5-af70-4662-a0f1-a5af709662f4 curl -X ‘GET’<br>
 ‘https://api.insee.fr/metadonnees/geo/commune/35047/ascendants’<br>
@@ -542,6 +540,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
+<section id="create-your-branch" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
+<p>For each practical session, the teacher provides a starting branch: <code>tpN-start</code>.</p>
+<p>You will have to create a personal branch: <code>&lt;username&gt;-tpN</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>To start with a clean and up-to-date codebase:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest remote information</label>
+<ul>
+<li>Use this if the <code>tpN-start</code> branch was updated after you cloned the repository</li>
+</ul></li>
+<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp2 origin/tp2-start</code></label></li>
+<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp2</code> to publish your branch on the remote</label></li>
+</ul>
+<p>Then use the standard Git cycle: add, commit, push after each part.</p>
+</section>
 </section>
 <section id="client-server-principle" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="client-server-principle"><span class="header-section-number">1</span> Client-Server principle</h2>
@@ -709,38 +722,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><span class="emoji" data-emoji="construction">🚧</span> example with parameters ?limit…</p>
 </section>
-<section id="professional-api-clients" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="professional-api-clients"><span class="header-section-number">2.3</span> Professional API Clients</h3>
-<p>To perform more complex actions (such as <code>POST</code>, <code>PUT</code>, or <code>DELETE</code>), a web browser is not enough. You will need a specialized tool to build your requests and inspect the responses.</p>
-<p>Depending on your preference, you can use one of the following methods:</p>
-<section id="desktop-applications" class="level4" data-number="2.3.1">
-<h4 data-number="2.3.1" class="anchored" data-anchor-id="desktop-applications"><span class="header-section-number">2.3.1</span> Desktop Applications</h4>
-<p>These are powerful tools that you download and install:</p>
-<ul>
-<li><a href="https://www.usebruno.com/" target="_blank">Bruno</a></li>
-<li><a href="https://insomnia.rest/" target="_blank">Insomnia</a></li>
-</ul>
-</section>
-<section id="online-tools" class="level4" data-number="2.3.2">
-<h4 data-number="2.3.2" class="anchored" data-anchor-id="online-tools"><span class="header-section-number">2.3.2</span> Online Tools</h4>
-<p>No installation required. Perfect for a quick test directly in your browser.</p>
-<ul>
-<li><a href="https://hoppscotch.io/" target="_blank">https://hoppscotch.io/</a></li>
-<li><a href="https://reqbin.com/" target="_blank">https://reqbin.com/</a></li>
-<li><a href="https://httpie.io/app" target="_blank">https://httpie.io/app</a></li>
-</ul>
-</section>
-<section id="command-line" class="level4" data-number="2.3.3">
-<h4 data-number="2.3.3" class="anchored" data-anchor-id="command-line"><span class="header-section-number">2.3.3</span> Command Line</h4>
-<p>If you prefer staying in the terminal, you can use <a href="https://curl.se/" target="_blank"><strong>cURL</strong></a>.</p>
-<p>It is available on almost all operating systems.</p>
-</section>
-<section id="interactive-documentation-swagger" class="level4" data-number="2.3.4">
-<h4 data-number="2.3.4" class="anchored" data-anchor-id="interactive-documentation-swagger"><span class="header-section-number">2.3.4</span> Interactive Documentation (Swagger)</h4>
-<p>If the web service provides it, always check the <strong>Swagger/OpenAPI</strong> page (usually at the <code>/docs</code> endpoint).</p>
-<p>It is the best way to see the available endpoints, the required parameters, and even test them directly through a web interface.</p>
-</section>
-</section>
 </section>
 <section id="exploring-your-projects-api" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="exploring-your-projects-api"><span class="header-section-number">3</span> Exploring your project’s API</h2>
@@ -805,6 +786,15 @@ Note
 </div>
 <p>It’s all well and good to marvel at all that JSON code, but it’s usually machines and programs that consume it.</p>
 </section>
+<section id="api-clients" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="api-clients"><span class="header-section-number">3.2</span> API Clients</h3>
+<p>Having a Swagger is very convenient and easy to use. However, if one isn’t available, there are <a href="https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#more-complete-requests" target="_blank">other ways</a> to communicate with a web service.</p>
+<p>Create a new player using:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">an APi Client</label></li>
+<li><label><input type="checkbox">a curl command</label></li>
+</ul>
+</section>
 </section>
 <section id="the-client-challenge-data-mapping" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="the-client-challenge-data-mapping"><span class="header-section-number">4</span> The Client Challenge (Data Mapping)</h2>
@@ -824,67 +814,41 @@ Note
 </div>
 <section id="the-mission" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">4.1</span> The Mission</h3>
-<blockquote class="blockquote">
-<p>This part is an example to retrieve peoples from star wars API. No questions.</p>
-</blockquote>
-<p>We will use package <a href="https://requests.readthedocs.io/en/latest/user/quickstart/" target="_blank">requests</a>.</p>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step1: Call the web service</strong></p>
-<p>Run the query as you would with another tool and store the response in a variable.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url<span class="op">=</span><span class="st">"https://swapi.info/api/people/"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step2: Check response</strong></p>
-<p>Then, see if the answer is useful.</p>
-<p>If everything goes well, you can retrieve the JSON content.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">!=</span> <span class="dv">200</span>:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Cannot reach (HTTP </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">): </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    raw_json <span class="op">=</span> response.json()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(raw_json, indent<span class="op">=</span><span class="dv">2</span>))  <span class="co"># Pretty print</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step3: Convert into business objects</strong></p>
-<p>Imagine you have a <em>People</em> (name, birth, hair, bmi) business object.</p>
-<p>You will have to iterate among all elements to create <em>People</em>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>peoples <span class="op">=</span> []</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> elt <span class="kw">in</span> raw_json:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create an object</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> People(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span>elt[<span class="st">"name"</span>],</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        birth<span class="op">=</span>elt[<span class="st">"birth_year"</span>],</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        hair<span class="op">=</span>elt[<span class="st">"hair_color"</span>],</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        bmi<span class="op">=</span>compute_bmi(elt.get(<span class="st">"mass"</span>), elt.get(<span class="st">"height"</span>))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If it succeed, add to the list</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p:</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      peoples.append(p)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_bmi(mass_raw, height_raw) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculates BMI based on weight and height in centimeters."""</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        mass <span class="op">=</span> <span class="bu">float</span>(mass_raw)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        height <span class="op">=</span> <span class="bu">float</span>(height_raw) <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">round</span>(mass <span class="op">/</span> (height<span class="op">**</span><span class="dv">2</span>), <span class="dv">2</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> (<span class="pp">ValueError</span>, <span class="pp">TypeError</span>, <span class="pp">ZeroDivisionError</span>):</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<p>Your application needs to retrieve a <strong>list of games</strong> from a web service.</p>
+<p>Your task is to retrieve this data and then convert it into a suitable format. <a href="https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#consuming-an-api-with-python" target="_blank">Here is an example</a></p>
+<ol type="1">
+<li>Call the web service</li>
+<li>Check the response</li>
+<li>Convert JSON response into a list of Games</li>
+</ol>
+</section>
+<section id="the-server" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="the-server"><span class="header-section-number">4.2</span> The server</h3>
+<p><span class="emoji" data-emoji="construction">🚧</span></p>
+<p>TODO: Launch an API, Give a link.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Workarround">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Workarround
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You can use some fields directly as attributes, and others as BMI (Body Mass Index) you won’t find it directly, you have to compute it.</p>
+<p>If the server is not available, simply:</p>
+<ul>
+<li>Create a file <em>games.json</em></li>
+<li>Import data from this file instead of the API</li>
+</ul>
 </div>
 </div>
-<p><span class="emoji" data-emoji="tada">🎉</span> You have converted a dictionary list into a list of business objects that can be used directly by your methods.</p>
+</div>
 </section>
-<section id="your-turn" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">4.2</span> Your turn</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span> TODO: Give a link, and simple procedure</p>
+<section id="your-turn" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">4.3</span> Your turn</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Create a <em>client</em> folder and create file <em>game_client.py</em></label></li>
 </ul>
@@ -894,24 +858,24 @@ Note
 <div class="code-with-filename-file">
 <pre><strong>/games</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="/games"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"1"</span><span class="fu">,</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Alice"</span><span class="ot">,</span> <span class="st">"Bob"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Alice"</span><span class="fu">,</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Arena 1"</span><span class="fu">,</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"coinflip"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"2"</span><span class="fu">,</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Eve"</span><span class="ot">,</span> <span class="st">"Frank"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="/games"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"1"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Alice"</span><span class="ot">,</span> <span class="st">"Bob"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Alice"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Arena 1"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"coinflip"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"2"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Eve"</span><span class="ot">,</span> <span class="st">"Frank"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is a list <code>[element1, element2]</code> of dictionaries <code>{key1: value1, key2: value2}</code>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -944,54 +908,9 @@ Important
 <section id="building-your-own-api" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="building-your-own-api"><span class="header-section-number">5</span> Building your own API</h2>
 <p>Finally, you will become the <strong>Server</strong>. You will expose your <code>Game</code> data via a professional REST API using <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>.</p>
-<section id="the-most-simple-api" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="the-most-simple-api"><span class="header-section-number">5.1</span> The most simple API</h3>
-<blockquote class="blockquote">
-<p>Example, no question.</p>
-</blockquote>
-<p>Below is the code and command to create and launch the simplest possible API using FastAPI:</p>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step1: Create the API</strong></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>main.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="main.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()                                 <span class="co"># 1. Create the application instance</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)                                   <span class="co"># 2. Define a root endpoint</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_root():</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step2: Launch the Server</strong></p>
-<p>Launch it with command: <code>uvicorn main:app --host 0.0.0.0 --port 5000 --reload</code></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>uvicorn: The ASGI server that runs your application</li>
-<li>main:app: Refers to your file <strong>main.py</strong> and the FastAPI instance inside it <em>app</em></li>
-<li>–host 0.0.0.0: Makes the server accessible on your local network</li>
-<li>–port 5000: Sets the port the API will listen on</li>
-<li>–reload: it automatically restarts the server whenever you save a file</li>
-</ul>
-</div>
-</div>
-<p><span class="emoji" data-emoji="arrow_right">➡️</span> <strong>Step3: Query the API</strong></p>
-<p>Using <code>curl -X GET http://127.0.0.1:5000/</code> or another client.</p>
-<p>Expected output:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"message"</span><span class="fu">:</span> <span class="st">"Hello World"</span><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A production-ready API does much more than just return a single message; it uses various HTTP methods, handles query parameters, and navigates structured URL paths to interact with complex data.</p>
-</section>
-<section id="your-first-endpoint" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="your-first-endpoint"><span class="header-section-number">5.2</span> Your First Endpoint</h3>
+<p>It’s pretty easy to <a href="https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#creating-simple-apis" target="_blank">create your own API with FastAPI</a>.</p>
+<section id="your-first-endpoint" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="your-first-endpoint"><span class="header-section-number">5.1</span> Your First Endpoint</h3>
 <ul class="task-list">
 <li><label><input type="checkbox">Open file <strong>main.py</strong></label></li>
 </ul>
@@ -1018,12 +937,12 @@ Note
 <li><label><input type="checkbox">Open file <strong>game_controller.py</strong></label></li>
 <li><label><input type="checkbox">Add this endpoint below and test it in the swagger:</label></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_mock_games():</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">1</span>, <span class="st">"mode"</span>: <span class="st">"coinflip"</span>, <span class="st">"winner"</span>: <span class="st">"Miguel"</span>},</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">2</span>, <span class="st">"mode"</span>: <span class="st">"dice"</span>, <span class="st">"winner"</span>: <span class="st">"Batricia"</span>}</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_mock_games():</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">1</span>, <span class="st">"mode"</span>: <span class="st">"coinflip"</span>, <span class="st">"winner"</span>: <span class="st">"Miguel"</span>},</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">2</span>, <span class="st">"mode"</span>: <span class="st">"dice"</span>, <span class="st">"winner"</span>: <span class="st">"Batricia"</span>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>OK, that’s a start. Now, let’s aim to display all <code>Games</code> played by a specific <code>Player</code>. We’ll proceed step by step modifying the previous method.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Add parameter <em>id_player</em> to the method</label>
@@ -1048,12 +967,12 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>player_controller.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="player_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /player/{id_player}/games</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/players/</span><span class="sc">{id_player}</span><span class="st">/games"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameModel])</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, service: game_service<span class="op">=</span>Depends(get_game_service)):</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ... <span class="co"># Player don't exists</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> ...</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ... <span class="co"># Call a service</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="player_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /player/{id_player}/games</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/players/</span><span class="sc">{id_player}</span><span class="st">/games"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameModel])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, service: game_service<span class="op">=</span>Depends(get_game_service)):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ... <span class="co"># Player don't exists</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> ...</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ... <span class="co"># Call a service</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1103,31 +1022,31 @@ Tip
 <p>How can we ensure that it isn’t exposed?</p>
 <p>Fortunately, there is a solution for managing data input and output!</p>
 </section>
-<section id="data-validation" class="level3" data-number="5.3">
-<h3 data-number="5.3" class="anchored" data-anchor-id="data-validation"><span class="header-section-number">5.3</span> Data Validation</h3>
+<section id="data-validation" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="data-validation"><span class="header-section-number">5.2</span> Data Validation</h3>
 <p>When you expose an endpoint, you don’t have to reveal all the data you have. It may be a good idea to hide passwords, tokens, and so on…</p>
 <p>Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this “garbage” from entering your system, we use <strong>Pydantic models</strong>.</p>
 <p>A Pydantic model acts as a <strong>Data Contract</strong>: it defines exactly what the data should look like. If the incoming JSON doesn’t match the contract, FastAPI will automatically reject the request with a “422 Unprocessable Entity” error.</p>
-<section id="define-a-model" class="level4" data-number="5.3.1">
-<h4 data-number="5.3.1" class="anchored" data-anchor-id="define-a-model"><span class="header-section-number">5.3.1</span> Define a Model</h4>
+<section id="define-a-model" class="level4" data-number="5.2.1">
+<h4 data-number="5.2.1" class="anchored" data-anchor-id="define-a-model"><span class="header-section-number">5.2.1</span> Define a Model</h4>
 <p>Example: in the <em>player_model.py</em> file, we define how a Player should look when communicating with the API:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, Field</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerModel(BaseModel):</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    id_player: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    username: <span class="bu">str</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    password: <span class="bu">str</span> <span class="op">=</span> Field(..., min_length<span class="op">=</span><span class="dv">35</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, Field</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerModel(BaseModel):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    id_player: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    username: <span class="bu">str</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    password: <span class="bu">str</span> <span class="op">=</span> Field(..., min_length<span class="op">=</span><span class="dv">35</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="use-it-in-the-controller" class="level4" data-number="5.3.2">
-<h4 data-number="5.3.2" class="anchored" data-anchor-id="use-it-in-the-controller"><span class="header-section-number">5.3.2</span> Use it in the Controller</h4>
+<section id="use-it-in-the-controller" class="level4" data-number="5.2.2">
+<h4 data-number="5.2.2" class="anchored" data-anchor-id="use-it-in-the-controller"><span class="header-section-number">5.2.2</span> Use it in the Controller</h4>
 <p>Let’s look at the <em>create_player()</em> method in <strong>player_controller.py</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Players"</span>])</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Players"</span>])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Here is the magic happening behind the scenes:</strong></p>
 <ol type="1">
 <li>The Request: a client sends request to the endpoint with a JSON body: <code>{"username": "bob", "email": "bob@email.com", ...}</code>.</li>
@@ -1158,8 +1077,8 @@ Tip
 <p>OK, cool. We already have a model for Game, but let’s say we want to create an endpoint that returns all the games. If we use this model, the games returned will just be a list of opponents and options. Some information is missing.</p>
 </section>
 </section>
-<section id="multiple-models" class="level3" data-number="5.4">
-<h3 data-number="5.4" class="anchored" data-anchor-id="multiple-models"><span class="header-section-number">5.4</span> Multiple Models</h3>
+<section id="multiple-models" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="multiple-models"><span class="header-section-number">5.3</span> Multiple Models</h3>
 <blockquote class="blockquote">
 <p>The more, the better.</p>
 </blockquote>
@@ -1194,7 +1113,7 @@ Tip
 <li><label><input type="checkbox">Modify endpoint <code>GET /game?id_player=?</code> to use this model</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Going Further">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1203,7 +1122,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>While using two models is a great start, professional <strong>APIs</strong> often use even more granular models to handle different stages of a resource’s lifecycle. You could further optimize this by implementing:</p>
 <ul>
@@ -1215,8 +1134,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="security-token-based-authentication" class="level3" data-number="5.5">
-<h3 data-number="5.5" class="anchored" data-anchor-id="security-token-based-authentication"><span class="header-section-number">5.5</span> Security: Token-based Authentication</h3>
+<section id="security-token-based-authentication" class="level3" data-number="5.4">
+<h3 data-number="5.4" class="anchored" data-anchor-id="security-token-based-authentication"><span class="header-section-number">5.4</span> Security: Token-based Authentication</h3>
 <blockquote class="blockquote">
 <p>Bonus</p>
 </blockquote>
@@ -1237,17 +1156,17 @@ Tip
 </div>
 <p><strong>The Security Contract:</strong> - <strong>Header Key:</strong> <code>X-Auth-Token</code> - <strong>Valid Value:</strong> <code>secret-key-123</code></p>
 <p><strong>Example of a protected endpoint in your controller:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul class="task-list">
 <li><label><input type="checkbox"><strong>Add Security</strong>: Protect your <code>POST</code> and <code>DELETE</code> routes with the <code>X-Auth-Token</code> check.</label></li>
 <li><label><input type="checkbox"><strong>Test with Swagger</strong>: Verify that a request without the token returns a <code>401</code>.</label></li>
