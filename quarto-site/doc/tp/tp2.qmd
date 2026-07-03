@@ -100,7 +100,7 @@ classDiagram
     + player2 : Player
     + game_mode : str
     + winner : Player
-    + str: detail
+    + description: str
     + timestamp : datetime
   }
 
@@ -127,7 +127,7 @@ classDiagram
     + player2 : Player
     + game_mode : str
     + winner : Player
-    + str: detail
+    + description: str
     + timestamp : datetime
   }
 
@@ -151,7 +151,7 @@ Whenever you are asked to create a new class, this implicitly means you must als
   - Set `id = None` it will be filled later when the object is persisted in the database
   - *winner*: Player or None if it is a draw
   - *game_mode*: The type of game played ("coinflip" or "dice")
-  - *detail*: To store more details about the game
+  - *description*: To store more details about the game
 - [ ] Add *__str__()* method returning for example:
 
 > *coinflip* between Jacky and Jackie. Winner: Jackie
@@ -280,24 +280,59 @@ With this new architecture, you can add a new game mode with very few changes to
 
 ### Decoupling Scoring
 
-We want to extract the methods used to calculate the Elo rating in GameService.
+::: {.callout-note}
+The methods *update_elo()*, *compute_elo()* and *expected_score()* do not belong in the `GameService` class.
+
+They are used to update players' Elo ratings, so let’s move them to a separate class.
+:::
 
 - [ ] Let's start by simply creating a business class `ScoringStrategy`
-- [ ] Implement method *compute(p1, p2, winner)*
-  - it updates elo of both players
+  - Move the three methods into this class 
+- [ ] Update method *update_player_ratings(game)*, replacing parameters by a `Game` object
+- [ ] In `GameService`, call that method
+  - Anyway, it's better to keep the DAO calls within the service (*PlayerDao().update()*)
+
+
+By moving the calculation logic from `GameService` to `ScoringStrategy`, you have implemented the **Strategy Pattern** and applied the principle of **Separation of Concerns**.
+
+The Strategy Pattern decouples the game orchestration from the scoring mathematics. This makes your system highly extensible: you can swap the Elo algorithm for another without touching the core game logic, adhering to the **Open/Closed Principle**.
 
 
 ### GameService refactor
 
 Let's finally put the pieces of the puzzle together in the `GameService` class, method *play()*:
 
-- [ ] Add a parameter *game_mode*
+- [ ] Update parameters
+  - remove *choice* parameter
+  - add *game_mode: str*
+  - add at the end *\*\*kwargs* to carry any additional parameters
 - [ ] Get players (nothing to change)
 - [ ] Get the game mode using the factory
 - [ ] Play the game
 - [ ] Update elo of both players
+- [ ] Return a `Game` object
 
-We should return a Game object, but for now, let's leave it as is.
+
+### GameController refactor
+
+In the controller, you call the *play()* method of the service that has been updated.
+
+- [ ] add parameter *req.game_mode* in third position to method *play()* called
+
+You receive a Game object; use it.
+
+- [ ] update values in the *GameResponse*
+
+```{.python}
+    return GameResponse(
+        username1=game.player1.username,
+        username2=game.player2.username,
+        description=game.description,
+        winner=game.winner.username,
+        new_elo1=game.player1.elo,
+        new_elo2=game.player2.elo,
+    )
+```
 
 
 ## Unit tests
