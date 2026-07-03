@@ -1,15 +1,7 @@
 
-# Template
-
-- [ ] Clean README
-- [ ] back/main: obligé d'appeler 2 fois load_env, workarround ? uvicorn reload mode ?
-- [ ] Dockerise
-
-
-:::info
 #### Projet info améliorations
 
-- CM à part de 30min pour présentation du projet
+- CM à part de 1h pour présentation du projet
 - Suivi hebdo
     - [ ] Dire de détailler plus
     - [ ] Note de suivi coef 1/4 ? Rajoute du travail aux tuteurs...
@@ -38,7 +30,6 @@
   - [ ] TP sur les design pattern
   - [ ] Remettre un peu de POO (héritage, polymorphisme)
     - Variantes de puissance4
-:::
 
 
 # TP

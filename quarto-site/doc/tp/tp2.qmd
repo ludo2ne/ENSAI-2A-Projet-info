@@ -177,6 +177,10 @@ class GameService:
 If we want to add the ability to roll dice, we'll end up with something like:
 
 ```{.python}
+class GameService:
+    def play(self, player_id, opponent_id, game_mode, choice="heads"):
+        # new paramter game_mode -------------↑ 
+        ...
         if game_mode == "coinflip":
             result = secrets.choice(["heads", "tails"])
             winner = p1 if result == choice else p2
@@ -200,6 +204,45 @@ Refactor the system so that the `GameService` doesn't care which game is being p
 It should simply ask a "provider" to give it the correct rules.
 :::
 
+The aim is this sort of code:
+
+```{.python filename="game_service.py"}
+class GameService:
+    def play(self, player_id, opponent_id, game_mode, **kwargs):
+
+        # Find players by id -> the code does not change
+        p1 = PlayerDao().find_by_id(id_player)
+        p2 = PlayerDao().find_by_id(id_opponent)
+
+        # Get rules
+        mode = get_mode(game_mode)
+
+        # Play the game following rules
+        # Eventualy add extra parameters like choice (included in kwargs)
+        game = mode.play(p1, p2, **kwargs)
+
+        # Calculate Elo ratings based on the game result 
+        compute(game)
+
+        # Update Players object in the database (not this week)
+        PlayerDao().update(player1)
+        PlayerDao().update(player2)
+
+        return game
+```
+
+::: {.callout-note title="**kwargs"}
+- Initially, the service only handled coin-flip games, which required a *choice* parameter (heads or tails).
+- Now, the service is generic and can handle various game modes. The **kwargs parameter is used to pass any additional arguments required by different game modes.
+
+In Python, **\*\*kwargs** (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name="Alice").
+
+When you use **\*\*kwargs** in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument's value.
+
+**\*\*kwargs** will allow passing specific arguments (like choice) to the modes.
+:::
+
+
 - [ ] Create an abstract base class `GameMode` that defines a standard *play(p1, p2)* abstract method
   - in a folder called *game_mode* in *business_object*
 - [ ] Implement `DiceMode` 
@@ -218,20 +261,12 @@ Fine, we'll also need a way to generate either a `CoinFlipMode` object or a `Dic
   - and returns the corresponding `GameMode` object
 
 
-::: {.callout-tip}
-In Python, **\*\*kwargs** (short for keyword arguments) allows a function to accept an arbitrary number of keyword arguments (arguments passed with a name, like name="Alice").
-
-When you use **\*\*kwargs** in a function definition, Python collects all the extra named arguments and stores them in a dictionary, where the key is the argument name and the value is the argument's value.
-
-**\*\*kwargs** will allow passing specific arguments (like choice) to the modes.
-:::
-
+When you pass a string to the factory, it returns an object of type DiceMode or CoinFlipMode (or throws an exception).
 
 ```{mermaid}
 stateDiagram
-    direction LR
     [*] --> GameModeFactory : game_mode (str)
-    GameModeFactory --> CoinFlipMode : if "game_mode=coinflip"
+    GameModeFactory --> CoinFlipMode(tails) : if "game_mode=coinflip" <br> and "choice=tails"
     GameModeFactory --> DiceMode : if "game_mode=dice"
 ```
 
@@ -254,8 +289,9 @@ We want to extract the methods used to calculate the Elo rating in GameService.
 
 ### GameService refactor
 
-Let's finally put the pieces of the puzzle together in the `GameService` class
+Let's finally put the pieces of the puzzle together in the `GameService` class, method *play()*:
 
+- [ ] Add a parameter *game_mode*
 - [ ] Get players (nothing to change)
 - [ ] Get the game mode using the factory
 - [ ] Play the game

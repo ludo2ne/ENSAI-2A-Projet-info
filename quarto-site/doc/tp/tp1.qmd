@@ -603,7 +603,8 @@ A team member :
 Next, each team member :
 
 - [ ] Creates a local clone of the repository
-  - In the same VSCode service (:warning: use your token) or in a new one
+  - In the same VSCode service (:warning: go back to the work folder `cd $HOME/work/` and use your token)
+  - Or in a new one
 - [ ] Does a test to check that they can push code, for example by creating or modifiying:
   - *doc/tracking/2025.09.03-week1.md*: the first weekly point
   - *README.md*
@@ -617,22 +618,33 @@ Afterwards, you'll make sure that your depot is "tidy", in the same way as descr
 
 This file will contain environment variables that will be used, for example, to connect to the PostgreSQL database.
 
-- [ ] Make sure that this file remains in your local repository and is never sent to GitHub.
+- [ ] Is the *.env* file intended to be uploaded to the remote repository?
+- [ ] Take appropriate action
 
 
 ### PostgreSQL database
+
+> It's not yet time to create your database; here are just a few basic principles.
 
 You can either:
 
 - Each set up your own PostgreSQL service and connect your application to it
 - Set up and share a single database and have everyone connect to it
 
-| Approach | Pros | Cons |
-| --- | --- | --- |
-| Shared DB | **Zero setup:** Everyone connects to the same URL. <br> **Data Sync:** Everyone sees the same rows. | **High Risk:** One accidental `DROP TABLE` or `DELETE` breaks the project for everyone. <br> **Conflict:** You can't test "deleting a user" if your teammate is currently using that user. |
-| Isolated DB | **Safety:** You can break your local table without consequences. <br> **Independence:** You can test different data states simultaneously. | **Sync Effort:** You must remember to `git commit` the `.sql` file every time you change a column. <br> **Drift:** If someone forgets to commit, the team's environments will diverge. |
+**Shared DB:**
 
-: {tbl-colwidths="[16,42,42]" .striped .hover .secondary}
+| Pros | Cons |
+| ---- | ---- |
+| **Zero setup:** Everyone connects to the same URL. | **High Risk:** One accidental `DROP TABLE` or `DELETE` breaks the project for everyone.  |
+| **Data Sync:** Everyone sees the same rows. | **Conflict:** You can't test "deleting a user" if your teammate is currently using that user. |
+
+
+**Isolated DB:**
+
+| Pros | Cons |
+| ---- | ---- |
+| **Safety:** You can break your local table without consequences.  | **Sync Effort:** You must remember to `git commit` the `.sql` file every time you change a column.  |
+| **Independence:** You can test different data states simultaneously. | **Drift:** If someone forgets to commit, the team's environments will diverge. | 
 
 ::: {.callout-caution}
 In any case, be sure to version one or more SQL files so that you can rebuild your database and data from scratch.
