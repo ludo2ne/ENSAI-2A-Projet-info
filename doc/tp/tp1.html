@@ -1515,7 +1515,8 @@ Tip
 <ul class="task-list">
 <li><label><input type="checkbox">Creates a local clone of the repository</label>
 <ul>
-<li>In the same VSCode service (<span class="emoji" data-emoji="warning">⚠️</span> use your token) or in a new one</li>
+<li>In the same VSCode service (<span class="emoji" data-emoji="warning">⚠️</span> go back to the work folder <code>cd $HOME/work/</code> and use your token)</li>
+<li>Or in a new one</li>
 </ul></li>
 <li><label><input type="checkbox">Does a test to check that they can push code, for example by creating or modifiying:</label>
 <ul>
@@ -1541,39 +1542,63 @@ Caution
 <h3 data-number="6.1" class="anchored" data-anchor-id="env-file"><span class="header-section-number">6.1</span> .env file</h3>
 <p>This file will contain environment variables that will be used, for example, to connect to the PostgreSQL database.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Make sure that this file remains in your local repository and is never sent to GitHub.</label></li>
+<li><label><input type="checkbox">Is the <em>.env</em> file intended to be uploaded to the remote repository?</label></li>
+<li><label><input type="checkbox">Take appropriate action</label></li>
 </ul>
 </section>
 <section id="postgresql-database" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="postgresql-database"><span class="header-section-number">6.2</span> PostgreSQL database</h3>
+<blockquote class="blockquote">
+<p>It’s not yet time to create your database; here are just a few basic principles.</p>
+</blockquote>
 <p>You can either:</p>
 <ul>
 <li>Each set up your own PostgreSQL service and connect your application to it</li>
 <li>Set up and share a single database and have everyone connect to it</li>
 </ul>
-<table class="table-striped table-hover table-secondary caption-top table">
+<p><strong>Shared DB:</strong></p>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 42%">
-<col style="width: 42%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Approach</th>
 <th>Pros</th>
 <th>Cons</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Shared DB</td>
-<td><strong>Zero setup:</strong> Everyone connects to the same URL. <br> <strong>Data Sync:</strong> Everyone sees the same rows.</td>
-<td><strong>High Risk:</strong> One accidental <code>DROP TABLE</code> or <code>DELETE</code> breaks the project for everyone. <br> <strong>Conflict:</strong> You can’t test “deleting a user” if your teammate is currently using that user.</td>
+<td><strong>Zero setup:</strong> Everyone connects to the same URL.</td>
+<td><strong>High Risk:</strong> One accidental <code>DROP TABLE</code> or <code>DELETE</code> breaks the project for everyone.</td>
 </tr>
 <tr class="even">
-<td>Isolated DB</td>
-<td><strong>Safety:</strong> You can break your local table without consequences. <br> <strong>Independence:</strong> You can test different data states simultaneously.</td>
-<td><strong>Sync Effort:</strong> You must remember to <code>git commit</code> the <code>.sql</code> file every time you change a column. <br> <strong>Drift:</strong> If someone forgets to commit, the team’s environments will diverge.</td>
+<td><strong>Data Sync:</strong> Everyone sees the same rows.</td>
+<td><strong>Conflict:</strong> You can’t test “deleting a user” if your teammate is currently using that user.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Isolated DB:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Safety:</strong> You can break your local table without consequences.</td>
+<td><strong>Sync Effort:</strong> You must remember to <code>git commit</code> the <code>.sql</code> file every time you change a column.</td>
+</tr>
+<tr class="even">
+<td><strong>Independence:</strong> You can test different data states simultaneously.</td>
+<td><strong>Drift:</strong> If someone forgets to commit, the team’s environments will diverge.</td>
 </tr>
 </tbody>
 </table>
