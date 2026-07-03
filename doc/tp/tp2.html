@@ -615,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     + player2 : Player
     + game_mode : str
     + winner : Player
-    + str: detail
+    + description: str
     + timestamp : datetime
   }
 
@@ -650,7 +650,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     + player2 : Player
     + game_mode : str
     + winner : Player
-    + str: detail
+    + description: str
     + timestamp : datetime
   }
 
@@ -690,7 +690,7 @@ Important
 <li>Set <code>id = None</code> it will be filled later when the object is persisted in the database</li>
 <li><em>winner</em>: Player or None if it is a draw</li>
 <li><em>game_mode</em>: The type of game played (“coinflip” or “dice”)</li>
-<li><em>detail</em>: To store more details about the game</li>
+<li><em>description</em>: To store more details about the game</li>
 </ul></li>
 <li><label><input type="checkbox">Add <em><strong>str</strong>()</em> method returning for example:</label></li>
 </ul>
@@ -854,26 +854,69 @@ Important
 </section>
 <section id="decoupling-scoring" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="decoupling-scoring"><span class="header-section-number">2.3</span> Decoupling Scoring</h3>
-<p>We want to extract the methods used to calculate the Elo rating in GameService.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The methods <em>update_elo()</em>, <em>compute_elo()</em> and <em>expected_score()</em> do not belong in the <code>GameService</code> class.</p>
+<p>They are used to update players’ Elo ratings, so let’s move them to a separate class.</p>
+</div>
+</div>
 <ul class="task-list">
-<li><label><input type="checkbox">Let’s start by simply creating a business class <code>ScoringStrategy</code></label></li>
-<li><label><input type="checkbox">Implement method <em>compute(p1, p2, winner)</em></label>
+<li><label><input type="checkbox">Let’s start by simply creating a business class <code>ScoringStrategy</code></label>
 <ul>
-<li>it updates elo of both players</li>
+<li>Move the three methods into this class</li>
+</ul></li>
+<li><label><input type="checkbox">Update method <em>update_player_ratings(game)</em>, replacing parameters by a <code>Game</code> object</label></li>
+<li><label><input type="checkbox">In <code>GameService</code>, call that method</label>
+<ul>
+<li>Anyway, it’s better to keep the DAO calls within the service (<em>PlayerDao().update()</em>)</li>
 </ul></li>
 </ul>
+<p>By moving the calculation logic from <code>GameService</code> to <code>ScoringStrategy</code>, you have implemented the <strong>Strategy Pattern</strong> and applied the principle of <strong>Separation of Concerns</strong>.</p>
+<p>The Strategy Pattern decouples the game orchestration from the scoring mathematics. This makes your system highly extensible: you can swap the Elo algorithm for another without touching the core game logic, adhering to the <strong>Open/Closed Principle</strong>.</p>
 </section>
 <section id="gameservice-refactor" class="level3" data-number="2.4">
 <h3 data-number="2.4" class="anchored" data-anchor-id="gameservice-refactor"><span class="header-section-number">2.4</span> GameService refactor</h3>
 <p>Let’s finally put the pieces of the puzzle together in the <code>GameService</code> class, method <em>play()</em>:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Add a parameter <em>game_mode</em></label></li>
+<li><label><input type="checkbox">Update parameters</label>
+<ul>
+<li>remove <em>choice</em> parameter</li>
+<li>add <em>game_mode: str</em></li>
+<li>add at the end <em>**kwargs</em> to carry any additional parameters</li>
+</ul></li>
 <li><label><input type="checkbox">Get players (nothing to change)</label></li>
 <li><label><input type="checkbox">Get the game mode using the factory</label></li>
 <li><label><input type="checkbox">Play the game</label></li>
 <li><label><input type="checkbox">Update elo of both players</label></li>
+<li><label><input type="checkbox">Return a <code>Game</code> object</label></li>
 </ul>
-<p>We should return a Game object, but for now, let’s leave it as is.</p>
+</section>
+<section id="gamecontroller-refactor" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="gamecontroller-refactor"><span class="header-section-number">2.5</span> GameController refactor</h3>
+<p>In the controller, you call the <em>play()</em> method of the service that has been updated.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">add parameter <em>req.game_mode</em> in third position to method <em>play()</em> called</label></li>
+</ul>
+<p>You receive a Game object; use it.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">update values in the <em>GameResponse</em></label></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> GameResponse(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        username1<span class="op">=</span>game.player1.username,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        username2<span class="op">=</span>game.player2.username,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>game.description,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        winner<span class="op">=</span>game.winner.username,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        new_elo1<span class="op">=</span>game.player1.elo,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        new_elo2<span class="op">=</span>game.player2.elo,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="unit-tests" class="level2" data-number="3">
