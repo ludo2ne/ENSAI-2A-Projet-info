@@ -10,9 +10,9 @@ format:
 number-sections: true
 categories:
   - DAO
-  - CRUD
   - SQL
   - Data Mapping
+  - Unit tests
   - Mocking
 ---
 
@@ -92,7 +92,6 @@ Great, now you have a table where you can store your games.
 :::
 
 - [ ] Open file **reset_database.py** and see how it works
-  - you can ask the AI agent to analyze and explain it
 
 ::: {.callout-note}
 In this script, the schema is managed via an environment variable, so there's no need to include it in the SQL scripts.
@@ -103,7 +102,7 @@ In this script, the schema is managed via an environment variable, so there's no
 
 ### Database questions
 
-> Since all of you have reviewed your relational database course this summer :book:
+> Since all of you have reviewed your relational database course this summer :tropical_drink: :book: :sunglasses:
 
 - [ ] Why certain fields aren't specified in the insert?
 - [ ] What would be the risk if we hard-coded a *game ID* equal to 1?
@@ -121,6 +120,25 @@ To finish these reviews, enter the following queries:
   - including a boolean if she win
 - [ ] Count how many players are Pokemon fans and how many aren't
 
+:::{.notes}
+```{.sql}
+SELECT * 
+  FROM player 
+ WHERE username <> 'admin'
+ ORDER BY elo DESC;
+
+SELECT g.*,
+       p.id_player = g.id_winner AS win
+  FROM game g
+  JOIN player p ON (p.username = 'batricia' AND (g.id_player1 = p.id_player OR g.id_player2 = p.id_player))
+ ORDER BY g.timestamp DESC;
+
+SELECT pokemon_fan,
+       COUNT(*)
+  FROM player
+ GROUP BY pokemon_fan;
+```
+:::
 
 ## Architecture: The DAO Pattern
 
@@ -164,7 +182,7 @@ To connect to the database, we'll use the Python library [**psycopg2**](https://
 
 However, we need to be careful with connection management, as we could quickly open hundreds of connections and degrade our application's performance. 
 
-This is the job of the **DBConnection** class. Since it's a singleton, there will be [only one instance]{.underline} of this class in our entire application, and since it's the one that connects to the database, we ensure the connection's uniqueness.
+This is the job of the `DBConnection` class. Since it's a singleton, there will be [only one instance]{.underline} of this class in our entire application, and since it's the one that connects to the database, we ensure the connection's uniqueness.
 
 
 ::: {.callout-tip}
@@ -256,7 +274,7 @@ A list of dictionaries
 ## The GameDao
 
 ::: {.callout-tip}
-Feel free to use the PlayerDao class as a reference when writing the `GameDao` methods.
+Feel free to use the `PlayerDao` class as a reference when writing the `GameDao` methods.
 
 The advantage of DAO classes is that once you understand the concept, the process is always the same.
 :::
@@ -328,7 +346,32 @@ The service creates a `Game` object and calls the appropriate method to persist 
 
 - [ ] Refactor method *GameService.play()*
 - [ ] Launch the application
-- [ ] Play a game and check if a row was created
+- [ ] Play a game
+- [ ] Make sure everything looks OK in the logs
+- [ ] Check if a row was created in the database
+
+### New Service methods
+
+Using the new DAO methods we've implemented, let's create a few service methods. In the next lab, we'll use them in the controller to create new endpoints.
+
+In `GameService`, implement methods:
+
+- [ ] *find_by_id(id_game) -> Game*
+
+::: {.callout-tip}
+This methods is very simple; it calls the appropriate DAO and return its response.
+
+This may seem like "useless code" (as we are simply calling another function), it is a fundamental practice in software architecture for the following reasons:
+
+- Decoupling: It keeps the Controller from talking directly to the Database, maintaining a clean layered architecture
+- Centralized Control: It provides a single place to later add caching, security checks, or logging without touching the Controller
+:::
+
+- [ ] *find_all_by_player(id_player, game_mode) -> list[Game]*
+  - returning all games by *id_player* and *game_mode*
+  - if *game_mode* is None, return all player games
+- [ ] Write the unit tests for this last method
+  - Don't forget to mock DAO calls
 
 
 ## Test a DAO method
@@ -339,7 +382,7 @@ Testing a DAO is different because you are touching a real database. This create
 
 ### The Naive Approach
 
-"I want to test the *delete()* method. I'll create a game, then delete it. Easy!"
+> "I want to test the *delete()* method. I'll create a game, then delete it. Easy!" :sunglasses:
 
 Imagine you run your test:
 
@@ -356,7 +399,7 @@ This way, every test starts with a completely empty database, and you are sure t
 
 ### Test using the real Data
 
-"I'll just run my tests directly on my local database where I have all my useful data."
+> "I'll just run my tests directly on my database where I have all my useful data." :bomb:
 
 Your tests are designed to **create, modify, and delete** data. If you run them on your real database, you will eventually delete something important. You are literally destroying your own workspace just to check if your code works.
 
@@ -366,7 +409,19 @@ By using a **dedicated test schema**, you can delete everything, crash everythin
 
 ### Hands on
 
-- [ ] Ask the AI agent to explain code in `@File test_player_dao.py`
+- [ ] Open file `test_player_dao.py`
+
+```{.python}
+@pytest.fixture(scope="session", autouse=True)
+def setup_test_environment():
+    """Initialize test data"""
+    with patch.dict(os.environ, {"SCHEMA": "project_test_dao"}):
+        ResetDatabase().run(test_dao=True)
+        yield
+```
+
+This code temporarily redirect database operations to a dedicated test schema, ensuring that the production data remains untouched. It initialize the database with a fresh set of test data, providing a predictable and isolated state for all subsequent tests.
+
 - [ ] Write unit test with pytest for all methods of `GameDao`
 
 

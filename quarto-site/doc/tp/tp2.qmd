@@ -11,24 +11,15 @@ categories:
   - Refactoring
 ---
 
-:construction:
-
-:::{.notes}
-- [ ] TODO : Unit tests
-  - for GameService.play()
-  - or maybe on next lab mocking dao call
-:::
-
 ## Before you start {.unnumbered}
 
 This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
 
 ::: {.callout-note title="Concepts covered"}
-- Refactoring existing code
-- Design Patterns: Factory Pattern & Strategy Pattern
-- Dependency Injection
-- Data Persistence (History tracking)
-- Advanced Unit Testing
+- **Code Refactoring:** Transforming a Monolith into a Modular System
+- **Design Patterns**: Factory Pattern & Strategy Pattern
+- **Software Principles:** Open/Closed Principle & Separation of Concerns
+- **Decoupling:** Separating game rules, scoring, and coordination
 :::
 
 {{< include _start-lab.qmd >}}
@@ -59,10 +50,12 @@ This design violates the **Open/Closed Principle**: adding a new game (like "Dic
 
 Our goal is to transform this monolith into a decoupled system where:
 
-- **The Service** is an **Orchestrator** (it tells others what to do, but doesn't know how they do it)
+- **The Service** is an Orchestrator
+  - it tells others what to do, but doesn't know how they do it
 - **The Rules** are interchangeable (**Strategy Pattern**)
 - **The Creation** is automated (**Factory Pattern**)
 - **The History** is permanent (**Persistence**)
+
 
 ```{mermaid}
 classDiagram
@@ -85,7 +78,6 @@ classDiagram
   }
 
   class CoinFlipMode {
-    + p1_choice : str
     + play(p1, p2) Game
   }
 
@@ -112,8 +104,28 @@ classDiagram
   GameService ..> Game : creates
 ```
 
+Roles and Responsibilities:
+
+- GameService: Orchestrates the entire game lifecycle
+  - Fetch Players
+  - Uses GameModeFactory to select the correct GameMode
+  - Delegates gameplay to the selected GameMode
+  - Uses ScoringStrategy to calculate ELO updates
+  - Saves the Game record via the DAO
+- GameMode: Game rules contract
+  - Forces subclasses to implement the *play()* method
+  - CoinFlipMode: Concrete implementation of a coin-toss game
+  - DiceMode: Concrete implementation of a dice-roll game
+- GameModeFactory: Creates the appropriate GameMode object
+  - `if game_mode = "coinflip"` :arrow_right: CoinFlipMode
+  - `if game_mode = "dice"` :arrow_right: DiceMode
+- ScoringStrategy: Logic for calculating Elo ratings updates
+- Game: Data carrier representing a game
+
 
 ## Modelling and Implementation
+
+> Every journey begins with a single step.
 
 ### Game business object
 
@@ -243,32 +255,53 @@ When you use **\*\*kwargs** in a function definition, Python collects all the ex
 :::
 
 
-- [ ] Create an abstract base class `GameMode` that defines a standard *play(p1, p2)* abstract method
+- [ ] Create an abstract base class `GameMode`
   - in a folder called *game_mode* in *business_object*
+- [ ] Defines a standard *play(p1, p2) -> Game* abstract method
 - [ ] Implement `DiceMode` 
-  - including method *play(p1, p2)*
-  - both players roll a die, and the one with the highest roll wins
+  - including method *play(p1, p2) -> Game*
+  - both players roll a die, and the one with the highest roll wins (Draw if equals)
 - [ ] Implement `CoinFlipMode`
-  - The choice (heads/tails) must be passed to the constructor when the mode is created.
-  - then use it in method *play()*
+  - including method *play(p1, p2, choice) -> Game*
+  - cut and paste the code that was previously in GameService
 
 
-Fine, we'll also need a way to generate either a `CoinFlipMode` object or a `DiceMode` object based on a *game_mode* (str) parameter. To do this, let's create a factory class:
+### A factory for producing GameMode
 
-- [ ] Create a `GameModeFactory` class 
-- [ ] Add static method called *get_mode(game_mode: str, \*\*kwargs) -> GameMode*
-  - that takes the *game_mode* (str) as parameter
-  - and returns the corresponding `GameMode` object
+> 💬 I have a "coinflip" string and I want a CoinFlipMode object.
 
+Fine, we'll also need a way to generate either a `CoinFlipMode` object or a `DiceMode` object based on a *game_mode* (str) parameter. To do this, let's create a factory class.
 
-When you pass a string to the factory, it returns an object of type DiceMode or CoinFlipMode (or throws an exception).
 
 ```{mermaid}
 stateDiagram
     [*] --> GameModeFactory : game_mode (str)
-    GameModeFactory --> CoinFlipMode(tails) : if "game_mode=coinflip" <br> and "choice=tails"
+    GameModeFactory --> CoinFlipMode : if "game_mode=coinflip"
     GameModeFactory --> DiceMode : if "game_mode=dice"
 ```
+
+- [ ] Create a `GameModeFactory` class 
+- [ ] Add a class method called *get_mode()*
+  - the documentation for which is given below
+
+```{.python}
+    @classmethod
+    def get_mode(cls, game_mode: str) -> GameMode:
+        """
+        Returns the corresponding GameMode object.
+        Args:
+            game_mode (str): The identifier of the game mode (e.g., 'coinflip', 'dice').
+        Returns:
+            GameMode: An instance of a class implementing GameMode.
+        Raises:
+            ValueError: If the requested game_mode is not supported.
+        """
+
+        # Code here
+```
+
+When you pass a string to the factory, it returns an object of type DiceMode or CoinFlipMode (or throws an exception).
+
 
 ::: {.callout-important}
 With this new architecture, you can add a new game mode with very few changes to the existing code (almost exclusively additions):
@@ -281,17 +314,14 @@ With this new architecture, you can add a new game mode with very few changes to
 ### Decoupling Scoring
 
 ::: {.callout-note}
-The methods *update_elo()*, *compute_elo()* and *expected_score()* do not belong in the `GameService` class.
+The methods *calculate_expected_score()*, *calculate_new_ratings()* and *update_player_ratings()* do not belong in the `GameService` class.
 
-They are used to update players' Elo ratings, so let’s move them to a separate class.
+They are used to update players' Elo ratings, so let's move them to a separate class.
 :::
 
 - [ ] Let's start by simply creating a business class `ScoringStrategy`
-  - Move the three methods into this class 
-- [ ] Update method *update_player_ratings(game)*, replacing parameters by a `Game` object
-- [ ] In `GameService`, call that method
-  - Anyway, it's better to keep the DAO calls within the service (*PlayerDao().update()*)
-
+- [ ] Move the three methods into this class 
+- [ ] Refactor method *update_player_ratings(game)*, replacing parameters by a `Game` object
 
 By moving the calculation logic from `GameService` to `ScoringStrategy`, you have implemented the **Strategy Pattern** and applied the principle of **Separation of Concerns**.
 
@@ -334,15 +364,6 @@ You receive a Game object; use it.
     )
 ```
 
-
-## Unit tests
-
-:construction:
-
-:::{.notes}
-- Explain mocking
-- Few easy tests
-:::
 
 ## Conclusion
 

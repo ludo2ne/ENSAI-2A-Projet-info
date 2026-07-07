@@ -456,13 +456,10 @@ You arrive at the home menu. The principle of this type of application is to let
 
 You'll notice that the application asks for a password that's a little too long. 
 
-- [ ] Find and change the password required length to 16 characters
-  - first search through the code on your own :mag:
-  - then ask the AI agent :robot:
+- [ ] Find and change the password required length from 35 to 16 characters
+  - :mag: :mag: :mag: Search through the code
 
-:construction: make it simpler
-
-::: {.callout-tip collapse="true"}
+::: {.callout-tip}
 This requirement appears at two levels to balance Security and UX:
 
 - **Frontend** (The Guide): Provides real-time feedback in Streamlit. This improves User Experience by preventing frustration and reducing unnecessary API calls.
@@ -580,11 +577,9 @@ Now that you've seen what an application looks like and you're up and running wi
 
 ## Create your project repository
 
-
 ::: {.callout-tip}
 You can start from scratch, or use a template.
 :::
-
 
 A team member :
 
@@ -609,6 +604,9 @@ Next, each team member :
   - *doc/tracking/2025.09.03-week1.md*: the first weekly point
   - *README.md*
   - *main.py*
+- [ ] Add the teacher's repo as a secondary remote named *upstream*
+  - `git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git`
+  - If the teacher updates the template, it will be useful for retrieving the changes
 
 ::: {.callout-caution}
 Afterwards, you'll make sure that your depot is "tidy", in the same way as described in the previous section.

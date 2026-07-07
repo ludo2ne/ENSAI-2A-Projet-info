@@ -37,7 +37,6 @@
 - [ ] Uniformiser format -> prompt quarto
 - [ ] Faire relire
 - [ ] Branche start
-  - [ ] Modop to switch (refer to ENSAI-tools)
 - [ ] API example client mode (external url)
 
 ## TP1 Back/Front, Couches, Git
