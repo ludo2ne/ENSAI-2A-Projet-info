@@ -542,16 +542,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="create-your-branch" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
-<p>For each practical session, the teacher provides a starting branch: <code>tpN-start</code>.</p>
-<p>You will have to create a personal branch: <code>&lt;username&gt;-tpN</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>For each practical session, the teacher provides a starting branch: <code>tp&lt;N&gt;-start</code>.</p>
+<p>You will have to create a personal branch: <code>&lt;username&gt;-tp&lt;N&gt;</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
 <p>To start with a clean and up-to-date codebase:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest remote information</label>
-<ul>
-<li>Use this if the <code>tpN-start</code> branch was updated after you cloned the repository</li>
-</ul></li>
-<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp2 origin/tp2-start</code></label></li>
-<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp2</code> to publish your branch on the remote</label></li>
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest information from your remote repository</label></li>
+<li><label><input type="checkbox"><code>git fetch upstream</code> to retrieve the latest information from the teacher’s repository</label></li>
+<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp&lt;N&gt; upstream/tp&lt;N&gt;-start</code></label></li>
+<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp&lt;N&gt;</code> to publish your branch on the remote</label></li>
 </ul>
 <p>Then use the standard Git cycle: add, commit, push after each part.</p>
 </section>
@@ -720,7 +718,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><label><input type="checkbox">What is Mace Windu’s home planet?</label></li>
 <li><label><input type="checkbox">Find all planets visited in “The Empire Strikes Back”</label></li>
 </ul>
-<p><span class="emoji" data-emoji="construction">🚧</span> example with parameters ?limit…</p>
+<p>Another API <a href="https://pokeapi.co/api/v2/" target="_blank">https://pokeapi.co/api/v2/</a></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Use parameters <em>limit</em> and <em>offset</em> to display Pokemons with IDs between 51 and 60</label>
+<ul>
+<li><a href="https://pokeapi.co/docs/v2#resource-listspagination-section" target="_blank">Documentation</a></li>
+</ul></li>
+<li><label><input type="checkbox">What is the type of Pokemon named <em>psyduck</em>?</label></li>
+<li><label><input type="checkbox">Does he have a Type advantage if he’s fighting against Pokemon 114?</label></li>
+</ul>
+<div class="notes">
+<p>https://swapi.info/api/people -&gt; list[dict] https://swapi.info/api/people/51 -&gt; Mace Windu (dict) https://swapi.info/api/planets/42 https://swapi.info/api/films/2 -&gt; planets</p>
+<p>https://pokeapi.co/api/v2/pokemon?limit=10&amp;offset=50 https://pokeapi.co/api/v2/pokemon/54/ -&gt; psyduck, type=water https://pokeapi.co/api/v2/type/11/ -&gt; type=water https://pokeapi.co/api/v2/pokemon/114 -&gt; type=grass</p>
+</div>
 </section>
 </section>
 <section id="exploring-your-projects-api" class="level2" data-number="3">
@@ -769,7 +779,12 @@ Tip
 <ul>
 <li>add 100 points to its elo, change suffix mail from <em>io</em> to <em>fr</em></li>
 </ul></li>
-<li><label><input type="checkbox">Play a coin flip between <em>batricia</em> and <em>gilbert</em></label></li>
+<li><label><input type="checkbox">Login with user <em>batricia</em></label>
+<ul>
+<li>Where is the password?</li>
+<li>In the response, copy the token</li>
+</ul></li>
+<li><label><input type="checkbox">Play a coin flip against <em>gilbert</em></label></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -798,7 +813,7 @@ Note
 </section>
 <section id="the-client-challenge-data-mapping" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="the-client-challenge-data-mapping"><span class="header-section-number">4</span> The Client Challenge (Data Mapping)</h2>
-<p>Now, we will move to a more advanced task. Your Back-end are going to act as a <strong>Client</strong>. You need to fetch game data from an external source and integrate it into your engine.</p>
+<p>Now, we will move to a more advanced task. Your back-end will act as a <strong>client</strong>. You need to fetch game data from an external source and integrate it into your engine.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="The Schema Mismatch">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -824,28 +839,15 @@ Note
 </section>
 <section id="the-server" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="the-server"><span class="header-section-number">4.2</span> The server</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p>TODO: Launch an API, Give a link.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Workarround">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Workarround
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If the server is not available, simply:</p>
+<p>It’s not very difficult to create a fake API, for example:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">In your repository, import file <a href="./ressources/game.json" target="_blank">data/game.json</a></label></li>
+<li><label><input type="checkbox">Launch a webservice on port 5555 with these data</label>
 <ul>
-<li>Create a file <em>games.json</em></li>
-<li>Import data from this file instead of the API</li>
+<li><code>uvx json_server data/game.json 5555</code></li>
+</ul></li>
+<li><label><input type="checkbox">Test it: <code>curl http://localhost:5555/</code> in another terminal</label></li>
 </ul>
-</div>
-</div>
-</div>
 </section>
 <section id="your-turn" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">4.3</span> Your turn</h3>
@@ -861,16 +863,16 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="/games"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"1"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Alice"</span><span class="ot">,</span> <span class="st">"Bob"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Alice"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Batricia"</span><span class="ot">,</span> <span class="st">"Junior"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Batricia"</span><span class="fu">,</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Arena 1"</span><span class="fu">,</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"coinflip"</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"2"</span><span class="fu">,</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Eve"</span><span class="ot">,</span> <span class="st">"Frank"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Eve"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"players_list"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Maurice"</span><span class="ot">,</span> <span class="st">"Gilbert"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"winner_name"</span><span class="fu">:</span> <span class="st">"Gilbert"</span><span class="fu">,</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
@@ -902,6 +904,31 @@ Important
 <li><label><input type="checkbox">Check response</label></li>
 <li><label><input type="checkbox">Convert JSON response into a list of Game</label></li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Test it manually">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Test it manually
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>sandbox.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="sandbox.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> client.game_client <span class="im">import</span> GameClient</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> GameClient()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>games <span class="op">=</span> client.get_games()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(games)<span class="sc">}</span><span class="ss"> games loaded:"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> g <span class="kw">in</span> games:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"- </span><span class="sc">{</span>g<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>uv run --project backend python backend/sandbox.py</code></p>
+</div>
+</div>
 <p>In this section, you were a client of an API; next you’ll become the provider by creating your own endpoints.</p>
 </section>
 </section>
@@ -937,12 +964,12 @@ Important
 <li><label><input type="checkbox">Open file <strong>game_controller.py</strong></label></li>
 <li><label><input type="checkbox">Add this endpoint below and test it in the swagger:</label></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_mock_games():</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">1</span>, <span class="st">"mode"</span>: <span class="st">"coinflip"</span>, <span class="st">"winner"</span>: <span class="st">"Miguel"</span>},</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">2</span>, <span class="st">"mode"</span>: <span class="st">"dice"</span>, <span class="st">"winner"</span>: <span class="st">"Batricia"</span>}</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> get_mock_games():</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">1</span>, <span class="st">"mode"</span>: <span class="st">"coinflip"</span>, <span class="st">"winner"</span>: <span class="st">"Miguel"</span>},</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">2</span>, <span class="st">"mode"</span>: <span class="st">"dice"</span>, <span class="st">"winner"</span>: <span class="st">"Batricia"</span>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>OK, that’s a start. Now, let’s aim to display all <code>Games</code> played by a specific <code>Player</code>. We’ll proceed step by step modifying the previous method.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Add parameter <em>id_player</em> to the method</label>
@@ -967,12 +994,12 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>player_controller.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="player_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /player/{id_player}/games</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/players/</span><span class="sc">{id_player}</span><span class="st">/games"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameModel])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, service: game_service<span class="op">=</span>Depends(get_game_service)):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ... <span class="co"># Player don't exists</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> ...</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ... <span class="co"># Call a service</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="player_controller.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GET /player/{id_player}/games</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/players/</span><span class="sc">{id_player}</span><span class="st">/games"</span>, response_model<span class="op">=</span><span class="bu">list</span>[GameModel])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_games(id_player, service: game_service<span class="op">=</span>Depends(get_game_service)):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ... <span class="co"># Player don't exists</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> ...</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ... <span class="co"># Call a service</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1030,23 +1057,23 @@ Tip
 <section id="define-a-model" class="level4" data-number="5.2.1">
 <h4 data-number="5.2.1" class="anchored" data-anchor-id="define-a-model"><span class="header-section-number">5.2.1</span> Define a Model</h4>
 <p>Example: in the <em>player_model.py</em> file, we define how a Player should look when communicating with the API:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, Field</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerModel(BaseModel):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    id_player: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    username: <span class="bu">str</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    password: <span class="bu">str</span> <span class="op">=</span> Field(..., min_length<span class="op">=</span><span class="dv">35</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, Field</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerModel(BaseModel):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    id_player: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    username: <span class="bu">str</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    password: <span class="bu">str</span> <span class="op">=</span> Field(..., min_length<span class="op">=</span><span class="dv">35</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="use-it-in-the-controller" class="level4" data-number="5.2.2">
 <h4 data-number="5.2.2" class="anchored" data-anchor-id="use-it-in-the-controller"><span class="header-section-number">5.2.2</span> Use it in the Controller</h4>
 <p>Let’s look at the <em>create_player()</em> method in <strong>player_controller.py</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Players"</span>])</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Players"</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Here is the magic happening behind the scenes:</strong></p>
 <ol type="1">
 <li>The Request: a client sends request to the endpoint with a JSON body: <code>{"username": "bob", "email": "bob@email.com", ...}</code>.</li>
@@ -1156,17 +1183,17 @@ Tip
 </div>
 <p><strong>The Security Contract:</strong> - <strong>Header Key:</strong> <code>X-Auth-Token</code> - <strong>Valid Value:</strong> <code>secret-key-123</code></p>
 <p><strong>Example of a protected endpoint in your controller:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul class="task-list">
 <li><label><input type="checkbox"><strong>Add Security</strong>: Protect your <code>POST</code> and <code>DELETE</code> routes with the <code>X-Auth-Token</code> check.</label></li>
 <li><label><input type="checkbox"><strong>Test with Swagger</strong>: Verify that a request without the token returns a <code>401</code>.</label></li>

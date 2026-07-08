@@ -450,8 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#before-you-start" id="toc-before-you-start" class="nav-link active" data-scroll-target="#before-you-start">Before you start</a></li>
   <li><a href="#the-mission" id="toc-the-mission" class="nav-link" data-scroll-target="#the-mission"><span class="header-section-number">1</span> The Mission 🎯</a></li>
   <li><a href="#modelling-and-implementation" id="toc-modelling-and-implementation" class="nav-link" data-scroll-target="#modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</a></li>
-  <li><a href="#unit-tests" id="toc-unit-tests" class="nav-link" data-scroll-target="#unit-tests"><span class="header-section-number">3</span> Unit tests</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4</span> Conclusion</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
   <li><a href="#end-of-the-lab" id="toc-end-of-the-lab" class="nav-link" data-scroll-target="#end-of-the-lab">End of the Lab</a></li>
   </ul>
 </nav>
@@ -499,16 +498,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="notes">
-<ul class="task-list">
-<li><label><input type="checkbox">TODO : Unit tests</label>
-<ul>
-<li>for GameService.play()</li>
-<li>or maybe on next lab mocking dao call</li>
-</ul></li>
-</ul>
-</div>
 <section id="before-you-start" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
 <p>This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.</p>
@@ -523,26 +512,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Refactoring existing code</li>
-<li>Design Patterns: Factory Pattern &amp; Strategy Pattern</li>
-<li>Dependency Injection</li>
-<li>Data Persistence (History tracking)</li>
-<li>Advanced Unit Testing</li>
+<li><strong>Code Refactoring:</strong> Transforming a Monolith into a Modular System</li>
+<li><strong>Design Patterns</strong>: Factory Pattern &amp; Strategy Pattern</li>
+<li><strong>Software Principles:</strong> Open/Closed Principle &amp; Separation of Concerns</li>
+<li><strong>Decoupling:</strong> Separating game rules, scoring, and coordination</li>
 </ul>
 </div>
 </div>
 <section id="create-your-branch" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
-<p>For each practical session, the teacher provides a starting branch: <code>tpN-start</code>.</p>
-<p>You will have to create a personal branch: <code>&lt;username&gt;-tpN</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>For each practical session, the teacher provides a starting branch: <code>tp&lt;N&gt;-start</code>.</p>
+<p>You will have to create a personal branch: <code>&lt;username&gt;-tp&lt;N&gt;</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
 <p>To start with a clean and up-to-date codebase:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest remote information</label>
-<ul>
-<li>Use this if the <code>tpN-start</code> branch was updated after you cloned the repository</li>
-</ul></li>
-<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp2 origin/tp2-start</code></label></li>
-<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp2</code> to publish your branch on the remote</label></li>
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest information from your remote repository</label></li>
+<li><label><input type="checkbox"><code>git fetch upstream</code> to retrieve the latest information from the teacher’s repository</label></li>
+<li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp&lt;N&gt; upstream/tp&lt;N&gt;-start</code></label></li>
+<li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp&lt;N&gt;</code> to publish your branch on the remote</label></li>
 </ul>
 <p>Then use the standard Git cycle: add, commit, push after each part.</p>
 </section>
@@ -570,7 +556,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="1.2" class="anchored" data-anchor-id="target-architecture-a-modular-engine"><span class="header-section-number">1.2</span> Target Architecture: A Modular Engine</h3>
 <p>Our goal is to transform this monolith into a decoupled system where:</p>
 <ul>
-<li><strong>The Service</strong> is an <strong>Orchestrator</strong> (it tells others what to do, but doesn’t know how they do it)</li>
+<li><strong>The Service</strong> is an Orchestrator
+<ul>
+<li>it tells others what to do, but doesn’t know how they do it</li>
+</ul></li>
 <li><strong>The Rules</strong> are interchangeable (<strong>Strategy Pattern</strong>)</li>
 <li><strong>The Creation</strong> is automated (<strong>Factory Pattern</strong>)</li>
 <li><strong>The History</strong> is permanent (<strong>Persistence</strong>)</li>
@@ -600,7 +589,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 
   class CoinFlipMode {
-    + p1_choice : str
     + play(p1, p2) Game
   }
 
@@ -631,10 +619,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>Roles and Responsibilities:</p>
+<ul>
+<li>GameService: Orchestrates the entire game lifecycle
+<ul>
+<li>Fetch Players</li>
+<li>Uses GameModeFactory to select the correct GameMode</li>
+<li>Delegates gameplay to the selected GameMode</li>
+<li>Uses ScoringStrategy to calculate ELO updates</li>
+<li>Saves the Game record via the DAO</li>
+</ul></li>
+<li>GameMode: Game rules contract
+<ul>
+<li>Forces subclasses to implement the <em>play()</em> method</li>
+<li>CoinFlipMode: Concrete implementation of a coin-toss game</li>
+<li>DiceMode: Concrete implementation of a dice-roll game</li>
+</ul></li>
+<li>GameModeFactory: Creates the appropriate GameMode object
+<ul>
+<li><code>if game_mode = "coinflip"</code> <span class="emoji" data-emoji="arrow_right">➡️</span> CoinFlipMode</li>
+<li><code>if game_mode = "dice"</code> <span class="emoji" data-emoji="arrow_right">➡️</span> DiceMode</li>
+</ul></li>
+<li>ScoringStrategy: Logic for calculating Elo ratings updates</li>
+<li>Game: Data carrier representing a game</li>
+</ul>
 </section>
 </section>
 <section id="modelling-and-implementation" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="modelling-and-implementation"><span class="header-section-number">2</span> Modelling and Implementation</h2>
+<blockquote class="blockquote">
+<p>Every journey begins with a single step.</p>
+</blockquote>
 <section id="game-business-object" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="game-business-object"><span class="header-section-number">2.1</span> Game business object</h3>
 <p>We want to keep a record of each game. Let’s start by creating a <code>Game</code> business object to store the necessary information after each game is played.</p>
@@ -794,31 +809,29 @@ Important
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Create an abstract base class <code>GameMode</code> that defines a standard <em>play(p1, p2)</em> abstract method</label>
+<li><label><input type="checkbox">Create an abstract base class <code>GameMode</code></label>
 <ul>
 <li>in a folder called <em>game_mode</em> in <em>business_object</em></li>
 </ul></li>
+<li><label><input type="checkbox">Defines a standard <em>play(p1, p2) -&gt; Game</em> abstract method</label></li>
 <li><label><input type="checkbox">Implement <code>DiceMode</code></label>
 <ul>
-<li>including method <em>play(p1, p2)</em></li>
-<li>both players roll a die, and the one with the highest roll wins</li>
+<li>including method <em>play(p1, p2) -&gt; Game</em></li>
+<li>both players roll a die, and the one with the highest roll wins (Draw if equals)</li>
 </ul></li>
 <li><label><input type="checkbox">Implement <code>CoinFlipMode</code></label>
 <ul>
-<li>The choice (heads/tails) must be passed to the constructor when the mode is created.</li>
-<li>then use it in method <em>play()</em></li>
+<li>including method <em>play(p1, p2, choice) -&gt; Game</em></li>
+<li>cut and paste the code that was previously in GameService</li>
 </ul></li>
 </ul>
-<p>Fine, we’ll also need a way to generate either a <code>CoinFlipMode</code> object or a <code>DiceMode</code> object based on a <em>game_mode</em> (str) parameter. To do this, let’s create a factory class:</p>
-<ul class="task-list">
-<li><label><input type="checkbox">Create a <code>GameModeFactory</code> class</label></li>
-<li><label><input type="checkbox">Add static method called <em>get_mode(game_mode: str, **kwargs) -&gt; GameMode</em></label>
-<ul>
-<li>that takes the <em>game_mode</em> (str) as parameter</li>
-<li>and returns the corresponding <code>GameMode</code> object</li>
-</ul></li>
-</ul>
-<p>When you pass a string to the factory, it returns an object of type DiceMode or CoinFlipMode (or throws an exception).</p>
+</section>
+<section id="a-factory-for-producing-gamemode" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="a-factory-for-producing-gamemode"><span class="header-section-number">2.3</span> A factory for producing GameMode</h3>
+<blockquote class="blockquote">
+<p>💬 I have a “coinflip” string and I want a CoinFlipMode object.</p>
+</blockquote>
+<p>Fine, we’ll also need a way to generate either a <code>CoinFlipMode</code> object or a <code>DiceMode</code> object based on a <em>game_mode</em> (str) parameter. To do this, let’s create a factory class.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -826,7 +839,7 @@ Important
 <div>
 <pre class="mermaid mermaid-js">stateDiagram
     [*] --&gt; GameModeFactory : game_mode (str)
-    GameModeFactory --&gt; CoinFlipMode(tails) : if "game_mode=coinflip" &lt;br&gt; and "choice=tails"
+    GameModeFactory --&gt; CoinFlipMode : if "game_mode=coinflip"
     GameModeFactory --&gt; DiceMode : if "game_mode=dice"
 </pre>
 </div>
@@ -834,6 +847,27 @@ Important
 </div>
 </div>
 </div>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a <code>GameModeFactory</code> class</label></li>
+<li><label><input type="checkbox">Add a class method called <em>get_mode()</em></label>
+<ul>
+<li>the documentation for which is given below</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_mode(cls, game_mode: <span class="bu">str</span>) <span class="op">-&gt;</span> GameMode:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns the corresponding GameMode object.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">            game_mode (str): The identifier of the game mode (e.g., 'coinflip', 'dice').</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">            GameMode: An instance of a class implementing GameMode.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Raises:</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">            ValueError: If the requested game_mode is not supported.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When you pass a string to the factory, it returns an object of type DiceMode or CoinFlipMode (or throws an exception).</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -852,8 +886,8 @@ Important
 </div>
 </div>
 </section>
-<section id="decoupling-scoring" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="decoupling-scoring"><span class="header-section-number">2.3</span> Decoupling Scoring</h3>
+<section id="decoupling-scoring" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="decoupling-scoring"><span class="header-section-number">2.4</span> Decoupling Scoring</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -864,26 +898,20 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The methods <em>update_elo()</em>, <em>compute_elo()</em> and <em>expected_score()</em> do not belong in the <code>GameService</code> class.</p>
+<p>The methods <em>calculate_expected_score()</em>, <em>calculate_new_ratings()</em> and <em>update_player_ratings()</em> do not belong in the <code>GameService</code> class.</p>
 <p>They are used to update players’ Elo ratings, so let’s move them to a separate class.</p>
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Let’s start by simply creating a business class <code>ScoringStrategy</code></label>
-<ul>
-<li>Move the three methods into this class</li>
-</ul></li>
-<li><label><input type="checkbox">Update method <em>update_player_ratings(game)</em>, replacing parameters by a <code>Game</code> object</label></li>
-<li><label><input type="checkbox">In <code>GameService</code>, call that method</label>
-<ul>
-<li>Anyway, it’s better to keep the DAO calls within the service (<em>PlayerDao().update()</em>)</li>
-</ul></li>
+<li><label><input type="checkbox">Let’s start by simply creating a business class <code>ScoringStrategy</code></label></li>
+<li><label><input type="checkbox">Move the three methods into this class</label></li>
+<li><label><input type="checkbox">Refactor method <em>update_player_ratings(game)</em>, replacing parameters by a <code>Game</code> object</label></li>
 </ul>
 <p>By moving the calculation logic from <code>GameService</code> to <code>ScoringStrategy</code>, you have implemented the <strong>Strategy Pattern</strong> and applied the principle of <strong>Separation of Concerns</strong>.</p>
 <p>The Strategy Pattern decouples the game orchestration from the scoring mathematics. This makes your system highly extensible: you can swap the Elo algorithm for another without touching the core game logic, adhering to the <strong>Open/Closed Principle</strong>.</p>
 </section>
-<section id="gameservice-refactor" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="gameservice-refactor"><span class="header-section-number">2.4</span> GameService refactor</h3>
+<section id="gameservice-refactor" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="gameservice-refactor"><span class="header-section-number">2.5</span> GameService refactor</h3>
 <p>Let’s finally put the pieces of the puzzle together in the <code>GameService</code> class, method <em>play()</em>:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Update parameters</label>
@@ -899,8 +927,8 @@ Note
 <li><label><input type="checkbox">Return a <code>Game</code> object</label></li>
 </ul>
 </section>
-<section id="gamecontroller-refactor" class="level3" data-number="2.5">
-<h3 data-number="2.5" class="anchored" data-anchor-id="gamecontroller-refactor"><span class="header-section-number">2.5</span> GameController refactor</h3>
+<section id="gamecontroller-refactor" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="gamecontroller-refactor"><span class="header-section-number">2.6</span> GameController refactor</h3>
 <p>In the controller, you call the <em>play()</em> method of the service that has been updated.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">add parameter <em>req.game_mode</em> in third position to method <em>play()</em> called</label></li>
@@ -909,28 +937,18 @@ Note
 <ul class="task-list">
 <li><label><input type="checkbox">update values in the <em>GameResponse</em></label></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> GameResponse(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        username1<span class="op">=</span>game.player1.username,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        username2<span class="op">=</span>game.player2.username,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>game.description,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        winner<span class="op">=</span>game.winner.username,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        new_elo1<span class="op">=</span>game.player1.elo,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        new_elo2<span class="op">=</span>game.player2.elo,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> GameResponse(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        username1<span class="op">=</span>game.player1.username,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        username2<span class="op">=</span>game.player2.username,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>game.description,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        winner<span class="op">=</span>game.winner.username,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        new_elo1<span class="op">=</span>game.player1.elo,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        new_elo2<span class="op">=</span>game.player2.elo,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="unit-tests" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="unit-tests"><span class="header-section-number">3</span> Unit tests</h2>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="notes">
-<ul>
-<li>Explain mocking</li>
-<li>Few easy tests</li>
-</ul>
-</div>
-</section>
-<section id="conclusion" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3</span> Conclusion</h2>
 <p>In this lab, we formalized the business logic and created an object to store the games.</p>
 <p>However, without database storage, all the games created will be lost when the application is closed.</p>
 <p>Next time, we’ll focus on storing these games in a database.</p>

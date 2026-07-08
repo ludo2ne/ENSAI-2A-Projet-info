@@ -1281,31 +1281,26 @@ Caution
 </ul>
 <p>You’ll notice that the application asks for a password that’s a little too long.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Find and change the password required length to 16 characters</label>
+<li><label><input type="checkbox">Find and change the password required length from 35 to 16 characters</label>
 <ul>
-<li>first search through the code on your own <span class="emoji" data-emoji="mag">🔍</span></li>
-<li>then ask the AI agent <span class="emoji" data-emoji="robot">🤖</span></li>
+<li><span class="emoji" data-emoji="mag">🔍</span> <span class="emoji" data-emoji="mag">🔍</span> <span class="emoji" data-emoji="mag">🔍</span> Search through the code</li>
 </ul></li>
 </ul>
-<p><span class="emoji" data-emoji="construction">🚧</span> make it simpler</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Tip
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This requirement appears at two levels to balance Security and UX:</p>
 <ul>
 <li><strong>Frontend</strong> (The Guide): Provides real-time feedback in Streamlit. This improves User Experience by preventing frustration and reducing unnecessary API calls.</li>
 <li><strong>Backend</strong> (The Guard): Enforces strict validation via Pydantic. This ensures Security, as the backend is the final authority that cannot be bypassed by malicious actors or direct API calls.</li>
 </ul>
-</div>
 </div>
 </div>
 <ul class="task-list">
@@ -1523,6 +1518,11 @@ Tip
 <li><em>doc/tracking/2025.09.03-week1.md</em>: the first weekly point</li>
 <li><em>README.md</em></li>
 <li><em>main.py</em></li>
+</ul></li>
+<li><label><input type="checkbox">Add the teacher’s repo as a secondary remote named <em>upstream</em></label>
+<ul>
+<li><code>git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git</code></li>
+<li>If the teacher updates the template, it will be useful for retrieving the changes</li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-caution callout-titled">
