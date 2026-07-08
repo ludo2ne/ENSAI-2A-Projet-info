@@ -306,12 +306,13 @@ The goal is to convert this dictionary list into a Game list by:
 
 - [ ] Create a function `get_games() -> list[Game]`
 - [ ] Call the endpoint
+  - use package [requests](https://requests.readthedocs.io/en/latest/user/quickstart/){target="_blank"}
+  - save the response into a variable *r*
 - [ ] Check response
-- [ ] Convert JSON response into a list of Game
-
+  - use method *r.raise_for_status()* or attribute *r.status_code*
+- [ ] Get json (*r.json()*) and convert into a list of Game
 
 ::: {.callout-tip title="Test it manually"}
-
 ```{.python filename="sandbox.py"}
 from client.game_client import GameClient
 
@@ -352,6 +353,11 @@ What's in this file? It is the Orchestrator of your application:
 You'll notice that every endpoint prefixed with */game* will be handled in the **game_controller.py** file.
 
 - [ ] Open file **game_controller.py**
+
+At the moment, we have an endpoint to POST a Game.
+
+Step-by-step, let's create one to GET the Game by Player.
+
 - [ ] Add this endpoint below and test it in the swagger:
 
 ```{.python}
@@ -363,15 +369,15 @@ async def get_mock_games():
     ]
 ```
 
-OK, that's a start. Now, let's aim to display all `Games` played by a specific `Player`. We'll proceed step by step modifying the previous method.
+OK, that's a start. Now, let's aim to display all `Games` played by a specific `Player`. We'll modifying the previous method.
 
 - [ ] Add parameter *id_player* to the method
-  - to have this endpont: `GET /game?id_player=?`
-  - for your first try, just add this ID into the returned JSON (new key)
+  - to have this endpont: `GET /game?id_player=<?>`
+  - for your first try, just add this ID into the returned JSON (new key-value pair)
 
 If you want this parameter to be optional, you must specify a default value for it in the method signature (e.g., None).
 
-::: {.callout-tip}
+::: {.callout-note collapse="true"}
 A better way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player.
 
 ```{.python filename="player_controller.py"}
@@ -391,6 +397,7 @@ Finally, instead of returning raw JSON data, let's now retrieve the actual list 
 - [ ] Do you have a service that provides a list of games by player?
   - If not, implement one.
 - [ ] Since it's no longer a mock, rename the controller method
+- [ ] Add parameter *game_mode* with default value *None*
 
 Here is the route:
 
@@ -428,7 +435,7 @@ Fortunately, there is a solution for managing data input and output!
 
 When you expose an endpoint, you don't have to reveal all the data you have. It may be a good idea to hide passwords, tokens, and so on...
 
-Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this "garbage" from entering your system, we use **Pydantic models**.
+Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this "garbage" from entering your system, we use [Pydantic models](https://pydantic.dev/docs/validation/latest/examples/files/){target="_blank"}.
 
 A Pydantic model acts as a **Data Contract**: it defines exactly what the data should look like. If the incoming JSON doesn't match the contract, FastAPI will automatically reject the request with a "422 Unprocessable Entity" error.
 
@@ -447,6 +454,13 @@ class PlayerModel(BaseModel):
     email: EmailStr
     pokemon_fan: bool
 ```
+
+Many types are available :
+
+- basic: int, float, str, bool, etc.
+- advanced: FilePath, HttpUrl, EmailStr, PastDate, Color, PositiveInt, etc.
+
+It is also possible to add your own constraints.
 
 #### Use it in the Controller
 
@@ -472,16 +486,37 @@ async def create_player(p: PlayerModel, player_service=Depends(get_player_servic
 
 If the client sends an invalid *email* or forgets the *elo*, FastAPI will stop the request immediately and return a "422 Unprocessable Entity" error. **Your service code is never even executed, protecting your business logic from bad data.**
 
-
 - [ ] Open file **game_model.py** in folder **schema**
 
 There's already a model. Let's see how it's used.
 
 - [ ] Open file **game_controller.py**, and check parameters of method *play_games()*
   - to find out who the current player is, it use the Token
-  - the opponent and the choice (heads or tails) are provided by the GameModel
+  - Input: opponent and choice (heads or tails) are provided by the `GamePlayModel`
+  - Output: the response format is a `GameResponseModel` 
 
-OK, cool. We already have a model for Game, but let's say we want to create an endpoint that returns all the games. If we use this model, the games returned will just be a list of opponents and options. Some information is missing.
+```{mermaid}
+graph LR
+    subgraph "Input (Client Request)"
+        Req[GamePlayModel]
+    end
+
+    subgraph "Controller"
+        Ctrl[play_game]
+    end
+
+    subgraph "Output (Client Response)"
+        Res[GameResponseModel]
+    end
+
+    Req -->|Validates| Ctrl
+    Ctrl -->|Maps to| Res
+```
+
+
+OK, cool. We already have models for Game. But are these models appropriate in our case?
+
+We can use `GameResponseModel` as output, but we can do better.
 
 
 ### Multiple Models
@@ -493,25 +528,27 @@ A common mistake is to use the same model for every single operation. However, i
 Think about the `Player` logic. Using only one model creates several issues:
 
 - **During Registration:** You need the *password*, but you do not have an *id_player* yet (the database generates it).
-- **During Login:** You only need the *username* and *password*. Including the *email* or the *elo* is a waste of bandwidth and a security risk.
+- **During Login:** You only need to provide *username* and *password*. Including the *email* or the *elo* is a waste of bandwidth and a security risk.
 
 To solve this, we use different models for different contexts. This is called **Separation of Concerns**.
 
-In **player_model.py**, we define two specialized contracts to match the specific needs of our API endpoints:
+In **player_model.py**, we define three specialized contracts to match the specific needs of our API endpoints:
 
 1. `PlayerModel`: The "Full" version. It contains all player attributes (*email*, *elo*, *pokemon_fan*, etc.).
-  - Usage: It is used in **player_controller.py** within the *create_player* and *update_player* methods to ensure that all required profile information is validated.
-2. `PlayerLoginModel`: The "Minimal" version. It is stripped down to only the essential fields required for authentication (*username* and *password*).
+  - Usage: It is used as input in **player_controller.py** within the *create_player* and *update_player* methods to ensure that all required profile information is validated.
+2. `PlayerReadModel`: Used as an output to display information about a Player.
+3. `PlayerLoginModel`: The "Minimal" version. It is stripped down to only the essential fields required for authentication (*username* and *password*).
   - Usage: It is used in **login_controller.py** within the *login* method. This prevents the API from requiring or exposing unnecessary data like *email* or *elo* during a simple login attempt.
 
 Let's get back to the Games.
 
 The goal will be to create an endpoint to display a player's games.
 
-- [ ] Create a GameModel with these fields:
-  - id_game, game_mode, detail, timestamp
-  - for player1, player2 and winner: use another Model (`player1: aPlayerModel`)
+- [ ] Create a `GameReadModel` with these fields:
+  - id_game, game_mode, description, timestamp
+  - add player1, player2 and winner: use another Model (`player1: somePlayerModel`)
 - [ ] Modify endpoint `GET /game?id_player=?` to use this model
+  - the output must be a list of `GameReadModel`
 
 ::: {.callout-tip title="Going Further" collapse="true"}
 While using two models is a great start, professional **APIs** often use even more granular models to handle different stages of a resource's lifecycle. You could further optimize this by implementing:
@@ -534,28 +571,32 @@ Instead of asking for a username and password on every single request, the clien
 You will implement a dependency that checks for a specific header. If the header is invalid, you must raise an `HTTPException` with a `401 Unauthorized` status code.
 :::
 
-**The Security Contract:**
+The Security Contract:
+
 - **Header Key:** `X-Auth-Token`
 - **Valid Value:** `secret-key-123`
 
-**Example of a protected endpoint in your controller:**
+Example of a protected endpoint in your controller:
 
 ```python
-@router.post("/", tags=["Games"])
-async def create_game(
-    game: GameCreate, 
-    service=Depends(get_game_service),
-    token: str = Header(None)
+@router.post("/", response_model=GameResponseModel, tags=["Games"])
+def play_game(
+    req: GamePlayModel, game_service=Depends(get_game_service), current_player=Depends(verify_token)
 ):
-    # Validate the token
-    if token != "secret-key-123":
-        raise HTTPException(status_code=401, detail="Invalid token")
-    
-    return service.create(game)
+    ...
 ```
 
-- [ ] **Add Security**: Protect your `POST` and `DELETE` routes with the `X-Auth-Token` check.
-- [ ] **Test with Swagger**: Verify that a request without the token returns a `401`.
+Function *verify_token()* from file **utils/security.py** will:
+
+- Get the token from the request header
+- Check if it is present and valid
+- Return the player if the token is valid
+
+Play games in the swagger
+
+- [ ] without token
+- [ ] with a invalid token
+- [ ] with a valid token
 
 
 ## Conclusion{.unnumbered}
