@@ -158,7 +158,25 @@ Lets explore <https://swapi.info/api/>{target="_blank"}
 - [ ] What is Mace Windu's home planet?
 - [ ] Find all planets visited in "The Empire Strikes Back"
 
-:construction: example with parameters ?limit...
+Another API <https://pokeapi.co/api/v2/>{target="_blank"}
+
+- [ ] Use parameters *limit* and *offset* to display Pokemons with IDs between 51 and 60
+  - [Documentation](https://pokeapi.co/docs/v2#resource-listspagination-section){target="_blank"}
+- [ ] What is the type of Pokemon named *psyduck*?
+- [ ] Does he have a Type advantage if he's fighting against Pokemon 114?
+
+
+:::{.notes}
+https://swapi.info/api/people -> list[dict]
+https://swapi.info/api/people/51 -> Mace Windu (dict)
+https://swapi.info/api/planets/42
+https://swapi.info/api/films/2 -> planets
+
+https://pokeapi.co/api/v2/pokemon?limit=10&offset=50
+https://pokeapi.co/api/v2/pokemon/54/ -> psyduck, type=water
+https://pokeapi.co/api/v2/type/11/ -> type=water
+https://pokeapi.co/api/v2/pokemon/114 -> type=grass
+:::
 
 
 ## Exploring your project's API
@@ -195,7 +213,10 @@ When using `POST` or `PUT`, you don't just send a URL; you send a **JSON object*
 - [ ] Create a new player
 - [ ] Update player *junior*
   - add 100 points to its elo, change suffix mail from *io* to *fr*
-- [ ] Play a coin flip between *batricia* and *gilbert*
+- [ ] Login with user *batricia*
+  - Where is the password?
+  - In the response, copy the token
+- [ ] Play a coin flip against *gilbert*
 
 
 ::: {.callout-note}
@@ -216,7 +237,7 @@ Create a new player using:
 
 ## The Client Challenge (Data Mapping)
 
-Now, we will move to a more advanced task. Your Back-end are going to act as a **Client**. You need to fetch game data from an external source and integrate it into your engine.
+Now, we will move to a more advanced task. Your back-end will act as a **client**. You need to fetch game data from an external source and integrate it into your engine.
 
 ::: {.callout-warning title="The Schema Mismatch"}
 The external API does not use your internal names. It is a common real-world problem. You must bridge the gap!
@@ -235,18 +256,12 @@ Your task is to retrieve this data and then convert it into a suitable format. [
 
 ### The server
 
-:construction: 
+It's not very difficult to create a fake API, for example:
 
-TODO: Launch an API, Give a link.
-
-
-
-::: {.callout-note title="Workarround" collapse="true"}
-If the server is not available, simply:
-
-- Create a file *games.json*
-- Import data from this file instead of the API
-:::
+- [ ] In your repository, import file [data/game.json](./ressources/game.json){target="_blank"}
+- [ ] Launch a webservice on port 5555 with these data
+  - `uvx json_server data/game.json 5555`
+- [ ] Test it: `curl http://localhost:5555/` in another terminal
 
 
 ### Your turn
@@ -261,16 +276,16 @@ Below is the data available on this external API:
 [
   {
     "id": "1",
-    "players_list": ["Alice", "Bob"],
-    "winner_name": "Alice",
+    "players_list": ["Batricia", "Junior"],
+    "winner_name": "Batricia",
     "location_name": "Arena 1",
     "duration_seconds": 120,
     "mode_type": "coinflip"
   },
   {
     "id": "2",
-    "players_list": ["Eve", "Frank"],
-    "winner_name": "Eve",
+    "players_list": ["Maurice", "Gilbert"],
+    "winner_name": "Gilbert",
     "location_name": "Secret Cave",
     "duration_seconds": 300,
     "mode_type": "dice"
@@ -293,6 +308,24 @@ The goal is to convert this dictionary list into a Game list by:
 - [ ] Call the endpoint
 - [ ] Check response
 - [ ] Convert JSON response into a list of Game
+
+
+::: {.callout-tip title="Test it manually"}
+
+```{.python filename="sandbox.py"}
+from client.game_client import GameClient
+
+client = GameClient()
+games = client.get_games()
+print(f"{len(games)} games loaded:")
+for g in games:
+    print(f"- {g}")
+```
+
+`uv run --project backend python backend/sandbox.py`
+:::
+
+
 
 In this section, you were a client of an API; next you'll become the provider by creating your own endpoints.
 
