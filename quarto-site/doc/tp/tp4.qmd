@@ -15,27 +15,6 @@ categories:
   - Data Mapping
 ---
 
-:construction:
-
-
-:::{.notes}
-- [ ] Move parts without questions to ENSAI-tools
-  - API client (convert into list[Object], df), API create (python, json-tools)
-
-
-https://www.insee.fr/fr/metadonnees/geographie/commune/35047-bruz
-
-https://portail-api.insee.fr/catalog/api/5029cf12-e930-4d24-a9cf-12e9307d241d/doc?page=36a0f1a5-af70-4662-a0f1-a5af709662f4
-  curl -X 'GET' \
-  'https://api.insee.fr/metadonnees/geo/commune/35047/ascendants' \
-  -H 'accept: application/json'
-
-  curl -X 'GET' \
-  'https://api.insee.fr/metadonnees/geo/canton/3504/communes' \
-  -H 'accept: application/json'
-
-:::
-
 ## Before you start {.unnumbered}
 
 This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
