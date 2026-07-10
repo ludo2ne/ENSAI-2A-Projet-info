@@ -503,22 +503,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="notes">
-<ul class="task-list">
-<li><label><input type="checkbox">Move parts without questions to ENSAI-tools</label>
-<ul>
-<li>API client (convert into list[Object], df), API create (python, json-tools)</li>
-</ul></li>
-</ul>
-<p>https://www.insee.fr/fr/metadonnees/geographie/commune/35047-bruz</p>
-<p>https://portail-api.insee.fr/catalog/api/5029cf12-e930-4d24-a9cf-12e9307d241d/doc?page=36a0f1a5-af70-4662-a0f1-a5af709662f4 curl -X ‘GET’<br>
-‘https://api.insee.fr/metadonnees/geo/commune/35047/ascendants’<br>
--H ‘accept: application/json’</p>
-<p>curl -X ‘GET’<br>
-‘https://api.insee.fr/metadonnees/geo/canton/3504/communes’<br>
--H ‘accept: application/json’</p>
-</div>
 <section id="before-you-start" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
 <p>This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.</p>
@@ -900,9 +884,16 @@ Important
 </div>
 <ul class="task-list">
 <li><label><input type="checkbox">Create a function <code>get_games() -&gt; list[Game]</code></label></li>
-<li><label><input type="checkbox">Call the endpoint</label></li>
-<li><label><input type="checkbox">Check response</label></li>
-<li><label><input type="checkbox">Convert JSON response into a list of Game</label></li>
+<li><label><input type="checkbox">Call the endpoint</label>
+<ul>
+<li>use package <a href="https://requests.readthedocs.io/en/latest/user/quickstart/" target="_blank">requests</a></li>
+<li>save the response into a variable <em>r</em></li>
+</ul></li>
+<li><label><input type="checkbox">Check response</label>
+<ul>
+<li>use method <em>r.raise_for_status()</em> or attribute <em>r.status_code</em></li>
+</ul></li>
+<li><label><input type="checkbox">Get json (<em>r.json()</em>) and convert into a list of Game</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Test it manually">
 <div class="callout-header d-flex align-content-center">
@@ -962,6 +953,10 @@ Important
 <p>You’ll notice that every endpoint prefixed with <em>/game</em> will be handled in the <strong>game_controller.py</strong> file.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Open file <strong>game_controller.py</strong></label></li>
+</ul>
+<p>At the moment, we have an endpoint to POST a Game.</p>
+<p>Step-by-step, let’s create one to GET the Game by Player.</p>
+<ul class="task-list">
 <li><label><input type="checkbox">Add this endpoint below and test it in the swagger:</label></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
@@ -970,24 +965,26 @@ Important
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">1</span>, <span class="st">"mode"</span>: <span class="st">"coinflip"</span>, <span class="st">"winner"</span>: <span class="st">"Miguel"</span>},</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"id_game"</span>: <span class="dv">2</span>, <span class="st">"mode"</span>: <span class="st">"dice"</span>, <span class="st">"winner"</span>: <span class="st">"Batricia"</span>}</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>OK, that’s a start. Now, let’s aim to display all <code>Games</code> played by a specific <code>Player</code>. We’ll proceed step by step modifying the previous method.</p>
+<p>OK, that’s a start. Now, let’s aim to display all <code>Games</code> played by a specific <code>Player</code>. We’ll modifying the previous method.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Add parameter <em>id_player</em> to the method</label>
 <ul>
-<li>to have this endpont: <code>GET /game?id_player=?</code></li>
-<li>for your first try, just add this ID into the returned JSON (new key)</li>
+<li>to have this endpont: <code>GET /game?id_player=&lt;?&gt;</code></li>
+<li>for your first try, just add this ID into the returned JSON (new key-value pair)</li>
 </ul></li>
 </ul>
 <p>If you want this parameter to be optional, you must specify a default value for it in the method signature (e.g., None).</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Note
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A better way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player.</p>
 <div class="code-with-filename">
@@ -1003,6 +1000,7 @@ Tip
 </div>
 </div>
 </div>
+</div>
 <p>Finally, instead of returning raw JSON data, let’s now retrieve the actual list of games played by the player with that ID.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Do you have a DAO that provides a list of games by player?</label>
@@ -1014,6 +1012,7 @@ Tip
 <li>If not, implement one.</li>
 </ul></li>
 <li><label><input type="checkbox">Since it’s no longer a mock, rename the controller method</label></li>
+<li><label><input type="checkbox">Add parameter <em>game_mode</em> with default value <em>None</em></label></li>
 </ul>
 <p>Here is the route:</p>
 <div class="cell" data-layout-align="default">
@@ -1052,7 +1051,7 @@ Tip
 <section id="data-validation" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="data-validation"><span class="header-section-number">5.2</span> Data Validation</h3>
 <p>When you expose an endpoint, you don’t have to reveal all the data you have. It may be a good idea to hide passwords, tokens, and so on…</p>
-<p>Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this “garbage” from entering your system, we use <strong>Pydantic models</strong>.</p>
+<p>Conversely, when your endpoint receives data (e.g., form), you cannot trust the client. A user might send a string where you expect an integer, or forget a mandatory field. To prevent this “garbage” from entering your system, we use <a href="https://pydantic.dev/docs/validation/latest/examples/files/" target="_blank">Pydantic models</a>.</p>
 <p>A Pydantic model acts as a <strong>Data Contract</strong>: it defines exactly what the data should look like. If the incoming JSON doesn’t match the contract, FastAPI will automatically reject the request with a “422 Unprocessable Entity” error.</p>
 <section id="define-a-model" class="level4" data-number="5.2.1">
 <h4 data-number="5.2.1" class="anchored" data-anchor-id="define-a-model"><span class="header-section-number">5.2.1</span> Define a Model</h4>
@@ -1066,6 +1065,12 @@ Tip
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    elo: <span class="bu">int</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    pokemon_fan: <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Many types are available :</p>
+<ul>
+<li>basic: int, float, str, bool, etc.</li>
+<li>advanced: FilePath, HttpUrl, EmailStr, PastDate, Color, PositiveInt, etc.</li>
+</ul>
+<p>It is also possible to add your own constraints.</p>
 </section>
 <section id="use-it-in-the-controller" class="level4" data-number="5.2.2">
 <h4 data-number="5.2.2" class="anchored" data-anchor-id="use-it-in-the-controller"><span class="header-section-number">5.2.2</span> Use it in the Controller</h4>
@@ -1098,10 +1103,38 @@ Tip
 <li><label><input type="checkbox">Open file <strong>game_controller.py</strong>, and check parameters of method <em>play_games()</em></label>
 <ul>
 <li>to find out who the current player is, it use the Token</li>
-<li>the opponent and the choice (heads or tails) are provided by the GameModel</li>
+<li>Input: opponent and choice (heads or tails) are provided by the <code>GamePlayModel</code></li>
+<li>Output: the response format is a <code>GameResponseModel</code></li>
 </ul></li>
 </ul>
-<p>OK, cool. We already have a model for Game, but let’s say we want to create an endpoint that returns all the games. If we use this model, the games returned will just be a list of opponents and options. Some information is missing.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    subgraph "Input (Client Request)"
+        Req[GamePlayModel]
+    end
+
+    subgraph "Controller"
+        Ctrl[play_game]
+    end
+
+    subgraph "Output (Client Response)"
+        Res[GameResponseModel]
+    end
+
+    Req --&gt;|Validates| Ctrl
+    Ctrl --&gt;|Maps to| Res
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>OK, cool. We already have models for Game. But are these models appropriate in our case?</p>
+<p>We can use <code>GameResponseModel</code> as output, but we can do better.</p>
 </section>
 </section>
 <section id="multiple-models" class="level3" data-number="5.3">
@@ -1113,17 +1146,18 @@ Tip
 <p>Think about the <code>Player</code> logic. Using only one model creates several issues:</p>
 <ul>
 <li><strong>During Registration:</strong> You need the <em>password</em>, but you do not have an <em>id_player</em> yet (the database generates it).</li>
-<li><strong>During Login:</strong> You only need the <em>username</em> and <em>password</em>. Including the <em>email</em> or the <em>elo</em> is a waste of bandwidth and a security risk.</li>
+<li><strong>During Login:</strong> You only need to provide <em>username</em> and <em>password</em>. Including the <em>email</em> or the <em>elo</em> is a waste of bandwidth and a security risk.</li>
 </ul>
 <p>To solve this, we use different models for different contexts. This is called <strong>Separation of Concerns</strong>.</p>
-<p>In <strong>player_model.py</strong>, we define two specialized contracts to match the specific needs of our API endpoints:</p>
+<p>In <strong>player_model.py</strong>, we define three specialized contracts to match the specific needs of our API endpoints:</p>
 <ol type="1">
 <li><code>PlayerModel</code>: The “Full” version. It contains all player attributes (<em>email</em>, <em>elo</em>, <em>pokemon_fan</em>, etc.).</li>
 </ol>
 <ul>
-<li>Usage: It is used in <strong>player_controller.py</strong> within the <em>create_player</em> and <em>update_player</em> methods to ensure that all required profile information is validated.</li>
+<li>Usage: It is used as input in <strong>player_controller.py</strong> within the <em>create_player</em> and <em>update_player</em> methods to ensure that all required profile information is validated.</li>
 </ul>
 <ol start="2" type="1">
+<li><code>PlayerReadModel</code>: Used as an output to display information about a Player.</li>
 <li><code>PlayerLoginModel</code>: The “Minimal” version. It is stripped down to only the essential fields required for authentication (<em>username</em> and <em>password</em>).</li>
 </ol>
 <ul>
@@ -1132,12 +1166,15 @@ Tip
 <p>Let’s get back to the Games.</p>
 <p>The goal will be to create an endpoint to display a player’s games.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Create a GameModel with these fields:</label>
+<li><label><input type="checkbox">Create a <code>GameReadModel</code> with these fields:</label>
 <ul>
-<li>id_game, game_mode, detail, timestamp</li>
-<li>for player1, player2 and winner: use another Model (<code>player1: aPlayerModel</code>)</li>
+<li>id_game, game_mode, description, timestamp</li>
+<li>add player1, player2 and winner: use another Model (<code>player1: somePlayerModel</code>)</li>
 </ul></li>
-<li><label><input type="checkbox">Modify endpoint <code>GET /game?id_player=?</code> to use this model</label></li>
+<li><label><input type="checkbox">Modify endpoint <code>GET /game?id_player=?</code> to use this model</label>
+<ul>
+<li>the output must be a list of <code>GameReadModel</code></li>
+</ul></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Going Further">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -1181,22 +1218,28 @@ Tip
 <p>You will implement a dependency that checks for a specific header. If the header is invalid, you must raise an <code>HTTPException</code> with a <code>401 Unauthorized</code> status code.</p>
 </div>
 </div>
-<p><strong>The Security Contract:</strong> - <strong>Header Key:</strong> <code>X-Auth-Token</code> - <strong>Valid Value:</strong> <code>secret-key-123</code></p>
-<p><strong>Example of a protected endpoint in your controller:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_game(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    game: GameCreate, </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    service<span class="op">=</span>Depends(get_game_service),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    token: <span class="bu">str</span> <span class="op">=</span> Header(<span class="va">None</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate the token</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> token <span class="op">!=</span> <span class="st">"secret-key-123"</span>:</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">401</span>, detail<span class="op">=</span><span class="st">"Invalid token"</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> service.create(game)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The Security Contract:</p>
+<ul>
+<li><strong>Header Key:</strong> <code>X-Auth-Token</code></li>
+<li><strong>Valid Value:</strong> <code>secret-key-123</code></li>
+</ul>
+<p>Example of a protected endpoint in your controller:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, response_model<span class="op">=</span>GameResponseModel, tags<span class="op">=</span>[<span class="st">"Games"</span>])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> play_game(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    req: GamePlayModel, game_service<span class="op">=</span>Depends(get_game_service), current_player<span class="op">=</span>Depends(verify_token)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Function <em>verify_token()</em> from file <strong>utils/security.py</strong> will:</p>
+<ul>
+<li>Get the token from the request header</li>
+<li>Check if it is present and valid</li>
+<li>Return the player if the token is valid</li>
+</ul>
+<p>Play games in the swagger</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>Add Security</strong>: Protect your <code>POST</code> and <code>DELETE</code> routes with the <code>X-Auth-Token</code> check.</label></li>
-<li><label><input type="checkbox"><strong>Test with Swagger</strong>: Verify that a request without the token returns a <code>401</code>.</label></li>
+<li><label><input type="checkbox">without token</label></li>
+<li><label><input type="checkbox">with a invalid token</label></li>
+<li><label><input type="checkbox">with a valid token</label></li>
 </ul>
 </section>
 </section>
