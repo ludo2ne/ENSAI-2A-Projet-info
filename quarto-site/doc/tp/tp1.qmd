@@ -2,7 +2,8 @@
 title: Git reminder, Example of Application
 description: Lab 1
 author: Ludovic Deneuville
-format: html
+format: 
+  html: default
 number-sections: true
 categories:
   - Git

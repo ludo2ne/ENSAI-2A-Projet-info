@@ -97,6 +97,14 @@ format:
     slide-number: c/t
     slide-level: 3
     controls: true
+  typst:
+    papersize: a4
+    margin:
+      x: 1.5cm
+      y: 2.0cm
+    section-numbering: "1.1"
+    mainfont: "Libertinus Serif"
+    fontsize: 12pt
 
 execute:
   freeze: auto
