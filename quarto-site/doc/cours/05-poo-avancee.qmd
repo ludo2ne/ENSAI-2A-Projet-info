@@ -184,7 +184,7 @@ Il faut bien comprendre
 - We can easily add types and formats 🥳
 
 ::: {.callout-important title="Pattern Bridge"}
-Découpage d'une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu'il faut ensuite assembler.
+Splitting a large class into a group of smaller classes, each with its own hierarchy, which must then be combined.
 :::
 
 
@@ -295,7 +295,7 @@ Je remontre le schéma quelques secondes
 - No unnecessary `if/elif/else`.
 **Each part of our code handles only one thing**
 
-**Chaque partie de notre code s'occupe d'une seule chose**
+**Every part of our code does just one thing**
 
 ::: {.notes}
 Avantages :
@@ -350,6 +350,6 @@ En ajoutant les méthodes stats
 - There are ready-made solutions to common problems 🧰
 
 ::: {.callout-important}
-Faible couplage, forte cohérence
+Low coupling, high cohesion
 :::
 

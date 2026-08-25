@@ -98,42 +98,56 @@ pylint --output-format=colorized --disable=C0114,C0411,C0415,W0718 $(git ls-file
 - Do this regularly
 :::
 
-
-
-### Repository Structure {.smaller}
-
-:construction:
+### Repository Structure (Root) {.smaller}
 
 ```{.txt code-line-numbers="false"}
 PROJET-INFO-2A
     ├── .vscode/settings.json
+    ├── backend
     ├── data
     │   └── init_db.sql
     ├── doc
-    │   └── suivi
-    │       └── YYYY.MM.DD-semaineN.md
+    │   ├── tracking
+    │   |   └── YYYY.MM.DD-semaineN.md
+    │   └── report
+    ├── frontend
+    ├── .gitignore
+    ├── LICENCE
+    └── README.md
+```
+
+:::{.notes}
+2 projet en 1 repo : 
+
+- backend -> API (voir ci-après)
+- frontend -> Interface (voir TP5)
+:::
+
+
+### Repository Structure (Backend) {.smaller}
+
+```{.txt code-line-numbers="false"}
+backend
     ├── src
     │   ├── business_object
     │   │   └── une_classe.py
+    │   ├── controller
+    │   │   └── une_classe_controller.py
     │   ├── dao
     │   │   └── une_classe_dao.py
     │   ├── service
     │   │   └── une_classe_service.py
-    │   ├── tests
-    │   │   ├── dao
-    │   │   └── service
-    │   ├── utils
-    │   └── view
-    │       └── accueil_view.py
-    ├── .gitignore
-    ├── LICENCE
+    │   └── utils
+    ├── tests
+    │   ├── test_dao
+    │   └── test_service
     ├── README.md
-    └── requirements.txt
+    └── pyproject.toml
 ```
 
 ### Documentation
 
-![Git Branch Diagram](img/quality-doc-commitstrip.jpg)
+![](img/quality-doc-commitstrip.jpg){width="50%"}
 
 ---
 
@@ -165,6 +179,24 @@ class MathematicalOperations:
   - Brief description
   - Parameters
   - Return
+
+mypy ?
+:::
+
+---
+
+**README.md**
+
+- Presentation
+- Quick start
+- How to use
+
+:::{.notes}
+README qui veut dire ...
+
+Un bon README = vos grands-parents sont capables de lancer l'appli
+
+markdown : balisage (quarto, notebook)
 :::
 
 

@@ -3,22 +3,18 @@ title: Git
 description: Remider
 format: 
   html: default
+  revealjs:
+    footer: "[Home](../../index.html) --- [Git](03-git.html)"
+    output-file: 03-git-slides.html
 ---
-
-:construction:
-
-<https://ludo2ne.github.io/Git-tuto/doc/presentation.html> :arrow_right: ENSAI Tools
-
-by Cyriel
 
 
 ## Introduction
+
 - **What is Git?**
   - Version control system: tracks changes in code, allows collaboration, and helps manage project history.
 - **Why use Git?**
   - Work on different features simultaneously, revert mistakes, and collaborate efficiently.
-
----
 
 ## How Git Works
 
@@ -99,17 +95,21 @@ by Cyriel
 
 
 ## Branching Basics
+
 **Why use branches?**
   
 - Work on features or fixes without affecting the main codebase.
 - Best practice for working as a team : 1 branch per "big part"
 
-![Git Branch Diagram](img/git-branchs.png)
+---
+
+![](img/git-branchs.png){width="70%"}
 
 ## Branching Basics
+
 - **Create a Branch**:
   ```bash
-  git branch <branch-name>          # Create a new branch
+  git branch <branch-name>         # Create a new branch
   git checkout <branch-name>       # Switch to the branch
   git checkout -b <branch-name>    # Create and switch to the branch
   ```
@@ -128,6 +128,7 @@ by Cyriel
   - Step 3 : Google is your friend
 
 ## Common Mistakes and Fixes
+
 **Undo Changes**:
 
 - Undo a commit (keep changes):
@@ -159,10 +160,14 @@ If Git reports conflicts during a merge, manually edit the conflicting files, th
   - Branches help manage features and fixes separately.
   
 ## Wrap-Up
+
 **Practice makes perfect**:
   
   - Experiment with Git commands during the lab work (do NOT designate 1 "Git expert")
   - Solve issues by communicating about what happened
-  - Resources :
-    - [GitHub’s guides](https://guides.github.com/)
-    - [Atlassian’s Git tutorials](https://www.atlassian.com/git/tutorials)
+
+## Resources
+
+- [GitHub's guides](https://guides.github.com/){target="_blank"}
+- [Atlassian's Git tutorials](https://www.atlassian.com/git/tutorials){target="_blank"}
+- [ENSAI-tools](https://ludo2ne.github.io/ENSAI-tools/doc/git/presentation.html){target="_blank"}

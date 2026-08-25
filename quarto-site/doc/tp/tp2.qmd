@@ -371,7 +371,7 @@ In this lab, we formalized the business logic and created an object to store the
 
 However, without database storage, all the games created will be lost when the application is closed.
 
-Next time, we’ll focus on storing these games in a database.
+Next time, we'll focus on storing these games in a database.
 
 
 {{< include _end-lab.qmd >}}

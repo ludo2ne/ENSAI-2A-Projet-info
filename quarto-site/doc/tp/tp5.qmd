@@ -70,7 +70,7 @@ We will create a new page *Player stats* displaying for a specific player, infor
 
 ### Player's information
 
-Let's start by retrieving and then displaying the player’s details.
+Let's start by retrieving and then displaying the player's details.
 
 - [ ] Create file **src/pages/player_stats.py**
 - [ ] Add a title and create a logger

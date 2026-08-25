@@ -38,6 +38,23 @@ Les questions qu'il faut se poser avant de commencer :
 ::::::
 
 
+### Project
+
+- **A need** :arrow_right: Why are we doing it?
+- **A scope** :arrow_right: What are we going to deliver?
+- **People** :arrow_right: Who is involved?
+- **Resources** :arrow_right: What do we need?
+- **Constraints** :arrow_right: How much time? How much money?
+- **Quality** :arrow_right: What level of quality is expected?
+
+:::{.notes}
+A project is a balance between three main constraints:
+
+- **Scope** — What do we deliver?
+- **Time** — When must it be delivered?
+- **Cost** — What resources do we have?
+:::
+
 ### Project Phases
 
 - Analysis of the needs (specifications)
@@ -54,13 +71,14 @@ In traditional projects (V-Cycle), these phases were highly segmented.
 
 ### Project actors
 
-:construction:
-
-- Fonctionnel - Technique
-- Besoin Métier
-- MOA - MOE
-- Etude préalable, budget, temps, qualité - Cahier des charges - SFD - Spec technique - Dossier test
-- SCRUM
+| Actor                        | Main responsibility                                    |
+| ---------------------------- | ------------------------------------------------------ |
+| **Client / Sponsor**         | Defines the objectives and validates major decisions   |
+| **Product Owner / Business** | Represents user needs and priorities                   |
+| **Project Manager**          | Coordinates scope, time, cost and risks                |
+| **Functional team**          | Translates business needs into functional requirements |
+| **Technical team**           | Designs and implements the solution                    |
+| **Users**                    | Use the product and provide feedback                   |
 
 ---
 
@@ -231,7 +249,7 @@ Dans le monde pro :
 Exemple page web
 :::
 
-### Zoom sur la couche métier
+### Focus on the business layer
 
 ![](img/archi-business-layer.png)
 
@@ -248,12 +266,12 @@ In the practical work:
 ### Layers of the Business Layer 1/2
 
 - **_DAO (Data Access Object):_**
-  - The part of your code that communicates with the database (Lecture 4/Practical 4)
+  - The part of your code that communicates with the database (Lecture 4/Practical 3)
 - **_Service:_**
   - Business code
   - Manipulates business objects to create information or value
-  - Requests objects from the DAO layer (Practical 4)
-  - Calls external web services (Practical 3)
+  - Requests objects from the DAO layer (Practical 3)
+  - Calls external web services (Practical 4)
 
 ### Layers of the Business Layer 2/2
 

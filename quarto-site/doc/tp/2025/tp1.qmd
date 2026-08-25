@@ -351,7 +351,7 @@ You're now going to do a few basic things with Git :
 - [ ] In Git Bash, use the *status*, *add*, *commit*, *push* and *pull* commands to send your changes to the remote repository.
 
 ::: {.callout-tip collapse="true" title="Help"}
-[The sequence of Git commands](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target=‘_blank’} should become automatic.
+[The sequence of Git commands](https://ludo2ne.github.io/Git-tuto/doc/tp-ensai.html#add-commit-pull-et-push){target=‘_blank'} should become automatic.
 
 If you get this message when you *push*, you need to start with *pull*.
 ```{.txt}
@@ -404,7 +404,7 @@ print("Bonjour Mary-<firstname>")         # Code in the remote repository - inco
 
 - [ ] You can choose to impose your version
   - either by clicking on *Accept Current Change*
-  - Or by deleting `print(‘Hello Mary-<firstname>’)`, as well as `<<<<<<<`, `=======` and `>>>>>>>`.
+  - Or by deleting `print(‘Hello Mary-<firstname>')`, as well as `<<<<<<<`, `=======` and `>>>>>>>`.
 - [ ] *add*, *commit* *pull* and *push*
 
 

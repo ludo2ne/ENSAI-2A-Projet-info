@@ -39,7 +39,7 @@ You will be using the following tools:
 
 
 ::: {.callout-caution}
-Don't skip a step that didn’t work, telling yourself that it doesn’t matter.
+Don't skip a step that didn't work, telling yourself that it doesn't matter.
 
 This may cause problems later.
 :::
@@ -439,7 +439,7 @@ sequenceDiagram
 ```
 :::
 
-Now that our API is up and running, it’s quite satisfying to see it working. However, interacting with raw JSON isn't exactly a luxury—this is where a proper user interface comes in.
+Now that our API is up and running, it's quite satisfying to see it working. However, interacting with raw JSON isn't exactly a luxury—this is where a proper user interface comes in.
 
 
 ### Menu application
