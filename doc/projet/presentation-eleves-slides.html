@@ -148,14 +148,20 @@ Ludovic Deneuville
 </div>
 
 </section>
-<section class="slide level3">
-
-<aside class="notes">
+<section id="objectifs" class="title-slide slide level2 center">
+<h2>Objectifs</h2>
 <ul>
-<li>Objectifs Modélisation, Back/Front</li>
-<li>Outils à disposition</li>
-<li>Gestion de projet, travail en groupe, suivi</li>
-<li>Usage de l’IAgen</li>
+<li>Développer une application en Python</li>
+<li>Découvrir l’architecture logicielle</li>
+<li>Communiquer avec une base de données, des webservices</li>
+<li>Concevoir et Modéliser (UML)</li>
+<li>Travailler en équipe</li>
+</ul>
+<aside class="notes">
+<p>Vie ma vie de dév</p>
+<ul>
+<li>Éléments vus en cours et en TP</li>
+<li>PostgreSQL OK, SQLite NON</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -169,19 +175,30 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-<section id="objectifs" class="title-slide slide level2 center">
-<h2>Objectifs</h2>
+
+<section id="environnement-de-travail" class="title-slide slide level2 center">
+<h2>Environnement de travail</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Vous pouvez coder sur :</p>
 <ul>
-<li>Développer une application en Python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données PostgreSQL</li>
-<li>Utiliser des webservices</li>
-<li>Concevoir et Modéliser (UML)</li>
+<li>un datalab (recommandé)</li>
+<li>la VM ENSAI</li>
 </ul>
+<p>Vous pouvez également coder sur votre propre machine mais <strong>vous devrez gérer en totale autonomie les installations nécessaires.</strong></p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
-<li>Éléments vus en cours et en TP</li>
-<li>PostgreSQL OK, SQLite NON</li>
+<li>Usage de l’IAgen</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -215,30 +232,31 @@ Ludovic Deneuville
     tickInterval 1week
     
     section Cours
-    CM                           :milestone, 2025-08-26,
-    CM                           :milestone, 2025-09-02, 
-    Examen                       :milestone, 2025-09-29,
+    CM                           :milestone, 2025-08-25,
+    CM                           :milestone, 2025-09-01, 
+    Examen                       :milestone, 2025-09-28,
     
     section TP
-    TP1                          :milestone, 2025-08-29,
-    TP2                          :milestone, 2025-09-05,
-    TP3                          :milestone, 2025-09-12,
-    TP4                          :milestone, 2025-09-19,
+    TP1                          :milestone, 2025-08-28,
+    TP2                          :milestone, 2025-09-04,
+    TP3                          :milestone, 2025-09-11,
+    TP4                          :milestone, 2025-09-18,
+    TP5                          :milestone, 2025-09-25,
     
     section Projet
-    Suivi 1                      :milestone, 2025-08-29,
-    Suivi 2                      :milestone, 2025-09-05,
-    Suivi 3                      :milestone, 2025-09-12,
-    Suivi 4                      :milestone, 2025-10-03,
-    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d
-    Suivi 7                      :milestone, 2025-11-14,
+    Suivi 1                      :milestone, 2025-08-28,
+    Suivi 2                      :milestone, 2025-09-04,
+    Suivi 3                      :milestone, 2025-09-11,
+    Suivi 3                      :milestone, 2025-09-25,
+    3j immersion (Suivi 5 et 6)  :active,    2025-11-03, 3d
+    Suivi 7                      :milestone, 2025-11-13,
     
     section Échéances
-    WEI                          :crit,      2025-09-19, 3d
-    Dossier Analyse              :milestone, 2025-09-27,
-    Toussaint                    :crit,      2025-10-25, 7d
-    Rapport final et Code        :milestone, 2025-11-22,
-    Soutenance                   :milestone, 2025-12-10,
+    WEI                          :crit,      2025-09-18, 3d
+    Dossier Analyse              :milestone, 2025-09-17,
+    Toussaint                    :crit,      2025-10-24, 7d
+    Rapport final et Code        :milestone, 2025-11-21,
+    Soutenance                   :milestone, 2025-12-09,
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -250,8 +268,8 @@ Ludovic Deneuville
 <div id="tabset-1-2">
 <table class="caption-top">
 <colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
+<col style="width: 38%">
+<col style="width: 61%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -261,36 +279,36 @@ Ludovic Deneuville
 </thead>
 <tbody>
 <tr class="odd">
-<td>vendredi 29 août</td>
+<td>vendredi 28 août</td>
 <td>TP1 et Suivi 1</td>
 </tr>
 <tr class="even">
-<td>vendredi 5 septembre</td>
+<td>vendredi 4 septembre</td>
 <td>TP2 et Suivi 2</td>
 </tr>
 <tr class="odd">
-<td>vendredi 12 septembre</td>
+<td>vendredi 11 septembre</td>
 <td>TP3 et Suivi 3</td>
 </tr>
 <tr class="even">
-<td>vendredi 19 septembre</td>
+<td>vendredi 18 septembre</td>
 <td>TP4</td>
 </tr>
 <tr class="odd">
-<td>vendredi 3 octobre</td>
-<td>Suivi 4 (retour sur les dossiers d’analyse)</td>
+<td>vendredi 25 septembre</td>
+<td>TP5 et Suivi 4</td>
 </tr>
 <tr class="even">
-<td>mar-jeu 4-6 novembre</td>
-<td>3 jours d’immersion (Suivi 5 et 6)</td>
+<td>mar-jeu 3-5 novembre</td>
+<td>3 jours d’immersion (Suivi 5-6: le 1er jour)</td>
 </tr>
 <tr class="odd">
-<td>vendredi 14 novembre</td>
-<td>Suivi 7</td>
+<td>vendredi 20 novembre</td>
+<td>Suivi 7 (visio)</td>
 </tr>
 <tr class="even">
-<td>mercredi 10 décembre</td>
-<td>Soutenances</td>
+<td>mercredi 9 décembre</td>
+<td>Soutenance</td>
 </tr>
 </tbody>
 </table>
@@ -313,11 +331,11 @@ Ludovic Deneuville
 <td>Point hebdo</td>
 </tr>
 <tr class="even">
-<td>Samedi 27 septembre 12h00</td>
+<td>Jeudi 17 septembre 20h00</td>
 <td>Dossier d’Analyse</td>
 </tr>
 <tr class="odd">
-<td>Samedi 22 novembre 20h00</td>
+<td>Samedi 21 novembre 20h00</td>
 <td>Rapport final et Code</td>
 </tr>
 </tbody>
@@ -336,6 +354,7 @@ Ludovic Deneuville
 </ul>
 <p><span class="emoji" data-emoji="bulb">💡</span> Prendre de l’avance en septembre</p>
 <p><span class="emoji" data-emoji="warning">⚠️</span> Absences en projet ou TP -&gt; malus</p>
+<p>prévenez-moi si justifié, sinon je prends la liste des absences</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -355,7 +374,7 @@ Ludovic Deneuville
 <li>Analyse / Conception générale (sept.)
 <ul>
 <li>4 séances de 3h de suivi</li>
-<li>mi-octobre : retours sur le dossier d’analyse</li>
+<li>fin-septembre : retours sur le dossier d’analyse</li>
 </ul></li>
 <li>Implémentation (oct. - nov.)
 <ul>
@@ -419,13 +438,43 @@ Ludovic Deneuville
       }</style></aside>
 </section>
 
+<section id="le-jour-1" class="title-slide slide level2 center">
+<h2>Le jour 1</h2>
+<ul>
+<li>Posez des questions au tuteur</li>
+<li>Discutez entre vous (qui sait faire quoi)</li>
+<li>Organisez-vous</li>
+<li>Soyez proactifs, prenez des initiatives</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Prenez des initiatives</li>
+<li>Démarquez-vous</li>
+<li>Back (et front ?)</li>
+<li>Fonctionnalités indispensables</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
 <section id="suivi" class="title-slide slide level2 center">
 <h2>Suivi</h2>
 <ul>
-<li>Point hebdo</li>
+<li>Point hebdo <strong>OBLIGATOIRE</strong></li>
 <li>À remplir chaque semaine
 <ul>
 <li>au plus tard le jeudi soir</li>
+<li>par chaque membre</li>
+<li>sinon malus pour l’équipe</li>
 </ul></li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -461,29 +510,28 @@ Ludovic Deneuville
       }</style></aside>
 </section>
 
-<section id="environnement-de-travail" class="title-slide slide level2 center">
-<h2>Environnement de travail</h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Vous pouvez coder sur :</p>
+<section>
+<section id="rendus" class="title-slide slide level2 center">
+<h2>Rendus</h2>
+
+</section>
+<section id="dossier-danalyse" class="slide level3">
+<h3>Dossier d’analyse</h3>
+<p>Votre tuteur a exprimé un besoin :</p>
 <ul>
-<li>un datalab (recommandé)</li>
-<li>la VM ENSAI</li>
+<li>Expliquez comment y répondre</li>
+<li>Reformulez sa demande</li>
+<li>Utilisez les diagrammes UML adéquats</li>
 </ul>
-<p>Vous pouvez également coder sur votre propre machine mais <strong>vous devrez gérer en totale autonomie les installations nécessaires.</strong></p>
-</div>
-</div>
-</div>
+</section>
+<section id="code" class="slide level3">
+<h3>Code</h3>
 <ul>
 <li>Nous attendons du code de <strong><u>qualité</u></strong></li>
 <li>Documentation obligatoire pour chaque classe, chaque méthode</li>
+<li>Tests Unitaires requis</li>
+<li>README in English</li>
+<li>Codez par petits bouts</li>
 </ul>
 <aside class="notes">
 <p>Respectez les bonnes pratiques de dev Python :</p>
@@ -491,6 +539,7 @@ Ludovic Deneuville
 <li>Noms des classes en CamelCase</li>
 <li>Fichiers en snake_case</li>
 <li>noms de variables et de méthodes parlants</li>
+<li><span class="emoji" data-emoji="warning">⚠️</span> Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -504,28 +553,21 @@ Ludovic Deneuville
           display:block!important;
       }</style></aside>
 </section>
-
-<section id="testez-votre-code" class="title-slide slide level2 center">
-<h2>Testez votre code</h2>
+<section id="rapport-final" class="slide level3">
+<h3>Rapport final</h3>
 <ul>
-<li>Tests Unitaires obligatoires</li>
-<li>Codez par petits bouts</li>
+<li>Citez-vos figures</li>
+<li>Relisez-vous !</li>
+<li><span class="emoji" data-emoji="bulb">💡</span> Utilisez Typst avec Quarto</li>
 </ul>
-<aside class="notes">
+</section></section>
+<section id="a-voir-avec-le-tuteur" class="title-slide slide level2 center">
+<h2>A voir avec le tuteur</h2>
 <ul>
-<li>Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas</li>
+<li>Méthodes à tester (service, dao ?)</li>
+<li>Visibilité public / privé</li>
+<li>utilisation de mypy</li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 
 <section id="template" class="title-slide slide level2 center">
@@ -533,14 +575,39 @@ Ludovic Deneuville
 <ul>
 <li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
 </ul>
+<p>Enfin presque…</p>
 <aside class="notes">
 <ul>
 <li>data, doc, src</li>
-<li>fichiers config : logs, cov, requirements, gitignore</li>
+<li>fichiers config : logs, cov, pyproject, gitignore</li>
 <li>README : modop pour installer et lancer</li>
 <li>.vscode : setup vscode</li>
 <li>CI : expliquer principe</li>
+<li>Docker</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="outils" class="title-slide slide level2 center">
+<h2>Outils</h2>
+<ul>
+<li><a href="https://ludo2ne.github.io/ENSAI-tools/" target="_blank">ENSAI-tools</a>
+<ul>
+<li>Git, Datalab, Api, Markdown…</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Git obligatoire -&gt; pénalités si pas de commit</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

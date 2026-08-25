@@ -1397,28 +1397,35 @@
     "href": "doc/projet/presentation-eleves.html",
     "title": "Présentation du projet info 2A",
     "section": "",
-    "text": "Objectifs Modélisation, Back/Front\nOutils à disposition\nGestion de projet, travail en groupe, suivi\nUsage de l’IAgen"
+    "text": "Développer une application en Python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données, des webservices\nConcevoir et Modéliser (UML)\nTravailler en équipe\n\n\nVie ma vie de dév\n\nÉléments vus en cours et en TP\nPostgreSQL OK, SQLite NON"
   },
   {
     "objectID": "doc/projet/presentation-eleves.html#objectifs",
     "href": "doc/projet/presentation-eleves.html#objectifs",
     "title": "Présentation du projet info 2A",
-    "section": "Objectifs",
-    "text": "Objectifs\n\nDévelopper une application en Python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données PostgreSQL\nUtiliser des webservices\nConcevoir et Modéliser (UML)\n\n\n\nÉléments vus en cours et en TP\nPostgreSQL OK, SQLite NON"
+    "section": "",
+    "text": "Développer une application en Python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données, des webservices\nConcevoir et Modéliser (UML)\nTravailler en équipe\n\n\nVie ma vie de dév\n\nÉléments vus en cours et en TP\nPostgreSQL OK, SQLite NON"
+  },
+  {
+    "objectID": "doc/projet/presentation-eleves.html#environnement-de-travail",
+    "href": "doc/projet/presentation-eleves.html#environnement-de-travail",
+    "title": "Présentation du projet info 2A",
+    "section": "Environnement de travail",
+    "text": "Environnement de travail\n\n\n\n\n\n\nImportant\n\n\n\nVous pouvez coder sur :\n\nun datalab (recommandé)\nla VM ENSAI\n\nVous pouvez également coder sur votre propre machine mais vous devrez gérer en totale autonomie les installations nécessaires.\n\n\n\n\nUsage de l’IAgen"
   },
   {
     "objectID": "doc/projet/presentation-eleves.html#planning",
     "href": "doc/projet/presentation-eleves.html#planning",
     "title": "Présentation du projet info 2A",
     "section": "Planning",
-    "text": "Planning\n\nPlanningDatesLivrables\n\n\n\n\n\n\n\n\ngantt\n    title Planning provisoire 2024\n    dateFormat  YYYY-MM-DD\n    axisFormat  %d %b\n    tickInterval 1week\n    \n    section Cours\n    CM                           :milestone, 2025-08-26,\n    CM                           :milestone, 2025-09-02, \n    Examen                       :milestone, 2025-09-29,\n    \n    section TP\n    TP1                          :milestone, 2025-08-29,\n    TP2                          :milestone, 2025-09-05,\n    TP3                          :milestone, 2025-09-12,\n    TP4                          :milestone, 2025-09-19,\n    \n    section Projet\n    Suivi 1                      :milestone, 2025-08-29,\n    Suivi 2                      :milestone, 2025-09-05,\n    Suivi 3                      :milestone, 2025-09-12,\n    Suivi 4                      :milestone, 2025-10-03,\n    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d\n    Suivi 7                      :milestone, 2025-11-14,\n    \n    section Échéances\n    WEI                          :crit,      2025-09-19, 3d\n    Dossier Analyse              :milestone, 2025-09-27,\n    Toussaint                    :crit,      2025-10-25, 7d\n    Rapport final et Code        :milestone, 2025-11-22,\n    Soutenance                   :milestone, 2025-12-10,\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nvendredi 29 août\nTP1 et Suivi 1\n\n\nvendredi 5 septembre\nTP2 et Suivi 2\n\n\nvendredi 12 septembre\nTP3 et Suivi 3\n\n\nvendredi 19 septembre\nTP4\n\n\nvendredi 3 octobre\nSuivi 4 (retour sur les dossiers d’analyse)\n\n\nmar-jeu 4-6 novembre\n3 jours d’immersion (Suivi 5 et 6)\n\n\nvendredi 14 novembre\nSuivi 7\n\n\nmercredi 10 décembre\nSoutenances\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nTOUS les Jeudis\nPoint hebdo\n\n\nSamedi 27 septembre 12h00\nDossier d’Analyse\n\n\nSamedi 22 novembre 20h00\nRapport final et Code\n\n\n\n\n\n\n\n\n3j d’immersion\n\ncapital pour bien avancer le projet\nsi bien utilisé -&gt; 90 % du travail fait\n\nPoint hebdo : j’y reviens\n\n💡 Prendre de l’avance en septembre\n⚠️ Absences en projet ou TP -&gt; malus"
+    "text": "Planning\n\nPlanningDatesLivrables\n\n\n\n\n\n\n\n\ngantt\n    title Planning provisoire 2024\n    dateFormat  YYYY-MM-DD\n    axisFormat  %d %b\n    tickInterval 1week\n    \n    section Cours\n    CM                           :milestone, 2025-08-25,\n    CM                           :milestone, 2025-09-01, \n    Examen                       :milestone, 2025-09-28,\n    \n    section TP\n    TP1                          :milestone, 2025-08-28,\n    TP2                          :milestone, 2025-09-04,\n    TP3                          :milestone, 2025-09-11,\n    TP4                          :milestone, 2025-09-18,\n    TP5                          :milestone, 2025-09-25,\n    \n    section Projet\n    Suivi 1                      :milestone, 2025-08-28,\n    Suivi 2                      :milestone, 2025-09-04,\n    Suivi 3                      :milestone, 2025-09-11,\n    Suivi 3                      :milestone, 2025-09-25,\n    3j immersion (Suivi 5 et 6)  :active,    2025-11-03, 3d\n    Suivi 7                      :milestone, 2025-11-13,\n    \n    section Échéances\n    WEI                          :crit,      2025-09-18, 3d\n    Dossier Analyse              :milestone, 2025-09-17,\n    Toussaint                    :crit,      2025-10-24, 7d\n    Rapport final et Code        :milestone, 2025-11-21,\n    Soutenance                   :milestone, 2025-12-09,\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nvendredi 28 août\nTP1 et Suivi 1\n\n\nvendredi 4 septembre\nTP2 et Suivi 2\n\n\nvendredi 11 septembre\nTP3 et Suivi 3\n\n\nvendredi 18 septembre\nTP4\n\n\nvendredi 25 septembre\nTP5 et Suivi 4\n\n\nmar-jeu 3-5 novembre\n3 jours d’immersion (Suivi 5-6: le 1er jour)\n\n\nvendredi 20 novembre\nSuivi 7 (visio)\n\n\nmercredi 9 décembre\nSoutenance\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nTOUS les Jeudis\nPoint hebdo\n\n\nJeudi 17 septembre 20h00\nDossier d’Analyse\n\n\nSamedi 21 novembre 20h00\nRapport final et Code\n\n\n\n\n\n\n\n\n3j d’immersion\n\ncapital pour bien avancer le projet\nsi bien utilisé -&gt; 90 % du travail fait\n\nPoint hebdo : j’y reviens\n\n💡 Prendre de l’avance en septembre\n⚠️ Absences en projet ou TP -&gt; malus\nprévenez-moi si justifié, sinon je prends la liste des absences"
   },
   {
     "objectID": "doc/projet/presentation-eleves.html#phases",
     "href": "doc/projet/presentation-eleves.html#phases",
     "title": "Présentation du projet info 2A",
     "section": "2 phases",
-    "text": "2 phases\n\nAnalyse / Conception générale (sept.)\n\n4 séances de 3h de suivi\nmi-octobre : retours sur le dossier d’analyse\n\nImplémentation (oct. - nov.)\n\n3 séances de 3h de suivi\n\n\n\n\nVous avez 1 mois à 5. Un élève de STD a 6h\n\nSi votre dossier d’analyse est nickel mais vous n’avez pas encore dev\n💡 Conseil :\n\nl’élève le plus à l’aise fait un POC vers le 20 septembre\npuis présente l’appli v0 aux autres\n\nRelisez vos rapports !"
+    "text": "2 phases\n\nAnalyse / Conception générale (sept.)\n\n4 séances de 3h de suivi\nfin-septembre : retours sur le dossier d’analyse\n\nImplémentation (oct. - nov.)\n\n3 séances de 3h de suivi\n\n\n\n\nVous avez 1 mois à 5. Un élève de STD a 6h\n\nSi votre dossier d’analyse est nickel mais vous n’avez pas encore dev\n💡 Conseil :\n\nl’élève le plus à l’aise fait un POC vers le 20 septembre\npuis présente l’appli v0 aux autres\n\nRelisez vos rapports !"
   },
   {
     "objectID": "doc/projet/presentation-eleves.html#travail-en-groupe",
@@ -1428,53 +1435,74 @@
     "text": "Travail en groupe\n\nÉviter de cumuler les rôles de Chef de projet et Tech Lead\nEsprit d’équipe\nPrévenir dès que possible si ça ne va pas\n\n\n\nAvoir un bon comportement\nCertaines équipes vont mieux fonctionner que d’autres\nDans la vie pro, on bosse pas toujours avec ses potes\nSi vous êtes fort -&gt; ne pas tout faire\nPrévenir tuteur puis Prof en cas de souci\n\nPas la peine de dire une fois que le projet est fini :\n\nc’est moi qui ait tout fait\nun autre membre n’a rien fait"
   },
   {
+    "objectID": "doc/projet/presentation-eleves.html#le-jour-1",
+    "href": "doc/projet/presentation-eleves.html#le-jour-1",
+    "title": "Présentation du projet info 2A",
+    "section": "Le jour 1",
+    "text": "Le jour 1\n\nPosez des questions au tuteur\nDiscutez entre vous (qui sait faire quoi)\nOrganisez-vous\nSoyez proactifs, prenez des initiatives\n\n\n\nPrenez des initiatives\nDémarquez-vous\nBack (et front ?)\nFonctionnalités indispensables"
+  },
+  {
     "objectID": "doc/projet/presentation-eleves.html#suivi",
     "href": "doc/projet/presentation-eleves.html#suivi",
     "title": "Présentation du projet info 2A",
     "section": "Suivi",
-    "text": "Suivi\n\nPoint hebdo\nÀ remplir chaque semaine\n\nau plus tard le jeudi soir\n\n\n\n\n\n\n\n\nNote\n\n\n\nPlus de détails dans la notice élèves.\n\n\n\n\nComme dans la vie pro\nObligatoire sinon malus\nMontrer Modèle\nras : si vous n’avez rien fait"
+    "text": "Suivi\n\nPoint hebdo OBLIGATOIRE\nÀ remplir chaque semaine\n\nau plus tard le jeudi soir\npar chaque membre\nsinon malus pour l’équipe\n\n\n\n\n\n\n\n\nNote\n\n\n\nPlus de détails dans la notice élèves.\n\n\n\n\nComme dans la vie pro\nObligatoire sinon malus\nMontrer Modèle\nras : si vous n’avez rien fait"
   },
   {
-    "objectID": "doc/projet/presentation-eleves.html#environnement-de-travail",
-    "href": "doc/projet/presentation-eleves.html#environnement-de-travail",
+    "objectID": "doc/projet/presentation-eleves.html#rendus",
+    "href": "doc/projet/presentation-eleves.html#rendus",
     "title": "Présentation du projet info 2A",
-    "section": "Environnement de travail",
-    "text": "Environnement de travail\n\n\n\n\n\n\nImportant\n\n\n\nVous pouvez coder sur :\n\nun datalab (recommandé)\nla VM ENSAI\n\nVous pouvez également coder sur votre propre machine mais vous devrez gérer en totale autonomie les installations nécessaires.\n\n\n\nNous attendons du code de qualité\nDocumentation obligatoire pour chaque classe, chaque méthode\n\n\nRespectez les bonnes pratiques de dev Python :\n\nNoms des classes en CamelCase\nFichiers en snake_case\nnoms de variables et de méthodes parlants"
+    "section": "Rendus",
+    "text": "Rendus\n\nDossier d’analyse\nVotre tuteur a exprimé un besoin :\n\nExpliquez comment y répondre\nReformulez sa demande\nUtilisez les diagrammes UML adéquats\n\n\n\nCode\n\nNous attendons du code de qualité\nDocumentation obligatoire pour chaque classe, chaque méthode\nTests Unitaires requis\nREADME in English\nCodez par petits bouts\n\n\nRespectez les bonnes pratiques de dev Python :\n\nNoms des classes en CamelCase\nFichiers en snake_case\nnoms de variables et de méthodes parlants\n⚠️ Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas\n\n\n\n\nRapport final\n\nCitez-vos figures\nRelisez-vous !\n💡 Utilisez Typst avec Quarto"
   },
   {
-    "objectID": "doc/projet/presentation-eleves.html#testez-votre-code",
-    "href": "doc/projet/presentation-eleves.html#testez-votre-code",
+    "objectID": "doc/projet/presentation-eleves.html#a-voir-avec-le-tuteur",
+    "href": "doc/projet/presentation-eleves.html#a-voir-avec-le-tuteur",
     "title": "Présentation du projet info 2A",
-    "section": "Testez votre code",
-    "text": "Testez votre code\n\nTests Unitaires obligatoires\nCodez par petits bouts\n\n\n\nMethodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas"
+    "section": "A voir avec le tuteur",
+    "text": "A voir avec le tuteur\n\nMéthodes à tester (service, dao ?)\nVisibilité public / privé\nutilisation de mypy"
   },
   {
     "objectID": "doc/projet/presentation-eleves.html#template",
     "href": "doc/projet/presentation-eleves.html#template",
     "title": "Présentation du projet info 2A",
     "section": "Template",
-    "text": "Template\n\nExemple de projet simple\n\n\n\ndata, doc, src\nfichiers config : logs, cov, requirements, gitignore\nREADME : modop pour installer et lancer\n.vscode : setup vscode\nCI : expliquer principe"
+    "text": "Template\n\nExemple de projet simple\n\nEnfin presque…\n\n\ndata, doc, src\nfichiers config : logs, cov, pyproject, gitignore\nREADME : modop pour installer et lancer\n.vscode : setup vscode\nCI : expliquer principe\nDocker"
+  },
+  {
+    "objectID": "doc/projet/presentation-eleves.html#outils",
+    "href": "doc/projet/presentation-eleves.html#outils",
+    "title": "Présentation du projet info 2A",
+    "section": "Outils",
+    "text": "Outils\n\nENSAI-tools\n\nGit, Datalab, Api, Markdown…\n\n\n\nGit obligatoire -&gt; pénalités si pas de commit"
   },
   {
     "objectID": "doc/projet/presentation-eleves-slides.html#objectifs",
     "href": "doc/projet/presentation-eleves-slides.html#objectifs",
     "title": "Présentation du projet info 2A",
     "section": "Objectifs",
-    "text": "Objectifs\n\nDévelopper une application en Python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données PostgreSQL\nUtiliser des webservices\nConcevoir et Modéliser (UML)\n\n\n\nÉléments vus en cours et en TP\nPostgreSQL OK, SQLite NON"
+    "text": "Objectifs\n\nDévelopper une application en Python\nDécouvrir l’architecture logicielle\nCommuniquer avec une base de données, des webservices\nConcevoir et Modéliser (UML)\nTravailler en équipe\n\n\nVie ma vie de dév\n\nÉléments vus en cours et en TP\nPostgreSQL OK, SQLite NON"
+  },
+  {
+    "objectID": "doc/projet/presentation-eleves-slides.html#environnement-de-travail",
+    "href": "doc/projet/presentation-eleves-slides.html#environnement-de-travail",
+    "title": "Présentation du projet info 2A",
+    "section": "Environnement de travail",
+    "text": "Environnement de travail\n\n\n\n\n\n\nImportant\n\n\nVous pouvez coder sur :\n\nun datalab (recommandé)\nla VM ENSAI\n\nVous pouvez également coder sur votre propre machine mais vous devrez gérer en totale autonomie les installations nécessaires.\n\n\n\n\n\nUsage de l’IAgen"
   },
   {
     "objectID": "doc/projet/presentation-eleves-slides.html#planning",
     "href": "doc/projet/presentation-eleves-slides.html#planning",
     "title": "Présentation du projet info 2A",
     "section": "Planning",
-    "text": "Planning\n\nPlanningDatesLivrables\n\n\n\n\n\n\n\n\ngantt\n    title Planning provisoire 2024\n    dateFormat  YYYY-MM-DD\n    axisFormat  %d %b\n    tickInterval 1week\n    \n    section Cours\n    CM                           :milestone, 2025-08-26,\n    CM                           :milestone, 2025-09-02, \n    Examen                       :milestone, 2025-09-29,\n    \n    section TP\n    TP1                          :milestone, 2025-08-29,\n    TP2                          :milestone, 2025-09-05,\n    TP3                          :milestone, 2025-09-12,\n    TP4                          :milestone, 2025-09-19,\n    \n    section Projet\n    Suivi 1                      :milestone, 2025-08-29,\n    Suivi 2                      :milestone, 2025-09-05,\n    Suivi 3                      :milestone, 2025-09-12,\n    Suivi 4                      :milestone, 2025-10-03,\n    3j immersion (Suivi 5 et 6)  :active,    2025-11-04, 3d\n    Suivi 7                      :milestone, 2025-11-14,\n    \n    section Échéances\n    WEI                          :crit,      2025-09-19, 3d\n    Dossier Analyse              :milestone, 2025-09-27,\n    Toussaint                    :crit,      2025-10-25, 7d\n    Rapport final et Code        :milestone, 2025-11-22,\n    Soutenance                   :milestone, 2025-12-10,\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nvendredi 29 août\nTP1 et Suivi 1\n\n\nvendredi 5 septembre\nTP2 et Suivi 2\n\n\nvendredi 12 septembre\nTP3 et Suivi 3\n\n\nvendredi 19 septembre\nTP4\n\n\nvendredi 3 octobre\nSuivi 4 (retour sur les dossiers d’analyse)\n\n\nmar-jeu 4-6 novembre\n3 jours d’immersion (Suivi 5 et 6)\n\n\nvendredi 14 novembre\nSuivi 7\n\n\nmercredi 10 décembre\nSoutenances\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nTOUS les Jeudis\nPoint hebdo\n\n\nSamedi 27 septembre 12h00\nDossier d’Analyse\n\n\nSamedi 22 novembre 20h00\nRapport final et Code\n\n\n\n\n\n\n\n\n3j d’immersion\n\ncapital pour bien avancer le projet\nsi bien utilisé -&gt; 90 % du travail fait\n\nPoint hebdo : j’y reviens\n\n💡 Prendre de l’avance en septembre\n⚠️ Absences en projet ou TP -&gt; malus"
+    "text": "Planning\n\nPlanningDatesLivrables\n\n\n\n\n\n\n\n\ngantt\n    title Planning provisoire 2024\n    dateFormat  YYYY-MM-DD\n    axisFormat  %d %b\n    tickInterval 1week\n    \n    section Cours\n    CM                           :milestone, 2025-08-25,\n    CM                           :milestone, 2025-09-01, \n    Examen                       :milestone, 2025-09-28,\n    \n    section TP\n    TP1                          :milestone, 2025-08-28,\n    TP2                          :milestone, 2025-09-04,\n    TP3                          :milestone, 2025-09-11,\n    TP4                          :milestone, 2025-09-18,\n    TP5                          :milestone, 2025-09-25,\n    \n    section Projet\n    Suivi 1                      :milestone, 2025-08-28,\n    Suivi 2                      :milestone, 2025-09-04,\n    Suivi 3                      :milestone, 2025-09-11,\n    Suivi 3                      :milestone, 2025-09-25,\n    3j immersion (Suivi 5 et 6)  :active,    2025-11-03, 3d\n    Suivi 7                      :milestone, 2025-11-13,\n    \n    section Échéances\n    WEI                          :crit,      2025-09-18, 3d\n    Dossier Analyse              :milestone, 2025-09-17,\n    Toussaint                    :crit,      2025-10-24, 7d\n    Rapport final et Code        :milestone, 2025-11-21,\n    Soutenance                   :milestone, 2025-12-09,\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nvendredi 28 août\nTP1 et Suivi 1\n\n\nvendredi 4 septembre\nTP2 et Suivi 2\n\n\nvendredi 11 septembre\nTP3 et Suivi 3\n\n\nvendredi 18 septembre\nTP4\n\n\nvendredi 25 septembre\nTP5 et Suivi 4\n\n\nmar-jeu 3-5 novembre\n3 jours d’immersion (Suivi 5-6: le 1er jour)\n\n\nvendredi 20 novembre\nSuivi 7 (visio)\n\n\nmercredi 9 décembre\nSoutenance\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nTopic\n\n\n\n\nTOUS les Jeudis\nPoint hebdo\n\n\nJeudi 17 septembre 20h00\nDossier d’Analyse\n\n\nSamedi 21 novembre 20h00\nRapport final et Code\n\n\n\n\n\n\n\n\n3j d’immersion\n\ncapital pour bien avancer le projet\nsi bien utilisé -&gt; 90 % du travail fait\n\nPoint hebdo : j’y reviens\n\n💡 Prendre de l’avance en septembre\n⚠️ Absences en projet ou TP -&gt; malus\nprévenez-moi si justifié, sinon je prends la liste des absences"
   },
   {
     "objectID": "doc/projet/presentation-eleves-slides.html#phases",
     "href": "doc/projet/presentation-eleves-slides.html#phases",
     "title": "Présentation du projet info 2A",
     "section": "2 phases",
-    "text": "2 phases\n\nAnalyse / Conception générale (sept.)\n\n4 séances de 3h de suivi\nmi-octobre : retours sur le dossier d’analyse\n\nImplémentation (oct. - nov.)\n\n3 séances de 3h de suivi\n\n\n\n\nVous avez 1 mois à 5. Un élève de STD a 6h\n\nSi votre dossier d’analyse est nickel mais vous n’avez pas encore dev\n💡 Conseil :\n\nl’élève le plus à l’aise fait un POC vers le 20 septembre\npuis présente l’appli v0 aux autres\n\nRelisez vos rapports !"
+    "text": "2 phases\n\nAnalyse / Conception générale (sept.)\n\n4 séances de 3h de suivi\nfin-septembre : retours sur le dossier d’analyse\n\nImplémentation (oct. - nov.)\n\n3 séances de 3h de suivi\n\n\n\n\nVous avez 1 mois à 5. Un élève de STD a 6h\n\nSi votre dossier d’analyse est nickel mais vous n’avez pas encore dev\n💡 Conseil :\n\nl’élève le plus à l’aise fait un POC vers le 20 septembre\npuis présente l’appli v0 aux autres\n\nRelisez vos rapports !"
   },
   {
     "objectID": "doc/projet/presentation-eleves-slides.html#travail-en-groupe",
@@ -1484,32 +1512,46 @@
     "text": "Travail en groupe\n\nÉviter de cumuler les rôles de Chef de projet et Tech Lead\nEsprit d’équipe\nPrévenir dès que possible si ça ne va pas\n\n\n\nAvoir un bon comportement\nCertaines équipes vont mieux fonctionner que d’autres\nDans la vie pro, on bosse pas toujours avec ses potes\nSi vous êtes fort -&gt; ne pas tout faire\nPrévenir tuteur puis Prof en cas de souci\n\nPas la peine de dire une fois que le projet est fini :\n\nc’est moi qui ait tout fait\nun autre membre n’a rien fait"
   },
   {
+    "objectID": "doc/projet/presentation-eleves-slides.html#le-jour-1",
+    "href": "doc/projet/presentation-eleves-slides.html#le-jour-1",
+    "title": "Présentation du projet info 2A",
+    "section": "Le jour 1",
+    "text": "Le jour 1\n\nPosez des questions au tuteur\nDiscutez entre vous (qui sait faire quoi)\nOrganisez-vous\nSoyez proactifs, prenez des initiatives\n\n\n\nPrenez des initiatives\nDémarquez-vous\nBack (et front ?)\nFonctionnalités indispensables"
+  },
+  {
     "objectID": "doc/projet/presentation-eleves-slides.html#suivi",
     "href": "doc/projet/presentation-eleves-slides.html#suivi",
     "title": "Présentation du projet info 2A",
     "section": "Suivi",
-    "text": "Suivi\n\nPoint hebdo\nÀ remplir chaque semaine\n\nau plus tard le jeudi soir\n\n\n\n\n\n\n\n\nNote\n\n\nPlus de détails dans la notice élèves.\n\n\n\n\n\nComme dans la vie pro\nObligatoire sinon malus\nMontrer Modèle\nras : si vous n’avez rien fait"
+    "text": "Suivi\n\nPoint hebdo OBLIGATOIRE\nÀ remplir chaque semaine\n\nau plus tard le jeudi soir\npar chaque membre\nsinon malus pour l’équipe\n\n\n\n\n\n\n\n\nNote\n\n\nPlus de détails dans la notice élèves.\n\n\n\n\n\nComme dans la vie pro\nObligatoire sinon malus\nMontrer Modèle\nras : si vous n’avez rien fait"
   },
   {
-    "objectID": "doc/projet/presentation-eleves-slides.html#environnement-de-travail",
-    "href": "doc/projet/presentation-eleves-slides.html#environnement-de-travail",
+    "objectID": "doc/projet/presentation-eleves-slides.html#rendus",
+    "href": "doc/projet/presentation-eleves-slides.html#rendus",
     "title": "Présentation du projet info 2A",
-    "section": "Environnement de travail",
-    "text": "Environnement de travail\n\n\n\n\n\n\nImportant\n\n\nVous pouvez coder sur :\n\nun datalab (recommandé)\nla VM ENSAI\n\nVous pouvez également coder sur votre propre machine mais vous devrez gérer en totale autonomie les installations nécessaires.\n\n\n\n\nNous attendons du code de qualité\nDocumentation obligatoire pour chaque classe, chaque méthode\n\n\nRespectez les bonnes pratiques de dev Python :\n\nNoms des classes en CamelCase\nFichiers en snake_case\nnoms de variables et de méthodes parlants"
+    "section": "Rendus",
+    "text": "Rendus"
   },
   {
-    "objectID": "doc/projet/presentation-eleves-slides.html#testez-votre-code",
-    "href": "doc/projet/presentation-eleves-slides.html#testez-votre-code",
+    "objectID": "doc/projet/presentation-eleves-slides.html#a-voir-avec-le-tuteur",
+    "href": "doc/projet/presentation-eleves-slides.html#a-voir-avec-le-tuteur",
     "title": "Présentation du projet info 2A",
-    "section": "Testez votre code",
-    "text": "Testez votre code\n\nTests Unitaires obligatoires\nCodez par petits bouts\n\n\n\nMethodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas"
+    "section": "A voir avec le tuteur",
+    "text": "A voir avec le tuteur\n\nMéthodes à tester (service, dao ?)\nVisibilité public / privé\nutilisation de mypy"
   },
   {
     "objectID": "doc/projet/presentation-eleves-slides.html#template",
     "href": "doc/projet/presentation-eleves-slides.html#template",
     "title": "Présentation du projet info 2A",
     "section": "Template",
-    "text": "Template\n\nExemple de projet simple\n\n\n\ndata, doc, src\nfichiers config : logs, cov, requirements, gitignore\nREADME : modop pour installer et lancer\n.vscode : setup vscode\nCI : expliquer principe"
+    "text": "Template\n\nExemple de projet simple\n\nEnfin presque…\n\n\ndata, doc, src\nfichiers config : logs, cov, pyproject, gitignore\nREADME : modop pour installer et lancer\n.vscode : setup vscode\nCI : expliquer principe\nDocker"
+  },
+  {
+    "objectID": "doc/projet/presentation-eleves-slides.html#outils",
+    "href": "doc/projet/presentation-eleves-slides.html#outils",
+    "title": "Présentation du projet info 2A",
+    "section": "Outils",
+    "text": "Outils\n\nENSAI-tools\n\nGit, Datalab, Api, Markdown…\n\n\n\nGit obligatoire -&gt; pénalités si pas de commit"
   },
   {
     "objectID": "doc/projet/notice-eleves.html",
