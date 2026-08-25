@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -14,10 +14,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-705fb07ed9cede36e80cd8644b78c8fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1066,48 +1069,48 @@ Note
 </div>
 <p>Calling the “/” resource of the web service will return the JSON: <code>{"message": "Hello World"}</code></p>
 <p>Here is a more complete example inspired by the <a href="https://flask-restful.readthedocs.io/en/latest/quickstart.html#resourceful-routing" target="_blank">official documentation</a> (you want to create a web service to expose your <strong>todos</strong>)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="im">import</span> uvicorn</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># On instancie le webservice</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb9-8"><a href="#cb9-8"></a></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="kw">class</span> Todo(BaseModel):</span>
-<span id="cb9-10"><a href="#cb9-10"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>    content : <span class="bu">str</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a></span>
-<span id="cb9-13"><a href="#cb9-13"></a>todos <span class="op">=</span> {<span class="dv">1</span> : Todo(<span class="dv">1</span>,<span class="st">"Step 1 : Learn python"</span>)</span>
-<span id="cb9-14"><a href="#cb9-14"></a>        , <span class="dv">2</span> : Todo(<span class="dv">2</span>,<span class="st">"Step 2 : Work on the IT project"</span>)</span>
-<span id="cb9-15"><a href="#cb9-15"></a>        , <span class="dv">3</span> : Todo(<span class="dv">3</span>,<span class="st">"Step 3 : ???"</span>)</span>
-<span id="cb9-16"><a href="#cb9-16"></a>        , <span class="dv">4</span> : Todo(<span class="dv">4</span>,<span class="st">"Step 4 : Profit"</span>)}</span>
-<span id="cb9-17"><a href="#cb9-17"></a></span>
-<span id="cb9-18"><a href="#cb9-18"></a><span class="co"># Endpoint GET /todo</span></span>
-<span id="cb9-19"><a href="#cb9-19"></a><span class="at">@app.get</span>(<span class="st">"/todo"</span>)</span>
-<span id="cb9-20"><a href="#cb9-20"></a><span class="cf">async</span> <span class="kw">def</span> get_all_todo():</span>
-<span id="cb9-21"><a href="#cb9-21"></a>    <span class="cf">return</span> todos.values()</span>
-<span id="cb9-22"><a href="#cb9-22"></a></span>
-<span id="cb9-23"><a href="#cb9-23"></a><span class="co"># Endpoint GET /todo/{id_doto}</span></span>
-<span id="cb9-24"><a href="#cb9-24"></a><span class="at">@app.get</span>(<span class="st">"/todo/</span><span class="sc">{id_toto}</span><span class="st">"</span>)</span>
-<span id="cb9-25"><a href="#cb9-25"></a><span class="cf">async</span> <span class="kw">def</span> get_todo_by_id(id_toto : <span class="bu">int</span> <span class="op">=</span> Path(..., description <span class="op">=</span> <span class="st">"The `id` of the todo you want to get"</span>)):</span>
-<span id="cb9-26"><a href="#cb9-26"></a>    <span class="cf">if</span> todos.get[id_toto] :</span>
-<span id="cb9-27"><a href="#cb9-27"></a>        <span class="cf">return</span> todos.get[id_toto]</span>
-<span id="cb9-28"><a href="#cb9-28"></a>    <span class="cf">else</span> :</span>
-<span id="cb9-29"><a href="#cb9-29"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_404_NOT_FOUND)</span>
-<span id="cb9-30"><a href="#cb9-30"></a></span>
-<span id="cb9-31"><a href="#cb9-31"></a><span class="co"># Endpoint POST /todo</span></span>
-<span id="cb9-32"><a href="#cb9-32"></a><span class="at">@app.post</span>(<span class="st">"/todo"</span>, todo, status_code<span class="op">=</span><span class="dv">201</span>)</span>
-<span id="cb9-33"><a href="#cb9-33"></a><span class="cf">async</span> <span class="kw">def</span> post_todo(todo:Todo):</span>
-<span id="cb9-34"><a href="#cb9-34"></a>    <span class="cf">if</span> <span class="kw">not</span> todos.get(todo.<span class="bu">id</span>):</span>
-<span id="cb9-35"><a href="#cb9-35"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_409_CONFLICT)</span>
-<span id="cb9-36"><a href="#cb9-36"></a>    <span class="cf">else</span> :</span>
-<span id="cb9-37"><a href="#cb9-37"></a>        todos[todo.<span class="bu">id</span>] <span class="op">=</span> todo</span>
-<span id="cb9-38"><a href="#cb9-38"></a>        <span class="cf">return</span> todo</span>
-<span id="cb9-39"><a href="#cb9-39"></a></span>
-<span id="cb9-40"><a href="#cb9-40"></a><span class="co"># Launch the web service</span></span>
-<span id="cb9-41"><a href="#cb9-41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb9-42"><a href="#cb9-42"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-label="1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb9-2"><a href="#cb9-2" aria-label="2"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
+<span id="cb9-3"><a href="#cb9-3" aria-label="3"></a><span class="im">from</span> starlette <span class="im">import</span> status</span>
+<span id="cb9-4"><a href="#cb9-4" aria-label="4"></a><span class="im">import</span> uvicorn</span>
+<span id="cb9-5"><a href="#cb9-5" aria-label="5"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-label="6"></a><span class="co"># On instancie le webservice</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-label="7"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb9-8"><a href="#cb9-8" aria-label="8"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-label="9"></a><span class="kw">class</span> Todo(BaseModel):</span>
+<span id="cb9-10"><a href="#cb9-10" aria-label="10"></a>    <span class="bu">id</span> : <span class="bu">int</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-label="11"></a>    content : <span class="bu">str</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-label="12"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-label="13"></a>todos <span class="op">=</span> {<span class="dv">1</span> : Todo(<span class="dv">1</span>,<span class="st">"Step 1 : Learn python"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-label="14"></a>        , <span class="dv">2</span> : Todo(<span class="dv">2</span>,<span class="st">"Step 2 : Work on the IT project"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-label="15"></a>        , <span class="dv">3</span> : Todo(<span class="dv">3</span>,<span class="st">"Step 3 : ???"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-label="16"></a>        , <span class="dv">4</span> : Todo(<span class="dv">4</span>,<span class="st">"Step 4 : Profit"</span>)}</span>
+<span id="cb9-17"><a href="#cb9-17" aria-label="17"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-label="18"></a><span class="co"># Endpoint GET /todo</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-label="19"></a><span class="at">@app.get</span>(<span class="st">"/todo"</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-label="20"></a><span class="cf">async</span> <span class="kw">def</span> get_all_todo():</span>
+<span id="cb9-21"><a href="#cb9-21" aria-label="21"></a>    <span class="cf">return</span> todos.values()</span>
+<span id="cb9-22"><a href="#cb9-22" aria-label="22"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-label="23"></a><span class="co"># Endpoint GET /todo/{id_doto}</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-label="24"></a><span class="at">@app.get</span>(<span class="st">"/todo/</span><span class="sc">{id_toto}</span><span class="st">"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-label="25"></a><span class="cf">async</span> <span class="kw">def</span> get_todo_by_id(id_toto : <span class="bu">int</span> <span class="op">=</span> Path(..., description <span class="op">=</span> <span class="st">"The `id` of the todo you want to get"</span>)):</span>
+<span id="cb9-26"><a href="#cb9-26" aria-label="26"></a>    <span class="cf">if</span> todos.get[id_toto] :</span>
+<span id="cb9-27"><a href="#cb9-27" aria-label="27"></a>        <span class="cf">return</span> todos.get[id_toto]</span>
+<span id="cb9-28"><a href="#cb9-28" aria-label="28"></a>    <span class="cf">else</span> :</span>
+<span id="cb9-29"><a href="#cb9-29" aria-label="29"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_404_NOT_FOUND)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-label="30"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-label="31"></a><span class="co"># Endpoint POST /todo</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-label="32"></a><span class="at">@app.post</span>(<span class="st">"/todo"</span>, todo, status_code<span class="op">=</span><span class="dv">201</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-label="33"></a><span class="cf">async</span> <span class="kw">def</span> post_todo(todo:Todo):</span>
+<span id="cb9-34"><a href="#cb9-34" aria-label="34"></a>    <span class="cf">if</span> <span class="kw">not</span> todos.get(todo.<span class="bu">id</span>):</span>
+<span id="cb9-35"><a href="#cb9-35" aria-label="35"></a>        <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span>status.HTTP_409_CONFLICT)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-label="36"></a>    <span class="cf">else</span> :</span>
+<span id="cb9-37"><a href="#cb9-37" aria-label="37"></a>        todos[todo.<span class="bu">id</span>] <span class="op">=</span> todo</span>
+<span id="cb9-38"><a href="#cb9-38" aria-label="38"></a>        <span class="cf">return</span> todo</span>
+<span id="cb9-39"><a href="#cb9-39" aria-label="39"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-label="40"></a><span class="co"># Launch the web service</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-label="41"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb9-42"><a href="#cb9-42" aria-label="42"></a>    uvicorn.run(app, host<span class="op">=</span><span class="st">"0.0.0.0"</span>, port<span class="op">=</span><span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This code will create a web service that will respond to the following requests:</p>
 <ul>
 <li><code>GET host/todo</code>: returns all tasks to be done</li>

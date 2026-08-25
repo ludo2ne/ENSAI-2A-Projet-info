@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
   <meta name="author" content="Rémi Pépin">
-  <title>Projet info 2A – Analyse fonctionnelle</title>
+  <title>Projet info 2A – Git</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -39,13 +39,79 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link rel="stylesheet" href="none">
-  <link href="../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -139,7 +205,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Analyse fonctionnelle</h1>
+  <h1 class="title">Git</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -160,481 +226,222 @@ Rémi Pépin
 </div>
 
 </section>
-<section id="plan" class="title-slide slide level2 center">
-<h2>Plan</h2>
+<section id="introduction" class="title-slide slide level2 center">
+<h2>Introduction</h2>
+<ul>
+<li><strong>What is Git?</strong>
+<ul>
+<li>Version control system: tracks changes in code, allows collaboration, and helps manage project history.</li>
+</ul></li>
+<li><strong>Why use Git?</strong>
+<ul>
+<li>Work on different features simultaneously, revert mistakes, and collaborate efficiently.</li>
+</ul></li>
+</ul>
+</section>
+
+<section>
+<section id="how-git-works" class="title-slide slide level2 center">
+<h2>How Git Works</h2>
+
+</section>
+<section id="local-vs.-remote-repositories" class="slide level3">
+<h3>Local vs.&nbsp;Remote Repositories</h3>
+<ul>
+<li><strong>Local</strong>: Your personal copy of the project on your machine.</li>
+<li><strong>Remote</strong>: A shared repository hosted on a server (e.g., GitHub, GitLab).</li>
+</ul>
+</section>
+<section id="basic-workflow" class="slide level3">
+<h3>Basic Workflow</h3>
 <ol type="1">
-<li>L’analyse fonctionnelle
-<ul>
-<li>Définition</li>
-<li>Diagrammes UML</li>
-</ul></li>
-<li>L’architecture logicielle
-<ul>
-<li>Définition</li>
-<li>Séparation des responsabilités</li>
-</ul></li>
+<li>Make changes locally.</li>
+<li>Stage changes.</li>
+<li>Commit changes to your local repository.</li>
+<li>Push changes to the remote repository (or pull changes from it).</li>
 </ol>
 </section>
-
-<section id="analyse-fonctionnelle" class="title-slide slide level2 hide-html-render center">
-<h2>Analyse fonctionnelle</h2>
-<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-<aside class="notes">
-<p>80 % des projets sont un echec (total ou relatif).</p>
-<p>Les questions qu’il faut se poser avant de commencer :</p>
+<section id="how-git-works-1" class="slide level3">
+<h3>How Git Works</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="img/git-commands-and-archi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Git Workflow Diagram"><img data-src="img/git-commands-and-archi.png" alt="Git Workflow Diagram"></a></p>
+<figcaption>Git Workflow Diagram</figcaption>
+</figure>
+</div>
+</section></section>
+<section id="setting-up-git" class="title-slide slide level2 center">
+<h2>Setting Up Git</h2>
 <ul>
-<li>Qu’est ce qu’on fait ? Qui le fait</li>
-<li>Besoins du client</li>
-<li>Fonctionnalités requises / optionnelles / bonus</li>
-<li>Bien gérer les priorités</li>
-<li>Répartition des rôles dans l’équipe</li>
+<li><p><strong>Configure Git</strong> (one-time setup):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-label="1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"your.email@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Initialize a Repository</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-label="1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>This creates a hidden <code>.git</code> folder in your project directory.</li>
+</ul></li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 
-<section id="phases-dun-projet" class="slide level3">
-<h3>Phases d’un projet</h3>
+<section>
+<section id="basic-git-commands" class="title-slide slide level2 center">
+<h2>Basic Git Commands</h2>
+
+</section>
+<section id="check-status" class="slide level3">
+<h3>Check Status</h3>
 <ul>
-<li>Analyse des besoins</li>
-<li>Planification</li>
-<li>Conception</li>
-<li>Développements</li>
-<li>Recette</li>
-<li>Déploiement</li>
-<li>Maintenance</li>
+<li><p>See which files are modified, staged, or untracked:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-label="1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<aside class="notes">
-<p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section>
+<section id="stage-changes" class="slide level3">
+<h3>Stage Changes</h3>
+<ul>
+<li><p>Add files to the staging area:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-label="1"></a><span class="fu">git</span> add <span class="op">&lt;</span>file<span class="op">&gt;</span>          <span class="co"># Stage a specific file</span></span>
+<span id="cb4-2"><a aria-label="2"></a><span class="fu">git</span> add .               <span class="co"># Stage all changes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="commit-changes" class="slide level3">
+<h3>Commit Changes</h3>
+<ul>
+<li><p>Save staged changes to your local repository:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-label="1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Your descriptive commit message"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="view-history" class="slide level3">
+<h3>View History</h3>
+<ul>
+<li><p>See the commit history:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-label="1"></a><span class="fu">git</span> log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="connect-to-a-remote-repository" class="slide level3">
+<h3>Connect to a Remote Repository</h3>
+<ul>
+<li><p>Add a remote repository (e.g., GitHub):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-label="1"></a><span class="fu">git</span> remote add origin <span class="op">&lt;</span>remote-repository-url<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Push changes to the remote repository:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-label="1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main   <span class="co"># Push to the 'main' branch</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Pull changes from the remote repository:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-label="1"></a><span class="fu">git</span> pull origin main      <span class="co"># Pull the latest changes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="clone-a-repository" class="slide level3">
+<h3>Clone a Repository</h3>
+<ul>
+<li><p>Copy a remote repository to your local machine:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-label="1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>remote-repository-url<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section></section>
+<section>
+<section id="branching-basics" class="title-slide slide level2 center">
+<h2>Branching Basics</h2>
+<p><strong>Why use branches?</strong></p>
+<ul>
+<li>Work on features or fixes without affecting the main codebase.</li>
+<li>Best practice for working as a team : 1 branch per “big part”</li>
+</ul>
 </section>
 <section class="slide level3">
 
-<p><a href="./img/agile-tree-swing-cartoon.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="./img/agile-tree-swing-cartoon.png"></a></p>
-<aside class="notes">
-<ul>
-<li>Important de discuter</li>
-<li>Reformulez</li>
-<li>Utilisez des mots simples</li>
-<li>Imaginez que vous expliquez le projet à vos grands parents</li>
-<li>parler doc, arrivée sur poste, initiatives</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="cest-quoi-lanalyse-fonctionnelle" class="slide level3">
-<h3>C’est quoi l’analyse fonctionnelle ?</h3>
-<ul>
-<li>Première étape de tous les projets</li>
-<li>Détermine les fonctions, acteurs du produit pour répondre aux besoins du client</li>
-<li>Diagrammes pour échanger avec le client</li>
-<li>Priorise les travaux</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Permet de s’approprier le sujet</li>
-<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
-<li>Cette phase sera la première partie du rapport intermédiaire</li>
-</ul>
-<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
-<p>Cost of Change Curve:</p>
-<ul>
-<li>Cahier des charges : 1 €</li>
-<li>Développement : 10 €</li>
-<li>Tests : 50 €</li>
-<li>Production : 100 €</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-questions-à-se-poser" class="slide level3">
-<h3>Les questions à se poser</h3>
-<ul>
-<li>Quels sont les types d’utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client…) ?</li>
-<li>Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?</li>
-<li>Comment fonctionnent les processus de l’application ?</li>
-<li>Quels sont les diagrammes à utiliser ?</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Pour les premières questions diagramme de cas d’utilisation</li>
-<li>Processus -&gt; diagramme d’activité</li>
-<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
-<ul>
-<li>Commentez vos diagrammes</li>
-</ul></li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-diagrammes-uml" class="slide level3">
-<h3>Les diagrammes UML</h3>
-<ul>
-<li>Cours de 1A</li>
-<li>UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Pas le temps de vous refaire un cours</li>
-<li>Il y a des ressources à la bibliothèque et sur internet</li>
-<li>Demandez à votre tuteur ce qu’il attend</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="questions" class="slide level3 hide-html-render">
-<h3>Questions ?</h3>
-<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-</section>
-<section>
-<section id="architecture-logicielle" class="title-slide slide level2 center">
-<h2>Architecture logicielle</h2>
-<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif"></a></p>
-<aside class="notes">
-<p>Voila pour les grand principes.</p>
-<p>On va maintenant rentrer dans le concret.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="cest-quoi-larchitecture-logicielle" class="slide level3">
-<h3>C’est quoi l’architecture logicielle ?</h3>
-<ul>
-<li>Le pendant technique de l’analyse fonctionnelle</li>
-<li>Maintenant que l’on a le qui et quoi, on détermine le comment</li>
-<li>On dessine le code de notre application</li>
-<li>Vision macro de notre application (agencement des grandes pièces)</li>
-</ul>
-<aside class="notes">
-<p>Pour le moment on ne fait pas encore de code.</p>
-<p>On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).</p>
-<p>Par exemple dans votre cas vous allez sûrement avoir :</p>
-<ul>
-<li>Un code python qui tourne sur votre ordinateur</li>
-<li>Un webservice externe qui vous fournis des données</li>
-<li>Une base de données postgres.</li>
-</ul>
-<p>C’est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture" class="slide level3 hide-html-render">
-<h3>Pourquoi c’est important : parallèle avec l’architecture</h3>
-<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif"></a></p>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture-1" class="slide level3">
-<h3>Pourquoi c’est important : parallèle avec l’architecture</h3>
-<ul>
-<li>Pièces, l’installation électrique, l’eau, le gaz, contraintes législatives, s’adapter au terrain…</li>
-<li>Besoin de réfléchir comment il faut agencer tout ça dès le début</li>
-<li>Si on construit au fil de l’eau, on risque d’avoir une maison incohérente (au mieux)</li>
-<li><strong>Ce n’est pas du temps perdu !</strong></li>
-</ul>
-<aside class="notes">
-<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder.</p>
-<p>Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
-<p>Les IAgen peuvent presque coder à notre place.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="un-grand-principe-separation-of-concerns" class="slide level3">
-<h3>Un grand principe : separation of concerns</h3>
-<p><a href="img/archi-layers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="img/archi-layers.png"></a></p>
-<aside class="notes">
-<p>Version macro en 3 couches.</p>
-<ul>
-<li>Présentation : tout ce qui se charge de l’affichage</li>
-<li>Business : c’est le métier de votre application, sa plus-value</li>
-<li>Data : stockage des données</li>
-</ul>
-<p>Chaque couche communique avec celles adjacentes.<br>
-Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
-Pas évident mais très important !!!</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-principales-couches-dune-application" class="slide level3">
-<h3>Les principales couches d’une application</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> tout ce qui se charge de l’affichage (page web, console, fenêtre)</li>
-<li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
-<li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
-</ul>
-<aside class="notes">
-<p>Dans le monde pro :</p>
-<ul>
-<li>Présentation : JavaScript</li>
-<li>Métier : Java / Python</li>
-<li>Persistance : PostgreSQL ou MariaDB</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="pour-votre-projet" class="slide level3">
-<h3>Pour votre projet</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> terminal</li>
-<li><strong><em>Métier :</em></strong> votre code Python</li>
-<li><strong><em>Persistance :</em></strong> base de données</li>
-</ul>
-<aside class="notes">
-<p>Exemple page web</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="zoom-sur-la-couche-métier" class="slide level3">
-<h3>Zoom sur la couche métier</h3>
-<p><a href="img/archi-business-layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/archi-business-layer.png"></a></p>
-<aside class="notes">
-<p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
-<p>Dans les TP :</p>
-<ul>
-<li>Couche présentation : View (on navigue entre des vues)</li>
-<li>DAO, business_object, service</li>
-<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="les-couches-de-la-couche-métier-12" class="slide level3">
-<h3>Les couches de la couche métier 1/2</h3>
-<ul>
-<li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
-<ul>
-<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
-</ul></li>
-<li><strong><em>Service :</em></strong>
-<ul>
-<li>Code métier</li>
-<li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
-<li>Demande des objets à la couche DAO (TP4)</li>
-<li>Appelle les webservices externes (TP3)</li>
-</ul></li>
-</ul>
-</section>
-<section id="les-couches-de-la-couche-métier-22" class="slide level3">
-<h3>Les couches de la couche métier 2/2</h3>
-<ul>
-<li><strong><em>Objets métiers :</em></strong>
-<ul>
-<li>Couche transversale</li>
-<li>Représentent des concepts métiers que votre code va manipuler</li>
-<li>Objets avec surtout des attributs et peu de méthodes</li>
-</ul></li>
-<li><strong><em>Contrôleur :</em></strong>
-<ul>
-<li>Récupère les inputs des utilisateurs</li>
-<li>Renvoie les données à afficher</li>
-</ul></li>
-</ul>
-<aside class="notes">
-<p>On découpe les objets :</p>
-<ul>
-<li>Attributs -&gt; Objets métiers (~DTO)</li>
-<li>Méthodes -&gt; Services</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="pourquoi-séparer-en-couches" class="slide level3">
-<h3>Pourquoi séparer en couches ?</h3>
-<ul>
-<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
-<li>Lisibilité du code 📖</li>
-<li>Débogages 🐞</li>
-</ul>
-<blockquote>
-<p><strong>Limiter les risques d’erreurs quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
-</blockquote>
-<aside class="notes">
-<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
-Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
-Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
-Et séparer en couches permet de trouver rapidement la source du problème.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="informations-à-retenir" class="slide level3">
-<h3>Informations à retenir</h3>
-<ul>
-<li>Passer du temps à réfléchir aux différents modules d’une application n’est pas une perte de temps 🕵️‍♀️</li>
-<li>Diviser en couches permet de travailler en parallèle 🧪🧫📚</li>
-<li>Mais il faut encore réfléchir à comment bien coder 🤖</li>
-</ul>
-<aside class="notes">
-<p>Possible en projet de se répartir les couches.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-
-
+<p><a href="img/git-branchs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="img/git-branchs.png" style="width:70.0%"></a></p>
 </section></section>
+<section id="branching-basics-1" class="title-slide slide level2 center">
+<h2>Branching Basics</h2>
+<ul>
+<li><p><strong>Create a Branch</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-label="1"></a><span class="fu">git</span> branch <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>         <span class="co"># Create a new branch</span></span>
+<span id="cb11-2"><a aria-label="2"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>       <span class="co"># Switch to the branch</span></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>    <span class="co"># Create and switch to the branch</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Merge a Branch</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-label="1"></a><span class="fu">git</span> checkout main                 <span class="co"># Switch to the main branch</span></span>
+<span id="cb12-2"><a aria-label="2"></a><span class="fu">git</span> merge <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>           <span class="co"># Merge the branch into main</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+
+<section id="common-mistakes-and-fixes" class="title-slide slide level2 center">
+<h2>Common Mistakes and Fixes</h2>
+<ul>
+<li><strong>Oh no I messed up</strong>:
+<ul>
+<li>Step 1 : do not panic</li>
+<li>Step 2 : READ the error message / git status and check history</li>
+<li>Step 2 : remember you can always go back to a previous version</li>
+<li>Step 3 : Google is your friend</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="common-mistakes-and-fixes-1" class="title-slide slide level2 center">
+<h2>Common Mistakes and Fixes</h2>
+<p><strong>Undo Changes</strong>:</p>
+<ul>
+<li>Undo a commit (keep changes): <code>bash   git reset --soft HEAD~1</code></li>
+<li>Discard unstaged changes: <code>bash   git restore &lt;file&gt;</code></li>
+</ul>
+</section>
+
+<section id="common-mistakes-and-fixes-2" class="title-slide slide level2 center">
+<h2>Common Mistakes and Fixes</h2>
+<p><strong>Resolve Merge Conflicts</strong>:</p>
+<p>If Git reports conflicts during a merge, manually edit the conflicting files, then:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-label="1"></a><span class="fu">git</span> add <span class="op">&lt;</span>resolved-file<span class="op">&gt;</span></span>
+<span id="cb13-2"><a aria-label="2"></a><span class="fu">git</span> commit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+
+<section id="wrap-up" class="title-slide slide level2 center">
+<h2>Wrap-Up</h2>
+<p><strong>Recap</strong>:</p>
+<ul>
+<li>Git tracks changes, allows collaboration, and manages project history.</li>
+<li>Use <code>git add</code>, <code>git commit</code>, <code>git push</code>, and <code>git pull</code>.</li>
+<li>Branches help manage features and fixes separately.</li>
+</ul>
+</section>
+
+<section id="wrap-up-1" class="title-slide slide level2 center">
+<h2>Wrap-Up</h2>
+<p><strong>Practice makes perfect</strong>:</p>
+<ul>
+<li>Experiment with Git commands during the lab work (do NOT designate 1 “Git expert”)</li>
+<li>Solve issues by communicating about what happened</li>
+</ul>
+</section>
+
+<section id="resources" class="title-slide slide level2 center">
+<h2>Resources</h2>
+<ul>
+<li><a href="https://guides.github.com/" target="_blank">GitHub’s guides</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials" target="_blank">Atlassian’s Git tutorials</a></li>
+<li><a href="https://ludo2ne.github.io/ENSAI-tools/doc/git/presentation.html" target="_blank">ENSAI-tools</a></li>
+</ul>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../../index.html">Home</a> — <a href="analyse-fonctionnelle.html">Analyse fonctionnelle</a></p>
+<p><a href="../../index.html">Home</a> — <a href="03-git.html">Git</a></p>
 </div>
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

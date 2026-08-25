@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
@@ -25,10 +25,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -207,17 +210,17 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Cyriel Mallart 
+Cyriel Mallart
 </div>
 </div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ludovic Deneuville 
+Ludovic Deneuville
 </div>
 </div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Rémi Pépin 
+Rémi Pépin
 </div>
 </div>
 </div>
@@ -298,11 +301,11 @@ Rémi Pépin
 <aside class="notes">
 <p>Voyez-vous des choses à corriger ?<br>
 Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
-<span id="cb1-2"><a></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
-<span id="cb1-3"><a></a>    ...</span>
-<span id="cb1-4"><a></a>  <span class="cf">elif</span></span>
-<span id="cb1-5"><a></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
+<span id="cb1-2"><a aria-label="2"></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
+<span id="cb1-3"><a aria-label="3"></a>    ...</span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="cf">elif</span></span>
+<span id="cb1-5"><a aria-label="5"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -496,7 +499,7 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
 <p><strong>Pattern Bridge</strong></p>
 </div>
 <div class="callout-content">
-<p>Découpage d’une grosse classe en un groupe de petites classes avec leur propre hiérarchie qu’il faut ensuite assembler.</p>
+<p>Splitting a large class into a group of smaller classes, each with its own hierarchy, which must then be combined.</p>
 </div>
 </div>
 </div>
@@ -684,7 +687,7 @@ Grâce au polymorphisme, j’ai un comportement différent mais le code reste cl
 <li>We can add a “Processing” part for additional processing.</li>
 <li>No unnecessary <code>if/elif/else</code>. <strong>Each part of our code handles only one thing</strong></li>
 </ul>
-<p><strong>Chaque partie de notre code s’occupe d’une seule chose</strong></p>
+<p><strong>Every part of our code does just one thing</strong></p>
 <aside class="notes">
 <p>Avantages :</p>
 <ul>
@@ -778,7 +781,7 @@ Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu de
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>Faible couplage, forte cohérence</p>
+<p>Low coupling, high cohesion</p>
 </div>
 </div>
 </div>

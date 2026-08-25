@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -16,10 +16,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -78,14 +81,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-705fb07ed9cede36e80cd8644b78c8fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-dd618518738316fd502b44006b174c31.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -460,8 +463,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#common-mistakes-and-fixes-2" id="toc-common-mistakes-and-fixes-2" class="nav-link" data-scroll-target="#common-mistakes-and-fixes-2">Common Mistakes and Fixes</a></li>
   <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-Up</a></li>
   <li><a href="#wrap-up-1" id="toc-wrap-up-1" class="nav-link" data-scroll-target="#wrap-up-1">Wrap-Up</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="03-git-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -503,9 +507,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<p><a href="https://ludo2ne.github.io/Git-tuto/doc/presentation.html" class="uri">https://ludo2ne.github.io/Git-tuto/doc/presentation.html</a> <span class="emoji" data-emoji="arrow_right">➡️</span> ENSAI Tools</p>
-<p>by Cyriel</p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <ul>
@@ -518,7 +519,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Work on different features simultaneously, revert mistakes, and collaborate efficiently.</li>
 </ul></li>
 </ul>
-<hr>
 </section>
 <section id="how-git-works" class="level2">
 <h2 class="anchored" data-anchor-id="how-git-works">How Git Works</h2>
@@ -618,18 +618,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Work on features or fixes without affecting the main codebase.</li>
 <li>Best practice for working as a team : 1 branch per “big part”</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="img/git-branchs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Git Branch Diagram"><img src="img/git-branchs.png" class="img-fluid figure-img" alt="Git Branch Diagram"></a></p>
-<figcaption>Git Branch Diagram</figcaption>
-</figure>
-</div>
+<hr>
+<p><a href="img/git-branchs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/git-branchs.png" class="img-fluid" style="width:70.0%"></a></p>
 </section>
 <section id="branching-basics-1" class="level2">
 <h2 class="anchored" data-anchor-id="branching-basics-1">Branching Basics</h2>
 <ul>
 <li><p><strong>Create a Branch</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>          <span class="co"># Create a new branch</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>         <span class="co"># Create a new branch</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>       <span class="co"># Switch to the branch</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span>    <span class="co"># Create and switch to the branch</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong>Merge a Branch</strong>:</p>
@@ -679,11 +675,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Experiment with Git commands during the lab work (do NOT designate 1 “Git expert”)</li>
 <li>Solve issues by communicating about what happened</li>
-<li>Resources :
+</ul>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
-<li><a href="https://guides.github.com/">GitHub’s guides</a></li>
-<li><a href="https://www.atlassian.com/git/tutorials">Atlassian’s Git tutorials</a></li>
-</ul></li>
+<li><a href="https://guides.github.com/" target="_blank">GitHub’s guides</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials" target="_blank">Atlassian’s Git tutorials</a></li>
+<li><a href="https://ludo2ne.github.io/ENSAI-tools/doc/git/presentation.html" target="_blank">ENSAI-tools</a></li>
 </ul>
 
 

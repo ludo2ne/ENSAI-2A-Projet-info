@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Cyriel Mallart">
   <meta name="author" content="Ludovic Deneuville">
@@ -25,10 +25,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -141,17 +144,17 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Cyriel Mallart 
+Cyriel Mallart
 </div>
 </div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ludovic Deneuville 
+Ludovic Deneuville
 </div>
 </div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Rémi Pépin 
+Rémi Pépin
 </div>
 </div>
 </div>
@@ -200,6 +203,35 @@ Rémi Pépin
       }</style></aside>
 </section>
 
+<section id="project" class="slide level3">
+<h3>Project</h3>
+<ul>
+<li><strong>A need</strong> <span class="emoji" data-emoji="arrow_right">➡️</span> Why are we doing it?</li>
+<li><strong>A scope</strong> <span class="emoji" data-emoji="arrow_right">➡️</span> What are we going to deliver?</li>
+<li><strong>People</strong> <span class="emoji" data-emoji="arrow_right">➡️</span> Who is involved?</li>
+<li><strong>Resources</strong> <span class="emoji" data-emoji="arrow_right">➡️</span> What do we need?</li>
+<li><strong>Constraints</strong> <span class="emoji" data-emoji="arrow_right">➡️</span> How much time? How much money?</li>
+<li><strong>Quality</strong> <span class="emoji" data-emoji="arrow_right">➡️</span> What level of quality is expected?</li>
+</ul>
+<aside class="notes">
+<p>A project is a balance between three main constraints:</p>
+<ul>
+<li><strong>Scope</strong> — What do we deliver?</li>
+<li><strong>Time</strong> — When must it be delivered?</li>
+<li><strong>Cost</strong> — What resources do we have?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="project-phases" class="slide level3">
 <h3>Project Phases</h3>
 <ul>
@@ -227,14 +259,44 @@ Rémi Pépin
 </section>
 <section id="project-actors" class="slide level3">
 <h3>Project actors</h3>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<ul>
-<li>Fonctionnel - Technique</li>
-<li>Besoin Métier</li>
-<li>MOA - MOE</li>
-<li>Etude préalable, budget, temps, qualité - Cahier des charges - SFD - Spec technique - Dossier test</li>
-<li>SCRUM</li>
-</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actor</th>
+<th>Main responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Client / Sponsor</strong></td>
+<td>Defines the objectives and validates major decisions</td>
+</tr>
+<tr class="even">
+<td><strong>Product Owner / Business</strong></td>
+<td>Represents user needs and priorities</td>
+</tr>
+<tr class="odd">
+<td><strong>Project Manager</strong></td>
+<td>Coordinates scope, time, cost and risks</td>
+</tr>
+<tr class="even">
+<td><strong>Functional team</strong></td>
+<td>Translates business needs into functional requirements</td>
+</tr>
+<tr class="odd">
+<td><strong>Technical team</strong></td>
+<td>Designs and implements the solution</td>
+</tr>
+<tr class="even">
+<td><strong>Users</strong></td>
+<td>Use the product and provide feedback</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section class="slide level3">
 
@@ -512,8 +574,8 @@ Rémi Pépin
           display:block!important;
       }</style></aside>
 </section>
-<section id="zoom-sur-la-couche-métier" class="slide level3">
-<h3>Zoom sur la couche métier</h3>
+<section id="focus-on-the-business-layer" class="slide level3">
+<h3>Focus on the business layer</h3>
 <p><a href="img/archi-business-layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="img/archi-business-layer.png"></a></p>
 <aside class="notes">
 <p>Within the Business layer, there are several sub-layers.</p>
@@ -540,14 +602,14 @@ Rémi Pépin
 <ul>
 <li><strong><em>DAO (Data Access Object):</em></strong>
 <ul>
-<li>The part of your code that communicates with the database (Lecture 4/Practical 4)</li>
+<li>The part of your code that communicates with the database (Lecture 4/Practical 3)</li>
 </ul></li>
 <li><strong><em>Service:</em></strong>
 <ul>
 <li>Business code</li>
 <li>Manipulates business objects to create information or value</li>
-<li>Requests objects from the DAO layer (Practical 4)</li>
-<li>Calls external web services (Practical 3)</li>
+<li>Requests objects from the DAO layer (Practical 3)</li>
+<li>Calls external web services (Practical 4)</li>
 </ul></li>
 </ul>
 </section>
