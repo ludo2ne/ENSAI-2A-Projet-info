@@ -1,0 +1,609 @@
+---
+title: "Notice élèves"
+description: Projet informatique 2A 2025-2026
+author:
+  - Romaric Gaudel
+  - Rémi Pépin
+  - Ludovic Deneuville
+format: html
+number-sections: false
+---
+
+## Introduction
+
+Tous les élèves de deuxième année (exceptés ceux suivant le parcours recherche ATPA), participent à la réalisation du projet informatique. Ils sont répartis en groupes de 4 à 5 élèves. Ce projet permet d'effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année. La composition des groupes est définie par le département d'enseignement informatique.
+
+Le travail demandé consiste à construire une application permettant de répondre à la problématique du sujet proposé. Ce travail se décompose en 2 grandes phases :
+
+1. Étude préalable et conception générale
+  - expliquer le besoin
+  - décrire la solution envisagée
+  - planifier les grandes phases de la réalisation
+  - décrire les exigences fonctionnelles par la modélisation (diagrammes UML)
+  - planifier la mise en place des fonctionnalités (dépendances, priorités...)
+2. Réalisation
+  - mise en place de la base de données
+  - développement de l'application en Python
+
+
+::: {.callout-note title="Travaux à rendre"}
+À mi-projet, vous livrerez le dossier d'analyse correspondant au travail réalisé lors de la première phase.
+
+En fin de projet, vous devrez rendre un dossier complet, ainsi que votre code.
+
+Vous présenterez vos travaux lors d'une soutenance orale.
+:::
+
+## Lancement du projet
+
+### Les équipes de projet
+
+Les équipes sont composées par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis directement en 2e année. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des équipes.
+
+- Une moyenne pondérée est calculée pour chaque élève à partir des notes de 1A dans les matières informatiques
+  - POO doc et tests : 0.5, BDR : 0.2, Algo et complexité : 0.2, Projet de traitement de données : 0.1
+- Suite à ce classement, les élèves sont répartis en 4 poules
+- Chaque équipe est composée à partir d'un élève de chaque poule
+
+**La composition des équipes n'est pas modifiable !**
+
+### Le sujet
+
+Vous serez encadré par une tutrice ou un tuteur qui suivra 4 équipes tout le long du projet.
+
+Chacun des 9 encadrants a proposé un sujet qui devra permettre l'application de l'ensemble des enseignements informatiques dispensés en 1ère année : 
+
+- Conception d'applications avec UML
+- Algorithmique
+- Programmation orientée objet avec Python
+- Bases de données relationnelles
+
+Les sujets sont affectés aléatoirement aux équipes. La diversité des parcours (Anglais, Dauphine...), les délais restreints et les contraintes associées, font qu'il n'est pas possible de vous laisser faire des voeux.
+
+
+### Première séance
+
+De retour d'étudiants, la première rencontre entre membres d'une même équipe est importante. C'est l'occasion pour vous de faire connaissance et d'échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les équipes solidaires qui ont un bon fonctionnement sont celles qui réussissent le mieux. Il n'y a pas de recette magique, chaque équipe doit se mettre d'accord sur son fonctionnement.
+
+## Organisation et suivi
+
+### Le chef de projet
+
+Au sein de chaque équipe, les élèves devront désigner une cheffe ou un chef de projet qui :
+
+- sera responsable de l'animation du groupe 
+- organisera les réunions de travail
+- veillera à la répartition, au suivi de l'avancement et au respect du planning
+
+Il est l'interlocuteur privilégié de l'encadrant pour l'équipe qu'il représente. Il doit permettre la discussion et la prise de décision collégiale.
+
+[Ce rôle n'est pas lié aux compétences informatiques]{.underline}, mais à l'appétence pour la gestion d'équipe. Il faut tout de même s'investir et s'interesser aux travaux.
+
+
+### Leader technique
+
+Ce rôle revient généralement à la personne ayant le plus d'appétence pour l'informatique. Ses missions principales :
+
+- référent git : s'assurer que tous les membres ont compris les bases de git, ont cloné le répo et savent partager leurs modifications
+- coder une v0 (par exemple en s'inspirant du template fourni) et expliquer aux autres comment ça fonctionne (un diagramme de séquence peut-être fort utile)
+- assister les membres en cas de blocage technique
+
+::: {.callout-caution}
+Pour éviter toute surchage de travail, il est fortement déconseillé de cumuler les roles de tech lead et chef de projet.
+:::
+
+Il peut bien sûr y avoir d'autres rôles dans l'équipe. L'important est de **prendre des initiatives** sur un sujet qui vous plait et d'**être acteur du projet**.
+
+Vous êtes des ingénieurs, vous avez des idées, vous devez prendre des initiatives. Cela sera un vrai plus lorsque vous serez en poste !
+
+
+### Crise
+
+Si le travail ou l'implication d'un ou plusieurs membres de l'équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. **Cela ne sera possible qu'après avoir alerté votre tuteur et le référent de la matière et qu'une discussion avec le groupe ait eu lieu**.
+
+
+### Gestion de projet et de communication
+
+Il est recommandé d'utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d'une conversation pour le groupe semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :
+
+- Trello : pour avoir un kanban collaboratif
+- Priority Matrix : pour prioriser vos tâches
+
+Vous pouvez également utiliser d'autres logiciels pour communiquer, comme Slack ou Discord (qui sont propriétaires comme Teams). Utiliser Facebook Messenger ou autres applications liées à un réseau social est déconseillé car elles ne sont pas utilisées pour gérer un projet en entreprise. La limite de ces logiciels de messagerie est qu'ils ne proposent pas de salon de discussions thématiques pour segmenter vos échanges. Cela entraine de la perte d'informations quand plusieurs discussions se mélangent.
+
+Pour les personnes qui ont du mal à s'organiser mais qui sont sensible à la *gamification* vous pouvez également utiliser Habitica (https://habitica.com/static/home) pour vous aider à travailler régulièrement.
+
+
+### Point hebdo
+
+Chaque semaine (jusqu'au rendu du rapport final et sauf pendant les vacances scolaires), vous devrez remplir votre point hebdomadaire de suivi de projet :
+
+- **Quand** : le [Jeudi soir]{.underline} au plus tard
+- **Où** : sur votre dépôt Git, dossier *doc/suivi*
+- **Comment** : créez un fichier nommé `YYYY.MM.DD-semaineN.md` en utilisant le modèle ci-dessous
+- **Qui** : tous les membres de l'équipe
+- **Quoi** : listez les tâches accomplies + le temps global estimé
+- **Pourquoi** : il permettra à votre tutrice ou tuteur de suivre l'évolution de votre travail
+
+::: {.callout-important}
+Le point hebdomadaire est **[obligatoire]{.underline}**. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.
+
+- Si vous n'avez pas travaillé sur le projet depuis une semaine (et vous avez le droit) :arrow_right: mettez simplement *ras* (rien à signaler)
+- Si une tâche n'est pas terminée, vous pouvez ajouter le suffixe *WIP* (Work In Progress)
+:::
+
+Pour information, le projet informatique vous permet d'obtenir 4 ECTS, ce qui représente un investissement d'environ 100h (séances en présentiel comprises) par élève.
+
+::: {.callout-tip}
+N'attendez pas le jeudi soir pour essayer de vous remémorer tout ce que vous avez fait depuis une semaine.
+
+Prenez l'habitude de lister vos tâches au fur et à mesure !
+:::
+
+
+:::{.panel-tabset .nav-pills}
+
+##### Modèle
+
+```{.md filename="YYYY.MM.DD-semaineN.md"}
+# Point Hebdomadaire - Projet
+
+Date : Jeudi ...
+Semaine n° ...
+
+## Tâches réalisées cette semaine
+
+> Exemples : `- [x] Tâche 1` ou - `ras`
+
+### Nom Prénom élève 1
+5h
+- [x] Tâche 1
+- [x] Tâche 2
+
+### Nom Prénom élève 2
+0h
+- ras
+
+### Nom Prénom élève 3
+
+### Nom Prénom élève 4
+
+### Nom Prénom élève 5
+
+---
+
+## Backlog
+
+> Liste des tâches en attente de prise en charge.
+
+### Prioritaires
+
+### Secondaires
+```
+
+##### Exemple 
+
+```{.md filename="2024.09.12-semaine2.md"}
+# Point Hebdomadaire - Projet Ninja
+
+Date : Jeudi 12 septembre 2024
+Semaine n° 2
+
+## Tâches réalisées cette semaine
+
+### Maud ZARELLA
+5h
+- [x] Création de la classe JoueurDAO et des méthodes
+- [x] Tests unitaires JoueurDAO
+- [x] JoueurService : ajout méthode pour supprimer un joueur
+
+### Tom ATE
+2h
+- [x] Mise en forme du diagramme de classe avec PlantUML
+- [x] Rapport : présentation des classes WIP
+
+### Anna NACE
+0h
+- ras
+
+### Harry COVER
+3h
+- [x] Modification de la base de données : modification de la table *joueur*, création table *arbitre*
+- [x] Refactor : utilisation du package *tabulate* pour avoir de jolis tableaux
+
+### Éva ZION
+3h
+- [x] Codage de la fonctionnalité *Créer un tournoi* (Vue + Services + Dao)
+- [x] Relecture dossier analyse
+
+## Backlog
+
+### Prioritaires
+- [ ] Corriger Bug de modification de joueur
+- [ ] Fonctionnalité *Arbitrer un tournoi*
+- [ ] Menu administrateur
+
+### Secondaires
+- [ ] Ecrire README
+```
+:::
+
+### Suivi de projet
+
+L'encadrement de l'avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque équipe fera le bilan avec son intervenant :
+
+- du travail qui a été réalisé au cours de la semaine
+- des difficultés rencontrées
+- de ce qui doit encore être fait
+
+Dans l'équipe vous devez toutes et tous avoir une vision macro de l'avancement du projet et ce que vous avez prévu de faire.
+
+**Une séance de suivi, ça se prépare !!!**
+
+> C'est valable pour les autres projets, les suivi de stage, les réunions... Si vous arrivez les mains dans les poches, vous allez perdre un temps précieux pour vous remettre dans le bain.
+
+::: {.callout-caution}
+À chaque séance, l'encadrant notera si un travail sérieux a été réalisé depuis la semaine dernière. Un travail régulier tout le long du projet sera récompensé, tandis qu'un travail fait uniquement avant les rendus sera pénalisé.
+:::
+
+**Les séances de suivi sont obligatoires.** L'appel sera effectué. Votre intervenant pourra demander à tout moment à parler avec la totalité des élèves qu'il encadre.
+
+
+## Outils et Cours
+
+### Module de Compléments d'informatique
+
+Pour vous aider à mener à bien votre projet, un cours de 6h, et cinq TP de 3h sont mis en place dans le module de **Compléments d'informatique**. Lors du cours, vous seront présentés l'organisation générale du projet et quelques concepts nouveaux mis en œuvre lors des TP :
+
+- séparation back-end / front-end,
+- programmation en couches,
+- systèmes de versionnement (git),
+- appel à un webservice,
+- communication avec une base de données
+
+Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre projet, il a également pour but final de vous donner des connaissances supplémentaires en informatique pour que vous puissiez évoluer facilement dans le milieu professionnel et en particulier dans le monde de la *data science.*
+
+Sauf retour à l'âge de Pierre, vous allez inévitablement utiliser des applications informatiques dans votre vie professionnelle. Même si vous ne travaillez jamais côté informatique, avoir une première approche sur le fonctionnement d'un projet informatique vous sera précieux.
+
+
+### Outils de développement
+
+Les outils de développement à votre disposition seront :
+
+- L'environnement de développement **Visual Studio Code**
+- Le logiciel de partage de code et versionnement **Git**, accessible depuis l'environnement de développement, accompagné d'un dépôt (privé) que vous devrez créer sur un serveur public (GitLab, Github, Bitbucket),
+- Une base de données **PostgreSQL** (hébergée à l'Ensai) comme système de gestion de base de données (SGBD) pour la persistance des données,
+- Un certain nombre de librairies et outils pour le lien entre Python et le SGBD, les tests unitaires, la génération automatique de documentations
+  - [psycopg2](https://www.psycopg.org/docs/){target="_blank"} pour se connecter à la base de données postgreSQL, 
+  - [requests](https://requests.readthedocs.io/en/master/){target="_blank"} pour réaliser des requêtes http
+  - [pytest](https://docs.pytest.org/) pour les tests unitaires,
+  - [pydoc](https://docs.python.org/fr/3/library/pydoc.html){target="_blank"} pour la documentation,
+  - [abc](https://docs.python.org/fr/3/library/abc.html){target="_blank"} pour les classes abstraites,
+  - [fastAPI](https://fastapi.tiangolo.com/){target="_blank"} pour la création d'un webservice REST
+
+
+En plus de cette liste, vous êtes libre d'utiliser les outils de votre choix, *à condition d'être capable de les utiliser en toute autonomie*.
+
+::: {.callout-caution title="Remarque"}
+Demander de l'aide est normal et fait partie de l'apprentissage. Nous ne notons pas quels sont les groupes qui nous demandent de l'aide. Faire preuve d'autonomie ne veut pas dire travailler sans demander de l'aide. Si vous rencontrez une difficulté, qu'après plusieurs tentatives vous ne trouvez pas de solution et que vous demandez finalement de l'aide pour la résoudre, vous êtes autonome. 
+
+Si par contre vous attendez que le problème disparaisse ou que l'on vienne vous aider, là vous manquez d'autonomie. Soyez proactif dans votre démarche ! Vous progresserez bien plus vite.
+:::
+
+### Usage de l'IAgen
+
+L'IA générative peut être un excellent accélérateur de développement lorsqu'elle est utilisée avec discernement. Si vous comprenez votre architecture, vos technologies et vos besoins, elle peut vous aider à produire du code plus rapidement, explorer des pistes ou résoudre des problèmes ponctuels.
+
+Elle peut également vous aider à comprendre les principes évoqués en cours et en TP.
+
+À l'inverse, lui demander de développer des fonctionnalités mal définies ou copier du code sans le comprendre risque de vous faire perdre beaucoup de temps. L'IA peut produire des solutions incorrectes, inadaptées à votre projet ou génératrices de bugs.
+
+Considérez l'IA comme un assistant technique, pas comme un développeur autonome. Plus vos demandes sont précises et plus vous comprenez ce qu'elle propose, plus elle sera utile.
+
+
+## Travail attendu
+
+### Processus de développement
+
+Le développement s'effectuera collectivement et en cascade. Les phases d'étude préalable, de conception générale, de réalisation et de validation s'enchaînent successivement dans le temps.
+
+
+### Étude préalable
+
+Cette 1ère phase d'analyse consiste en la formalisation des besoins décrits par le cahier des charges (le sujet, le point de vue du demandeur ou du maître d'ouvrage). Elle devra permettre d'établir :
+
+- Le périmètre du système d'information cible en reprécisant les aspects du sujet qui peuvent apparaître flous
+- Les besoins à satisfaire par le système d'information cible (cas d'utilisation et description des menus)
+- Les exigences particulières et les contraintes (normes de développement, architecture)
+
+
+### Conception générale
+
+Cette 2e phase d'analyse aboutira à un modèle de conception pour répondre aux objectifs fixés par le cahier des charges. Le choix des diagrammes est fait par chaque équipe après validation de leur intervenant. Nous y trouverons cependant au minimum :
+
+- Un diagramme de cas d'utilisation
+- Un diagramme de classes
+- Un modèle physique de données
+
+En fonction de votre sujet et de ce que vous demande votre intervenant vous pourrez y ajouter : 
+
+- Un diagramme de d'activité ou d'état
+- Un diagramme de séquence
+- Un modèle logique de données (diagramme entité-relation)
+
+::: {.callout-tip}
+- les sujets et les encadrants sont différents, alors préférez faire des choses cohérentes avec ses attendus, que simplement *cocher des cases*
+- si certains diagrammes ne vous disent rien, il y a plusieurs livres sur la modélisation UML à la bibliothèque.
+:::
+
+
+### Réalisation et Validation du logiciel
+
+#### La base de données
+
+L'application s'appuiera sur une base de données, que vous devez créer. Pour vous sensibiliser à la variété des données, votre travail devra comporter l'importation ou l'exportation d'un jeu de données. Ce jeu de données sera fourni par l'encadrant dans le format de son choix (XML, JSON, CSV...).
+
+#### Codage de l'application
+
+L'application sera réalisée en **Python**. Le code sera naturellement cohérent avec les diagrammes du modèle de conception déjà établis. Si nécessaire, ces derniers seront mis à jour afin que cette cohérence soit maintenue. 
+
+[Il n'y a pas d'interface graphique à développer]{.underline}, la communication avec l'application se faisant par l'intermédiaire de la console ou d'un webservice. Toutes les fonctionnalités de votre application doivent pouvoir être testées et démontrées via la console ou des requêtes http.
+
+
+#### Validation du logiciel
+
+Tout au long du développement, vous développerez un ensemble de tests unitaires.
+
+
+## Livraisons
+
+### Dossier d'analyse
+
+Via son rôle de client, votre tutrice ou tuteur vous a exposé son besoin. Le dossier d'analyse explique comment vous allez y répondre.
+
+::: {.callout-important}
+- **Où** : sur Moodle, dans la section prévue à cet effet
+- **Quand** : début octobre
+- **Comment** : en format `pdf`. Il n'est pas obligatoirement rédigé en LaTeX mais doit-être « propre »
+- **Combien** : 10 à 15 pages, annexes comprises est une taille raisonnable
+- **Pourquoi** : il sera noté par votre intervenant qui vous en fera un retour
+:::
+
+Ce premier livrable est l'aboutissement de la phase d'étude préalable et de conception générale. Il doit montrer que vous avez compris votre sujet et que vous avez une première modélisation de votre application. Ainsi cette livraison contiendra :
+
+- Un planning *détaillé* des 3 phases décrites ci-dessus (diagramme de Gantt)
+- Les diagrammes réalisés pendant la phase d'analyse
+- Un document d'architecture spécifiant l'organisation logique des sous-systèmes techniques (paquetages métier, persistance)
+- Les principaux menus de l'application et leurs enchainements si cela a du sens
+- Les principaux endpoints de votre application si cela a du sens
+- Une description des fonctionnalités de votre application
+- Une liste des composants à implémenter ainsi que :
+  - Leur rôle
+  - La description de leurs dépendances réciproques
+  - Le temps de développement prévu pour chacun d'entre eux
+  - L'ordre de priorité initiale
+
+
+### Le rapport final
+
+Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Il est à déposer sur Moodle et contiendra les éléments ci-dessous.
+
+::: {.callout-important}
+- Respectez les consignes usuelles de mise en forme d'un rapport
+- Précisez votre numéro d'équipe sur la page de garde
+:::
+
+#### Le contexte de votre application
+
+Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de **comprendre l'intérêt de votre travail**. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.
+
+- À quels besoins répond-elle ? Le diagramme de cas d'utilisation n'est pas nécessaire dans le rapport final ;
+- Quels sont les utilisateurs de l'application ?
+- Quelles sont les **données intéressantes** de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous en produisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple :
+  - Vous récupérez des annonces immobilières via webscrapping, quel est le site ou quels sont les sites utilisés ? Quelles données récupérez-vous de la page ? Vous pourrez décrire plus tard comment vous les récupérez ;
+  - Vous devez traiter des données géographiques, comment sont stockées vos données dans votre source ? Y-a-t-il des difficultés particulières dans ces données ? 
+  - Vous récupérez des données d'un service externe, quel est le schéma de ces données ?
+
+
+#### Architecture générale
+
+- Est-ce un module python ? Un script sans interaction avec l'utilisateur ? Une application en console ? Une application avec un client et un serveur qui communiquent via requête http ?
+- Les technologies nécessaires à son fonctionnement (python, bibliothèques majeures utilisées, système de persistance, sources de données externes)
+- Un schéma d'architecture (pour faire le lien entre les différents composants de votre application comme votre code, système de persistance, etc.)
+
+
+#### Réponse aux besoins
+
+Comment votre application permet de répondre aux besoins que vous avez décrits :
+
+- Le fonctionnement votre application :
+  - Zoom sur un processus central en le détaillant complètement pour que le jury comprenne la logique que vous avez mise en place. Qu'est-ce que l'utilisateur fait ? Qu'est-ce que votre produit fait ? Comment interagit-il avec les autres composants ? Quelles sont les classes utilisées ? Il n'est pas utile de préciser les méthodes appelées, sauf si vous pensez que cela a un intérêt. Pour aider le lecteur, vous pouvez ajouter des diagrammes de cas d'utilisations, mais aussi des schémas divers ;
+  - Explication *rapide* pour les autres. Votre rapport ne doit pas être un listing des fonctions Python de votre application ;
+
+Privilégiez la qualité des explications à la quantité. Si vous décrivez sérieusement une fonctionnalité centrale intéressante, le jury supposera que vous êtes capable de faire la même chose pour les autres. Vous pouvez illustrer vos propos en utilisant votre diagramme de classe. Cela vous permet :
+
+- D'expliquer les héritages / associations utilisés
+- De présenter les objets métiers et comment ils sont utilisés par l'application
+- De mettre en avant une décomposition en couche, un découplage entre les objets
+
+::: {.callout-caution title="Remarque"}
+Un diagramme de classe n'est pas une finalité en soit, il est initialement produit pour servir de boussole lors de l'implémentation de votre application. De la même manière, dans votre rapport il doit servir à guider vos explications. 
+
+Ainsi, il n'est pas nécessaire de produire un diagramme de classe unique si celui-ci est illisible. Vous pouvez le décomposer en petits diagrammes qui vont se concentrer sur des fonctionnalités particulières. De même, il est fortement déconseillé de lister et décrire exhaustivement toutes les classes et les méthodes.
+:::
+
+
+#### Système de stockage
+
+À quels moments il est utilisé dans votre application et pourquoi ? 
+Vous pouvez mettre en avant l'utilisation de formes normales. 
+
+En effet ce projet doit vous permettre de mettre en avant vos acquis de 1A en la matière. Il est inutile de nous présenter l'intégralité de vos DAOs
+
+#### Outils mis en place
+
+Les outils mis en place pour réaliser le projet :
+
+- L'organisation que vous avez choisie dans votre groupe ;
+- Les outils et leur utilisation ;
+- La démarche d'assurance qualité. Le but de cette partie est de montrer que vous avez pris en compte les évènements extérieurs qui peuvent impacter votre application.
+  - Avez-vous fait des tests ? Pourquoi avez-vous testé ces classes en particulier ? Qu'est-ce que cela vous a apporté ?
+  - Avez-vous rencontré des temps de traitement longs ? D'où viennent-ils ? Les avez-vous surmontés ?
+  - Si votre source de données venait à disparaitre mais qu'une nouvelle source similaire existait, comment cela impacterait-il votre application ?
+  - Si vous avez mis de côté des fonctionnalités au cours de votre développement, comment peuvent-elles être mise en place dans le futur ?
+
+#### Note individuelle
+
+Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. **Cette note devra être insérée dans le rapport final en fin de rapport**. Dans cette note d'[une page maximum]{.underline}, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés. 
+
+Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note :
+
+- Votre participation effective au projet (chef de projet, code, animation...)
+- Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile ? Enrichissant ? Éviter les lieux communs, et préférez utiliser des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.
+- Les enseignements que vous en tirez, ce que vous referiez, ce que vous changeriez. Vous pouvez construire cette partie comme une liste de conseils que vous donneriez à vos successeurs.
+
+Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre de l'équipe, ami, famille) pour limiter les fautes et ainsi vous assurer qu'elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, **faites-la sérieusement et honnêtement**.
+
+---
+
+Bien entendu, **cette liste ne définit que les composantes minimales de votre rendu**. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être : expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou toute autre information qui vous permet de valoriser votre travail. Vous avez le droit d'illustrer vos propos avec des figures pour aider le lecteur. Les images qui n'apportent rien à votre propos sont à proscrire. 
+
+
+L'ordre de présentation des différents points, et de leur classement en annexe est libre. **La taille optimale de ce rapport est de 25 pages hors annexe**. Vous pouvez faire plus long mais dans ce cas posez-vous la question : « Ce que j'ajoute est-il nécessaire ? ». 
+
+le format final attendu est le pdf.
+
+Pour rédiger, il est vivement conseillé d'utilier les template Typst fourni dans le template de projet pour rédiger.
+
+Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Cela arrive de laisser passer une ou deux coquilles, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.
+
+
+### Le code
+
+Vous créerez une archive contenant tout le contenu de votre dépôt git, et en particulier le code source de votre application.
+
+Vous déposerez ce livrable sur Moodle.
+
+::: {.callout-caution title="Taille du répo"}
+Attention à ne pas inclure dans votre livrable des fichiers trop lourds (> 10Mo), comme par exemple des fichiers de données.
+:::
+
+Le code source complet de l'application contenant à minima :
+
+- Un fichier `README.md` à la racine du dépot [rédigé en anglais]{.underline} à destination d'un utilisateur et devra contenir :
+  - une présentation rapide de votre application (principales fonctionnalités, besoins auquels elle répond)
+  - un mode opératoire d'installation et de lancement rapide
+- Un fichier `README.md` dans le dossier *backend* destiné aux personnes souhaitant continuer le développement de l'application :
+  - Présentation de l'architecture en couches
+  - Outils de développement (tests, logs, qualité...)
+- Un fichier `backend/pyproject.toml` avec tous les modules pythons à installer pour faire fonctionner votre application
+- un dossier `backend/src` contenant votre code source et un fichier `main.py` ou `__main__.py` qui permet de lancer votre application
+- un fichier `data/init_db.sql` permettant la création des tables et des données
+
+Entre ce rendu de code et la soutenance, vous avez le droit de modifier votre code. Cependant, ces modifications ne serviront qu'à améliorer la qualité de la démonstration car ce nouveau code ne comptera pas pour la notation.
+
+
+::: {.callout-important}
+Seul le code de la partie *backend* sera noté !
+
+Si vous développez un *frontend*, vous pouvez donc le coder avec un peu moins de rigueur.
+:::
+
+
+### La soutenance
+
+Vous présenterez votre travail devant un jury de 3 personnes : 
+
+- un président de jury (professionnel de l'informatique)
+- votre encadrant de projet
+- un enseignant informatique de l'ENSAI
+
+La soutenance consistera en une présentation orale de votre logiciel, partagée équitablement entre les membres du groupe. Elle fera apparaître la méthode de développement utilisée, les choix et options de conception et de programmation retenues. 
+
+Vous avez 20 minutes pour réaliser votre présentation. Suivrons ensuite les questions et les retours du jury.
+
+::: {.callout-note title="Timing type"}
+- Exposé : 20 min, dont environ :
+  - 12 min de présentation type diaporama 
+  - 8 min de démonstration de l'application
+  - La gestion de ce temps est libre mais doit être dynamique
+  - Vous pouvez mixer démo et présentation, c'est même plutôt conseillé
+- Questions du jury : 15 min
+- Retours du jury : 10 min
+:::
+
+
+**Le jury est bienveillant et ne cherchera pas à vous piéger !**
+
+#### Quelques conseils pour cette soutenance :
+
+- Présentez brièvement les membres de l'équipe
+- Même si les membres du jury ont lu votre rapport, prenez le temps de présenter sommairement le besoin initial et les données impliquées s'il y en a
+
+Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça ». Le jury déteste, surtout quand c'est la 4e équipe de suite qui raconte la même chose. Soyez un minimum original, prenez un angle décalé, racontez une histoire !
+
+Présentez la plus-value de l'équipe :
+
+- Avez-vous fait des choix forts ?
+- Avez-vous mis en place un processus intéressant ?
+- Répondez-vous au besoin ?
+
+Il n'est pas nécessaire de suivre le même déroulé que le rapport (c'est d'ailleurs généralement une erreur), ni de représenter le rapport (le jury l'a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu'elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté.
+
+Mettez en avant le projet (comment avez-vous travaillé ces 3 mois) et pas seulement le logiciel produit (vous n'essayez pas de nous vendre votre application).
+
+**Votre diaporama** :
+
+- Numérotez les diapos !!!
+- Ne chargez pas trop vos slides en texte
+- Vous pouvez utiliser des schémas, graphiques, captures d'écran utiles à la compréhension. Faites attention que vos images soient lisibles une fois projetées. 
+- Ne mettez pas de code, mais du pseudo-code (et uniquement si l'algorithme est intéressant)
+
+**La démo** :
+
+- N'allez pas trop vite !
+- Ne présentez pas la création / modification de compte, cela n'a aucune plus-value aux yeux du jury
+- Sur certains points interessants, prenez le temps d'expliquer ce qu'il se passe dans votre code (à la manière d'un diagramme de séquence)
+- Ne dîtes pas "l'utilisateur peut faire-ci, faire ça". Nous ne sommes pas à Hollywood mais un petit effort quand même, personnalisez votre démo, jouez un rôle !
+
+::: {.callout-important}
+Travaillez votre introduction et votre conclusion !
+
+Ne terminez pas votre présentation par : "Voilà c'est fini...".
+
+Soyez solidaires !
+:::
+
+
+### Notation finale
+
+La note finale du projet se répartit comme suit :
+
+- Dossier d'analyse et investissement dans le projet (1/3)
+- Rapport final et investissement dans le projet (1/3)
+- Soutenance (1/3)
+
+Le code est noté à part. Il compte pour un tiers de la note de Compléments d'informatique.
+
+::: {.callout-warning title="Pénalités"}
+Des malus seront appliqués à votre note si :
+
+- vous avez des absences injustifiées en suivi de projet et/ou en TP de Compléments d'info
+- vous n'avez pas été présent dans les locaux de l'ENSAI durant l'immersion
+- vous n'avez pas rempli les fichiers de suivi hebdomadaires
+- votre participation aux travaux de votre équipe est jugé insuffisant
+:::
+
+
+## Calendrier
+
+Voir présentation aux élèves pour les dates
+
+### Immersion
+
+3 jours consécutifs sont libérés dans votre emploi du temps pour avancer efficacement sur votre projet. La présence dans l'école est obligatoire et sera contrôlée.
+
+À la fin de ces 3 jours, avec un travail sérieux et efficace, vous devriez avoir bien avancé la phase de code (> 80 %) et commencé le squelette du rapport final. Ainsi, vous serez beaucoup plus sereins pour attaquer la dernière ligne droite en novembre.
+
+Vous verrez votre tuteur le premier jour pour qu'il vous aide à prioriser vos travaux, et le dernier pour vous aider. Une démonstration, même limitée, de votre application sera demandée le mercredi.
+

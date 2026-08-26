@@ -1,260 +1,323 @@
 ---
-title: "Présentation du projet info 2A"
+title: "IT project presentation"
 description: "[Slides](presentation-eleves-slides.html)"
 author: "Ludovic Deneuville"
 format:
   html: default
   revealjs:
     theme: solarized
-    footer: "[Home](../../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
+    footer: "[Home](../../index.html) --- [IT project presentation](presentation-eleves.qmd)"
     output-file: presentation-eleves-slides.html
 number-sections: false
 ---
 
+> automatic translation of the 'Présentation élèves' page
 
-## Objectifs
+## Objectives
 
-- Développer une application en Python
-- Découvrir l'architecture logicielle
-- Communiquer avec une base de données, des webservices
-- Concevoir et Modéliser (UML)
-- Travailler en équipe
+- Develop an application in Python
+- Discover software architecture
+- Communicate with a database and web services
+- Design and Model (UML)
+- Work as a team
 
 :::{.notes}
-Vie ma vie de dév
+A day in the life of a developer
 
-- Éléments vus en cours et en TP
-- PostgreSQL OK, SQLite NON
+- Concepts covered in lectures and practical sessions
+- PostgreSQL OK, SQLite NO
 :::
 
-## Environnement de travail
+### An application
+
+- Database
+- Backend
+- Frontend
+- External API
+
+:::{.notes}
+Database:
+
+- shared or individual
+- init.sql and pop.sql files + reset_database
+
+Backend: core of the application, to be carefully developed
+
+Frontend: if needed, code not assessed
+
+External API:
+
+- Static or dynamic data? When to query?
+- Beware of limitations
+:::
+
+## Working environment
 
 ::: {.callout-important}
-Vous pouvez coder sur :
+You can code on:
 
-- un datalab (recommandé)
-- la VM ENSAI
+- a datalab (recommended)
+- the ENSAI VM
 
-Vous pouvez également coder sur votre propre machine mais **vous devrez gérer en totale autonomie les installations nécessaires.** 
+You can also code on your own machine, but **you will be entirely responsible for managing the required installations.**
 :::
 
 :::{.notes}
-- Usage de l'IAgen
+**Save your code with Git**
+
+- Use of AI
 :::
 
-## Planning {.smaller}
+## Schedule {.smaller}
 
 ::::::{.panel-tabset .nav-pills}
 
-#### Planning
+#### Schedule
 
 :::{.white-box}
+
 ```{mermaid}
 gantt
-    title Planning provisoire 2024
+    title Provisional Schedule 2024
     dateFormat  YYYY-MM-DD
     axisFormat  %d %b
     tickInterval 1week
     
-    section Cours
-    CM                           :milestone, 2025-08-25,
-    CM                           :milestone, 2025-09-01, 
-    Examen                       :milestone, 2025-09-28,
+    section Lectures
+    Lecture                      :milestone, 2025-08-25,
+    Lecture                      :milestone, 2025-09-01, 
+    Exam                         :milestone, 2025-09-28,
     
-    section TP
-    TP1                          :milestone, 2025-08-28,
-    TP2                          :milestone, 2025-09-04,
-    TP3                          :milestone, 2025-09-11,
-    TP4                          :milestone, 2025-09-18,
-    TP5                          :milestone, 2025-09-25,
+    section Practical sessions
+    Lab 1                        :milestone, 2025-08-28,
+    Lab 2                        :milestone, 2025-09-04,
+    Lab 3                        :milestone, 2025-09-11,
+    Lab 4                        :milestone, 2025-09-18,
+    Lab 5                        :milestone, 2025-09-25,
     
-    section Projet
-    Suivi 1                      :milestone, 2025-08-28,
-    Suivi 2                      :milestone, 2025-09-04,
-    Suivi 3                      :milestone, 2025-09-11,
-    Suivi 3                      :milestone, 2025-09-25,
-    3j immersion (Suivi 5 et 6)  :active,    2025-11-03, 3d
-    Suivi 7                      :milestone, 2025-11-13,
+    section Project
+    Mentoring 1                   :milestone, 2025-08-28,
+    Mentoring 2                   :milestone, 2025-09-04,
+    Mentoring 3                   :milestone, 2025-09-11,
+    Mentoring 4                   :milestone, 2025-09-25,
+    3-day immersion (Mentorings 5 and 6)  :active,    2025-11-03, 3d
+    Mentoring 7                   :milestone, 2025-11-13,
     
-    section Échéances
+    section Deadlines
     WEI                          :crit,      2025-09-18, 3d
-    Dossier Analyse              :milestone, 2025-09-17,
-    Toussaint                    :crit,      2025-10-24, 7d
-    Rapport final et Code        :milestone, 2025-11-21,
-    Soutenance                   :milestone, 2025-12-09,
+    Analysis Document            :milestone, 2025-09-17,
+    All Saints' break            :crit,      2025-10-24, 7d
+    Final Report and Code        :milestone, 2025-11-21,
+    Presentation                 :milestone, 2025-12-09,
 ```
+
 :::
 
 #### Dates
 
-| Date                        | Topic                                         |
-|-----------------------------|-----------------------------------------------|
-| vendredi 28 août            | TP1 et Suivi 1                                |
-| vendredi 4 septembre        | TP2 et Suivi 2                                |
-| vendredi 11 septembre       | TP3 et Suivi 3                                |
-| vendredi 18 septembre       | TP4                                           |
-| vendredi 25 septembre       | TP5 et Suivi 4                                |
-| mar-jeu 3-5 novembre        | 3 jours d'immersion (Suivi 5-6: le 1er jour)  |
-| vendredi 20 novembre        | Suivi 7 (visio)                               |
-| mercredi 9 décembre         | Soutenance                                    |
+| Date                  | Topic                           |
+| --------------------- | ------------------------------- |
+| Friday, August 28     | Lab 1 and Mentoring 1            |
+| Friday, September 4   | Lab 2 and Mentoring 2            |
+| Friday, September 11  | Lab 3 and Mentoring 3            |
+| Friday, September 18  | Lab 4                           |
+| Friday, September 25  | Lab 5 and Mentoring 4            |
+| Tue-Thu, November 3-5 | 3-day immersion (Mentorings 5-6) |
+| Friday, November 20   | Mentoring 7 (video conference)   |
+| Wednesday, December 9 | Presentation                    |
 
+#### Deliverables
 
-#### Livrables
-
-| Date                        | Topic                                       |
-|-----------------------------|---------------------------------------------|
-| TOUS les Jeudis             | Point hebdo                                 |
-| Jeudi 17 septembre 20h00    | Dossier d'Analyse                           |
-| Samedi 21 novembre 20h00    | Rapport final et Code                       |
+| Date                            | Topic                 |
+| ------------------------------- | --------------------- |
+| EVERY Thursday                  | Weekly update         |
+| Thursday, September 17, 8:00 PM | Analysis Document     |
+| Saturday, November 21, 8:00 PM  | Final Report and Code |
 
 ::::::
 
 :::{.notes}
-- 3j d'immersion
-  - capital pour bien avancer le projet
-  - si bien utilisé -> 90 % du travail fait
-- Point hebdo : j'y reviens
 
-:bulb: Prendre de l'avance en septembre
+- 3-day immersion
 
-:warning: Absences en projet ou TP -> malus
+  - essential for making good progress on the project
+  - if used well -> 90% of the work completed
+- Weekly update: I'll come back to this
 
-prévenez-moi si justifié, sinon je prends la liste des absences
+:bulb: Get ahead in September
+
+:warning: Absences during project or practical sessions -> penalty
+
+Let me know if there is a valid reason, otherwise I will use the attendance list
 :::
 
 ## 2 phases
 
-- Analyse / Conception générale (sept.)
-  - 4 séances de 3h de suivi
-  - fin-septembre : retours sur le dossier d'analyse
-- Implémentation (oct. - nov.)
-  - 3 séances de 3h de suivi
+- Analysis / General Design (September)
+
+  - 4 × 3-hour Mentoring sessions
+  - end of September: feedback on the analysis document
+- Implementation (October - November)
+
+  - 3 × 3-hour Mentoring sessions
 
 :::{.notes}
-- Vous avez 1 mois à 5. Un élève de STD a 6h
 
-Si votre dossier d'analyse est nickel mais vous n'avez pas encore dev
+- You have 1 month as a team of 5. An STD student has 6 hours
 
-:bulb: Conseil :
+If your analysis document is perfect but you have not started developing yet
 
-- l'élève le plus à l'aise fait un POC vers le 20 septembre
-- puis présente l'appli v0 aux autres
+:bulb: Advice:
 
-Relisez vos rapports !
+- the most comfortable student starts a POC around September 20
+- then presents the v0 application to the others
+
+Proofread your reports!
 :::
 
-## Travail en groupe
+## Group work
 
-- Éviter de cumuler les rôles de Chef de projet et Tech Lead
-- Esprit d'équipe
-- Prévenir dès que possible si ça ne va pas
+- Avoid combining the roles of Project Manager and Tech Lead
+- Team spirit
+- Discussion channel
+- Let me know as soon as possible if something is not going well
 
 :::{.notes}
-- Avoir un bon comportement
-- Certaines équipes vont mieux fonctionner que d'autres
-- Dans la vie pro, on bosse pas toujours avec ses potes
-- Si vous êtes fort -> ne pas tout faire
-- Prévenir tuteur puis Prof en cas de souci
 
-Pas la peine de dire une fois que le projet est fini : 
+- Behave professionally
+- Some teams will work better than others
+- In professional life, you do not always work with your friends
+- If you are skilled -> do not do everything yourself
+- Inform the tutor and then the professor if there is a problem
 
-- c'est moi qui ait tout fait
-- un autre membre n'a rien fait
+There is no point in saying once the project is finished:
+
+- I did everything
+- another team member did nothing
 :::
 
-## Le jour 1
+## Day 1
 
-- Posez des questions au tuteur
-- Discutez entre vous (qui sait faire quoi)
-- Organisez-vous
-- Soyez proactifs, prenez des initiatives
+- Ask questions to the tutor
+- Discuss among yourselves (who knows how to do what)
+- Organize yourselves
+- Be proactive and take initiative
 
 :::{.notes}
-- Prenez des initiatives
-- Démarquez-vous
-- Back (et front ?)
-- Fonctionnalités indispensables
+
+- Take initiative
+- Stand out
+- Backend (and frontend?)
+- Essential features
 :::
 
-## Suivi 
+## Mentoring
 
-- Point hebdo **OBLIGATOIRE**
-- À remplir chaque semaine
-  - au plus tard le jeudi soir
-  - par chaque membre
-  - sinon malus pour l'équipe
+- Weekly update **MANDATORY**
+- To be completed every week
+
+  - by Thursday evening at the latest
+  - by each member
+  - otherwise a penalty for the team
 
 ::: {.callout-note}
-Plus de détails dans la [notice élèves](./notice-eleves.qmd#point-hebdo){target="_blank"}.
+More details in the [student guide](./notice-eleves.qmd#point-hebdo){target="_blank"}.
 :::
 
 :::{.notes}
-- Comme dans la vie pro
-- Obligatoire sinon malus
-- Montrer Modèle
-- ras : si vous n'avez rien fait
+
+- As in professional life
+- Mandatory, otherwise a penalty
+- Show the template
+- Nothing to report: if you have done nothing
+- Write down your questions (Think about the answers: Plan A, Plan B)
+
+Make the most of each Mentoring session to prepare and ask questions
+
+A meeting needs to be prepared.
 :::
 
+## Deliverables
 
-## Rendus
+### Analysis Document
 
-### Dossier d'analyse
+Your tutor has expressed a need:
 
-Votre tuteur a exprimé un besoin :
+- Explain how to address it
+- Reformulate their request
+- Use the appropriate UML diagrams
 
-- Expliquez comment y répondre
-- Reformulez sa demande
-- Utilisez les diagrammes UML adéquats
+:::{.notes}
+UML: Be careful not to overload it (validate with the tutor)
+
+Macro-level Gantt
+:::
 
 ### Code
 
-- Nous attendons du code de **[qualité]{.underline}**
-- Documentation obligatoire pour chaque classe, chaque méthode
-- Tests Unitaires requis
+- We expect **[quality]{.underline}** code
+- Documentation mandatory for every class, every method
+- Unit tests required
 - README in English
-- Codez par petits bouts
+- Code in small increments
 
 :::{.notes}
-Respectez les bonnes pratiques de dev Python :
+Follow Python development best practices:
 
-- Noms des classes en CamelCase
-- Fichiers en snake_case
-- noms de variables et de méthodes parlants
-- :warning: Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas
+- Class names in CamelCase
+- Files in snake_case
+- Meaningful variable and method names
+- :warning: Methods that do not work because they call methods that do not work
 :::
 
-### Rapport final
+### Final Report
 
-- Citez-vos figures
-- Relisez-vous !
-- :bulb: Utilisez Typst avec Quarto
+- Focus on interesting features
+- Refer to your figures
+- Proofread your work!
+- :bulb: Use Typst with Quarto
 
-## A voir avec le tuteur
+:::{.notes}
+It is not necessarily a good idea to write more than 25 pages.
 
-- Méthodes à tester (service, dao ?)
-- Visibilité public / privé
-- utilisation de mypy
+Individual grade
+
+20-minute presentation:
+
+- friendly but different jury members
+- give your demo some personality
+- Test beforehand, Introduce yourselves, Number your slides, Readable slides, introduction, conclusion
+- No user management
+:::
+
+## To discuss with the tutor
+
+- Methods to test (service, DAO?)
+- Public / private visibility
+- Use of mypy
 
 ## Template
 
-- [Exemple de projet simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
+- [Simple project example](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
 
-Enfin presque...
+Almost...
 
 :::{.notes}
+
 - data, doc, src
-- fichiers config : logs, cov, pyproject, gitignore
-- README : modop pour installer et lancer
-- .vscode : setup vscode
-- CI : expliquer principe
+- config files: logs, cov, pyproject, gitignore
+- README: instructions for installing and running
+- .vscode: VS Code setup
+- CI: explain the principle
 - Docker
 :::
 
-## Outils
+## Tools
 
 - [ENSAI-tools](https://ludo2ne.github.io/ENSAI-tools/){target="_blank"}
-  - Git, Datalab, Api, Markdown...
+
+  - Git, Datalab, API, Markdown...
 
 :::{.notes}
-Git obligatoire -> pénalités si pas de commit
+Git is mandatory -> penalties if there are no commits
 :::

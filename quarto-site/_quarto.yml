@@ -24,10 +24,14 @@ website:
         menu:
           - href: doc/projet/presentation-tuteurs.qmd
             text: "Présentation pour les tuteurs"
-          - href: doc/projet/presentation-eleves.qmd
+          - href: doc/french/projet/presentation-eleves.qmd
             text: "Présentation aux élèves"
-          - href: doc/projet/notice-eleves.qmd
+          - href: doc/projet/presentation-eleves.qmd
+            text: "Présentation to students"
+          - href: doc/french/projet/notice-eleves.qmd
             text: "Notice élèves"
+          - href: doc/projet/notice-eleves.qmd
+            text: "Student notice"
           - href: https://github.com/ludo2ne/ENSAI-2A-projet-info-template
             text: "Template"
           - href: doc/projet/sujets.qmd

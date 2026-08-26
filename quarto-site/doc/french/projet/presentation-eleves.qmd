@@ -1,0 +1,311 @@
+---
+title: "Présentation du projet info 2A"
+description: "[Slides](presentation-eleves-slides.html)"
+author: "Ludovic Deneuville"
+format:
+  html: default
+  revealjs:
+    theme: solarized
+    footer: "[Home](../../index.html) --- [Présentation du projet info 2A](presentation-eleves.qmd)"
+    output-file: presentation-eleves-slides.html
+number-sections: false
+---
+
+
+## Objectifs
+
+- Développer une application en Python
+- Découvrir l'architecture logicielle
+- Communiquer avec une base de données, des webservices
+- Concevoir et Modéliser (UML)
+- Travailler en équipe
+
+:::{.notes}
+Vie ma vie de dév
+
+- Éléments vus en cours et en TP
+- PostgreSQL OK, SQLite NON
+:::
+
+### Une application
+
+- Base de données
+- Backend
+- Frontend
+- API externe
+
+:::{.notes}
+BDD :
+
+- commune ou individuelle
+- fichier init.sql et pop.sql + reset_database
+
+Backend : coeur de l'appli à soigner
+
+Frontend : si besoin, code non évalué
+
+API externe : 
+
+- Données statiques, dynamiques ? Quand requeter ? 
+- Attention limitation
+:::
+
+## Environnement de travail
+
+::: {.callout-important}
+Vous pouvez coder sur :
+
+- un datalab (recommandé)
+- la VM ENSAI
+
+Vous pouvez également coder sur votre propre machine mais **vous devrez gérer en totale autonomie les installations nécessaires.** 
+:::
+
+:::{.notes}
+**Sauvez votre code avec Git**
+
+- Usage de l'IAgen
+:::
+
+## Planning {.smaller}
+
+::::::{.panel-tabset .nav-pills}
+
+#### Planning
+
+:::{.white-box}
+```{mermaid}
+gantt
+    title Planning provisoire 2024
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d %b
+    tickInterval 1week
+    
+    section Cours
+    CM                           :milestone, 2025-08-25,
+    CM                           :milestone, 2025-09-01, 
+    Examen                       :milestone, 2025-09-28,
+    
+    section TP
+    TP1                          :milestone, 2025-08-28,
+    TP2                          :milestone, 2025-09-04,
+    TP3                          :milestone, 2025-09-11,
+    TP4                          :milestone, 2025-09-18,
+    TP5                          :milestone, 2025-09-25,
+    
+    section Projet
+    Suivi 1                      :milestone, 2025-08-28,
+    Suivi 2                      :milestone, 2025-09-04,
+    Suivi 3                      :milestone, 2025-09-11,
+    Suivi 4                      :milestone, 2025-09-25,
+    3j immersion (Suivi 5 et 6)  :active,    2025-11-03, 3d
+    Suivi 7                      :milestone, 2025-11-13,
+    
+    section Échéances
+    WEI                          :crit,      2025-09-18, 3d
+    Dossier Analyse              :milestone, 2025-09-17,
+    Toussaint                    :crit,      2025-10-24, 7d
+    Rapport final et Code        :milestone, 2025-11-21,
+    Soutenance                   :milestone, 2025-12-09,
+```
+:::
+
+#### Dates
+
+| Date                        | Topic                                         |
+|-----------------------------|-----------------------------------------------|
+| vendredi 28 août            | TP1 et Suivi 1                                |
+| vendredi 4 septembre        | TP2 et Suivi 2                                |
+| vendredi 11 septembre       | TP3 et Suivi 3                                |
+| vendredi 18 septembre       | TP4                                           |
+| vendredi 25 septembre       | TP5 et Suivi 4                                |
+| mar-jeu 3-5 novembre        | 3 jours d'immersion (Suivi 5-6)               |
+| vendredi 20 novembre        | Suivi 7 (visio)                               |
+| mercredi 9 décembre         | Soutenance                                    |
+
+
+#### Livrables
+
+| Date                        | Topic                                       |
+|-----------------------------|---------------------------------------------|
+| TOUS les Jeudis             | Point hebdo                                 |
+| Jeudi 17 septembre 20h00    | Dossier d'Analyse                           |
+| Samedi 21 novembre 20h00    | Rapport final et Code                       |
+
+::::::
+
+:::{.notes}
+- 3j d'immersion
+  - capital pour bien avancer le projet
+  - si bien utilisé -> 90 % du travail fait
+- Point hebdo : j'y reviens
+
+:bulb: Prendre de l'avance en septembre
+
+:warning: Absences en projet ou TP -> malus
+
+prévenez-moi si justifié, sinon je prends la liste des absences
+:::
+
+## 2 phases
+
+- Analyse / Conception générale (sept.)
+  - 4 séances de 3h de suivi
+  - fin-septembre : retours sur le dossier d'analyse
+- Implémentation (oct. - nov.)
+  - 3 séances de 3h de suivi
+
+:::{.notes}
+- Vous avez 1 mois à 5. Un élève de STD a 6h
+
+Si votre dossier d'analyse est nickel mais vous n'avez pas encore dev
+
+:bulb: Conseil :
+
+- l'élève le plus à l'aise fait un POC vers le 20 septembre
+- puis présente l'appli v0 aux autres
+
+Relisez vos rapports !
+:::
+
+## Travail en groupe
+
+- Éviter de cumuler les rôles de Chef de projet et Tech Lead
+- Esprit d'équipe
+- Canal de discussion
+- Prévenir dès que possible si ça ne va pas
+
+:::{.notes}
+- Avoir un bon comportement
+- Certaines équipes vont mieux fonctionner que d'autres
+- Dans la vie pro, on bosse pas toujours avec ses potes
+- Si vous êtes fort -> ne pas tout faire
+- Prévenir tuteur puis Prof en cas de souci
+
+Pas la peine de dire une fois que le projet est fini : 
+
+- c'est moi qui ait tout fait
+- un autre membre n'a rien fait
+:::
+
+## Le jour 1
+
+- Posez des questions au tuteur
+- Discutez entre vous (qui sait faire quoi)
+- Organisez-vous
+- Soyez proactifs, prenez des initiatives
+
+:::{.notes}
+- Prenez des initiatives
+- Démarquez-vous
+- Back (et front ?)
+- Fonctionnalités indispensables
+:::
+
+## Suivi 
+
+- Point hebdo **OBLIGATOIRE**
+- À remplir chaque semaine
+  - au plus tard le jeudi soir
+  - par chaque membre
+  - sinon malus pour l'équipe
+
+::: {.callout-note}
+Plus de détails dans la [notice élèves](./notice-eleves.qmd#point-hebdo){target="_blank"}.
+:::
+
+:::{.notes}
+- Comme dans la vie pro
+- Obligatoire sinon malus
+- Montrer Modèle
+- ras : si vous n'avez rien fait
+- Notez vos questions (Réflechissez aux réponses : Plan A, plan B)
+
+Profitez de chaque séance de suivi pour préparer et poser des questions
+
+Une réunion ça se prépare.
+:::
+
+
+## Rendus
+
+### Dossier d'analyse
+
+Votre tuteur a exprimé un besoin :
+
+- Expliquez comment y répondre
+- Reformulez sa demande
+- Utilisez les diagrammes UML adéquats
+
+:::{.notes}
+UML : Attention à ne pas trop surcharger (valider avec tuteur)
+
+Gantt version macro
+:::
+
+### Code
+
+- Nous attendons du code de **[qualité]{.underline}**
+- Documentation obligatoire pour chaque classe, chaque méthode
+- Tests Unitaires requis
+- README in English
+- Codez par petits bouts
+
+:::{.notes}
+Respectez les bonnes pratiques de dev Python :
+
+- Noms des classes en CamelCase
+- Fichiers en snake_case
+- noms de variables et de méthodes parlants
+- :warning: Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas
+:::
+
+### Rapport final
+
+- Focalisez-vous sur les fonctionnalités intéressantes
+- Citez-vos figures
+- Relisez-vous !
+- :bulb: Utilisez Typst avec Quarto
+
+:::{.notes}
+Pas forcément bien de faire plus de 25 pages.
+
+Note individuelle
+
+Soutenance 20 min :
+
+- jury bienveillant mais différents
+- donnez de la personnalité à votre démo
+- Testez avant, Presentez-vous, Numérotez, Diapo lisibles, intro, conclusion
+- Pas gestion user
+:::
+
+## A voir avec le tuteur
+
+- Méthodes à tester (service, dao ?)
+- Visibilité public / privé
+- utilisation de mypy
+
+## Template
+
+- [Exemple de projet simple](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"}
+
+Enfin presque...
+
+:::{.notes}
+- data, doc, src
+- fichiers config : logs, cov, pyproject, gitignore
+- README : modop pour installer et lancer
+- .vscode : setup vscode
+- CI : expliquer principe
+- Docker
+:::
+
+## Outils
+
+- [ENSAI-tools](https://ludo2ne.github.io/ENSAI-tools/){target="_blank"}
+  - Git, Datalab, Api, Markdown...
+
+:::{.notes}
+Git obligatoire -> pénalités si pas de commit
+:::

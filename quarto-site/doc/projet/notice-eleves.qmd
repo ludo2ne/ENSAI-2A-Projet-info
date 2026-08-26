@@ -1,6 +1,6 @@
 ---
-title: "Notice élèves"
-description: Projet informatique 2A 2025-2026
+title: "Student notice"
+description: IT Project 2026-2027
 author:
   - Romaric Gaudel
   - Rémi Pépin
@@ -9,198 +9,194 @@ format: html
 number-sections: false
 ---
 
+> automatic translation of the 'Notice élèves' page
+
 ## Introduction
 
-Tous les élèves de deuxième année (exceptés ceux suivant le parcours recherche ATPA), participent à la réalisation du projet informatique. Ils sont répartis en groupes de 4 à 5 élèves. Ce projet permet d'effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année. La composition des groupes est définie par le département d'enseignement informatique.
+All second-year students (except those following the ATPA research track) take part in the software project. They are divided into groups of 4 to 5 students. This project provides an opportunity to deepen and put into practice the knowledge acquired during the first-year computer science courses. The composition of the groups is determined by the computer science teaching department.
 
-Le travail demandé consiste à construire une application permettant de répondre à la problématique du sujet proposé. Ce travail se décompose en 2 grandes phases :
+The work required consists in building an application that addresses the problem described in the proposed subject. This work is divided into 2 main phases:
 
-1. Étude préalable et conception générale
-  - expliquer le besoin
-  - décrire la solution envisagée
-  - planifier les grandes phases de la réalisation
-  - décrire les exigences fonctionnelles par la modélisation (diagrammes UML)
-  - planifier la mise en place des fonctionnalités (dépendances, priorités...)
-2. Réalisation
-  - mise en place de la base de données
-  - développement de l'application en Python
+1. Preliminary study and general design
+  - explain the need
+  - describe the proposed solution
+  - plan the main phases of the implementation
+  - describe the functional requirements through modeling (UML diagrams)
+  - plan the implementation of the features (dependencies, priorities...)
+2. Implementation
 
+  - setting up the database
+  - developing the application in Python
 
-::: {.callout-note title="Travaux à rendre"}
-À mi-projet, vous livrerez le dossier d'analyse correspondant au travail réalisé lors de la première phase.
+::: {.callout-note title="Deliverables"}
+Halfway through the project, you will submit the analysis report corresponding to the work carried out during the first phase.
 
-En fin de projet, vous devrez rendre un dossier complet, ainsi que votre code.
+At the end of the project, you will submit a complete report, as well as your code.
 
-Vous présenterez vos travaux lors d'une soutenance orale.
+You will present your work during an oral defense.
 :::
 
-## Lancement du projet
+## Project launch
 
-### Les équipes de projet
+### Project teams
 
-Les équipes sont composées par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis directement en 2e année. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des équipes.
+The teams are formed by the person in charge of the course, taking into account the levels observed in computer science during the first year and ensuring a balanced distribution of students directly admitted to the second year. It is essential to ensure that students admitted based on their qualifications are properly integrated into the teams.
 
-- Une moyenne pondérée est calculée pour chaque élève à partir des notes de 1A dans les matières informatiques
-  - POO doc et tests : 0.5, BDR : 0.2, Algo et complexité : 0.2, Projet de traitement de données : 0.1
-- Suite à ce classement, les élèves sont répartis en 4 poules
-- Chaque équipe est composée à partir d'un élève de chaque poule
+- A weighted average is calculated for each student based on their first-year grades in computer science subjects
+  - OOP documentation and testing: 0.5, Relational Databases: 0.2, Algorithms and complexity: 0.2, Data processing project: 0.1
+- Following this ranking, the students are divided into 4 pools
+- Each team is composed of one student from each pool
 
-**La composition des équipes n'est pas modifiable !**
+**The team composition cannot be changed!**
 
-### Le sujet
+### The subject
 
-Vous serez encadré par une tutrice ou un tuteur qui suivra 4 équipes tout le long du projet.
+You will be supervised by a tutor who will follow 4 teams throughout the project.
 
-Chacun des 9 encadrants a proposé un sujet qui devra permettre l'application de l'ensemble des enseignements informatiques dispensés en 1ère année : 
+Each of the 9 supervisors has proposed a subject that should allow you to apply all the computer science subjects taught during the first year:
 
-- Conception d'applications avec UML
-- Algorithmique
-- Programmation orientée objet avec Python
-- Bases de données relationnelles
+- Application design with UML
+- Algorithms
+- Object-oriented programming with Python
+- Relational databases
 
-Les sujets sont affectés aléatoirement aux équipes. La diversité des parcours (Anglais, Dauphine...), les délais restreints et les contraintes associées, font qu'il n'est pas possible de vous laisser faire des voeux.
+The subjects are randomly assigned to the teams. The diversity of backgrounds (English, Dauphine...), the tight deadlines and the associated constraints mean that it is not possible to let you choose your preferences.
 
+### First session
 
-### Première séance
+Based on feedback from students, the first meeting between members of the same team is important. It is an opportunity for you to get to know each other and to discuss honestly your skills and what you expect from the project. Teams that support each other and work well together are the ones that perform best. There is no magic formula: each team must agree on how it will operate.
 
-De retour d'étudiants, la première rencontre entre membres d'une même équipe est importante. C'est l'occasion pour vous de faire connaissance et d'échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les équipes solidaires qui ont un bon fonctionnement sont celles qui réussissent le mieux. Il n'y a pas de recette magique, chaque équipe doit se mettre d'accord sur son fonctionnement.
+## Organization and monitoring
 
-## Organisation et suivi
+### Project manager
 
-### Le chef de projet
+Within each team, students must appoint a project manager who:
 
-Au sein de chaque équipe, les élèves devront désigner une cheffe ou un chef de projet qui :
+- will be responsible for coordinating the group
+- will organize work meetings
+- will ensure task allocation, progress monitoring and compliance with the schedule
 
-- sera responsable de l'animation du groupe 
-- organisera les réunions de travail
-- veillera à la répartition, au suivi de l'avancement et au respect du planning
+They are the main point of contact between the supervisor and the team they represent. They must facilitate discussion and collective decision-making.
 
-Il est l'interlocuteur privilégié de l'encadrant pour l'équipe qu'il représente. Il doit permettre la discussion et la prise de décision collégiale.
+[This role is not related to computer skills]{.underline}, but rather to an interest in team management. You must nevertheless be involved and interested in the work.
 
-[Ce rôle n'est pas lié aux compétences informatiques]{.underline}, mais à l'appétence pour la gestion d'équipe. Il faut tout de même s'investir et s'interesser aux travaux.
+### Technical lead
 
+This role generally goes to the person with the greatest interest in computer science. Their main responsibilities are:
 
-### Leader technique
-
-Ce rôle revient généralement à la personne ayant le plus d'appétence pour l'informatique. Ses missions principales :
-
-- référent git : s'assurer que tous les membres ont compris les bases de git, ont cloné le répo et savent partager leurs modifications
-- coder une v0 (par exemple en s'inspirant du template fourni) et expliquer aux autres comment ça fonctionne (un diagramme de séquence peut-être fort utile)
-- assister les membres en cas de blocage technique
+- git reference person: make sure that all members understand the basics of git, have cloned the repository and know how to share their changes
+- code a v0 (for example by using the provided template as a starting point) and explain to the others how it works (a sequence diagram can be very useful)
+- assist members in case of technical difficulties
 
 ::: {.callout-caution}
-Pour éviter toute surchage de travail, il est fortement déconseillé de cumuler les roles de tech lead et chef de projet.
+To avoid an excessive workload, it is strongly recommended not to combine the roles of tech lead and project manager.
 :::
 
-Il peut bien sûr y avoir d'autres rôles dans l'équipe. L'important est de **prendre des initiatives** sur un sujet qui vous plait et d'**être acteur du projet**.
+There may of course be other roles within the team. The important thing is to **take initiatives** on a topic you enjoy and **be an active contributor to the project**.
 
-Vous êtes des ingénieurs, vous avez des idées, vous devez prendre des initiatives. Cela sera un vrai plus lorsque vous serez en poste !
+You are engineers, you have ideas, and you should take initiatives. This will be a real asset when you enter the professional world!
 
+### Crisis
 
-### Crise
+If the work or involvement of one or more team members falls below expectations, their grades may be separated from those of the rest of the group. **This will only be possible after alerting your tutor and the person responsible for the course, and after a discussion with the group has taken place**.
 
-Si le travail ou l'implication d'un ou plusieurs membres de l'équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. **Cela ne sera possible qu'après avoir alerté votre tuteur et le référent de la matière et qu'une discussion avec le groupe ait eu lieu**.
+### Project management and communication
 
+It is recommended to use Microsoft Teams to plan your work and communicate. Creating a conversation for the group seems to be the bare minimum. But you can also install plugins to help you manage your project. Here are a few suggestions:
 
-### Gestion de projet et de communication
+- Trello: for a collaborative kanban
+- Priority Matrix: for prioritizing your tasks
 
-Il est recommandé d'utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d'une conversation pour le groupe semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :
+You can also use other software to communicate, such as Slack or Discord (which are proprietary, like Teams). Using Facebook Messenger or other applications linked to a social network is discouraged because they are not used to manage projects in companies. The limitation of these messaging applications is that they do not offer thematic discussion channels to segment your conversations. This leads to information being lost when several discussions get mixed together.
 
-- Trello : pour avoir un kanban collaboratif
-- Priority Matrix : pour prioriser vos tâches
+For people who have difficulty organizing themselves but are sensitive to *gamification*, you can also use Habitica ([https://habitica.com/static/home](https://habitica.com/static/home)) to help you work regularly.
 
-Vous pouvez également utiliser d'autres logiciels pour communiquer, comme Slack ou Discord (qui sont propriétaires comme Teams). Utiliser Facebook Messenger ou autres applications liées à un réseau social est déconseillé car elles ne sont pas utilisées pour gérer un projet en entreprise. La limite de ces logiciels de messagerie est qu'ils ne proposent pas de salon de discussions thématiques pour segmenter vos échanges. Cela entraine de la perte d'informations quand plusieurs discussions se mélangent.
+### Weekly update
 
-Pour les personnes qui ont du mal à s'organiser mais qui sont sensible à la *gamification* vous pouvez également utiliser Habitica (https://habitica.com/static/home) pour vous aider à travailler régulièrement.
+Every week (until the final report is submitted and except during school holidays), you will have to complete your weekly project progress update:
 
-
-### Point hebdo
-
-Chaque semaine (jusqu'au rendu du rapport final et sauf pendant les vacances scolaires), vous devrez remplir votre point hebdomadaire de suivi de projet :
-
-- **Quand** : le [Jeudi soir]{.underline} au plus tard
-- **Où** : sur votre dépôt Git, dossier *doc/suivi*
-- **Comment** : créez un fichier nommé `YYYY.MM.DD-semaineN.md` en utilisant le modèle ci-dessous
-- **Qui** : tous les membres de l'équipe
-- **Quoi** : listez les tâches accomplies + le temps global estimé
-- **Pourquoi** : il permettra à votre tutrice ou tuteur de suivre l'évolution de votre travail
+- **When**: by [Thursday evening]{.underline} at the latest
+- **Where**: in your Git repository, *doc/suivi- folder
+- **How**: create a file named `YYYY.MM.DD-semaineN.md` using the template below
+- **Who**: all team members
+- **What**: list the completed tasks + the estimated total time
+- **Why**: it will allow your tutor to monitor the progress of your work
 
 ::: {.callout-important}
-Le point hebdomadaire est **[obligatoire]{.underline}**. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.
+The weekly update is **[mandatory]{.underline}**. You will be penalized if you do not complete it or if you submit it late.
 
-- Si vous n'avez pas travaillé sur le projet depuis une semaine (et vous avez le droit) :arrow_right: mettez simplement *ras* (rien à signaler)
-- Si une tâche n'est pas terminée, vous pouvez ajouter le suffixe *WIP* (Work In Progress)
+- If you have not worked on the project for a week (and you are allowed to):arrow_right: simply write *ras- (nothing to report)
+- If a task is not finished, you can add the suffix *WIP- (Work In Progress)
 :::
 
-Pour information, le projet informatique vous permet d'obtenir 4 ECTS, ce qui représente un investissement d'environ 100h (séances en présentiel comprises) par élève.
+For your information, the software project gives you 4 ECTS, which represents an investment of approximately 100 hours (including in-person sessions) per student.
 
 ::: {.callout-tip}
-N'attendez pas le jeudi soir pour essayer de vous remémorer tout ce que vous avez fait depuis une semaine.
+Do not wait until Thursday evening to try to remember everything you have done during the past week.
 
-Prenez l'habitude de lister vos tâches au fur et à mesure !
+Get into the habit of listing your tasks as you go!
 :::
-
 
 :::{.panel-tabset .nav-pills}
 
-##### Modèle
+##### Template
 
 ```{.md filename="YYYY.MM.DD-semaineN.md"}
-# Point Hebdomadaire - Projet
+# Weekly Update - Project
 
-Date : Jeudi ...
-Semaine n° ...
+Date: Thursday ...
+Week no. ...
 
-## Tâches réalisées cette semaine
+## Tasks completed this week
 
-> Exemples : `- [x] Tâche 1` ou - `ras`
+> Examples: `- [x] Task 1` or - `ras`
 
-### Nom Prénom élève 1
+### Student First Name Last Name 1
 5h
-- [x] Tâche 1
-- [x] Tâche 2
+- [x] Task 1
+- [x] Task 2
 
-### Nom Prénom élève 2
+### Student First Name Last Name 2
 0h
 - ras
 
-### Nom Prénom élève 3
+### Student First Name Last Name 3
 
-### Nom Prénom élève 4
+### Student First Name Last Name 4
 
-### Nom Prénom élève 5
+### Student First Name Last Name 5
 
 ---
 
 ## Backlog
 
-> Liste des tâches en attente de prise en charge.
+> List of tasks waiting to be taken on.
 
-### Prioritaires
+### Priorities
 
-### Secondaires
+### Secondary
 ```
 
-##### Exemple 
+##### Example
 
 ```{.md filename="2024.09.12-semaine2.md"}
-# Point Hebdomadaire - Projet Ninja
+# Weekly Update - Ninja Project
 
-Date : Jeudi 12 septembre 2024
-Semaine n° 2
+Date: Thursday, September 12, 2024
+Week no. 2
 
-## Tâches réalisées cette semaine
+## Tasks completed this week
 
 ### Maud ZARELLA
 5h
-- [x] Création de la classe JoueurDAO et des méthodes
-- [x] Tests unitaires JoueurDAO
-- [x] JoueurService : ajout méthode pour supprimer un joueur
+- [x] Creation of the JoueurDAO class and methods
+- [x] JoueurDAO unit tests
+- [x] JoueurService: added method to delete a player
 
 ### Tom ATE
 2h
-- [x] Mise en forme du diagramme de classe avec PlantUML
-- [x] Rapport : présentation des classes WIP
+- [x] Formatting the class diagram with PlantUML
+- [x] Report: presentation of WIP classes
 
 ### Anna NACE
 0h
@@ -208,402 +204,387 @@ Semaine n° 2
 
 ### Harry COVER
 3h
-- [x] Modification de la base de données : modification de la table *joueur*, création table *arbitre*
-- [x] Refactor : utilisation du package *tabulate* pour avoir de jolis tableaux
+- [x] Database modification: modification of the *joueur- table, creation of the *arbitre- table
+- [x] Refactor: use of the *tabulate- package to create nice tables
 
 ### Éva ZION
 3h
-- [x] Codage de la fonctionnalité *Créer un tournoi* (Vue + Services + Dao)
-- [x] Relecture dossier analyse
+- [x] Coding of the *Create a tournament- feature (View + Services + Dao)
+- [x] Review of the analysis report
 
 ## Backlog
 
-### Prioritaires
-- [ ] Corriger Bug de modification de joueur
-- [ ] Fonctionnalité *Arbitrer un tournoi*
-- [ ] Menu administrateur
+### Priorities
+- [ ] Fix player modification bug
+- [ ] *Referee a tournament- feature
+- [ ] Administrator menu
 
-### Secondaires
-- [ ] Ecrire README
+### Secondary
+- [ ] Write README
 ```
+
 :::
 
-### Suivi de projet
+### Project monitoring
 
-L'encadrement de l'avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque équipe fera le bilan avec son intervenant :
+Project progress monitoring will generally take place over 3 hours per week. Each team will review the following with their supervisor:
 
-- du travail qui a été réalisé au cours de la semaine
-- des difficultés rencontrées
-- de ce qui doit encore être fait
+- the work completed during the week
+- the difficulties encountered
+- what still needs to be done
 
-Dans l'équipe vous devez toutes et tous avoir une vision macro de l'avancement du projet et ce que vous avez prévu de faire.
+Within the team, everyone must have a high-level view of the project's progress and what you have planned to do.
 
-**Une séance de suivi, ça se prépare !!!**
+**A monitoring session must be prepared!!!**
 
-> C'est valable pour les autres projets, les suivi de stage, les réunions... Si vous arrivez les mains dans les poches, vous allez perdre un temps précieux pour vous remettre dans le bain.
+> This applies to other projects, internship follow-ups, meetings... If you show up empty-handed, you will waste valuable time getting back up to speed.
 
 ::: {.callout-caution}
-À chaque séance, l'encadrant notera si un travail sérieux a été réalisé depuis la semaine dernière. Un travail régulier tout le long du projet sera récompensé, tandis qu'un travail fait uniquement avant les rendus sera pénalisé.
+At each session, the supervisor will assess whether serious work has been done since the previous week. Regular work throughout the project will be rewarded, while work done only before deadlines will be penalized.
 :::
 
-**Les séances de suivi sont obligatoires.** L'appel sera effectué. Votre intervenant pourra demander à tout moment à parler avec la totalité des élèves qu'il encadre.
+**Monitoring sessions are mandatory.** Attendance will be taken. Your supervisor may ask to speak with all the students they supervise at any time.
 
+## Tools and Courses
 
-## Outils et Cours
+### Computer Science Complementary Module
 
-### Module de Compléments d'informatique
+To help you successfully complete your project, a 6-hour course and five 3-hour practical sessions are provided as part of the **Computer Science Complementary** module. During the course, you will be introduced to the general organization of the project and some new concepts implemented during the practical sessions:
 
-Pour vous aider à mener à bien votre projet, un cours de 6h, et cinq TP de 3h sont mis en place dans le module de **Compléments d'informatique**. Lors du cours, vous seront présentés l'organisation générale du projet et quelques concepts nouveaux mis en œuvre lors des TP :
+- back-end / front-end separation,
+- layered programming,
+- version control systems (git),
+- calling a web service,
+- communication with a database
 
-- séparation back-end / front-end,
-- programmation en couches,
-- systèmes de versionnement (git),
-- appel à un webservice,
-- communication avec une base de données
+Although this course is directly intended to help you successfully complete your project, its ultimate purpose is also to provide you with additional computer science knowledge so that you can easily develop your career, particularly in the world of *data science.*
 
-Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre projet, il a également pour but final de vous donner des connaissances supplémentaires en informatique pour que vous puissiez évoluer facilement dans le milieu professionnel et en particulier dans le monde de la *data science.*
+Unless we go back to the Stone Age, you will inevitably use computer applications in your professional life. Even if you never work on the IT side, having a first understanding of how a software project works will be valuable to you.
 
-Sauf retour à l'âge de Pierre, vous allez inévitablement utiliser des applications informatiques dans votre vie professionnelle. Même si vous ne travaillez jamais côté informatique, avoir une première approche sur le fonctionnement d'un projet informatique vous sera précieux.
+### Development tools
 
+The development tools available to you will be:
 
-### Outils de développement
+- The **Visual Studio Code** development environment
+- The code sharing and version control software **Git**, accessible from the development environment, together with a (private) repository that you will have to create on a public server (GitLab, Github, Bitbucket),
+- A **PostgreSQL** database (hosted at Ensai) as the database management system (DBMS) for data persistence,
+- A number of libraries and tools for connecting Python to the DBMS, unit testing, and automatic documentation generation
+  - [psycopg2](https://www.psycopg.org/docs/){target="_blank"} to connect to the PostgreSQL database,
+  - [requests](https://requests.readthedocs.io/en/master/){target="_blank"} to make HTTP requests
+  - [pytest](https://docs.pytest.org/) for unit tests,
+  - [pydoc](https://docs.python.org/fr/3/library/pydoc.html){target="_blank"} for documentation,
+  - [abc](https://docs.python.org/fr/3/library/abc.html){target="_blank"} for abstract classes,
+  - [fastAPI](https://fastapi.tiangolo.com/){target="_blank"} for creating a REST web service
 
-Les outils de développement à votre disposition seront :
+In addition to this list, you are free to use the tools of your choice, *provided that you are able to use them independently*.
 
-- L'environnement de développement **Visual Studio Code**
-- Le logiciel de partage de code et versionnement **Git**, accessible depuis l'environnement de développement, accompagné d'un dépôt (privé) que vous devrez créer sur un serveur public (GitLab, Github, Bitbucket),
-- Une base de données **PostgreSQL** (hébergée à l'Ensai) comme système de gestion de base de données (SGBD) pour la persistance des données,
-- Un certain nombre de librairies et outils pour le lien entre Python et le SGBD, les tests unitaires, la génération automatique de documentations
-  - [psycopg2](https://www.psycopg.org/docs/){target="_blank"} pour se connecter à la base de données postgreSQL, 
-  - [requests](https://requests.readthedocs.io/en/master/){target="_blank"} pour réaliser des requêtes http
-  - [pytest](https://docs.pytest.org/) pour les tests unitaires,
-  - [pydoc](https://docs.python.org/fr/3/library/pydoc.html){target="_blank"} pour la documentation,
-  - [abc](https://docs.python.org/fr/3/library/abc.html){target="_blank"} pour les classes abstraites,
-  - [fastAPI](https://fastapi.tiangolo.com/){target="_blank"} pour la création d'un webservice REST
+::: {.callout-caution title="Note"}
+Asking for help is normal and is part of learning. We do not keep track of which groups ask us for help. Being independent does not mean working without asking for help. If you encounter a difficulty, after several attempts cannot find a solution, and finally ask for help to solve it, you are being independent.
 
-
-En plus de cette liste, vous êtes libre d'utiliser les outils de votre choix, *à condition d'être capable de les utiliser en toute autonomie*.
-
-::: {.callout-caution title="Remarque"}
-Demander de l'aide est normal et fait partie de l'apprentissage. Nous ne notons pas quels sont les groupes qui nous demandent de l'aide. Faire preuve d'autonomie ne veut pas dire travailler sans demander de l'aide. Si vous rencontrez une difficulté, qu'après plusieurs tentatives vous ne trouvez pas de solution et que vous demandez finalement de l'aide pour la résoudre, vous êtes autonome. 
-
-Si par contre vous attendez que le problème disparaisse ou que l'on vienne vous aider, là vous manquez d'autonomie. Soyez proactif dans votre démarche ! Vous progresserez bien plus vite.
+On the other hand, if you wait for the problem to disappear or for someone to come and help you, then you lack independence. Be proactive in your approach! You will progress much faster.
 :::
 
-### Usage de l'IAgen
+### Use of Generative AI
 
-L'IA générative peut être un excellent accélérateur de développement lorsqu'elle est utilisée avec discernement. Si vous comprenez votre architecture, vos technologies et vos besoins, elle peut vous aider à produire du code plus rapidement, explorer des pistes ou résoudre des problèmes ponctuels.
+Generative AI can be an excellent development accelerator when used wisely. If you understand your architecture, your technologies and your needs, it can help you produce code faster, explore possible approaches or solve specific problems.
 
-Elle peut également vous aider à comprendre les principes évoqués en cours et en TP.
+It can also help you understand the principles discussed in lectures and practical sessions.
 
-À l'inverse, lui demander de développer des fonctionnalités mal définies ou copier du code sans le comprendre risque de vous faire perdre beaucoup de temps. L'IA peut produire des solutions incorrectes, inadaptées à votre projet ou génératrices de bugs.
+Conversely, asking it to develop poorly defined features or copying code without understanding it can cause you to waste a lot of time. AI can produce incorrect solutions, unsuitable solutions for your project, or solutions that generate bugs.
 
-Considérez l'IA comme un assistant technique, pas comme un développeur autonome. Plus vos demandes sont précises et plus vous comprenez ce qu'elle propose, plus elle sera utile.
+Consider AI as a technical assistant, not as an autonomous developer. The more precise your requests are and the more you understand what it proposes, the more useful it will be.
 
+## Expected work
 
-## Travail attendu
+### Development process
 
-### Processus de développement
+Development will be carried out collectively and sequentially. The preliminary study, general design, implementation and validation phases follow one another over time.
 
-Le développement s'effectuera collectivement et en cascade. Les phases d'étude préalable, de conception générale, de réalisation et de validation s'enchaînent successivement dans le temps.
+### Preliminary study
 
+This first analysis phase consists of formalizing the requirements described in the specifications (the subject, the requester's or project owner's point of view). It should make it possible to establish:
 
-### Étude préalable
+- The scope of the target information system, clarifying aspects of the subject that may appear unclear
+- The needs to be met by the target information system (use cases and menu descriptions)
+- Specific requirements and constraints (development standards, architecture)
 
-Cette 1ère phase d'analyse consiste en la formalisation des besoins décrits par le cahier des charges (le sujet, le point de vue du demandeur ou du maître d'ouvrage). Elle devra permettre d'établir :
+### General design
 
-- Le périmètre du système d'information cible en reprécisant les aspects du sujet qui peuvent apparaître flous
-- Les besoins à satisfaire par le système d'information cible (cas d'utilisation et description des menus)
-- Les exigences particulières et les contraintes (normes de développement, architecture)
+This second analysis phase will result in a design model to meet the objectives set out in the specifications. The choice of diagrams is made by each team after validation by their supervisor. However, it will include at least:
 
+- A use case diagram
+- A class diagram
+- A physical data model
 
-### Conception générale
+Depending on your subject and what your supervisor asks of you, you may add:
 
-Cette 2e phase d'analyse aboutira à un modèle de conception pour répondre aux objectifs fixés par le cahier des charges. Le choix des diagrammes est fait par chaque équipe après validation de leur intervenant. Nous y trouverons cependant au minimum :
-
-- Un diagramme de cas d'utilisation
-- Un diagramme de classes
-- Un modèle physique de données
-
-En fonction de votre sujet et de ce que vous demande votre intervenant vous pourrez y ajouter : 
-
-- Un diagramme de d'activité ou d'état
-- Un diagramme de séquence
-- Un modèle logique de données (diagramme entité-relation)
+- An activity or state diagram
+- A sequence diagram
+- A logical data model (entity-relationship diagram)
 
 ::: {.callout-tip}
-- les sujets et les encadrants sont différents, alors préférez faire des choses cohérentes avec ses attendus, que simplement *cocher des cases*
-- si certains diagrammes ne vous disent rien, il y a plusieurs livres sur la modélisation UML à la bibliothèque.
+
+- the subjects and supervisors are different, so prefer doing things that are consistent with their expectations rather than simply *checking boxes*
+- if some diagrams don't mean anything to you, there are several books on UML modeling in the library.
 :::
 
+### Software Implementation and Validation
 
-### Réalisation et Validation du logiciel
+#### The database
 
-#### La base de données
+The application will rely on a database, which you must create. To make you aware of the variety of data, your work must include the import or export of a dataset. This dataset will be provided by the supervisor in the format of their choice (XML, JSON, CSV...).
 
-L'application s'appuiera sur une base de données, que vous devez créer. Pour vous sensibiliser à la variété des données, votre travail devra comporter l'importation ou l'exportation d'un jeu de données. Ce jeu de données sera fourni par l'encadrant dans le format de son choix (XML, JSON, CSV...).
+#### Application coding
 
-#### Codage de l'application
+The application will be developed in **Python**. The code should naturally be consistent with the diagrams from the design model already established. If necessary, these should be updated so that this consistency is maintained.
 
-L'application sera réalisée en **Python**. Le code sera naturellement cohérent avec les diagrammes du modèle de conception déjà établis. Si nécessaire, ces derniers seront mis à jour afin que cette cohérence soit maintenue. 
+[There is no graphical interface to develop]{.underline}, communication with the application being done through the console or a web service. All the features of your application must be testable and demonstrable via the console or HTTP requests.
 
-[Il n'y a pas d'interface graphique à développer]{.underline}, la communication avec l'application se faisant par l'intermédiaire de la console ou d'un webservice. Toutes les fonctionnalités de votre application doivent pouvoir être testées et démontrées via la console ou des requêtes http.
+#### Software validation
 
+Throughout the development process, you will develop a set of unit tests.
 
-#### Validation du logiciel
+## Deliverables
 
-Tout au long du développement, vous développerez un ensemble de tests unitaires.
+### Analysis report
 
-
-## Livraisons
-
-### Dossier d'analyse
-
-Via son rôle de client, votre tutrice ou tuteur vous a exposé son besoin. Le dossier d'analyse explique comment vous allez y répondre.
+As a client, your tutor has explained their needs to you. The analysis report explains how you are going to address them.
 
 ::: {.callout-important}
-- **Où** : sur Moodle, dans la section prévue à cet effet
-- **Quand** : début octobre
-- **Comment** : en format `pdf`. Il n'est pas obligatoirement rédigé en LaTeX mais doit-être « propre »
-- **Combien** : 10 à 15 pages, annexes comprises est une taille raisonnable
-- **Pourquoi** : il sera noté par votre intervenant qui vous en fera un retour
+
+- **Where**: on Moodle, in the section provided for this purpose
+- **When**: beginning of October
+- **How**: in `pdf` format. It does not have to be written in LaTeX but must be "clean"
+- **How much**: 10 to 15 pages, including appendices, is a reasonable size
+- **Why**: it will be graded by your supervisor, who will provide you with feedback
 :::
 
-Ce premier livrable est l'aboutissement de la phase d'étude préalable et de conception générale. Il doit montrer que vous avez compris votre sujet et que vous avez une première modélisation de votre application. Ainsi cette livraison contiendra :
+This first deliverable is the outcome of the preliminary study and general design phase. It must show that you have understood your subject and have an initial model of your application. This deliverable will therefore contain:
 
-- Un planning *détaillé* des 3 phases décrites ci-dessus (diagramme de Gantt)
-- Les diagrammes réalisés pendant la phase d'analyse
-- Un document d'architecture spécifiant l'organisation logique des sous-systèmes techniques (paquetages métier, persistance)
-- Les principaux menus de l'application et leurs enchainements si cela a du sens
-- Les principaux endpoints de votre application si cela a du sens
-- Une description des fonctionnalités de votre application
-- Une liste des composants à implémenter ainsi que :
-  - Leur rôle
-  - La description de leurs dépendances réciproques
-  - Le temps de développement prévu pour chacun d'entre eux
-  - L'ordre de priorité initiale
+- A *detailed- schedule of the 3 phases described above (Gantt chart)
+- The diagrams created during the analysis phase
+- An architecture document specifying the logical organization of the technical subsystems (business packages, persistence)
+- The main menus of the application and their sequences if relevant
+- The main endpoints of your application if relevant
+- A description of the application's features
+- A list of the components to be implemented, including:
+  - Their role
+  - A description of their mutual dependencies
+  - The planned development time for each of them
+  - The initial priority order
 
+### Final report
 
-### Le rapport final
-
-Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Il est à déposer sur Moodle et contiendra les éléments ci-dessous.
+Your final report must present the work carried out during these 3 months. It must be submitted on Moodle and will contain the elements below.
 
 ::: {.callout-important}
-- Respectez les consignes usuelles de mise en forme d'un rapport
-- Précisez votre numéro d'équipe sur la page de garde
+
+- Follow the usual formatting guidelines for a report
+- Specify your team number on the cover page
 :::
 
-#### Le contexte de votre application
+#### The context of your application
 
-Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de **comprendre l'intérêt de votre travail**. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.
+This section should allow someone outside your project and without any particular IT experience to **understand the purpose of your work**. You are therefore advised to have this section proofread by someone outside your group (friend, family). Writing this section can begin very early because it does not rely on the technical elements that you will implement.
 
-- À quels besoins répond-elle ? Le diagramme de cas d'utilisation n'est pas nécessaire dans le rapport final ;
-- Quels sont les utilisateurs de l'application ?
-- Quelles sont les **données intéressantes** de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous en produisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple :
-  - Vous récupérez des annonces immobilières via webscrapping, quel est le site ou quels sont les sites utilisés ? Quelles données récupérez-vous de la page ? Vous pourrez décrire plus tard comment vous les récupérez ;
-  - Vous devez traiter des données géographiques, comment sont stockées vos données dans votre source ? Y-a-t-il des difficultés particulières dans ces données ? 
-  - Vous récupérez des données d'un service externe, quel est le schéma de ces données ?
+- What needs does it address? The use case diagram is not necessary in the final report;
+- Who are the **users** of the application?
+- What are the **interesting data** in your application? If you use external data, present their source, format, and associated concepts. If you produce data, present the data format and how it can be used. For example:
+  - You retrieve real estate listings via web scraping: what site or sites are used? What data do you retrieve from the page? You can describe later how you retrieve them;
+  - You have to process geographical data: how is your data stored in your source? Are there any particular difficulties with this data?
+  - You retrieve data from an external service: what is the schema of this data?
 
+#### General architecture
 
-#### Architecture générale
+- Is it a Python module? A script without user interaction? A console application? An application with a client and a server communicating via HTTP requests?
+- The technologies required for it to work (Python, major libraries used, persistence system, external data sources)
+- An architecture diagram (to show the relationship between the different components of your application such as your code, persistence system, etc.)
 
-- Est-ce un module python ? Un script sans interaction avec l'utilisateur ? Une application en console ? Une application avec un client et un serveur qui communiquent via requête http ?
-- Les technologies nécessaires à son fonctionnement (python, bibliothèques majeures utilisées, système de persistance, sources de données externes)
-- Un schéma d'architecture (pour faire le lien entre les différents composants de votre application comme votre code, système de persistance, etc.)
+#### Meeting the requirements
 
+How does your application meet the needs you have described:
 
-#### Réponse aux besoins
+- How your application works:
+  - Focus on a central process, describing it completely so that the jury understands the logic you have implemented. What does the user do? What does your product do? How does it interact with the other components? Which classes are used? It is not necessary to specify the methods called, unless you think this is useful. To help the reader, you can add use case diagrams, as well as various other diagrams;
+  - *Brief- explanation for the others. Your report should not be a list of the Python functions in your application;
 
-Comment votre application permet de répondre aux besoins que vous avez décrits :
+Prioritize the quality of the explanations over quantity. If you seriously describe one interesting central feature, the jury will assume that you are capable of doing the same for the others. You can illustrate your explanations using your class diagram. This allows you to:
 
-- Le fonctionnement votre application :
-  - Zoom sur un processus central en le détaillant complètement pour que le jury comprenne la logique que vous avez mise en place. Qu'est-ce que l'utilisateur fait ? Qu'est-ce que votre produit fait ? Comment interagit-il avec les autres composants ? Quelles sont les classes utilisées ? Il n'est pas utile de préciser les méthodes appelées, sauf si vous pensez que cela a un intérêt. Pour aider le lecteur, vous pouvez ajouter des diagrammes de cas d'utilisations, mais aussi des schémas divers ;
-  - Explication *rapide* pour les autres. Votre rapport ne doit pas être un listing des fonctions Python de votre application ;
+- Explain the inheritance / associations used
+- Present the business objects and how they are used by the application
+- Highlight layered decomposition and decoupling between objects
 
-Privilégiez la qualité des explications à la quantité. Si vous décrivez sérieusement une fonctionnalité centrale intéressante, le jury supposera que vous êtes capable de faire la même chose pour les autres. Vous pouvez illustrer vos propos en utilisant votre diagramme de classe. Cela vous permet :
+::: {.callout-caution title="Note"}
+A class diagram is not an end in itself; it is initially produced to serve as a compass during the implementation of your application. Likewise, in your report it should serve to guide your explanations.
 
-- D'expliquer les héritages / associations utilisés
-- De présenter les objets métiers et comment ils sont utilisés par l'application
-- De mettre en avant une décomposition en couche, un découplage entre les objets
-
-::: {.callout-caution title="Remarque"}
-Un diagramme de classe n'est pas une finalité en soit, il est initialement produit pour servir de boussole lors de l'implémentation de votre application. De la même manière, dans votre rapport il doit servir à guider vos explications. 
-
-Ainsi, il n'est pas nécessaire de produire un diagramme de classe unique si celui-ci est illisible. Vous pouvez le décomposer en petits diagrammes qui vont se concentrer sur des fonctionnalités particulières. De même, il est fortement déconseillé de lister et décrire exhaustivement toutes les classes et les méthodes.
+Therefore, it is not necessary to produce a single class diagram if it is unreadable. You can break it down into smaller diagrams that focus on specific features. Similarly, it is strongly discouraged to list and describe exhaustively all classes and methods.
 :::
 
+#### Storage system
 
-#### Système de stockage
+At what points is it used in your application and why?
 
-À quels moments il est utilisé dans votre application et pourquoi ? 
-Vous pouvez mettre en avant l'utilisation de formes normales. 
+You can highlight the use of normal forms.
 
-En effet ce projet doit vous permettre de mettre en avant vos acquis de 1A en la matière. Il est inutile de nous présenter l'intégralité de vos DAOs
+Indeed, this project should allow you to showcase the knowledge you acquired in 1A on the subject. There is no need to present all your DAOs
 
-#### Outils mis en place
+#### Tools implemented
 
-Les outils mis en place pour réaliser le projet :
+The tools implemented to carry out the project:
 
-- L'organisation que vous avez choisie dans votre groupe ;
-- Les outils et leur utilisation ;
-- La démarche d'assurance qualité. Le but de cette partie est de montrer que vous avez pris en compte les évènements extérieurs qui peuvent impacter votre application.
-  - Avez-vous fait des tests ? Pourquoi avez-vous testé ces classes en particulier ? Qu'est-ce que cela vous a apporté ?
-  - Avez-vous rencontré des temps de traitement longs ? D'où viennent-ils ? Les avez-vous surmontés ?
-  - Si votre source de données venait à disparaitre mais qu'une nouvelle source similaire existait, comment cela impacterait-il votre application ?
-  - Si vous avez mis de côté des fonctionnalités au cours de votre développement, comment peuvent-elles être mise en place dans le futur ?
+- The organization you chose within your group;
+- The tools and how they are used;
+- The quality assurance approach. The purpose of this section is to show that you have taken into account external events that may impact your application.
+  - Did you perform tests? Why did you test these particular classes? What did this bring you?
+  - Did you encounter long processing times? Where do they come from? Did you overcome them?
+  - If your data source were to disappear but a new similar source existed, how would this impact your application?
+  - If you set aside some features during development, how could they be implemented in the future?
 
-#### Note individuelle
+#### Individual note
 
-Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. **Cette note devra être insérée dans le rapport final en fin de rapport**. Dans cette note d'[une page maximum]{.underline}, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés. 
+When submitting the report, each student in each group will attach a note describing their experience within the project group. **This note must be inserted into the final report at the end of the report**. In this note of [one page maximum]{.underline}, you will describe both the good practices implemented and the problems encountered.
 
-Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note :
+You can adopt a less formal style than for the report, but keep in mind that this note is read by the jury in the same way as the rest of the report. Maintain proper formatting for this note. To help you, here are some elements that belong in this note:
 
-- Votre participation effective au projet (chef de projet, code, animation...)
-- Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile ? Enrichissant ? Éviter les lieux communs, et préférez utiliser des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.
-- Les enseignements que vous en tirez, ce que vous referiez, ce que vous changeriez. Vous pouvez construire cette partie comme une liste de conseils que vous donneriez à vos successeurs.
+- Your actual participation in the project (project manager, coding, coordination...)
+- How did you experience the project with your group? Was it difficult? Enriching? Avoid clichés and prefer using concrete examples. You can highlight points of tension that occurred.
+- What you learned from it, what you would do again, what you would change. You can structure this section as a list of advice you would give to your successors.
 
-Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre de l'équipe, ami, famille) pour limiter les fautes et ainsi vous assurer qu'elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, **faites-la sérieusement et honnêtement**.
+We recommend having this individual work proofread by another person (team member, friend, family) to limit mistakes and ensure that it is understandable. This personal note is appreciated by jury members, **take it seriously and be honest**.
 
 ---
 
-Bien entendu, **cette liste ne définit que les composantes minimales de votre rendu**. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être : expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou toute autre information qui vous permet de valoriser votre travail. Vous avez le droit d'illustrer vos propos avec des figures pour aider le lecteur. Les images qui n'apportent rien à votre propos sont à proscrire. 
+Of course, **this list only defines the minimum components of your deliverable**. Each project group is free to provide any additional information they consider relevant to highlight their work. This could include explaining design choices that seem relevant to you, tools you used, or any other information that allows you to showcase your work. You are allowed to illustrate your explanations with figures to help the reader. Images that add nothing to your point should be avoided.
 
+The order in which the different points are presented, and their placement in the appendices, is up to you. **The optimal size for this report is 25 pages excluding appendices**. You can make it longer, but in that case ask yourself: "Is what I am adding necessary?".
 
-L'ordre de présentation des différents points, et de leur classement en annexe est libre. **La taille optimale de ce rapport est de 25 pages hors annexe**. Vous pouvez faire plus long mais dans ce cas posez-vous la question : « Ce que j'ajoute est-il nécessaire ? ». 
+the expected final format is pdf.
 
-le format final attendu est le pdf.
+For writing, it is strongly recommended to use the Typst template provided in the project template.
 
-Pour rédiger, il est vivement conseillé d'utilier les template Typst fourni dans le template de projet pour rédiger.
+Finally, a minimum level of rigor is expected from future engineers. It is normal to let one or two typos slip through, but if this interferes with the understanding of your report, you will be penalized.
 
-Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Cela arrive de laisser passer une ou deux coquilles, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.
+### The code
 
+You will create an archive containing the entire contents of your git repository, and in particular the source code of your application.
 
-### Le code
+You will submit this deliverable on Moodle.
 
-Vous créerez une archive contenant tout le contenu de votre dépôt git, et en particulier le code source de votre application.
-
-Vous déposerez ce livrable sur Moodle.
-
-::: {.callout-caution title="Taille du répo"}
-Attention à ne pas inclure dans votre livrable des fichiers trop lourds (> 10Mo), comme par exemple des fichiers de données.
+::: {.callout-caution title="Repository size"}
+Be careful not to include files that are too large (> 10MB) in your deliverable, such as data files.
 :::
 
-Le code source complet de l'application contenant à minima :
+The complete application source code must contain at least:
 
-- Un fichier `README.md` à la racine du dépot [rédigé en anglais]{.underline} à destination d'un utilisateur et devra contenir :
-  - une présentation rapide de votre application (principales fonctionnalités, besoins auquels elle répond)
-  - un mode opératoire d'installation et de lancement rapide
-- Un fichier `README.md` dans le dossier *backend* destiné aux personnes souhaitant continuer le développement de l'application :
-  - Présentation de l'architecture en couches
-  - Outils de développement (tests, logs, qualité...)
-- Un fichier `backend/pyproject.toml` avec tous les modules pythons à installer pour faire fonctionner votre application
-- un dossier `backend/src` contenant votre code source et un fichier `main.py` ou `__main__.py` qui permet de lancer votre application
-- un fichier `data/init_db.sql` permettant la création des tables et des données
+- A `README.md` file at the root of the repository [written in English]{.underline} for users, which must contain:
+  - a brief presentation of your application (main features, needs it addresses)
+  - quick installation and launch instructions
+- A `README.md` file in the *backend- folder for people wishing to continue developing the application:
+  - Presentation of the layered architecture
+  - Development tools (tests, logs, quality...)
+- A `backend/pyproject.toml` file with all Python modules to install to run your application
+- a `backend/src` folder containing your source code and a `main.py` or `__main__.py` file that allows you to launch your application
+- a `data/init_db.sql` file for creating the tables and data
 
-Entre ce rendu de code et la soutenance, vous avez le droit de modifier votre code. Cependant, ces modifications ne serviront qu'à améliorer la qualité de la démonstration car ce nouveau code ne comptera pas pour la notation.
-
+Between this code submission and the oral defense, you are allowed to modify your code. However, these modifications will only serve to improve the quality of the demonstration because this new code will not count towards the grade.
 
 ::: {.callout-important}
-Seul le code de la partie *backend* sera noté !
+Only the code in the *backend- part will be graded!
 
-Si vous développez un *frontend*, vous pouvez donc le coder avec un peu moins de rigueur.
+If you develop a *frontend*, you can therefore code it with somewhat less rigor.
 :::
 
+### The oral defense
 
-### La soutenance
+You will present your work before a jury of 3 people:
 
-Vous présenterez votre travail devant un jury de 3 personnes : 
+- a jury chair (IT professional)
+- your project supervisor
+- an ENSAI computer science teacher
 
-- un président de jury (professionnel de l'informatique)
-- votre encadrant de projet
-- un enseignant informatique de l'ENSAI
+The oral defense will consist of an oral presentation of your software, shared equally among the members of the group. It will show the development method used, as well as the design and programming choices and options adopted.
 
-La soutenance consistera en une présentation orale de votre logiciel, partagée équitablement entre les membres du groupe. Elle fera apparaître la méthode de développement utilisée, les choix et options de conception et de programmation retenues. 
+You have 20 minutes to give your presentation. Questions and feedback from the jury will follow.
 
-Vous avez 20 minutes pour réaliser votre présentation. Suivrons ensuite les questions et les retours du jury.
+::: {.callout-note title="Typical timing"}
 
-::: {.callout-note title="Timing type"}
-- Exposé : 20 min, dont environ :
-  - 12 min de présentation type diaporama 
-  - 8 min de démonstration de l'application
-  - La gestion de ce temps est libre mais doit être dynamique
-  - Vous pouvez mixer démo et présentation, c'est même plutôt conseillé
-- Questions du jury : 15 min
-- Retours du jury : 10 min
+- Presentation: 20 min, including approximately:
+  - 12 min slide presentation
+  - 8 min application demonstration
+  - Time management is up to you but the presentation should be dynamic
+  - You can mix demonstration and presentation; this is even recommended
+- Jury questions: 15 min
+- Jury feedback: 10 min
 :::
 
+**The jury is supportive and will not try to trick you!**
 
-**Le jury est bienveillant et ne cherchera pas à vous piéger !**
+#### A few tips for this oral defense:
 
-#### Quelques conseils pour cette soutenance :
+- Briefly introduce the team members
+- Even if the jury members have read your report, take the time to briefly present the initial need and the data involved, if any
 
-- Présentez brièvement les membres de l'équipe
-- Même si les membres du jury ont lu votre rapport, prenez le temps de présenter sommairement le besoin initial et les données impliquées s'il y en a
+Avoid catalog-style presentations such as: "We did this, this, and also this." The jury hates this, especially when it is the 4th team in a row telling the same story. Be at least somewhat original, take an unusual angle, tell a story!
 
-Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça ». Le jury déteste, surtout quand c'est la 4e équipe de suite qui raconte la même chose. Soyez un minimum original, prenez un angle décalé, racontez une histoire !
+Highlight the added value of the team:
 
-Présentez la plus-value de l'équipe :
+- Did you make strong choices?
+- Did you implement an interesting process?
+- Did you meet the need?
 
-- Avez-vous fait des choix forts ?
-- Avez-vous mis en place un processus intéressant ?
-- Répondez-vous au besoin ?
+It is not necessary to follow the same structure as the report (this is generally a mistake), nor to reproduce the report (the jury has read it). For example, if you briefly explained a feature in the report but find it interesting, you can go into more detail during the oral defense. The jury likes novelty.
 
-Il n'est pas nécessaire de suivre le même déroulé que le rapport (c'est d'ailleurs généralement une erreur), ni de représenter le rapport (le jury l'a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu'elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté.
+Highlight the project (how you worked over these 3 months) and not just the software produced (you are not trying to sell us your application).
 
-Mettez en avant le projet (comment avez-vous travaillé ces 3 mois) et pas seulement le logiciel produit (vous n'essayez pas de nous vendre votre application).
+**Your slides**:
 
-**Votre diaporama** :
+- Number the slides!!!
+- Do not overload your slides with text
+- You can use diagrams, graphs, screenshots that are useful for understanding. Make sure your images are readable when projected.
+- Do not include code, but pseudocode (and only if the algorithm is interesting)
 
-- Numérotez les diapos !!!
-- Ne chargez pas trop vos slides en texte
-- Vous pouvez utiliser des schémas, graphiques, captures d'écran utiles à la compréhension. Faites attention que vos images soient lisibles une fois projetées. 
-- Ne mettez pas de code, mais du pseudo-code (et uniquement si l'algorithme est intéressant)
+**The demo**:
 
-**La démo** :
-
-- N'allez pas trop vite !
-- Ne présentez pas la création / modification de compte, cela n'a aucune plus-value aux yeux du jury
-- Sur certains points interessants, prenez le temps d'expliquer ce qu'il se passe dans votre code (à la manière d'un diagramme de séquence)
-- Ne dîtes pas "l'utilisateur peut faire-ci, faire ça". Nous ne sommes pas à Hollywood mais un petit effort quand même, personnalisez votre démo, jouez un rôle !
+- Don't go too fast!
+- Do not present account creation / modification; this has no added value in the eyes of the jury
+- For some interesting points, take the time to explain what happens in your code (like a sequence diagram)
+- Don't say "the user can do this, do that". This isn't Hollywood, but make an effort anyway: personalize your demo, play a role!
 
 ::: {.callout-important}
-Travaillez votre introduction et votre conclusion !
+Work on your introduction and conclusion!
 
-Ne terminez pas votre présentation par : "Voilà c'est fini...".
+Do not end your presentation with: "That's it, it's finished...".
 
-Soyez solidaires !
+Support each other!
 :::
 
+### Final grading
 
-### Notation finale
+The final project grade is divided as follows:
 
-La note finale du projet se répartit comme suit :
+- Analysis report and investment in the project (1/3)
+- Final report and investment in the project (1/3)
+- Oral defense (1/3)
 
-- Dossier d'analyse et investissement dans le projet (1/3)
-- Rapport final et investissement dans le projet (1/3)
-- Soutenance (1/3)
+The code is graded separately. It counts for one third of the Computer Science Complementary grade.
 
-Le code est noté à part. Il compte pour un tiers de la note de Compléments d'informatique.
+::: {.callout-warning title="Penalties"}
+Penalties will be applied to your grade if:
 
-::: {.callout-warning title="Pénalités"}
-Des malus seront appliqués à votre note si :
-
-- vous avez des absences injustifiées en suivi de projet et/ou en TP de Compléments d'info
-- vous n'avez pas été présent dans les locaux de l'ENSAI durant l'immersion
-- vous n'avez pas rempli les fichiers de suivi hebdomadaires
-- votre participation aux travaux de votre équipe est jugé insuffisant
+- you have unjustified absences from project monitoring sessions and/or Computer Science Complementary practical sessions
+- you were not present on the ENSAI premises during the immersion period
+- you did not complete the weekly monitoring files
+- your participation in your team's work is considered insufficient
 :::
 
+## Schedule
 
-## Calendrier
-
-Voir présentation aux élèves pour les dates
+See the presentation to students for the dates
 
 ### Immersion
 
-3 jours consécutifs sont libérés dans votre emploi du temps pour avancer efficacement sur votre projet. La présence dans l'école est obligatoire et sera contrôlée.
+3 consecutive days are freed up in your schedule to allow you to make effective progress on your project. Attendance at the school is mandatory and will be checked.
 
-À la fin de ces 3 jours, avec un travail sérieux et efficace, vous devriez avoir bien avancé la phase de code (> 80 %) et commencé le squelette du rapport final. Ainsi, vous serez beaucoup plus sereins pour attaquer la dernière ligne droite en novembre.
+At the end of these 3 days, with serious and effective work, you should have made good progress on the coding phase (> 80 %) and started the skeleton of the final report. This will leave you much more relaxed when tackling the final stretch in November.
 
-Vous verrez votre tuteur le premier jour pour qu'il vous aide à prioriser vos travaux, et le dernier pour vous aider. Une démonstration, même limitée, de votre application sera demandée le mercredi.
-
+You will meet your tutor on the first day so that they can help you prioritize your work, and on the last day to help you. A demonstration, even a limited one, of your application will be required on Wednesday.
