@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Romaric Gaudel">
+<meta name="author" content="Rémi Pépin">
+<meta name="author" content="Ludovic Deneuville">
+<meta name="description" content="Projet informatique 2A 2025-2026">
+
+<title>Notice élèves – Projet info 2A</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Projet info 2A</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="../../../doc/projet/presentation-tuteurs.html">
+ <span class="dropdown-text">Présentation pour les tuteurs</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/french/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation aux élèves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation to students</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/french/projet/notice-eleves.html">
+ <span class="dropdown-text">Notice élèves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Student notice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template">
+ <span class="dropdown-text">Template</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/projet/sujets.html">
+ <span class="dropdown-text">Sujets</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-classes" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Classes</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/01-introduction.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/02-outils-dev.html">
+ <span class="dropdown-text">Development Tools</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/03-git.html">
+ <span class="dropdown-text">Git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/04-analyse-fonctionnelle.html">
+ <span class="dropdown-text">Functional Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/05-poo-avancee.html">
+ <span class="dropdown-text">Advanced POO</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/06-tests-unitaires.html">
+ <span class="dropdown-text">Unit Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/07-webservices.html">
+ <span class="dropdown-text">Webservices</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/cours/08-dao-securite.html">
+ <span class="dropdown-text">DAO and Security</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="../../../doc/tp/tp1.html">
+ <span class="dropdown-text">Lab 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/tp/tp2.html">
+ <span class="dropdown-text">Lab 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/tp/tp3.html">
+ <span class="dropdown-text">Lab 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/tp/tp4.html">
+ <span class="dropdown-text">Lab 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/tp/tp5.html">
+ <span class="dropdown-text">Lab 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/tp/2025/tp1.html">
+ <span class="dropdown-text">Old Labs</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-various" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Various</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-various">    
+        <li>
+    <a class="dropdown-item" href="https://ludo2ne.github.io/ENSAI-tools/" target="_blank">
+ <span class="dropdown-text">ENSAI-tools</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/divers/licences.html">
+ <span class="dropdown-text">Licences</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/divers/sigles.html">
+ <span class="dropdown-text">Sigles</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#lancement-du-projet" id="toc-lancement-du-projet" class="nav-link" data-scroll-target="#lancement-du-projet">Lancement du projet</a></li>
+  <li><a href="#organisation-et-suivi" id="toc-organisation-et-suivi" class="nav-link" data-scroll-target="#organisation-et-suivi">Organisation et suivi</a></li>
+  <li><a href="#outils-et-cours" id="toc-outils-et-cours" class="nav-link" data-scroll-target="#outils-et-cours">Outils et Cours</a></li>
+  <li><a href="#travail-attendu" id="toc-travail-attendu" class="nav-link" data-scroll-target="#travail-attendu">Travail attendu</a></li>
+  <li><a href="#livraisons" id="toc-livraisons" class="nav-link" data-scroll-target="#livraisons">Livraisons</a></li>
+  <li><a href="#calendrier" id="toc-calendrier" class="nav-link" data-scroll-target="#calendrier">Calendrier</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Notice élèves</h1>
+</div>
+
+<div>
+  <div class="description">
+    Projet informatique 2A 2025-2026
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Romaric Gaudel </p>
+             <p>Rémi Pépin </p>
+             <p>Ludovic Deneuville </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Tous les élèves de deuxième année (exceptés ceux suivant le parcours recherche ATPA), participent à la réalisation du projet informatique. Ils sont répartis en groupes de 4 à 5 élèves. Ce projet permet d’effectuer un approfondissement et une mise en pratique des connaissances acquises lors des enseignements informatiques de 1ère année. La composition des groupes est définie par le département d’enseignement informatique.</p>
+<p>Le travail demandé consiste à construire une application permettant de répondre à la problématique du sujet proposé. Ce travail se décompose en 2 grandes phases :</p>
+<ol type="1">
+<li>Étude préalable et conception générale</li>
+</ol>
+<ul>
+<li>expliquer le besoin</li>
+<li>décrire la solution envisagée</li>
+<li>planifier les grandes phases de la réalisation</li>
+<li>décrire les exigences fonctionnelles par la modélisation (diagrammes UML)</li>
+<li>planifier la mise en place des fonctionnalités (dépendances, priorités…)</li>
+</ul>
+<ol start="2" type="1">
+<li>Réalisation</li>
+</ol>
+<ul>
+<li>mise en place de la base de données</li>
+<li>développement de l’application en Python</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Travaux à rendre">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Travaux à rendre
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>À mi-projet, vous livrerez le dossier d’analyse correspondant au travail réalisé lors de la première phase.</p>
+<p>En fin de projet, vous devrez rendre un dossier complet, ainsi que votre code.</p>
+<p>Vous présenterez vos travaux lors d’une soutenance orale.</p>
+</div>
+</div>
+</section>
+<section id="lancement-du-projet" class="level2">
+<h2 class="anchored" data-anchor-id="lancement-du-projet">Lancement du projet</h2>
+<section id="les-équipes-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="les-équipes-de-projet">Les équipes de projet</h3>
+<p>Les équipes sont composées par le responsable de la matière en tenant compte des niveaux constatés en informatique lors de la première année et en veillant à la répartition des élèves admis directement en 2e année. Il est essentiel de veiller à la bonne intégration des élèves admis sur titre au sein des équipes.</p>
+<ul>
+<li>Une moyenne pondérée est calculée pour chaque élève à partir des notes de 1A dans les matières informatiques
+<ul>
+<li>POO doc et tests : 0.5, BDR : 0.2, Algo et complexité : 0.2, Projet de traitement de données : 0.1</li>
+</ul></li>
+<li>Suite à ce classement, les élèves sont répartis en 4 poules</li>
+<li>Chaque équipe est composée à partir d’un élève de chaque poule</li>
+</ul>
+<p><strong>La composition des équipes n’est pas modifiable !</strong></p>
+</section>
+<section id="le-sujet" class="level3">
+<h3 class="anchored" data-anchor-id="le-sujet">Le sujet</h3>
+<p>Vous serez encadré par une tutrice ou un tuteur qui suivra 4 équipes tout le long du projet.</p>
+<p>Chacun des 9 encadrants a proposé un sujet qui devra permettre l’application de l’ensemble des enseignements informatiques dispensés en 1ère année :</p>
+<ul>
+<li>Conception d’applications avec UML</li>
+<li>Algorithmique</li>
+<li>Programmation orientée objet avec Python</li>
+<li>Bases de données relationnelles</li>
+</ul>
+<p>Les sujets sont affectés aléatoirement aux équipes. La diversité des parcours (Anglais, Dauphine…), les délais restreints et les contraintes associées, font qu’il n’est pas possible de vous laisser faire des voeux.</p>
+</section>
+<section id="première-séance" class="level3">
+<h3 class="anchored" data-anchor-id="première-séance">Première séance</h3>
+<p>De retour d’étudiants, la première rencontre entre membres d’une même équipe est importante. C’est l’occasion pour vous de faire connaissance et d’échanger honnêtement sur vos capacités et ce que vous attendez du projet. Les équipes solidaires qui ont un bon fonctionnement sont celles qui réussissent le mieux. Il n’y a pas de recette magique, chaque équipe doit se mettre d’accord sur son fonctionnement.</p>
+</section>
+</section>
+<section id="organisation-et-suivi" class="level2">
+<h2 class="anchored" data-anchor-id="organisation-et-suivi">Organisation et suivi</h2>
+<section id="le-chef-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="le-chef-de-projet">Le chef de projet</h3>
+<p>Au sein de chaque équipe, les élèves devront désigner une cheffe ou un chef de projet qui :</p>
+<ul>
+<li>sera responsable de l’animation du groupe</li>
+<li>organisera les réunions de travail</li>
+<li>veillera à la répartition, au suivi de l’avancement et au respect du planning</li>
+</ul>
+<p>Il est l’interlocuteur privilégié de l’encadrant pour l’équipe qu’il représente. Il doit permettre la discussion et la prise de décision collégiale.</p>
+<p><u>Ce rôle n’est pas lié aux compétences informatiques</u>, mais à l’appétence pour la gestion d’équipe. Il faut tout de même s’investir et s’interesser aux travaux.</p>
+</section>
+<section id="leader-technique" class="level3">
+<h3 class="anchored" data-anchor-id="leader-technique">Leader technique</h3>
+<p>Ce rôle revient généralement à la personne ayant le plus d’appétence pour l’informatique. Ses missions principales :</p>
+<ul>
+<li>référent git : s’assurer que tous les membres ont compris les bases de git, ont cloné le répo et savent partager leurs modifications</li>
+<li>coder une v0 (par exemple en s’inspirant du template fourni) et expliquer aux autres comment ça fonctionne (un diagramme de séquence peut-être fort utile)</li>
+<li>assister les membres en cas de blocage technique</li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour éviter toute surchage de travail, il est fortement déconseillé de cumuler les roles de tech lead et chef de projet.</p>
+</div>
+</div>
+<p>Il peut bien sûr y avoir d’autres rôles dans l’équipe. L’important est de <strong>prendre des initiatives</strong> sur un sujet qui vous plait et d’<strong>être acteur du projet</strong>.</p>
+<p>Vous êtes des ingénieurs, vous avez des idées, vous devez prendre des initiatives. Cela sera un vrai plus lorsque vous serez en poste !</p>
+</section>
+<section id="crise" class="level3">
+<h3 class="anchored" data-anchor-id="crise">Crise</h3>
+<p>Si le travail ou l’implication d’un ou plusieurs membres de l’équipe étaient en deçà des attentes, leurs notes pourraient être dissociées de celles du reste du groupe. <strong>Cela ne sera possible qu’après avoir alerté votre tuteur et le référent de la matière et qu’une discussion avec le groupe ait eu lieu</strong>.</p>
+</section>
+<section id="gestion-de-projet-et-de-communication" class="level3">
+<h3 class="anchored" data-anchor-id="gestion-de-projet-et-de-communication">Gestion de projet et de communication</h3>
+<p>Il est recommandé d’utiliser Microsoft Teams pour planifier vos travaux et échanger. Le création d’une conversation pour le groupe semble le minimal. Mais vous pouvez également installer des plugins pour vous aider à gérer votre projet. Voici quelques propositions :</p>
+<ul>
+<li>Trello : pour avoir un kanban collaboratif</li>
+<li>Priority Matrix : pour prioriser vos tâches</li>
+</ul>
+<p>Vous pouvez également utiliser d’autres logiciels pour communiquer, comme Slack ou Discord (qui sont propriétaires comme Teams). Utiliser Facebook Messenger ou autres applications liées à un réseau social est déconseillé car elles ne sont pas utilisées pour gérer un projet en entreprise. La limite de ces logiciels de messagerie est qu’ils ne proposent pas de salon de discussions thématiques pour segmenter vos échanges. Cela entraine de la perte d’informations quand plusieurs discussions se mélangent.</p>
+<p>Pour les personnes qui ont du mal à s’organiser mais qui sont sensible à la <em>gamification</em> vous pouvez également utiliser Habitica (https://habitica.com/static/home) pour vous aider à travailler régulièrement.</p>
+</section>
+<section id="point-hebdo" class="level3">
+<h3 class="anchored" data-anchor-id="point-hebdo">Point hebdo</h3>
+<p>Chaque semaine (jusqu’au rendu du rapport final et sauf pendant les vacances scolaires), vous devrez remplir votre point hebdomadaire de suivi de projet :</p>
+<ul>
+<li><strong>Quand</strong> : le <u>Jeudi soir</u> au plus tard</li>
+<li><strong>Où</strong> : sur votre dépôt Git, dossier <em>doc/suivi</em></li>
+<li><strong>Comment</strong> : créez un fichier nommé <code>YYYY.MM.DD-semaineN.md</code> en utilisant le modèle ci-dessous</li>
+<li><strong>Qui</strong> : tous les membres de l’équipe</li>
+<li><strong>Quoi</strong> : listez les tâches accomplies + le temps global estimé</li>
+<li><strong>Pourquoi</strong> : il permettra à votre tutrice ou tuteur de suivre l’évolution de votre travail</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le point hebdomadaire est <strong><u>obligatoire</u></strong>. Vous serez pénalisés si vous ne le remplissez pas ou si vous le rendez en retard.</p>
+<ul>
+<li>Si vous n’avez pas travaillé sur le projet depuis une semaine (et vous avez le droit) <span class="emoji" data-emoji="arrow_right">➡️</span> mettez simplement <em>ras</em> (rien à signaler)</li>
+<li>Si une tâche n’est pas terminée, vous pouvez ajouter le suffixe <em>WIP</em> (Work In Progress)</li>
+</ul>
+</div>
+</div>
+<p>Pour information, le projet informatique vous permet d’obtenir 4 ECTS, ce qui représente un investissement d’environ 100h (séances en présentiel comprises) par élève.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>N’attendez pas le jeudi soir pour essayer de vous remémorer tout ce que vous avez fait depuis une semaine.</p>
+<p>Prenez l’habitude de lister vos tâches au fur et à mesure !</p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Modèle</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Exemple</a></li></ul>
+<div class="tab-content nav-pills">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>YYYY.MM.DD-semaineN.md</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="YYYY.MM.DD-semaineN.md"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point Hebdomadaire - Projet</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Date : Jeudi ...</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Semaine n° ...</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tâches réalisées cette semaine</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Exemples : </span><span class="in">`- [x] Tâche 1`</span><span class="at"> ou - </span><span class="in">`ras`</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>5h</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Tâche 1</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Tâche 2</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 2</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>0h</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ras</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 3</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 4</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nom Prénom élève 5</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backlog</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Liste des tâches en attente de prise en charge.</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prioritaires</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Secondaires</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>2024.09.12-semaine2.md</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="2024.09.12-semaine2.md"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Point Hebdomadaire - Projet Ninja</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Date : Jeudi 12 septembre 2024</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Semaine n° 2</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tâches réalisées cette semaine</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">### Maud ZARELLA</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>5h</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Création de la classe JoueurDAO et des méthodes</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Tests unitaires JoueurDAO</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> JoueurService : ajout méthode pour supprimer un joueur</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tom ATE</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>2h</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Mise en forme du diagramme de classe avec PlantUML</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Rapport : présentation des classes WIP</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Anna NACE</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>0h</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ras</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Harry COVER</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>3h</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Modification de la base de données : modification de la table *joueur*, création table *arbitre*</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Refactor : utilisation du package *tabulate* pour avoir de jolis tableaux</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### Éva ZION</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>3h</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Codage de la fonctionnalité *Créer un tournoi* (Vue + Services + Dao)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[x]</span> Relecture dossier analyse</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backlog</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prioritaires</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Corriger Bug de modification de joueur</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Fonctionnalité *Arbitrer un tournoi*</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Menu administrateur</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Secondaires</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="va">[ ]</span> Ecrire README</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="suivi-de-projet" class="level3">
+<h3 class="anchored" data-anchor-id="suivi-de-projet">Suivi de projet</h3>
+<p>L’encadrement de l’avancement du projet se déroulera généralement sur 3 heures par semaine. Chaque équipe fera le bilan avec son intervenant :</p>
+<ul>
+<li>du travail qui a été réalisé au cours de la semaine</li>
+<li>des difficultés rencontrées</li>
+<li>de ce qui doit encore être fait</li>
+</ul>
+<p>Dans l’équipe vous devez toutes et tous avoir une vision macro de l’avancement du projet et ce que vous avez prévu de faire.</p>
+<p><strong>Une séance de suivi, ça se prépare !!!</strong></p>
+<blockquote class="blockquote">
+<p>C’est valable pour les autres projets, les suivi de stage, les réunions… Si vous arrivez les mains dans les poches, vous allez perdre un temps précieux pour vous remettre dans le bain.</p>
+</blockquote>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>À chaque séance, l’encadrant notera si un travail sérieux a été réalisé depuis la semaine dernière. Un travail régulier tout le long du projet sera récompensé, tandis qu’un travail fait uniquement avant les rendus sera pénalisé.</p>
+</div>
+</div>
+<p><strong>Les séances de suivi sont obligatoires.</strong> L’appel sera effectué. Votre intervenant pourra demander à tout moment à parler avec la totalité des élèves qu’il encadre.</p>
+</section>
+</section>
+<section id="outils-et-cours" class="level2">
+<h2 class="anchored" data-anchor-id="outils-et-cours">Outils et Cours</h2>
+<section id="module-de-compléments-dinformatique" class="level3">
+<h3 class="anchored" data-anchor-id="module-de-compléments-dinformatique">Module de Compléments d’informatique</h3>
+<p>Pour vous aider à mener à bien votre projet, un cours de 6h, et cinq TP de 3h sont mis en place dans le module de <strong>Compléments d’informatique</strong>. Lors du cours, vous seront présentés l’organisation générale du projet et quelques concepts nouveaux mis en œuvre lors des TP :</p>
+<ul>
+<li>séparation back-end / front-end,</li>
+<li>programmation en couches,</li>
+<li>systèmes de versionnement (git),</li>
+<li>appel à un webservice,</li>
+<li>communication avec une base de données</li>
+</ul>
+<p>Bien que ce cours ait pour utilité directe de vous aider à mener à bien votre projet, il a également pour but final de vous donner des connaissances supplémentaires en informatique pour que vous puissiez évoluer facilement dans le milieu professionnel et en particulier dans le monde de la <em>data science.</em></p>
+<p>Sauf retour à l’âge de Pierre, vous allez inévitablement utiliser des applications informatiques dans votre vie professionnelle. Même si vous ne travaillez jamais côté informatique, avoir une première approche sur le fonctionnement d’un projet informatique vous sera précieux.</p>
+</section>
+<section id="outils-de-développement" class="level3">
+<h3 class="anchored" data-anchor-id="outils-de-développement">Outils de développement</h3>
+<p>Les outils de développement à votre disposition seront :</p>
+<ul>
+<li>L’environnement de développement <strong>Visual Studio Code</strong></li>
+<li>Le logiciel de partage de code et versionnement <strong>Git</strong>, accessible depuis l’environnement de développement, accompagné d’un dépôt (privé) que vous devrez créer sur un serveur public (GitLab, Github, Bitbucket),</li>
+<li>Une base de données <strong>PostgreSQL</strong> (hébergée à l’Ensai) comme système de gestion de base de données (SGBD) pour la persistance des données,</li>
+<li>Un certain nombre de librairies et outils pour le lien entre Python et le SGBD, les tests unitaires, la génération automatique de documentations
+<ul>
+<li><a href="https://www.psycopg.org/docs/" target="_blank">psycopg2</a> pour se connecter à la base de données postgreSQL,</li>
+<li><a href="https://requests.readthedocs.io/en/master/" target="_blank">requests</a> pour réaliser des requêtes http</li>
+<li><a href="https://docs.pytest.org/">pytest</a> pour les tests unitaires,</li>
+<li><a href="https://docs.python.org/fr/3/library/pydoc.html" target="_blank">pydoc</a> pour la documentation,</li>
+<li><a href="https://docs.python.org/fr/3/library/abc.html" target="_blank">abc</a> pour les classes abstraites,</li>
+<li><a href="https://fastapi.tiangolo.com/" target="_blank">fastAPI</a> pour la création d’un webservice REST</li>
+</ul></li>
+</ul>
+<p>En plus de cette liste, vous êtes libre d’utiliser les outils de votre choix, <em>à condition d’être capable de les utiliser en toute autonomie</em>.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Remarque">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Demander de l’aide est normal et fait partie de l’apprentissage. Nous ne notons pas quels sont les groupes qui nous demandent de l’aide. Faire preuve d’autonomie ne veut pas dire travailler sans demander de l’aide. Si vous rencontrez une difficulté, qu’après plusieurs tentatives vous ne trouvez pas de solution et que vous demandez finalement de l’aide pour la résoudre, vous êtes autonome.</p>
+<p>Si par contre vous attendez que le problème disparaisse ou que l’on vienne vous aider, là vous manquez d’autonomie. Soyez proactif dans votre démarche ! Vous progresserez bien plus vite.</p>
+</div>
+</div>
+</section>
+<section id="usage-de-liagen" class="level3">
+<h3 class="anchored" data-anchor-id="usage-de-liagen">Usage de l’IAgen</h3>
+<p>L’IA générative peut être un excellent accélérateur de développement lorsqu’elle est utilisée avec discernement. Si vous comprenez votre architecture, vos technologies et vos besoins, elle peut vous aider à produire du code plus rapidement, explorer des pistes ou résoudre des problèmes ponctuels.</p>
+<p>Elle peut également vous aider à comprendre les principes évoqués en cours et en TP.</p>
+<p>À l’inverse, lui demander de développer des fonctionnalités mal définies ou copier du code sans le comprendre risque de vous faire perdre beaucoup de temps. L’IA peut produire des solutions incorrectes, inadaptées à votre projet ou génératrices de bugs.</p>
+<p>Considérez l’IA comme un assistant technique, pas comme un développeur autonome. Plus vos demandes sont précises et plus vous comprenez ce qu’elle propose, plus elle sera utile.</p>
+</section>
+</section>
+<section id="travail-attendu" class="level2">
+<h2 class="anchored" data-anchor-id="travail-attendu">Travail attendu</h2>
+<section id="processus-de-développement" class="level3">
+<h3 class="anchored" data-anchor-id="processus-de-développement">Processus de développement</h3>
+<p>Le développement s’effectuera collectivement et en cascade. Les phases d’étude préalable, de conception générale, de réalisation et de validation s’enchaînent successivement dans le temps.</p>
+</section>
+<section id="étude-préalable" class="level3">
+<h3 class="anchored" data-anchor-id="étude-préalable">Étude préalable</h3>
+<p>Cette 1ère phase d’analyse consiste en la formalisation des besoins décrits par le cahier des charges (le sujet, le point de vue du demandeur ou du maître d’ouvrage). Elle devra permettre d’établir&nbsp;:</p>
+<ul>
+<li>Le périmètre du système d’information cible en reprécisant les aspects du sujet qui peuvent apparaître flous</li>
+<li>Les besoins à satisfaire par le système d’information cible (cas d’utilisation et description des menus)</li>
+<li>Les exigences particulières et les contraintes (normes de développement, architecture)</li>
+</ul>
+</section>
+<section id="conception-générale" class="level3">
+<h3 class="anchored" data-anchor-id="conception-générale">Conception générale</h3>
+<p>Cette 2e phase d’analyse aboutira à un modèle de conception pour répondre aux objectifs fixés par le cahier des charges. Le choix des diagrammes est fait par chaque équipe après validation de leur intervenant. Nous y trouverons cependant au minimum :</p>
+<ul>
+<li>Un diagramme de cas d’utilisation</li>
+<li>Un diagramme de classes</li>
+<li>Un modèle physique de données</li>
+</ul>
+<p>En fonction de votre sujet et de ce que vous demande votre intervenant vous pourrez y ajouter&nbsp;:</p>
+<ul>
+<li>Un diagramme de d’activité ou d’état</li>
+<li>Un diagramme de séquence</li>
+<li>Un modèle logique de données (diagramme entité-relation)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>les sujets et les encadrants sont différents, alors préférez faire des choses cohérentes avec ses attendus, que simplement <em>cocher des cases</em></li>
+<li>si certains diagrammes ne vous disent rien, il y a plusieurs livres sur la modélisation UML à la bibliothèque.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="réalisation-et-validation-du-logiciel" class="level3">
+<h3 class="anchored" data-anchor-id="réalisation-et-validation-du-logiciel">Réalisation et Validation du logiciel</h3>
+<section id="la-base-de-données" class="level4">
+<h4 class="anchored" data-anchor-id="la-base-de-données">La base de données</h4>
+<p>L’application s’appuiera sur une base de données, que vous devez créer. Pour vous sensibiliser à la variété des données, votre travail devra comporter l’importation ou l’exportation d’un jeu de données. Ce jeu de données sera fourni par l’encadrant dans le format de son choix (XML, JSON, CSV…).</p>
+</section>
+<section id="codage-de-lapplication" class="level4">
+<h4 class="anchored" data-anchor-id="codage-de-lapplication">Codage de l’application</h4>
+<p>L’application sera réalisée en <strong>Python</strong>. Le code sera naturellement cohérent avec les diagrammes du modèle de conception déjà établis. Si nécessaire, ces derniers seront mis à jour afin que cette cohérence soit maintenue.</p>
+<p><u>Il n’y a pas d’interface graphique à développer</u>, la communication avec l’application se faisant par l’intermédiaire de la console ou d’un webservice. Toutes les fonctionnalités de votre application doivent pouvoir être testées et démontrées via la console ou des requêtes http.</p>
+</section>
+<section id="validation-du-logiciel" class="level4">
+<h4 class="anchored" data-anchor-id="validation-du-logiciel">Validation du logiciel</h4>
+<p>Tout au long du développement, vous développerez un ensemble de tests unitaires.</p>
+</section>
+</section>
+</section>
+<section id="livraisons" class="level2">
+<h2 class="anchored" data-anchor-id="livraisons">Livraisons</h2>
+<section id="dossier-danalyse" class="level3">
+<h3 class="anchored" data-anchor-id="dossier-danalyse">Dossier d’analyse</h3>
+<p>Via son rôle de client, votre tutrice ou tuteur vous a exposé son besoin. Le dossier d’analyse explique comment vous allez y répondre.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Où</strong> : sur Moodle, dans la section prévue à cet effet</li>
+<li><strong>Quand</strong> : début octobre</li>
+<li><strong>Comment</strong> : en format <code>pdf</code>. Il n’est pas obligatoirement rédigé en LaTeX mais doit-être «&nbsp;propre&nbsp;»</li>
+<li><strong>Combien</strong> : 10 à 15 pages, annexes comprises est une taille raisonnable</li>
+<li><strong>Pourquoi</strong> : il sera noté par votre intervenant qui vous en fera un retour</li>
+</ul>
+</div>
+</div>
+<p>Ce premier livrable est l’aboutissement de la phase d’étude préalable et de conception générale. Il doit montrer que vous avez compris votre sujet et que vous avez une première modélisation de votre application. Ainsi cette livraison contiendra :</p>
+<ul>
+<li>Un planning <em>détaillé</em> des 3 phases décrites ci-dessus (diagramme de Gantt)</li>
+<li>Les diagrammes réalisés pendant la phase d’analyse</li>
+<li>Un document d’architecture spécifiant l’organisation logique des sous-systèmes techniques (paquetages métier, persistance)</li>
+<li>Les principaux menus de l’application et leurs enchainements si cela a du sens</li>
+<li>Les principaux endpoints de votre application si cela a du sens</li>
+<li>Une description des fonctionnalités de votre application</li>
+<li>Une liste des composants à implémenter ainsi que :
+<ul>
+<li>Leur rôle</li>
+<li>La description de leurs dépendances réciproques</li>
+<li>Le temps de développement prévu pour chacun d’entre eux</li>
+<li>L’ordre de priorité initiale</li>
+</ul></li>
+</ul>
+</section>
+<section id="le-rapport-final" class="level3">
+<h3 class="anchored" data-anchor-id="le-rapport-final">Le rapport final</h3>
+<p>Votre rapport final doit présenter le travail réalisé pendant ces 3 mois. Il est à déposer sur Moodle et contiendra les éléments ci-dessous.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Respectez les consignes usuelles de mise en forme d’un rapport</li>
+<li>Précisez votre numéro d’équipe sur la page de garde</li>
+</ul>
+</div>
+</div>
+<section id="le-contexte-de-votre-application" class="level4">
+<h4 class="anchored" data-anchor-id="le-contexte-de-votre-application">Le contexte de votre application</h4>
+<p>Cette partie doit permettre à une personne externe à votre projet et sans expérience particulière en informatique de <strong>comprendre l’intérêt de votre travail</strong>. Ainsi, il vous est conseillé de faire relire cette partie par une personne externe à votre groupe (ami, famille). La rédaction de cette partie peut commencer très tôt car elle ne repose pas sur des éléments techniques que vous allez implémenter.</p>
+<ul>
+<li>À quels besoins répond-elle&nbsp;? Le diagramme de cas d’utilisation n’est pas nécessaire dans le rapport final&nbsp;;</li>
+<li>Quels sont les utilisateurs&nbsp;de l’application ?</li>
+<li>Quelles sont les <strong>données intéressantes</strong> de votre application. Si vous utilisez des données externes présentez leur source, le format, et les concepts associés. Si vous en produisez, présentez le format des données et comment elles peuvent être utilisées. Par exemple&nbsp;:
+<ul>
+<li>Vous récupérez des annonces immobilières via webscrapping, quel est le site ou quels sont les sites utilisés&nbsp;? Quelles données récupérez-vous de la page&nbsp;? Vous pourrez décrire plus tard comment vous les récupérez&nbsp;;</li>
+<li>Vous devez traiter des données géographiques, comment sont stockées vos données dans votre source&nbsp;? Y-a-t-il des difficultés particulières dans ces données&nbsp;?</li>
+<li>Vous récupérez des données d’un service externe, quel est le schéma de ces données&nbsp;?</li>
+</ul></li>
+</ul>
+</section>
+<section id="architecture-générale" class="level4">
+<h4 class="anchored" data-anchor-id="architecture-générale">Architecture générale</h4>
+<ul>
+<li>Est-ce un module python&nbsp;? Un script sans interaction avec l’utilisateur&nbsp;? Une application en console&nbsp;? Une application avec un client et un serveur qui communiquent via requête http&nbsp;?</li>
+<li>Les technologies nécessaires à son fonctionnement (python, bibliothèques majeures utilisées, système de persistance, sources de données externes)</li>
+<li>Un schéma d’architecture (pour faire le lien entre les différents composants de votre application comme votre code, système de persistance, etc.)</li>
+</ul>
+</section>
+<section id="réponse-aux-besoins" class="level4">
+<h4 class="anchored" data-anchor-id="réponse-aux-besoins">Réponse aux besoins</h4>
+<p>Comment votre application permet de répondre aux besoins que vous avez décrits :</p>
+<ul>
+<li>Le fonctionnement votre application :
+<ul>
+<li>Zoom sur un processus central en le détaillant complètement pour que le jury comprenne la logique que vous avez mise en place. Qu’est-ce que l’utilisateur fait ? Qu’est-ce que votre produit fait&nbsp;? Comment interagit-il avec les autres composants&nbsp;? Quelles sont les classes utilisées&nbsp;? Il n’est pas utile de préciser les méthodes appelées, sauf si vous pensez que cela a un intérêt. Pour aider le lecteur, vous pouvez ajouter des diagrammes de cas d’utilisations, mais aussi des schémas divers&nbsp;;</li>
+<li>Explication <em>rapide</em> pour les autres. Votre rapport ne doit pas être un listing des fonctions Python de votre application&nbsp;;</li>
+</ul></li>
+</ul>
+<p>Privilégiez la qualité des explications à la quantité. Si vous décrivez sérieusement une fonctionnalité centrale intéressante, le jury supposera que vous êtes capable de faire la même chose pour les autres. Vous pouvez illustrer vos propos en utilisant votre diagramme de classe. Cela vous permet&nbsp;:</p>
+<ul>
+<li>D’expliquer les héritages / associations utilisés</li>
+<li>De présenter les objets métiers et comment ils sont utilisés par l’application</li>
+<li>De mettre en avant une décomposition en couche, un découplage entre les objets</li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled" title="Remarque">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Remarque
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un diagramme de classe n’est pas une finalité en soit, il est initialement produit pour servir de boussole lors de l’implémentation de votre application. De la même manière, dans votre rapport il doit servir à guider vos explications.</p>
+<p>Ainsi, il n’est pas nécessaire de produire un diagramme de classe unique si celui-ci est illisible. Vous pouvez le décomposer en petits diagrammes qui vont se concentrer sur des fonctionnalités particulières. De même, il est fortement déconseillé de lister et décrire exhaustivement toutes les classes et les méthodes.</p>
+</div>
+</div>
+</section>
+<section id="système-de-stockage" class="level4">
+<h4 class="anchored" data-anchor-id="système-de-stockage">Système de stockage</h4>
+<p>À quels moments il est utilisé dans votre application et pourquoi&nbsp;? Vous pouvez mettre en avant l’utilisation de formes normales.</p>
+<p>En effet ce projet doit vous permettre de mettre en avant vos acquis de 1A en la matière. Il est inutile de nous présenter l’intégralité de vos DAOs</p>
+</section>
+<section id="outils-mis-en-place" class="level4">
+<h4 class="anchored" data-anchor-id="outils-mis-en-place">Outils mis en place</h4>
+<p>Les outils mis en place pour réaliser le projet&nbsp;:</p>
+<ul>
+<li>L’organisation que vous avez choisie dans votre groupe&nbsp;;</li>
+<li>Les outils et leur utilisation&nbsp;;</li>
+<li>La démarche d’assurance qualité. Le but de cette partie est de montrer que vous avez pris en compte les évènements extérieurs qui peuvent impacter votre application.
+<ul>
+<li>Avez-vous fait des tests&nbsp;? Pourquoi&nbsp;avez-vous testé ces classes en particulier&nbsp;? Qu’est-ce que cela vous a apporté&nbsp;?</li>
+<li>Avez-vous rencontré des temps de traitement longs&nbsp;? D’où viennent-ils&nbsp;? Les avez-vous surmontés&nbsp;?</li>
+<li>Si votre source de données venait à disparaitre mais qu’une nouvelle source similaire existait, comment cela impacterait-il votre application&nbsp;?</li>
+<li>Si vous avez mis de côté des fonctionnalités au cours de votre développement, comment peuvent-elles être mise en place dans le futur&nbsp;?</li>
+</ul></li>
+</ul>
+</section>
+<section id="note-individuelle" class="level4">
+<h4 class="anchored" data-anchor-id="note-individuelle">Note individuelle</h4>
+<p>Lors du rendu du rapport chaque élève de chaque groupe joindra une note décrivant son expérience au sein du groupe de projet. <strong>Cette note devra être insérée dans le rapport final en fin de rapport</strong>. Dans cette note d’<u>une page maximum</u>, vous relaterez aussi bien les bonnes pratiques mises en œuvre que les problèmes rencontrés.</p>
+<p>Vous pouvez adopter un style moins formel que pour le rapport, mais gardez en tête que cette note est lue par le jury au même titre que le reste du rapport. Conservez une mise en page correcte pour cette note. Pour vous aider voici des éléments qui ont leur place dans cette note&nbsp;:</p>
+<ul>
+<li>Votre participation effective au projet (chef de projet, code, animation…)</li>
+<li>Comment avez-vous vécu le projet avec votre groupe. Est-ce difficile&nbsp;? Enrichissant&nbsp;? Éviter les lieux communs, et préférez utiliser des exemples concrets. Vous pouvez mettre en avant des points de tensions qui se sont produits.</li>
+<li>Les enseignements que vous en tirez, ce que vous referiez, ce que vous changeriez. Vous pouvez construire cette partie comme une liste de conseils que vous donneriez à vos successeurs.</li>
+</ul>
+<p>Nous vous conseillons la relecture de cette production individuelle par une autre personne (membre de l’équipe, ami, famille) pour limiter les fautes et ainsi vous assurer qu’elle est compréhensible. Cette note personnelle est appréciée par les membres du jury, <strong>faites-la sérieusement et honnêtement</strong>.</p>
+<hr>
+<p>Bien entendu, <strong>cette liste ne définit que les composantes minimales de votre rendu</strong>. Chaque groupe de projet est libre de fournir toutes les informations complémentaires qui lui parait pertinentes pour mettre en avant son travail. Cela peut-être&nbsp;: expliquer des choix de conceptions qui vous semblent pertinents, des outils que vous avez utilisés ou toute autre information qui vous permet de valoriser votre travail. Vous avez le droit d’illustrer vos propos avec des figures pour aider le lecteur. Les images qui n’apportent rien à votre propos sont à proscrire.</p>
+<p>L’ordre de présentation des différents points, et de leur classement en annexe est libre. <strong>La taille optimale de ce rapport est de 25 pages hors annexe</strong>. Vous pouvez faire plus long mais dans ce cas posez-vous la question&nbsp;:&nbsp;«&nbsp;Ce que j’ajoute est-il nécessaire&nbsp;?&nbsp;».</p>
+<p>le format final attendu est le pdf.</p>
+<p>Pour rédiger, il est vivement conseillé d’utilier les template Typst fourni dans le template de projet pour rédiger.</p>
+<p>Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Cela arrive de laisser passer une ou deux coquilles, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.</p>
+</section>
+</section>
+<section id="le-code" class="level3">
+<h3 class="anchored" data-anchor-id="le-code">Le code</h3>
+<p>Vous créerez une archive contenant tout le contenu de votre dépôt git, et en particulier le code source de votre application.</p>
+<p>Vous déposerez ce livrable sur Moodle.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Taille du répo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Taille du répo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Attention à ne pas inclure dans votre livrable des fichiers trop lourds (&gt; 10Mo), comme par exemple des fichiers de données.</p>
+</div>
+</div>
+<p>Le code source complet de l’application contenant à minima :</p>
+<ul>
+<li>Un fichier <code>README.md</code> à la racine du dépot <u>rédigé en anglais</u> à destination d’un utilisateur et devra&nbsp;contenir :
+<ul>
+<li>une présentation rapide de votre application (principales fonctionnalités, besoins auquels elle répond)</li>
+<li>un mode opératoire d’installation et de lancement rapide</li>
+</ul></li>
+<li>Un fichier <code>README.md</code> dans le dossier <em>backend</em> destiné aux personnes souhaitant continuer le développement de l’application :
+<ul>
+<li>Présentation de l’architecture en couches</li>
+<li>Outils de développement (tests, logs, qualité…)</li>
+</ul></li>
+<li>Un fichier <code>backend/pyproject.toml</code> avec tous les modules pythons à installer pour faire fonctionner votre application</li>
+<li>un dossier <code>backend/src</code> contenant votre code source et un fichier <code>main.py</code> ou <code>__main__.py</code> qui permet de lancer votre application</li>
+<li>un fichier <code>data/init_db.sql</code> permettant la création des tables et des données</li>
+</ul>
+<p>Entre ce rendu de code et la soutenance, vous avez le droit de modifier votre code. Cependant, ces modifications ne serviront qu’à améliorer la qualité de la démonstration car ce nouveau code ne comptera pas pour la notation.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seul le code de la partie <em>backend</em> sera noté !</p>
+<p>Si vous développez un <em>frontend</em>, vous pouvez donc le coder avec un peu moins de rigueur.</p>
+</div>
+</div>
+</section>
+<section id="la-soutenance" class="level3">
+<h3 class="anchored" data-anchor-id="la-soutenance">La soutenance</h3>
+<p>Vous présenterez votre travail devant un jury de 3 personnes :</p>
+<ul>
+<li>un président de jury (professionnel de l’informatique)</li>
+<li>votre encadrant de projet</li>
+<li>un enseignant informatique de l’ENSAI</li>
+</ul>
+<p>La soutenance consistera en une présentation orale de votre logiciel, partagée équitablement entre les membres du groupe. Elle fera apparaître la méthode de développement utilisée, les choix et options de conception et de programmation retenues.</p>
+<p>Vous avez 20 minutes pour réaliser votre présentation. Suivrons ensuite les questions et les retours du jury.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Timing type">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Timing type
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Exposé : 20 min, dont environ :
+<ul>
+<li>12 min de présentation type diaporama</li>
+<li>8 min de démonstration de l’application</li>
+<li>La gestion de ce temps est libre mais doit être dynamique</li>
+<li>Vous pouvez mixer démo et présentation, c’est même plutôt conseillé</li>
+</ul></li>
+<li>Questions du jury : 15 min</li>
+<li>Retours du jury : 10 min</li>
+</ul>
+</div>
+</div>
+<p><strong>Le jury est bienveillant et ne cherchera pas à vous piéger&nbsp;!</strong></p>
+<section id="quelques-conseils-pour-cette-soutenance" class="level4">
+<h4 class="anchored" data-anchor-id="quelques-conseils-pour-cette-soutenance">Quelques conseils pour cette soutenance :</h4>
+<ul>
+<li>Présentez brièvement les membres de l’équipe</li>
+<li>Même si les membres du jury ont lu votre rapport, prenez le temps de présenter sommairement le besoin initial et les données impliquées s’il y en a</li>
+</ul>
+<p>Évitez les présentations catalogues du type : « On a fait ça, ça et aussi ça ». Le jury déteste, surtout quand c’est la 4e équipe de suite qui raconte la même chose. Soyez un minimum original, prenez un angle décalé, racontez une histoire !</p>
+<p>Présentez la plus-value de l’équipe :</p>
+<ul>
+<li>Avez-vous fait des choix forts&nbsp;?</li>
+<li>Avez-vous mis en place un processus intéressant&nbsp;?</li>
+<li>Répondez-vous au besoin&nbsp;?</li>
+</ul>
+<p>Il n’est pas nécessaire de suivre le même déroulé que le rapport (c’est d’ailleurs généralement une erreur), ni de représenter le rapport (le jury l’a lu). Par exemple, si vous avez expliqué rapidement une fonctionnalité dans le rapport mais qu’elle vous semble intéressante, vous pouvez la détailler plus lors de la soutenance. Le jury aime la nouveauté.</p>
+<p>Mettez en avant le projet (comment avez-vous travaillé ces 3 mois) et pas seulement le logiciel produit (vous n’essayez pas de nous vendre votre application).</p>
+<p><strong>Votre diaporama</strong> :</p>
+<ul>
+<li>Numérotez les diapos !!!</li>
+<li>Ne chargez pas trop vos slides en texte</li>
+<li>Vous pouvez utiliser des schémas, graphiques, captures d’écran utiles à la compréhension. Faites attention que vos images soient lisibles une fois projetées.</li>
+<li>Ne mettez pas de code, mais du pseudo-code (et uniquement si l’algorithme est intéressant)</li>
+</ul>
+<p><strong>La démo</strong> :</p>
+<ul>
+<li>N’allez pas trop vite !</li>
+<li>Ne présentez pas la création / modification de compte, cela n’a aucune plus-value aux yeux du jury</li>
+<li>Sur certains points interessants, prenez le temps d’expliquer ce qu’il se passe dans votre code (à la manière d’un diagramme de séquence)</li>
+<li>Ne dîtes pas “l’utilisateur peut faire-ci, faire ça”. Nous ne sommes pas à Hollywood mais un petit effort quand même, personnalisez votre démo, jouez un rôle !</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Travaillez votre introduction et votre conclusion !</p>
+<p>Ne terminez pas votre présentation par : “Voilà c’est fini…”.</p>
+<p>Soyez solidaires !</p>
+</div>
+</div>
+</section>
+</section>
+<section id="notation-finale" class="level3">
+<h3 class="anchored" data-anchor-id="notation-finale">Notation finale</h3>
+<p>La note finale du projet se répartit comme suit :</p>
+<ul>
+<li>Dossier d’analyse et investissement dans le projet (1/3)</li>
+<li>Rapport final et investissement dans le projet (1/3)</li>
+<li>Soutenance (1/3)</li>
+</ul>
+<p>Le code est noté à part. Il compte pour un tiers de la note de Compléments d’informatique.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Pénalités">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Pénalités
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Des malus seront appliqués à votre note si :</p>
+<ul>
+<li>vous avez des absences injustifiées en suivi de projet et/ou en TP de Compléments d’info</li>
+<li>vous n’avez pas été présent dans les locaux de l’ENSAI durant l’immersion</li>
+<li>vous n’avez pas rempli les fichiers de suivi hebdomadaires</li>
+<li>votre participation aux travaux de votre équipe est jugé insuffisant</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="calendrier" class="level2">
+<h2 class="anchored" data-anchor-id="calendrier">Calendrier</h2>
+<p>Voir présentation aux élèves pour les dates</p>
+<section id="immersion" class="level3">
+<h3 class="anchored" data-anchor-id="immersion">Immersion</h3>
+<p>3 jours consécutifs sont libérés dans votre emploi du temps pour avancer efficacement sur votre projet. La présence dans l’école est obligatoire et sera contrôlée.</p>
+<p>À la fin de ces 3 jours, avec un travail sérieux et efficace, vous devriez avoir bien avancé la phase de code (&gt; 80 %) et commencé le squelette du rapport final. Ainsi, vous serez beaucoup plus sereins pour attaquer la dernière ligne droite en novembre.</p>
+<p>Vous verrez votre tuteur le premier jour pour qu’il vous aide à prioriser vos travaux, et le dernier pour vous aider. Une démonstration, même limitée, de votre application sera demandée le mercredi.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ludo2ne\.github\.io\/ENSAI-2A-Projet-info\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Website built with <a href="https://quarto.org/" class="external" target="_blank">Quarto</a> <br> <a href="https://github.com/ludo2ne/ENSAI-2A-Projet-info" class="external" target="_blank">Code source</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

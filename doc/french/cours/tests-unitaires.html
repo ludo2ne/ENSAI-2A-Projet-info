@@ -11,7 +11,7 @@
 <meta name="author" content="Rémi Pépin">
 <meta name="description" content="Slides">
 
-<title>Analyse fonctionnelle – Projet info 2A</title>
+<title>Les tests unitaires – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,6 +29,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -283,12 +318,20 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../../doc/french/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation to students</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/french/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Student notice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template">
@@ -417,11 +460,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">Plan</a></li>
-  <li><a href="#analyse-fonctionnelle" id="toc-analyse-fonctionnelle" class="nav-link" data-scroll-target="#analyse-fonctionnelle">Analyse fonctionnelle</a></li>
-  <li><a href="#architecture-logicielle" id="toc-architecture-logicielle" class="nav-link" data-scroll-target="#architecture-logicielle">Architecture logicielle</a></li>
+  <li><a href="#les-tests" id="toc-les-tests" class="nav-link active" data-scroll-target="#les-tests">Les Tests</a></li>
+  <li><a href="#les-tests-unitaires" id="toc-les-tests-unitaires" class="nav-link" data-scroll-target="#les-tests-unitaires">Les tests unitaires</a></li>
+  <li><a href="#mock" id="toc-mock" class="nav-link" data-scroll-target="#mock">Mock</a></li>
+  <li><a href="#les-test-driven-development-tdd" id="toc-les-test-driven-development-tdd" class="nav-link" data-scroll-target="#les-test-driven-development-tdd">Les Test Driven Development (TDD)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="analyse-fonctionnelle-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -433,12 +477,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analyse fonctionnelle</h1>
+<h1 class="title">Les tests unitaires</h1>
 </div>
 
 <div>
   <div class="description">
-    <a href="analyse-fonctionnelle-slides.html">Slides</a>
+    <a href="tests-unitaires-slides.html">Slides</a>
   </div>
 </div>
 
@@ -463,290 +507,356 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="plan" class="level2">
-<h2 class="anchored" data-anchor-id="plan">Plan</h2>
+<section id="les-tests" class="level2">
+<h2 class="anchored" data-anchor-id="les-tests">Les Tests</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/commitStrip_tester_ou_non.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Source : CommitStrip"><img src="img/commitStrip_tester_ou_non.jpg" class="r-stretch img-fluid figure-img" alt="Source : CommitStrip"></a></p>
+<figcaption>Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></figcaption>
+</figure>
+</div>
+<div class="notes">
+<p>ça parait évident, et pourtant…</p>
+<p>j’ai déjà testé une fonctionnalité d’un dev dont le cas nominal plante.</p>
+</div>
+<section id="pourquoi-tester" class="level3">
+<h3 class="anchored" data-anchor-id="pourquoi-tester">Pourquoi tester ?</h3>
+<ul>
+<li>Crash test de voiture</li>
+<li>Test de conformité</li>
+<li>Test qualité en industrie</li>
+<li>Test statistique</li>
+</ul>
+</section>
+<section id="en-informatique" class="level3">
+<h3 class="anchored" data-anchor-id="en-informatique">En informatique</h3>
+<ul>
+<li>Pour vérifier que votre programme fonctionne</li>
+<li>Pour détecter des erreurs</li>
+<li>Pour éviter les régressions (quand vous modifiez du code)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aucun test n’est parfait, mais cela permet quand même d’écarter de nombreuses erreurs.</p>
+</div>
+</div>
+</section>
+<section id="définition" class="level3">
+<h3 class="anchored" data-anchor-id="définition">Définition</h3>
+<p>Un test ressemble à une expérience scientifique.</p>
+<p>Il examine une hypothèse exprimée en fonction de trois éléments :</p>
+<ul>
+<li>les données en entrée</li>
+<li>l’objet à tester</li>
+<li>les résultats attendus</li>
+</ul>
+<p>Cet examen est effectué sous conditions contrôlées pour pouvoir tirer des conclusions et, dans l’idéal, être reproduit.</p>
+<div class="notes">
+<ul>
+<li>GIVEN</li>
+<li>WHEN</li>
+<li>THEN</li>
+</ul>
+</div>
+</section>
+<section id="couverture-de-test" class="level3">
+<h3 class="anchored" data-anchor-id="couverture-de-test">Couverture de test</h3>
+<ul>
+<li>Pourcentage de fonctions testées</li>
+<li>Indicateur de qualité</li>
+<li>Tendance, plutôt qu’une valeur fiable</li>
+</ul>
+<p>Préférez faire peu de tests, mais des tests utiles !</p>
+<div class="notes">
+<p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
+<p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
+</div>
+</section>
+<section id="les-types-de-tests" class="level3 smaller">
+<h3 class="smaller anchored" data-anchor-id="les-types-de-tests">Les types de tests</h3>
+<p>Il existe de très nombreux tests différents, voici les principaux :</p>
+<ul>
+<li><strong>Test unitaire</strong> : teste une fonction pour vérifier son bon fonctionnement</li>
+<li>Test fonctionnel : teste les cas d’utilisation du logiciel</li>
+<li>Test de charge : évaluent la capacité d’un système à gérer un volume élevé de données ou de transactions</li>
+<li>Test d’intégration : vérifie que différents composants ou modules d’un système interagissent correctement ensemble</li>
+<li>Test d’intrusion : vérifie la sécurité du logiciel en recherchant des vulnérabilités et en simulant des attaques potentielles</li>
+<li>…</li>
+</ul>
+</section>
+</section>
+<section id="les-tests-unitaires" class="level2">
+<h2 class="anchored" data-anchor-id="les-tests-unitaires">Les tests unitaires</h2>
+<p>Nous allons utiliser le package <code>pytest</code> pour réaliser nos tests en Python.</p>
+<section id="un-bon-test-unitaire" class="level3">
+<h3 class="anchored" data-anchor-id="un-bon-test-unitaire">Un bon test unitaire</h3>
+<ul>
+<li>Teste une seule fonctionnalité</li>
+<li>Isolé</li>
+<li>Reproductible</li>
+<li>Déterministe</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Isolé : indépendant des autres tests
+<ul>
+<li>si vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
+<li>le test ne doit se faire que sur la méthode A</li>
+<li>il faut <code>mocker</code> le comportement des autres méthodes</li>
+</ul></li>
+<li>Déterministe : donne toujours le même résultat</li>
+</ul>
+</div>
+</section>
+<section id="méthode-à-tester" class="level3">
+<h3 class="anchored" data-anchor-id="méthode-à-tester">Méthode à tester</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OperationsMathematiques:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Opérations Mathématiques"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diviser_cinq_par(<span class="va">self</span>, nombre) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Divise le nombre 5 par un nombre donné.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Parameters</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">        ----------</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">        nombre : float or int</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">            Le nombre par lequel 5 sera divisé.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">        -------</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">        float or None</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">            Le résultat de la division de 5 par le nombre donné.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">            Si le nombre est égal à 0, la méthode retourne None.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> nombre <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">5</span> <span class="op">/</span> nombre</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="classe-de-test" class="level3">
+<h3 class="anchored" data-anchor-id="classe-de-test">Classe de test</h3>
+<p>Créons une classe de test.</p>
+<p>Pour tester le cas nominal, nous :</p>
+<ul>
+<li>choisissons un nombre en entrée</li>
+<li>appelons la méthode <code>diviser_cinq_par()</code></li>
+<li>vérifions que la valeur retournée est égale à la valeur attendue</li>
+</ul>
+</section>
+<section id="cas-nominal" class="level3">
+<h3 class="anchored" data-anchor-id="cas-nominal">Cas Nominal</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mathematiques.operations_mathematiques <span class="im">import</span> OperationsMathematiques</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestOperationsMathematiques():</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_nombre_non_nul(<span class="va">self</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="notes">
+<p>Est-ce suffisant ?</p>
+</div>
+</section>
+<section id="autres-cas" class="level3">
+<h3 class="anchored" data-anchor-id="autres-cas">Autres cas</h3>
+<p>Mais ce n’est pas suffisant !</p>
+<ul>
+<li>La méthode a également un autre retour possible : <code>None</code></li>
+<li>Il faut aussi tester ce cas</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_par_zero(<span class="va">self</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        resultat <span class="op">=</span> OperationsMathematiques().diviser_cinq_par(nombre)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="kw">is</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="et-si" class="level3">
+<h3 class="anchored" data-anchor-id="et-si">Et si…</h3>
+<p>Nous appelons la méthode avec ce paramètre : <code>diviser_cinq_par("a")</code> ?</p>
+<p>Vous pouvez aussi écrire un test pour vérifier que votre méthode renvoie bien une exception <code>TypeError</code> dans ce cas.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_operations_mathematiques.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="test_operations_mathematiques.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_diviser_cinq_string(<span class="va">self</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        nombre <span class="op">=</span> <span class="st">"a"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN / THEN</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            OperationsMathematiques().diviser_cinq_par(nombre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="notes">
+<p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
+</div>
+</section>
+<section id="ce-quil-faut-retenir" class="level3">
+<h3 class="anchored" data-anchor-id="ce-quil-faut-retenir">Ce qu’il faut retenir</h3>
+<p>Les tests unitaires</p>
+<ul>
+<li>vérifient qu’une méthode fait ce qu’elle doit faire</li>
+<li>il faut tester les cas nominaux, mais également les cas à la marge et les erreurs</li>
+<li>un test unitaire teste UNE et UNE seule chose</li>
+<li>il faut autant de tests unitaires que de retours possibles</li>
+</ul>
+<div class="notes">
+<p>Vu en 1A :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">'a, b, resultat_attendu'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>)]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="mock" class="level2">
+<h2 class="anchored" data-anchor-id="mock">Mock</h2>
+<ul>
+<li>Objet simulé qui remplace un composant réel lors des tests</li>
+<li>Permet de tester une unité de code en isolant ses dépendances externes</li>
+<li>Simuler des scénarios complexes comme les erreurs de réseau</li>
+</ul>
+<section id="mock---exemple" class="level3">
+<h3 class="anchored" data-anchor-id="mock---exemple">Mock - exemple</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>joueur_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JoueurService:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> creer(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Joueur:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        nouveau_joueur <span class="op">=</span> Joueur(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            pseudo<span class="op">=</span>pseudo,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            age<span class="op">=</span>age,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            mail<span class="op">=</span>mail,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        creation_ok <span class="op">=</span> JoueurDao().creer(nouveau_joueur)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> creation_ok:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> nouveau_joueur</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="notes">
+<p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
+</div>
+</section>
+<section id="mock---exemple-1" class="level3">
+<h3 class="anchored" data-anchor-id="mock---exemple-1">Mock - exemple</h3>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test_joueur_service.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="test_joueur_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_creer_ok():</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" "Création de Joueur réussie"""</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GIVEN</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    JoueurDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># WHEN</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    joueur <span class="op">=</span> JoueurService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># THEN</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(joueur, Joueur)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> joueur.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="les-test-driven-development-tdd" class="level2">
+<h2 class="anchored" data-anchor-id="les-test-driven-development-tdd">Les Test Driven Development (TDD)</h2>
+<section id="quand-tester" class="level3">
+<h3 class="anchored" data-anchor-id="quand-tester">Quand tester ?</h3>
+<div class="fragment">
+<p>Au début !</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Plus on teste tôt <span class="emoji" data-emoji="arrow_right">➡️</span> plus les tests sont efficaces et peu coûteux !</p>
+</div>
+</div>
+</div>
+</section>
+<section id="test-driven-development" class="level3">
+<h3 class="anchored" data-anchor-id="test-driven-development">Test Driven Development</h3>
+<p>La meilleure pratique :</p>
 <ol type="1">
-<li>L’analyse fonctionnelle
-<ul>
-<li>Définition</li>
-<li>Diagrammes UML</li>
-</ul></li>
-<li>L’architecture logicielle
-<ul>
-<li>Définition</li>
-<li>Séparation des responsabilités</li>
-</ul></li>
+<li>Créer les tests</li>
+<li>Coder la fonction</li>
 </ol>
 </section>
-<section id="analyse-fonctionnelle" class="level2 hide-html-render">
-<h2 class="anchored" data-anchor-id="analyse-fonctionnelle">Analyse fonctionnelle</h2>
-<iframe src="https://giphy.com/embed/l0HlQngl0Eja36dlS" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-<div class="notes">
-<p>80 % des projets sont un echec (total ou relatif).</p>
-<p>Les questions qu’il faut se poser avant de commencer :</p>
+<section id="logique" class="level3">
+<h3 class="anchored" data-anchor-id="logique">Logique</h3>
+<p>Cela paraît un peu étrange, mais en fait pas tant que ça.</p>
+<p>Lorsque vous codez une fonction, vous savez avant de commencer :</p>
 <ul>
-<li>Qu’est ce qu’on fait ? Qui le fait</li>
-<li>Besoins du client</li>
-<li>Fonctionnalités requises / optionnelles / bonus</li>
-<li>Bien gérer les priorités</li>
-<li>Répartition des rôles dans l’équipe</li>
+<li>quels seront les paramètres en entrée</li>
+<li>quels résultats vous attendez en sortie</li>
+<li>donc vous savez déjà quoi tester !</li>
 </ul>
+</section>
+<section id="pratique-du-tdd" class="level3">
+<h3 class="anchored" data-anchor-id="pratique-du-tdd">Pratique du TDD</h3>
+<ul>
+<li>✅ Amélioration de la qualité du code</li>
+<li>✅ Réduction des bugs</li>
+<li>❌ puis ✅ Temps</li>
+<li>❌ Maintenance des tests</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="phases-dun-projet" class="level3">
-<h3 class="anchored" data-anchor-id="phases-dun-projet">Phases d’un projet</h3>
-<ul>
-<li>Analyse des besoins</li>
-<li>Planification</li>
-<li>Conception</li>
-<li>Développements</li>
-<li>Recette</li>
-<li>Déploiement</li>
-<li>Maintenance</li>
-</ul>
-<div class="notes">
-<p>Dans les projets classiques (Cycle en V), ces phases étaient très ségmentées</p>
+<div class="callout-title-container flex-fill">
+Important
 </div>
-<hr>
-<p><a href="./img/agile-tree-swing-cartoon.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./img/agile-tree-swing-cartoon.png" class="img-fluid"></a></p>
-<div class="notes">
-<ul>
-<li>Important de discuter</li>
-<li>Reformulez</li>
-<li>Utilisez des mots simples</li>
-<li>Imaginez que vous expliquez le projet à vos grands parents</li>
-<li>parler doc, arrivée sur poste, initiatives</li>
-</ul>
 </div>
-</section>
-<section id="cest-quoi-lanalyse-fonctionnelle" class="level3">
-<h3 class="anchored" data-anchor-id="cest-quoi-lanalyse-fonctionnelle">C’est quoi l’analyse fonctionnelle ?</h3>
-<ul>
-<li>Première étape de tous les projets</li>
-<li>Détermine les fonctions, acteurs du produit pour répondre aux besoins du client</li>
-<li>Diagrammes pour échanger avec le client</li>
-<li>Priorise les travaux</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Permet de s’approprier le sujet</li>
-<li>Ce n’est pas du temps perdu car rajouter des fonctionnalités non prévues est extrêmement compliqué</li>
-<li>Cette phase sera la première partie du rapport intermédiaire</li>
-</ul>
-<p>coût d’ajout d’une fonctionnalité / coût correction bug</p>
-<p>Cost of Change Curve:</p>
-<ul>
-<li>Cahier des charges : 1 €</li>
-<li>Développement : 10 €</li>
-<li>Tests : 50 €</li>
-<li>Production : 100 €</li>
-</ul>
+<div class="callout-body-container callout-body">
+<p>Avantages &gt;&gt;&gt; Incovénients</p>
 </div>
-</section>
-<section id="les-questions-à-se-poser" class="level3">
-<h3 class="anchored" data-anchor-id="les-questions-à-se-poser">Les questions à se poser</h3>
-<ul>
-<li>Quels sont les types d’utilisateurs qui vont utiliser mon application (administrateur, gestionnaire, client…) ?</li>
-<li>Quelles sont les fonctionnalités ? Fonctionnalités communes entre les profils ?</li>
-<li>Comment fonctionnent les processus de l’application ?</li>
-<li>Quels sont les diagrammes à utiliser ?</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Pour les premières questions diagramme de cas d’utilisation</li>
-<li>Processus -&gt; diagramme d’activité</li>
-<li>Pourquoi faire des diagrammes ? D’un coup d’oeil on a toutes les infos
-<ul>
-<li>Commentez vos diagrammes</li>
-</ul></li>
-</ul>
 </div>
-</section>
-<section id="les-diagrammes-uml" class="level3">
-<h3 class="anchored" data-anchor-id="les-diagrammes-uml">Les diagrammes UML</h3>
-<ul>
-<li>Cours de 1A</li>
-<li>UML 2.5, Pascal Roques, Eyrolles, Mémento (bibliothèque Ensai)</li>
-</ul>
 <div class="notes">
-<ul>
-<li>Pas le temps de vous refaire un cours</li>
-<li>Il y a des ressources à la bibliothèque et sur internet</li>
-<li>Demandez à votre tuteur ce qu’il attend</li>
-</ul>
-</div>
-</section>
-<section id="questions" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="questions">Questions ?</h3>
-<iframe src="https://giphy.com/embed/TgF6xfH8V0mZcUyneP" width="960" height="540" frameborder="0" class="giphy-embed no-print" allowfullscreen="">
-</iframe>
-</section>
-<section id="architecture-logicielle" class="level2">
-<h2 class="anchored" data-anchor-id="architecture-logicielle">Architecture logicielle</h2>
-<p><a href="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://media.giphy.com/media/yoJC2s3ppnJ7P8m80M/giphy.gif" class="img-fluid"></a></p>
-<div class="notes">
-<p>Voila pour les grand principes.</p>
-<p>On va maintenant rentrer dans le concret.</p>
-</div>
-<section id="cest-quoi-larchitecture-logicielle" class="level3">
-<h3 class="anchored" data-anchor-id="cest-quoi-larchitecture-logicielle">C’est quoi l’architecture logicielle ?</h3>
-<ul>
-<li>Le pendant technique de l’analyse fonctionnelle</li>
-<li>Maintenant que l’on a le qui et quoi, on détermine le comment</li>
-<li>On dessine le code de notre application</li>
-<li>Vision macro de notre application (agencement des grandes pièces)</li>
-</ul>
-<div class="notes">
-<p>Pour le moment on ne fait pas encore de code.</p>
-<p>On va seulement faire une ébauche de notre application avec les composants qui la compose (aussi bien logique que physique).</p>
-<p>Par exemple dans votre cas vous allez sûrement avoir :</p>
-<ul>
-<li>Un code python qui tourne sur votre ordinateur</li>
-<li>Un webservice externe qui vous fournis des données</li>
-<li>Une base de données postgres.</li>
-</ul>
-<p>C’est déjà 3 composants, mais rapidement on en beaucoup et il faut savoir comment les agencer</p>
-</div>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture" class="level3 hide-html-render">
-<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture">Pourquoi c’est important : parallèle avec l’architecture</h3>
-<p><a href="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://media.giphy.com/media/3o6MbsNhExCQT940Le/giphy-downsized.gif" class="img-fluid"></a></p>
-</section>
-<section id="pourquoi-cest-important-parallèle-avec-larchitecture-1" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-cest-important-parallèle-avec-larchitecture-1">Pourquoi c’est important : parallèle avec l’architecture</h3>
-<ul>
-<li>Pièces, l’installation électrique, l’eau, le gaz, contraintes législatives, s’adapter au terrain…</li>
-<li>Besoin de réfléchir comment il faut agencer tout ça dès le début</li>
-<li>Si on construit au fil de l’eau, on risque d’avoir une maison incohérente (au mieux)</li>
-<li><strong>Ce n’est pas du temps perdu !</strong></li>
-</ul>
-<div class="notes">
-<p>Certaines personnes disent même qu’on devrait passer plus de temps à analyser qu’à coder.</p>
-<p>Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
-<p>Les IAgen peuvent presque coder à notre place.</p>
-</div>
-</section>
-<section id="un-grand-principe-separation-of-concerns" class="level3">
-<h3 class="anchored" data-anchor-id="un-grand-principe-separation-of-concerns">Un grand principe : separation of concerns</h3>
-<p><a href="img/archi-layers.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/archi-layers.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>Version macro en 3 couches.</p>
-<ul>
-<li>Présentation : tout ce qui se charge de l’affichage</li>
-<li>Business : c’est le métier de votre application, sa plus-value</li>
-<li>Data : stockage des données</li>
-</ul>
-<p>Chaque couche communique avec celles adjacentes.<br>
-Une couche a juste à savoir comment elle doit demander une information et ce qu’on lui retourne.<br>
-Pas évident mais très important !!!</p>
-</div>
-</section>
-<section id="les-principales-couches-dune-application" class="level3">
-<h3 class="anchored" data-anchor-id="les-principales-couches-dune-application">Les principales couches d’une application</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> tout ce qui se charge de l’affichage (page web, console, fenêtre)</li>
-<li><strong><em>Métier :</em></strong> c’est le métier de votre application, sa <strong>plus-value</strong></li>
-<li><strong><em>Persistance :</em></strong> gère la persistance des données. Base de données ou système de fichiers</li>
-</ul>
-<div class="notes">
-<p>Dans le monde pro :</p>
-<ul>
-<li>Présentation : JavaScript</li>
-<li>Métier : Java / Python</li>
-<li>Persistance : PostgreSQL ou MariaDB</li>
-</ul>
-</div>
-</section>
-<section id="pour-votre-projet" class="level3">
-<h3 class="anchored" data-anchor-id="pour-votre-projet">Pour votre projet</h3>
-<ul>
-<li><strong><em>Présentation :</em></strong> terminal</li>
-<li><strong><em>Métier :</em></strong> votre code Python</li>
-<li><strong><em>Persistance :</em></strong> base de données</li>
-</ul>
-<div class="notes">
-<p>Exemple page web</p>
-</div>
-</section>
-<section id="zoom-sur-la-couche-métier" class="level3">
-<h3 class="anchored" data-anchor-id="zoom-sur-la-couche-métier">Zoom sur la couche métier</h3>
-<p><a href="img/archi-business-layer.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/archi-business-layer.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>À l’intérieur de la couche Métier, il y a plusieurs sous-couches.</p>
-<p>Dans les TP :</p>
-<ul>
-<li>Couche présentation : View (on navigue entre des vues)</li>
-<li>DAO, business_object, service</li>
-<li>Contrôleur (client) : Il reçoit les demandes de l’utilisateur via l’interface utilisateur (par exemple, une requête HTTP dans le cas d’une application Web) et appelle les services appropriés pour exécuter les actions demandées.</li>
-</ul>
-</div>
-</section>
-<section id="les-couches-de-la-couche-métier-12" class="level3">
-<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-12">Les couches de la couche métier 1/2</h3>
-<ul>
-<li><strong><em>DAO</em> (<em>Data access object</em>) :</strong>
-<ul>
-<li>C’est la partie de votre code qui communique avec la base de données (CM4/TP4)</li>
-</ul></li>
-<li><strong><em>Service :</em></strong>
-<ul>
-<li>Code métier</li>
-<li>Manipule des objets métiers pour créer de l’information ou de la valeur</li>
-<li>Demande des objets à la couche DAO (TP4)</li>
-<li>Appelle les webservices externes (TP3)</li>
-</ul></li>
-</ul>
-</section>
-<section id="les-couches-de-la-couche-métier-22" class="level3">
-<h3 class="anchored" data-anchor-id="les-couches-de-la-couche-métier-22">Les couches de la couche métier 2/2</h3>
-<ul>
-<li><strong><em>Objets métiers :</em></strong>
-<ul>
-<li>Couche transversale</li>
-<li>Représentent des concepts métiers que votre code va manipuler</li>
-<li>Objets avec surtout des attributs et peu de méthodes</li>
-</ul></li>
-<li><strong><em>Contrôleur :</em></strong>
-<ul>
-<li>Récupère les inputs des utilisateurs</li>
-<li>Renvoie les données à afficher</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p>On découpe les objets :</p>
-<ul>
-<li>Attributs -&gt; Objets métiers (~DTO)</li>
-<li>Méthodes -&gt; Services</li>
-</ul>
-</div>
-</section>
-<section id="pourquoi-séparer-en-couches" class="level3">
-<h3 class="anchored" data-anchor-id="pourquoi-séparer-en-couches">Pourquoi séparer en couches ?</h3>
-<ul>
-<li>Travail en groupe 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
-<li>Lisibilité du code 📖</li>
-<li>Débogages 🐞</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Limiter les risques d’erreurs quand on modifie le code (éviter l’assiette de spaghetti) 🍝</strong></p>
-</blockquote>
-<div class="notes">
-<p>Il faut savoir qu’un code doit être lisible par les autres.<br>
-Et les autres, ça peut être soi-même dans 2 mois. Blague sur la relecture de code.<br>
-Si on a un code bien séparé, différentes équipes peuvent travailler en parallèle.<br>
-Et séparer en couches permet de trouver rapidement la source du problème.</p>
-</div>
-</section>
-<section id="informations-à-retenir" class="level3">
-<h3 class="anchored" data-anchor-id="informations-à-retenir">Informations à retenir</h3>
-<ul>
-<li>Passer du temps à réfléchir aux différents modules d’une application n’est pas une perte de temps 🕵️‍♀️</li>
-<li>Diviser en couches permet de travailler en parallèle 🧪🧫📚</li>
-<li>Mais il faut encore réfléchir à comment bien coder 🤖</li>
-</ul>
-<div class="notes">
-<p>Possible en projet de se répartir les couches.</p>
+<p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
+<p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
 </div>
 
 
