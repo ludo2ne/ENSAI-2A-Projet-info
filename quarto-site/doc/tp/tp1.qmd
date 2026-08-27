@@ -97,7 +97,19 @@ By having [full access to your local files and project structure]{.underline}, t
 
 To use it in VS Code, there are a few steps you need to take first:
 
-- [ ] Follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#ia-agent){target="_blank"} to **set up** AI agent.
+- [ ] Optional: follow these [instructions](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#ia-agent){target="_blank"} to **set up** AI agent.
+
+
+::: {.callout-important}
+LLMs are a limited resource. Please use them **moderately and responsibly**.
+
+- **Models hosted on SSP Cloud**
+  The available computing power is limited, so the resources allocated are also limited. Avoid unnecessary or intensive requests.
+- **External providers** (e.g. Mistral, ChatGPT)
+  Free access is subject to a limited number of tokens. Once this quota is reached, the service may no longer be available for free.
+
+**In all cases:** use LLMs when they are genuinely useful, and avoid unnecessary requests.
+:::
 
 
 ## Repositories creation
@@ -125,7 +137,9 @@ This is the shared central repository for all project members to synchronize the
 
 ### Datalab service
 
-Before creating your local repositories, you will launch a VSCode-python service.
+You will be working on a VSCode-Python service, which will be where your local repository will be located.
+
+Let's start by launching the service.
 
 But you will not launch directly the catalog service. You will custom it first by:
 
@@ -136,17 +150,17 @@ But you will not launch directly the catalog service. You will custom it first b
 Let's do this manually:
 
 - [ ] In the catalog, select **VSCode-python** and click [Launch]{.blue-button} **[once]{.underline}**
-- [ ] Initialization script (URL): `https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh`
+- [ ] **Initialization script:** Fill url with `https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh`
   - This script will install/uninstall VSCode extensions
 
 ::: {.callout-note}
 [More about initialization script](https://ludo2ne.github.io/ENSAI-tools/doc/datalab/advanced.html){target="_blank"}
 :::
 
-- [ ] Fill **Git repository url** using https url of your remote repository
-- [ ] Select *Open the service in the clone folder*
-- [ ] Network: expose ports 5000 and 8000
-- [ ] Enable AI Assistant
+- [ ] **Git:** Fill **Repository url** using https url of your remote repository
+- [ ] **Git:** Select *Open the service in the clone folder*
+- [ ] **Network:** expose ports 5000 and 8000
+- [ ] **User preferences:** Enable AI Assistant
 - [ ] [Launch]{.blue-button} and [Open]{.blue-button} the service
 
 ::: {.callout-important}
@@ -158,7 +172,7 @@ When you change the default settings for starting a service, you can:
 - save that configuration 
 - also generate a link that starts the service using that configuration
 
-> Example of link: <https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.5.7&s3=default&init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh%C2%BB&git.repository=%C2%ABhttps%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git%C2%BB&networking.user.enabled=true&networking.user.ports[1]=8000>{target="_blank"}
+> Example of link: <https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&version=2.6.2&s3=default&init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&git.asCodeServerRoot=true&networking.user.enabled=true&networking.user.ports[1]=8000&autoLaunch=true>{target="_blank"}
 
 
 ### Local repositories
@@ -183,10 +197,8 @@ Normally, the root folder of your file explorer is your repository (since you ch
   - Manually: File > **Open Folder** > `/home/onyxia/work/<repo_name>` > OK
   - Or command: `code-server /home/onyxia/work/ENSAI-2A-projet-info-template`
 
-This opens a new tab with your project set as the root of your file explorer.
+This opens a new tab (you can close the previous one) with your project set as the root of your file explorer.
 
-- [ ] In the new tab, open a terminal
-  - Close the previous tab
 - [ ] Check which repository your clone is connected to:
   - `git remote -v`
 
@@ -234,7 +246,7 @@ Let's focus on some files.
 ### README
 
 ::: {.callout-important}
-The root README provides high-level instructions for users to launch the application, while the README files located in the backend/ and frontend/ directories contain technical documentation intended for developers."
+The root README provides high-level instructions for users to launch the application, while the README files located in the backend/ and frontend/ directories contain technical documentation intended for developers.
 :::
 
 Follow instructions to :
@@ -304,7 +316,7 @@ The `uv.lock` file is a "lockfile" that records the **exact state** of your proj
 
 You might design a Web services (mandatory) and/or a Menu-driven interface (optional):
 
-- **Web services**: User interaction via API endpoints to retrieve data
+- **Web services**: Interaction via API endpoints to retrieve data
 - **Menu-driven apps**: User interaction via navigation menus
 
 
@@ -333,7 +345,7 @@ Target: Humans :bust_in_silhouette:
 
 ### A webservice
 
-We will discuss webservices in more detail in Lab 3.
+We will discuss webservices in more detail in Lab 4.
 
 - [ ] Following the instructions in the README, lanch the *backend* application
   - Once it starts, **don't click on the pop-up**. It won't work!
@@ -371,31 +383,17 @@ If not, check the terminal in which you launched the application. Perhaps you fo
 - [ ] Search for players by their ID
   - Try IDs 6 and 99
 
-:construction: 
-
-:::{.notes}
-TODO simplement parler de code 200, 400 ou 500 et détailler au TP4
-:::
 
 ::: {.callout-tip title="HTTP Status codes" collapse="true"}
+More details in Lab4.
+
 | Code Range | Type | Category | Brief Description |
 | :--- | :--- | :--- | :--- |
 | **2xx** | **Success** | Success | The action was successfully received, understood, and accepted. |
 | **4xx** | **Client Error** | Client Error | The request contains bad syntax or cannot be fulfilled by the client. |
 | **5xx** | **Server Error** | Server Error | The server failed to fulfill an apparently valid request. |
 
-| Code | Type | Description |
-| :--- | :--- | :--- |
-| **200** | Success | **OK**: The request succeeded. |
-| **201** | Success | **Created**: Request fulfilled and a new resource was created. |
-| **400** | Client Error | **Bad Request**: The server cannot process the request due to client error. |
-| **401** | Client Error | **Unauthorized**: Authentication is required and has failed or not been provided. |
-| **403** | Client Error | **Forbidden**: The client does not have access rights to the content. |
-| **404** | Client Error | **Not Found**: The server cannot find the requested resource. |
-| **405** | Client Error | **Method Not Allowed**: The request method (GET, POST, etc.) is not supported. |
-| **500** | Server Error | **Internal Server Error**: A generic error message when an unexpected condition was encountered. |
-| **502** | Server Error | **Bad Gateway**: The server received an invalid response from an upstream server. |
-| **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
+: {tbl-colwidths="[15,15,15,55]" .striped .hover .secondary}
 :::
 
 
@@ -586,7 +584,7 @@ A team member :
 
 - [ ] Creates a remote repository on GitHub ([new Repository](https://github.com/new){target="_blank"})
   - Repository name: `ensai-it-project-2a-team<N>`.
-  - Public (recommended) or Private
+  - Public (recommended)
   - Check *Add a README file*
   - .gitignore : *Python*
   - Choose a license : Apache, GNU, MIT...
@@ -610,7 +608,7 @@ Next, each team member :
   - If the teacher updates the template, it will be useful for retrieving the changes
 
 ::: {.callout-caution}
-Afterwards, you'll make sure that your depot is "tidy", in the same way as described in the previous section.
+Afterwards, you'll make sure that your repo is "tidy", in the same way as described in the previous section.
 :::
 
 ### .env file

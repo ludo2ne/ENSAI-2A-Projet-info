@@ -15,6 +15,23 @@ categories:
   - Data Mapping
 ---
 
+:::{.notes}
+| Code | Type | Description |
+| :--- | :--- | :--- |
+| **200** | Success | **OK**: The request succeeded. |
+| **201** | Success | **Created**: Request fulfilled and a new resource was created. |
+| **400** | Client Error | **Bad Request**: The server cannot process the request due to client error. |
+| **401** | Client Error | **Unauthorized**: Authentication is required and has failed or not been provided. |
+| **403** | Client Error | **Forbidden**: The client does not have access rights to the content. |
+| **404** | Client Error | **Not Found**: The server cannot find the requested resource. |
+| **405** | Client Error | **Method Not Allowed**: The request method (GET, POST, etc.) is not supported. |
+| **500** | Server Error | **Internal Server Error**: A generic error message when an unexpected condition was encountered. |
+| **502** | Server Error | **Bad Gateway**: The server received an invalid response from an upstream server. |
+| **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
+
+: {tbl-colwidths="[15,15,70]" .striped .hover .secondary}
+:::
+
 ## Before you start {.unnumbered}
 
 This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
