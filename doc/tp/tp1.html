@@ -638,8 +638,26 @@ Caution
 <p>By having <u>full access to your local files and project structure</u>, the agent understands the specific context of your codebase. This allows it to suggest highly relevant code snippets, automate repetitive boilerplate, and perform complex refactoring tasks without you ever having to leave your development environment.</p>
 <p>To use it in VS Code, there are a few steps you need to take first:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Follow these <a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#ia-agent" target="_blank">instructions</a> to <strong>set up</strong> AI agent.</label></li>
+<li><label><input type="checkbox">Optional: follow these <a href="https://ludo2ne.github.io/ENSAI-tools/doc/datalab/vscode-python.html#ia-agent" target="_blank">instructions</a> to <strong>set up</strong> AI agent.</label></li>
 </ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>LLMs are a limited resource. Please use them <strong>moderately and responsibly</strong>.</p>
+<ul>
+<li><strong>Models hosted on SSP Cloud</strong> The available computing power is limited, so the resources allocated are also limited. Avoid unnecessary or intensive requests.</li>
+<li><strong>External providers</strong> (e.g.&nbsp;Mistral, ChatGPT) Free access is subject to a limited number of tokens. Once this quota is reached, the service may no longer be available for free.</li>
+</ul>
+<p><strong>In all cases:</strong> use LLMs when they are genuinely useful, and avoid unnecessary requests.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="repositories-creation" class="level2" data-number="2">
@@ -689,7 +707,8 @@ Warning
 </section>
 <section id="datalab-service" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="datalab-service"><span class="header-section-number">2.2</span> Datalab service</h3>
-<p>Before creating your local repositories, you will launch a VSCode-python service.</p>
+<p>You will be working on a VSCode-Python service, which will be where your local repository will be located.</p>
+<p>Let’s start by launching the service.</p>
 <p>But you will not launch directly the catalog service. You will custom it first by:</p>
 <ul>
 <li>adding/removing some extensions</li>
@@ -699,7 +718,7 @@ Warning
 <p>Let’s do this manually:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">In the catalog, select <strong>VSCode-python</strong> and click <span class="blue-button">Launch</span> <strong><u>once</u></strong></label></li>
-<li><label><input type="checkbox">Initialization script (URL): <code>https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh</code></label>
+<li><label><input type="checkbox"><strong>Initialization script:</strong> Fill url with <code>https://raw.githubusercontent.com/ludo2ne/ENSAI-2A-projet-info-template/refs/heads/main/onyxia_setup.sh</code></label>
 <ul>
 <li>This script will install/uninstall VSCode extensions</li>
 </ul></li>
@@ -718,10 +737,10 @@ Note
 </div>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Fill <strong>Git repository url</strong> using https url of your remote repository</label></li>
-<li><label><input type="checkbox">Select <em>Open the service in the clone folder</em></label></li>
-<li><label><input type="checkbox">Network: expose ports 5000 and 8000</label></li>
-<li><label><input type="checkbox">Enable AI Assistant</label></li>
+<li><label><input type="checkbox"><strong>Git:</strong> Fill <strong>Repository url</strong> using https url of your remote repository</label></li>
+<li><label><input type="checkbox"><strong>Git:</strong> Select <em>Open the service in the clone folder</em></label></li>
+<li><label><input type="checkbox"><strong>Network:</strong> expose ports 5000 and 8000</label></li>
+<li><label><input type="checkbox"><strong>User preferences:</strong> Enable AI Assistant</label></li>
 <li><label><input type="checkbox"><span class="blue-button">Launch</span> and <span class="blue-button">Open</span> the service</label></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -743,7 +762,7 @@ Important
 <li>also generate a link that starts the service using that configuration</li>
 </ul>
 <blockquote class="blockquote">
-<p>Example of link: <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.7&amp;s3=default&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh%C2%BB&amp;git.repository=%C2%ABhttps%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git%C2%BB&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000" target="_blank">https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.5.7&amp;s3=default&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh%C2%BB&amp;git.repository=%C2%ABhttps%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git%C2%BB&amp;networking.user.enabled=true&amp;networking.user.ports[1]=8000</a></p>
+<p>Example of link: <a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.6.2&amp;s3=default&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&amp;git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&amp;git.asCodeServerRoot=true&amp;networking.user.enabled=true&amp;networking.user.ports%5B1%5D=8000&amp;autoLaunch=true" target="_blank">https://datalab.sspcloud.fr/launcher/ide/vscode-python?name=vscode-python&amp;version=2.6.2&amp;s3=default&amp;init.personalInit=«https%3A%2F%2Fraw.githubusercontent.com%2Fludo2ne%2FENSAI-2A-projet-info-template%2Frefs%2Fheads%2Fmain%2Fonyxia_setup.sh»&amp;git.repository=«https%3A%2F%2Fgithub.com%2Fludo2ne%2FENSAI-2A-projet-info-template.git»&amp;git.asCodeServerRoot=true&amp;networking.user.enabled=true&amp;networking.user.ports[1]=8000&amp;autoLaunch=true</a></p>
 </blockquote>
 </section>
 <section id="local-repositories" class="level3" data-number="2.3">
@@ -784,12 +803,8 @@ Important
 <li>Or command: <code>code-server /home/onyxia/work/ENSAI-2A-projet-info-template</code></li>
 </ul></li>
 </ul>
-<p>This opens a new tab with your project set as the root of your file explorer.</p>
+<p>This opens a new tab (you can close the previous one) with your project set as the root of your file explorer.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">In the new tab, open a terminal</label>
-<ul>
-<li>Close the previous tab</li>
-</ul></li>
 <li><label><input type="checkbox">Check which repository your clone is connected to:</label>
 <ul>
 <li><code>git remote -v</code></li>
@@ -898,7 +913,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The root README provides high-level instructions for users to launch the application, while the README files located in the backend/ and frontend/ directories contain technical documentation intended for developers.”</p>
+<p>The root README provides high-level instructions for users to launch the application, while the README files located in the backend/ and frontend/ directories contain technical documentation intended for developers.</p>
 </div>
 </div>
 <p>Follow instructions to :</p>
@@ -1003,7 +1018,7 @@ Note
 <h2 data-number="4" class="anchored" data-anchor-id="application-example"><span class="header-section-number">4</span> Application example</h2>
 <p>You might design a Web services (mandatory) and/or a Menu-driven interface (optional):</p>
 <ul>
-<li><strong>Web services</strong>: User interaction via API endpoints to retrieve data</li>
+<li><strong>Web services</strong>: Interaction via API endpoints to retrieve data</li>
 <li><strong>Menu-driven apps</strong>: User interaction via navigation menus</li>
 </ul>
 <section id="web-services-vs-menu-driven" class="level3" data-number="4.1">
@@ -1030,7 +1045,7 @@ Note
 </section>
 <section id="a-webservice" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="a-webservice"><span class="header-section-number">4.2</span> A webservice</h3>
-<p>We will discuss webservices in more detail in Lab 3.</p>
+<p>We will discuss webservices in more detail in Lab 4.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Following the instructions in the README, lanch the <em>backend</em> application</label>
 <ul>
@@ -1093,12 +1108,8 @@ Note
 <li>Try IDs 6 and 99</li>
 </ul></li>
 </ul>
-<p><span class="emoji" data-emoji="construction">🚧</span></p>
-<div class="notes">
-<p>TODO simplement parler de code 200, 400 ou 500 et détailler au TP4</p>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="HTTP Status codes">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1107,14 +1118,15 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
+<p>More details in Lab4.</p>
+<table class="table-striped table-hover table-secondary caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1142,72 +1154,6 @@ Note
 <td style="text-align: left;"><strong>Server Error</strong></td>
 <td style="text-align: left;">Server Error</td>
 <td style="text-align: left;">The server failed to fulfill an apparently valid request.</td>
-</tr>
-</tbody>
-</table>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Code</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>200</strong></td>
-<td style="text-align: left;">Success</td>
-<td style="text-align: left;"><strong>OK</strong>: The request succeeded.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>201</strong></td>
-<td style="text-align: left;">Success</td>
-<td style="text-align: left;"><strong>Created</strong>: Request fulfilled and a new resource was created.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>400</strong></td>
-<td style="text-align: left;">Client Error</td>
-<td style="text-align: left;"><strong>Bad Request</strong>: The server cannot process the request due to client error.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>401</strong></td>
-<td style="text-align: left;">Client Error</td>
-<td style="text-align: left;"><strong>Unauthorized</strong>: Authentication is required and has failed or not been provided.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>403</strong></td>
-<td style="text-align: left;">Client Error</td>
-<td style="text-align: left;"><strong>Forbidden</strong>: The client does not have access rights to the content.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>404</strong></td>
-<td style="text-align: left;">Client Error</td>
-<td style="text-align: left;"><strong>Not Found</strong>: The server cannot find the requested resource.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>405</strong></td>
-<td style="text-align: left;">Client Error</td>
-<td style="text-align: left;"><strong>Method Not Allowed</strong>: The request method (GET, POST, etc.) is not supported.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>500</strong></td>
-<td style="text-align: left;">Server Error</td>
-<td style="text-align: left;"><strong>Internal Server Error</strong>: A generic error message when an unexpected condition was encountered.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>502</strong></td>
-<td style="text-align: left;">Server Error</td>
-<td style="text-align: left;"><strong>Bad Gateway</strong>: The server received an invalid response from an upstream server.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>503</strong></td>
-<td style="text-align: left;">Server Error</td>
-<td style="text-align: left;"><strong>Service Unavailable</strong>: The server is not ready to handle the request (e.g., maintenance).</td>
 </tr>
 </tbody>
 </table>
@@ -1413,7 +1359,7 @@ Note
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  action <span class="op">=</span> <span class="st">"you have to pull first"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  conflict_probability <span class="op">=</span> <span class="fl">0.95</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Help">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1422,7 +1368,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><a href="https://ludo2ne.github.io/ENSAI-tools/doc/git/presentation.html#la-routine-git" target="_blank">The sequence of Git commands</a> should become automatic.</p>
 <p>Read the Git messages carefully!</p>
@@ -1495,7 +1441,7 @@ Tip
 <li><label><input type="checkbox">Creates a remote repository on GitHub (<a href="https://github.com/new" target="_blank">new Repository</a>)</label>
 <ul>
 <li>Repository name: <code>ensai-it-project-2a-team&lt;N&gt;</code>.</li>
-<li>Public (recommended) or Private</li>
+<li>Public (recommended)</li>
 <li>Check <em>Add a README file</em></li>
 <li>.gitignore : <em>Python</em></li>
 <li>Choose a license : Apache, GNU, MIT…</li>
@@ -1546,7 +1492,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Afterwards, you’ll make sure that your depot is “tidy”, in the same way as described in the previous section.</p>
+<p>Afterwards, you’ll make sure that your repo is “tidy”, in the same way as described in the previous section.</p>
 </div>
 </div>
 <section id="env-file" class="level3" data-number="6.1">
