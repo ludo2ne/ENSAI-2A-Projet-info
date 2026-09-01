@@ -4,9 +4,20 @@ For each practical session, the teacher provides a starting branch: `tp<N>-start
 
 You will have to create a personal branch: `<username>-tp<N>` (e.g. *camille-tp2*) and work on your own branch.
 
+Perhaps some changes have been made to the teacher's repository since the last session.
+
+- [ ] Check that your local repository is connected to the teacher's repository
+  - `git remote -v`
+  - *origin*: your team's remote repository
+  - *upstream*: teacher's remote repository
+- [ ] If *upstream* is not listed, add it:
+  - `git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git`
+  - `git remote set-url --push upstream DISABLED` (you don't need to push on this repo)
+  - Check your configuration again with: `git remote -v`
+
 To start with a clean and up-to-date codebase:
 
-- [ ] `git fetch origin` to retrieve the latest information from your remote repository
+- [ ] `git fetch origin` to retrieve the latest information from your team's remote repository
 - [ ] `git fetch upstream` to retrieve the latest information from the teacher's repository
 - [ ] Create (and switch to) your branch: `git switch -c <username>-tp<N> upstream/tp<N>-start`
 - [ ] `git push -u origin <username>-tp<N>` to publish your branch on the remote

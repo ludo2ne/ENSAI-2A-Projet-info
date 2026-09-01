@@ -4,6 +4,17 @@
 - https://ensae-reproductibilite.github.io/website/chapters/code-quality.html
 - Docker: https://ensae-reproductibilite.github.io/website/chapters/portability.html
 
+### A corriger
+
+
+```pages/home.py
+-    if response:
++    if response.get("status_code") == 200:
+         logger.info("Database successfully reset")
+         st.toast("Database successfully reset ✅")
+```
+
+
 ### Projet
 
 - [ ] maj Template

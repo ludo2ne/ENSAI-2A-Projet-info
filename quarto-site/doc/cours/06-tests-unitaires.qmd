@@ -245,7 +245,9 @@ class PlayerService:
             mail=mail,
             fan_pokemon=fan_pokemon,
         )
+
         create_ok = PlayerDao().creer(new_player)
+
         if create_ok:
             return new_player
         else:
@@ -253,6 +255,8 @@ class PlayerService:
 ```
 
 :::{.notes}
+Expliquer brievement le contexte, car dao/service c'est encore nouveau.
+
 Comment prévoir le comportement de `JoueurDao().creer(nouveau_joueur)` ?
 :::
 
@@ -266,12 +270,18 @@ def test_create_ok():
     # GIVEN
     pseudo, mdp, age, mail, fan_pokemon = "jp", "1234", 15, "z@mail.oo", True
     PlayerDao().creer = MagicMock(return_value=True)
+
     # WHEN
     player = PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)
+
     # THEN
     assert isinstance(player, Player)
     assert player.pseudo == pseudo
 ```
+
+:::{.notes}
+Autre exemple (fin du TP3), mock DAO: tests sur un schéma dédié et pas sur les données de PROD.
+:::
 
 
 ## Test-Driven Development (TDD)
@@ -323,6 +333,8 @@ Advantages >>> Disadvantages
 La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.
 
 Sinon, si l'on écrit la fonction en premier, une fois que l'on a terminé, il y a 9 chances sur 10 que l'on se dise : "c'est bon ça marche, pas la peine de tester...". Et ça c'est pas bien !!!
+
+❌ puis ✅ Temps -> Prend du temps au début mais gain de temps à long terme
 :::
 
 

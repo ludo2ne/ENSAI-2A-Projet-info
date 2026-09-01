@@ -131,6 +131,7 @@ This is the shared central repository for all project members to synchronize the
 - [ ] Connect on [GitHub](https://github.com/){target="_blank"}
 - [ ] Create a new repository using [ENSAI-2A-projet-info-template](https://github.com/ludo2ne/ENSAI-2A-projet-info-template){target="_blank"} as a template
   - Button [Use this template](https://github.com/new?template_name=ENSAI-2A-projet-info-template&template_owner=ludo2ne){.green-button target="_blank"}
+  - **Include all branches**: ON
 - [ ] Add your team members
   - On the repository page > :gear: Settings > Collaborators > [Add people]{.green-button}
 - [ ] Send the address of the remote repository to your teammates
@@ -199,6 +200,9 @@ Normally, the root folder of your file explorer is your repository (since you ch
 
 This opens a new tab (you can close the previous one) with your project set as the root of your file explorer.
 
+- [ ] Add the teacher's repo as a secondary remote named *upstream*
+  - `git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git`
+  - If the teacher updates the template, it will be useful for retrieving the changes
 - [ ] Check which repository your clone is connected to:
   - `git remote -v`
 
@@ -603,9 +607,6 @@ Next, each team member :
   - *doc/tracking/2025.09.03-week1.md*: the first weekly point
   - *README.md*
   - *main.py*
-- [ ] Add the teacher's repo as a secondary remote named *upstream*
-  - `git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git`
-  - If the teacher updates the template, it will be useful for retrieving the changes
 
 ::: {.callout-caution}
 Afterwards, you'll make sure that your repo is "tidy", in the same way as described in the previous section.
