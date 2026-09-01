@@ -534,9 +534,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
 <p>For each practical session, the teacher provides a starting branch: <code>tp&lt;N&gt;-start</code>.</p>
 <p>You will have to create a personal branch: <code>&lt;username&gt;-tp&lt;N&gt;</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+<p>Perhaps some changes have been made to the teacher’s repository since the last session.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Check that your local repository is connected to the teacher’s repository</label>
+<ul>
+<li><code>git remote -v</code></li>
+<li><em>origin</em>: your team’s remote repository</li>
+<li><em>upstream</em>: teacher’s remote repository</li>
+</ul></li>
+<li><label><input type="checkbox">If <em>upstream</em> is not listed, add it:</label>
+<ul>
+<li><code>git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git</code></li>
+<li><code>git remote set-url --push upstream DISABLED</code> (you don’t need to push on this repo)</li>
+<li>Check your configuration again with: <code>git remote -v</code></li>
+</ul></li>
+</ul>
 <p>To start with a clean and up-to-date codebase:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest information from your remote repository</label></li>
+<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest information from your team’s remote repository</label></li>
 <li><label><input type="checkbox"><code>git fetch upstream</code> to retrieve the latest information from the teacher’s repository</label></li>
 <li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp&lt;N&gt; upstream/tp&lt;N&gt;-start</code></label></li>
 <li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp&lt;N&gt;</code> to publish your branch on the remote</label></li>

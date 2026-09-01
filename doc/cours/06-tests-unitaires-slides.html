@@ -559,13 +559,16 @@ Rémi Pépin
 <span id="cb6-7"><a aria-label="7"></a>            mail<span class="op">=</span>mail,</span>
 <span id="cb6-8"><a aria-label="8"></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
 <span id="cb6-9"><a aria-label="9"></a>        )</span>
-<span id="cb6-10"><a aria-label="10"></a>        create_ok <span class="op">=</span> PlayerDao().creer(new_player)</span>
-<span id="cb6-11"><a aria-label="11"></a>        <span class="cf">if</span> create_ok:</span>
-<span id="cb6-12"><a aria-label="12"></a>            <span class="cf">return</span> new_player</span>
-<span id="cb6-13"><a aria-label="13"></a>        <span class="cf">else</span>:</span>
-<span id="cb6-14"><a aria-label="14"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-10"><a aria-label="10"></a></span>
+<span id="cb6-11"><a aria-label="11"></a>        create_ok <span class="op">=</span> PlayerDao().creer(new_player)</span>
+<span id="cb6-12"><a aria-label="12"></a></span>
+<span id="cb6-13"><a aria-label="13"></a>        <span class="cf">if</span> create_ok:</span>
+<span id="cb6-14"><a aria-label="14"></a>            <span class="cf">return</span> new_player</span>
+<span id="cb6-15"><a aria-label="15"></a>        <span class="cf">else</span>:</span>
+<span id="cb6-16"><a aria-label="16"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
+<p>Expliquer brievement le contexte, car dao/service c’est encore nouveau.</p>
 <p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -591,12 +594,27 @@ Rémi Pépin
 <span id="cb7-4"><a aria-label="4"></a>    <span class="co"># GIVEN</span></span>
 <span id="cb7-5"><a aria-label="5"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
 <span id="cb7-6"><a aria-label="6"></a>    PlayerDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-7"><a aria-label="7"></a>    <span class="co"># WHEN</span></span>
-<span id="cb7-8"><a aria-label="8"></a>    player <span class="op">=</span> PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
-<span id="cb7-9"><a aria-label="9"></a>    <span class="co"># THEN</span></span>
-<span id="cb7-10"><a aria-label="10"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(player, Player)</span>
-<span id="cb7-11"><a aria-label="11"></a>    <span class="cf">assert</span> player.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-7"><a aria-label="7"></a></span>
+<span id="cb7-8"><a aria-label="8"></a>    <span class="co"># WHEN</span></span>
+<span id="cb7-9"><a aria-label="9"></a>    player <span class="op">=</span> PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb7-10"><a aria-label="10"></a></span>
+<span id="cb7-11"><a aria-label="11"></a>    <span class="co"># THEN</span></span>
+<span id="cb7-12"><a aria-label="12"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(player, Player)</span>
+<span id="cb7-13"><a aria-label="13"></a>    <span class="cf">assert</span> player.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<aside class="notes">
+<p>Autre exemple (fin du TP3), mock DAO: tests sur un schéma dédié et pas sur les données de PROD.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="test-driven-development-tdd" class="title-slide slide level2 center">
@@ -665,6 +683,7 @@ Rémi Pépin
 <aside class="notes">
 <p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
 <p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
+<p>❌ puis ✅ Temps -&gt; Prend du temps au début mais gain de temps à long terme</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
