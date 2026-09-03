@@ -414,6 +414,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exams" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exams</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-exams">    
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2023.html">
+ <span class="dropdown-text">Examen 2023</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2023-correction.html">
+ <span class="dropdown-text">Examen 2023 solution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2024.html">
+ <span class="dropdown-text">Examen 2024</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2024-correction.html">
+ <span class="dropdown-text">Examen 2024 solution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2025.html">
+ <span class="dropdown-text">Examen 2025</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2025-correction.html">
+ <span class="dropdown-text">Examen 2025 solution</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-various" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Various</span>
     </a>
@@ -733,12 +764,41 @@ Important
 <li><em>game_mode</em>: The type of game played (“coinflip” or “dice”)</li>
 <li><em>description</em>: To store more details about the game</li>
 </ul></li>
-<li><label><input type="checkbox">Add <em><strong>str</strong>()</em> method returning for example:</label></li>
+<li><label><input type="checkbox">Add <em>__str__()</em> method returning for example:</label></li>
 </ul>
 <blockquote class="blockquote">
 <p><em>coinflip</em> between Jacky and Jackie. Winner: Jackie</p>
 </blockquote>
 <p>We now have an object to store the results. We’ll see later how to insert them into the database.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ensuring code correctness isn’t always straightforward. Occasionally, manual testing can be more efficient than writing full unit tests for simple logic. As a workaround, you can use a sandbox.py file in the src folder for rapid prototyping.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>sandbox.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="sandbox.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> business_object.game <span class="im">import</span> Game</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> business_object.player <span class="im">import</span> Player</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Player(...)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Player(...)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> Game(...)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>and run it using : <code>uv run --project backend python backend/src/sandbox.py</code></p>
+</div>
+</div>
+</div>
 </section>
 <section id="polymorphic-game-modes" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="polymorphic-game-modes"><span class="header-section-number">2.2</span> Polymorphic Game Modes</h3>
@@ -748,30 +808,30 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>game_service.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="game_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, choice<span class="op">=</span><span class="st">"heads"</span>):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        ...</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="game_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, choice<span class="op">=</span><span class="st">"heads"</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If we want to add the ability to roll dice, we’ll end up with something like:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, game_mode, choice<span class="op">=</span><span class="st">"heads"</span>):</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># new paramter game_mode -------------↑ </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        ...</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> game_mode <span class="op">==</span> <span class="st">"coinflip"</span>:</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> game_mode <span class="op">==</span> <span class="st">"dice"</span>:</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            d1 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            d2 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> d1 <span class="op">&gt;</span> d2:</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> p1</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> d1 <span class="op">&lt;</span> d2:</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> p2</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> <span class="va">None</span>              </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, game_mode, choice<span class="op">=</span><span class="st">"heads"</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># new paramter game_mode -------------↑ </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        ...</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> game_mode <span class="op">==</span> <span class="st">"coinflip"</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            result <span class="op">=</span> secrets.choice([<span class="st">"heads"</span>, <span class="st">"tails"</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            winner <span class="op">=</span> p1 <span class="cf">if</span> result <span class="op">==</span> choice <span class="cf">else</span> p2</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> game_mode <span class="op">==</span> <span class="st">"dice"</span>:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            d1 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            d2 <span class="op">=</span> secrets.choice(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> d1 <span class="op">&gt;</span> d2:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> p1</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> d1 <span class="op">&lt;</span> d2:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> p2</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>              winner <span class="op">=</span> <span class="va">None</span>              </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is a violation of the <strong>Open/Closed Principle</strong>. Every time we want to add a new game (e.g., Blackjack, Poker heads up, Pokemon battle, etc.), we have to modify the core <code>GameService</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Goal">
 <div class="callout-header d-flex align-content-center">
@@ -792,28 +852,28 @@ Important
 <div class="code-with-filename-file">
 <pre><strong>game_service.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="game_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, game_mode, <span class="op">**</span>kwargs):</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find players by id -&gt; the code does not change</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        p1 <span class="op">=</span> PlayerDao().find_by_id(id_player)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        p2 <span class="op">=</span> PlayerDao().find_by_id(id_opponent)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get rules</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        mode <span class="op">=</span> get_mode(game_mode)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Play the game following rules</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Eventualy add extra parameters like choice (included in kwargs)</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        game <span class="op">=</span> mode.play(p1, p2, <span class="op">**</span>kwargs)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Elo ratings based on the game result </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        compute(game)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update Players object in the database (not this week)</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        PlayerDao().update(player1)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        PlayerDao().update(player2)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> game</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="game_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GameService:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play(<span class="va">self</span>, player_id, opponent_id, game_mode, <span class="op">**</span>kwargs):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Find players by id -&gt; the code does not change</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        p1 <span class="op">=</span> PlayerDao().find_by_id(id_player)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        p2 <span class="op">=</span> PlayerDao().find_by_id(id_opponent)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get rules</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        mode <span class="op">=</span> get_mode(game_mode)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Play the game following rules</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Eventualy add extra parameters like choice (included in kwargs)</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        game <span class="op">=</span> mode.play(p1, p2, <span class="op">**</span>kwargs)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate Elo ratings based on the game result </span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        compute(game)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update Players object in the database (not this week)</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        PlayerDao().update(player1)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        PlayerDao().update(player2)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> game</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="**kwargs">
 <div class="callout-header d-flex align-content-center">
@@ -840,6 +900,9 @@ Important
 <li>in a folder called <em>game_mode</em> in <em>business_object</em></li>
 </ul></li>
 <li><label><input type="checkbox">Defines a standard <em>play(p1, p2) -&gt; Game</em> abstract method</label></li>
+</ul>
+<p>Next, let’s create the two child classes that will inherit from <code>GameMode</code></p>
+<ul class="task-list">
 <li><label><input type="checkbox">Implement <code>DiceMode</code></label>
 <ul>
 <li>including method <em>play(p1, p2) -&gt; Game</em></li>
@@ -851,6 +914,26 @@ Important
 <li>cut and paste the code that was previously in GameService</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Imports">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Imports
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An import allows you to use code from one file in another. For example, if your CoinFlipMode class needs to create a Game object, you must import the Game class.</p>
+<p>You can use absolute imports from root folder <code>src</code> (recommended) or relative ones.</p>
+<p><code>from business_object.game import Game</code> means :</p>
+<ul>
+<li>From folder <em>business_object</em></li>
+<li>File <em>game</em> (.py)</li>
+<li>Import class <code>Game</code></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="a-factory-for-producing-gamemode" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="a-factory-for-producing-gamemode"><span class="header-section-number">2.3</span> A factory for producing GameMode</h3>
@@ -880,19 +963,19 @@ Important
 <li>the documentation for which is given below</li>
 </ul></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_mode(cls, game_mode: <span class="bu">str</span>) <span class="op">-&gt;</span> GameMode:</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns the corresponding GameMode object.</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">            game_mode (str): The identifier of the game mode (e.g., 'coinflip', 'dice').</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">            GameMode: An instance of a class implementing GameMode.</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Raises:</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">            ValueError: If the requested game_mode is not supported.</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_mode(cls, game_mode: <span class="bu">str</span>) <span class="op">-&gt;</span> GameMode:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns the corresponding GameMode object.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">            game_mode (str): The identifier of the game mode (e.g., 'coinflip', 'dice').</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">            GameMode: An instance of a class implementing GameMode.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Raises:</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">            ValueError: If the requested game_mode is not supported.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>When you pass a string to the factory, it returns an object of type DiceMode or CoinFlipMode (or throws an exception).</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -963,14 +1046,23 @@ Note
 <ul class="task-list">
 <li><label><input type="checkbox">update values in the <em>GameResponse</em></label></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> GameResponse(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        username1<span class="op">=</span>game.player1.username,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        username2<span class="op">=</span>game.player2.username,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>game.description,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        winner<span class="op">=</span>game.winner.username,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        new_elo1<span class="op">=</span>game.player1.elo,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        new_elo2<span class="op">=</span>game.player2.elo,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> GameResponse(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        username1<span class="op">=</span>game.player1.username,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        username2<span class="op">=</span>game.player2.username,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        description<span class="op">=</span>game.description,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        winner<span class="op">=</span>game.winner.username <span class="cf">if</span> game.winner <span class="cf">else</span> <span class="va">None</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        new_elo1<span class="op">=</span>game.player1.elo,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        new_elo2<span class="op">=</span>game.player2.elo,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Feel free to try it manually :</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Launch the backend</label></li>
+<li><label><input type="checkbox">Go to the swagger page and use <code>/login</code> endpoint</label>
+<ul>
+<li>Copy the token</li>
+</ul></li>
+<li><label><input type="checkbox">Play a Game against someone else</label></li>
+</ul>
 </section>
 </section>
 <section id="conclusion" class="level2" data-number="3">

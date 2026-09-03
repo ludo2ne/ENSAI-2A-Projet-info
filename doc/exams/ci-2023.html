@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ludovic Deneuville">
-<meta name="description" content="Slides">
+<meta name="author" content="">
+<meta name="dcterms.date" content="2023-10-24">
 
-<title>Présentation du projet info 2A – Projet info 2A</title>
+<title>Examen final : Compléments d’informatique – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,30 +28,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,12 +114,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -256,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Projet info 2A</span>
     </a>
   </div>
@@ -267,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -277,23 +309,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/presentation-tuteurs.html">
+    <a class="dropdown-item" href="../../doc/projet/presentation-tuteurs.html">
  <span class="dropdown-text">Présentation pour les tuteurs</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/french/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../doc/french/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/presentation-eleves.html">
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
  <span class="dropdown-text">Présentation to students</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/french/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../doc/french/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/notice-eleves.html">
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
  <span class="dropdown-text">Student notice</span></a>
   </li>  
         <li>
@@ -301,7 +333,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Template</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/projet/sujets.html">
+    <a class="dropdown-item" href="../../doc/projet/sujets.html">
  <span class="dropdown-text">Sujets</span></a>
   </li>  
     </ul>
@@ -312,35 +344,35 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-classes">    
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/01-introduction.html">
+    <a class="dropdown-item" href="../../doc/cours/01-introduction.html">
  <span class="dropdown-text">Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/02-outils-dev.html">
+    <a class="dropdown-item" href="../../doc/cours/02-outils-dev.html">
  <span class="dropdown-text">Development Tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/03-git.html">
+    <a class="dropdown-item" href="../../doc/cours/03-git.html">
  <span class="dropdown-text">Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/04-analyse-fonctionnelle.html">
+    <a class="dropdown-item" href="../../doc/cours/04-analyse-fonctionnelle.html">
  <span class="dropdown-text">Functional Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/05-poo-avancee.html">
+    <a class="dropdown-item" href="../../doc/cours/05-poo-avancee.html">
  <span class="dropdown-text">Advanced POO</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/06-tests-unitaires.html">
+    <a class="dropdown-item" href="../../doc/cours/06-tests-unitaires.html">
  <span class="dropdown-text">Unit Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/07-webservices.html">
+    <a class="dropdown-item" href="../../doc/cours/07-webservices.html">
  <span class="dropdown-text">Webservices</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/cours/08-dao-securite.html">
+    <a class="dropdown-item" href="../../doc/cours/08-dao-securite.html">
  <span class="dropdown-text">DAO and Security</span></a>
   </li>  
     </ul>
@@ -351,27 +383,27 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp1.html">
+    <a class="dropdown-item" href="../../doc/tp/tp1.html">
  <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp2.html">
+    <a class="dropdown-item" href="../../doc/tp/tp2.html">
  <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp3.html">
+    <a class="dropdown-item" href="../../doc/tp/tp3.html">
  <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp4.html">
+    <a class="dropdown-item" href="../../doc/tp/tp4.html">
  <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/tp5.html">
+    <a class="dropdown-item" href="../../doc/tp/tp5.html">
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/tp/2025/tp1.html">
+    <a class="dropdown-item" href="../../doc/tp/2025/tp1.html">
  <span class="dropdown-text">Old Labs</span></a>
   </li>  
     </ul>
@@ -384,27 +416,27 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-exams">    
         <li>
-    <a class="dropdown-item" href="../../../doc/exams/ci-2023.html">
+    <a class="dropdown-item" href="../../doc/exams/ci-2023.html">
  <span class="dropdown-text">Examen 2023</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/exams/ci-2023-correction.html">
+    <a class="dropdown-item" href="../../doc/exams/ci-2023-correction.html">
  <span class="dropdown-text">Examen 2023 solution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/exams/ci-2024.html">
+    <a class="dropdown-item" href="../../doc/exams/ci-2024.html">
  <span class="dropdown-text">Examen 2024</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/exams/ci-2024-correction.html">
+    <a class="dropdown-item" href="../../doc/exams/ci-2024-correction.html">
  <span class="dropdown-text">Examen 2024 solution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/exams/ci-2025.html">
+    <a class="dropdown-item" href="../../doc/exams/ci-2025.html">
  <span class="dropdown-text">Examen 2025</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/exams/ci-2025-correction.html">
+    <a class="dropdown-item" href="../../doc/exams/ci-2025-correction.html">
  <span class="dropdown-text">Examen 2025 solution</span></a>
   </li>  
     </ul>
@@ -419,11 +451,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">ENSAI-tools</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/divers/licences.html">
+    <a class="dropdown-item" href="../../doc/divers/licences.html">
  <span class="dropdown-text">Licences</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../doc/divers/sigles.html">
+    <a class="dropdown-item" href="../../doc/divers/sigles.html">
  <span class="dropdown-text">Sigles</span></a>
   </li>  
     </ul>
@@ -450,23 +482,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#objectifs" id="toc-objectifs" class="nav-link active" data-scroll-target="#objectifs">Objectifs</a></li>
-  <li><a href="#environnement-de-travail" id="toc-environnement-de-travail" class="nav-link" data-scroll-target="#environnement-de-travail">Environnement de travail</a></li>
-  <li><a href="#planning" id="toc-planning" class="nav-link" data-scroll-target="#planning">Planning</a></li>
-  <li><a href="#phases" id="toc-phases" class="nav-link" data-scroll-target="#phases">2 phases</a></li>
-  <li><a href="#travail-en-groupe" id="toc-travail-en-groupe" class="nav-link" data-scroll-target="#travail-en-groupe">Travail en groupe</a></li>
-  <li><a href="#le-jour-1" id="toc-le-jour-1" class="nav-link" data-scroll-target="#le-jour-1">Le jour 1</a></li>
-  <li><a href="#suivi" id="toc-suivi" class="nav-link" data-scroll-target="#suivi">Suivi</a></li>
-  <li><a href="#rendus" id="toc-rendus" class="nav-link" data-scroll-target="#rendus">Rendus</a></li>
-  <li><a href="#a-voir-avec-le-tuteur" id="toc-a-voir-avec-le-tuteur" class="nav-link" data-scroll-target="#a-voir-avec-le-tuteur">A voir avec le tuteur</a></li>
-  <li><a href="#template" id="toc-template" class="nav-link" data-scroll-target="#template">Template</a></li>
-  <li><a href="#outils" id="toc-outils" class="nav-link" data-scroll-target="#outils">Outils</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#poo-bases-de-données-et-sécurité-7-points" id="toc-poo-bases-de-données-et-sécurité-7-points" class="nav-link" data-scroll-target="#poo-bases-de-données-et-sécurité-7-points"><span class="header-section-number">1</span> POO, Bases de données et Sécurité (7 points)</a></li>
+  <li><a href="#web-services-3-points" id="toc-web-services-3-points" class="nav-link" data-scroll-target="#web-services-3-points"><span class="header-section-number">2</span> Web services (3 points)</a></li>
+  <li><a href="#git-et-versionnage-5-points" id="toc-git-et-versionnage-5-points" class="nav-link" data-scroll-target="#git-et-versionnage-5-points"><span class="header-section-number">3</span> Git et Versionnage (5 points)</a></li>
+  <li><a href="#agilité-et-tests-5-points" id="toc-agilité-et-tests-5-points" class="nav-link" data-scroll-target="#agilité-et-tests-5-points"><span class="header-section-number">4</span> Agilité et Tests (5 points)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="presentation-eleves-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ci-2023.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -478,25 +504,21 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Présentation du projet info 2A</h1>
+<h1 class="title">Examen final : Compléments d’informatique</h1>
+<p class="subtitle lead">UE3 : Compléments d’informatique</p>
 </div>
 
-<div>
-  <div class="description">
-    <a href="presentation-eleves-slides.html">Slides</a>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ludovic Deneuville </p>
-          </div>
-  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 24, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -506,410 +528,154 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="objectifs" class="level2">
-<h2 class="anchored" data-anchor-id="objectifs">Objectifs</h2>
+<section id="instructions" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instructions">Instructions</h2>
 <ul>
-<li>Développer une application en Python</li>
-<li>Découvrir l’architecture logicielle</li>
-<li>Communiquer avec une base de données, des webservices</li>
-<li>Concevoir et Modéliser (UML)</li>
-<li>Travailler en équipe</li>
+<li>Examen sur papier</li>
+<li>Durée : 2h</li>
+<li>Une feuille A4 manuscrite recto/verso autorisée</li>
+<li>Sans calculatrice</li>
 </ul>
-<div class="notes">
-<p>Vie ma vie de dév</p>
-<ul>
-<li>Éléments vus en cours et en TP</li>
-<li>PostgreSQL OK, SQLite NON</li>
-</ul>
-</div>
-<section id="une-application" class="level3">
-<h3 class="anchored" data-anchor-id="une-application">Une application</h3>
-<ul>
-<li>Base de données</li>
-<li>Backend</li>
-<li>Frontend</li>
-<li>API externe</li>
-</ul>
-<div class="notes">
-<p>BDD :</p>
-<ul>
-<li>commune ou individuelle</li>
-<li>fichier init.sql et pop.sql + reset_database</li>
-</ul>
-<p>Backend : coeur de l’appli à soigner</p>
-<p>Frontend : si besoin, code non évalué</p>
-<p>API externe :</p>
-<ul>
-<li>Données statiques, dynamiques ? Quand requeter ?</li>
-<li>Attention limitation</li>
-</ul>
-</div>
-</section>
-</section>
-<section id="environnement-de-travail" class="level2">
-<h2 class="anchored" data-anchor-id="environnement-de-travail">Environnement de travail</h2>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-important callout-titled" title="À lire avant de commencer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+<span class="screen-reader-only">Important</span>À lire avant de commencer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vous pouvez coder sur :</p>
+<p>Le sujet est composé de plusieurs pages, numérotées de 1 à la dernière page.</p>
 <ul>
-<li>un datalab (recommandé)</li>
-<li>la VM ENSAI</li>
-</ul>
-<p>Vous pouvez également coder sur votre propre machine mais <strong>vous devrez gérer en totale autonomie les installations nécessaires.</strong></p>
-</div>
-</div>
-<div class="notes">
-<p><strong>Sauvez votre code avec Git</strong></p>
-<ul>
-<li>Usage de l’IAgen</li>
+<li>Les exercices peuvent être traités dans l’ordre de votre choix.</li>
+<li>Dans chaque exercice, les questions ne sont pas forcément de difficulté croissante.</li>
+<li>Les différentes questions attendent des <strong>réponses courtes</strong>.</li>
+<li>Respectez scrupuleusement les consignes. Cependant, si une question ne vous semble pas claire, notez sur votre copie la manière dont vous l’avez comprise et traitée.</li>
+<li>Quand du code est demandé, veuillez respecter les règles de bases du langage (mots clefs et indentation). Des erreurs seront tolérées, car vous êtes sur papier. En cas d’oubli d’un nom de méthode Python, utilisez du pseudo-code.</li>
+<li>Sauf mention contraire, il n’est pas demandé d’écrire la documentation du code (même si la doc c’est bien !)</li>
 </ul>
 </div>
+</div>
+<p>Bonne chance !</p>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="planning" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="planning">Planning</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset nav-pills">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Planning</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Dates</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Livrables</a></li></ul>
-<div class="tab-content nav-pills">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="white-box">
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">gantt
-    title Planning provisoire 2024
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d %b
-    tickInterval 1week
-    
-    section Cours
-    CM                           :milestone, 2025-08-25,
-    CM                           :milestone, 2025-09-01, 
-    Examen                       :milestone, 2025-09-28,
-    
-    section TP
-    TP1                          :milestone, 2025-08-28,
-    TP2                          :milestone, 2025-09-04,
-    TP3                          :milestone, 2025-09-11,
-    TP4                          :milestone, 2025-09-18,
-    TP5                          :milestone, 2025-09-25,
-    
-    section Projet
-    Suivi 1                      :milestone, 2025-08-28,
-    Suivi 2                      :milestone, 2025-09-04,
-    Suivi 3                      :milestone, 2025-09-11,
-    Suivi 4                      :milestone, 2025-09-25,
-    3j immersion (Suivi 5 et 6)  :active,    2025-11-03, 3d
-    Suivi 7                      :milestone, 2025-11-13,
-    
-    section Échéances
-    WEI                          :crit,      2025-09-18, 3d
-    Dossier Analyse              :milestone, 2025-09-17,
-    Toussaint                    :crit,      2025-10-24, 7d
-    Rapport final et Code        :milestone, 2025-11-21,
-    Soutenance                   :milestone, 2025-12-09,
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 61%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>vendredi 28 août</td>
-<td>TP1 et Suivi 1</td>
-</tr>
-<tr class="even">
-<td>vendredi 4 septembre</td>
-<td>TP2 et Suivi 2</td>
-</tr>
-<tr class="odd">
-<td>vendredi 11 septembre</td>
-<td>TP3 et Suivi 3</td>
-</tr>
-<tr class="even">
-<td>vendredi 18 septembre</td>
-<td>TP4</td>
-</tr>
-<tr class="odd">
-<td>vendredi 25 septembre</td>
-<td>TP5 et Suivi 4</td>
-</tr>
-<tr class="even">
-<td>mar-jeu 3-5 novembre</td>
-<td>3 jours d’immersion (Suivi 5-6)</td>
-</tr>
-<tr class="odd">
-<td>vendredi 20 novembre</td>
-<td>Suivi 7 (visio)</td>
-</tr>
-<tr class="even">
-<td>mercredi 9 décembre</td>
-<td>Soutenance</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>TOUS les Jeudis</td>
-<td>Point hebdo</td>
-</tr>
-<tr class="even">
-<td>Jeudi 17 septembre 20h00</td>
-<td>Dossier d’Analyse</td>
-</tr>
-<tr class="odd">
-<td>Samedi 21 novembre 20h00</td>
-<td>Rapport final et Code</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="notes">
-<ul>
-<li>3j d’immersion
-<ul>
-<li>capital pour bien avancer le projet</li>
-<li>si bien utilisé -&gt; 90 % du travail fait</li>
-</ul></li>
-<li>Point hebdo : j’y reviens</li>
-</ul>
-<p><span class="emoji" data-emoji="bulb">💡</span> Prendre de l’avance en septembre</p>
-<p><span class="emoji" data-emoji="warning">⚠️</span> Absences en projet ou TP -&gt; malus</p>
-<p>prévenez-moi si justifié, sinon je prends la liste des absences</p>
-</div>
+<section id="poo-bases-de-données-et-sécurité-7-points" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="poo-bases-de-données-et-sécurité-7-points"><span class="header-section-number">1</span> POO, Bases de données et Sécurité (7 points)</h2>
+<ol type="a">
+<li>Quels sont les 3 grands principes de la Programmation Orientée Objet ?</li>
+<li>Quels sont les 4 piliers de la sécurité informatique ? Détaillez celui de votre choix (définition, mécanismes associés).</li>
+<li>Quels sont les intérêts de séparer votre code en couches ?</li>
+<li>Quel est le rôle principal de la couche DAO ?</li>
+<li>Expliquez comment se prémunir des injections SQL ? Donnez quelques bonnes pratiques.</li>
+<li>On vous demande de gérer le stockage de mots de passe en base de données. Comment procédez-vous ?</li>
+<li>Complétez la classe <code>PersonneDao</code> (ci-après) en écrivant la méthode <code>trouver_toutes</code> qui retourne la liste de toutes les personnes de la base de données (pour cette méthode, le résultat renvoyé par le curseur pourra être traité comme une liste de dictionnaires).</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Personne:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nom, prenom, age, <span class="bu">id</span><span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.nom <span class="op">=</span> nom</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prenom <span class="op">=</span> prenom</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PersonneDao(metaclass<span class="op">=</span>Singleton):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trouver_par_id(<span class="va">self</span>, <span class="bu">id</span>: <span class="bu">str</span>) <span class="op">-&gt;</span> Personne:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Trouver une Personne à partir de son id"""</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                cursor.execute(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"SELECT nom,                                     "</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"       prenom,                                  "</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"       age                                      "</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"  FROM exo.personne                             "</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" WHERE id=</span><span class="sc">%(id)s</span><span class="st">                                "</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                    {<span class="st">"id"</span>: <span class="bu">id</span>},</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                res <span class="op">=</span> cursor.fetchone()</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        personne <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> res:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            personne <span class="op">=</span> Personne(</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                nom<span class="op">=</span>res[<span class="st">"nom"</span>],</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                prenom<span class="op">=</span>res[<span class="st">"prenom"</span>],</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                age<span class="op">=</span>res[<span class="st">"age"</span>],</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                <span class="bu">id</span><span class="op">=</span><span class="bu">id</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> personne</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="phases" class="level2">
-<h2 class="anchored" data-anchor-id="phases">2 phases</h2>
+<section id="web-services-3-points" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="web-services-3-points"><span class="header-section-number">2</span> Web services (3 points)</h2>
+<ol type="a">
+<li>Qu’est-ce qu’un Web service ?</li>
+<li>Quelles sont les 4 méthodes http pour contacter un Web service ?</li>
+<li>Nommez les éléments de la requête suivante : <code>GET https://pokeapi.fr:5000/pokemon?limit=10</code></li>
+</ol>
 <ul>
-<li>Analyse / Conception générale (sept.)
-<ul>
-<li>4 séances de 3h de suivi</li>
-<li>fin-septembre : retours sur le dossier d’analyse</li>
-</ul></li>
-<li>Implémentation (oct. - nov.)
-<ul>
-<li>3 séances de 3h de suivi</li>
-</ul></li>
+<li>GET</li>
+<li>https</li>
+<li>pokeapi.fr</li>
+<li>5000</li>
+<li>/pokemon</li>
+<li>?limit=10</li>
 </ul>
-<div class="notes">
-<ul>
-<li>Vous avez 1 mois à 5. Un élève de STD a 6h</li>
-</ul>
-<p>Si votre dossier d’analyse est nickel mais vous n’avez pas encore dev</p>
-<p><span class="emoji" data-emoji="bulb">💡</span> Conseil :</p>
-<ul>
-<li>l’élève le plus à l’aise fait un POC vers le 20 septembre</li>
-<li>puis présente l’appli v0 aux autres</li>
-</ul>
-<p>Relisez vos rapports !</p>
-</div>
+<ol start="4" type="a">
+<li>Qu’est-ce qu’un Swagger ?</li>
+</ol>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="travail-en-groupe" class="level2">
-<h2 class="anchored" data-anchor-id="travail-en-groupe">Travail en groupe</h2>
-<ul>
-<li>Éviter de cumuler les rôles de Chef de projet et Tech Lead</li>
-<li>Esprit d’équipe</li>
-<li>Canal de discussion</li>
-<li>Prévenir dès que possible si ça ne va pas</li>
-</ul>
-<div class="notes">
-<ul>
-<li>Avoir un bon comportement</li>
-<li>Certaines équipes vont mieux fonctionner que d’autres</li>
-<li>Dans la vie pro, on bosse pas toujours avec ses potes</li>
-<li>Si vous êtes fort -&gt; ne pas tout faire</li>
-<li>Prévenir tuteur puis Prof en cas de souci</li>
-</ul>
-<p>Pas la peine de dire une fois que le projet est fini :</p>
-<ul>
-<li>c’est moi qui ait tout fait</li>
-<li>un autre membre n’a rien fait</li>
-</ul>
-</div>
+<section id="git-et-versionnage-5-points" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="git-et-versionnage-5-points"><span class="header-section-number">3</span> Git et Versionnage (5 points)</h2>
+<p>Dans cet exercice, vous travaillez dans une équipe composée de 3 personnes sur le projet Argousier. Le code de votre projet est stocké sur GitHub. Comme tous les matins, vous arrivez à 7h30 à votre bureau. Vos collègues, eux sont plutôt du soir. Vous allumez votre machine et lancez Git Bash.</p>
+<ol type="a">
+<li>Vous voulez vérifier si vos collègues ont avancé sur le code hier soir. Quelle commande exécutez-vous ?</li>
+</ol>
+<p>Pas de chance, hier avant de partir, vous avez oublié de partager votre code sur le dépôt distant. Quelqu’un a modifié le même fichier que vous et vous obtenez un conflit. Quand vous ouvrez le fichier en question, vous trouvez ceci :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD (current change)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour Alain"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">=======</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour Philippe"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> (incoming change)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="a">
+<li>Vous imposez votre version. Quelles actions faites-vous pour mettre à jour le dépôt distant ?</li>
+</ol>
+<p>Vous avez maintenant réussi à mettre à jour le dépôt distant. Votre collègue Annabelle arrive à 9h00, développe pendant 30min, puis essaie de partager son code avec les commandes suivantes :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> git <span class="ex">add</span> .</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> git <span class="ex">commit</span> <span class="at">-m</span> <span class="st">"correction incident 5"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> git <span class="ex">push</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Cependant lors du push, elle rencontre une erreur : « Updates were rejected because the remote contains work that you do not have locally. »</p>
+<ol start="3" type="a">
+<li>Qu’est-ce qu’Annabelle a oublié de faire ?</li>
+<li>À 10h00, Michel arrive en panique. Il vient d’entendre à la radio que GitHub vient d’être piraté à l’instant et qu’ils ont perdu tous les dépôts. Est-ce que vous allez devoir recommencer votre projet à zéro (expliquez) ?</li>
+<li>À 11h00, Johanna, qui travaille sur un projet codé en R, vient vous voir, car elle est intéressée par l’utilisation de Git. Est-ce possible d’utiliser Git avec du code R ? Expliquez-lui en quelques mots à quoi sert Git.</li>
+</ol>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="le-jour-1" class="level2">
-<h2 class="anchored" data-anchor-id="le-jour-1">Le jour 1</h2>
+<section id="agilité-et-tests-5-points" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="agilité-et-tests-5-points"><span class="header-section-number">4</span> Agilité et Tests (5 points)</h2>
+<ol type="a">
+<li>À quoi ça sert de faire des tests ?</li>
+<li>Comment appelle-t-on la méthode qui consiste à écrire des tests avant de coder ?</li>
+<li>Citez 4 types de tests.</li>
+<li>Écrivez 2 tests unitaires pour vérifier le bon fonctionnement de la méthode <code>trouver_par_id(id)</code> de l’exercice 1.</li>
+</ol>
 <ul>
-<li>Posez des questions au tuteur</li>
-<li>Discutez entre vous (qui sait faire quoi)</li>
-<li>Organisez-vous</li>
-<li>Soyez proactifs, prenez des initiatives</li>
+<li>Cas nominal : id = 1 existant dans la base de données</li>
+<li>Cas d’erreur : id = 999 n’existant pas dans la base de données</li>
 </ul>
-<div class="notes">
-<ul>
-<li>Prenez des initiatives</li>
-<li>Démarquez-vous</li>
-<li>Back (et front ?)</li>
-<li>Fonctionnalités indispensables</li>
-</ul>
-</div>
-</section>
-<section id="suivi" class="level2">
-<h2 class="anchored" data-anchor-id="suivi">Suivi</h2>
-<ul>
-<li>Point hebdo <strong>OBLIGATOIRE</strong></li>
-<li>À remplir chaque semaine
-<ul>
-<li>au plus tard le jeudi soir</li>
-<li>par chaque membre</li>
-<li>sinon malus pour l’équipe</li>
-</ul></li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Plus de détails dans la <a href="../../../doc/french/projet/notice-eleves.html#point-hebdo" target="_blank">notice élèves</a>.</p>
-</div>
-</div>
-<div class="notes">
-<ul>
-<li>Comme dans la vie pro</li>
-<li>Obligatoire sinon malus</li>
-<li>Montrer Modèle</li>
-<li>ras : si vous n’avez rien fait</li>
-<li>Notez vos questions (Réflechissez aux réponses : Plan A, plan B)</li>
-</ul>
-<p>Profitez de chaque séance de suivi pour préparer et poser des questions</p>
-<p>Une réunion ça se prépare.</p>
-</div>
-</section>
-<section id="rendus" class="level2">
-<h2 class="anchored" data-anchor-id="rendus">Rendus</h2>
-<section id="dossier-danalyse" class="level3">
-<h3 class="anchored" data-anchor-id="dossier-danalyse">Dossier d’analyse</h3>
-<p>Votre tuteur a exprimé un besoin :</p>
-<ul>
-<li>Expliquez comment y répondre</li>
-<li>Reformulez sa demande</li>
-<li>Utilisez les diagrammes UML adéquats</li>
-</ul>
-<div class="notes">
-<p>UML : Attention à ne pas trop surcharger (valider avec tuteur)</p>
-<p>Gantt version macro</p>
-</div>
-</section>
-<section id="code" class="level3">
-<h3 class="anchored" data-anchor-id="code">Code</h3>
-<ul>
-<li>Nous attendons du code de <strong><u>qualité</u></strong></li>
-<li>Documentation obligatoire pour chaque classe, chaque méthode</li>
-<li>Tests Unitaires requis</li>
-<li>README in English</li>
-<li>Codez par petits bouts</li>
-</ul>
-<div class="notes">
-<p>Respectez les bonnes pratiques de dev Python :</p>
-<ul>
-<li>Noms des classes en CamelCase</li>
-<li>Fichiers en snake_case</li>
-<li>noms de variables et de méthodes parlants</li>
-<li><span class="emoji" data-emoji="warning">⚠️</span> Methodes qui ne fonctionnent pas car elles appellent des méthodes qui ne fonctionnent pas</li>
-</ul>
-</div>
-</section>
-<section id="rapport-final" class="level3">
-<h3 class="anchored" data-anchor-id="rapport-final">Rapport final</h3>
-<ul>
-<li>Focalisez-vous sur les fonctionnalités intéressantes</li>
-<li>Citez-vos figures</li>
-<li>Relisez-vous !</li>
-<li><span class="emoji" data-emoji="bulb">💡</span> Utilisez Typst avec Quarto</li>
-</ul>
-<div class="notes">
-<p>Pas forcément bien de faire plus de 25 pages.</p>
-<p>Note individuelle</p>
-<p>Soutenance 20 min :</p>
-<ul>
-<li>jury bienveillant mais différents</li>
-<li>donnez de la personnalité à votre démo</li>
-<li>Testez avant, Presentez-vous, Numérotez, Diapo lisibles, intro, conclusion</li>
-<li>Pas gestion user</li>
-</ul>
-</div>
-</section>
-</section>
-<section id="a-voir-avec-le-tuteur" class="level2">
-<h2 class="anchored" data-anchor-id="a-voir-avec-le-tuteur">A voir avec le tuteur</h2>
-<ul>
-<li>Méthodes à tester (service, dao ?)</li>
-<li>Visibilité public / privé</li>
-<li>utilisation de mypy</li>
-</ul>
-</section>
-<section id="template" class="level2">
-<h2 class="anchored" data-anchor-id="template">Template</h2>
-<ul>
-<li><a href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template" target="_blank">Exemple de projet simple</a></li>
-</ul>
-<p>Enfin presque…</p>
-<div class="notes">
-<ul>
-<li>data, doc, src</li>
-<li>fichiers config : logs, cov, pyproject, gitignore</li>
-<li>README : modop pour installer et lancer</li>
-<li>.vscode : setup vscode</li>
-<li>CI : expliquer principe</li>
-<li>Docker</li>
-</ul>
-</div>
-</section>
-<section id="outils" class="level2">
-<h2 class="anchored" data-anchor-id="outils">Outils</h2>
-<ul>
-<li><a href="https://ludo2ne.github.io/ENSAI-tools/" target="_blank">ENSAI-tools</a>
-<ul>
-<li>Git, Datalab, Api, Markdown…</li>
-</ul></li>
-</ul>
-<div class="notes">
-<p>Git obligatoire -&gt; pénalités si pas de commit</p>
-</div>
+<ol start="5" type="a">
+<li>Citez 3 frameworks agile ? Lequel est le plus utilisé ?</li>
+<li>VRAI ou FAUX ? (sans justification)</li>
+</ol>
+<ol type="1">
+<li>Le cycle en V permet d’avoir des cycles de livraisons plus rapides.</li>
+<li>« L’adaptation au changement plus que le suivi d’un plan » est l’une des 4 valeurs fondamentales de l’agilité.</li>
+<li>Le principal inconvénient de l’agilité est qu’il peut y avoir un effet tunnel.</li>
+<li>Le Scrum Master est le responsable du bon fonctionnement de l’équipe.</li>
+</ol>
+<ol start="7" type="a">
+<li><strong>Bonus :</strong> Est-ce qu’en tant que responsable d’une application informatique, vous feriez confiance aux utilisateurs de votre application ? Oui ou Non (réponse correcte : 0.25 pt, réponse fausse : -25 pts, non réponse : 0 pt)</li>
+</ol>
 
 
 </section>

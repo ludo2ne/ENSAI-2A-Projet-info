@@ -6,12 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Cyriel Mallart">
-<meta name="author" content="Ludovic Deneuville">
-<meta name="author" content="Rémi Pépin">
-<meta name="description" content="Slides">
+<meta name="author" content="">
+<meta name="dcterms.date" content="2023-10-24">
 
-<title>Advanced Object-Oriented Programming – Projet info 2A</title>
+<title>Examen final : Compléments d’informatique - Correction – Projet info 2A</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -89,9 +87,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -487,15 +482,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
-  <li><a href="#a-few-reminders" id="toc-a-few-reminders" class="nav-link" data-scroll-target="#a-few-reminders">A Few Reminders</a></li>
-  <li><a href="#software-engineering" id="toc-software-engineering" class="nav-link" data-scroll-target="#software-engineering">Software Engineering</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#poo-bases-de-données-et-sécurité-7-points" id="toc-poo-bases-de-données-et-sécurité-7-points" class="nav-link" data-scroll-target="#poo-bases-de-données-et-sécurité-7-points"><span class="header-section-number">1</span> POO, Bases de données et Sécurité (7 points)</a></li>
+  <li><a href="#web-services-3-points" id="toc-web-services-3-points" class="nav-link" data-scroll-target="#web-services-3-points"><span class="header-section-number">2</span> Web services (3 points)</a></li>
+  <li><a href="#git-et-versionnage-5-points" id="toc-git-et-versionnage-5-points" class="nav-link" data-scroll-target="#git-et-versionnage-5-points"><span class="header-section-number">3</span> Git et Versionnage (5 points)</a></li>
+  <li><a href="#agilité-et-tests-5-points" id="toc-agilité-et-tests-5-points" class="nav-link" data-scroll-target="#agilité-et-tests-5-points"><span class="header-section-number">4</span> Agilité et Tests (5 points)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="05-oo-avancee-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ci-2023-correction.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -507,27 +504,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Advanced Object-Oriented Programming</h1>
+<h1 class="title">Examen final : Compléments d’informatique - Correction</h1>
+<p class="subtitle lead">UE3 : Compléments d’informatique</p>
 </div>
 
-<div>
-  <div class="description">
-    <a href="05-poo-avancee-slides.html">Slides</a>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Cyriel Mallart </p>
-             <p>Ludovic Deneuville </p>
-             <p>Rémi Pépin </p>
-          </div>
-  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 24, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -537,356 +528,313 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="outline" class="level2">
-<h2 class="anchored" data-anchor-id="outline">Outline</h2>
-<ol type="1">
-<li>Advanced OOP Concepts
+<section id="instructions" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instructions">Instructions</h2>
 <ul>
-<li>Recap</li>
-<li>Abstract Classes</li>
-<li>Bridge Pattern</li>
-</ul></li>
-<li>Software Engineering
+<li>Examen sur papier</li>
+<li>Durée : 2h</li>
+<li>Une feuille A4 manuscrite recto/verso autorisée</li>
+<li>Sans calculatrice</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="À lire avant de commencer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>À lire avant de commencer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Le sujet est composé de plusieurs pages, numérotées de 1 à la dernière page.</p>
 <ul>
-<li>Definition</li>
-<li>Single Responsibility Principle</li>
-<li>Design Patterns</li>
-</ul></li>
+<li>Les exercices peuvent être traités dans l’ordre de votre choix.</li>
+<li>Dans chaque exercice, les questions ne sont pas forcément de difficulté croissante.</li>
+<li>Les différentes questions attendent des <strong>réponses courtes</strong>.</li>
+<li>Respectez scrupuleusement les consignes. Cependant, si une question ne vous semble pas claire, notez sur votre copie la manière dont vous l’avez comprise et traitée.</li>
+<li>Quand du code est demandé, veuillez respecter les règles de bases du langage (mots clefs et indentation). Des erreurs seront tolérées, car vous êtes sur papier. En cas d’oubli d’un nom de méthode Python, utilisez du pseudo-code.</li>
+<li>Sauf mention contraire, il n’est pas demandé d’écrire la documentation du code (même si la doc c’est bien !)</li>
+</ul>
+</div>
+</div>
+<p>Bonne chance !</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="poo-bases-de-données-et-sécurité-7-points" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="poo-bases-de-données-et-sécurité-7-points"><span class="header-section-number">1</span> POO, Bases de données et Sécurité (7 points)</h2>
+<ol type="a">
+<li><strong>Quels sont les 3 grands principes de la Programmation Orientée Objet ?</strong></li>
 </ol>
-</section>
-<section id="a-few-reminders" class="level2">
-<h2 class="anchored" data-anchor-id="a-few-reminders">A Few Reminders</h2>
-<p>The three principles of object-oriented programming:</p>
 <ul>
-<li><strong>Encapsulation:</strong> an object contains <strong>attributes</strong> and <strong>methods</strong>.</li>
-<li><strong>Inheritance:</strong> an object can <strong>inherit</strong> attributes and methods from another class to <strong>redefine</strong> them. It can also add other attributes/methods.</li>
-<li><strong>Polymorphism:</strong> a method can be associated with <strong>different code</strong> depending on the parameters passed or the object it belongs to.</li>
+<li>Encapsulation</li>
+<li>Héritage</li>
+<li>Polymorphisme</li>
 </ul>
-<div class="notes">
-<p>Ce sont les trois principes qu’apporte la programmation orientée objet. Ils sont présentés par ordre de “simplicité”. La qualité de votre code va dépendre de votre maîtrise et application de ces principes. Cela prend du temps pour bien les comprendre.</p>
+<ol start="2" type="a">
+<li><strong>Quels sont les 4 piliers de la sécurité informatique ? Détaillez celui de votre choix (définition, mécanismes associés).</strong></li>
+</ol>
+<p>Ce sont les principes CAID :</p>
 <ul>
-<li>Attribut : ce qu’il est</li>
-<li>Méthode : ce qu’il peut faire</li>
-<li>Héritage : Nouvelles capacités (ex : Médecin -&gt; Chirurgien)</li>
-<li>Polymorphisme : 2 types (liste d’Animal.parler(malade=True))</li>
+<li>Confidentialité : Seules les personnes autorisées doivent avoir accès aux informations qui leur sont destinées. Mécanismes associés : gestion des droits, cryptographie</li>
+<li>Authentification</li>
+<li>Intégrité</li>
+<li>Disponibilité</li>
 </ul>
-</div>
-<section id="an-example-to-illustrate" class="level3">
-<h3 class="anchored" data-anchor-id="an-example-to-illustrate">An Example to Illustrate</h3>
-<p>Automatic data processing application:</p>
+<ol start="3" type="a">
+<li><strong>Quels sont les intérêts de séparer votre code en couches ?</strong></li>
+</ol>
 <ul>
-<li>Multiple data sources: surveys, web scraping, administrative files, etc.</li>
-<li>Multiple data formats: csv, xml, json, etc. (<em>we’ll come back to this</em>)</li>
-<li>Multiple processing algorithms: exploratory statistics, regression, “machine learning,” etc.</li>
+<li>Lisibilité du code : répartir le code dans de multiples fichiers évite d’avoir des classes de 5000 lignes</li>
+<li>Travail en groupe : permet de se répartir plus facilement les tâches</li>
+<li>Facilite le débogage</li>
+<li>Permet également de simplifier la migration vers un nouveau système (ex: changement de base de données)</li>
 </ul>
-<div class="notes">
-<p>Fundamentally, it’s a fairly simple application.</p>
-</div>
-</section>
-<section id="example-of-a-class-diagram" class="level3">
-<h3 class="anchored" data-anchor-id="example-of-a-class-diagram">Example of a Class Diagram</h3>
-<p><a href="img/class_diagram_no_poo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/class_diagram_no_poo.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>Voyez-vous des choses à corriger ?<br>
-Est-ce que la méthode <em>process()</em> sera la même pour survey et census ?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process(<span class="va">self</span>):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="st">"census"</span>:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="an-example-with-inheritance" class="level3">
-<h3 class="anchored" data-anchor-id="an-example-with-inheritance">An Example with Inheritance</h3>
-<p><a href="img/class_diagram_poo1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/class_diagram_poo1.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>La classe <code>Source</code> permet de centraliser des attributs communs et de définir des méthodes communes, mais ces méthodes vont être surchargées par les classes filles.<br>
-Grâce au polymorphisme, j’ai un comportement différent mais le code reste clair, avec une partie commune à tous les types de fichiers et une partie spécifique.</p>
-<p>Code dans le dossier exemple POO.</p>
-<p>Que pensez-vous de la classe Source ?</p>
-</div>
-</section>
-<section id="abstract-classes" class="level3">
-<h3 class="anchored" data-anchor-id="abstract-classes">Abstract Classes</h3>
-<p><strong>Abstract Class:</strong> a class whose implementation is <strong>not complete</strong> and which is <strong>not instantiable</strong>.</p>
-<p>Allows passing a <strong>contract</strong>. Child classes will have to implement what is missing.</p>
-<p><strong>Advantages:</strong></p>
+<ol start="4" type="a">
+<li><strong>Quel est le rôle principal de la couche DAO ?</strong></li>
+</ol>
+<p>Elle permet de faire le lien entre la couche métier et la base de données. Elle expose les méthode du CRUD pour communiquer avec la BDD.</p>
+<ol start="5" type="a">
+<li><strong>Expliquez comment se prémunir des injections SQL ? Donnez quelques bonnes pratiques.</strong></li>
+</ol>
+<p>Une injection SQL consiste à saisir du SQL dans une zone de texte pour exécuter une autre requête que celle prévue. Les bonnes pratiques pour se protéger sont :</p>
 <ul>
-<li>We know what child classes must do 👍</li>
-<li>We can generate code 🙏</li>
-<li>Limits the risk of error!! 👌</li>
+<li>Échapper les caractères spéciaux</li>
+<li>Utiliser une requête préparée</li>
 </ul>
-<div class="notes">
-<p>Certains objets n’ont pas besoin d’être implémentés complètement ni de pouvoir être instantiés. Souvent, c’est pour des notions abstraites.</p>
-<p>Rappels : classe, objet, abstrait (Vehicule)</p>
-</div>
+<ol start="6" type="a">
+<li><strong>On vous demande de gérer le stockage de mots de passe en base de données. Comment procédez-vous ?</strong></li>
+</ol>
+<p>Il ne faut surtout pas stocker les mots de passe en clair. La bonne pratique consiste à concaténer le mot de passe avec un autre élément (appelé le sel) relatif à l’utilisateur, par exemple son nom. Puis de hacher l’ensemble. Ce hash est alors stocké en base de données. Lorsque l’utilisateur se connecte et saisit son mot de passe, le même procédé est appliqué et l’algorithme compare les 2 hash.</p>
+<p>Le fait d’ajouter le sel complique la tâche des hackers qui doivent tester énormément plus de combinaisons pour craquer un mot de passe.</p>
+<ol start="7" type="a">
+<li><strong>Complétez la classe <code>PersonneDao</code> (ci-après) en écrivant la méthode <code>trouver_toutes</code> qui retourne la liste de toutes les personnes de la base de données (pour cette méthode, le résultat renvoyé par le curseur pourra être traité comme une liste de dictionnaires).</strong></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Personne:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nom, prenom, age, <span class="bu">id</span><span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.nom <span class="op">=</span> nom</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.prenom <span class="op">=</span> prenom</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PersonneDao(metaclass<span class="op">=</span>Singleton):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trouver_par_id(<span class="va">self</span>, <span class="bu">id</span>: <span class="bu">str</span>) <span class="op">-&gt;</span> Personne:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Trouver une Personne à partir de son id"""</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                cursor.execute(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"SELECT nom,                                     "</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"       prenom,                                  "</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"       age                                      "</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"  FROM exo.personne                             "</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">" WHERE id=</span><span class="sc">%(id)s</span><span class="st">                                "</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                    {<span class="st">"id"</span>: <span class="bu">id</span>},</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                res <span class="op">=</span> cursor.fetchone()</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        personne <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> res:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            personne <span class="op">=</span> Personne(</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                nom<span class="op">=</span>res[<span class="st">"nom"</span>],</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                prenom<span class="op">=</span>res[<span class="st">"prenom"</span>],</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                age<span class="op">=</span>res[<span class="st">"age"</span>],</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                <span class="bu">id</span><span class="op">=</span><span class="bu">id</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> personne</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> trouver_toutes(<span class="va">self</span>) <span class="op">-&gt;</span> List[Personne]:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Retourne toutes les Personnes de la BDD"""</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Requête pour lister toutes les personnes de la base de données</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        request <span class="op">=</span> (</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"SELECT nom,                                     "</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">"       prenom,                                  "</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>            <span class="st">"       age,                                     "</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            <span class="st">"       id                                       "</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  FROM exo.personne                             "</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> DBConnection().connection <span class="im">as</span> connection:</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> connection.cursor() <span class="im">as</span> cursor:</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                cursor.execute(request)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                <span class="co"># on récupére toutes les lignes retournées par le curseur</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                res <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># initialisation d'une liste vide pour stocker les Personnes</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        liste_personnes <span class="op">=</span> []</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># si le curseur a retourné quelque chose (variable res non vide)</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> res:</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>            <span class="co"># pour chaque élément retourné</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> raw_personne <span class="kw">in</span> res:</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>                <span class="co"># instanciation d'une Personne en utilisant les champs disponibles</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>                personne <span class="op">=</span> Personne(</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>                    nom<span class="op">=</span>raw_personne[<span class="st">"nom"</span>],</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>                    prenom<span class="op">=</span>raw_personne[<span class="st">"prenom"</span>],</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>                    age<span class="op">=</span>raw_personne[<span class="st">"age"</span>],</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">id</span><span class="op">=</span>raw_personne[<span class="st">"id"</span>],</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>                <span class="co"># ajout de la Personne créée à la liste</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>                liste_personnes.append(personne)</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> liste_personnes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="for-example" class="level3">
-<h3 class="anchored" data-anchor-id="for-example">For Example</h3>
-<p><a href="img/class_diagram_poo_abstract_class.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/class_diagram_poo_abstract_class.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>Pour vous, cela peut sembler marginal comme changement (surtout à cause de Python), mais ce changement permet de manipuler l’abstraction au lieu des implémentations et d’avoir un code propre (vous ferez ça en TP).</p>
-<p><code>v = Vehicule("rouge")</code> -&gt; ça marche plus</p>
-<p>Méthode <em>custom_process</em> abstraite</p>
-</div>
-</section>
-<section id="and-in-python" class="level3">
-<h3 class="anchored" data-anchor-id="and-in-python">And in Python?</h3>
+<section id="web-services-3-points" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="web-services-3-points"><span class="header-section-number">2</span> Web services (3 points)</h2>
+<ol type="a">
+<li><strong>Qu’est-ce qu’un Web service ?</strong></li>
+</ol>
+<p>Un web service est un module applicatif, accessible sur le protocole HTTP via une URL qui va répondre à une demande.</p>
+<ol start="2" type="a">
+<li><strong>Quelles sont les 4 méthodes http pour contacter un Web service ?</strong></li>
+</ol>
 <ul>
-<li>No native support for abstract classes 😱</li>
-<li>Abstract Base Classes (abc) module to solve the problem 🦾</li>
-<li>Already included in your Python distribution 😌
-<ul>
-<li><strong>Step 1:</strong> Import the module 🧳</li>
-<li><strong>Step 2:</strong> Inherit from <code>ABC</code> 👨‍👩‍👧‍👦</li>
-<li><strong>Step 3:</strong> Define abstract methods 📝</li>
-<li><strong>Step 4:</strong> ???</li>
-<li><strong>Step 5:</strong> Profit 💰💰</li>
-</ul></li>
+<li>POST : créer</li>
+<li>GET : lire</li>
+<li>PUT : mettre à jour</li>
+<li>DELETE : supprimer</li>
 </ul>
-<div class="notes">
-<p>Step 4 : implémenter les méthodes abstraites dans les classes filles</p>
-<p>L’autre gros défaut de Python est son typage dynamique.</p>
-<p>Python va typer les objets au runtime, et pas au compile time. Cela ne permet pas d’avoir autant d’outils que dans d’autres langages. Mais vous pouvez utiliser les docstrings pour typer vos objets.</p>
-</div>
-</section>
-<section id="what-if-we-added-data-formats" class="level3">
-<h3 class="anchored" data-anchor-id="what-if-we-added-data-formats">What If We Added Data Formats?</h3>
-<p>Currently, 3 data formats in our application:</p>
+<ol start="3" type="a">
+<li><strong>Nommez les éléments de la requête suivante : <code>GET https://pokeapi.fr:5000/pokemon?limit=10</code></strong></li>
+</ol>
 <ul>
-<li><strong>CSV:</strong> Comma Separated Values (tabular)</li>
-<li><strong>XML:</strong> eXtended Markup Language (tag format)</li>
-<li><strong>JSON:</strong> JavaScript Object Notation (key-value format)</li>
+<li><code>GET</code> : méthode</li>
+<li><code>https</code> : protocole</li>
+<li><code>pokeapi.fr</code> : nom de domaine</li>
+<li><code>5000</code> : port</li>
+<li><code>/pokemon</code> : endpoint</li>
+<li><code>?limit=10</code> : paramètre de la requête</li>
 </ul>
-<div class="notes">
-<p>On reviendra plus en détail sur les différents formats.</p>
-<p>Retour 2 slides avant : si on fait pareil et qu’on utilise l’héritage pour le format</p>
-</div>
+<ol start="4" type="a">
+<li><strong>Qu’est-ce qu’un Swagger ?</strong></li>
+</ol>
+<p>Le swagger recense tous les endpoints du webservice, et comment les utiliser. C’est une documentation de l’API.</p>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="for-example-1" class="level3">
-<h3 class="anchored" data-anchor-id="for-example-1">For Example</h3>
-<p><a href="img/class_diagram_poo_file_format.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/class_diagram_poo_file_format.png" class="img-fluid"></a></p>
-<p>Do you see a problem?</p>
-<div class="notes">
-<p>Ca grossit de manière exponentielle</p>
-</div>
-</section>
-<section id="the-power-of-oop" class="level3">
-<h3 class="anchored" data-anchor-id="the-power-of-oop">The Power of OOP</h3>
+<section id="git-et-versionnage-5-points" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="git-et-versionnage-5-points"><span class="header-section-number">3</span> Git et Versionnage (5 points)</h2>
+<p>Dans cet exercice, vous travaillez dans une équipe composée de 3 personnes sur le projet Argousier. Le code de votre projet est stocké sur GitHub. Comme tous les matins, vous arrivez à 7h30 à votre bureau. Vos collègues, eux sont plutôt du soir. Vous allumez votre machine et lancez Git Bash.</p>
+<ol type="a">
+<li><strong>Vous voulez vérifier si vos collègues ont avancé sur le code hier soir. Quelle commande exécutez-vous ?</strong></li>
+</ol>
+<p><code>git pull</code></p>
+<p>Pas de chance, hier avant de partir, vous avez oublié de partager votre code sur le dépôt distant. Quelqu’un a modifié le même fichier que vous et vous obtenez un conflit. Quand vous ouvrez le fichier en question, vous trouvez ceci :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD (current change)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour Alain"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">=======</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Bonjour Philippe"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> (incoming change)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="a">
+<li><strong>Vous imposez votre version. Quelles actions faites-vous pour mettre à jour le dépôt distant ?</strong></li>
+</ol>
 <ul>
-<li>Currently 4 * 3 “concrete” classes to define 😱</li>
-<li>Reading the format is dependent on the source 😵</li>
+<li>J’accepte le changement courant, c’est à dire que je conserve <code>print("Bonjour Alain")</code> et j’efface le reste</li>
+<li><code>git add .</code></li>
+<li><code>git commit -m "resolution du conflit"</code></li>
+<li><code>git push</code></li>
 </ul>
-<p><strong>BUT</strong></p>
+<p>Vous avez maintenant réussi à mettre à jour le dépôt distant. Votre collègue Annabelle arrive à 9h00, développe pendant 30min, puis essaie de partager son code avec les commandes suivantes :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> git <span class="ex">add</span> .</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> git <span class="ex">commit</span> <span class="at">-m</span> <span class="st">"correction incident 5"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> git <span class="ex">push</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Cependant lors du push, elle rencontre une erreur : « Updates were rejected because the remote contains work that you do not have locally. »</p>
+<ol start="3" type="a">
+<li><strong>Qu’est-ce qu’Annabelle a oublié de faire ?</strong></li>
+</ol>
+<p><code>git pull</code></p>
+<ol start="4" type="a">
+<li><strong>À 10h00, Michel arrive en panique. Il vient d’entendre à la radio que GitHub vient d’être piraté à l’instant et qu’ils ont perdu tous les dépôts. Est-ce que vous allez devoir recommencer votre projet à zéro (expliquez) ?</strong></li>
+</ol>
+<p>Git est décentralisé, ce qui signifie que chaque copie du référentiel contient l’intégralité de l’historique du projet. Donc tous les membres de l’équipe ont une copie locale du dépôt Git (plus ou moins à jour s’ils n’ont pas fait de pull depuis longtemps). Et d’ailleurs la version présente sur GitHub a forcément été poussée par quelqu’un. Cette personne a la version la plus récente du code.</p>
+<ol start="5" type="a">
+<li><strong>À 11h00, Johanna, qui travaille sur un projet codé en R, vient vous voir, car elle est intéressée par l’utilisation de Git. Est-ce possible d’utiliser Git avec du code R ? Expliquez-lui en quelques mots à quoi sert Git.</strong></li>
+</ol>
+<p>Il est tout à fait possible d’utiliser Git pour versionner du code R. Git fonctionne très bien avec les fichiers textes (un peu moins optimal pour les fichiers <code>.pdf</code>, <code>.xls</code>, <code>.doc</code>).</p>
+<p>Git est un système qui permet de versionner du code en créant des points de sauvegarde. Il permet aussi de travailler à plusieurs sur un même dépôt. Le dépôt central est celui qui fait référence. Chaque utilisateur peut cloner ce dépôt central pour créer un dépôt local. Il peut ensuite modifier le code sur son dépôt local, et enfin partager ses modification en mettant à jour le dépôt central. Git aide à synchroniser les différents dépôts.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="agilité-et-tests-5-points" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="agilité-et-tests-5-points"><span class="header-section-number">4</span> Agilité et Tests (5 points)</h2>
+<ol type="a">
+<li><strong>À quoi ça sert de faire des tests ?</strong></li>
+</ol>
 <ul>
-<li>We can externalize this processing! 😌</li>
-<li>Aggregation relationship 🤯</li>
+<li>Pour vérifier que votre programme fonctionne</li>
+<li>Pour détecter des erreurs</li>
+<li>Pour éviter les régressions (quand vous modifiez du code)</li>
 </ul>
-<div class="notes">
-<p>Il faut bien comprendre</p>
-</div>
-</section>
-<section id="le-bridge-pattern" class="level3">
-<h3 class="anchored" data-anchor-id="le-bridge-pattern">Le bridge pattern</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
-</section>
-<section id="work-smart-not-hard" class="level3">
-<h3 class="anchored" data-anchor-id="work-smart-not-hard">Work Smart, Not Hard</h3>
+<ol start="2" type="a">
+<li><strong>Comment appelle-t-on la méthode qui consiste à écrire des tests avant de coder ?</strong></li>
+</ol>
+<p>Le Test Driven Development (TDD).</p>
+<ol start="3" type="a">
+<li><strong>Citez 4 types de tests ?</strong></li>
+</ol>
 <ul>
-<li><strong>Composition + inheritance:</strong> 9 classes 😎</li>
-<li><strong>Inheritance:</strong> 17 classes 😫</li>
-<li>We can easily add types and formats 🥳</li>
+<li>Test unitaire</li>
+<li>Test fonctionnel</li>
+<li>Test de charge</li>
+<li>Test d’intégration</li>
 </ul>
-<div class="callout callout-style-default callout-important callout-titled" title="Pattern Bridge">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Pattern Bridge
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Splitting a large class into a group of smaller classes, each with its own hierarchy, which must then be combined.</p>
-</div>
-</div>
-</section>
-<section id="in-summary" class="level3">
-<h3 class="anchored" data-anchor-id="in-summary">In Summary</h3>
+<ol start="4" type="a">
+<li><strong>Écrivez 2 tests unitaires pour vérifier le bon fonctionnement de la méthode <code>trouver_par_id(id)</code> de l’exercice 1</strong></li>
+</ol>
 <ul>
-<li>Use the power of OOP 💣</li>
-<li>Prefer specific objects (inheritance) over <code>if/elif/else</code> 🐱‍🏍</li>
-<li>Abstract classes are blueprints for future classes 👷‍♀️👷‍♂️</li>
-<li>OOP allows creating more readable, scalable, and maintainable code 👑</li>
+<li>Cas nominal : id = 1 existant dans la base de données</li>
+<li>Cas d’erreur : id = 999 n’existant pas dans la base de données</li>
 </ul>
-</section>
-</section>
-<section id="software-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="software-engineering">Software Engineering</h2>
-<iframe src="https://giphy.com/embed/bU3bD2rsKq02Q" width="600" height="500" frameborder="0" class="no-print giphy-embed" allowfullscreen="">
-</iframe>
-<div class="notes">
-<p>On va aller un cran au-dessus.</p>
-</div>
-<section id="what-is-software-engineering" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-software-engineering">What is Software Engineering?</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest <span class="im">import</span> TestCase, TextTestRunner, TestLoader</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dao.personne_dao <span class="im">import</span> PersonneDao</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestPersonneDao(TestCase):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_trouver_par_id_ok(<span class="va">self</span>):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        personne_dao <span class="op">=</span> PersonneDao()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        personne <span class="op">=</span> personne_dao.trouver_par_id(<span class="dv">1</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(<span class="dv">1</span>, personne.<span class="bu">id</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_find_attack_by_id_not_found(<span class="va">self</span>):</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GIVEN</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        personne_dao <span class="op">=</span> PersonneDao()</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># WHEN</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        personne <span class="op">=</span> personne_dao.trouver_par_id(<span class="dv">999</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertIsNone(personne)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run the tests</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> TextTestRunner(verbosity<span class="op">=</span><span class="dv">2</span>).run(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        TestLoader().loadTestsFromTestCase(TestPersonneDao)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="a">
+<li><strong>Citez 3 frameworks agile ? Lequel est le plus utilisé ?</strong></li>
+</ol>
 <ul>
-<li>Observation: coding blindly does not result in a quality application.</li>
-<li>But stacking bricks blindly does not result in a house, even if you have a plan.</li>
-<li>Need to plan, document, test…</li>
+<li>SCRUM : le plus utilisé</li>
+<li>Kanban</li>
+<li>XP</li>
 </ul>
-<div class="notes">
-<p>Et cette partie sera la seconde du rapport intermédiaire.</p>
-</div>
-</section>
-<section id="why-its-important-parallel-with-building-a-house" class="level3">
-<h3 class="anchored" data-anchor-id="why-its-important-parallel-with-building-a-house">Why It’s Important: Parallel with Building a House</h3>
-<p><a href="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif" class="img-fluid"></a></p>
-<hr>
-<ul>
-<li>You have the construction plan for a house (provided by the architect)</li>
-<li>But implementing this plan requires technical knowledge</li>
-<li>Need to redraw diagrams for specific areas (arches, stairs, etc.)</li>
-<li><strong>This is not wasted time!</strong></li>
-</ul>
-<p><strong>Writing quality code is like doing precision craftsmanship; it requires tools, experience, and methods.</strong></p>
-<div class="notes">
-<p>Certains disent même qu’on devrait passer plus de temps à analyser qu’à coder. Sujet à débat, mais cela montre bien que la phase d’analyse (comment je code les fonctions) est super importante !</p>
-</div>
-</section>
-<section id="some-basic-principles" class="level3">
-<h3 class="anchored" data-anchor-id="some-basic-principles">Some Basic Principles</h3>
-<ul>
-<li>Decompose a program into simple <strong>coherent</strong> modules</li>
-<li>Modules <strong>expose</strong> methods that can be used/overridden by other modules but remain protected from unintended modifications</li>
-<li>Each module should be a <strong>black box</strong> for others</li>
-<li>If we keep the same <strong>inputs/outputs</strong>, we can change a module without risk</li>
-<li>Prefer abstractions + inheritance over <code>if/elif/else</code></li>
-</ul>
-<div class="notes">
-<p>Module architecture != module Python. Couche, c’est quand on a des modules empilés (beaucoup de vocabulaire à assimiler d’un coup).</p>
-<p>Faire un dessin avec et sans. Expliquer que c’est le boulot d’un objet métier de dire comment il s’affiche et comment on le stocke.</p>
-<p>Pareil c’est pas le boulot d’une vue de faire un calcul. Par contre une vue peut demander. Bien insister sur “l’indépendance des couches”. Théoriquement si deux personnes travaillent sur 2 couches et se sont mises d’accord sur comment elles communiquent le travail peut se faire en parallèle.</p>
-</div>
-</section>
-<section id="a-mantra" class="level3">
-<h3 class="anchored" data-anchor-id="a-mantra">A Mantra</h3>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Low coupling, high cohesion</strong></p>
-</div>
-</div>
-<ul>
-<li><strong>Low inter-class coupling:</strong> modifying one class should impact others as little as possible.</li>
-<li><strong>High intra-class cohesion:</strong> each class should be a coherent set of attributes and methods.</li>
-</ul>
-<div class="notes">
-<p>Gardez ça en tête dès que vous faites du code (R, SAS, etc.). Faites des fonctions les plus unitaires possible pour pouvoir les tester et les remplacer facilement. Divisez votre code en plusieurs fichiers pour le rendre réutilisable plus facilement. Ce n’est pas facile au début, mais il faut y penser.</p>
-</div>
-</section>
-<section id="why-respect-low-coupling-high-cohesion" class="level3">
-<h3 class="anchored" data-anchor-id="why-respect-low-coupling-high-cohesion">Why Respect Low Coupling, High Cohesion?</h3>
-<ul>
-<li>Teamwork 🦸‍♀️🧙‍♂️👨‍💼👩‍🔬</li>
-<li>Code readability 📖</li>
-<li>Debugging 🐞</li>
-</ul>
-<p><strong>Limit the risk of errors when modifying code (avoid spaghetti code) 🍝</strong></p>
-<div class="notes">
-<p>“Spaghetti” : code très chaotique où tout communique avec tout, et où chaque morceau de code fait un peu de tout. Il faut prendre un bout de code et le remonter à la main en “tirant” dessus. Cela devient ingérable quand il y a plus de 1000 lignes de code (et différents langages).</p>
-</div>
-</section>
-<section id="revisiting-the-bridge-pattern" class="level3">
-<h3 class="anchored" data-anchor-id="revisiting-the-bridge-pattern">Revisiting the Bridge Pattern</h3>
-<p><a href="img/class_diagram_poo_bridge_pattern.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/class_diagram_poo_bridge_pattern.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>Je remontre le schéma quelques secondes</p>
-</div>
-<hr>
-<ul>
-<li>The “Source” part handles processing related to the source.</li>
-<li>The “File” part handles file reading.</li>
-<li>Only inputs/outputs matter.</li>
-<li>We can add a “Processing” part for additional processing.</li>
-<li>No unnecessary <code>if/elif/else</code>. <strong>Each part of our code handles only one thing</strong></li>
-</ul>
-<p><strong>Every part of our code does just one thing</strong></p>
-<div class="notes">
-<p>Avantages :</p>
-<ul>
-<li>Lecture du code facilitée.</li>
-<li>En cas de bug, facile de trouver le coupable.</li>
-<li>On peut répartir le travail facilement.</li>
-</ul>
-</div>
-</section>
-<section id="design-patterns-definition" class="level3">
-<h3 class="anchored" data-anchor-id="design-patterns-definition">Design Patterns: Definition</h3>
-<blockquote class="blockquote">
-<p>“In computer science, and more specifically in software development, a design pattern is a characteristic arrangement of modules, recognized as a best practice in response to a software design problem. It describes a standard solution, usable in the design of different software.” — <a href="https://en.wikipedia.org/wiki/Software_design_pattern">Source</a></p>
-</blockquote>
-</section>
-<section id="design-patterns-in-a-nutshell" class="level3">
-<h3 class="anchored" data-anchor-id="design-patterns-in-a-nutshell">Design Patterns: In a Nutshell</h3>
-<ul>
-<li>Best practices</li>
-<li>Standard solutions to design problems</li>
-<li>Robust solutions</li>
-<li>Independent of technology</li>
-<li>Independent of the business</li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Is a tool that is there to help you</strong></p>
-</blockquote>
-<div class="notes">
-<p>En plus ils apportent un vocabulaire commun.<br>
-Il est plus rapide de répondre “tu devrais utiliser un bridge” que “tu devrais faire une seconde hiérarchie de classes et assembler ces hiérarchies”</p>
-</div>
-</section>
-<section id="design-patterns-example" class="level3">
-<h3 class="anchored" data-anchor-id="design-patterns-example">Design Patterns: Example</h3>
-<p><strong>Recurring Problem:</strong></p>
-<ul>
-<li>Creating complex objects that are a composition of independent characteristics</li>
-<li>In other words: decouple abstraction from its implementation so they can vary independently</li>
-</ul>
-<hr>
-<p><a href="img/class_diagram_poo_bridge_pattern_advanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/class_diagram_poo_bridge_pattern_advanced.png" class="img-fluid"></a></p>
-<div class="notes">
-<p>En ajoutant les méthodes stats</p>
-</div>
-</section>
-<section id="in-summary-1" class="level3">
-<h3 class="anchored" data-anchor-id="in-summary-1">In Summary</h3>
-<ul>
-<li>Creating a complex application requires complex code 🧩</li>
-<li>Without a design phase, we’re heading for trouble 🧱</li>
-<li>There are ready-made solutions to common problems 🧰</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Low coupling, high cohesion</p>
-</div>
-</div>
+<ol start="6" type="a">
+<li><strong>VRAI ou FAUX ? (sans justification)</strong></li>
+</ol>
+<ol type="1">
+<li><strong>Le cycle en V permet d’avoir des cycles de livraisons plus rapides.</strong> : FAUX</li>
+<li><strong>« L’adaptation au changement plus que le suivi d’un plan » est l’une des 4 valeurs fondamentales de l’agilité.</strong> : VRAI</li>
+<li><strong>Le principal inconvénient de l’agilité est qu’il peut y avoir un effet tunnel.</strong> : FAUX</li>
+<li><strong>Le Scrum Master est le responsable du bon fonctionnement de l’équipe.</strong> : VRAI</li>
+</ol>
+<ol start="7" type="a">
+<li><strong>Bonus : Est-ce qu’en tant que responsable d’une application informatique, vous feriez confiance aux utilisateurs de votre application ? Oui ou Non (réponse correcte : 0.25 pt, réponse fausse : -25 pts, non réponse : 0 pt)</strong></li>
+</ol>
+<p>NON JAMAIS !</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1317,38 +1265,6 @@ Important
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

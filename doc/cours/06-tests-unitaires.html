@@ -416,6 +416,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exams" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exams</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-exams">    
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2023.html">
+ <span class="dropdown-text">Examen 2023</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2023-correction.html">
+ <span class="dropdown-text">Examen 2023 solution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2024.html">
+ <span class="dropdown-text">Examen 2024</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2024-correction.html">
+ <span class="dropdown-text">Examen 2024 solution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2025.html">
+ <span class="dropdown-text">Examen 2025</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/exams/ci-2025-correction.html">
+ <span class="dropdown-text">Examen 2025 solution</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-various" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Various</span>
     </a>
@@ -465,7 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mock" id="toc-mock" class="nav-link" data-scroll-target="#mock">Mock</a></li>
   <li><a href="#test-driven-development-tdd" id="toc-test-driven-development-tdd" class="nav-link" data-scroll-target="#test-driven-development-tdd">Test-Driven Development (TDD)</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="06-tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="06-tests-unitaires-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="06-tests-unitaires.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -515,10 +546,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Source : <a href="https://www.commitstrip.com/" target="_blank">CommitStrip</a></figcaption>
 </figure>
 </div>
-<div class="notes">
-<p>ça parait évident, et pourtant…</p>
-<p>j’ai déjà testé une fonctionnalité d’un dev dont le cas nominal plante.</p>
-</div>
 <section id="why-test" class="level3">
 <h3 class="anchored" data-anchor-id="why-test">Why Test?</h3>
 <ul>
@@ -564,13 +591,6 @@ Note
 <li>with the goal to draw conclusions</li>
 <li>and ideally, be reproducible.</li>
 </ul>
-<div class="notes">
-<ul>
-<li>GIVEN</li>
-<li>WHEN</li>
-<li>THEN</li>
-</ul>
-</div>
 </section>
 <section id="test-coverage" class="level3">
 <h3 class="anchored" data-anchor-id="test-coverage">Test Coverage</h3>
@@ -580,10 +600,6 @@ Note
 <li>Trend, rather than a reliable value</li>
 </ul>
 <p>Be lazy : fewer tests, but useful ones!</p>
-<div class="notes">
-<p>Nombre de fonctions testées sur le nombre total de fonctions.</p>
-<p>Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.</p>
-</div>
 </section>
 <section id="types-of-tests" class="level3 smaller">
 <h3 class="smaller anchored" data-anchor-id="types-of-tests">Types of Tests</h3>
@@ -595,9 +611,6 @@ Note
 <li>Integration test</li>
 <li>Penetration test</li>
 </ul>
-<div class="notes">
-<p>mutation tests to test unit test quality.</p>
-</div>
 </section>
 </section>
 <section id="unit-testing" class="level2">
@@ -611,17 +624,6 @@ Note
 <li>Reproducible</li>
 <li>Deterministic</li>
 </ul>
-<div class="notes">
-<ul>
-<li>Isolé : indépendant des autres tests
-<ul>
-<li>si vous testez une méthode A, qui elle-même appelle d’autres méthodes B, C, D…</li>
-<li>le test ne doit se faire que sur la méthode A</li>
-<li>il faut <code>mocker</code> le comportement des autres méthodes</li>
-</ul></li>
-<li>Déterministe : donne toujours le même résultat</li>
-</ul>
-</div>
 </section>
 <section id="method-to-test" class="level3">
 <h3 class="anchored" data-anchor-id="method-to-test">Method to Test</h3>
@@ -676,9 +678,6 @@ Note
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># THEN</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> resultat <span class="op">==</span> <span class="fl">2.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="notes">
-<p>Est-ce suffisant ?</p>
-</div>
 </section>
 <section id="other-cases" class="level3">
 <h3 class="anchored" data-anchor-id="other-cases">Other Cases</h3>
@@ -715,9 +714,6 @@ Note
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> pytest.raises(<span class="pp">TypeError</span>):</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            MathOperations().diviser_cinq_par(nombre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="notes">
-<p>Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n’est pas le cas.</p>
-</div>
 </section>
 <section id="key-takeaways" class="level3">
 <h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
@@ -728,15 +724,6 @@ Note
 <li>A unit test tests ONE and ONLY ONE thing</li>
 <li>As many unit tests as there are possible returns</li>
 </ul>
-<div class="notes">
-<p>Vu en 1A :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">'a, b, resultat_attendu'</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> (<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">7</span>)]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
 </section>
 <section id="mock" class="level2">
@@ -752,26 +739,22 @@ Note
 <div class="code-with-filename-file">
 <pre><strong>player_service.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="player_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerService:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> create(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Player:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        new_player <span class="op">=</span> Player(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            pseudo<span class="op">=</span>pseudo,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            age<span class="op">=</span>age,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            mail<span class="op">=</span>mail,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        create_ok <span class="op">=</span> PlayerDao().creer(new_player)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> create_ok:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> new_player</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="notes">
-<p>Expliquer brievement le contexte, car dao/service c’est encore nouveau.</p>
-<p>Comment prévoir le comportement de <code>JoueurDao().creer(nouveau_joueur)</code> ?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="player_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PlayerService:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> create(<span class="va">self</span>, pseudo, mdp, age, mail, fan_pokemon) <span class="op">-&gt;</span> Player:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        new_player <span class="op">=</span> Player(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            pseudo<span class="op">=</span>pseudo,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            mdp<span class="op">=</span>hash_password(mdp, pseudo),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            age<span class="op">=</span>age,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            mail<span class="op">=</span>mail,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            fan_pokemon<span class="op">=</span>fan_pokemon,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        create_ok <span class="op">=</span> PlayerDao().creer(new_player)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> create_ok:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> new_player</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="mock---example-1" class="level3">
@@ -780,22 +763,19 @@ Note
 <div class="code-with-filename-file">
 <pre><strong>test_player_service.py</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="test_player_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_create_ok():</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Successful creation of Player"""</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GIVEN</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    PlayerDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># WHEN</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># THEN</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(player, Player)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> player.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="notes">
-<p>Autre exemple (fin du TP3), mock DAO: tests sur un schéma dédié et pas sur les données de PROD.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="test_player_service.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> unittest.mock <span class="im">import</span> MagicMock</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_create_ok():</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Successful creation of Player"""</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GIVEN</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    pseudo, mdp, age, mail, fan_pokemon <span class="op">=</span> <span class="st">"jp"</span>, <span class="st">"1234"</span>, <span class="dv">15</span>, <span class="st">"z@mail.oo"</span>, <span class="va">True</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    PlayerDao().creer <span class="op">=</span> MagicMock(return_value<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># WHEN</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> PlayerService().creer(pseudo, mdp, age, mail, fan_pokemon)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># THEN</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">isinstance</span>(player, Player)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> player.pseudo <span class="op">==</span> pseudo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -859,11 +839,6 @@ Important
 <div class="callout-body-container callout-body">
 <p>Advantages &gt;&gt;&gt; Disadvantages</p>
 </div>
-</div>
-<div class="notes">
-<p>La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.</p>
-<p>Sinon, si l’on écrit la fonction en premier, une fois que l’on a terminé, il y a 9 chances sur 10 que l’on se dise : “c’est bon ça marche, pas la peine de tester…”. Et ça c’est pas bien !!!</p>
-<p>❌ puis ✅ Temps -&gt; Prend du temps au début mais gain de temps à long terme</p>
 </div>
 </section>
 <section id="project-tip" class="level3">
