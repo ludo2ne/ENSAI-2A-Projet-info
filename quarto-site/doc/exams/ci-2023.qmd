@@ -1,0 +1,153 @@
+---
+title: "Examen final : Compléments d'informatique"
+subtitle: "UE3 : Compléments d'informatique"
+date: "2023/10/24"
+author: ""
+format:
+  html:
+    toc-depth: 2
+    toc-expand: 2
+  typst:
+    papersize: a4
+    margin:
+      x: 1.5cm
+      y: 2.0cm
+    section-numbering: 1.1.a
+    mainfont: "Libertinus Serif"
+    fontsize: 12pt
+number-sections: true
+number-depth: 3
+---
+
+## Instructions {.unnumbered}
+
+- Examen sur papier
+- Durée : 2h
+- Une feuille A4 manuscrite recto/verso autorisée
+- Sans calculatrice
+
+::: {.callout-important title="À lire avant de commencer"}
+Le sujet est composé de plusieurs pages, numérotées de 1 à la dernière page.
+
+- Les exercices peuvent être traités dans l'ordre de votre choix.
+- Dans chaque exercice, les questions ne sont pas forcément de difficulté croissante.
+- Les différentes questions attendent des **réponses courtes**.
+- Respectez scrupuleusement les consignes. Cependant, si une question ne vous semble pas claire, notez sur votre copie la manière dont vous l'avez comprise et traitée.
+- Quand du code est demandé, veuillez respecter les règles de bases du langage (mots clefs et indentation). Des erreurs seront tolérées, car vous êtes sur papier. En cas d'oubli d'un nom de méthode Python, utilisez du pseudo-code.
+- Sauf mention contraire, il n'est pas demandé d'écrire la documentation du code (même si la doc c'est bien !)
+:::
+
+Bonne chance !
+
+{{< pagebreak >}}
+
+## POO, Bases de données et Sécurité (7 points)
+
+a. Quels sont les 3 grands principes de la Programmation Orientée Objet ?
+b. Quels sont les 4 piliers de la sécurité informatique ? Détaillez celui de votre choix (définition, mécanismes associés).
+c. Quels sont les intérêts de séparer votre code en couches ?
+d. Quel est le rôle principal de la couche DAO ?
+e. Expliquez comment se prémunir des injections SQL ? Donnez quelques bonnes pratiques.
+f. On vous demande de gérer le stockage de mots de passe en base de données. Comment procédez-vous ?
+g. Complétez la classe `PersonneDao` (ci-après) en écrivant la méthode `trouver_toutes` qui retourne la liste de toutes les personnes de la base de données (pour cette méthode, le résultat renvoyé par le curseur pourra être traité comme une liste de dictionnaires).
+
+```{.python}
+class Personne:
+    def __init__(self, nom, prenom, age, id=None):
+        self.nom = nom
+        self.prenom = prenom
+        self.age = age
+        self.id = id
+
+class PersonneDao(metaclass=Singleton):
+    def trouver_par_id(self, id: str) -> Personne:
+        """Trouver une Personne à partir de son id"""
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "SELECT nom,                                     "
+                    "       prenom,                                  "
+                    "       age                                      "
+                    "  FROM exo.personne                             "
+                    " WHERE id=%(id)s                                ",
+                    {"id": id},
+                )
+                res = cursor.fetchone()
+
+        personne = None
+        if res:
+            personne = Personne(
+                nom=res["nom"],
+                prenom=res["prenom"],
+                age=res["age"],
+                id=id,
+            )
+        return personne
+```
+
+{{< pagebreak >}}
+
+## Web services (3 points)
+
+a. Qu'est-ce qu'un Web service ?
+b. Quelles sont les 4 méthodes http pour contacter un Web service ?
+c. Nommez les éléments de la requête suivante : `GET https://pokeapi.fr:5000/pokemon?limit=10`
+  - GET
+  - https
+  - pokeapi.fr
+  - 5000
+  - /pokemon
+  - ?limit=10
+d. Qu'est-ce qu'un Swagger ?
+
+{{< pagebreak >}}
+
+## Git et Versionnage (5 points)
+
+Dans cet exercice, vous travaillez dans une équipe composée de 3 personnes sur le projet Argousier. Le code de votre projet est stocké sur GitHub. Comme tous les matins, vous arrivez à 7h30 à votre bureau. Vos collègues, eux sont plutôt du soir. Vous allumez votre machine et lancez Git Bash.
+
+a. Vous voulez vérifier si vos collègues ont avancé sur le code hier soir. Quelle commande exécutez-vous ?
+
+Pas de chance, hier avant de partir, vous avez oublié de partager votre code sur le dépôt distant. Quelqu'un a modifié le même fichier que vous et vous obtenez un conflit. Quand vous ouvrez le fichier en question, vous trouvez ceci :
+
+```{.python}
+<<<<<<< HEAD (current change)
+print("Bonjour Alain")
+=======
+print("Bonjour Philippe")
+>>>>>>> (incoming change)
+```
+
+b. Vous imposez votre version. Quelles actions faites-vous pour mettre à jour le dépôt distant ?
+
+Vous avez maintenant réussi à mettre à jour le dépôt distant. Votre collègue Annabelle arrive à 9h00, développe pendant 30min, puis essaie de partager son code avec les commandes suivantes :
+
+```{.bash}
+>>> git add .
+>>> git commit -m "correction incident 5"
+>>> git push
+```
+
+Cependant lors du push, elle rencontre une erreur : « Updates were rejected because the remote contains work that you do not have locally. »
+
+c. Qu'est-ce qu'Annabelle a oublié de faire ?
+d. À 10h00, Michel arrive en panique. Il vient d'entendre à la radio que GitHub vient d'être piraté à l'instant et qu'ils ont perdu tous les dépôts. Est-ce que vous allez devoir recommencer votre projet à zéro (expliquez) ?
+e. À 11h00, Johanna, qui travaille sur un projet codé en R, vient vous voir, car elle est intéressée par l'utilisation de Git. Est-ce possible d'utiliser Git avec du code R ? Expliquez-lui en quelques mots à quoi sert Git.
+
+{{< pagebreak >}}
+
+## Agilité et Tests (5 points)
+
+a. À quoi ça sert de faire des tests ?
+b. Comment appelle-t-on la méthode qui consiste à écrire des tests avant de coder ?
+c. Citez 4 types de tests.
+d. Écrivez 2 tests unitaires pour vérifier le bon fonctionnement de la méthode `trouver_par_id(id)` de l'exercice 1.
+  - Cas nominal : id = 1 existant dans la base de données
+  - Cas d'erreur : id = 999 n'existant pas dans la base de données
+e. Citez 3 frameworks agile ? Lequel est le plus utilisé ?
+f. VRAI ou FAUX ? (sans justification)
+  1. Le cycle en V permet d'avoir des cycles de livraisons plus rapides.
+  2. « L’adaptation au changement plus que le suivi d’un plan » est l'une des 4 valeurs fondamentales de l'agilité.
+  3. Le principal inconvénient de l'agilité est qu'il peut y avoir un effet tunnel.
+  4. Le Scrum Master est le responsable du bon fonctionnement de l'équipe.
+g. **Bonus :** Est-ce qu'en tant que responsable d'une application informatique, vous feriez confiance aux utilisateurs de votre application ? Oui ou Non (réponse correcte : 0.25 pt, réponse fausse : -25 pts, non réponse : 0 pt)

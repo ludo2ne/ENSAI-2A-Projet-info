@@ -116,7 +116,7 @@ For people who have difficulty organizing themselves but are sensitive to *gamif
 Every week (until the final report is submitted and except during school holidays), you will have to complete your weekly project progress update:
 
 - **When**: by [Thursday evening]{.underline} at the latest
-- **Where**: in your Git repository, *doc/suivi- folder
+- **Where**: in your Git repository, *doc/suivi* folder
 - **How**: create a file named `YYYY.MM.DD-semaineN.md` using the template below
 - **Who**: all team members
 - **What**: list the completed tasks + the estimated total time
@@ -125,8 +125,8 @@ Every week (until the final report is submitted and except during school holiday
 ::: {.callout-important}
 The weekly update is **[mandatory]{.underline}**. You will be penalized if you do not complete it or if you submit it late.
 
-- If you have not worked on the project for a week (and you are allowed to):arrow_right: simply write *ras- (nothing to report)
-- If a task is not finished, you can add the suffix *WIP- (Work In Progress)
+- If you have not worked on the project for a week (and you are allowed to):arrow_right: simply write *ras* (nothing to report)
+- If a task is not finished, you can add the suffix *WIP* (Work In Progress)
 :::
 
 For your information, the software project gives you 4 ECTS, which represents an investment of approximately 100 hours (including in-person sessions) per student.
@@ -204,19 +204,19 @@ Week no. 2
 
 ### Harry COVER
 3h
-- [x] Database modification: modification of the *joueur- table, creation of the *arbitre- table
-- [x] Refactor: use of the *tabulate- package to create nice tables
+- [x] Database modification: modification of the *joueur* table, creation of the *arbitre* table
+- [x] Refactor: use of the *tabulate* package to create nice tables
 
 ### Éva ZION
 3h
-- [x] Coding of the *Create a tournament- feature (View + Services + Dao)
+- [x] Coding of the *Create a tournament* feature (View + Services + Dao)
 - [x] Review of the analysis report
 
 ## Backlog
 
 ### Priorities
 - [ ] Fix player modification bug
-- [ ] *Referee a tournament- feature
+- [ ] *Referee a tournament* feature
 - [ ] Administrator menu
 
 ### Secondary
@@ -361,7 +361,7 @@ As a client, your tutor has explained their needs to you. The analysis report ex
 
 This first deliverable is the outcome of the preliminary study and general design phase. It must show that you have understood your subject and have an initial model of your application. This deliverable will therefore contain:
 
-- A *detailed- schedule of the 3 phases described above (Gantt chart)
+- A *detailed* schedule of the 3 phases described above (Gantt chart)
 - The diagrams created during the analysis phase
 - An architecture document specifying the logical organization of the technical subsystems (business packages, persistence)
 - The main menus of the application and their sequences if relevant
@@ -406,7 +406,7 @@ How does your application meet the needs you have described:
 
 - How your application works:
   - Focus on a central process, describing it completely so that the jury understands the logic you have implemented. What does the user do? What does your product do? How does it interact with the other components? Which classes are used? It is not necessary to specify the methods called, unless you think this is useful. To help the reader, you can add use case diagrams, as well as various other diagrams;
-  - *Brief- explanation for the others. Your report should not be a list of the Python functions in your application;
+  - *Brief* explanation for the others. Your report should not be a list of the Python functions in your application;
 
 Prioritize the quality of the explanations over quantity. If you seriously describe one interesting central feature, the jury will assume that you are capable of doing the same for the others. You can illustrate your explanations using your class diagram. This allows you to:
 
@@ -479,7 +479,7 @@ The complete application source code must contain at least:
 - A `README.md` file at the root of the repository [written in English]{.underline} for users, which must contain:
   - a brief presentation of your application (main features, needs it addresses)
   - quick installation and launch instructions
-- A `README.md` file in the *backend- folder for people wishing to continue developing the application:
+- A `README.md` file in the *backend* folder for people wishing to continue developing the application:
   - Presentation of the layered architecture
   - Development tools (tests, logs, quality...)
 - A `backend/pyproject.toml` file with all Python modules to install to run your application
@@ -489,7 +489,7 @@ The complete application source code must contain at least:
 Between this code submission and the oral defense, you are allowed to modify your code. However, these modifications will only serve to improve the quality of the demonstration because this new code will not count towards the grade.
 
 ::: {.callout-important}
-Only the code in the *backend- part will be graded!
+Only the code in the *backend* part will be graded!
 
 If you develop a *frontend*, you can therefore code it with somewhat less rigor.
 :::

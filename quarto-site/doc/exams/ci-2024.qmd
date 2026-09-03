@@ -1,0 +1,167 @@
+---
+title: "Examen final : Compléments d'informatique"
+subtitle: "2A UE3"
+date: "2024/10/07"
+author: ""
+format:
+  html:
+    toc-depth: 2
+    toc-expand: 2
+  typst:
+    papersize: a4
+    margin:
+      x: 1.5cm
+      y: 2.0cm
+    section-numbering: 1.1.a
+    mainfont: "Libertinus Serif"
+    fontsize: 12pt
+number-sections: true
+number-depth: 3
+---
+
+## Instructions {.unnumbered}
+
+- Examen sur papier
+- Durée : 2h
+- Une feuille A4 [manuscrite]{.underline} recto/verso autorisée
+- Sans calculatrice
+
+::: {.callout-important title="À lire avant de commencer"}
+Le sujet est composé de plusieurs pages, numérotées de 1 à la dernière page.
+
+- Les exercices peuvent être traités dans l'ordre de votre choix.
+- Dans chaque exercice, les questions ne sont pas forcément de difficulté croissante.
+- Sauf mention contraire, les différentes questions attendent des [réponses courtes]{.underline}.
+- Respectez scrupuleusement les consignes. Cependant, si une question ne vous semble pas claire, notez sur votre copie la manière dont vous l'avez comprise et traitée.
+- Quand du code est demandé, veuillez respecter les règles de bases du langage (mots clefs et indentation). Des erreurs seront tolérées, car vous êtes sur papier. En cas d'oubli d'un nom de méthode Python, utilisez du pseudo-code.
+- Excepté si c'est demandé, il n'est pas nécessaire d'écrire la documentation du code (même si la doc c'est bien !)
+:::
+
+Bonne chance !
+
+{{< pagebreak >}}
+
+## Questions de cours (7 points)
+
+a. Citez les différents niveaux de logs ?
+b. Quelle est la différence entre un formater et un linter ?
+c. Quels sont les rôles des différentes couches de la couche métier.
+d. Qu'est-ce qu'une classe abstraite ?
+e. Qu'est-ce que le bridge pattern ?
+f. Quel est l'intérêt de faire des tests unitaires ?
+g. À quoi sert un mock ?
+h. Parmi les principes CAID, détaillez celui d'Authentification et les mécanismes associés.
+
+{{< pagebreak >}}
+
+## Webservices (3 points)
+
+a. Qu'est-ce qu'une API ?
+b. Nommez les différents éléments de la requête suivante :
+
+`GET https://pokeapi.fr:5000/pokemon?limit=10`
+
+c. Parmi la liste suivante, quel package `Python` sert à interroger un webservice : requests, psycopg2, fastAPI, Insomnia, Django, inquirerPy ?
+
+{{< pagebreak >}}
+
+## Code (7 points)
+
+a. Écrivez le code d'une fonction `Python est_bissextile(annee)` qui :
+  - prend en paramètre un entier
+  - retourne un booléen
+
+Une année est bissextile si :
+
+- Elle est divisible par 4
+- Mais pas divisible par 100, sauf si elle est aussi divisible par 400
+
+b. Modifier le code ci-dessous pour appliquer le principe d'héritage.
+
+```{.python}
+class Pokemon:
+    def __init__(self, name, level, type_pk, attack, defense):
+        self.name: str = name
+        self.level: int = level
+        self.type_pk: str = type_pk
+        self.attack: int = attack
+        self.defense: int = defense
+
+    def level_up(self, bonus:int=0) -> None:
+        self.level += 1 + bonus
+
+    def get_attack_coef(self) -> float:
+        """Compute the attack coefficient"""
+        if self.type_pk == "Attacker":
+            return 1 + (self.attack) / 200
+        elif self.type_pk == "Defender":
+            return 1 + (self.defense) / 200
+```
+
+c. Écrivez, en utilisant `pytest`, les tests unitaires de la méthode `level_up` ci-dessus.
+d. Écrivez la documentation de la méthode `level_up` ci-dessus.
+
+{{< pagebreak >}}
+
+e. En vous aidant du modèle de données ci-dessous, écrivez une requête SQL qui permet d'afficher le nom et la puissance de toutes les attaques de type « Special »
+
+![](./img/2024-diagram.PNG){width=60%}
+
+f. Relevez les erreurs et les mauvaises pratiques du code ci-dessous ? Quelles conséquences cela pourrait-il avoir ?
+
+```{.python}
+from dao.db_connection import DBConnection
+from business_object.joueuse import Joueuse
+
+class JoueuseDao(metaclass=Singleton):
+    def se_connecter(self, pseudo, mdp) -> Joueuse:
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor:
+                requete = " SELECT *                           "
+                requete += "  FROM joueuse                     "
+                requete += " WHERE pseudo = '" + pseudo + "'   "
+                requete += "   AND mdp = '" + mdp + "';        "
+                cursor.execute(requete)
+                res = cursor.fetchall()
+        return res
+```
+
+{{< pagebreak >}}
+
+## Git et Versionnage (3 points)
+
+Vous travaillez avec deux collègues Alice et Bob qui découvrent git. Actuellement le projet de data science sur lequel vous travaillez tous est hébergé sur GitHub.
+
+a. Alice vous appelle car elle a besoin d'aide. Elle a passé son après-midi à travailler et veut pousser son code vers le dépôt distant mais elle ne sait pas comment faire. Comment doit-elle procéder ?
+
+b. Bob vous appelle car il n'arrive pas à pousser son code. Il reçoit en permanence cette erreur :
+
+```{.text}
+>>> git push
+! [rejected] master -> dev (fetch first)
+error: failed to push some refs to 'git@github.com:inseefrlab/dataproject.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository
+hint: pushing to the same ref. You may want to first integrate the
+hint: remote changes (e.g., 'git pull ...') before pushing again.
+```
+
+Aidez Bob pour qu'il puisse partager son code.
+
+c. Maintenant Bob reçoit ce message. Expliquez à Bob ce qu'il doit faire pour débloquer la situation.
+
+```{.text}
+>>> git pull
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Total 8 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (8/8), 921 bytes | 25.00 KiB/s, done.
+From github.com:inseefrlab/dataproject.git
+d0790b4..3b27915  main       -> origin/main
+Auto-merging main.py
+CONFLICT (content): Merge conflict in main.py
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+d. À quoi sert le fichier `.gitignore` ?
+e. Vous arrivez un matin et tous les ordinateurs de votre société ont été volés. Est-ce grave pour votre projet ? Dans le pire des cas, combien de temps de travail avez-vous perdu ?

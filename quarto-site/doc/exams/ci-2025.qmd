@@ -1,0 +1,155 @@
+---
+title: "Examen final : Compléments d'informatique"
+subtitle: "ENSAI 2A UE3"
+author: ""
+date: "2025/09/29"
+format:
+  html: default
+  typst:
+    papersize: a4
+    margin:
+      x: 1.5cm
+      y: 2.0cm
+    section-numbering: 1.1.a
+    mainfont: "Libertinus Serif"
+    fontsize: 12pt
+number-sections: true
+number-depth: 2
+---
+
+## Instructions {.unnumbered}
+
+- Written exam
+- Duration: 2 hours
+- One A4 sheet of **handwritten** notes (front and back) allowed
+- No calculator
+
+::: {.callout-important title="Read Before Starting"}
+- You can answer the exercises in any order.
+- Within each exercise, the questions are not necessarily ordered by increasing difficulty.
+- Unless otherwise stated, the questions expect [short answers]{.underline}.
+- Strictly follow the instructions. If a question seems unclear, state your assumptions on your answer sheet.
+- When code is required, follow the basic language conventions (keywords, indentation, etc.). Syntax errors due to handwriting will be tolerated. If you do not remember the exact name of a Python method, you may use pseudocode.
+- Unless explicitly requested, code documentation is not required.
+:::
+
+{{< pagebreak >}}
+
+## Course Questions (7 points)
+
+::: {.callout-note title="Instructions"}
+Give short answers to the following questions.
+:::
+
+a. List the main tools and software used during the practical sessions.
+b. Why should we write quality code?
+c. What are the benefits of dividing an application into layers?
+d. How would you define the relationships between the following classes?
+  - Bicycle
+  - TwoWheeledVehicle
+  - Scooter
+  - ElectricBicycle
+e. What is a design pattern?
+f. What principles should a good unit test follow?
+g. What is the purpose of a mock?
+h. Identify the errors and bad practices in the following code. What consequences could they have?
+
+\
+
+```{.python}
+from dao.db_connection import DBConnection
+from business_object.player import Player
+
+class PlayerDao(metaclass=Singleton):
+    def connect(self, pseudo, pwd) -> Player:
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor:
+                query = " SELECT *                           "
+                query += "  FROM player                     "
+                query += " WHERE pseudo = '" + pseudo + "'   "
+                query += "   AND pwd = '" + pwd + "';        "
+
+                cursor.execute(query)
+                res = cursor.fetchall()
+
+                return res
+```
+
+
+{{< pagebreak >}}
+
+## Webservices (3 points)
+
+::: {.callout-note title="Instructions"}
+Give short answers to the following questions.
+:::
+
+a. Name the different elements of the following request:
+
+`GET https://my-awesome-ws.fr/attack/8`
+
+b. In your opinion, what could the following request do?
+
+`PUT https://my-awesome-ws.fr/pokemon/15`
+
+c. What needs to be added for this request to work?
+d. Which HTTP methods correspond to the CRUD operations?
+
+
+{{< pagebreak >}}
+
+## Code (6 points)
+
+::: {.callout-note title="Instructions"}
+Respect the principles of layered programming throughout this exercise.
+:::
+
+Create a `Person` class with the following attributes:
+
+- last name
+- first name
+- city
+- age
+- is_adult
+
+a. Create the class and its constructor. Each new person has an age of `0` and is not an adult.
+b. Add a `birthday()` method that increments the person's age. When the person reaches 18 years old, they become an adult.
+
+Write the documentation for this method.
+
+c. Using `pytest`, write the unit tests for the `birthday()` method.
+d. Assuming there is a database table `person` containing the same information as the `Person` class, write the SQL query that displays the number of people grouped by city.
+e. The `PersonDao` class provides a `list_all()` method returning all people.
+
+Write a service method that returns only the adults.
+
+f. **Bonus:** Modify the service method so that it accepts an optional parameter `cities` (a list of cities).
+  - If the parameter is provided, return only adults whose city belongs to this list.
+  - Otherwise, return all adults.
+
+
+{{< pagebreak >}}
+
+## Git and Version Control (4 points)
+
+Your project manager asks you to update the file `src/main.py` in the Git repository:
+
+`https://github.com/soleil59/sustainable-cultures.git`
+
+The update consists of connecting to a database to retrieve the contents of a table named `chicory`.
+
+You have never worked on this repository before, but you have the required permissions and a valid access token.
+
+a. How do you retrieve the repository onto your local machine?
+
+You then modify the `src/main.py` file.
+
+Following good development and security practices, you do **not** hardcode the database credentials. Instead, you store them in a new `.env` file.
+
+b. How do you send your modifications to the remote repository?
+
+You followed the procedure correctly but encounter a merge conflict.
+
+c. After which Git command can such a conflict occur? Briefly explain.
+d. What could have caused this conflict?
+e. How do you resolve it?

@@ -69,6 +69,20 @@ website:
           - href: doc/tp/2025/tp1.qmd
             text: Old Labs
     right:
+      - text: Exams
+        menu:
+          - href: doc/exams/ci-2023.qmd
+            text: Examen 2023
+          - href: doc/exams/ci-2023-correction.qmd
+            text: Examen 2023 solution
+          - href: doc/exams/ci-2024.qmd
+            text: Examen 2024
+          - href: doc/exams/ci-2024-correction.qmd
+            text: Examen 2024 solution
+          - href: doc/exams/ci-2025.qmd
+            text: Examen 2025
+          - href: doc/exams/ci-2025-correction.qmd
+            text: Examen 2025 solution
       - text: Various
         menu:
           - href: https://ludo2ne.github.io/ENSAI-tools/

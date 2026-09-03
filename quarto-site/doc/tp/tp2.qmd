@@ -164,11 +164,27 @@ Whenever you are asked to create a new class, this implicitly means you must als
   - *winner*: Player or None if it is a draw
   - *game_mode*: The type of game played ("coinflip" or "dice")
   - *description*: To store more details about the game
-- [ ] Add *__str__()* method returning for example:
+- [ ] Add *\_\_str\_\_()* method returning for example:
 
 > *coinflip* between Jacky and Jackie. Winner: Jackie
 
 We now have an object to store the results. We'll see later how to insert them into the database.
+
+::: {.callout-tip collapse="true"}
+Ensuring code correctness isn't always straightforward. Occasionally, manual testing can be more efficient than writing full unit tests for simple logic. As a workaround, you can use a sandbox.py file in the src folder for rapid prototyping.
+
+```{.python filename="sandbox.py"}
+from business_object.game import Game
+from business_object.player import Player
+
+p1 = Player(...)
+p2 = Player(...)
+g = Game(...)
+print(g)
+```
+
+and run it using : `uv run --project backend python backend/src/sandbox.py`
+:::
 
 
 ### Polymorphic Game Modes
@@ -258,6 +274,9 @@ When you use **\*\*kwargs** in a function definition, Python collects all the ex
 - [ ] Create an abstract base class `GameMode`
   - in a folder called *game_mode* in *business_object*
 - [ ] Defines a standard *play(p1, p2) -> Game* abstract method
+
+Next, let's create the two child classes that will inherit from `GameMode`
+
 - [ ] Implement `DiceMode` 
   - including method *play(p1, p2) -> Game*
   - both players roll a die, and the one with the highest roll wins (Draw if equals)
@@ -265,6 +284,18 @@ When you use **\*\*kwargs** in a function definition, Python collects all the ex
   - including method *play(p1, p2, choice) -> Game*
   - cut and paste the code that was previously in GameService
 
+:::{.callout-tip title="Imports"}
+An import allows you to use code from one file in another. For example, if your CoinFlipMode class needs to create a 
+Game object, you must import the Game class.
+
+You can use absolute imports from root folder `src` (recommended) or relative ones.
+
+`from business_object.game import Game` means :
+
+- From folder *business_object*
+- File *game* (.py)
+- Import class `Game`
+:::
 
 ### A factory for producing GameMode
 
@@ -358,11 +389,18 @@ You receive a Game object; use it.
         username1=game.player1.username,
         username2=game.player2.username,
         description=game.description,
-        winner=game.winner.username,
+        winner=game.winner.username if game.winner else None,
         new_elo1=game.player1.elo,
         new_elo2=game.player2.elo,
     )
 ```
+
+Feel free to try it manually :
+
+- [ ] Launch the backend
+- [ ] Go to the swagger page and use `/login` endpoint
+  - Copy the token
+- [ ] Play a Game against someone else
 
 
 ## Conclusion

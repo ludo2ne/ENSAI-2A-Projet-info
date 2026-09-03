@@ -6,16 +6,19 @@ format:
   revealjs:
     footer: "[Home](../../index.html) --- [Unit Testing](06-tests-unitaires.html)"
     output-file: 06-tests-unitaires-slides.html
+  typst: default
 ---
 
 ## Testing
 
 ![Source : [CommitStrip](https://www.commitstrip.com/){target="_blank"}](./img/quality-test-or-not-commitstrip.jpg){.r-stretch}
 
+:::{.content-hidden unless-format="revealjs"}
 ::: {.notes}
 ça parait évident, et pourtant...
 
 j'ai déjà testé une fonctionnalité d'un dev dont le cas nominal plante.
+:::
 :::
 
 ### Why Test?
@@ -54,10 +57,12 @@ This examination is conducted
 - with the goal to draw conclusions 
 - and ideally, be reproducible.
 
+::: {.content-hidden unless-format="revealjs"}
 ::: {.notes}
 - GIVEN
 - WHEN
 - THEN
+:::
 :::
 
 
@@ -69,10 +74,12 @@ This examination is conducted
 
 Be lazy : fewer tests, but useful ones!
 
+::: {.content-hidden unless-format="revealjs"}
 ::: {.notes}
 Nombre de fonctions testées sur le nombre total de fonctions.  
 
 Tendance car facile de tester toutes les méthodes élémentaires pour augmenter mécaniquement sa couverture et de mettre de côté les tests sur les méthodes plus compliquées.
+:::
 :::
 
 ### Types of Tests {.smaller}
@@ -85,8 +92,10 @@ There are many different types of tests, here are the main ones:
 - Integration test
 - Penetration test
 
+:::{.content-hidden unless-format="revealjs"}
 :::{.notes}
 mutation tests to test unit test quality.
+:::
 :::
 
 
@@ -102,12 +111,14 @@ We will use the `pytest` package to perform our tests in Python.
 - Reproducible
 - Deterministic
 
+::: {.content-hidden unless-format="revealjs"}
 ::: {.notes}
 - Isolé : indépendant des autres tests
   - si vous testez une méthode A, qui elle-même appelle d'autres méthodes B, C, D...
   - le test ne doit se faire que sur la méthode A
   - il faut `mocker` le comportement des autres méthodes
 - Déterministe : donne toujours le même résultat
+:::
 :::
 
 
@@ -161,8 +172,10 @@ class TestMathOperations():
         assert resultat == 2.5
 ```
 
+::: {.content-hidden unless-format="revealjs"}
 ::: {.notes}
 Est-ce suffisant ?
+:::
 :::
 
 
@@ -199,8 +212,10 @@ You can also write a test to verify that your method indeed returns a `TypeError
             MathOperations().diviser_cinq_par(nombre)
 ```
 
+::: {.content-hidden unless-format="revealjs"}
 ::: {.notes}
 Mais il est quand même préférable de vérifier dans votre méthode que le paramètre est bien de type numérique et de décider quoi faire si ce n'est pas le cas.
+:::
 :::
 
 
@@ -213,6 +228,7 @@ Unit tests:
 - A unit test tests ONE and ONLY ONE thing
 - As many unit tests as there are possible returns
 
+::: {.content-hidden unless-format="revealjs"}
 :::{.notes}
 Vu en 1A : 
 
@@ -224,6 +240,7 @@ Vu en 1A :
  (3, 4, 7)]
 )
 ```
+:::
 :::
 
 
@@ -254,12 +271,13 @@ class PlayerService:
             return None
 ```
 
+:::{.content-hidden unless-format="revealjs"}
 :::{.notes}
 Expliquer brievement le contexte, car dao/service c'est encore nouveau.
 
 Comment prévoir le comportement de `JoueurDao().creer(nouveau_joueur)` ?
 :::
-
+:::
 
 ### Mock - Example
 
@@ -279,8 +297,10 @@ def test_create_ok():
     assert player.pseudo == pseudo
 ```
 
+:::{.content-hidden unless-format="revealjs"}
 :::{.notes}
 Autre exemple (fin du TP3), mock DAO: tests sur un schéma dédié et pas sur les données de PROD.
+:::
 :::
 
 
@@ -329,12 +349,14 @@ Advantages >>> Disadvantages
 :::
 
 
+::: {.content-hidden unless-format="revealjs"}
 ::: {.notes}
 La pratique du TDD a le gros avantage que cela nous force à écrire des tests et de prendre le temps de bien faire les choses. Pour adhérer au TDD il faut vraiment se faire violence au début, mais au final cette pratique est très bénéfique.
 
 Sinon, si l'on écrit la fonction en premier, une fois que l'on a terminé, il y a 9 chances sur 10 que l'on se dise : "c'est bon ça marche, pas la peine de tester...". Et ça c'est pas bien !!!
 
 ❌ puis ✅ Temps -> Prend du temps au début mais gain de temps à long terme
+:::
 :::
 
 
