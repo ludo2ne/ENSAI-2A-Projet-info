@@ -698,7 +698,10 @@ Important
 </section>
 <section id="client-server-principle" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="client-server-principle"><span class="header-section-number">1</span> Client-Server principle</h2>
-<p>To understand how software systems communicate, let’s step out of the terminal and into a clothing store. Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.</p>
+<blockquote class="blockquote">
+<p>To understand how software systems communicate, let’s step out of the terminal and into a clothing store. 👗 👕 👖 👒</p>
+</blockquote>
+<p>Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.</p>
 <div class="white-box">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -877,6 +880,9 @@ Important
 </section>
 <section id="exploring-your-projects-api" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="exploring-your-projects-api"><span class="header-section-number">3</span> Exploring your project’s API</h2>
+<blockquote class="blockquote">
+<p>Enough of Star Wars and Pokemon – let’s get back to a serious topic.</p>
+</blockquote>
 <p>Modern APIs provide a “manual” that is interactive: <strong>Swagger (OpenAPI)</strong>.</p>
 <section id="using-swagger" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="using-swagger"><span class="header-section-number">3.1</span> Using Swagger</h3>
@@ -908,7 +914,7 @@ Tip
 </ul></li>
 <li><label><input type="checkbox">Delete the player with the highest ID</label></li>
 </ul>
-<p>Up until now, you have used <code>GET</code> requests to <em>ask</em> for information (the same goes for <code>DELETE</code>). But to <em>create</em> or <em>modify</em> data, you must provide information. This is called the <strong>Request Body</strong>.</p>
+<p>Up until now, you have used <code>GET</code> requests to <em>ask</em> for information (the same goes for <code>DELETE</code>). But to <em>create</em> or <em>modify</em> data, you must provide further information. This is called the <strong>Request Body</strong>.</p>
 <p>When using <code>POST</code> or <code>PUT</code>, you don’t just send a URL; you send a <strong>JSON object</strong> containing the details of the resource.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"username"</span><span class="fu">:</span> <span class="st">"new_player"</span><span class="fu">,</span></span>
@@ -955,6 +961,9 @@ Note
 </section>
 <section id="the-client-challenge-data-mapping" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="the-client-challenge-data-mapping"><span class="header-section-number">4</span> The Client Challenge (Data Mapping)</h2>
+<blockquote class="blockquote">
+<p>A vodka martini, shaken not stirred. 🍸</p>
+</blockquote>
 <p>Now, we will move to a more advanced task. Your back-end will act as a <strong>client</strong>. You need to fetch game data from an external source and integrate it into your engine.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="The Schema Mismatch">
 <div class="callout-header d-flex align-content-center">
@@ -972,7 +981,7 @@ Note
 <section id="the-mission" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="the-mission"><span class="header-section-number">4.1</span> The Mission</h3>
 <p>Your application needs to retrieve a <strong>list of games</strong> from a web service.</p>
-<p>Your task is to retrieve this data and then convert it into a suitable format. <a href="https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#consuming-an-api-with-python" target="_blank">Here is an example</a></p>
+<p>Your task is to retrieve this data and then convert it into a suitable format. <a href="https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#consuming-an-api-with-python" target="_blank">Here is an example</a>:</p>
 <ol type="1">
 <li>Call the web service</li>
 <li>Check the response</li>
@@ -994,10 +1003,10 @@ Note
 <section id="your-turn" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="your-turn"><span class="header-section-number">4.3</span> Your turn</h3>
 <ul class="task-list">
-<li><label><input type="checkbox">Create a <em>client</em> folder and create file <em>game_client.py</em></label></li>
+<li><label><input type="checkbox">Create a <em>backend/src/client</em> folder and create file <em>game_client.py</em></label></li>
 </ul>
 <p>This client must fetch data from an external API and transform it into your Game business objects.</p>
-<p>Below is the data available on this external API:</p>
+<p>Below is a sample of the data available on this external API:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>/games</strong></pre>
@@ -1113,7 +1122,7 @@ Important
 <li><label><input type="checkbox">Open file <strong>game_controller.py</strong></label></li>
 </ul>
 <p>At the moment, we have an endpoint to POST a Game.</p>
-<p>Step-by-step, let’s create one to GET the Game by Player.</p>
+<p><strong><u>Step-by-step</u></strong>, let’s create one to GET the Games by Player.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Add this endpoint below and test it in the swagger:</label></li>
 </ul>
@@ -1237,7 +1246,7 @@ Note
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_player(p: PlayerModel, player_service<span class="op">=</span>Depends(get_player_service)):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    player <span class="op">=</span> player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Here is the magic happening behind the scenes:</strong></p>
+<p><strong>Here is the magic happening behind the scenes:</strong> 🧙‍♂️ 🪄</p>
 <ol type="1">
 <li>The Request: a client sends request to the endpoint with a JSON body: <code>{"username": "bob", "email": "bob@email.com", ...}</code>.</li>
 <li>Validation: FastAPI looks at your <code>PlayerModel</code>. It checks:</li>
@@ -1359,7 +1368,7 @@ Note
 <section id="security-token-based-authentication" class="level3" data-number="5.4">
 <h3 data-number="5.4" class="anchored" data-anchor-id="security-token-based-authentication"><span class="header-section-number">5.4</span> Security: Token-based Authentication</h3>
 <blockquote class="blockquote">
-<p>Bonus</p>
+<p>Bonus 🔑</p>
 </blockquote>
 <p>A professional API is rarely wide open. To protect your data, you will implement <strong>Token-based authentication</strong>.</p>
 <p>Instead of asking for a username and password on every single request, the client sends a “secret key” (the <strong>Token</strong>) in the <strong>HTTP Headers</strong>. If the token is missing or incorrect, the server rejects the request immediately.</p>
