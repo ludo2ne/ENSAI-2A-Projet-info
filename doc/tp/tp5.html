@@ -49,9 +49,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-06e295592379febcf6c34807fdd1ce4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-bafb8bf24870252b511cb79dbc672a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-06e295592379febcf6c34807fdd1ce4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -282,16 +282,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
- <span class="dropdown-text">Présentation to students</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/french/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
- <span class="dropdown-text">Student notice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template">
@@ -300,6 +292,15 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../../doc/projet/sujets.html">
  <span class="dropdown-text">Sujets</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation to students</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Student notice</span></a>
   </li>  
     </ul>
   </li>
@@ -416,6 +417,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">ENSAI-tools</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="https://conception-logicielle.abrunetti.fr/" target="_blank">
+ <span class="dropdown-text">Conception logicielle</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../../doc/divers/licences.html">
  <span class="dropdown-text">Licences</span></a>
   </li>  
@@ -524,8 +529,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="create-your-branch" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>For each practical session, the teacher provides a starting branch: <code>tp&lt;N&gt;-start</code>.</p>
 <p>You will have to create a personal branch: <code>&lt;username&gt;-tp&lt;N&gt;</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+</div>
+</div>
 <p>Perhaps some changes have been made to the teacher’s repository since the last session.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Check that your local repository is connected to the teacher’s repository</label>
@@ -534,16 +551,32 @@ ul.task-list li input[type="checkbox"] {
 <li><em>origin</em>: your team’s remote repository</li>
 <li><em>upstream</em>: teacher’s remote repository</li>
 </ul></li>
-<li><label><input type="checkbox">If <em>upstream</em> is not listed, add it:</label>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="If upstream is not listed">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>If upstream is not listed
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">add it:</label>
 <ul>
 <li><code>git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git</code></li>
 <li><code>git remote set-url --push upstream DISABLED</code> (you don’t need to push on this repo)</li>
 <li>Check your configuration again with: <code>git remote -v</code></li>
 </ul></li>
 </ul>
+</div>
+</div>
+</div>
 <p>To start with a clean and up-to-date codebase:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest information from your team’s remote repository</label></li>
 <li><label><input type="checkbox"><code>git fetch upstream</code> to retrieve the latest information from the teacher’s repository</label></li>
 <li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp&lt;N&gt; upstream/tp&lt;N&gt;-start</code></label></li>
 <li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp&lt;N&gt;</code> to publish your branch on the remote</label></li>

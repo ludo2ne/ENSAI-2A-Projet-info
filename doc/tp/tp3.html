@@ -84,9 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d08d0b11b6721773ec5c4a64cd521a8c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5851f5234d920dcce99f451418262a84.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-06e295592379febcf6c34807fdd1ce4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-bafb8bf24870252b511cb79dbc672a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-06e295592379febcf6c34807fdd1ce4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -321,16 +321,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Présentation aux élèves</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
- <span class="dropdown-text">Présentation to students</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../doc/french/projet/notice-eleves.html">
  <span class="dropdown-text">Notice élèves</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
- <span class="dropdown-text">Student notice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://github.com/ludo2ne/ENSAI-2A-projet-info-template">
@@ -339,6 +331,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../doc/projet/sujets.html">
  <span class="dropdown-text">Sujets</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/presentation-eleves.html">
+ <span class="dropdown-text">Présentation to students</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../doc/projet/notice-eleves.html">
+ <span class="dropdown-text">Student notice</span></a>
   </li>  
     </ul>
   </li>
@@ -453,6 +454,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="https://ludo2ne.github.io/ENSAI-tools/" target="_blank">
  <span class="dropdown-text">ENSAI-tools</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://conception-logicielle.abrunetti.fr/" target="_blank">
+ <span class="dropdown-text">Conception logicielle</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../doc/divers/licences.html">
@@ -570,8 +575,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="create-your-branch" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>For each practical session, the teacher provides a starting branch: <code>tp&lt;N&gt;-start</code>.</p>
 <p>You will have to create a personal branch: <code>&lt;username&gt;-tp&lt;N&gt;</code> (e.g.&nbsp;<em>camille-tp2</em>) and work on your own branch.</p>
+</div>
+</div>
 <p>Perhaps some changes have been made to the teacher’s repository since the last session.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Check that your local repository is connected to the teacher’s repository</label>
@@ -580,16 +597,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>origin</em>: your team’s remote repository</li>
 <li><em>upstream</em>: teacher’s remote repository</li>
 </ul></li>
-<li><label><input type="checkbox">If <em>upstream</em> is not listed, add it:</label>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="If upstream is not listed">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>If upstream is not listed
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">add it:</label>
 <ul>
 <li><code>git remote add upstream https://github.com/ludo2ne/ENSAI-2A-projet-info-template.git</code></li>
 <li><code>git remote set-url --push upstream DISABLED</code> (you don’t need to push on this repo)</li>
 <li>Check your configuration again with: <code>git remote -v</code></li>
 </ul></li>
 </ul>
+</div>
+</div>
+</div>
 <p>To start with a clean and up-to-date codebase:</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>git fetch origin</code> to retrieve the latest information from your team’s remote repository</label></li>
 <li><label><input type="checkbox"><code>git fetch upstream</code> to retrieve the latest information from the teacher’s repository</label></li>
 <li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp&lt;N&gt; upstream/tp&lt;N&gt;-start</code></label></li>
 <li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp&lt;N&gt;</code> to publish your branch on the remote</label></li>
@@ -632,24 +665,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="create-and-pop-table" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="create-and-pop-table"><span class="header-section-number">2.1</span> Create and pop table</h3>
 <p>We want to save the games, so let’s start by creating a table.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> project.game (</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    id_game      SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    id_player1   <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> player(id_player),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    id_player2   <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> player(id_player),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    game_mode    <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    id_winner    <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> player(id_player),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    detail       <span class="dt">VARCHAR</span>(<span class="dv">100</span>),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">timestamp</span>    <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span>);</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> project.game(id_player1, id_player2, game_mode, id_winner, detail) <span class="kw">VALUES</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">'coinflip'</span>, <span class="dv">1</span>, <span class="st">'Gilbert chose heads, result was heads'</span>),</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'dice'</span>,     <span class="dv">3</span>, <span class="st">'Maurice rolled 5, Batricia rolled 2'</span>),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'dice'</span>,     <span class="kw">null</span>, <span class="st">'Maurice rolled 4, Batricia rolled 4'</span>),</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="st">'dice'</span>,     <span class="dv">4</span>, <span class="st">'Batricia rolled 2, Maurice rolled 1'</span>),</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'coinflip'</span>, <span class="dv">4</span>, <span class="st">'Maurice chose heads, result was tails'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> project.game;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> project.game (</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    id_game      SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    id_player1   <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> player(id_player),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    id_player2   <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> player(id_player),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    game_mode    <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    id_winner    <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> player(id_player),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    detail       <span class="dt">VARCHAR</span>(<span class="dv">100</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">timestamp</span>    <span class="dt">TIMESTAMP</span> <span class="kw">DEFAULT</span> <span class="fu">CURRENT_TIMESTAMP</span>);</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> project.game(id_player1, id_player2, game_mode, id_winner, detail) <span class="kw">VALUES</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">'coinflip'</span>, <span class="dv">1</span>, <span class="st">'Gilbert chose heads, result was heads'</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'dice'</span>,     <span class="dv">3</span>, <span class="st">'Maurice rolled 5, Batricia rolled 2'</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'dice'</span>,     <span class="kw">null</span>, <span class="st">'Maurice rolled 4, Batricia rolled 4'</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="st">'dice'</span>,     <span class="dv">4</span>, <span class="st">'Batricia rolled 2, Maurice rolled 1'</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="st">'coinflip'</span>, <span class="dv">4</span>, <span class="st">'Maurice chose heads, result was tails'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul class="task-list">
-<li><label><input type="checkbox">Create this table using cloudBeaver</label></li>
-<li><label><input type="checkbox">Then try to insert a few rows</label></li>
+<li><label><input type="checkbox">Launch and open a <em>cloudBeaver</em> service</label></li>
+<li><label><input type="checkbox">Check that your database has been automatically detected</label>
+<ul>
+<li>It should appear in the left-hand sidebar</li>
+<li>If not, create a new one to your PostgreSQL database filling host, database, username and password (On the Onyxia services page, click on the PostgreSQL README to find this information)</li>
+</ul></li>
+<li><label><input type="checkbox">Open the connection (right-click &gt; Open), then a <span class="emoji" data-emoji="green_circle">🟢</span> appears</label></li>
+<li><label><input type="checkbox">Open a SQL editor</label></li>
+<li><label><input type="checkbox">Create the <em>game</em> table</label></li>
+<li><label><input type="checkbox">Then insert a few rows</label></li>
 </ul>
 <p>Great, now you have a table where you can store your games.</p>
 <ul class="task-list">
@@ -669,7 +712,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Always keep a record of your database changes</li>
 <li>Save them in SQL files (data folder)</li>
 <li>These files will be versioned by Git, so any loss can be recovered</li>
-<li>You can automate this by using, for example, the <strong>reset_database.py</strong> script or by creating a button in your UI</li>
+<li>You can automate this by using, the <strong>reset_database.py</strong> script
+<ul>
+<li>or by creating a button in your UI (a bit odd but very handy)</li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -694,7 +740,7 @@ Note
 <section id="database-questions" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="database-questions"><span class="header-section-number">2.2</span> Database questions</h3>
 <blockquote class="blockquote">
-<p>Since all of you have reviewed your relational database course this summer <span class="emoji" data-emoji="tropical_drink">🍹</span> <span class="emoji" data-emoji="book">📖</span> <span class="emoji" data-emoji="sunglasses">😎</span></p>
+<p>Since all of you have reviewed your <a href="https://ludo2ne.github.io/ENSAI-1A-SQL/" target="_blank">relational database course</a> this summer <span class="emoji" data-emoji="tropical_drink">🍹</span> <span class="emoji" data-emoji="book">📖</span> <span class="emoji" data-emoji="sunglasses">😎</span></p>
 </blockquote>
 <ul class="task-list">
 <li><label><input type="checkbox">Why certain fields aren’t specified in the insert?</label></li>
@@ -702,11 +748,16 @@ Note
 <ul>
 <li>Any idea if you want to do it anyway?</li>
 </ul></li>
-<li><label><input type="checkbox">Why the table <em>game</em> doesn’t adhere to the 3NF?</label>
-<ul>
-<li>don’t fix it</li>
-</ul></li>
+<li><label><input type="checkbox">A column contains repeated values. What problem can this cause and how could you improve the database design?</label></li>
 </ul>
+<div class="notes">
+<ul>
+<li><em>id_game</em> is automatically generated by PostgreSQL, so we don’t need to provide it</li>
+<li>If we don’t specify timestamp, PostgreSQL automatically uses the current date and time</li>
+</ul>
+<p>If we specify the IDs manually, we must also update the sequence used by SERIAL. Otherwise, PostgreSQL might generate an ID that already exists, causing a duplicate primary key error.</p>
+<p>The game_mode values (‘coinflip’, ‘dice’) are repeated in several rows, creating redundancy. Risk of inconsistencies (“coinflip” vs “coin flip”) These values should be stored in a separate table, referenced by a foreign key.</p>
+</div>
 </section>
 <section id="some-queries" class="level3" data-number="2.3">
 <h3 data-number="2.3" class="anchored" data-anchor-id="some-queries"><span class="header-section-number">2.3</span> Some queries</h3>
@@ -779,7 +830,7 @@ Note
 <h3 data-number="3.2" class="anchored" data-anchor-id="connection-management-and-singleton-pattern"><span class="header-section-number">3.2</span> Connection management and Singleton pattern</h3>
 <p>To connect to the database, we’ll use the Python library <a href="https://www.psycopg.org/docs/index.html" target="_blank"><strong>psycopg2</strong></a>. This library will establish the connection with the database, send our queries, and return the results.</p>
 <p>However, we need to be careful with connection management, as we could quickly open hundreds of connections and degrade our application’s performance.</p>
-<p>This is the job of the <code>DBConnection</code> class. Since it’s a singleton, there will be <u>only one instance</u> of this class in our entire application, and since it’s the one that connects to the database, we ensure the connection’s uniqueness.</p>
+<p>This is the job of the <code>DBConnection</code> class. Since it’s a <strong>singleton</strong>, there will be <u>only one instance</u> of this class in our entire application, and since it’s the one that connects to the database, we ensure the connection’s uniqueness.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -961,6 +1012,30 @@ Caution
 <p>In a real production app, you would solve this using a SQL JOIN to fetch the game and its players in one single query.</p>
 </div>
 </div>
+<p>Writing clean unit tests for DAO methods isn’t straightforward. You can start by testing them manually, as you did last time.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Feel free to use the script below to test manualy if your code works:</label></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>sandbox.py</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="sandbox.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uv run --project backend python backend/src/sandbox.py</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> business_object.game <span class="im">import</span> Game</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> business_object.player <span class="im">import</span> Player</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dao.game_dao <span class="im">import</span> GameDao</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils.env_variables <span class="im">import</span> load_environment_variables</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>load_environment_variables()   <span class="co"># Required to load the variables needed (env) to connect to the database </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> Player(...)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> Player(...)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>game <span class="op">=</span> Game(...)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> GameDao().create(...)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">id</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>game2 <span class="op">=</span> GameDao().find_by_id(...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>For the next method, you won’t be getting just one recording, but several:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Implement method <em>find_all_by_player(id_player: int) -&gt; list[Game]</em>:</label>
@@ -974,8 +1049,8 @@ Caution
 <p>Now that we have a way to save games, let’s use it!</p>
 <p>The service creates a <code>Game</code> object and calls the appropriate method to persist the result.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Refactor method <em>GameService.play()</em></label></li>
-<li><label><input type="checkbox">Launch the application</label></li>
+<li><label><input type="checkbox">Refactor method <em>GameService.play()</em> to have the Game in the database once it has been played</label></li>
+<li><label><input type="checkbox">Launch the application (at the very least, the backend)</label></li>
 <li><label><input type="checkbox">Play a game</label></li>
 <li><label><input type="checkbox">Make sure everything looks OK in the logs</label></li>
 <li><label><input type="checkbox">Check if a row was created in the database</label></li>
@@ -1015,6 +1090,7 @@ Tip
 <ul>
 <li>Don’t forget to mock DAO calls</li>
 </ul></li>
+<li><label><input type="checkbox">Run these tests (details in the backend README)</label></li>
 </ul>
 </section>
 </section>
@@ -1045,7 +1121,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Never use your real database for tests. Use a <strong>separate schema</strong> (a “sandbox”) and always <strong>reset it</strong> before every test.</p>
+<p>Never use your real database for tests. Use a <strong>separate schema</strong> (a “test_schema”) and always <strong>reset it</strong> before every test.</p>
 <p>This way, every test starts with a completely empty database, and you are sure that a failure is actually a bug in your code, not a leftover from a previous test.</p>
 </div>
 </div>
@@ -1056,13 +1132,13 @@ Tip
 <p>“I’ll just run my tests directly on my database where I have all my useful data.” <span class="emoji" data-emoji="bomb">💣</span></p>
 </blockquote>
 <p>Your tests are designed to <strong>create, modify, and delete</strong> data. If you run them on your real database, you will eventually delete something important. You are literally destroying your own workspace just to check if your code works.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="The Sandbox">
+<div class="callout callout-style-default callout-note callout-titled" title="The project_test_dao schema">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The Sandbox
+<span class="screen-reader-only">Note</span>The project_test_dao schema
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1075,12 +1151,12 @@ Tip
 <ul class="task-list">
 <li><label><input type="checkbox">Open file <code>test_player_dao.py</code></label></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span>(scope<span class="op">=</span><span class="st">"session"</span>, autouse<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> setup_test_environment():</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Initialize test data"""</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> patch.<span class="bu">dict</span>(os.environ, {<span class="st">"SCHEMA"</span>: <span class="st">"project_test_dao"</span>}):</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        ResetDatabase().run(test_dao<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span>(scope<span class="op">=</span><span class="st">"session"</span>, autouse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> setup_test_environment():</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Initialize test data"""</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> patch.<span class="bu">dict</span>(os.environ, {<span class="st">"SCHEMA"</span>: <span class="st">"project_test_dao"</span>}):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        ResetDatabase().run(test_dao<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This code temporarily redirect database operations to a dedicated test schema, ensuring that the production data remains untouched. It initialize the database with a fresh set of test data, providing a predictable and isolated state for all subsequent tests.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Write unit test with pytest for all methods of <code>GameDao</code></label></li>
