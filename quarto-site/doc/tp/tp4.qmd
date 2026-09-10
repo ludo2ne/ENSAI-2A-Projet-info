@@ -149,7 +149,7 @@ Lets explore <https://swapi.info/api/>{target="_blank"}
 
 - [ ] What URL displays all the characters?
   - What is the data structure?
-- [ ] What URL displays only the character Maxe Windu?
+- [ ] What URL displays only the character Mace Windu?
   - What is the data structure?
 - [ ] What is Mace Windu's home planet?
 - [ ] Find all planets visited in "The Empire Strikes Back"
@@ -577,7 +577,9 @@ Example of a protected endpoint in your controller:
 ```python
 @router.post("/", response_model=GameResponseModel, tags=["Games"])
 def play_game(
-    req: GamePlayModel, game_service=Depends(get_game_service), current_player=Depends(verify_token)
+    req: GamePlayModel,
+    game_service=Depends(get_game_service),
+    current_player=Depends(verify_token)
 ):
     ...
 ```

@@ -26,16 +26,17 @@ website:
             text: "Présentation pour les tuteurs"
           - href: doc/french/projet/presentation-eleves.qmd
             text: "Présentation aux élèves"
-          - href: doc/projet/presentation-eleves.qmd
-            text: "Présentation to students"
           - href: doc/french/projet/notice-eleves.qmd
             text: "Notice élèves"
-          - href: doc/projet/notice-eleves.qmd
-            text: "Student notice"
           - href: https://github.com/ludo2ne/ENSAI-2A-projet-info-template
             text: "Template"
           - href: doc/projet/sujets.qmd
             text: "Sujets"
+          - text: "---"
+          - href: doc/projet/presentation-eleves.qmd
+            text: "Présentation to students"
+          - href: doc/projet/notice-eleves.qmd
+            text: "Student notice"
       - text: Classes
         menu:
           - href: doc/cours/01-introduction.qmd
@@ -87,6 +88,9 @@ website:
         menu:
           - href: https://ludo2ne.github.io/ENSAI-tools/
             text: ENSAI-tools
+            target: "_blank"
+          - href: https://conception-logicielle.abrunetti.fr/
+            text: Conception logicielle
             target: "_blank"
           - href: doc/divers/licences.qmd
             text: Licences
