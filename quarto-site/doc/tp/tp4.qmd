@@ -47,7 +47,9 @@ This tutorial combines explanations and code phases. The explanations should not
 
 ## Client-Server principle
 
-To understand how software systems communicate, let's step out of the terminal and into a clothing store. Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.
+> To understand how software systems communicate, let's step out of the terminal and into a clothing store. 👗 👕 👖 👒
+
+Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.
 
 :::{.white-box}
 ```{mermaid}
@@ -177,6 +179,8 @@ https://pokeapi.co/api/v2/pokemon/114 -> type=grass
 
 ## Exploring your project's API
 
+> Enough of Star Wars and Pokemon – let's get back to a serious topic.
+
 Modern APIs provide a "manual" that is interactive: **Swagger (OpenAPI)**.
 
 ### Using Swagger
@@ -194,7 +198,7 @@ You've already done this in the first Lab.
   - Select the endpoint :arrow_right: Try it out :arrow_right: Execute
 - [ ] Delete the player with the highest ID
 
-Up until now, you have used `GET` requests to *ask* for information (the same goes for `DELETE`). But to *create* or *modify* data, you must provide information. This is called the **Request Body**.
+Up until now, you have used `GET` requests to *ask* for information (the same goes for `DELETE`). But to *create* or *modify* data, you must provide further information. This is called the **Request Body**.
 
 When using `POST` or `PUT`, you don't just send a URL; you send a **JSON object** containing the details of the resource.
 
@@ -233,6 +237,8 @@ Create a new player using:
 
 ## The Client Challenge (Data Mapping)
 
+> A vodka martini, shaken not stirred. 🍸
+
 Now, we will move to a more advanced task. Your back-end will act as a **client**. You need to fetch game data from an external source and integrate it into your engine.
 
 ::: {.callout-warning title="The Schema Mismatch"}
@@ -243,7 +249,7 @@ The external API does not use your internal names. It is a common real-world pro
 
 Your application needs to retrieve a **list of games** from a web service.
 
-Your task is to retrieve this data and then convert it into a suitable format. [Here is an example](https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#consuming-an-api-with-python){target="_blank"}
+Your task is to retrieve this data and then convert it into a suitable format. [Here is an example](https://ludo2ne.github.io/ENSAI-tools/doc/format/api.html#consuming-an-api-with-python){target="_blank"}:
 
 1. Call the web service
 2. Check the response
@@ -262,11 +268,11 @@ It's not very difficult to create a fake API, for example:
 
 ### Your turn
 
-- [ ] Create a *client* folder and create file *game_client.py*
+- [ ] Create a *backend/src/client* folder and create file *game_client.py*
 
 This client must fetch data from an external API and transform it into your Game business objects.
 
-Below is the data available on this external API:
+Below is a sample of the data available on this external API:
 
 ```{.json filename="/games"}
 [
@@ -352,7 +358,7 @@ You'll notice that every endpoint prefixed with */game* will be handled in the *
 
 At the moment, we have an endpoint to POST a Game.
 
-Step-by-step, let's create one to GET the Game by Player.
+**[Step-by-step]{.underline}**, let's create one to GET the Games by Player.
 
 - [ ] Add this endpoint below and test it in the swagger:
 
@@ -469,7 +475,7 @@ async def create_player(p: PlayerModel, player_service=Depends(get_player_servic
     player = player_service.create(p.username, p.password, p.elo, p.email, p.pokemon_fan)
 ```
 
-**Here is the magic happening behind the scenes:**
+**Here is the magic happening behind the scenes:** 🧙‍♂️ 🪄 
 
 1. The Request: a client sends request to the endpoint with a JSON body: `{"username": "bob", "email": "bob@email.com", ...}`.
 2. Validation: FastAPI looks at your `PlayerModel`. It checks:
@@ -557,7 +563,7 @@ While using two models is a great start, professional **APIs** often use even mo
 
 ### Security: Token-based Authentication
 
-> Bonus
+> Bonus 🔑
 
 A professional API is rarely wide open. To protect your data, you will implement **Token-based authentication**.
 
