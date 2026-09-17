@@ -976,9 +976,13 @@ Tip
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+<p>Let’s use it!</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Create a new player</label></li>
-<li><label><input type="checkbox">Update player <em>junior</em></label>
+<li><label><input type="checkbox">Create a new player</label>
+<ul>
+<li><code>len(password) &gt;= 12</code></li>
+</ul></li>
+<li><label><input type="checkbox">Update player <em>miguel</em></label>
 <ul>
 <li>add 100 points to its elo, change suffix mail from <em>io</em> to <em>fr</em></li>
 </ul></li>
@@ -1082,10 +1086,11 @@ Note
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"location_name"</span><span class="fu">:</span> <span class="st">"Secret Cave"</span><span class="fu">,</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"duration_seconds"</span><span class="fu">:</span> <span class="dv">300</span><span class="fu">,</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"mode_type"</span><span class="fu">:</span> <span class="st">"dice"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="er">//...</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This is a list <code>[element1, element2]</code> of dictionaries <code>{key1: value1, key2: value2}</code>.</p>
+<p>This is a list <code>[element1, element2, ...]</code> of dictionaries <code>{key1: value1, key2: value2, ...}</code>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1106,6 +1111,9 @@ Important
 </div>
 <ul class="task-list">
 <li><label><input type="checkbox">Create a function <code>get_games() -&gt; list[Game]</code></label></li>
+</ul>
+<p>In this function:</p>
+<ul class="task-list">
 <li><label><input type="checkbox">Call the endpoint</label>
 <ul>
 <li>use package <a href="https://requests.readthedocs.io/en/latest/user/quickstart/" target="_blank">requests</a></li>
@@ -1115,7 +1123,7 @@ Important
 <ul>
 <li>use method <em>r.raise_for_status()</em> or attribute <em>r.status_code</em></li>
 </ul></li>
-<li><label><input type="checkbox">Get json (<em>r.json()</em>) and convert into a list of Game</label></li>
+<li><label><input type="checkbox">Get json (<em>r.json()</em>), convert into a list of Game, and finally return it</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Test it manually">
 <div class="callout-header d-flex align-content-center">
@@ -1178,6 +1186,19 @@ Important
 </ul>
 <p>At the moment, we have an endpoint to POST a Game.</p>
 <p><strong><u>Step-by-step</u></strong>, let’s create one to GET the Games by Player.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After each step, feel free to test the endpoint via the swagger.</p>
+</div>
+</div>
 <ul class="task-list">
 <li><label><input type="checkbox">Add this endpoint below and test it in the swagger:</label></li>
 </ul>
@@ -1197,7 +1218,7 @@ Important
 </ul>
 <p>If you want this parameter to be optional, you must specify a default value for it in the method signature (e.g., None).</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1206,7 +1227,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A better way is to use a hierarchical URI that semantically expresses that games are a sub-resource belonging to a specific player.</p>
 <div class="code-with-filename">
@@ -1355,8 +1376,8 @@ Note
 </div>
 </div>
 </div>
-<p>OK, cool. We already have models for Game. But are these models appropriate in our case?</p>
-<p>We can use <code>GameResponseModel</code> as output, but we can do better.</p>
+<p>OK, cool. We already have models for Game. But why do we need multiple models?</p>
+<p>Why not simply define one model for Game and use it everywhere — for creating, updating, and reading a game?</p>
 </section>
 </section>
 <section id="multiple-models" class="level3" data-number="5.3">
@@ -1399,7 +1420,7 @@ Note
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Going Further">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1408,7 +1429,7 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>While using two models is a great start, professional <strong>APIs</strong> often use even more granular models to handle different stages of a resource’s lifecycle. You could further optimize this by implementing:</p>
 <ul>
