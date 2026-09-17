@@ -241,10 +241,11 @@ Authorization: Bearer AbC1459mlkP78sq25z8
 ```
 :::
 
-
+Let's use it!
 
 - [ ] Create a new player
-- [ ] Update player *junior*
+  - `len(password) >= 12`
+- [ ] Update player *miguel*
   - add 100 points to its elo, change suffix mail from *io* to *fr*
 - [ ] Login with user *batricia*
   - Where is the password?
@@ -324,11 +325,12 @@ Below is a sample of the data available on this external API:
     "location_name": "Secret Cave",
     "duration_seconds": 300,
     "mode_type": "dice"
-  }
+  },
+  //...
 ]
 ```
 
-This is a list `[element1, element2]` of dictionaries `{key1: value1, key2: value2}`.
+This is a list `[element1, element2, ...]` of dictionaries `{key1: value1, key2: value2, ...}`.
 
 ::: {.callout-important}
 The goal is to convert this dictionary list into a Game list by:
@@ -340,12 +342,15 @@ The goal is to convert this dictionary list into a Game list by:
 :::
 
 - [ ] Create a function `get_games() -> list[Game]`
+
+In this function:
+
 - [ ] Call the endpoint
   - use package [requests](https://requests.readthedocs.io/en/latest/user/quickstart/){target="_blank"}
   - save the response into a variable *r*
 - [ ] Check response
   - use method *r.raise_for_status()* or attribute *r.status_code*
-- [ ] Get json (*r.json()*) and convert into a list of Game
+- [ ] Get json (*r.json()*), convert into a list of Game, and finally return it
 
 ::: {.callout-tip title="Test it manually"}
 ```{.python filename="sandbox.py"}
@@ -360,8 +365,6 @@ for g in games:
 
 `uv run --project backend python backend/sandbox.py`
 :::
-
-
 
 In this section, you were a client of an API; next you'll become the provider by creating your own endpoints.
 
@@ -392,6 +395,10 @@ You'll notice that every endpoint prefixed with */game* will be handled in the *
 At the moment, we have an endpoint to POST a Game.
 
 **[Step-by-step]{.underline}**, let's create one to GET the Games by Player.
+
+::: {.callout-tip}
+After each step, feel free to test the endpoint via the swagger.
+:::
 
 - [ ] Add this endpoint below and test it in the swagger:
 
@@ -548,10 +555,9 @@ graph LR
     Ctrl -->|Maps to| Res
 ```
 
+OK, cool. We already have models for Game. But why do we need multiple models?
 
-OK, cool. We already have models for Game. But are these models appropriate in our case?
-
-We can use `GameResponseModel` as output, but we can do better.
+Why not simply define one model for Game and use it everywhere — for creating, updating, and reading a game?
 
 
 ### Multiple Models
