@@ -82,8 +82,9 @@ INSERT INTO project.game(id_player1, id_player2, game_mode, id_winner, detail) V
 - [ ] Launch and open a *cloudBeaver* service
 - [ ] Check that your database has been automatically detected
   - It should appear in the left-hand sidebar
-  - If not, create a new one to your PostgreSQL database filling host, database, username and password (On the Onyxia services page, click on the PostgreSQL README to find this information)
+  - If not, create a new connection to your PostgreSQL database filling host, database, username and password (On the Onyxia services page, click on the PostgreSQL README to find this information)
 - [ ] Open the connection (right-click > Open), then a :green_circle: appears
+  - FYI: Database used is *defaultdb* and schema is *project*
 - [ ] Open a SQL editor
 - [ ] Create the *game* table
 - [ ] Then insert a few rows
@@ -92,7 +93,7 @@ Great, now you have a table where you can store your games.
 
 - [ ] But what happens if your database crashes tonight?
 
-::: {.callout-tip title="The right way"}
+::: {.callout-tip title="The right way (for this project)"}
 - Always keep a record of your database changes
 - Save them in SQL files (data folder)
 - These files will be versioned by Git, so any loss can be recovered

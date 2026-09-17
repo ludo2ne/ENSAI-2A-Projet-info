@@ -5,3 +5,5 @@ _freeze/
 quarto-site/.gitignore
 /.quarto/
 **/*.quarto_ipynb
+
+quarto-site/doc/exams/**/*2026*

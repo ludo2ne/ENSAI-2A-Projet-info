@@ -1,4 +1,11 @@
-### Create your branch{.unnumbered}
+### VSCode service {.unnumbered}
+
+- [ ] Log in to the datalab
+- [ ] Open your **[custom]{.underline}** VSCode-python service
+  - :warning: Custom, as you did in the first Lab
+
+
+### Create your branch {.unnumbered}
 
 ::: {.callout-important}
 For each practical session, the teacher provides a starting branch: `tp<N>-start`.

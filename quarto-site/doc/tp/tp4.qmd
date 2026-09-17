@@ -15,23 +15,6 @@ categories:
   - Data Mapping
 ---
 
-:::{.notes}
-| Code | Type | Description |
-| :--- | :--- | :--- |
-| **200** | Success | **OK**: The request succeeded. |
-| **201** | Success | **Created**: Request fulfilled and a new resource was created. |
-| **400** | Client Error | **Bad Request**: The server cannot process the request due to client error. |
-| **401** | Client Error | **Unauthorized**: Authentication is required and has failed or not been provided. |
-| **403** | Client Error | **Forbidden**: The client does not have access rights to the content. |
-| **404** | Client Error | **Not Found**: The server cannot find the requested resource. |
-| **405** | Client Error | **Method Not Allowed**: The request method (GET, POST, etc.) is not supported. |
-| **500** | Server Error | **Internal Server Error**: A generic error message when an unexpected condition was encountered. |
-| **502** | Server Error | **Bad Gateway**: The server received an invalid response from an upstream server. |
-| **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
-
-: {tbl-colwidths="[15,15,70]" .striped .hover .secondary}
-:::
-
 ## Before you start {.unnumbered}
 
 This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.
@@ -49,7 +32,7 @@ This tutorial combines explanations and code phases. The explanations should not
 
 > To understand how software systems communicate, let's step out of the terminal and into a clothing store. 👗 👕 👖 👒
 
-Imagine you are a customer trying to interact with a shop assistant; this simple interaction is the perfect metaphor for the Client-Server relationship and the world of APIs.
+Imagine you are a customer trying to interact with a shop assistant; this simple interaction is a good metaphor for the client-server relationship and the world of APIs.
 
 :::{.white-box}
 ```{mermaid}
@@ -122,6 +105,29 @@ sequenceDiagram
 ```
 :::
 
+In computer science, the principle is exactly the same: 
+
+- a client sends requests to a server
+- the server processes these requests 
+- and sends back a response — either successfully or with an error explaining why the request could not be fulfilled.
+
+**Most common answers:**
+
+| Code | Type | Description |
+| :--- | :--- | :--- |
+| **200** | Success | **OK**: The request succeeded. |
+| **201** | Success | **Created**: Request fulfilled and a new resource was created. |
+| **400** | Client Error | **Bad Request**: The server cannot process the request due to client error. |
+| **401** | Client Error | **Unauthorized**: Authentication required and has failed or not been provided. |
+| **403** | Client Error | **Forbidden**: The client does not have access rights to the content. |
+| **404** | Client Error | **Not Found**: The server cannot find the requested resource. |
+| **405** | Client Error | **Method Not Allowed**: The request method (GET, POST, etc.) is not supported. |
+| **500** | Server Error | **Internal Server Error**: A generic error message when an unexpected condition was encountered. |
+| **502** | Server Error | **Bad Gateway**: The server received an invalid response from an upstream server. |
+| **503** | Server Error | **Service Unavailable**: The server is not ready to handle the request (e.g., maintenance). |
+
+: {tbl-colwidths="[10,15,75]" .striped .hover .secondary}
+
 ## Exploring the Web (The Manual Way)
 
 Before writing code, you must understand how to "talk" to a server. A web service is just an application waiting for HTTP requests.
@@ -147,7 +153,7 @@ The **UI** is what the user sees; user actions are sent to the back-end via the 
 
 The simplest way to interact with an API is via your browser (Firefox, Chrome, etc.). However, browsers are limited to **GET** requests (read data).
 
-Lets explore <https://swapi.info/api/>{target="_blank"}
+Lets explore <https://swapi.info/api/>{target="_blank"}:
 
 - [ ] What URL displays all the characters?
   - What is the data structure?
@@ -156,13 +162,12 @@ Lets explore <https://swapi.info/api/>{target="_blank"}
 - [ ] What is Mace Windu's home planet?
 - [ ] Find all planets visited in "The Empire Strikes Back"
 
-Another API <https://pokeapi.co/api/v2/>{target="_blank"}
+Another API <https://pokeapi.co/api/v2/>{target="_blank"}:
 
 - [ ] Use parameters *limit* and *offset* to display Pokemons with IDs between 51 and 60
   - [Documentation](https://pokeapi.co/docs/v2#resource-listspagination-section){target="_blank"}
 - [ ] What is the type of Pokemon named *psyduck*?
 - [ ] Does he have a Type advantage if he's fighting against Pokemon 114?
-
 
 :::{.notes}
 https://swapi.info/api/people -> list[dict]
@@ -179,7 +184,7 @@ https://pokeapi.co/api/v2/pokemon/114 -> type=grass
 
 ## Exploring your project's API
 
-> Enough of Star Wars and Pokemon – let's get back to a serious topic.
+> Enough playing with lightsabers and Pikachu – let's get back to a serious topic.
 
 Modern APIs provide a "manual" that is interactive: **Swagger (OpenAPI)**.
 
@@ -198,17 +203,45 @@ You've already done this in the first Lab.
   - Select the endpoint :arrow_right: Try it out :arrow_right: Execute
 - [ ] Delete the player with the highest ID
 
-Up until now, you have used `GET` requests to *ask* for information (the same goes for `DELETE`). But to *create* or *modify* data, you must provide further information. This is called the **Request Body**.
+Up until now, you have used `GET` requests to *ask* for information (the same goes for `DELETE`). 
 
-When using `POST` or `PUT`, you don't just send a URL; you send a **JSON object** containing the details of the resource.
+```{.txt filename="Examples"}
+GET https://swapi.info/api/people
+DELETE https://pokeapi.co/api/v2/pokemon/114
+```
 
-```{.json}
+But to *create* (`POST`) or *modify* (`PUT`) data, you must provide further information, not included in the URL. This information will be stored in the **Request Body**.
+
+```{.json filename="Example of JSON Body"}
 {
-  "username": "new_player",
-  "email": "new@player.com",
+  "username": "jean-patrick",
+  "email": "jp@player.com",
   "elo": 1200
 }
 ```
+
+::: {.callout-tip}
+The different parts of an HTTP request:
+
+- Method → what we want to do
+- URL → which resource we want to access
+- Headers → provide additional information about the request, such as authentication or the content type
+- Body → contains the data sent to the server, when needed
+
+```{.txt}
+POST https://chess-boxing.com/players                   <- Method + URL
+
+Content-Type: application/json                          <- Headers
+Authorization: Bearer AbC1459mlkP78sq25z8
+
+{                                                       <- Body
+  "username": "jean-patrick",
+  "elo": 1200
+}
+```
+:::
+
+
 
 - [ ] Create a new player
 - [ ] Update player *junior*
