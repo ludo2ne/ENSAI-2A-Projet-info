@@ -573,6 +573,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
+<section id="vscode-service" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="vscode-service">VSCode service</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Log in to the datalab</label></li>
+<li><label><input type="checkbox">Open your <strong><u>custom</u></strong> VSCode-python service</label>
+<ul>
+<li><span class="emoji" data-emoji="warning">⚠️</span> Custom, as you did in the first Lab</li>
+</ul></li>
+</ul>
+</section>
 <section id="create-your-branch" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="create-your-branch">Create your branch</h3>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -687,9 +697,12 @@ Important
 <li><label><input type="checkbox">Check that your database has been automatically detected</label>
 <ul>
 <li>It should appear in the left-hand sidebar</li>
-<li>If not, create a new one to your PostgreSQL database filling host, database, username and password (On the Onyxia services page, click on the PostgreSQL README to find this information)</li>
+<li>If not, create a new connection to your PostgreSQL database filling host, database, username and password (On the Onyxia services page, click on the PostgreSQL README to find this information)</li>
 </ul></li>
-<li><label><input type="checkbox">Open the connection (right-click &gt; Open), then a <span class="emoji" data-emoji="green_circle">🟢</span> appears</label></li>
+<li><label><input type="checkbox">Open the connection (right-click &gt; Open), then a <span class="emoji" data-emoji="green_circle">🟢</span> appears</label>
+<ul>
+<li>FYI: Database used is <em>defaultdb</em> and schema is <em>project</em></li>
+</ul></li>
 <li><label><input type="checkbox">Open a SQL editor</label></li>
 <li><label><input type="checkbox">Create the <em>game</em> table</label></li>
 <li><label><input type="checkbox">Then insert a few rows</label></li>
@@ -698,13 +711,13 @@ Important
 <ul class="task-list">
 <li><label><input type="checkbox">But what happens if your database crashes tonight?</label></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="The right way">
+<div class="callout callout-style-default callout-tip callout-titled" title="The right way (for this project)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>The right way
+<span class="screen-reader-only">Tip</span>The right way (for this project)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1186,7 +1199,7 @@ Important
 <ul>
 <li>If your service is terminated, all unpushed code is lost…</li>
 </ul></li>
-<li><label><input type="checkbox">Pause or delete your datalab services</label>
+<li><label><input type="checkbox">Pause your datalab services</label>
 <ul>
 <li>to free up reserved resources</li>
 </ul></li>
