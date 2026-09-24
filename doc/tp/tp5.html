@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ludovic Deneuville">
-<meta name="description" content="Lab 5 - Transforming raw data into actionable player insights">
+<meta name="description" content="Lab 5 - From Backend to User Interface with Streamlit">
 
 <title>Front end – Projet info 2A</title>
 <style>
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -478,12 +513,14 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Front end</h1>
   <div class="quarto-categories">
     <div class="quarto-category">User Interface</div>
+    <div class="quarto-category">Streamlit</div>
+    <div class="quarto-category">API calls</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Lab 5 - Transforming raw data into actionable player insights
+    Lab 5 - From Backend to User Interface with Streamlit
   </div>
 </div>
 
@@ -506,6 +543,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️
+<p class="back-1996">
+🌈 <a href="https://user-ludo2ne-64984-user-8000.user.lab.sspcloud.fr/" target="_blank"> Back to 1996 </a> 🌈
+</p>
+<p>💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️</p>
+<style>
+.back-1996 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.back-1996 a {
+    text-decoration: underline;
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+</style>
+<blockquote class="blockquote">
+<p>The final result, if you’d been born 30 years earlier.</p>
+</blockquote>
 <section id="before-you-start" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="before-you-start">Before you start</h2>
 <p>This tutorial combines explanations and code phases. The explanations should not take precedence over those of your teacher.</p>
@@ -523,6 +598,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Front-end development</li>
 <li>Navigation between pages</li>
 <li>Connection to the Back End</li>
+<li><strong><u>Read a documentation</u></strong></li>
 <li>Vibe coding</li>
 </ul>
 </div>
@@ -591,7 +667,7 @@ Important
 <li><label><input type="checkbox">Create (and switch to) your branch: <code>git switch -c &lt;username&gt;-tp&lt;N&gt; upstream/tp&lt;N&gt;-start</code></label></li>
 <li><label><input type="checkbox"><code>git push -u origin &lt;username&gt;-tp&lt;N&gt;</code> to publish your branch on the remote</label></li>
 </ul>
-<p>Then use the standard Git cycle: add, commit, push after each part.</p>
+<p><strong>Then use the standard Git cycle: add, commit, push <u>after each part.</u></strong></p>
 </section>
 </section>
 <section id="the-goal" class="level2" data-number="1">
@@ -612,7 +688,7 @@ Important
 <div class="callout-body-container callout-body">
 <p>Feel free to:</p>
 <ul>
-<li>use streamlit documentation</li>
+<li>use <a href="https://docs.streamlit.io/" target="_blank">streamlit documentation</a></li>
 <li>see existing pages in the project</li>
 </ul>
 <p>You can use <strong>LLMs</strong> (Codestral, etc.) to assist your development. However, do not simply copy-paste. Your role is to act as an architect: define the requirements, guide the AI through the implementation, and rigorously verify the logic.</p>
@@ -622,7 +698,7 @@ Important
 <section id="play-dice" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="play-dice"><span class="header-section-number">2</span> Play Dice</h2>
 <blockquote class="blockquote">
-<p>Let’s start with something easy : a page for playing dice</p>
+<p>Let’s start with something easy : a new page for playing dice.</p>
 </blockquote>
 <ul class="task-list">
 <li><label><input type="checkbox">Open file <strong>src/pages/player_game.py</strong></label></li>
@@ -640,10 +716,39 @@ Important
 <li><label><input type="checkbox">Copy file <strong>play_coinflip.py</strong> and name it <strong>play_dice.py</strong></label></li>
 <li><label><input type="checkbox">Modify to adapt the page for a Dice game</label>
 <ul>
-<li>update game_mode, do you still need a choice parameter?</li>
+<li>update game_mode</li>
+<li>do you still need a choice parameter?</li>
 </ul></li>
 <li><label><input type="checkbox">In the player menu, add a link to this page</label></li>
 </ul>
+<p>Try it:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Launch Backend and Frontend</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No need to restart the frontend when modifying a Streamlit page:</p>
+<ul>
+<li>To reload a page, either click <strong>Rerun</strong> or enable <code>runOnSave = true</code></li>
+<li><span class="emoji" data-emoji="warning">⚠️</span> Do not refresh the browser page: this will reset the Streamlit session and log you out.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>config.toml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="config.toml"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[server]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">runOnSave</span> <span class="op">=</span> <span class="cn">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </section>
 <section id="players-page" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="players-page"><span class="header-section-number">3</span> Player’s page</h2>
@@ -658,18 +763,25 @@ Important
 </ul>
 <p>The page url will be something like <code>http://&lt;my-frontend-url&gt;/player_stats?id_player=4</code>.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Use <em>st.query_params</em> to get the player ID</label></li>
+<li><label><input type="checkbox">Use <em>st.query_params</em> to get the player ID</label>
+<ul>
+<li>You couldn’t make this up – read the documentation</li>
+</ul></li>
 <li><label><input type="checkbox">Call the API to get the player’s attributes (username, elo, etc.)</label>
 <ul>
 <li>Check the response</li>
 </ul></li>
-<li><label><input type="checkbox">Display Player information using:</label>
+<li><label><input type="checkbox">Display Player information using, for example:</label>
 <ul>
 <li><em>username</em> in a <em>st.subheader</em> element</li>
 <li>use <em>st.columns</em> to create 2 columns</li>
 <li>col1: <em>elo</em> in a <em>st.metric</em></li>
 <li>col2: use <em>st.write</em> to display its email, and <em>st.checkbox</em> if he is a Pokemon’s fan</li>
 </ul></li>
+</ul>
+<p>Try it:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">By calling the URL directly</label></li>
 </ul>
 </section>
 <section id="match-history-retrieval" class="level3" data-number="3.2">
@@ -688,6 +800,9 @@ Important
 <li><label><input type="checkbox">For each item received, extract or generate fields: <em>Game Mode</em>, <em>Opponent</em>, <em>Opponent elo</em>, <em>Result</em> (win, loss, draw)</label></li>
 <li><label><input type="checkbox">Create a DataFrame and display it</label></li>
 </ul>
+<blockquote class="blockquote">
+<p>Example:</p>
+</blockquote>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -726,13 +841,14 @@ Important
 <p>We will add one to the players’ list.</p>
 <p>In file <strong>src/pages/list_players.py</strong> you have a dataframe:</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Add a column <em>url</em> redirecting to the player’s stats page</label>
+<li><label><input type="checkbox">Add a <em>url</em> column to your dataframe.</label>
 <ul>
-<li>for example: <code>/player_stats?id_player=4</code></li>
+<li>For each player, the URL must point to their stats page</li>
+<li>Example for player 4: <code>/player_stats?id_player=4</code></li>
 </ul></li>
 <li><label><input type="checkbox">Refresh the page</label></li>
 </ul>
-<p>Now let’s use config <em>st.column_config.LinkColumn</em> to generate a link:</p>
+<p>Now let’s use config <em>st.column_config.LinkColumn</em> to generate a real link:</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Add parameter <em>column_config</em> in the function that displays the dataframe</label></li>
 <li><label><input type="checkbox">Specify that the <em>url</em> field is a <em>LinkColumn</em></label>
@@ -748,6 +864,7 @@ Important
 <li><code>label="Stats", display_text="📊"</code></li>
 </ul></li>
 </ul>
+<p>The final result is the addition of a <em>Stats</em> column, with a 📊 icon for each player that links to their personal stats page.</p>
 </section>
 </section>
 <section id="to-go-further" class="level2" data-number="4">
