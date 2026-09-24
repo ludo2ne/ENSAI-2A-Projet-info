@@ -1,13 +1,56 @@
 ---
 title: Front end
-description: Lab 5 - Transforming raw data into actionable player insights
+description: Lab 5 - From Backend to User Interface with Streamlit
 author:
   - Ludovic Deneuville
 format: html
 number-sections: true
 categories:
   - User Interface
+  - Streamlit
+  - API calls
 ---
+
+💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️
+<p class="back-1996">
+  🌈 <a href="https://user-ludo2ne-64984-user-8000.user.lab.sspcloud.fr/" target="_blank">
+    Back to 1996
+  </a> 🌈
+</p>
+💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️📼💾☎️
+
+<style>
+.back-1996 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.back-1996 a {
+    text-decoration: underline;
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+</style>
+
+> The final result, if you’d been born 30 years earlier.
 
 ## Before you start {.unnumbered}
 
@@ -17,6 +60,7 @@ This tutorial combines explanations and code phases. The explanations should not
 - Front-end development
 - Navigation between pages
 - Connection to the Back End
+- **[Read a documentation]{.underline}**
 - Vibe coding
 :::
 
@@ -35,7 +79,7 @@ Let's use it to create a new page that displays some stats for each player.
 ::: {.callout-important}
 Feel free to:
 
-- use streamlit documentation
+- use [streamlit documentation](https://docs.streamlit.io/){target="_blank"}
 - see existing pages in the project
 
 You can use **LLMs** (Codestral, etc.) to assist your development. However, do not simply copy-paste. Your role is to act as an architect: define the requirements, guide the AI through the implementation, and rigorously verify the logic.
@@ -44,7 +88,7 @@ You can use **LLMs** (Codestral, etc.) to assist your development. However, do n
 
 ## Play Dice
 
-> Let's start with something easy : a page for playing dice
+> Let's start with something easy : a new page for playing dice.
 
 - [ ] Open file **src/pages/player_game.py**
 
@@ -58,8 +102,26 @@ The page for playing dice will look very similar.
 
 - [ ] Copy file **play_coinflip.py** and name it **play_dice.py**
 - [ ] Modify to adapt the page for a Dice game
-  - update game_mode, do you still need a choice parameter?
+  - update game_mode
+  - do you still need a choice parameter?
 - [ ] In the player menu, add a link to this page
+
+Try it:
+
+- [ ] Launch Backend and Frontend
+
+
+::: {.callout-tip}
+No need to restart the frontend when modifying a Streamlit page:
+
+- To reload a page, either click **Rerun** or enable `runOnSave = true`
+- :warning: Do not refresh the browser page: this will reset the Streamlit session and log you out.
+
+```{.toml filename="config.toml"}
+[server]
+runOnSave = true
+```
+:::
 
 
 ## Player's page
@@ -78,14 +140,18 @@ Let's start by retrieving and then displaying the player's details.
 The page url will be something like `http://<my-frontend-url>/player_stats?id_player=4`.
 
 - [ ] Use *st.query_params* to get the player ID
+  - You couldn't make this up – read the documentation
 - [ ] Call the API to get the player's attributes (username, elo, etc.)
   - Check the response
-- [ ] Display Player information using:
+- [ ] Display Player information using, for example:
   - *username* in a *st.subheader* element
   - use *st.columns* to create 2 columns
   - col1: *elo* in a *st.metric*
   - col2: use *st.write* to display its email, and *st.checkbox* if he is a Pokemon's fan
 
+Try it:
+
+- [ ] By calling the URL directly
 
 ### Match History Retrieval
 
@@ -100,6 +166,8 @@ The next step is to display a table using the JSON data sent by the API.
 - [ ] Use the swagger to see what you received from the API
 - [ ] For each item received, extract or generate fields: *Game Mode*, *Opponent*, *Opponent elo*, *Result* (win, loss, draw)
 - [ ] Create a DataFrame and display it
+
+> Example:
 
 | Mode     | Opponent        | Result |
 |----------|-----------------|--------|
@@ -117,11 +185,12 @@ We will add one to the players' list.
 
 In file **src/pages/list_players.py** you have a dataframe:
 
-- [ ] Add a column *url* redirecting to the player's stats page
-  - for example: `/player_stats?id_player=4`
+- [ ] Add a *url* column to your dataframe.
+  - For each player, the URL must point to their stats page
+  - Example for player 4: `/player_stats?id_player=4`
 - [ ] Refresh the page
 
-Now let's use config *st.column_config.LinkColumn* to generate a link:
+Now let's use config *st.column_config.LinkColumn* to generate a real link:
 
 - [ ] Add parameter *column_config* in the function that displays the dataframe
 - [ ] Specify that the *url* field is a *LinkColumn*
@@ -133,6 +202,7 @@ You can check this by clicking on the link to see if it takes you to the correct
 - [ ] Finally, add these arguments to LinkColumn
   - `label="Stats", display_text="📊"`
 
+The final result is the addition of a *Stats* column, with a 📊 icon for each player that links to their personal stats page.
 
 ## To go further
 

@@ -33,4 +33,4 @@ To start with a clean and up-to-date codebase:
 - [ ] Create (and switch to) your branch: `git switch -c <username>-tp<N> upstream/tp<N>-start`
 - [ ] `git push -u origin <username>-tp<N>` to publish your branch on the remote
 
-Then use the standard Git cycle: add, commit, push after each part.
+**Then use the standard Git cycle: add, commit, push [after each part.]{.underline}**

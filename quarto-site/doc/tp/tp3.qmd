@@ -352,7 +352,7 @@ Using *PlayerDao().find_by_id()* inside a loop to fetch players for every game c
 In a real production app, you would solve this using a SQL JOIN to fetch the game and its players in one single query.
 :::
 
-Writing clean unit tests for DAO methods isn’t straightforward. You can start by testing them manually, as you did last time.
+Writing clean unit tests for DAO methods isn't straightforward. You can start by testing them manually, as you did last time.
 
 - [ ] Feel free to use the script below to test manualy if your code works:
 

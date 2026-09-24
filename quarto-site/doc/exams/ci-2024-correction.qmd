@@ -54,9 +54,9 @@ Un linter signale le code qui n'est pas conforme aux bonnes pratiques, tandis qu
 c. **Quels sont les rôles des différentes couches de la couche métier ?**
   - DAO : communique avec la base de données.
   - Business Object : représente des concepts métiers.
-  - Service : manipule des objets métiers pour créer de l’information ou de la valeur.
+  - Service : manipule des objets métiers pour créer de l'information ou de la valeur.
   - Controller ou View : fait le lien avec l'IHM.
-d. **Qu’est-ce qu’une classe abstraite ?**
+d. **Qu'est-ce qu'une classe abstraite ?**
 
 Une classe abstraite est une classe qui ne peut pas être instanciée. Elle sert de modèle pour d'autres classes qui héritent d'elle, permettant de définir une interface commune et de partager du code entre les classes filles.
 
@@ -93,7 +93,7 @@ Mécanismes associés :
 
 a. **Qu'est-ce qu'une API ?**
 
-Une API (Application Programming Interface) est une interface entre deux ordinateurs ou deux programmes. C’est une application qui offre des services à d’autres applications.
+Une API (Application Programming Interface) est une interface entre deux ordinateurs ou deux programmes. C'est une application qui offre des services à d'autres applications.
 
 b. **Nommez les différents éléments de la requête suivante :**
 

@@ -57,7 +57,7 @@ d. **Comment définiriez-vous les relations entre ces quatre classes : Velo, Deu
   - Velo, Trottinette : héritent de la classe DeuxRoues
   - VeloElectrique : hérite de Velo, c'est un Velo avec des attributs ou méthodes supplémentaires
 e. **Qu'est-ce qu'un design pattern ?**
-  - C'est une bonne pratique en réponse à un problème de conception d’un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels
+  - C'est une bonne pratique en réponse à un problème de conception d'un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels
 f. **Quels principes doit respecter un bon test unitaire ?**
   - Teste une seule fonctionnalité
   - Isolé
@@ -137,7 +137,7 @@ Dans cet exercice, vous devez respecter les principes de la programmation en cou
 
 Vous allez créer une classe `Personne` avec les attributs suivants : nom, prenom, ville, age, est_adulte.
 
-a. **Créez la classe et le constructeur. Chaque nouvelle personne créée a pour âge 0 et elle n’est pas adulte.**
+a. **Créez la classe et le constructeur. Chaque nouvelle personne créée a pour âge 0 et elle n'est pas adulte.**
 
 ```{.python}
 class Personne:
@@ -192,7 +192,7 @@ class TestPersonne:
         assert p.est_adulte
 ```
 
-d. **En supposant qu’il existe une table personne contenant les mêmes informations que la classe Personne, écrivez la requête SQL qui permet d'afficher le nombre de personnes regroupées par ville.**
+d. **En supposant qu'il existe une table personne contenant les mêmes informations que la classe Personne, écrivez la requête SQL qui permet d'afficher le nombre de personnes regroupées par ville.**
 
 ```{.sql}
 SELECT ville,
@@ -217,7 +217,7 @@ class PersonneService:
         return adultes
 ```
 
-f. **Bonus : Modifiez la méthode de service afin qu’elle accepte un paramètre optionnel villes (une liste de villes). Si ce paramètre est fourni, la méthode doit retourner uniquement les adultes dont la ville figure dans cette liste. Si le paramètre n’est pas renseigné, la méthode doit retourner l’ensemble des adultes sans filtrage supplémentaire.**
+f. **Bonus : Modifiez la méthode de service afin qu'elle accepte un paramètre optionnel villes (une liste de villes). Si ce paramètre est fourni, la méthode doit retourner uniquement les adultes dont la ville figure dans cette liste. Si le paramètre n'est pas renseigné, la méthode doit retourner l'ensemble des adultes sans filtrage supplémentaire.**
 
 ```{.python}
 class PersonneService:
