@@ -1,6 +1,6 @@
 ---
 title: "Notice élèves"
-description: Projet informatique 2A 2025-2026
+description: Projet informatique 2A 2026-2027
 author:
   - Romaric Gaudel
   - Rémi Pépin
@@ -364,7 +364,7 @@ Via son rôle de client, votre tutrice ou tuteur vous a exposé son besoin. Le d
 ::: {.callout-important}
 - **Où** : sur Moodle, dans la section prévue à cet effet
 - **Quand** : début octobre
-- **Comment** : en format `pdf`. Il n'est pas obligatoirement rédigé en LaTeX mais doit-être « propre »
+- **Comment** : en format `pdf`. Conseil : utilisez Quarto-typst pour la rédaction.
 - **Combien** : 10 à 15 pages, annexes comprises est une taille raisonnable
 - **Pourquoi** : il sera noté par votre intervenant qui vous en fera un retour
 :::
@@ -471,9 +471,11 @@ Bien entendu, **cette liste ne définit que les composantes minimales de votre r
 
 L'ordre de présentation des différents points, et de leur classement en annexe est libre. **La taille optimale de ce rapport est de 25 pages hors annexe**. Vous pouvez faire plus long mais dans ce cas posez-vous la question : « Ce que j'ajoute est-il nécessaire ? ». 
 
-le format final attendu est le pdf.
+Le format final attendu est le pdf.
 
-Pour rédiger, il est vivement conseillé d'utilier les template Typst fourni dans le template de projet pour rédiger.
+::: {.callout-tip}
+Pour rédiger, il est vivement conseillé d'utilier les template *Typst* fourni dans le template de projet pour rédiger.
+:::
 
 Enfin, un minimum de rigueur est attendu de futurs ingénieurs. Cela arrive de laisser passer une ou deux coquilles, par contre si cela nuit à la compréhension de votre rapport vous serez sanctionnés.
 
@@ -496,7 +498,7 @@ Le code source complet de l'application contenant à minima :
 - Un fichier `README.md` dans le dossier *backend* destiné aux personnes souhaitant continuer le développement de l'application :
   - Présentation de l'architecture en couches
   - Outils de développement (tests, logs, qualité...)
-- Un fichier `backend/pyproject.toml` avec tous les modules pythons à installer pour faire fonctionner votre application
+- Un fichier `backend/pyproject.toml` avec tous les modules python à installer pour faire fonctionner votre application
 - un dossier `backend/src` contenant votre code source et un fichier `main.py` ou `__main__.py` qui permet de lancer votre application
 - un fichier `data/init_db.sql` permettant la création des tables et des données
 
