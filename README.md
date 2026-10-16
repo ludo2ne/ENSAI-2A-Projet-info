@@ -7,17 +7,20 @@ Projet informatique de 2e année
 | CM 1                  | Temps estimé   |
 |-----------------------|----------------|
 | Intro                 | 10 min         |
-| Projet                | 20 min         |
-| Outils Dev            | 20 min         |
+| Outils Dev            | 30 min         |
 | Git                   | 30 min         |
 | Analyse fonctionnelle | 1 h            |
-| POO Avancée           | 30 min         |
+| POO Avancée           | 40 min         |
 
 | CM 2                  | Temps estimé   |
 |-----------------------|----------------|
 | Tests Unitaires       | 30 min         |
 | Webservices           | 60 min         |
 | DAO - Sécurité        | 90 min         |
+
+## Projet
+
+- Amphi d'une heure pour présenter le projet
 
 ## :rocket: Publier les pages
 

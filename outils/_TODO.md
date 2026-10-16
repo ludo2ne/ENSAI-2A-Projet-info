@@ -1,35 +1,23 @@
+# 2027-2028
+
+- [ ] Categories aux cours
+  - [ ] TOC categories sur index
+- [ ] pdf
 
 ## :construction: Todo
 
 - https://ensae-reproductibilite.github.io/website/chapters/code-quality.html
 - Docker: https://ensae-reproductibilite.github.io/website/chapters/portability.html
 
-### A corriger
-
-
-```pages/home.py
--    if response:
-+    if response.get("status_code") == 200:
-         logger.info("Database successfully reset")
-         st.toast("Database successfully reset ✅")
-```
-
 
 ### Projet
 
-- [ ] maj Template
-  - pytest + cov
-  - CI
-  - https://github.com/ClementValot/Projet2A_Template
-- [ ] Bilan du point hebdo
 - Notice élèves
   - [ ] Compléter section livraison dossier analyse (voir mail)
   
 
 ### CM
 
-- [ ] Projet Flask pour les démo en CM -> tournoi-echecs
-- [ ] Git : simples rappels car cours donné en 1A
 - [ ] API : https://pythonds.linogaliana.fr/content/manipulation/04c_API_TP.html
 - https://datacrafting.substack.com/p/jour-19-ii-python-the-right-way-ecrire
 - https://datacrafting.substack.com/p/jour-20-ii-python-the-right-way-les
@@ -43,62 +31,9 @@
   - code smell
   - venv, poetry
 
-### TP
-
-Base : une appli avec des joueurs et des matchs
-Objectifs : fonctionnalité pour gérer des tournois
-
-Steps:
-
-- Fournir écran vide: liste des tournois, s'inscrire
-- Créer BO Tournoi
-- Créer table tournoi, inscription
-- Créer TournoiDAO, InscriptionDAO
-- Créer TournoiService, InscriptionService
-- Màj vue
-
-#### TP1 : Environnement de dev, outils
-
-- Rappels Git
-- Format, lint
-- VSCode settings
-- Logs
-- [ ] Nommer repo projet : `Projet-info-2A-equipe-<numéro_equipe>`
-
-#### TP2 : Refresh Python, POO, TU
-
--
-
-#### TP3 : WS
-
-- [ ] Passer de Insomnia à [usebruno](https://www.usebruno.com/)
-
-#### TP4 : DAO
-  
-- [ ] coquilles modèle données SQL
-
-#### TP5 : Vues
-
-- [ ] mettre au propre et à dispo en autonomie
-- [ ] Remplacer inquierPy par https://streamlit.io/ ? 
-
----
-
-# TP5
-
-- Service to list players' games
-- Menu to play Dice
-- Tests
-
-
-
-
-#### Projet info améliorations
-
+### Projet info améliorations
 
 - [ ] Note gestion projet, suivi hebdo, participation
-
-- CM à part de 1h pour présentation du projet
 - Suivi hebdo
     - [ ] Dire de détailler plus
     - [ ] Note de suivi coef 1/4 ? Rajoute du travail aux tuteurs...
@@ -127,64 +62,6 @@ Steps:
   - [ ] TP sur les design pattern
   - [ ] Remettre un peu de POO (héritage, polymorphisme)
     - Variantes de puissance4
-
-
-# TP
-
-- [ ] Uniformiser format -> prompt quarto
-- [ ] Faire relire
-- [ ] Branche start
-- [ ] API example client mode (external url)
-
-## TP1 Back/Front, Couches, Git
-
-
-## TP2 Business_object
-
-
-
-## TP3 DAO
-
-PlayerService.username_already_used() -> PlayerDAO.find_by_username()
-
-
-## TP4 API
-
-- [ ] elo: int en passant par le front (entre 1000 et 3000)
-  - et par l'api on peut mettre ce qu'on veut
-
-
-
-
-## TP IHM et Sécurité
-
-- [ ] Modification pour ne pas utiliser un seul Model mais 2
-
-```python
-# backend/src/schemas/player_schemas.py
-from pydantic import BaseModel, EmailStr, Field
-
-class PlayerCreate(BaseModel):
-    """Ce que le client ENVOIE pour créer"""
-    username: str
-    password: str = Field(..., min_length=12)
-    email: EmailStr
-
-class PlayerResponse(BaseModel):
-    """Ce que l'API RENVOIE au client (on cache le password !)"""
-    id_player: int
-    username: str
-    email: EmailStr
-    elo: int
-```
-
-
-
-
-
-
----
-
 
 Pour passer d'un simple script de mise à jour d'Elo à un véritable système de gestion de jeux, tu vas devoir passer d'une logique de **"calcul immédiat"** à une logique de **"gestion d'événements"**.
 

@@ -58,15 +58,15 @@ website:
       - text: Labs
         menu:
           - href: doc/tp/tp1.qmd
-            text: Lab 1
+            text: Lab 1 - Workspace 
           - href: doc/tp/tp2.qmd
-            text: Lab 2
+            text: Lab 2 - Refactoring
           - href: doc/tp/tp3.qmd
-            text: Lab 3
+            text: Lab 3 - DAO
           - href: doc/tp/tp4.qmd
-            text: Lab 4
+            text: Lab 4 - Webservices
           - href: doc/tp/tp5.qmd
-            text: Lab 5
+            text: Lab 5 - Frontend
           - href: doc/tp/2025/tp1.qmd
             text: Old Labs
     right:
@@ -84,6 +84,10 @@ website:
             text: Examen 2025
           - href: doc/exams/ci-2025-correction.qmd
             text: Examen 2025 solution
+          - href: doc/exams/ci-2026.qmd
+            text: Examen 2026
+          - href: doc/exams/ci-2026-correction.qmd
+            text: Examen 2026 solution
       - text: Various
         menu:
           - href: https://ludo2ne.github.io/ENSAI-tools/
