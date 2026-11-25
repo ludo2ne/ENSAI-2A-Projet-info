@@ -38,3 +38,7 @@ format: html
 | SSH     | Secure Shell                                   | Protocole sécurisé permettant d'accéder à un ordinateur distant et d'exécuter des commandes |
 | HTTP    | Hypertext Transfer Protocol                    | Protocole permettant de transférer des pages web entre un serveur et un client     |
 | FTP     | File Transfer Protocol                         | Protocole de communication utilisé pour transférer des fichiers                    |
+
+## Ressources 
+
+- [Clean Code, laconsole.dev](https://laconsole.dev/blog/ecrire-clean-code-lisible-maintenable){target="_blank}
