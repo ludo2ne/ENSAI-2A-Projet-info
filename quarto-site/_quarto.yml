@@ -10,12 +10,6 @@ author:
   - Rémi Pépin
 
 website:
-  announcement: 
-    icon: exclamation-octagon
-    dismissable: false
-    content: "**Moodle is back. The code and final report are due this Thursday, 26 November at 2.00 pm. If you have any difficulties, please let me know.**"
-    type: danger
-    position: above-navbar
   title: "Projet info 2A"
   repo-url: "{{< meta var.url-repo >}}"
   repo-branch: main
